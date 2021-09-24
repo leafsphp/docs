@@ -17,7 +17,7 @@
     line-height 1.4
     padding 1.25rem 1.5rem
     margin 0.85rem 0
-    background-color $textColorSecondary
+    background-color rgb(38, 50, 56)
     border-radius 6px
     overflow auto
     code
@@ -28,10 +28,10 @@
 
 div[class*="language-"]
   position relative
-  background-color $textColorSecondary
+  background-color rgb(38, 50, 56)
   border-radius 6px
   .highlight-lines
-    background-color $textColorSecondary
+    background-color rgb(38, 50, 56)
     color #3a385d
     user-select none
     padding-top 1.3rem
@@ -41,7 +41,7 @@ div[class*="language-"]
     width 100%
     line-height 1.4
     .highlighted
-      background-color darken($textColorSecondary, 20%)
+      background-color rgb(38, 50, 56)
   pre, pre[class*="language-"]
     background transparent
     position relative
@@ -68,7 +68,7 @@ div[class*="language-"]
           display block
           width $lineNumbersWrapperWidth
           height 100%
-          background-color darken($textColorSecondary, 20%)
+          background-color rgb(38, 50, 56)
     pre
       padding-left $lineNumbersWrapperWidth + 1 rem
       vertical-align middle
@@ -97,7 +97,7 @@ div[class*="language-"]
       height 100%
       border-radius 6px 0 0 6px
       border-right 1px solid rgba(0, 0, 0, 66%)
-      background-color $textColorSecondary;
+      background-color rgb(38, 50, 56);
 
 
 for lang in $codeLang
@@ -142,33 +142,36 @@ div.reactivecontent
 
 // @import '~prismjs/themes/prism-tomorrow.css'
 
-.token.punctuation
-  color #a8a9cc
+.token.punctuation, .token.operator, .token.entity, .token.url
+  color rgb(146, 153, 166) !important
 
 .token.tag, .token.attr-name, .token.namespace, .token.deleted
-  color #b2085f
+  color #f2085f
 
 .token.string, .token.char, .token.attr-value, .token.regex, .token.variable
-  color #1aaa34
+  color rgb(135, 195, 111)
 
 .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin
-  color #b92dbc
+  color rgb(195, 119, 216)
+
+.token.keyword
+  font-style: italic !important
 
 .token.boolean, .token.number, .token.function
-  color #c25205
+  color rgb(97, 175, 239)
 
 .token.property, .token.class-name, .token.constant, .token.symbol
-  color #717c11
+  color rgb(208, 154, 102);
 
 .token.operator, .token.entity, .token.url
   color #0b7e7d
 
 .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata
-  color #848486
+  color rgb(146, 153, 166)
 
 div[class*=language-].line-numbers-mode .line-numbers-wrapper, div[class*=language-].line-numbers-mode:after
-  background-color $textColorSecondary;
-  color lighten($textColorSecondary, 20%)
-  border-right 1px solid lighten($textColorSecondary, 10%);
+  background-color rgb(38, 50, 56);
+  color lighten($textColorSecondary, 10%)
+  border-right 1px solid darken($textColorSecondary, 10%);
   border-top-left-radius 6px
   border-bottom-left-radius 6px

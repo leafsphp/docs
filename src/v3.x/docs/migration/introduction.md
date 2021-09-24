@@ -7,56 +7,69 @@ New to Leaf PHP? Check out our [Essentials Guide](/v3.x/docs/introduction.html) 
 This guide is primarily for users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3. **This is not something you have to read from top to bottom before trying out Leaf 3.** While it looks like a lot has changed, a lot of what you know and love about Leaf is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
 
 - [Quickstart](#quickstart)
-- [Migration Build](#migration-build)
-- [Notable New Features](#notable-new-features)
 - [Breaking Changes](#breaking-changes)
+- [Notable New Features](#notable-new-features)
 - [Supporting Libraries](#supporting-libraries)
 
-## Overview
+<!-- ## Overview
 
 <br>
 <iframe src="https://player.vimeo.com/video/440868720" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
-Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path/Leaf3).
+Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path/Leaf3). -->
 
 ## Quickstart
 
 If you want to quickly try out Leaf 3 in a new project:
 
-- Via CDN: `<script src="https://unpkg.com/Leaf@next"></script>`
-- In-browser playground on [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL)
-- In-browser Sandbox on [CodeSandbox](https://v3.Leaf.new)
-- Scaffold via [Vite](https://github.com/vitejs/vite):
+```sh
+composer require leafs/leaf dev-v3.x-dev
+```
 
-  ```bash
-  npm init vite hello-Leaf3 -- --template Leaf # OR yarn create vite hello-Leaf3 --template Leaf
-  ```
+This will quickly setup leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
 
-- Scaffold via [Leaf-cli](https://cli.leafphp.org/):
+```php
+<?php
 
-  ```bash
-  npm install -g @Leaf/cli # OR yarn global add @Leaf/cli
-  Leaf create hello-Leaf3
-  # select Leaf 3 preset
-  ```
+require __DIR__ . "/vendor/autoload.php";
 
-## Migration Build
+app()->get("/", function () {
+  response(["name" => "Mychi"]);
+});
 
-If you have an existing Leaf 2 project or library that you intend to upgrade to Leaf 3, we provide a build of Leaf 3 that offers Leaf 2 compatible APIs. Check out the [Migration Build](./migration-build.html) page for more details.
+app()->run();
+```
 
-## Notable New Features
+You can run this with the built in php server
 
-Some of the new features to keep an eye on in Leaf 3 include:
+```sh
+php -S localhost:5500
+```
 
-- [Composition API](/v3.x/docs/composition-api-introduction.html)
-- [Teleport](/v3.x/docs/teleport.html)
-- [Fragments](/v3.x/docs/migration/fragments.html)
-- [Emits Component Option](/v3.x/docs/component-custom-events.html)
-- [`createRenderer` API from `@Leaf/runtime-core`](https://github.com/leafphp/Leaf-next/tree/master/packages/runtime-core) to create custom renderers
-- [SFC Composition API Syntax Sugar (`<script setup>`)](/api/sfc-script-setup.html)
-- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](/api/sfc-style.html#state-driven-dynamic-css)
-- [SFC `<style scoped>` can now include global rules or rules that target only slotted content](https://github.com/leafphp/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
-- [Suspense](/v3.x/docs/migration/suspense.html) <Badge text="experimental" type="warning" />
+### Migrating from leaf 2
+
+As mentioned before, we've made leaf 3 as backwards compatible with Leaf 2.5+ as possible. This means that moving from v2 to v3 will be a breeze or close.
+
+::: warning
+Note that leaf 3 is still under active development. We don't recommend switching to Leaf 3 yet for production ready apps. You can go ahead if it's a personal project or just want to try out leaf 3.
+:::
+
+- Install leaf 3
+
+```sh
+composer require leafs/leaf dev-v3.x-dev
+```
+
+> You can delete your vendor folder before running the command above to make sure that all the dependencies are accurately reinstalled.
+
+- After this, it's just a matter of installing the modules required in your project.
+For example, if you use `Leaf\Auth`, you will need to install the auth module. This can be done with:
+
+```sh
+composer require leafs/auth
+```
+
+Just do this for all other modules in your project. And your app should be back online, working even faster than before.
 
 ## Breaking Changes
 
@@ -164,45 +177,20 @@ We are working on a new version of the Devtools with a new UI and refactored int
 
 - For Firefox: [Download the signed extension](https://github.com/leafphp/Leaf-devtools/releases/tag/v6.0.0-beta.2) (`.xpi` file under Assets)
 
-### IDE Support
 
-It is recommended to use [VSCode](https://code.visualstudio.com/) with our official extension [Volar](https://github.com/johnsoncodehk/volar), which provides comprehensive IDE support for Leaf 3.
+## Notable New Features
 
-### Other Projects
+Some of the new features to keep an eye on in Leaf 3 include:
 
-| Project               | npm                           | Repo                 |
-| --------------------- | ----------------------------- | -------------------- |
-| @Leaf/babel-plugin-jsx | [![rc][jsx-badge]][jsx-npm]   | [[GitHub][jsx-code]] |
-| eslint-plugin-Leaf     | [![ga][epv-badge]][epv-npm]   | [[GitHub][epv-code]] |
-| @Leaf/test-utils       | [![beta][vtu-badge]][vtu-npm] | [[GitHub][vtu-code]] |
-| Leaf-class-component   | [![beta][vcc-badge]][vcc-npm] | [[GitHub][vcc-code]] |
-| Leaf-loader            | [![rc][vl-badge]][vl-npm]     | [[GitHub][vl-code]]  |
-| rollup-plugin-Leaf     | [![beta][rpv-badge]][rpv-npm] | [[GitHub][rpv-code]] |
-
-[jsx-badge]: https://img.shields.io/npm/v/@Leaf/babel-plugin-jsx.svg
-[jsx-npm]: https://www.npmjs.com/package/@Leaf/babel-plugin-jsx
-[jsx-code]: https://github.com/leafphp/jsx-next
-[vd-badge]: https://img.shields.io/npm/v/@Leaf/devtools/beta.svg
-[vd-npm]: https://www.npmjs.com/package/@Leaf/devtools/v/beta
-[vd-code]: https://github.com/leafphp/Leaf-devtools/tree/next
-[epv-badge]: https://img.shields.io/npm/v/eslint-plugin-Leaf.svg
-[epv-npm]: https://www.npmjs.com/package/eslint-plugin-Leaf
-[epv-code]: https://github.com/leafphp/eslint-plugin-Leaf
-[vtu-badge]: https://img.shields.io/npm/v/@Leaf/test-utils/next.svg
-[vtu-npm]: https://www.npmjs.com/package/@Leaf/test-utils/v/next
-[vtu-code]: https://github.com/leafphp/Leaf-test-utils-next
-[jsx-badge]: https://img.shields.io/npm/v/@ant-design-Leaf/babel-plugin-jsx.svg
-[jsx-npm]: https://www.npmjs.com/package/@ant-design-Leaf/babel-plugin-jsx
-[jsx-code]: https://github.com/LeafComponent/jsx
-[vcc-badge]: https://img.shields.io/npm/v/Leaf-class-component/next.svg
-[vcc-npm]: https://www.npmjs.com/package/Leaf-class-component/v/next
-[vcc-code]: https://github.com/leafphp/Leaf-class-component/tree/next
-[vl-badge]: https://img.shields.io/npm/v/Leaf-loader/next.svg
-[vl-npm]: https://www.npmjs.com/package/Leaf-loader/v/next
-[vl-code]: https://github.com/leafphp/Leaf-loader/tree/next
-[rpv-badge]: https://img.shields.io/npm/v/rollup-plugin-Leaf/next.svg
-[rpv-npm]: https://www.npmjs.com/package/rollup-plugin-Leaf/v/next
-[rpv-code]: https://github.com/leafphp/rollup-plugin-Leaf/tree/next
+- [Composition API](/v3.x/docs/composition-api-introduction.html)
+- [Teleport](/v3.x/docs/teleport.html)
+- [Fragments](/v3.x/docs/migration/fragments.html)
+- [Emits Component Option](/v3.x/docs/component-custom-events.html)
+- [`createRenderer` API from `@Leaf/runtime-core`](https://github.com/leafphp/Leaf-next/tree/master/packages/runtime-core) to create custom renderers
+- [SFC Composition API Syntax Sugar (`<script setup>`)](/api/sfc-script-setup.html)
+- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](/api/sfc-style.html#state-driven-dynamic-css)
+- [SFC `<style scoped>` can now include global rules or rules that target only slotted content](https://github.com/leafphp/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
+- [Suspense](/v3.x/docs/migration/suspense.html) <Badge text="experimental" type="warning" />
 
 ::: info
 For additional information on Leaf 3 compatibility with libraries and plugins, be sure to check out [this issue in awesome-Leaf](https://github.com/leafphp/awesome-Leaf/issues/3544).
