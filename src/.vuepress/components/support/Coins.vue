@@ -79,7 +79,7 @@ export default {
 
   a {
     margin: 20px;
-    color: $textColor;
+    color: $textColorSecondary;
     text-decoration: none !important;
 
     &:hover {

@@ -20,7 +20,7 @@
           <dd>
             <ul>
               <li v-for="repo in profile.reposOfficial">
-                <a :href="generateGithubUrl('vuejs', repo)" target=_blank>{{ repo.name || repo }}</a>
+                <a :href="generateGithubUrl('leafsphp', repo)" target=_blank>{{ repo.name || repo }}</a>
               </li>
             </ul>
           </dd>

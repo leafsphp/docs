@@ -16,43 +16,43 @@ const sidebar = {
       title: 'Essentials',
       collapsable: false,
       children: [
-        '/guide/installation',
-        '/guide/introduction',
-        '/guide/instance',
-        '/guide/template-syntax',
-        '/guide/data-methods',
-        '/guide/computed',
-        '/guide/class-and-style',
-        '/guide/conditional',
-        '/guide/list',
-        '/guide/events',
-        '/guide/forms',
-        '/guide/component-basics'
+        '/v3.x/docs/installation',
+        '/v3.x/docs/introduction',
+        '/v3.x/docs/instance',
+        '/v3.x/docs/template-syntax',
+        '/v3.x/docs/data-methods',
+        '/v3.x/docs/computed',
+        '/v3.x/docs/class-and-style',
+        '/v3.x/docs/conditional',
+        '/v3.x/docs/list',
+        '/v3.x/docs/events',
+        '/v3.x/docs/forms',
+        '/v3.x/docs/component-basics'
       ]
     },
     {
       title: 'Components In-Depth',
       collapsable: false,
       children: [
-        '/guide/component-registration',
-        '/guide/component-props',
-        '/guide/component-attrs',
-        '/guide/component-custom-events',
-        '/guide/component-slots',
-        '/guide/component-provide-inject',
-        '/guide/component-dynamic-async',
-        '/guide/component-template-refs',
-        '/guide/component-edge-cases'
+        '/v3.x/docs/component-registration',
+        '/v3.x/docs/component-props',
+        '/v3.x/docs/component-attrs',
+        '/v3.x/docs/component-custom-events',
+        '/v3.x/docs/component-slots',
+        '/v3.x/docs/component-provide-inject',
+        '/v3.x/docs/component-dynamic-async',
+        '/v3.x/docs/component-template-refs',
+        '/v3.x/docs/component-edge-cases'
       ]
     },
     {
       title: 'Transitions & Animation',
       collapsable: false,
       children: [
-        '/guide/transitions-overview',
-        '/guide/transitions-enterleave',
-        '/guide/transitions-list',
-        '/guide/transitions-state'
+        '/v3.x/docs/transitions-overview',
+        '/v3.x/docs/transitions-enterleave',
+        '/v3.x/docs/transitions-list',
+        '/v3.x/docs/transitions-state'
       ]
     },
     {
@@ -62,66 +62,66 @@ const sidebar = {
         {
           title: 'Composition API',
           children: [
-            '/guide/composition-api-introduction',
-            '/guide/composition-api-setup',
-            '/guide/composition-api-lifecycle-hooks',
-            '/guide/composition-api-provide-inject',
-            '/guide/composition-api-template-refs'
+            '/v3.x/docs/composition-api-introduction',
+            '/v3.x/docs/composition-api-setup',
+            '/v3.x/docs/composition-api-lifecycle-hooks',
+            '/v3.x/docs/composition-api-provide-inject',
+            '/v3.x/docs/composition-api-template-refs'
           ]
         },
-        '/guide/mixins',
-        '/guide/custom-directive',
-        '/guide/teleport',
-        '/guide/render-function',
-        '/guide/plugins'
+        '/v3.x/docs/mixins',
+        '/v3.x/docs/custom-directive',
+        '/v3.x/docs/teleport',
+        '/v3.x/docs/render-function',
+        '/v3.x/docs/plugins'
       ]
     },
     {
       title: 'Advanced Guides',
       collapsable: false,
       children: [
-        '/guide/web-components',
+        '/v3.x/docs/web-components',
         {
           title: 'Reactivity',
           children: [
-            '/guide/reactivity',
-            '/guide/reactivity-fundamentals',
-            '/guide/reactivity-computed-watchers'
+            '/v3.x/docs/reactivity',
+            '/v3.x/docs/reactivity-fundamentals',
+            '/v3.x/docs/reactivity-computed-watchers'
           ]
         },
-        '/guide/optimizations',
-        '/guide/change-detection'
+        '/v3.x/docs/optimizations',
+        '/v3.x/docs/change-detection'
       ]
     },
     {
       title: 'Tooling',
       collapsable: false,
       children: [
-        '/guide/single-file-component',
-        '/guide/testing',
-        '/guide/typescript-support',
-        '/guide/mobile',
-        '/guide/tooling/deployment'
+        '/v3.x/docs/single-file-component',
+        '/v3.x/docs/testing',
+        '/v3.x/docs/typescript-support',
+        '/v3.x/docs/mobile',
+        '/v3.x/docs/tooling/deployment'
       ]
     },
     {
       title: 'Scaling Up',
       collapsable: false,
       children: [
-        '/guide/routing',
-        '/guide/state-management',
-        '/guide/ssr',
-        '/guide/security'
+        '/v3.x/docs/routing',
+        '/v3.x/docs/state-management',
+        '/v3.x/docs/ssr',
+        '/v3.x/docs/security'
       ]
     },
     {
       title: 'Accessibility',
       collapsable: false,
       children: [
-        '/guide/a11y-basics',
-        '/guide/a11y-semantics',
-        '/guide/a11y-standards',
-        '/guide/a11y-resources'
+        '/v3.x/docs/a11y-basics',
+        '/v3.x/docs/a11y-semantics',
+        '/v3.x/docs/a11y-standards',
+        '/v3.x/docs/a11y-resources'
       ]
     }
   ],
@@ -200,75 +200,75 @@ const sidebar = {
     }
   ],
   migration: [
-    '/guide/migration/introduction',
-    '/guide/migration/migration-build',
+    '/v3.x/docs/migration/introduction',
+    '/v3.x/docs/migration/migration-build',
     {
       title: 'Details',
       collapsable: false,
       children: [
-        '/guide/migration/array-refs',
-        '/guide/migration/async-components',
-        '/guide/migration/attribute-coercion',
-        '/guide/migration/attrs-includes-class-style',
-        '/guide/migration/children',
-        '/guide/migration/custom-directives',
-        '/guide/migration/custom-elements-interop',
-        '/guide/migration/data-option',
-        '/guide/migration/emits-option',
-        '/guide/migration/events-api',
-        '/guide/migration/filters',
-        '/guide/migration/fragments',
-        '/guide/migration/functional-components',
-        '/guide/migration/global-api',
-        '/guide/migration/global-api-treeshaking',
-        '/guide/migration/inline-template-attribute',
-        '/guide/migration/key-attribute',
-        '/guide/migration/keycode-modifiers',
-        '/guide/migration/listeners-removed',
-        '/guide/migration/mount-changes',
-        '/guide/migration/props-data',
-        '/guide/migration/props-default-this',
-        '/guide/migration/render-function-api',
-        '/guide/migration/slots-unification',
-        '/guide/migration/suspense',
-        '/guide/migration/transition',
-        '/guide/migration/transition-as-root',
-        '/guide/migration/transition-group',
-        '/guide/migration/v-on-native-modifier-removed',
-        '/guide/migration/v-model',
-        '/guide/migration/v-if-v-for',
-        '/guide/migration/v-bind',
-        '/guide/migration/vnode-lifecycle-events',
-        '/guide/migration/watch'
+        '/v3.x/docs/migration/array-refs',
+        '/v3.x/docs/migration/async-components',
+        '/v3.x/docs/migration/attribute-coercion',
+        '/v3.x/docs/migration/attrs-includes-class-style',
+        '/v3.x/docs/migration/children',
+        '/v3.x/docs/migration/custom-directives',
+        '/v3.x/docs/migration/custom-elements-interop',
+        '/v3.x/docs/migration/data-option',
+        '/v3.x/docs/migration/emits-option',
+        '/v3.x/docs/migration/events-api',
+        '/v3.x/docs/migration/filters',
+        '/v3.x/docs/migration/fragments',
+        '/v3.x/docs/migration/functional-components',
+        '/v3.x/docs/migration/global-api',
+        '/v3.x/docs/migration/global-api-treeshaking',
+        '/v3.x/docs/migration/inline-template-attribute',
+        '/v3.x/docs/migration/key-attribute',
+        '/v3.x/docs/migration/keycode-modifiers',
+        '/v3.x/docs/migration/listeners-removed',
+        '/v3.x/docs/migration/mount-changes',
+        '/v3.x/docs/migration/props-data',
+        '/v3.x/docs/migration/props-default-this',
+        '/v3.x/docs/migration/render-function-api',
+        '/v3.x/docs/migration/slots-unification',
+        '/v3.x/docs/migration/suspense',
+        '/v3.x/docs/migration/transition',
+        '/v3.x/docs/migration/transition-as-root',
+        '/v3.x/docs/migration/transition-group',
+        '/v3.x/docs/migration/v-on-native-modifier-removed',
+        '/v3.x/docs/migration/v-model',
+        '/v3.x/docs/migration/v-if-v-for',
+        '/v3.x/docs/migration/v-bind',
+        '/v3.x/docs/migration/vnode-lifecycle-events',
+        '/v3.x/docs/migration/watch'
       ]
     }
   ],
   ssr: [
-    ['/guide/ssr/introduction', 'Introduction'],
-    '/guide/ssr/getting-started',
-    '/guide/ssr/universal',
-    '/guide/ssr/structure',
-    '/guide/ssr/build-config',
-    '/guide/ssr/server',
-    '/guide/ssr/routing',
-    '/guide/ssr/hydration'
+    ['/v3.x/docs/ssr/introduction', 'Introduction'],
+    '/v3.x/docs/ssr/getting-started',
+    '/v3.x/docs/ssr/universal',
+    '/v3.x/docs/ssr/structure',
+    '/v3.x/docs/ssr/build-config',
+    '/v3.x/docs/ssr/server',
+    '/v3.x/docs/ssr/routing',
+    '/v3.x/docs/ssr/hydration'
   ],
   contributing: [
     {
       title: 'Contribute to the Docs',
       collapsable: false,
       children: [
-        '/guide/contributing/writing-guide',
-        '/guide/contributing/doc-style-guide',
-        '/guide/contributing/translations'
+        '/v3.x/docs/contributing/writing-guide',
+        '/v3.x/docs/contributing/doc-style-guide',
+        '/v3.x/docs/contributing/translations'
       ]
     }
   ]
 }
 
 module.exports = {
-  title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  title: 'Leaf PHP',
+  description: 'Leaf PHP - Simple and Elegant PHP',
   head: [
     [
       'link',
@@ -290,7 +290,7 @@ module.exports = {
       'link',
       {
         rel: 'icon',
-        href: '/logo.png'
+        href: '/logo-circle.png',
       }
     ],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
@@ -331,7 +331,7 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logo-circle.png',
     nav: [
       {
         text: 'Docs',
@@ -339,7 +339,7 @@ module.exports = {
         items: [
           {
             text: 'Guide',
-            link: '/guide/introduction'
+            link: '/v3.x/docs/introduction'
           },
           {
             text: 'Style Guide',
@@ -355,17 +355,13 @@ module.exports = {
           },
           {
             text: 'Contribute',
-            link: '/guide/contributing/writing-guide'
+            link: '/v3.x/docs/contributing/writing-guide'
           },
           {
-            text: 'Migration from Vue 2',
-            link: '/guide/migration/introduction'
+            text: 'Migration from Leaf 2',
+            link: '/v3.x/docs/migration/introduction'
           }
         ]
-      },
-      {
-        text: 'API Reference',
-        link: '/api/'
       },
       {
         text: 'Ecosystem',
@@ -396,93 +392,55 @@ module.exports = {
             text: 'Official Projects',
             items: [
               {
-                text: 'Vue Router',
-                link: 'https://next.router.vuejs.org/'
+                text: 'Leaf Modules',
+                link: '/modules/'
               },
-              {
-                text: 'Vuex',
-                link: 'https://next.vuex.vuejs.org/'
-              },
-              {
-                text: 'Vue CLI',
-                link: 'https://cli.vuejs.org/'
-              },
-              {
-                text: 'Vue Test Utils',
-                link: 'https://next.vue-test-utils.vuejs.org/guide/'
-              },
-              {
-                text: 'Devtools',
-                link: 'https://devtools.vuejs.org'
-              },
-              {
-                text: 'Weekly news',
-                link: 'https://news.vuejs.org/'
-              },
-              {
-                text: 'Blog',
-                link: 'https://blog.vuejs.org/'
-              }
             ]
           }
         ]
       },
       {
-        text: 'Support Vue',
-        link: '/support-vuejs/',
-        items: [
-          {
-            text: 'One-time Donations',
-            link: '/support-vuejs/#one-time-donations'
-          },
-          {
-            text: 'Recurring Pledges',
-            link: '/support-vuejs/#recurring-pledges'
-          },
-          {
-            text: 'T-Shirt Shop',
-            link: 'https://vue.threadless.com/'
-          }
-        ]
+        text: 'Support Leaf',
+        link: 'https://opencollective.com/leaf',
       },
-      {
-        text: 'Translations',
-        link: '#',
-        items: [
-          // Translation maintainers: Please include the link below to the English documentation
-          // {
-          //   text: 'English',
-          //   link: 'https://v3.vuejs.org/',
-          //   isTranslation: true
-          // },
-          {
-            text: '中文',
-            link: 'https://v3.cn.vuejs.org/',
-            isTranslation: true
-          },
-          {
-            text: '한국어',
-            link: 'https://v3.ko.vuejs.org/',
-            isTranslation: true
-          },
-          {
-            text: '日本語',
-            link: 'https://v3.ja.vuejs.org/',
-            isTranslation: true
-          },
-          {
-            text: 'Русский',
-            link: 'https://v3.ru.vuejs.org/ru/',
-            isTranslation: true
-          },
-          {
-            text: 'More Translations',
-            link: '/guide/contributing/translations#community-translations'
-          }
-        ]
-      }
+      // {
+      //   text: 'Translations',
+      //   link: '#',
+      //   items: [
+      //     // Translation maintainers: Please include the link below to the English documentation
+      //     // {
+      //     //   text: 'English',
+      //     //   link: 'https://v3.leafphp.org/',
+      //     //   isTranslation: true
+      //     // },
+      //     {
+      //       text: '中文',
+      //       link: 'https://v3.cn.leafphp.org/',
+      //       isTranslation: true
+      //     },
+      //     {
+      //       text: '한국어',
+      //       link: 'https://v3.ko.leafphp.org/',
+      //       isTranslation: true
+      //     },
+      //     {
+      //       text: '日本語',
+      //       link: 'https://v3.ja.leafphp.org/',
+      //       isTranslation: true
+      //     },
+      //     {
+      //       text: 'Русский',
+      //       link: 'https://v3.ru.leafphp.org/ru/',
+      //       isTranslation: true
+      //     },
+      //     {
+      //       text: 'More Translations',
+      //       link: '/v3.x/docs/contributing/translations#community-translations'
+      //     }
+      //   ]
+      // }
     ],
-    repo: 'vuejs/docs',
+    repo: 'leafsphp/v3.x/docs',
     editLinks: true,
     editLinkText: 'Edit this on GitHub!',
     lastUpdated: 'Last updated',
@@ -490,10 +448,10 @@ module.exports = {
     sidebarDepth: 2,
     sidebar: {
       collapsable: false,
-      '/guide/migration/': sidebar.migration,
-      '/guide/contributing/': sidebar.contributing,
-      '/guide/ssr/': sidebar.ssr,
-      '/guide/': sidebar.guide,
+      '/v3.x/docs/migration/': sidebar.migration,
+      '/v3.x/docs/contributing/': sidebar.contributing,
+      '/v3.x/docs/ssr/': sidebar.ssr,
+      '/v3.x/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/cookbook/': sidebar.cookbook,
       '/api/': sidebar.api,
@@ -501,14 +459,9 @@ module.exports = {
     },
     smoothScroll: false,
     algolia: {
-      indexName: 'vuejs-v3',
-      appId: 'BH4D9OD16A',
-      apiKey: 'bc6e8acb44ed4179c30d0a45d6140d3f'
-    },
-    carbonAds: {
-      carbon: 'CEBDT27Y',
-      custom: 'CKYD62QM',
-      placement: 'vuejsorg'
+      indexName: 'leafphp-v3',
+      appId: '',
+      apiKey: ''
     },
     topBanner: false
   },

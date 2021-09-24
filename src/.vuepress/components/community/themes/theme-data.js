@@ -93,7 +93,7 @@ export default [
   {
     name: "MDBootstrap",
     description: `Check out the themes, UI Kits and plugins below built by our partners from [MDBootstrap](https://mdbootstrap.com/?utm_ref_id=82665). Learn how to use Vue in professional projects along such technologies as Bootstrap. Templates & ready components make your development faster and more efficient.`,
-    seeMoreUrl: "https://mdbootstrap.com/docs/vue?utm_ref_id=82665",
+    seeMoreUrl: "https://mdbootstrap.com/v3.x/docs/vue?utm_ref_id=82665",
     products: [
       {
         url: "https://mdbootstrap.com/products/vue-ui-kit?utm_ref_id=82665",
@@ -103,7 +103,7 @@ export default [
         price: 99
       },
       {
-        url: "https://mdbootstrap.com/docs/vue?utm_ref_id=82665",
+        url: "https://mdbootstrap.com/v3.x/docs/vue?utm_ref_id=82665",
         name: "Vue Material Bootstrap Kit",
         description: "Free Vue.js UI Kit",
         image: "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/ui-kit.jpg",

@@ -123,7 +123,7 @@ export default {
     background transparent
     border none
     font-weight 500
-    color $textColor
+    color $textColor !important
     &:hover
       border-color transparent
     .arrow
@@ -132,7 +132,7 @@ export default {
       margin-left 0.4rem
   .nav-dropdown
     .dropdown-item
-      color inherit
+      color $textColor
       line-height 1.7rem
       h4
         margin 0.45rem 0 0

@@ -2,7 +2,7 @@
 
 ## Base Example
 
-There are many ways to create an SVG Icon System, but one method that takes advantage of Vue's capabilities is to create editable inline icons as components. Some of the advantages of this way of working is:
+There are many ways to create an SVG Icon System, but one method that takes advantage of Leaf's capabilities is to create editable inline icons as components. Some of the advantages of this way of working is:
 
 - They are easy to edit on the fly
 - They are animatable
@@ -12,15 +12,15 @@ There are many ways to create an SVG Icon System, but one method that takes adva
 
 First, we'll create a folder for all of the icons, and name them in a standardized fashion for easy retrieval:
 
-- `components/icons/IconBox.vue`
-- `components/icons/IconCalendar.vue`
-- `components/icons/IconEnvelope.vue`
+- `components/icons/IconBox.Leaf`
+- `components/icons/IconCalendar.Leaf`
+- `components/icons/IconEnvelope.Leaf`
 
-Here's an example repo to get you going, where you can see the entire setup: [https://github.com/sdras/vue-sample-svg-icons/](https://github.com/sdras/vue-sample-svg-icons/)
+Here's an example repo to get you going, where you can see the entire setup: [https://github.com/sdras/Leaf-sample-svg-icons/](https://github.com/sdras/Leaf-sample-svg-icons/)
 
 ![Documentation site](/images/editable-svg-icons.jpg 'Docs demo')
 
-We'll create a base icon (`IconBase.vue`) component that uses a slot.
+We'll create a base icon (`IconBase.Leaf`) component that uses a slot.
 
 ```html
 <template>
@@ -69,7 +69,7 @@ export default {
 
 The `currentColor` property that's the default on the fill will make the icon inherit the color of whatever text surrounds it. We could also pass in a different color as a prop if we wish.
 
-We can use it like so, with the only contents of `IconWrite.vue` containing the paths inside the icon:
+We can use it like so, with the only contents of `IconWrite.Leaf` containing the paths inside the icon:
 
 ```html
 <icon-base icon-name="write"><icon-write /></icon-base>
@@ -147,7 +147,7 @@ We're applying `refs` to the groups of paths we need to move, and as both sides 
 
 <p style="margin-top:-30px">Pretty easily accomplished! And easy to update on the fly.</p>
 
-You can see more animated examples in the repo [here](https://github.com/sdras/vue-sample-svg-icons/)
+You can see more animated examples in the repo [here](https://github.com/sdras/Leaf-sample-svg-icons/)
 
 ## Additional Notes
 

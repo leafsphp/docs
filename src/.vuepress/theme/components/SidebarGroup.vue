@@ -71,7 +71,7 @@ export default {
     'depth'
   ],
 
-  // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
+  // ref: https://vuejs.org/v2/v3.x/docs/components-edge-cases.html#Circular-References-Between-Components
   beforeCreate () {
     this.$options.components.SidebarLinks = require('@theme/components/SidebarLinks.vue').default
   },
@@ -108,7 +108,7 @@ export default {
       border-left none
 
 .sidebar-heading
-  color $textColor
+  color $textColorSecondary
   transition color .15s ease
   cursor pointer
   font-size 1.1em

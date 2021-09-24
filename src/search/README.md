@@ -1,3 +1,3 @@
-# Search Vue.js
+# Search Leaf PHP
 
 <search-index/>

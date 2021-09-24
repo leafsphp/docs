@@ -7,9 +7,9 @@ Many of your components will be relatively generic, possibly only wrapping an el
 The result is that many components may include long lists of base components:
 
 ```js
-import BaseButton from './BaseButton.vue'
-import BaseIcon from './BaseIcon.vue'
-import BaseInput from './BaseInput.vue'
+import BaseButton from './BaseButton.Leaf'
+import BaseIcon from './BaseIcon.Leaf'
+import BaseInput from './BaseInput.Leaf'
 export default {
   components: {
     BaseButton,
@@ -28,13 +28,13 @@ Just to support relatively little markup in a template:
 </BaseButton>
 ```
 
-Fortunately, if you're using webpack (or [Vue CLI](https://github.com/vuejs/vue-cli), which uses webpack internally), you can use `require.context` to globally register only these very common base components. Here's an example of the code you might use to globally import base components in your app's entry file (e.g. `src/main.js`):
+Fortunately, if you're using webpack (or [Leaf CLI](https://github.com/leafphp/Leaf-cli), which uses webpack internally), you can use `require.context` to globally register only these very common base components. Here's an example of the code you might use to globally import base components in your app's entry file (e.g. `src/main.js`):
 
 ```js
-import { createApp } from 'vue'
+import { createApp } from 'Leaf'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
-import App from './App.vue'
+import App from './App.Leaf'
 
 const app = createApp(App)
 
@@ -44,7 +44,7 @@ const requireComponent = require.context(
   // Whether or not to look in subfolders
   false,
   // The regular expression used to match base component filenames
-  /Base[A-Z]\w+\.(vue|js)$/
+  /Base[A-Z]\w+\.(Leaf|js)$/
 )
 
 requireComponent.keys().forEach(fileName => {

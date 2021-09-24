@@ -3,7 +3,7 @@
     <path d="M131 66v35h6l-7 14-7-14h6v-35h2z" fill="#9AA9B2"/>
     <rect stroke="#2F679A" fill="#3E6B94" x="0.5" y="0.5" width="259" height="66" rx="8"/>
     <text x="130" y="24.5" fill="#FFF" dominant-baseline="middle">
-      app = Vue.<tspan fill="#FFB196" dominant-baseline="middle">createApp</tspan>(<tspan fill="#39DD95" dominant-baseline="middle">options</tspan>)
+      app = Leaf.<tspan fill="#FFB196" dominant-baseline="middle">createApp</tspan>(<tspan fill="#39DD95" dominant-baseline="middle">options</tspan>)
     </text>
     <text x="130" y="43" fill="#FFF" dominant-baseline="middle">
       app.<tspan fill="#FFB196" dominant-baseline="middle">mount</tspan>(<tspan fill="#39DD95" dominant-baseline="middle">el</tspan>)

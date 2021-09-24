@@ -4,9 +4,9 @@ sidebar: auto
 
 # Style Guide
 
-This is the official style guide for Vue-specific code. If you use Vue in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
+This is the official style guide for Leaf-specific code. If you use Leaf in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
 
-For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
+For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Leaf.
 
 Finally, we've split rules into four categories:
 
@@ -14,7 +14,7 @@ Finally, we've split rules into four categories:
 
 ### Priority A: Essential
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Leaf.
 
 ### Priority B: Strongly Recommended
 
@@ -26,17 +26,17 @@ Where multiple, equally good options exist, an arbitrary choice can be made to e
 
 1. train your brain to more easily parse most of the community code you encounter
 2. be able to copy and paste most community code examples without modification
-3. often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+3. often find new hires are already accustomed to your preferred coding style, at least in regards to Leaf
 
 ### Priority D: Use with Caution
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+Some features of Leaf exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
 
 ## Priority A Rules: Essential <span class="hide-from-sidebar">(Error Prevention)</span>
 
 ### Multi-word component names <sup data-p="a">essential</sup>
 
-**Component names should always be multi-word, except for root `App` components, and built-in components provided by Vue, such as `<transition>` or `<component>`.**
+**Component names should always be multi-word, except for root `App` components, and built-in components provided by Leaf, such as `<transition>` or `<component>`.**
 
 This [prevents conflicts](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
 
@@ -81,10 +81,10 @@ export default {
 In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
 
 ::: details Detailed Explanation
-Detailed [prop definitions](/guide/component-props.html#prop-validation) have two advantages:
+Detailed [prop definitions](/v3.x/docs/component-props.html#prop-validation) have two advantages:
 
 - They document the API of the component, so that it's easy to see how the component is meant to be used.
-- In development, Vue will warn you if a component is ever provided incorrectly formatted props, helping you catch potential sources of error.
+- In development, Leaf will warn you if a component is ever provided incorrectly formatted props, helping you catch potential sources of error.
 :::
 
 <div class="style-example style-example-bad">
@@ -151,9 +151,9 @@ data() {
 }
 ```
 
-Then you sort them alphabetically. When updating the DOM, Vue will optimize rendering to perform the cheapest DOM mutations possible. That might mean deleting the first todo element, then adding it again at the end of the list.
+Then you sort them alphabetically. When updating the DOM, Leaf will optimize rendering to perform the cheapest DOM mutations possible. That might mean deleting the first todo element, then adding it again at the end of the list.
 
-The problem is, there are cases where it's important not to delete elements that will remain in the DOM. For example, you may want to use `<transition-group>` to animate list sorting, or maintain focus if the rendered element is an `<input>`. In these cases, adding a unique key for each item (e.g. `:key="todo.id"`) will tell Vue how to behave more predictably.
+The problem is, there are cases where it's important not to delete elements that will remain in the DOM. For example, you may want to use `<transition-group>` to animate list sorting, or maintain focus if the rendered element is an `<input>`. In these cases, adding a unique key for each item (e.g. `:key="todo.id"`) will tell Leaf how to behave more predictably.
 
 In our experience, it's better to _always_ add a unique key, so that you and your team simply never have to worry about these edge cases. Then in the rare, performance-critical scenarios where object constancy isn't necessary, you can make a conscious exception.
 :::
@@ -196,7 +196,7 @@ There are two common cases where this can be tempting:
 - To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
 
 ::: details Detailed Explanation
-When Vue processes directives, `v-if` has a higher priority than `v-for`, so that this template:
+When Leaf processes directives, `v-if` has a higher priority than `v-for`, so that this template:
 
 ```html
 <ul>
@@ -292,7 +292,7 @@ Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` ele
 
 **For applications, styles in a top-level `App` component and in layout components may be global, but all other components should always be scoped.**
 
-This is only relevant for [single-file components](../guide/single-file-component.html). It does _not_ require that the [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html) be used. Scoping could be through [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html), a class-based strategy such as [BEM](http://getbem.com/), or another library/convention.
+This is only relevant for [single-file components](../v3.x/docs/single-file-component.html). It does _not_ require that the [`scoped` attribute](https://Leaf-loader.leafphp.org/en/features/scoped-css.html) be used. Scoping could be through [CSS modules](https://Leaf-loader.leafphp.org/en/features/css-modules.html), a class-based strategy such as [BEM](http://getbem.com/), or another library/convention.
 
 **Component libraries, however, should prefer a class-based strategy instead of using the `scoped` attribute.**
 
@@ -383,11 +383,11 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
 **Use module scoping to keep private functions inaccessible from the outside. If that's not possible, always use the `$_` prefix for custom private properties in a plugin, mixin, etc that should not be considered public API. Then to avoid conflicts with code by other authors, also include a named scope (e.g. `$_yourPluginName_`).**
 
 ::: details Detailed Explanation
-Vue uses the `_` prefix to define its own private properties, so using the same prefix (e.g. `_update`) risks overwriting an instance property. Even if you check and Vue is not currently using a particular property name, there is no guarantee a conflict won't arise in a later version.
+Leaf uses the `_` prefix to define its own private properties, so using the same prefix (e.g. `_update`) risks overwriting an instance property. Even if you check and Leaf is not currently using a particular property name, there is no guarantee a conflict won't arise in a later version.
 
-As for the `$` prefix, its purpose within the Vue ecosystem is special instance properties that are exposed to the user, so using it for _private_ properties would not be appropriate.
+As for the `$` prefix, its purpose within the Leaf ecosystem is special instance properties that are exposed to the user, so using it for _private_ properties would not be appropriate.
 
-Instead, we recommend combining the two prefixes into `$_`, as a convention for user-defined private properties that guarantee no conflicts with Vue.
+Instead, we recommend combining the two prefixes into `$_`, as a convention for user-defined private properties that guarantee no conflicts with Leaf.
 :::
 
 <div class="style-example style-example-bad">
@@ -506,14 +506,14 @@ components/
 
 ```
 components/
-|- TodoList.vue
-|- TodoItem.vue
+|- TodoList.Leaf
+|- TodoItem.Leaf
 ```
 </div>
 
 ### Single-file component filename casing <sup data-p="b">strongly recommended</sup>
 
-**Filenames of [single-file components](../guide/single-file-component.html) should either be always PascalCase or always kebab-case.**
+**Filenames of [single-file components](../v3.x/docs/single-file-component.html) should either be always PascalCase or always kebab-case.**
 
 PascalCase works best with autocompletion in code editors, as it's consistent with how we reference components in JS(X) and templates, wherever possible. However, mixed case filenames can sometimes create issues on case-insensitive file systems, which is why kebab-case is also perfectly acceptable.
 
@@ -522,12 +522,12 @@ PascalCase works best with autocompletion in code editors, as it's consistent wi
 
 ```
 components/
-|- mycomponent.vue
+|- mycomponent.Leaf
 ```
 
 ```
 components/
-|- myComponent.vue
+|- myComponent.Leaf
 ```
 </div>
 
@@ -536,12 +536,12 @@ components/
 
 ```
 components/
-|- MyComponent.vue
+|- MyComponent.Leaf
 ```
 
 ```
 components/
-|- my-component.vue
+|- my-component.Leaf
 ```
 </div>
 
@@ -556,7 +556,7 @@ These components lay the foundation for consistent styling and behavior in your 
 - other base components, and
 - 3rd-party UI components.
 
-But they'll **never** contain global state (e.g. from a Vuex store).
+But they'll **never** contain global state (e.g. from a Leafx store).
 
 Their names often include the name of an element they wrap (e.g. `BaseButton`, `BaseTable`), unless no element exists for their specific purpose (e.g. `BaseIcon`). If you build similar components for a more specific context, they will almost always consume these components (e.g. `BaseButton` may be used in `ButtonSubmit`).
 
@@ -564,12 +564,12 @@ Some advantages of this convention:
 
 - When organized alphabetically in editors, your app's base components are all listed together, making them easier to identify.
 
-- Since component names should always be multi-word, this convention prevents you from having to choose an arbitrary prefix for simple component wrappers (e.g. `MyButton`, `VueButton`).
+- Since component names should always be multi-word, this convention prevents you from having to choose an arbitrary prefix for simple component wrappers (e.g. `MyButton`, `LeafButton`).
 
 - Since these components are so frequently used, you may want to simply make them global instead of importing them everywhere. A prefix makes this possible with Webpack:
 
   ```js
-  const requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(vue|js)$/)
+  const requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(Leaf|js)$/)
   requireComponent.keys().forEach(function (fileName) {
     let baseComponentConfig = requireComponent(fileName)
     baseComponentConfig = baseComponentConfig.default || baseComponentConfig
@@ -588,9 +588,9 @@ Some advantages of this convention:
 
 ```
 components/
-|- MyButton.vue
-|- VueTable.vue
-|- Icon.vue
+|- MyButton.Leaf
+|- LeafTable.Leaf
+|- Icon.Leaf
 ```
 </div>
 
@@ -599,23 +599,23 @@ components/
 
 ```
 components/
-|- BaseButton.vue
-|- BaseTable.vue
-|- BaseIcon.vue
+|- BaseButton.Leaf
+|- BaseTable.Leaf
+|- BaseIcon.Leaf
 ```
 
 ```
 components/
-|- AppButton.vue
-|- AppTable.vue
-|- AppIcon.vue
+|- AppButton.Leaf
+|- AppTable.Leaf
+|- AppIcon.Leaf
 ```
 
 ```
 components/
-|- VButton.vue
-|- VTable.vue
-|- VIcon.vue
+|- VButton.Leaf
+|- VTable.Leaf
+|- VIcon.Leaf
 ```
 </div>
 
@@ -630,8 +630,8 @@ This does not mean the component is only used in a single page, but it will only
 
 ```
 components/
-|- Heading.vue
-|- MySidebar.vue
+|- Heading.Leaf
+|- MySidebar.Leaf
 ```
 </div>
 
@@ -640,8 +640,8 @@ components/
 
 ```
 components/
-|- TheHeading.vue
-|- TheSidebar.vue
+|- TheHeading.Leaf
+|- TheSidebar.Leaf
 ```
 </div>
 
@@ -658,9 +658,9 @@ You might be tempted to solve this problem by nesting child components in direct
 components/
 |- TodoList/
    |- Item/
-      |- index.vue
-      |- Button.vue
-   |- index.vue
+      |- index.Leaf
+      |- Button.Leaf
+   |- index.Leaf
 ```
 
 or:
@@ -669,9 +669,9 @@ or:
 components/
 |- TodoList/
    |- Item/
-      |- Button.vue
-   |- Item.vue
-|- TodoList.vue
+      |- Button.Leaf
+   |- Item.Leaf
+|- TodoList.Leaf
 ```
 
 This isn't recommended, as it results in:
@@ -685,15 +685,15 @@ This isn't recommended, as it results in:
 
 ```
 components/
-|- TodoList.vue
-|- TodoItem.vue
-|- TodoButton.vue
+|- TodoList.Leaf
+|- TodoItem.Leaf
+|- TodoButton.Leaf
 ```
 
 ```
 components/
-|- SearchSidebar.vue
-|- NavigationForSearchSidebar.vue
+|- SearchSidebar.Leaf
+|- NavigationForSearchSidebar.Leaf
 ```
 </div>
 
@@ -702,15 +702,15 @@ components/
 
 ```
 components/
-|- TodoList.vue
-|- TodoListItem.vue
-|- TodoListItemButton.vue
+|- TodoList.Leaf
+|- TodoListItem.Leaf
+|- TodoListItemButton.Leaf
 ```
 
 ```
 components/
-|- SearchSidebar.vue
-|- SearchSidebarNavigation.vue
+|- SearchSidebar.Leaf
+|- SearchSidebarNavigation.Leaf
 ```
 </div>
 
@@ -735,24 +735,24 @@ Also note that **what's considered "highest-level" will be contextual to your ap
 
 ```
 components/
-|- ClearSearchButton.vue
-|- ExcludeFromSearchInput.vue
-|- LaunchOnStartupCheckbox.vue
-|- RunSearchButton.vue
-|- SearchInput.vue
-|- TermsCheckbox.vue
+|- ClearSearchButton.Leaf
+|- ExcludeFromSearchInput.Leaf
+|- LaunchOnStartupCheckbox.Leaf
+|- RunSearchButton.Leaf
+|- SearchInput.Leaf
+|- TermsCheckbox.Leaf
 ```
 
 As you might notice, it's quite difficult to see which components are specific to the search. Now let's rename the components according to the rule:
 
 ```
 components/
-|- SearchButtonClear.vue
-|- SearchButtonRun.vue
-|- SearchInputExcludeGlob.vue
-|- SearchInputQuery.vue
-|- SettingsCheckboxLaunchOnStartup.vue
-|- SettingsCheckboxTerms.vue
+|- SearchButtonClear.Leaf
+|- SearchButtonRun.Leaf
+|- SearchInputExcludeGlob.Leaf
+|- SearchInputQuery.Leaf
+|- SettingsCheckboxLaunchOnStartup.Leaf
+|- SettingsCheckboxTerms.Leaf
 ```
 
 Since editors typically organize files alphabetically, all the important relationships between components are now evident at a glance.
@@ -760,7 +760,7 @@ Since editors typically organize files alphabetically, all the important relatio
 You might be tempted to solve this problem differently, nesting all the search components under a "search" directory, then all the settings components under a "settings" directory. We only recommend considering this approach in very large apps (e.g. 100+ components), for these reasons:
 
 - It generally takes more time to navigate through nested sub-directories, than scrolling through a single `components` directory.
-- Name conflicts (e.g. multiple `ButtonDelete.vue` components) make it more difficult to quickly navigate to a specific component in a code editor.
+- Name conflicts (e.g. multiple `ButtonDelete.Leaf` components) make it more difficult to quickly navigate to a specific component in a code editor.
 - Refactoring becomes more difficult, because find-and-replace often isn't sufficient to update relative references to a moved component.
 :::
 
@@ -769,12 +769,12 @@ You might be tempted to solve this problem differently, nesting all the search c
 
 ```
 components/
-|- ClearSearchButton.vue
-|- ExcludeFromSearchInput.vue
-|- LaunchOnStartupCheckbox.vue
-|- RunSearchButton.vue
-|- SearchInput.vue
-|- TermsCheckbox.vue
+|- ClearSearchButton.Leaf
+|- ExcludeFromSearchInput.Leaf
+|- LaunchOnStartupCheckbox.Leaf
+|- RunSearchButton.Leaf
+|- SearchInput.Leaf
+|- TermsCheckbox.Leaf
 ```
 </div>
 
@@ -783,22 +783,22 @@ components/
 
 ```
 components/
-|- SearchButtonClear.vue
-|- SearchButtonRun.vue
-|- SearchInputQuery.vue
-|- SearchInputExcludeGlob.vue
-|- SettingsCheckboxTerms.vue
-|- SettingsCheckboxLaunchOnStartup.vue
+|- SearchButtonClear.Leaf
+|- SearchButtonRun.Leaf
+|- SearchInputQuery.Leaf
+|- SearchInputExcludeGlob.Leaf
+|- SettingsCheckboxTerms.Leaf
+|- SettingsCheckboxLaunchOnStartup.Leaf
 ```
 </div>
 
 ### Self-closing components <sup data-p="b">strongly recommended</sup>
 
-**Components with no content should be self-closing in [single-file components](../guide/single-file-component.html), string templates, and [JSX](../guide/render-function.html#jsx) - but never in DOM templates.**
+**Components with no content should be self-closing in [single-file components](../v3.x/docs/single-file-component.html), string templates, and [JSX](../v3.x/docs/render-function.html#jsx) - but never in DOM templates.**
 
 Components that self-close communicate that they not only have no content, but are **meant** to have no content. It's the difference between a blank page in a book and one labeled "This page intentionally left blank." Your code is also cleaner without the unnecessary closing tag.
 
-Unfortunately, HTML doesn't allow custom elements to be self-closing - only [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). That's why the strategy is only possible when Vue's template compiler can reach the template before the DOM, then serve the DOM spec-compliant HTML.
+Unfortunately, HTML doesn't allow custom elements to be self-closing - only [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). That's why the strategy is only possible when Leaf's template compiler can reach the template before the DOM, then serve the DOM spec-compliant HTML.
 
 <div class="style-example style-example-bad">
 <h4>Bad</h4>
@@ -830,13 +830,13 @@ Unfortunately, HTML doesn't allow custom elements to be self-closing - only [off
 
 ### Component name casing in templates <sup data-p="b">strongly recommended</sup>
 
-**In most projects, component names should always be PascalCase in [single-file components](../guide/single-file-component.html) and string templates - but kebab-case in DOM templates.**
+**In most projects, component names should always be PascalCase in [single-file components](../v3.x/docs/single-file-component.html) and string templates - but kebab-case in DOM templates.**
 
 PascalCase has a few advantages over kebab-case:
 
 - Editors can autocomplete component names in templates, because PascalCase is also used in JavaScript.
 - `<MyComponent>` is more visually distinct from a single-word HTML element than `<my-component>`, because there are two character differences (the two capitals), rather than just one (a hyphen).
-- If you use any non-Vue custom elements in your templates, such as a web component, PascalCase ensures that your Vue components remain distinctly visible.
+- If you use any non-Leaf custom elements in your templates, such as a web component, PascalCase ensures that your Leaf components remain distinctly visible.
 
 Unfortunately, due to HTML's case insensitivity, DOM templates must still use kebab-case.
 
@@ -884,10 +884,10 @@ OR
 
 ### Component name casing in JS/JSX <sup data-p="b">strongly recommended</sup>
 
-**Component names in JS/[JSX](../guide/render-function.html#jsx) should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `app.component`.**
+**Component names in JS/[JSX](../v3.x/docs/render-function.html#jsx) should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `app.component`.**
 
 ::: details Detailed Explanation
-In JavaScript, PascalCase is the convention for classes and prototype constructors - essentially, anything that can have distinct instances. Vue components also have instances, so it makes sense to also use PascalCase. As an added benefit, using PascalCase within JSX (and templates) allows readers of the code to more easily distinguish between components and HTML elements.
+In JavaScript, PascalCase is the convention for classes and prototype constructors - essentially, anything that can have distinct instances. Leaf components also have instances, so it makes sense to also use PascalCase. As an added benefit, using PascalCase within JSX (and templates) allows readers of the code to more easily distinguish between components and HTML elements.
 
 However, for applications that use **only** global component definitions via `app.component`, we recommend kebab-case instead. The reasons are:
 
@@ -905,7 +905,7 @@ app.component('myComponent', {
 ```
 
 ```js
-import myComponent from './MyComponent.vue'
+import myComponent from './MyComponent.Leaf'
 ```
 
 ```js
@@ -939,7 +939,7 @@ app.component('my-component', {
 ```
 
 ```js
-import MyComponent from './MyComponent.vue'
+import MyComponent from './MyComponent.Leaf'
 ```
 
 ```js
@@ -961,8 +961,8 @@ The autocompletion in editors make the cost of writing longer names very low, wh
 
 ```
 components/
-|- SdSettings.vue
-|- UProfOpts.vue
+|- SdSettings.Leaf
+|- UProfOpts.Leaf
 ```
 </div>
 
@@ -971,14 +971,14 @@ components/
 
 ```
 components/
-|- StudentDashboardSettings.vue
-|- UserProfileOptions.vue
+|- StudentDashboardSettings.Leaf
+|- UserProfileOptions.Leaf
 ```
 </div>
 
 ### Prop name casing <sup data-p="b">strongly recommended</sup>
 
-**Prop names should always use camelCase during declaration, but kebab-case in templates and [JSX](../guide/render-function.html#jsx).**
+**Prop names should always use camelCase during declaration, but kebab-case in templates and [JSX](../v3.x/docs/render-function.html#jsx).**
 
 We're simply following the conventions of each language. Within JavaScript, camelCase is more natural. Within HTML, kebab-case is.
 
@@ -1014,13 +1014,13 @@ props: {
 
 **Elements with multiple attributes should span multiple lines, with one attribute per line.**
 
-In JavaScript, splitting objects with multiple properties over multiple lines is widely considered a good convention, because it's much easier to read. Our templates and [JSX](../guide/render-function.html#jsx) deserve the same consideration.
+In JavaScript, splitting objects with multiple properties over multiple lines is widely considered a good convention, because it's much easier to read. Our templates and [JSX](../v3.x/docs/render-function.html#jsx) deserve the same consideration.
 
 <div class="style-example style-example-bad">
 <h4>Bad</h4>
 
 ```html
-<img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
+<img src="https://leafphp.org/images/logo.png" alt="Leaf Logo">
 ```
 
 ```html
@@ -1033,8 +1033,8 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 
 ```html
 <img
-  src="https://vuejs.org/images/logo.png"
-  alt="Vue Logo"
+  src="https://leafphp.org/images/logo.png"
+  alt="Leaf Logo"
 >
 ```
 
@@ -1421,7 +1421,7 @@ computed: {
 
 ### Single-file component top-level element order <sup data-p="c">recommended</sup>
 
-**[Single-file components](../guide/single-file-component.html) should always order `<script>`, `<template>`, and `<style>` tags consistently, with `<style>` last, because at least one of the other two is always necessary.**
+**[Single-file components](../v3.x/docs/single-file-component.html) should always order `<script>`, `<template>`, and `<style>` tags consistently, with `<style>` last, because at least one of the other two is always necessary.**
 
 <div class="style-example style-example-bad">
 <h4>Bad</h4>
@@ -1433,12 +1433,12 @@ computed: {
 ```
 
 ```html
-<!-- ComponentA.vue -->
+<!-- ComponentA.Leaf -->
 <script>/* ... */</script>
 <template>...</template>
 <style>/* ... */</style>
 
-<!-- ComponentB.vue -->
+<!-- ComponentB.Leaf -->
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>
@@ -1449,24 +1449,24 @@ computed: {
 <h4>Good</h4>
 
 ```html
-<!-- ComponentA.vue -->
+<!-- ComponentA.Leaf -->
 <script>/* ... */</script>
 <template>...</template>
 <style>/* ... */</style>
 
-<!-- ComponentB.vue -->
+<!-- ComponentB.Leaf -->
 <script>/* ... */</script>
 <template>...</template>
 <style>/* ... */</style>
 ```
 
 ```html
-<!-- ComponentA.vue -->
+<!-- ComponentA.Leaf -->
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>
 
-<!-- ComponentB.vue -->
+<!-- ComponentB.Leaf -->
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>
@@ -1482,7 +1482,7 @@ computed: {
 Prefer class selectors over element selectors in `scoped` styles, because large numbers of element selectors are slow.
 
 ::: details Detailed Explanation
-To scope styles, Vue adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
+To scope styles, Leaf adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
 
 The problem is that large numbers of [element-attribute selectors](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (e.g. `button[data-v-f3f3eg9]`) will be considerably slower than [class-attribute selectors](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (e.g. `.btn-close[data-v-f3f3eg9]`), so class selectors should be preferred whenever possible.
 :::
@@ -1523,7 +1523,7 @@ button {
 
 **Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
 
-An ideal Vue application is props down, events up. Sticking to this convention makes your components much easier to understand. However, there are edge cases where prop mutation or `this.$parent` can simplify two components that are already deeply coupled.
+An ideal Leaf application is props down, events up. Sticking to this convention makes your components much easier to understand. However, there are edge cases where prop mutation or `this.$parent` can simplify two components that are already deeply coupled.
 
 The problem is, there are also many _simple_ cases where these patterns may offer convenience. Beware: do not be seduced into trading simplicity (being able to understand the flow of your state) for short-term convenience (writing less code).
 
@@ -1618,18 +1618,18 @@ app.component('TodoItem', {
 
 ### Non-flux state management <sup data-p="d">use with caution</sup>
 
-**[Vuex](https://next.vuex.vuejs.org/) should be preferred for global state management, instead of `this.$root` or a global event bus.**
+**[Leafx](https://next.Leafx.leafphp.org/) should be preferred for global state management, instead of `this.$root` or a global event bus.**
 
 Managing state on `this.$root` and/or using a global event bus can be convenient for very simple cases, but it is not appropriate for most applications.
 
-Vuex is the [official flux-like implementation](/guide/state-management.html#official-flux-like-implementation) for Vue, and offers not only a central place to manage state, but also tools for organizing, tracking, and debugging state changes. It integrates well in the Vue ecosystem (including full [Vue DevTools](/guide/installation.html#vue-devtools) support).
+Leafx is the [official flux-like implementation](/v3.x/docs/state-management.html#official-flux-like-implementation) for Leaf, and offers not only a central place to manage state, but also tools for organizing, tracking, and debugging state changes. It integrates well in the Leaf ecosystem (including full [Leaf DevTools](/v3.x/docs/installation.html#Leaf-devtools) support).
 
 <div class="style-example style-example-bad">
 <h4>Bad</h4>
 
 ```js
 // main.js
-import { createApp } from 'vue'
+import { createApp } from 'Leaf'
 import mitt from 'mitt'
 const app = createApp({
   data() {
@@ -1678,7 +1678,7 @@ export default {
 ```
 
 ```html
-<!-- TodoItem.vue -->
+<!-- TodoItem.Leaf -->
 <template>
   <span>
     {{ todo.text }}
@@ -1689,7 +1689,7 @@ export default {
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from 'Leafx'
 
 export default {
   props: {

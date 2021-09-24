@@ -24,21 +24,9 @@
 
     <Page v-else :sidebar-items="sidebarItems">
       <template #top>
-        <CarbonAds
-          v-if="adsConfig"
-          :key="'ca:' + $page.path"
-          :code="adsConfig.carbon"
-          :placement="adsConfig.placement"
-        />
         <slot name="page-top" />
       </template>
       <template #bottom>
-        <BuySellAds
-          v-if="adsConfig"
-          :key="'bsa:' + $page.path"
-          :code="adsConfig.custom"
-          :placement="adsConfig.placement"
-        />
         <slot name="page-bottom" />
       </template>
     </Page>
@@ -50,8 +38,6 @@ import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
-import BuySellAds from '@theme/components/BuySellAds.vue'
-import CarbonAds from '@theme/components/CarbonAds.vue'
 import BannerTop from '@theme/components/BannerTop.vue'
 import { resolveSidebarItems } from '../util'
 
@@ -64,8 +50,6 @@ export default {
     Sidebar,
     Navbar,
     BannerTop,
-    BuySellAds,
-    CarbonAds
   },
 
   data() {
@@ -121,10 +105,6 @@ export default {
         userPageClass
       ]
     },
-
-    adsConfig() {
-      return this.$site.themeConfig.carbonAds
-    }
   },
 
   mounted() {

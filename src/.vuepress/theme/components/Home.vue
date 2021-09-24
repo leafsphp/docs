@@ -1,53 +1,45 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header class="hero">
-      <div class="inner">
-        <div class="left">
-          <img v-if="data.heroImage" :src="$withBase(data.heroImage)" :alt="data.heroAlt || 'hero'" />
-        </div>
+    <div class="main-content">
+      <header class="hero">
+        <div class="inner">
+          <div class="left">
+            <img v-if="data.heroImage" :src="$withBase(data.heroImage)" :alt="data.heroAlt || 'hero'" />
+          </div>
 
-        <div class="right">
-          <h1
-            v-if="data.heroText !== null"
-            id="main-title"
-          >{{ data.heroText || $title || 'Vue.js' }}</h1>
+          <div class="right">
+            <h1 id="main-title">{{ data.heroText || "Leaf PHP"}}</h1>
 
-          <h2 class="tagline" v-if="tagline" v-html="tagline"></h2>
+            <h2 class="tagline" v-if="tagline" v-html="tagline"></h2>
 
-          <div v-if="data.actionButtons.length" class="actions">
-            <HomeActionLink
-              v-for="item in data.actionButtons"
-              :item="item"
-              :extra-class="item.extraClass"
-              :key="item.link"
-            />
+            <div v-if="data.actionButtons.length" class="actions">
+              <HomeActionLink
+                v-for="item in data.actionButtons"
+                :item="item"
+                :extra-class="item.extraClass"
+                :key="item.link"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <SpecialSponsors :sponsors="sponsors.special_sponsors" />
-
-    <section v-if="data.features && data.features.length" class="section-features">
-      <div class="inner">
-        <div v-for="(feature, index) in data.features" :key="index" class="feature">
-          <h2>{{ feature.title }}</h2>
-          <p v-html="feature.details"></p>
+      <section v-if="data.features && data.features.length" class="section-features">
+        <div class="inner">
+          <div v-for="(feature, index) in data.features" :key="index" class="feature">
+            <h2>{{ feature.title }}</h2>
+            <p v-html="feature.details"></p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <Content class="theme-default-content custom" />
 
     <section class="section-sponsors" :class="{ active: sponsorsActive }" ref="sponsors">
       <div class="inner">
-        <PatreonSponsors :sponsors="sponsors" />
         <OpenCollectiveSponsors />
       </div>
-    </section>
-
-    <section class="section-newsletter">
-      <Newsletter />
     </section>
 
     <footer class="main-footer">
@@ -66,26 +58,18 @@
 </template>
 
 <script>
-import sponsors from '@theme/data/patreon-sponsors.js'
 import HomeActionLink from '@theme/components/ui/HomeActionLink.vue'
 import SocialIcon from '@theme/components/ui/SocialIcon.vue'
-import SpecialSponsors from '@theme/components/sponsors/SpecialSponsors.vue'
-import PatreonSponsors from '@theme/components/sponsors/PatreonSponsors.vue'
 import OpenCollectiveSponsors from '@theme/components/sponsors/OpenCollectiveSponsors.vue'
-import Newsletter from '@theme/components/Newsletter.vue'
 
 export default {
   components: {
     HomeActionLink,
     SocialIcon,
-    SpecialSponsors,
-    PatreonSponsors,
     OpenCollectiveSponsors,
-    Newsletter
   },
 
   data: () => ({
-    sponsors,
     sponsorsActive: false
   }),
 
@@ -128,8 +112,17 @@ export default {
   font-family: $fontHome;
 }
 
+.main-content {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .hero {
-  padding: 100px 40px 30px;
+  padding: 100px 0px;
+  width: 100%;
 
   html.with-beta-banner & {
     padding-top: calc(100px + 3rem);
@@ -137,7 +130,7 @@ export default {
 
   .inner {
     max-width: 1260px;
-    margin: 0 auto;
+    margin: 50px auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -163,11 +156,11 @@ export default {
     width: 61%;
 
     h1 {
-      display: none;
+      font-size: 3.2rem;
+      margin: 0;
     }
 
     .tagline {
-      font-size: 3.2rem;
       padding: 0;
       margin: 0;
       border-bottom: 0;
@@ -271,6 +264,7 @@ export default {
   .inner {
     max-width: 700px;
     margin: 0 auto;
+    color: rgb(44, 62, 80) !important;
   }
 
   .sponsors + .sponsors {

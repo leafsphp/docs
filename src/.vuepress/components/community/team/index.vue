@@ -2,9 +2,9 @@
   <div>
     <div class="team">
       <h2 id="active-core-team-members">
-        Active Core Team Members
+        Core Team Members
         <GetPositionButton
-          v-if="!userPosition"
+          v-if="!userPosition && members.length > 5"
           @positionRetrieved="setUserPosition"
           @positionErrored="setUserPositionError"
         />
@@ -14,10 +14,6 @@
         <p>Failed to get your location.</p>
       </div>
 
-      <p>
-        The development of Vue and its ecosystem is guided by an international team, some of whom have chosen to be featured below.
-      </p>
-
       <div v-if="userPosition" class="tip custom-block">
         <p>The core team have been sorted by their distance from you.</p>
       </div>
@@ -25,23 +21,11 @@
       <VuerProfile v-for="profile in members" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
     </div>
 
-    <div class="team">
-      <h2 id="core-team-emeriti">
-        Core Team Emeriti
-      </h2>
-
-      <p>
-        Here we honor some no-longer-active core team members who have made valuable contributions in the past.
-      </p>
-
-      <VuerProfile v-for="profile in emeriti" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
-    </div>
-
-    <div class="team">
+    <div class="team" v-if="partners.length">
       <h2 id="community-partners">
         Community Partners
         <GetPositionButton
-          v-if="!userPosition"
+          v-if="!userPosition && partners.length > 5"
           @positionRetrieved="setUserPosition"
           @positionErrored="setUserPositionError"
         />
@@ -67,7 +51,6 @@
 <script>
 import { getDistanceFromLatLonInKm } from './utils'
 import members from './members'
-import emeriti from './emeriti'
 import partners from './partners'
 
 const imperialLanguageCodes = ['en-US', 'en-MY', 'en-MM', 'en-BU', 'en-LR', 'my', 'bu']
@@ -126,7 +109,6 @@ export default {
   },
 
   data: () => ({
-    emeriti,
     geolocationSupported: false,
     errorGettingLocation: false,
     userPosition: null,

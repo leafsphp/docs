@@ -1,4 +1,4 @@
-# v3.vuejs.org
+# Leaf 3
 
 This site is built with [VuePress](https://vuepress.vuejs.org/). Site content is written in Markdown format located in `src`.
 

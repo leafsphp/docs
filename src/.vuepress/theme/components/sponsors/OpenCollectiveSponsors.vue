@@ -3,29 +3,17 @@
     <template #heading>Open Collective Sponsors</template>
 
     <template #content>
-      <h4>Platinum</h4>
+      <h4>Backer</h4>
       <a
-        :href="`https://opencollective.com/vuejs/tiers/platinum-sponsors/${index}/website`"
+        :href="`https://opencollective.com/leaf/tiers/backer/${index}/website`"
         rel="sponsored noopener"
         target="_blank"
         v-for="(_, index) in new Array(featuredCount.platinum)"
+        :key="`opencollective-sponsors-${index}`"
       >
         <img
-          :src="`https://opencollective.com/vuejs/tiers/platinum-sponsors/${index}/avatar.svg`"
-          alt="Vue.JS platinum sponsor"
-        >
-      </a>
-
-      <h4>Gold</h4>
-      <a
-        :href="`https://opencollective.com/vuejs/tiers/gold-sponsors/${index}/website`"
-        rel="sponsored noopener"
-        target="_blank"
-        v-for="(_, index) in new Array(featuredCount.gold)"
-      >
-        <img
-          :src="`https://opencollective.com/vuejs/tiers/gold-sponsors/${index}/avatar.svg`"
-          alt="Vue.JS gold sponsor"
+          :src="`https://opencollective.com/leaf/tiers/backer/${index}/avatar.svg`"
+          alt="Leaf PHP backer"
         >
       </a>
     </template>

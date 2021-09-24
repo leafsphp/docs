@@ -8,9 +8,9 @@ const MARKER = '__INLINE_TEMPLATE_STRING__'
  * @param {(code: string, lang?: string) => string} fancyHighlight
  */
 module.exports = fancyHighlight => {
-  prism.languages['vue-html'] = prism.languages.extend('markup', {})
+  prism.languages['leaf-html'] = prism.languages.extend('markup', {})
 
-  prism.languages.insertBefore('vue-html', 'tag', {
+  prism.languages.insertBefore('leaf-html', 'tag', {
     interpolation: {
       pattern: /{{((?!}})(.|\n))*}}/,
       inside: {
@@ -23,7 +23,7 @@ module.exports = fancyHighlight => {
     }
   })
 
-  prism.languages['vue-html'].tag.inside = prism.languages.insertBefore(
+  prism.languages['leaf-html'].tag.inside = prism.languages.insertBefore(
     'inside',
     'attr-value',
     {
@@ -71,7 +71,7 @@ module.exports = fancyHighlight => {
         }
       }
     },
-    prism.languages['vue-html'].tag
+    prism.languages['leaf-html'].tag
   )
 
   /**
@@ -93,7 +93,7 @@ module.exports = fancyHighlight => {
       const output = fancyHighlight(copy, lang)
       const template = `<span class="language-html">${prism.highlight(
         source,
-        prism.languages['vue-html'],
+        prism.languages['leaf-html'],
         'html'
       )}</span>`
 

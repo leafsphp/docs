@@ -24,6 +24,8 @@ export default {
 
 <style lang="stylus">
 .sidebar
+  background darken(#082936, 20%) !important
+  color #fff
   ul
     padding 0
     margin 0
