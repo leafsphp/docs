@@ -9,7 +9,7 @@
         rel="sponsored noopener"
         target="_blank"
         v-for="(_, index) in new Array(featuredCount.platinum)"
-        :key="`opencollective-sponsors-${index}`"
+        :key="`opencollective-backers-${index}`"
       >
         <img
           :src="`https://opencollective.com/leaf/tiers/backer/${index}/avatar.svg`"
@@ -23,7 +23,7 @@
         rel="sponsored noopener"
         target="_blank"
         v-for="(_, index) in new Array(featuredCount.platinum)"
-        :key="`opencollective-sponsors-${index}`"
+        :key="`opencollective-supporters-${index}`"
       >
         <img
           :src="`https://opencollective.com/leaf/tiers/supporter/${index}/avatar.svg`"

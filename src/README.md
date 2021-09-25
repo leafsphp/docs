@@ -5,9 +5,9 @@ heroText: Leaf 3.0
 tagline: Simple and elegant PHP
 actionButtons:
   - text: Get Started
-    link: /v3.x/docs/introduction
+    link: /docs/introduction
   - text: GitHub
-    link: https://github.com/leafphp/Leaf-next
+    link: https://github.com/leafsphp/leaf/tree/v3.x
     extraClass: github grey
     icon: fa fa-github
     target: _blank
@@ -30,3 +30,15 @@ socialIcons:
   - type: Twitter
     link: https://twitter.com/leafphp
 ---
+
+<!-- ```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+app()->get("/", function () {
+  response(["name" => "Mychi"]);
+});
+
+app()->run();
+``` -->

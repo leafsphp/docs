@@ -32,9 +32,9 @@
           </div>
         </div>
       </section>
-    </div>
 
-    <Content class="theme-default-content custom" />
+      <Content class="theme-default-content custom" />
+    </div>
 
     <section class="section-sponsors" :class="{ active: sponsorsActive }" ref="sponsors">
       <div class="inner">
@@ -118,6 +118,16 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  .theme-default-content {
+    width: 100%;
+
+    div.language-php {
+      width: 100%;
+      max-width: 500px !important;
+      margin: 50px auto 150px auto;
+    }
+  }
 }
 
 .hero {

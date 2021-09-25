@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { repos } from '../../components/v3.x/docs/contributing/translations-data.js'
+import { repos } from '../../components/docs/contributing/translations-data.js'
 
 export default {
   data () {

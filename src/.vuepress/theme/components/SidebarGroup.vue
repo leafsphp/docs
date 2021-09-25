@@ -71,7 +71,7 @@ export default {
     'depth'
   ],
 
-  // ref: https://vuejs.org/v2/v3.x/docs/components-edge-cases.html#Circular-References-Between-Components
+  // ref: https://vuejs.org/v2/docs/components-edge-cases.html#Circular-References-Between-Components
   beforeCreate () {
     this.$options.components.SidebarLinks = require('@theme/components/SidebarLinks.vue').default
   },
