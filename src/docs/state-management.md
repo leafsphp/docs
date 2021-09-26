@@ -2,7 +2,7 @@
 
 ## Official Flux-Like Implementation
 
-Large applications can often grow in complexity, due to multiple pieces of state scattered across many components and the interactions between them. To solve this problem, Leaf offers [Leafx](https://next.Leafx.leafphp.org/), our own Elm-inspired state management library. It even integrates into [Leaf-devtools](https://github.com/leafphp/Leaf-devtools), providing zero-setup access to [time travel debugging](https://raw.githubusercontent.com/leafphp/Leaf-devtools/legacy/media/demo.gif).
+Large applications can often grow in complexity, due to multiple pieces of state scattered across many components and the interactions between them. To solve this problem, Leaf offers [Leafx](https://next.Leafx.leafphp.org/), our own Elm-inspired state management library. It even integrates into [Leaf-devtools](https://github.com/leafsphp/Leaf-devtools), providing zero-setup access to [time travel debugging](https://raw.githubusercontent.com/leafphp/Leaf-devtools/legacy/media/demo.gif).
 
 ### Information for React Developers
 

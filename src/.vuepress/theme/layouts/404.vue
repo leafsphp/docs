@@ -1,14 +1,14 @@
 <template>
   <div class="theme-container">
     <div class="theme-default-content">
-      <h1>404</h1>
+      <h1>4😵‍💫4</h1>
 
       <blockquote>
-        <p>Whoops! This page doesn't exist.</p>
+        <p>We couldn't find this page.</p>
       </blockquote>
 
-      <p v-show="isTranslation">
-        New pages are added to the documentation all the time. This page might not be included in all of the translations yet.
+      <p>
+        If you think this is a big, please submit a pull request. Thanks🙏🏽
       </p>
 
       <RouterLink to="/">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { repos } from '../../components/docs/contributing/translations-data.js'
+import { repos } from '../../components/guide/contributing/translations-data.js'
 
 export default {
   data () {
@@ -39,3 +39,8 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.theme-container
+  height 100vh
+</style>

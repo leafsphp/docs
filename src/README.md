@@ -5,7 +5,7 @@ heroText: Leaf 3.0
 tagline: Simple and elegant PHP
 actionButtons:
   - text: Get Started
-    link: /docs/introduction
+    link: /docs/introduction/
   - text: GitHub
     link: https://github.com/leafsphp/leaf/tree/v3.x
     extraClass: github grey

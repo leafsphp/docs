@@ -202,7 +202,7 @@ Remember this list from earlier? Now we have some answers to how Leaf implements
 2. **Detect when that value changes**: the `set` handler is called on the proxy.
 3. **Re-run the code that read the value originally:** the `trigger` function looks up which effects depend on the property and runs them.
 
-The proxied object is invisible to the user, but under the hood it enables Leaf to perform dependency-tracking and change-notification when properties are accessed or modified. One caveat is that console logging will format proxied objects differently, so you may want to install [Leaf-devtools](https://github.com/leafphp/Leaf-devtools) for a more inspection-friendly interface.
+The proxied object is invisible to the user, but under the hood it enables Leaf to perform dependency-tracking and change-notification when properties are accessed or modified. One caveat is that console logging will format proxied objects differently, so you may want to install [Leaf-devtools](https://github.com/leafsphp/Leaf-devtools) for a more inspection-friendly interface.
 
 If we were to rewrite our original example using a component we might do it something like this:
 
@@ -232,7 +232,7 @@ The object returned by `data` will be wrapped in a reactive proxy and stored as 
 
 Leaf will wrap the function for `sum` in an effect. When we try to access `this.sum`, it will run that effect to calculate the value. The reactive proxy around `$data` will track that the properties `val1` and `val2` were read while that effect is running.
 
-As of Leaf 3, our reactivity is now available in a [separate package](https://github.com/leafphp/Leaf-next/tree/master/packages/reactivity). The function that wraps `$data` in a proxy is called [`reactive`](/api/basic-reactivity.html#reactive). We can call this directly ourselves, allowing us to wrap an object in a reactive proxy without needing to use a component:
+As of Leaf 3, our reactivity is now available in a [separate package](https://github.com/leafsphp/Leaf-next/tree/master/packages/reactivity). The function that wraps `$data` in a proxy is called [`reactive`](/api/basic-reactivity.html#reactive). We can call this directly ourselves, allowing us to wrap an object in a reactive proxy without needing to use a component:
 
 ```js
 const proxy = reactive({

@@ -1,13 +1,13 @@
 const sidebar = {
-  cookbook: [
+  codelabs: [
     {
-      title: 'Cookbook',
+      title: 'codelabs',
       collapsable: false,
       children: [
-        '/cookbook/',
-        '/cookbook/editable-svg-icons',
-        '/cookbook/debugging-in-vscode',
-        '/cookbook/automatic-global-registration-of-base-components'
+        '/codelabs/',
+        '/codelabs/editable-svg-icons',
+        '/codelabs/debugging-in-vscode',
+        '/codelabs/automatic-global-registration-of-base-components'
       ]
     }
   ],
@@ -16,242 +16,28 @@ const sidebar = {
       title: 'Essentials',
       collapsable: false,
       children: [
-        '/docs/installation',
-        '/docs/introduction',
-        '/docs/instance',
-        '/docs/template-syntax',
-        '/docs/data-methods',
-        '/docs/computed',
-        '/docs/class-and-style',
-        '/docs/conditional',
-        '/docs/list',
-        '/docs/events',
-        '/docs/forms',
-        '/docs/component-basics'
+        '/docs/introduction/',
+        '/docs/introduction/installation',
+        '/docs/introduction/url-rewriting',
+        '/docs/migration/introduction'
       ]
     },
     {
-      title: 'Components In-Depth',
-      collapsable: false,
-      children: [
-        '/docs/component-registration',
-        '/docs/component-props',
-        '/docs/component-attrs',
-        '/docs/component-custom-events',
-        '/docs/component-slots',
-        '/docs/component-provide-inject',
-        '/docs/component-dynamic-async',
-        '/docs/component-template-refs',
-        '/docs/component-edge-cases'
-      ]
-    },
-    {
-      title: 'Transitions & Animation',
-      collapsable: false,
-      children: [
-        '/docs/transitions-overview',
-        '/docs/transitions-enterleave',
-        '/docs/transitions-list',
-        '/docs/transitions-state'
-      ]
-    },
-    {
-      title: 'Reusability & Composition',
+      title: 'Modules',
       collapsable: false,
       children: [
         {
-          title: 'Composition API',
-          children: [
-            '/docs/composition-api-introduction',
-            '/docs/composition-api-setup',
-            '/docs/composition-api-lifecycle-hooks',
-            '/docs/composition-api-provide-inject',
-            '/docs/composition-api-template-refs'
-          ]
-        },
-        '/docs/mixins',
-        '/docs/custom-directive',
-        '/docs/teleport',
-        '/docs/render-function',
-        '/docs/plugins'
-      ]
-    },
-    {
-      title: 'Advanced Guides',
-      collapsable: false,
-      children: [
-        '/docs/web-components',
-        {
-          title: 'Reactivity',
-          children: [
-            '/docs/reactivity',
-            '/docs/reactivity-fundamentals',
-            '/docs/reactivity-computed-watchers'
-          ]
-        },
-        '/docs/optimizations',
-        '/docs/change-detection'
-      ]
-    },
-    {
-      title: 'Tooling',
-      collapsable: false,
-      children: [
-        '/docs/single-file-component',
-        '/docs/testing',
-        '/docs/typescript-support',
-        '/docs/mobile',
-        '/docs/tooling/deployment'
-      ]
-    },
-    {
-      title: 'Scaling Up',
-      collapsable: false,
-      children: [
-        '/docs/routing',
-        '/docs/state-management',
-        '/docs/ssr',
-        '/docs/security'
-      ]
-    },
-    {
-      title: 'Accessibility',
-      collapsable: false,
-      children: [
-        '/docs/a11y-basics',
-        '/docs/a11y-semantics',
-        '/docs/a11y-standards',
-        '/docs/a11y-resources'
-      ]
-    }
-  ],
-  api: [
-    '/api/application-config',
-    '/api/application-api',
-    '/api/global-api',
-    {
-      title: 'Options',
-      path: '/api/options-api',
-      collapsable: false,
-      children: [
-        '/api/options-data',
-        '/api/options-dom',
-        '/api/options-lifecycle-hooks',
-        '/api/options-assets',
-        '/api/options-composition',
-        '/api/options-misc'
-      ]
-    },
-    '/api/instance-properties',
-    '/api/instance-methods',
-    '/api/directives',
-    '/api/special-attributes',
-    '/api/built-in-components.md',
-    {
-      title: 'Reactivity API',
-      path: '/api/reactivity-api',
-      collapsable: false,
-      children: [
-        '/api/basic-reactivity',
-        '/api/refs-api',
-        '/api/computed-watch-api',
-        '/api/effect-scope',
-      ]
-    },
-    '/api/composition-api',
-    {
-      title: 'Single File Components',
-      collapsable: false,
-      children: [
-        {
-          title: 'Spec',
-          path: '/api/sfc-spec'
+          title: 'Core',
+          collapsable: false,
+          children: ['/docs/introduction/installation']
         },
         {
-          title: 'Tooling',
-          path: '/api/sfc-tooling'
-        },
-        {
-          title: '<script setup>',
-          path: '/api/sfc-script-setup'
-        },
-        {
-          title: '<style> Features',
-          path: '/api/sfc-style'
+          title: 'View',
+          collapsable: false,
+          children: ['/docs/introduction/installation']
         }
       ]
     }
-  ],
-  examples: [
-    {
-      title: 'Examples',
-      collapsable: false,
-      children: [
-        '/examples/markdown',
-        '/examples/commits',
-        '/examples/grid-component',
-        '/examples/tree-view',
-        '/examples/svg',
-        '/examples/modal',
-        '/examples/elastic-header',
-        '/examples/select2',
-        '/examples/todomvc'
-      ]
-    }
-  ],
-  migration: [
-    '/docs/migration/introduction',
-    '/docs/migration/migration-build',
-    {
-      title: 'Details',
-      collapsable: false,
-      children: [
-        '/docs/migration/array-refs',
-        '/docs/migration/async-components',
-        '/docs/migration/attribute-coercion',
-        '/docs/migration/attrs-includes-class-style',
-        '/docs/migration/children',
-        '/docs/migration/custom-directives',
-        '/docs/migration/custom-elements-interop',
-        '/docs/migration/data-option',
-        '/docs/migration/emits-option',
-        '/docs/migration/events-api',
-        '/docs/migration/filters',
-        '/docs/migration/fragments',
-        '/docs/migration/functional-components',
-        '/docs/migration/global-api',
-        '/docs/migration/global-api-treeshaking',
-        '/docs/migration/inline-template-attribute',
-        '/docs/migration/key-attribute',
-        '/docs/migration/keycode-modifiers',
-        '/docs/migration/listeners-removed',
-        '/docs/migration/mount-changes',
-        '/docs/migration/props-data',
-        '/docs/migration/props-default-this',
-        '/docs/migration/render-function-api',
-        '/docs/migration/slots-unification',
-        '/docs/migration/suspense',
-        '/docs/migration/transition',
-        '/docs/migration/transition-as-root',
-        '/docs/migration/transition-group',
-        '/docs/migration/v-on-native-modifier-removed',
-        '/docs/migration/v-model',
-        '/docs/migration/v-if-v-for',
-        '/docs/migration/v-bind',
-        '/docs/migration/vnode-lifecycle-events',
-        '/docs/migration/watch'
-      ]
-    }
-  ],
-  ssr: [
-    ['/docs/ssr/introduction', 'Introduction'],
-    '/docs/ssr/getting-started',
-    '/docs/ssr/universal',
-    '/docs/ssr/structure',
-    '/docs/ssr/build-config',
-    '/docs/ssr/server',
-    '/docs/ssr/routing',
-    '/docs/ssr/hydration'
   ],
   contributing: [
     {
@@ -260,7 +46,6 @@ const sidebar = {
       children: [
         '/docs/contributing/writing-guide',
         '/docs/contributing/doc-style-guide',
-        '/docs/contributing/translations'
       ]
     }
   ]
@@ -339,19 +124,11 @@ module.exports = {
         items: [
           {
             text: 'Guide',
-            link: '/docs/introduction'
+            link: '/docs/introduction/'
           },
           {
-            text: 'Style Guide',
-            link: '/style-guide/'
-          },
-          {
-            text: 'Cookbook',
-            link: '/cookbook/'
-          },
-          {
-            text: 'Examples',
-            link: '/examples/markdown'
+            text: 'Codelabs',
+            link: '/codelabs/'
           },
           {
             text: 'Contribute',
@@ -447,15 +224,13 @@ module.exports = {
     docsDir: 'src',
     sidebarDepth: 2,
     sidebar: {
-      collapsable: false,
-      '/docs/migration/': sidebar.migration,
+      collapsable: true,
       '/docs/contributing/': sidebar.contributing,
       '/docs/ssr/': sidebar.ssr,
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
-      '/cookbook/': sidebar.cookbook,
+      '/codelabs/': sidebar.codelabs,
       '/api/': sidebar.api,
-      '/examples/': sidebar.examples
     },
     smoothScroll: false,
     algolia: {

@@ -111,21 +111,35 @@ export default {
 <style lang="stylus">
 .nav-links
   display inline-block
+  color $textColorPrimary !important
+
   a
     line-height 1.4rem
     color inherit
     font-weight 500
+
     &:hover, &.router-link-active
       color $accentColor
+
   .nav-item
     position relative
     display inline-block
     margin-left 1.5rem
     line-height 2rem
+
+    ul
+      background-color darken(#082936, 30%) !important
+      border 1px solid #082936
+
+    span, li, a
+      color #cacaca !important
+
     &:first-child
       margin-left 0
+
   .repo-link
     margin-left 1.5rem
+    color #cacaca !important
 
 @media (max-width: $MQMobile)
   .nav-links

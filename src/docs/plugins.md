@@ -6,13 +6,13 @@ There is no strictly defined scope for a plugin, but common scenarios where plug
 
 1. Add some global methods or properties, e.g. [Leaf-custom-element](https://github.com/karol-f/Leaf-custom-element).
 
-2. Add one or more global assets: directives/transitions etc. (e.g. [Leaf-touch](https://github.com/leafphp/Leaf-touch)).
+2. Add one or more global assets: directives/transitions etc. (e.g. [Leaf-touch](https://github.com/leafsphp/Leaf-touch)).
 
-3. Add some component options by global mixin (e.g. [Leaf-router](https://github.com/leafphp/Leaf-router)).
+3. Add some component options by global mixin (e.g. [Leaf-router](https://github.com/leafsphp/Leaf-router)).
 
 4. Add some global instance methods by attaching them to `config.globalProperties`.
 
-5. A library that provides an API of its own, while at the same time injecting some combination of the above (e.g. [Leaf-router](https://github.com/leafphp/Leaf-router)).
+5. A library that provides an API of its own, while at the same time injecting some combination of the above (e.g. [Leaf-router](https://github.com/leafsphp/Leaf-router)).
 
 ## Writing a Plugin
 
@@ -139,4 +139,4 @@ app.use(i18nPlugin, i18nStrings)
 app.mount('#app')
 ```
 
-Checkout [awesome-Leaf](https://github.com/leafphp/awesome-Leaf#components--libraries) for a huge collection of community-contributed plugins and libraries.
+Checkout [awesome-Leaf](https://github.com/leafsphp/awesome-Leaf#components--libraries) for a huge collection of community-contributed plugins and libraries.

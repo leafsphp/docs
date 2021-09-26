@@ -55,7 +55,7 @@ module.exports = {
 
 ### Project Creation
 
-[Leaf CLI](https://github.com/leafphp/Leaf-cli) can generate new projects that use TypeScript. To get started:
+[Leaf CLI](https://github.com/leafsphp/cli) can generate new projects that use TypeScript. To get started:
 
 ```bash
 # 1. Install Leaf CLI, if it's not already installed
@@ -197,7 +197,7 @@ In order to take advantage of module augmentation, you will need to ensure there
 [In TypeScript](https://www.typescriptlang.org/docs/handbook/modules.html), any file containing a top-level `import` or `export` is considered a 'module'. If type declaration is made outside of a module, it will overwrite the original types rather than augmenting them.
 :::
 
-For more information about the `ComponentCustomProperties` type, see its [definition in `@Leaf/runtime-core`](https://github.com/leafphp/Leaf-next/blob/2587f36fe311359e2e34f40e8e47d2eebfab7f42/packages/runtime-core/src/componentOptions.ts#L64-L80) and [the TypeScript unit tests](https://github.com/leafphp/Leaf-next/blob/master/test-dts/componentTypeExtensions.test-d.tsx) to learn more.
+For more information about the `ComponentCustomProperties` type, see its [definition in `@Leaf/runtime-core`](https://github.com/leafsphp/Leaf-next/blob/2587f36fe311359e2e34f40e8e47d2eebfab7f42/packages/runtime-core/src/componentOptions.ts#L64-L80) and [the TypeScript unit tests](https://github.com/leafsphp/Leaf-next/blob/master/test-dts/componentTypeExtensions.test-d.tsx) to learn more.
 
 ### Annotating Return Types
 

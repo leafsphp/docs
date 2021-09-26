@@ -19,20 +19,20 @@ Our [Code of Conduct](/coc) is a guide to make it easier to enrich all of us and
 
 ### Explore the Ecosystem
 
-- [The Awesome Leaf Page](https://github.com/leafphp/awesome-Leaf): See what other awesome resources have been published by other awesome people.
+- [The Awesome Leaf Page](https://github.com/leafsphp/awesome-Leaf): See what other awesome resources have been published by other awesome people.
 - [The "Show and Tell" Subforum](https://forum.leafphp.org/c/show-and-tell): Another great place to check out what others have built with and for the growing Leaf ecosystem.
 
 ## What You Can Do
 
 ### Contribute Code
 
-As with any project, there are rules to contributing. To ensure that we can help you or accept your pull request as quickly as possible, please read [the contributing guide](https://github.com/leafphp/Leaf/blob/dev/.github/CONTRIBUTING.md).
+As with any project, there are rules to contributing. To ensure that we can help you or accept your pull request as quickly as possible, please read [the contributing guide](https://github.com/leafsphp/Leaf/blob/dev/.github/CONTRIBUTING.md).
 
 After that, you'll be ready to contribute to Leaf's core repositories:
 
-- [Leaf](https://github.com/leafphp/Leaf): the core library
-- [Leafx](https://github.com/leafphp/Leafx): Flux-inspired state management
-- [Leaf-router](https://github.com/leafphp/Leaf-router): a routing system for SPAs
+- [Leaf](https://github.com/leafsphp/Leaf): the core library
+- [Leafx](https://github.com/leafsphp/Leafx): Flux-inspired state management
+- [Leaf-router](https://github.com/leafsphp/Leaf-router): a routing system for SPAs
 
 ...as well as many smaller official [companion libraries](https://github.com/leafphp).
 

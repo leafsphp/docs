@@ -108,7 +108,7 @@ When using Single-File Components, the CSS inside components are injected dynami
 Refer to the respective build tool documentations to see how it's done:
 
 - [Webpack + Leaf-loader](https://Leaf-loader.leafphp.org/en/configurations/extract-css.html) (the `Leaf-cli` webpack template has this pre-configured)
-- [Browserify + Leafify](https://github.com/leafphp/Leafify#css-extraction)
+- [Browserify + Leafify](https://github.com/leafsphp/Leafify#css-extraction)
 - [Rollup + rollup-plugin-Leaf](https://rollup-plugin-Leaf.leafphp.org/)
 
 ## Tracking Runtime Errors

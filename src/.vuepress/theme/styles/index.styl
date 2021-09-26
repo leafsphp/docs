@@ -28,9 +28,24 @@ body
   left 0
   right 0
   height $navbarHeight
-  background-color #fff
+  background-color darken(#082936, 30%)
+  color $textColorPrimary
   box-sizing border-box
-  border-bottom 1px solid $borderColor
+  border-bottom 1px solid $textColorSecondary
+
+  .home-link span
+    color $textColorPrimary !important
+
+  .links
+    color $textColorPrimary
+    background-color darken(#082936, 30%) !important
+
+    .search-box
+      background-color darken(#082936, 30%) !important
+
+      input
+        background-color darken(#082936, 30%) !important
+        color $textColorPrimary
 
 html.with-beta-banner
   .navbar

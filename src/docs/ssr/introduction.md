@@ -42,6 +42,6 @@ This guide will be very in-depth and assumes you are already familiar with Leaf 
 
 [//]: # 'If you prefer a higher-level solution that provides a smooth out-of-the-box experience, you should probably give [Nuxt.js](https://nuxtjs.org/) a try. It's built upon the same Leaf stack but abstracts away a lot of the boilerplate, and provides some extra features such as static site generation. However, it may not suit your use case if you need more direct control of your app's structure. Regardless, it would still be beneficial to read through this guide to understand better how things work together.'
 
-[//]: # 'TODO: As you read along, it would be helpful to refer to the official [HackerNews Demo](https://github.com/leafphp/Leaf-hackernews-2.0/), which makes use of most of the techniques covered in this guide'
+[//]: # 'TODO: As you read along, it would be helpful to refer to the official [HackerNews Demo](https://github.com/leafsphp/Leaf-hackernews-2.0/), which makes use of most of the techniques covered in this guide'
 
 Finally, note that the solutions in this guide are not definitive - we've found them to be working well for us, but that doesn't mean they cannot be improved. They might get revised in the future - and feel free to contribute by submitting pull requests!

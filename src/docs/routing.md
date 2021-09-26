@@ -2,7 +2,7 @@
 
 ## Official Router
 
-For most Single Page Applications, it's recommended to use the officially-supported [Leaf-router library](https://github.com/leafphp/Leaf-router-next). For more details, see Leaf-router's [documentation](https://next.router.leafphp.org/).
+For most Single Page Applications, it's recommended to use the officially-supported [Leaf-router library](https://github.com/leafsphp/Leaf-router-next). For more details, see Leaf-router's [documentation](https://next.router.leafphp.org/).
 
 ## Simple Routing from Scratch
 

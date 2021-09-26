@@ -1,14 +1,10 @@
----
-title: "Migration Guide"
----
-
 # Introduction
 
 ::: info
-New to Leaf PHP? Check out our [Essentials Guide](/docs/introduction/) to get started.
+Leaf 3 is not yet available with Leaf 3. This means that you need to add Leaf 3 to your project manually.
 :::
 
-This guide is primarily for users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3. **This is not something you have to read from top to bottom before trying out Leaf 3.** While it looks like a lot has changed, a lot of what you know and love about Leaf is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
+This guide is primarily for Leaf API users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3.
 
 - [Quickstart](#quickstart)
 - [Breaking Changes](#breaking-changes)

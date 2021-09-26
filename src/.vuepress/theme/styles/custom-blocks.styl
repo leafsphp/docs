@@ -1,18 +1,19 @@
 .custom-block
+    background-color: darken(#082936, 0%) !important;
+
+    p
+      color $textColorPrimary !important
+
   .custom-block-title
     font-weight 600
-    margin-bottom -0.4rem
+    margin-bottom: -0.4rem;
   &.tip, &.warning, &.danger
     padding .1rem 1.5rem
     border-left-width .5rem
     border-left-style solid
     margin 1rem 0
   &.tip
-    background-color darken(#082936, 0%) !important
     border-color #42b983
-
-    p
-      color $textColorPrimary !important
   &.warning
     background-color rgba(255,229,100,.3)
     border-color darken(#ffe564, 35%)

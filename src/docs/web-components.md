@@ -195,11 +195,11 @@ customElements.define('my-example', ExampleElement)
 If you wish to customize what files should be imported in custom element mode (for example treating _all_ SFCs as custom elements), you can pass the `customElement` option to the respective build plugins:
 
 - [@vitejs/plugin-Leaf](https://github.com/vitejs/vite/tree/main/packages/plugin-Leaf#using-Leaf-sfcs-as-custom-elements)
-- [Leaf-loader](https://github.com/leafphp/Leaf-loader/tree/next#v16-only-options)
+- [Leaf-loader](https://github.com/leafsphp/Leaf-loader/tree/next#v16-only-options)
 
 ### Tips for a Leaf Custom Elements Library
 
-When building custom elements with Leaf, the elements will rely on Leaf's runtime. There is a ~16kb baseline size cost depending on how many features are being used. This means it is not ideal to use Leaf if you are shipping a single custom element - you may want to use vanilla JavaScript, [petite-Leaf](https://github.com/leafphp/petite-Leaf), or frameworks that specialize in small runtime size. However, the base size is more than justifiable if you are shipping a collection of custom elements with complex logic, as Leaf will allow each component to be authored with much less code. The more elements you are shipping together, the better the trade-off.
+When building custom elements with Leaf, the elements will rely on Leaf's runtime. There is a ~16kb baseline size cost depending on how many features are being used. This means it is not ideal to use Leaf if you are shipping a single custom element - you may want to use vanilla JavaScript, [petite-Leaf](https://github.com/leafsphp/petite-Leaf), or frameworks that specialize in small runtime size. However, the base size is more than justifiable if you are shipping a collection of custom elements with complex logic, as Leaf will allow each component to be authored with much less code. The more elements you are shipping together, the better the trade-off.
 
 If the custom elements will be used in an application that is also using Leaf, you can choose to externalize Leaf from the built bundle so that the elements will be using the same copy of Leaf from the host application.
 

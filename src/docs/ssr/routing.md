@@ -4,7 +4,7 @@
 
 You may have noticed that our server code uses a `*` handler which accepts arbitrary URLs. This allows us to pass the visited URL into our Leaf app, and reuse the same routing config for both client and server!
 
-It is recommended to use the official [Leaf-router](https://github.com/leafphp/Leaf-router-next) library for this purpose. Let's first create a file where we create the router. Note that similar to application instance, we also need a fresh router instance for each request, so the file exports a `createRouter` function:
+It is recommended to use the official [Leaf-router](https://github.com/leafsphp/Leaf-router-next) library for this purpose. Let's first create a file where we create the router. Note that similar to application instance, we also need a fresh router instance for each request, so the file exports a `createRouter` function:
 
 ```js
 // router.js

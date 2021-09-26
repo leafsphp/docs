@@ -20,7 +20,7 @@ The core library is focused on the REST APIs only, and is easy to pick up and in
 The official guide assumes basic level knowledge of PHP. If you are totally new to PHP, you might want to take an introduction course - grasp the basics then come back! This is because you will basically be writing PHP code when using leaf (or any other framework).
 :::
 
-[Find installation instructions here](/introduction/installation.html)
+### [Installation instructions here](/docs/introduction/installation.html)
 
 Below is a hello world example which takes you through the core of Leaf. You can check out [more advanced examples](/examples/) for more useful examples. If you want to build a real world app, you can refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
 

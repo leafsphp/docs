@@ -37,7 +37,7 @@ Check out more details in the [SFC Syntax Specification](/api/sfc-spec).
 
 ## How It Works
 
-Leaf SFC is a framework-specific file format and must be pre-compiled by [@Leaf/compiler-sfc](https://github.com/leafphp/Leaf-next/tree/master/packages/compiler-sfc) into standard JavaScript and CSS. A compiled SFC is a standard JavaScript (ES) module - which means with proper build setup you can import an SFC like a module:
+Leaf SFC is a framework-specific file format and must be pre-compiled by [@Leaf/compiler-sfc](https://github.com/leafsphp/Leaf-next/tree/master/packages/compiler-sfc) into standard JavaScript and CSS. A compiled SFC is a standard JavaScript (ES) module - which means with proper build setup you can import an SFC like a module:
 
 ```js
 import MyComponent from './MyComponent.Leaf'
@@ -73,7 +73,7 @@ SFC is a defining feature of Leaf as a framework, and is the recommended approac
 - Static Site Generation (SSG)
 - Any non-trivial frontends where a build step can be justified for better development experience (DX).
 
-That said, we do realize there are scenarios where SFCs can feel like overkill. This is why Leaf can still be used via plain JavaScript without a build step. If you are just looking for enhancing largely static HTML with light interactions, you can also check out [petite-Leaf](https://github.com/leafphp/petite-Leaf), a 5kb subset of Leaf optimized for progressive enhancement.
+That said, we do realize there are scenarios where SFCs can feel like overkill. This is why Leaf can still be used via plain JavaScript without a build step. If you are just looking for enhancing largely static HTML with light interactions, you can also check out [petite-Leaf](https://github.com/leafsphp/petite-Leaf), a 5kb subset of Leaf optimized for progressive enhancement.
 
 ## What About Separation of Concerns?
 

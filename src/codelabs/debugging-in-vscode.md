@@ -2,7 +2,7 @@
 
 Every application reaches a point where it's necessary to understand failures, small to large. In this recipe, we explore a few workflows for VS Code users who would like to debug their application in the browser.
 
-This recipe shows how to debug [Leaf CLI](https://github.com/leafphp/Leaf-cli) applications in VS Code as they run in the browser.
+This recipe shows how to debug [Leaf CLI](https://github.com/leafsphp/cli) applications in VS Code as they run in the browser.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Make sure you have VS Code and the browser of your choice installed, and the lat
 - [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 - [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-firefox-debug)
 
-Install and create a project with the [Leaf-cli](https://github.com/leafphp/Leaf-cli), following the instructions in the [Leaf CLI Guide](https://cli.leafphp.org/). Change into the newly created application directory and open VS Code.
+Install and create a project with the [Leaf-cli](https://github.com/leafsphp/cli), following the instructions in the [Leaf CLI Guide](https://cli.leafphp.org/). Change into the newly created application directory and open VS Code.
 
 ### Displaying Source Code in the Browser
 
