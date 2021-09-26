@@ -1,11 +1,11 @@
 [[redirects]]
-  from = "/guide/"
-  to = "/guide/introduction.html"
+  from = "/docs/"
+  to = "/docs/introduction.html"
 
 [[redirects]]
  from = "guide/doc-style-guide.html"
- to = "/guide/contributing/doc-style-guide.html"
+ to = "/docs/contributing/doc-style-guide.html"
 
 [[redirects]]
-  from = "/guide/writing-guide.html"
-  to = "/guide/contributing/writing-guide.html"
+  from = "/docs/writing-guide.html"
+  to = "/docs/contributing/writing-guide.html"

@@ -218,11 +218,9 @@ module.exports = {
     sidebar: {
       collapsable: true,
       '/docs/contributing/': sidebar.contributing,
-      '/docs/ssr/': sidebar.ssr,
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,
-      '/api/': sidebar.api,
     },
     smoothScroll: false,
     algolia: {
