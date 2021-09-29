@@ -23,18 +23,75 @@ const sidebar = {
       ]
     },
     {
+      title: 'Config',
+      collapsable: false,
+      children: ['/docs/config/', '/docs/config/nsm', '/docs/config/settings']
+    },
+    {
+      title: 'Core',
+      collapsable: false,
+      children: [
+        '/docs/tooling/container',
+        '/docs/tooling/logging',
+        '/docs/view',
+        '/docs/tooling/functions'
+      ]
+    },
+    {
+      title: 'Routing',
+      collapsable: true,
+      children: [
+        '/docs/routing/',
+        '/docs/routing/errors',
+        '/docs/routing/sub-routing',
+        '/docs/routing/dynamic',
+        '/docs/routing/middleware',
+        '/docs/routing/sub-patterns',
+        '/docs/routing/sub-folder',
+        '/docs/routing/controller'
+      ]
+    },
+    {
       title: 'Modules',
       collapsable: false,
       children: [
+        '/docs/modules/',
         {
           title: 'Core',
-          collapsable: false,
-          children: ['/docs/introduction/installation']
+          collapsable: true,
+          children: [
+            '/docs/modules/db/',
+            '/docs/modules/db-old/',
+            '/docs/modules/auth',
+            '/docs/modules/date',
+            '/docs/modules/forms',
+            '/docs/modules/fs',
+            '/docs/modules/logger',
+            '/docs/modules/passwords',
+          ]
         },
         {
-          title: 'View',
-          collapsable: false,
-          children: ['/docs/introduction/installation']
+          title: 'Http',
+          collapsable: true,
+          children: [
+            '/docs/modules/http/',
+            '/docs/modules/session/',
+            '/docs/modules/cookies'
+          ]
+        },
+        {
+          title: 'Views',
+          collapsable: true,
+          children: [
+            '/docs/modules/views/bareui',
+            '/docs/modules/views/blade',
+            '/docs/modules/views/veins'
+          ]
+        },
+        {
+          title: 'Extras',
+          collapsable: true,
+          children: ['/docs/modules/mvc-core/', '/docs/modules/mail']
         }
       ]
     }
@@ -45,7 +102,7 @@ const sidebar = {
       collapsable: false,
       children: [
         '/docs/contributing/writing-guide',
-        '/docs/contributing/doc-style-guide',
+        '/docs/contributing/doc-style-guide'
       ]
     }
   ]

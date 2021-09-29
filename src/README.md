@@ -37,7 +37,7 @@ socialIcons:
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {
-  response(["name" => "Mychi"]);
+  response(["name" => "Leaf"]);
 });
 
 app()->run();

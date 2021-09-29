@@ -1,0 +1,94 @@
+# Migrating from other frameworks
+
+::: info
+New to Leaf PHP? Check out our [Essentials Guide](/docs/introduction/) to get started.
+:::
+
+This page is for developers who have a working application in another framework and want to port over to Leaf. As far-fetched as this sounds, Leaf 3 makes it super easy to sprinkle pieces of Leaf into any existing application, gradually rewriting it without breaking any code. Leaf has always allowed users to integrate other libraries seamlessly into their leaf apps with no conflicts or complexities, now Leaf 3 allows you to go the other way: **integrating Leaf seamlessly into any application no matter which libraries or frameworks it was built with.**
+
+- [Quickstart](#quickstart)
+
+<!-- ## Overview
+
+<br>
+<iframe src="https://player.vimeo.com/video/440868720" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path/Leaf3). -->
+
+## Quickstart
+
+All of Leaf's features are now available as modules, this means that if there's a particular feature of Leaf you will love to try out, there's no need to pack the whole framework anymore. Just find that feature you want and install it.
+
+Below is a [Slim PHP 4](https://www.slimframework.com/) application which we want to use Leaf 3 in:
+
+```php
+<?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$app = AppFactory::create();
+
+$app->get('/', function (Request $request, Response $response, $args) {
+    $name = $args['name'];
+    $response->getBody()->write("Hello, $name");
+    return $response;
+});
+
+$app->run();
+```
+
+For instance, we decide to use the Leaf request and response objects since they are simpler, this means that we'll be replacing only lines 11-13 with Leaf.
+
+```php{2-3,11-13}
+<?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$app = AppFactory::create();
+
+$app->get('/', function (Request $request, Response $response, $args) {
+    $name = $args['name'];
+    $response->getBody()->write("Hello, $name");
+    return $response;
+});
+
+$app->run();
+```
+
+All we have to do now is to install the leaf http module.
+
+```sh
+composer require leafs/http
+```
+
+Now, we replace Slim's http handlers with Leaf's.
+
+```php{2-3,11-12}
+<?php
+use Leaf\Http\Request;
+use Leaf\Http\Response;
+use Slim\Factory\AppFactory;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$app = AppFactory::create();
+
+$app->get('/', function () {
+    $name = Request::get('name');
+    Response::markup("Hello, $name");
+});
+
+$app->run();
+```
+
+In all aspects, this is still a slim 4 app, only using the Leaf request and response objects. Just as with the example above, you can use any Leaf module  or Leaf 3 itself with any framework or library. To test the app above, we can use the built in php server
+
+```sh
+php -S localhost:5500
+```

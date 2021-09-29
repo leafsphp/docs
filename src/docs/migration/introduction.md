@@ -10,10 +10,14 @@ New to Leaf PHP? Check out our [Essentials Guide](/docs/introduction/) to get st
 
 This guide is primarily for users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3. **This is not something you have to read from top to bottom before trying out Leaf 3.** While it looks like a lot has changed, a lot of what you know and love about Leaf is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
 
+::: warning Coming from another library
+Migrating from another framework? [READ THIS](/docs/migration/other) to get started.
+:::
+
 - [Quickstart](#quickstart)
 - [Breaking Changes](#breaking-changes)
 - [Notable New Features](#notable-new-features)
-- [Supporting Libraries](#supporting-libraries)
+<!-- - [Supporting Libraries](#supporting-libraries) -->
 
 <!-- ## Overview
 
@@ -38,7 +42,7 @@ This will quickly setup leaf 3 with the default modules. From there, create your
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {
-  response(["name" => "Mychi"]);
+  response(["name" => "Leaf"]);
 });
 
 app()->run();

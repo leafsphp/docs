@@ -31,6 +31,7 @@ div[class*="language-"]
   background-color rgb(38, 50, 56)
   border-radius 6px
   .highlight-lines
+    border-radius 6px
     background-color rgb(38, 50, 56)
     color #3a385d
     user-select none
@@ -41,7 +42,7 @@ div[class*="language-"]
     width 100%
     line-height 1.4
     .highlighted
-      background-color rgb(38, 50, 56)
+      background-color rgb(28, 35, 40)
   pre, pre[class*="language-"]
     background transparent
     position relative
@@ -68,7 +69,7 @@ div[class*="language-"]
           display block
           width $lineNumbersWrapperWidth
           height 100%
-          background-color rgb(38, 50, 56)
+          background-color rgb(28, 35, 40)
     pre
       padding-left $lineNumbersWrapperWidth + 1 rem
       vertical-align middle
@@ -137,7 +138,7 @@ div[class~="language-sh"]
   &:before
     content "sh"
 
-  *
+  .token.function
     color $textColorPrimary !important
 
 div[class~="language-php"]

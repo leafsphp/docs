@@ -4,14 +4,14 @@ This site is built with [VuePress](https://vuepress.vuejs.org/). Site content is
 
 ## Writing
 
-See the [Vue Docs Writing Guide](https://v3.vuejs.org/guide/writing-guide.html) for our rules and recommendations on writing and maintaining documentation.
+See the [Leaf Docs Writing Guide](/) for our rules and recommendations on writing and maintaining documentation.
 
 ## Developing
 
 1. Clone repository
 
 ```bash
-git clone git@github.com:vuejs/docs.git
+git clone git@github.com:leafsphp/docs.git
 ```
 
 2. Install dependencies

@@ -7,16 +7,27 @@
     </div>
 
     <!-- repo link -->
-    <a
-      v-if="repoLink"
-      :href="repoLink"
-      class="repo-link"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {{ repoLabel }}
-      <OutboundLink />
-    </a>
+    <iframe
+      id="twitter-widget-0"
+      scrolling="no"
+      frameborder="0"
+      allowtransparency="true"
+      class="twitter-follow-button twitter-follow-button-rendered repo-link github"
+      style="position: static; visibility: visible; width: 190px; height: 20px;"
+      title="Twitter Follow Button"
+      src="https://platform.twitter.com/widgets/follow_button.2d991e3dfc9abb2549972ce8b64c5d85.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=leafphp&amp;show_count=true&amp;show_screen_name=true&amp;size=m&amp;time=1573826693283"
+      data-screen-name="leafphp"
+    ></iframe>
+
+    <iframe
+      class="github repo-link github-leaf"
+      src="https://ghbtns.com/github-btn.html?user=leafsphp&amp;repo=leaf&amp;type=star&amp;count=true&amp;"
+      allowtransparency="true"
+      frameborder="0"
+      scrolling="0"
+      width="100"
+      height="20"
+    ></iframe>
   </nav>
 </template>
 
@@ -112,6 +123,12 @@ export default {
 .nav-links
   display inline-block
   color $textColorPrimary !important
+
+  .github-leaf
+
+
+  .github
+    margin-bottom -5px
 
   a
     line-height 1.4rem
