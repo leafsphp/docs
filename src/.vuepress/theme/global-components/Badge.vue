@@ -18,7 +18,7 @@ export default {
       {
         class: ['badge', props.type],
         style: {
-          verticalAlign: props.vertical
+          verticalAlign: "unset"
         }
       },
       props.text || slots().default

@@ -63,14 +63,5 @@ $app->config([
 To retrieve the value of a setting, you also use the config application instance method; however, you only pass one argument - the name of the setting you wish to inspect. If the setting you request does not exist, null is returned.
 
 ```php
-$settingValue = $app->config('views.path'); //returns "../views"
+$settingValue = $app->config('views.path'); // returns "../views"
 ```
-
-## Next Steps
-
-- [Routing](leaf/v/2.5.0/routing/)
-- [Request](leaf/v/2.5.0/http/request)
-- [Response](leaf/v/2.5.0/http/response)
-- [Blade Templating](leaf/v/2.5.0/views/blade)
-
-Built with ❤ by <a href="https://mychi.netlify.app" style="font-size: 20px; color: #111;" target="_blank">Mychi Darko</a>

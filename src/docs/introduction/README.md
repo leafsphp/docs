@@ -22,7 +22,7 @@ The official guide assumes basic level knowledge of PHP. If you are totally new 
 
 ### [Installation instructions here](/docs/introduction/installation.html)
 
-Below is a hello world example which takes you through the core of Leaf. You can check out [more advanced examples](/examples/) for more useful examples. If you want to build a real world app, you can refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
+Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
 
 ## Hello world example
 
@@ -195,7 +195,7 @@ Just as you saw above, most Leaf modules require absolutely no configuration in 
 
 ## "Functional Mode"
 
-We have mostly talked about general features which are the same even in Leaf 2, now let's talk about some spice in Leaf 3. This is just an introduction to functional mode, read the [functional mode documentation](/docs/functional-mode.html) for the full explanation.
+We have mostly talked about general features which are the same even in Leaf 2, now let's talk about some spice in Leaf 3. This is just an introduction to functional mode, read the [functional mode documentation](/docs/tooling/functions.html) for the full explanation.
 
 Basically, leaf 3 comes with global helper functions which take away the only pain anyone has ever had in using leaf, i.e. long namespaces. Let's rewrite the first example in functional mode.
 

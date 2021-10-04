@@ -5,7 +5,7 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <BannerTop v-if="showTopBanner" @close="closeBannerTop" />
+    <BannerTop v-if="shouldShowBanner" />
 
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
@@ -93,6 +93,10 @@ export default {
       )
     },
 
+    shouldShowBanner() {
+      return this.$page.frontmatter.home && (this.$site.themeConfig.topBanner || false)
+    },
+
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
@@ -100,7 +104,7 @@ export default {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
           'no-sidebar': !this.shouldShowSidebar,
-          'has-top-banner': this.showTopBanner
+          'has-top-banner': this.shouldShowBanner
         },
         userPageClass
       ]
@@ -112,7 +116,7 @@ export default {
       this.isSidebarOpen = false
     })
 
-    this.showTopBanner = false
+    this.showTopBanner = this.shouldShowBanner
   },
 
   methods: {

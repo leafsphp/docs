@@ -202,7 +202,3 @@ $app = new \Leaf\App([
 ## views.cachePath
 
 This config tells leaf where to save cached and compiled views.
-
-<br>
-
-Built with ❤ by <a href="https://mychi.netlify.app" style="font-size: 20px; color: #111;" target="_blank">Mychi Darko</a>

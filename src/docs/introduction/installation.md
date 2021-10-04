@@ -13,7 +13,7 @@ There are four primary ways of adding Leaf PHP to a project:
 
 Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/unstable)
 
-Detailed release notes for each version are available on [GitHub](https://github.com/leafsphp/Leaf-next/blob/master/CHANGELOG.md).
+Detailed release notes for each version are available on [GitHub](https://github.com/leafsphp/leaf/blob/v3.x-dev/CHANGELOG.md).
 
 ## Composer
 
@@ -112,7 +112,7 @@ You can install skeleton through composer.
 composer create-project leafs/skeleton <project-name>
 ```
 
-## Leaf CLI
+<!-- ## Leaf CLI
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes less than a minute to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.org) for more details.
 
@@ -130,4 +130,4 @@ You can also install modules using the following syntax:
 
 ```sh
 leaf install --module cors
-```
+``` -->

@@ -67,7 +67,7 @@ const sidebar = {
             '/docs/modules/forms',
             '/docs/modules/fs',
             '/docs/modules/logger',
-            '/docs/modules/passwords',
+            '/docs/modules/passwords'
           ]
         },
         {
@@ -93,6 +93,17 @@ const sidebar = {
           collapsable: true,
           children: ['/docs/modules/mvc-core/', '/docs/modules/mail']
         }
+      ]
+    }
+  ],
+  cli: [
+    {
+      title: 'Leaf CLI',
+      collapsable: false,
+      children: [
+        '/cli/',
+        '/cli/v/1.0/',
+        '/cli/v/2.0/'
       ]
     }
   ],
@@ -218,6 +229,10 @@ module.exports = {
             text: 'Official Projects',
             items: [
               {
+                text: 'Leaf CLI',
+                link: '/cli/'
+              },
+              {
                 text: 'Leaf Modules',
                 link: '/modules/'
               },
@@ -242,14 +257,15 @@ module.exports = {
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,
+      '/cli/': sidebar.cli,
     },
-    smoothScroll: false,
+    smoothScroll: true,
     algolia: {
       indexName: 'leafphp-v3',
       appId: '',
       apiKey: ''
     },
-    topBanner: false
+    topBanner: true,
   },
   plugins: [
     [

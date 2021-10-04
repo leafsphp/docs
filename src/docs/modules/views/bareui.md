@@ -1,4 +1,5 @@
 # BareUI
+
 <!-- markdownlint-disable no-inline-html -->
 
 Most templating engines out there ship with a nice syntax, handy ways to use expressions, layouts and code blocks, however, there's one problem: speed! Bare UI is here to solve that. Bare UI is a barebones templating engine focused on speed, speed and more speed! It lacks all the syntatic sugar added in other engines like blade, but it also requires no compiling, no caching, just speed!
@@ -34,6 +35,32 @@ Leaf\BareUI::config("path", "./templates");
 // or
 
 Leaf\BareUI::config(["path" => "./templates", ...]);
+```
+
+#### Available options
+
+There are currently only 2 options to configure.
+
+- path (string): This tells leaf where to look for templates.
+- params (array): These are a bunch of base parameters that will be available in all of your templates.
+
+```php
+// app() will be available in all templates
+app()->template->config("params", ["app" => function () {
+  // do something
+  return app();
+}]);
+```
+
+`template.view.php`
+
+```php
+<?php
+
+if (!$something) {
+  // you can nest templates
+  echo app()->template->render("error");
+}
 ```
 
 ### render
@@ -121,15 +148,15 @@ echo UI::Scaffold([
             ],
         ]),
         "children" => [
-            UI::form("POST", "/app/login", [
-                UI::h2("Login To $appName"),
+            form("POST", "/app/login", [
+                h2("Login To $appName"),
                 UI::FormGroup([
-                    UI::input("text", "loginCode", [
+                    input("text", "loginCode", [
                         "placeholder" => "Enter your login code",
                         "label" => "Login Code"
                     ]),
                 ]),
-                UI::button("Login", [
+                button("Login", [
                     "type" => "submit"
                 ]),
             ]),

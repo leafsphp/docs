@@ -116,7 +116,3 @@ $app->runIn('development', function () use ($app) {
         'debug' => true
 	]);
 }); -->
-
-<br>
-
-Built with ❤ by <a href="https://mychi.netlify.app" style="font-size: 20px; color: #111;" target="_blank">Mychi Darko</a>
