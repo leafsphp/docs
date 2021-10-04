@@ -129,7 +129,7 @@ export default {
   max-width: 740px;
   margin: 0 auto;
   font-size: 0.95em;
-  color: $light;
+  color: #eaecef;
   text-align: center;
 
   p {

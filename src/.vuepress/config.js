@@ -229,42 +229,6 @@ module.exports = {
         text: 'Support Leaf',
         link: '/support/',
       },
-      // {
-      //   text: 'Translations',
-      //   link: '#',
-      //   items: [
-      //     // Translation maintainers: Please include the link below to the English documentation
-      //     // {
-      //     //   text: 'English',
-      //     //   link: 'https://v3.leafphp.org/',
-      //     //   isTranslation: true
-      //     // },
-      //     {
-      //       text: '中文',
-      //       link: 'https://v3.cn.leafphp.org/',
-      //       isTranslation: true
-      //     },
-      //     {
-      //       text: '한국어',
-      //       link: 'https://v3.ko.leafphp.org/',
-      //       isTranslation: true
-      //     },
-      //     {
-      //       text: '日本語',
-      //       link: 'https://v3.ja.leafphp.org/',
-      //       isTranslation: true
-      //     },
-      //     {
-      //       text: 'Русский',
-      //       link: 'https://v3.ru.leafphp.org/ru/',
-      //       isTranslation: true
-      //     },
-      //     {
-      //       text: 'More Translations',
-      //       link: '/docs/contributing/translations#community-translations'
-      //     }
-      //   ]
-      // }
     ],
     repo: 'leafsphp/docs',
     editLinks: true,
