@@ -19,8 +19,8 @@ View comes with only one method, `attach`. This method allows your to link UI en
 - The key to save the engine as (optional). If it's not provided, it'll use the class' name.
 
 ```php
-View::attach(\Leaf\Veins\Template::class, "veins");
-View::attach(\Leaf\Blade::class);
+Leaf\View::attach(\Leaf\Veins\Template::class, "veins");
+Leaf\View::attach(\Leaf\Blade::class);
 
 $app = new Leaf\App;
 

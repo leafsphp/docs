@@ -1,7 +1,7 @@
 <!-- markdownlint-disable no-inline-html -->
-# 🧿 Leaf Request
+# Leaf Request
 
-The request object is an abstraction of the current HTTP request and allows you to easily interact with any data passed into your application. In v2.0, the request object has been directly bound to the main Leaf object, so there's no need to instanciate it anymore, although you can do so if you want to use it independently.
+The request object is an abstraction of the current HTTP request and allows you to easily interact with any data passed into your application.
 
 ## Using Request
 
@@ -21,9 +21,9 @@ Request::get("name");
 
 ### 🎄 Request on the Leaf Instance
 
-Since Request is already bound to the Leaf instance, you can do this:
+Since Request is automatically bound to the Leaf instance, you can do this:
 
-```php
+```php{4}
 $app = new Leaf\App;
 
 $app->post("/user/change-username", function() use($app) {
@@ -31,13 +31,11 @@ $app->post("/user/change-username", function() use($app) {
 });
 ```
 
-Although we've added this, we don't want to force you to do stuff in only one way, so you can still use the `v1.x` method.
-
 ### 🎪 Initialising the Request object
 
-With this method, you manually initialise the Request object, and then pass it into your route. Note that in version 2, `\Leaf\Core\Http\Request` has been shortened to `\Leaf\Http\Request`.
+With this method, you manually initialise the Request object, and then pass it into your route.
 
-```php
+```php{2,5}
 $app = new Leaf\App;
 $request = new Leaf\Http\Request;
 
@@ -46,7 +44,7 @@ $app->post("/items/add", function() use($request) {
 });
 ```
 
-## 📖 Basic Usage
+## Basic Usage
 
 ### get()
 
@@ -100,7 +98,7 @@ $blog = $request->get("blogBody", false);
 
 <hr>
 
-### try() <sup class="new-tag-1">New</sup>
+### try()
 
 `try()` works just like `get` above, except that it conditionally returns items in the request. Let's look at an example:
 

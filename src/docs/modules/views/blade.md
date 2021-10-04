@@ -5,24 +5,15 @@ title: "Leaf Blade"
 <!-- markdownlint-disable no-inline-html -->
 # 🔪 Blade Templating
 
-<div class="alert -warning">
-Blade will be replaced by Bare UI as the default Leaf templating engine in the next release. This won't affect Leaf MVC and Leaf API. Also, you can always install <code>leafs/blade</code> to continue using blade if that's what you prefer.
-</div>
+This is Leaf's implementation of Laravel's blade templating engine.
 
-This is Leaf's implementation of Laravel's blade templating engine. It is an independent package, but has been added and bound to Leaf Core. So just like other packages, you don't need to instanciate it if you don't want to.
+You can install leaf blade from composer:
 
-```php
-// on the leaf object
-$app->blade;
+```sh
+composer require leafs/blade
 ```
 
-If you don't use blade or don't want it attached to the leaf instance, you can remove it with a simple leaf config:
-
-```php
-$app = new Leaf\App([
-    "views.blade" => false,
-]);
-```
+After this, you simply need to initialize blade:
 
 ```php
 // initialising the package

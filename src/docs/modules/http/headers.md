@@ -173,7 +173,7 @@ You can set mutiple access control headers at once:
 Leaf\Http\Headers::accessControl(["Allow-Origin" => "*", "Allow-Headers" => "*"]);
 ```
 
-## HTTP Caching <sup class="new-tag-1">NEW</sup>
+## HTTP Caching
 
 Leaf now comes with built-in support for HTTP caching with its `etag`, `lastModified`, and `expires` methods. It is best to use one of `etag` or `lastModified` - in conjunction with `expires` - per route; never use both `etag` and `lastModified` together in the same route callback.
 

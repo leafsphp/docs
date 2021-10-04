@@ -213,7 +213,7 @@ After setting all the routes, you'll need to dispatch the routes. This is achiev
 $app->run();
 ```
 
-### Route options <sup class="new-tag-1">New</sup>
+### Route options
 
 This is the biggest change Leaf router has seen over the period of a year. Route options simply allow you to configure the way groups and individual routes by passing in additional parameters. In actual sense, all new features were generated as a result of this single feature. Let's see how it works.
 
@@ -255,7 +255,7 @@ $app->group("/user", ["namespace" => "\\", function() use($app) {
 
 **This doesn't mean that you should always pass in an array, if you don't need the other options, you can pass in your function or controller directly as you've always done.**
 
-### Naming your routes <sup class="new-tag-1">New</sup>
+### Naming your routes
 
 From v2.5.0 of Leaf, you can give route names which you can call them with instead of using the path (Inspired by vue-router).
 
@@ -265,7 +265,7 @@ $app->get("/home", ["name" => "home", function() {
 }]);
 ```
 
-### Pushing to a route <sup class="new-tag-1">New</sup>
+### Pushing to a route
 
 This is simply redirecting to a route and can be done using `push`. `push` also allows you to reference the route by it's name instead of it's path.
 

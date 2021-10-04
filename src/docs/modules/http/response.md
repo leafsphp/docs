@@ -1,13 +1,13 @@
 <!-- markdownlint-disable no-inline-html -->
-# 📢 Leaf Response
+# Leaf Response
 
 The response object is an abstraction of your Leaf application’s HTTP response that is returned to the HTTP client. In v2, the response object has been directly bound to the main Leaf object.
 
-## 🏂 Using Response
+## Using Response
 
-### Static Response <sup class="new-tag-1">NEW</sup>
+### Static Response
 
-v2.4.3+ allows you to call response methods statically, which means you no longer need to initialize the whole package.
+Response allows you to call methods statically, which means you don't need to initialize the whole package.
 
 ```php
 Leaf\Http\Response::json(["name" => "mychi"]);
@@ -23,7 +23,7 @@ Response::json(["name" => "mychi"]);
 
 Since Response is already bound to the Leaf instance, you can do this:
 
-```php
+```php{4}
 $app = new Leaf\App;
 
 $app->get("/text", function() use($app) {
@@ -37,7 +37,7 @@ Although we've added this, we don't want to force you to do stuff in only one wa
 
 With this method, you manually initialise the Response object, and then pass it into your route.
 
-```php
+```php{2,6}
 $app = new Leaf\App;
 $response = new Leaf\Http\Response;
 
@@ -267,31 +267,4 @@ This method uses [Leaf Cookie's unset](/lucky-charm/http/cookies?id=unset)
 
 ```php
 $app->response()->deleteCookie("name");
-```
-
-## 🛫cors()
-
-Just a little handy tool especially useful when building APIs. CORS errors are a very common thing for developers who work with APIs, and this method is just a basic bypass for these errors.
-
-This works by setting the `Access-Control-Allow-Headers` and `Access-Control-Allow-Origin` headers with a value of `*` which allows all headers and domains to access content.
-
-```php
-$app = new Leaf\App;
-$app->response()->cors();
-
-// your code...
-
-$app->run();
-```
-
-To specify which origins and headers to allow, you can pass in params into `cors()`
-
-```php
-$app->response()->cors("ORIGINS", "HEADERS");
-```
-
-**If you end up with cors still shouting at you because of OPTIONS requests, you can use:**
-
-```php
-$app->evadeCors(true, "ORIGINS", "HEADERS");
 ```

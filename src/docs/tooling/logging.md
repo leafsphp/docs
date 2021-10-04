@@ -24,27 +24,56 @@ Stack trace:
 
 A Leaf provides a log object that writes data to a specific output. The actual writing of data is delegated to a log writer.
 
-**You need to configure the log directory so that Leaf knows where to place your files.**
+## Getting started
+
+To get started with logging, you need to first install the Leaf logger module. This will allow leaf log all errors and exception if the config is enabled. You can do this with composer:
+
+```sh
+composer require leafs/logger
+```
+
+You can find more information on the logger module [here](/docs/modules/logger)
+
+::: tip Quick Tip
+Logger is already integrated with Leaf core on a base level and so there's no need to initialize it. You might never even need to use the logger module yourself.
+:::
+
+## Setup
+
+::: warning NOTE
+Unlike other modules, logger uses global configuration from leaf instead of some local config. You can do this setup on Leaf init or with the config class.
 
 ```php
-<?php
-
 $app = new Leaf\App([
   "log.dir" => __DIR__ . "/logs/",
 ]);
 ```
 
-or
+:::
+
+Once installed, the next thing to do is to tell leaf to log all exceptions/errors. You can do this simply by enabling the `log.enabled` configuration option.
 
 ```php
-<?php
-
-Config::set("log.dir", __DIR__ . "/logs/");
+Leaf\Config::set('log.enabled', true);
 ```
+
+You can also tell leaf which directory to save logs into:
+
+```php
+Leaf\Config::set("log.dir", __DIR__ . "/logs/");
+```
+
+You can also specify the name of the file to save the log to:
+
+```php
+Leaf\Config::set("log.file", Leaf\Date::now() . "_crash_logs.log");
+```
+
+This line above will create a new log file for every day there's a log.
 
 ## How to log data
 
-To log data, get a reference to the log object:
+As mentioned before, you might never need to use the logger manually, however, if you want to manually log some data, you can do it on the logger method found on the leaf instance. This is automatically created by leaf when the logger module is installed.
 
 ```php
 <?php

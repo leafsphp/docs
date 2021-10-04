@@ -17,7 +17,7 @@ $app = new Leaf\App([
 ]);
 ```
 
-## Leaf Config <sup class="new-tag-1">New</sup>
+## Leaf Config
 
 Leaf config allows you to quickly configure your leaf application from anywhere in your app.
 

@@ -18,7 +18,7 @@ $app->before('GET|POST', '/admin/.*', function() {
 });
 ```
 
-## Middleware route option <sup class="new-tag-1">New</sup>
+## Middleware route option
 
 This is a new way to quickly setup middleware for a particular route. Leaf has the before method which allows you to set a route specific middleware, but that means defining the same route twice, not to mention, you may mistake the middleware for the main route as they have the same syntax. This problem is solved by the middleware option. **If your prefer using `before`, you can always do so.**
 
@@ -45,7 +45,7 @@ $app->before('GET', '/.*', function() {
 });
 ```
 
-### Router Hooks <sup class="new-tag-1">New</sup>
+### Router Hooks
 
 Hooks basically allow you to hook into Leaf router and execute a callback at a given time. For instance, you can execute a function just before Leaf fires off routes. You can also execute a callback before the main middleware executes or even after Leaf has completely executed a route.
 
@@ -107,7 +107,7 @@ $app->hook("router.before", function() {
 
 The example above makes sure that every response gets sent with a `202 Accepted` https status instead of the original status code. As you can see, `hook` takes in the hook you wish to set and a callable/callback to execute.
 
-### App middleware <sup class="new-tag-1">New</sup>
+### App middleware
 
 App middleware which are created using `Leaf\Middleware` have also received a lot of fixes which make them easier and faster to use.
 

@@ -41,7 +41,7 @@ $app->group('/user', function() use ($app) {
 });
 ```
 
-## Group Namespaces <sup class="new-tag-1">New</sup>
+## Group Namespaces
 
 You can now select namespaces for individual groups of routes. Usually, a namespace is given to all your routes, however, a group may need a different namespace for it's controllers and that is what Leaf gives you.
 

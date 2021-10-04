@@ -79,7 +79,7 @@ $timeZone = Date::setTimezone('Timezone');
 
 You can get a list of all PHP supported timezones [here](https://www.w3schools.com/php/php_ref_timezones.asp)
 
-### rawDate <sup class="new-tag-1">NEW</sup>
+### rawDate
 
 Format a local time/date
 

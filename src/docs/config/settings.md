@@ -32,7 +32,7 @@ $leafApp->get("/", function() {
 echo $leafApp->routes();
 ```
 
-## app.down <sup class="new-tag-1">New</sup>
+## app.down
 
 A new `app.down` config was added to replace the `mode=down` which caused problems in earlier releases. You can set this to true to place your app in a maintainance like state.
 
@@ -79,7 +79,7 @@ $app->config('http.version', '1.1');
 
 <hr>
 
-## log.dir <sup class="new-tag-1">New</sup>
+## log.dir
 
 This tells leaf which directory to save and look for logs.
 
@@ -103,7 +103,7 @@ $app->logger()->enabled(true);
 
 Note that if `log.enabled` is set to `false`. Leaf will skip initializing anything related to logs, as such, you won't have access to `$app->logger()`, `$app->log` or `$app->logWriter`.
 
-## log.file <sup class="new-tag-1">New</sup>
+## log.file
 
 This setting tells leaf which file to write logs to.
 
@@ -143,7 +143,7 @@ $log->setLevel(\Leaf\Log::WARN);
 
 <hr>
 
-## log.open <sup class="new-tag-1">New</sup>
+## log.open
 
 This option takes in a boolean and determines whether Leaf should create the specified log file if it doesn't exist.
 

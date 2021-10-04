@@ -3,15 +3,19 @@ title: "Leaf Veins"
 ---
 
 <!-- markdownlint-disable no-inline-html -->
-# 🥒 Leaf Veins
+# Leaf Veins
 
-Leaf Veins templating engine is the official templating engine of Leaf PHP. It focuses on keeping things simple and elegant. For those who have used **Smarty** before, this will be really easy to get used to.
+Leaf Veins templating engine is the very first templating engine that was shipped in the first version of Leaf PHP. It focuses on keeping things simple and elegant. For those who have used **Smarty** before, this will be really easy to get used to.
 
 Remember, all vein files end with `.vein.php`
 
-In v2.1.x veins has been seperated from the main leaf framework. If you want to use veins in your app, you can install it with
+::: tip
+Leaf veins is still being maintained and will continue to receive updates.
+:::
 
-```bash
+To add veins to your project simply run the command:
+
+```sh
 composer require leafs/veins
 ```
 

@@ -114,7 +114,7 @@ This is a list of all supported validate rules
 
 **Note that these rules aren't case-sensitive, so you can type them anyway you prefer, as long as the spelling is the same.**
 
-### rule <sup class="new-tag-1">New</sup>
+### rule
 
 Not every project is the same, as such, you might need validation rules which are not available by default in leaf. As such, the `rule` method has been created to give you leeway to write your own validation rules.
 
@@ -152,7 +152,7 @@ Form::rule("required", function ($field, $value) {
 
 This example doesn't take in any parameters.
 
-### supportedRules <sup class="new-tag-1">New</sup>
+### supportedRules
 
 You can also get all the supported rules. This includes custom rules you've created.
 
