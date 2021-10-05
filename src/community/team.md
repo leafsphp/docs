@@ -8,7 +8,7 @@ Meet our highly motivated and community driven core team.
 <br/>
 <br/>
 
-If you're interested in maintaining Leaf, our modules or any leaf package or the official documentation, please send an email to `mickdd22@gmail.com`
+If you're interested in maintaining Leaf, our modules or any leaf package or the official documentation, please send an email to `mickdd22@gmail.com` or text us on twitter `@leafphp`
 
 <br/>
 <br/>

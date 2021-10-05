@@ -14,7 +14,7 @@ Our [Code of Conduct](/coc) is a guide to make it easier to enrich all of us and
 
 - [Forum](https://github.com/leafsphp/leaf/discussions/57): The best place to ask questions and get answers about Leaf and its ecosystem.
 - [Discord server](https://discord.gg/Pkrm9NJPE3): A place for Leaf devs to meet and chat in real time.
-- [GitHub](https://github.com/leafphp/leaf): If you have a bug to report or feature to request, that's what the GitHub issues are for. We also welcome pull requests!
+- [GitHub](https://github.com/leafsphp/leaf): If you have a bug to report or feature to request, that's what the GitHub issues are for. We also welcome pull requests!
 
 ## What You Can Do
 

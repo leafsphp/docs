@@ -5,9 +5,7 @@ const sidebar = {
       collapsable: false,
       children: [
         '/codelabs/',
-        '/codelabs/editable-svg-icons',
-        '/codelabs/debugging-in-vscode',
-        '/codelabs/automatic-global-registration-of-base-components'
+        '/codelabs/template',
       ]
     }
   ],
@@ -143,13 +141,16 @@ module.exports = {
       'link',
       {
         rel: 'icon',
-        href: '/logo-circle.png',
+        href: '/logo-circle.png'
       }
     ],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    [
+      'meta',
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    ],
     [
       'meta',
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
@@ -222,7 +223,7 @@ module.exports = {
               {
                 text: 'Join',
                 link: '/community/join/'
-              },
+              }
             ]
           },
           {
@@ -235,15 +236,15 @@ module.exports = {
               {
                 text: 'Leaf Modules',
                 link: '/modules/'
-              },
+              }
             ]
           }
         ]
       },
       {
         text: 'Support Leaf',
-        link: '/support/',
-      },
+        link: '/support/'
+      }
     ],
     repo: 'leafsphp/docs',
     editLinks: true,
@@ -257,7 +258,7 @@ module.exports = {
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,
-      '/cli/': sidebar.cli,
+      '/cli/': sidebar.cli
     },
     smoothScroll: true,
     algolia: {
@@ -265,9 +266,15 @@ module.exports = {
       appId: '',
       apiKey: ''
     },
-    topBanner: true,
+    topBanner: true
   },
   plugins: [
+    [
+      '@vuepress/google-analytics',
+      {
+        ga: 'UA-150463804-1'
+      }
+    ],
     [
       '@vuepress/last-updated',
       {

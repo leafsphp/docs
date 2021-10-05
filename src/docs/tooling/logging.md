@@ -66,10 +66,12 @@ Leaf\Config::set("log.dir", __DIR__ . "/logs/");
 You can also specify the name of the file to save the log to:
 
 ```php
-Leaf\Config::set("log.file", Leaf\Date::now() . "_crash_logs.log");
+Leaf\Config::set("log.file", getDateToday() . "_crash_logs.log");
 ```
 
 This line above will create a new log file for every day there's a log.
+
+> `getDateToday` is a custom function that returns the date for a specific day.
 
 ## How to log data
 
