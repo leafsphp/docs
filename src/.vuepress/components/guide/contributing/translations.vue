@@ -184,7 +184,7 @@ export default {
 @import "@theme/styles/_settings.scss";
 
 .load-cell {
-  background: #f6f8fa;
+  background: $dark;
   text-align: center;
 
   button {
