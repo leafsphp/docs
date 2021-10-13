@@ -235,7 +235,7 @@ module.exports = {
               },
               {
                 text: 'Leaf Modules',
-                link: '/modules/'
+                link: '/docs/modules/'
               }
             ]
           }
