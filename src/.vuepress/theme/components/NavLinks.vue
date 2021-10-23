@@ -149,14 +149,14 @@ export default {
       border 1px solid #082936
 
     span, li, a
-      color #cacaca !important
+      color #fff !important
 
     &:first-child
       margin-left 0
 
   .repo-link
     margin-left 1.5rem
-    color #cacaca !important
+    color #fff !important
 
 @media (max-width: $MQMobile)
   .nav-links
