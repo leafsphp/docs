@@ -112,22 +112,16 @@ You can install skeleton through composer.
 composer create-project leafs/skeleton <project-name>
 ```
 
-<!-- ## Leaf CLI
+## Leaf CLI
 
-Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes less than a minute to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.org) for more details.
-
-```sh
-composer global require leafs/cli
-```
-
-After this, start your leaf project with:
+Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/cli/) for more details.
 
 ```sh
-leaf init <project-name> --version 3 --dev
+leaf create <project-name> --v3
 ```
 
 You can also install modules using the following syntax:
 
 ```sh
-leaf install --module cors
-``` -->
+leaf install cors
+```

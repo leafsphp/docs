@@ -5,24 +5,25 @@ title: "Basic routing"
 # Routing
 <!-- markdownlint-disable no-inline-html -->
 
-<p class="alert -info">
-  Leaf v2.5.0 introduces Leaf router version 2.
-  <a href="/#/leaf/v/2.5.0/routing/new">See what's new</a>
-</p>
+::: info
+Leaf router is now separated from Leaf and is now available as an installable module via composer.
+:::
 
-As explained [before](leaf/v/2.5.0/intro/htaccess), Leaf uses a single root file, to which all the server requests are redirected. Leaf then takes these requests and matches them to rules you have defined. The results are then displayed to the user. It's actually a very simple concept.
+Leaf router uses a single root file, to which all the server requests are redirected, it then takes these requests and matches them to rules you have defined. The results are then displayed to the user. It's actually a very simple concept.
 
-The router module is tied directly to Leaf Core, so once you initialize leaf, you can use routing
+The router module is tied directly to Leaf Core, so once you initialize leaf, you can use routing.
 
-```php
-$app = new Leaf\App;
+Note that you can now use Leaf router outside of a leaf app. To do this, simply install the leaf router module:
+
+```sh
+composer require leafs/router
 ```
+
+After this, you can use all of leaf router's functionality with the router class below.
 
 ## Router class
 
-V2.5.0 introduces version 2 of the Leaf router which comes with bug fixes, usability improvements and a ton of new features with almost no change in it's API. This means you can use Leaf router as you've always used it but also enjoy a smoother ride and new features too.
-
-***Issues generated from using Router methods staticly in v2.5.0-beta have all been resolved. With that, we guarantee 100% backward compatibility with previous versions' routers.***
+The router class is the interface you interact with to perform any routing actions in your app. Leaf core directly integrates with the router class, which means that there is no need to use this class directly, if however, you are using leaf router outside of leaf, you will need to use the router class itself.
 
 ```php
 use Leaf\Router;
@@ -32,9 +33,9 @@ Router::get("/", "PagesController@index");
 Router::run();
 ```
 
-## Using a different router
+## Using a different router in Leaf
 
-Although Leaf provides you with a default router, you are free to import and use any router you want.
+Although Leaf integrates leaf router directly, you are free to import and use any router you want.
 
 1. Install whatever you want
 
@@ -45,20 +46,33 @@ composer require imaginary/router
 2. Import and use it in your project
 
 ```php
-$app = new Leaf\App;
-
 // initialise imaginary router
 $imr = new Imaginary\Router();
 
-$imr->get("/", function() use($app) {
+$imr->get("/", function() {
   // you can still use leaf modules
-  $app->response()->json(["title" => "hello"]);
+  response()->json(["title" => "hello"]);
 });
 ```
 
 ## Creating Routes
 
-Back to the default router config, You can define application routes using proxy methods on the Leaf\App instance. Leaf supports different types of requests, let's look at them.
+::: warning IMPORTANT
+From this point onwards, we will assume that you are using Leaf router inside a leaf app, as such, we will use the app syntax:
+
+```php
+app()->get('/', function() {...});
+```
+
+If however, you are using leaf router outside leaf, simply change `app()`/`$app` to the router class:
+
+```php
+Router::get('/', function() {...});
+```
+
+:::
+
+You can define application routes using proxy methods on the Leaf\App instance. Leaf supports different types of requests, let's look at them.
 
 ### GET
 

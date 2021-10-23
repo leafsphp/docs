@@ -51,27 +51,27 @@ Hooks basically allow you to hook into Leaf router and execute a callback at a g
 
 There are 6 hooks that you can now use with Leaf router listed below in execution order:
 
-#### router.before
+#### `router.before`
 
 This hook runs before Leaf router begins any operations, even before app middleware are triggered.
 
-#### router.before.route
+#### `router.before.route`
 
 This hook runs just after the app middleware have run, just before the route specific middleware.
 
-#### router.before.dispatch
+#### `router.before.dispatch`
 
 This hook runs just before routes are dispatched.
 
-#### router.after.dispatch
+#### `router.after.dispatch`
 
 This hook runs just after routes are dispatched.
 
-#### router.after.route
+#### `router.after.route`
 
 This hook runs after Leaf router has finished up with routing and cleaning up, just before the execution of internal code.
 
-#### router.after
+#### `router.after`
 
 This hook runs when leaf completely finishes route execution and cleans up on the internal code as well. This is the last thing Leaf router does before exiting.
 
@@ -109,7 +109,15 @@ The example above makes sure that every response gets sent with a `202 Accepted`
 
 ### App middleware
 
+::: warning
+If you are using leaf router outside of leaf, we suggest you use router hooks or before router middleware above.
+:::
+
 App middleware which are created using `Leaf\Middleware` have also received a lot of fixes which make them easier and faster to use.
+
+::: danger NOTE
+Router `add` had been renamed to `use`. This means that you will be using `use` to load your middleware instead.
+:::
 
 ```php
 // usually in a different file
@@ -125,5 +133,5 @@ class Test extends Leaf\Middleware
 
 $app = new Leaf\App;
 
-$app->add(new Test);
+$app->use(new Test);
 ```

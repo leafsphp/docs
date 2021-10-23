@@ -6,10 +6,17 @@ Modules are framework/library agnostic, which means that they'll work just about
 
 Modules can be quickly installed through composer or the leaf CLI with a single command.
 
+## Why modules?
+
+The biggest question people ask with Leaf 3 is why we decided to switch to modules, stripping leaf of almost all it's code.
+
+[@mychidarko](https://github.com/mychidarko) put an article together on why we decided to switch to modules instead of maintaining the whole code together. We also have a [GitHub discussion](https://github.com/leafsphp/leaf/discussions/70) introducing leaf 3 and everything you need to know about it, we explain modules further here.
+
 ## List of available modules
 
 | Project                | Status                                                                                                                                                                                                                                                         | Description                                                       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [router](/docs/routing/) | [![Latest Stable Version](https://poser.pugx.org/leafs/router/v/stable)](https://packagist.org/packages/leafs/router) [![Total Downloads](https://poser.pugx.org/leafs/router/downloads)](https://packagist.org/packages/leafs/router) | Router module for leaf PHP                                |
 | [experiments](/docs/modules/experiments/) | [![Latest Stable Version](https://poser.pugx.org/leafs/experimental/v/stable)](https://packagist.org/packages/leafs/experimental) [![Total Downloads](https://poser.pugx.org/leafs/experimental/downloads)](https://packagist.org/packages/leafs/experimental) | collection of experimental modules                                |
 | [mail](/docs/modules/mail)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/mail/v/stable)](https://packagist.org/packages/leafs/mail) [![Total Downloads](https://poser.pugx.org/leafs/mail/downloads)](https://packagist.org/packages/leafs/mail)                                 | Mailing made easy with leaf                                       |
 | [auth](/docs/modules/auth)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/auth/v/stable)](https://packagist.org/packages/leafs/auth) [![Total Downloads](https://poser.pugx.org/leafs/auth/downloads)](https://packagist.org/packages/leafs/auth)                                 | Simple but powerful authentication system for your apps           |
