@@ -1,6 +1,6 @@
 <template>
   <div
-    class="theme-container -light"
+    class="theme-container"
     :class="pageClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
@@ -72,6 +72,19 @@ export default {
     return {
       showTopBanner: false,
       isSidebarOpen: false,
+    }
+  },
+
+  beforeMount() {
+    const darkMode = window.localStorage["isDark"];
+    const body = document.body;
+
+    console.log(darkMode);
+
+    if (darkMode === "true") {
+      body.classList.remove("-light");
+    } else {
+      body.classList.add("-light");
     }
   },
 
@@ -168,7 +181,11 @@ export default {
 </script>
 
 <style lang="scss">
-.theme-container.-light {
+* {
+  transition: ease background .4s;
+}
+
+body.-light {
   background-color: white !important;
   color: rgb(89, 89, 97);
 

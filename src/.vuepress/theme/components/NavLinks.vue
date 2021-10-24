@@ -16,7 +16,8 @@
     <a target="_blank" href="https://twitter.com/leafphp" class="nav-item">
       <Twitter class="nav-item icon-container" h="23" w="23" />
     </a>
-    <Moon class="nav-item icon-container" h="23" w="23" />
+    <Moon v-if="!isDark" @click.native="toggleMode" class="nav-item icon-container" h="23" w="23" />
+    <Sun v-else @click.native="toggleMode" class="nav-item icon-container" h="23" w="23" />
   </nav>
 </template>
 
@@ -27,6 +28,7 @@ import NavLink from '@theme/components/NavLink.vue'
 import GitHub from 'vue-ionicons/dist/js/logo-github'
 import Twitter from 'vue-ionicons/dist/js/logo-twitter'
 import Moon from 'vue-ionicons/dist/js/ios-moon'
+import Sun from 'vue-ionicons/dist/js/ios-sunny'
 
 export default {
   name: 'NavLinks',
@@ -37,6 +39,31 @@ export default {
     GitHub,
     Twitter,
     Moon,
+    Sun
+  },
+
+  data() {
+    return {
+      isDark: false,
+    };
+  },
+
+  methods: {
+    toggleMode() {
+      const body = document.body;
+      const isLight = Array(...body.classList).includes("-light");
+      console.log(window.localStorage["isDark"]);
+      window.localStorage["isDark"] = isLight;
+      this.isDark = isLight;
+
+      console.log(isLight, window.localStorage["isDark"]);
+
+      if (isLight) {
+        body.classList.remove("-light");
+      } else {
+        body.classList.add("-light");
+      }
+    },
   },
 
   computed: {

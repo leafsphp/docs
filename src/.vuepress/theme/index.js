@@ -11,7 +11,7 @@ module.exports = (options, ctx) => {
       base => themeConfig.locales[base].algolia
     )
 
-  const enableSmoothScroll = themeConfig.smoothScroll === true
+  const enableSmoothScroll = themeConfig.smoothScroll === true;
 
   return {
     alias() {

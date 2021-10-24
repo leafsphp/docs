@@ -44,8 +44,6 @@ export default {
     const displayAllHeaders = ($themeLocaleConfig.displayAllHeaders
       || $themeConfig.displayAllHeaders)
 
-      console.log(link, type);
-
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
