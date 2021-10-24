@@ -9,7 +9,7 @@
     <a
       target="_blank"
       href="https://github.com/leafsphp/leaf/tree/v3.x-dev"
-      class="nav-item"
+      class="nav-item github-link"
     >
       <GitHub class="icon-container" h="23" w="23" />
     </a>

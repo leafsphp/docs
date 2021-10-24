@@ -24,6 +24,7 @@
         'max-width': linksWrapMaxWidth + 'px'
       } : {}"
     >
+      <NavLinks class="can-hide" />
       <SearchBox
         v-if="
           isAlgoliaSearch === false &&
@@ -33,7 +34,6 @@
             )
         "
       />
-      <NavLinks class="can-hide" />
       <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
     </div>
   </header>
@@ -139,6 +139,8 @@ $navbar-horizontal-padding = 1.5rem;
     display: flex;
 
     .search-box {
+      margin-left: 15px;
+      margin-right: -5px;
       flex: 0 0 auto;
       vertical-align: top;
     }
