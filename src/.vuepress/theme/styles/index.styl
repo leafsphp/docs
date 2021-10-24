@@ -42,8 +42,33 @@ body
   backdrop-filter: blur(5px);
   // border-bottom 1px solid lighten(rgb(0, 30, 38), 2%);
 
-  .home-link span
-    color $textColorPrimary !important
+  .site-name
+    display flex
+    justify-content center
+    align-items center
+
+    .theme-text
+      color $accentColor !important
+      font-weight 600
+
+  small.beta-badge
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background rgb(37,84,97)
+    color white
+    font-size: 0.75rem;
+    border-radius 5px
+    margin-left 10px
+    height 20px
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .home-link
+    display flex
+
+    span
+      color $textColorPrimary !important
 
   .links
     color $textColorPrimary

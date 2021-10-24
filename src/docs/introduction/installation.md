@@ -31,6 +31,7 @@ After insalling Leaf, you need to create your index.php file which will be the e
 
 ```php
 <?php
+
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {

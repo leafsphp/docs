@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
 {$contentClass}
   code
     color $accentColor
@@ -17,10 +19,11 @@
     line-height 1.4
     padding 1.25rem 1.5rem
     margin 0.85rem 0
-    background-color rgb(38, 50, 56)
+    background-color rgb(1, 42, 53)
     border-radius 6px
     overflow auto
     code
+      font-family DM Mono !important
       color: #d4d4d6;
       padding 0
       background-color transparent
@@ -28,11 +31,11 @@
 
 div[class*="language-"]
   position relative
-  background-color rgb(38, 50, 56)
+  background-color rgb(1, 42, 53)
   border-radius 6px
   .highlight-lines
     border-radius 6px
-    background-color rgb(38, 50, 56)
+    background-color rgb(1, 42, 53)
     color #3a385d
     user-select none
     padding-top 1.3rem
@@ -42,7 +45,7 @@ div[class*="language-"]
     width 100%
     line-height 1.4
     .highlighted
-      background-color rgb(28, 35, 40)
+      background-color lighten(rgb(1, 42, 53), 10%)
   pre, pre[class*="language-"]
     background transparent
     position relative
@@ -69,7 +72,7 @@ div[class*="language-"]
           display block
           width $lineNumbersWrapperWidth
           height 100%
-          background-color rgb(28, 35, 40)
+          background-color lighten(rgb(1, 42, 53), 10%)
     pre
       padding-left $lineNumbersWrapperWidth + 1 rem
       vertical-align middle
@@ -78,7 +81,7 @@ div[class*="language-"]
       top 0
       width $lineNumbersWrapperWidth
       text-align center
-      color rgba(255, 255, 255, 0.3)
+      color rgba(255, 255, 255, 1)
       padding 1.25rem 0
       line-height 1.4
       br
@@ -98,7 +101,7 @@ div[class*="language-"]
       height 100%
       border-radius 6px 0 0 6px
       border-right 1px solid rgba(0, 0, 0, 66%)
-      background-color rgb(38, 50, 56);
+      background-color rgb(1, 42, 53);
 
 
 for lang in $codeLang
@@ -146,7 +149,7 @@ div[class~="language-php"]
     content "php"
 
   .token.variable
-    color rgb(224, 78, 97)
+    color #fff
 
 div.reactivecontent
   width 1000px
@@ -158,22 +161,22 @@ div.reactivecontent
   color rgb(146, 153, 166) !important
 
 .token.tag, .token.attr-name, .token.namespace, .token.deleted
-  color #f2085f
+  color #fff
 
 .token.string, .token.char, .token.attr-value, .token.regex, .token.variable
-  color rgb(135, 195, 111)
+  color #BEF264
 
 .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin
-  color rgb(195, 119, 216)
+  color #E879F9
 
 .token.keyword
   font-style: italic !important
 
 .token.boolean, .token.number, .token.function
-  color rgb(97, 175, 239)
+  color #22D3EE
 
 .token.property, .token.class-name, .token.constant, .token.symbol
-  color #c08b30;
+  color #fff;
 
 .token.operator, .token.entity, .token.url
   color #0b7e7d
@@ -182,7 +185,7 @@ div.reactivecontent
   color rgb(146, 153, 166)
 
 div[class*=language-].line-numbers-mode .line-numbers-wrapper, div[class*=language-].line-numbers-mode:after
-  background-color rgb(38, 50, 56);
+  background-color rgb(1, 42, 53);
   color lighten($textColorSecondary, 10%)
   border-right 1px solid darken($textColorSecondary, 10%);
   border-top-left-radius 6px

@@ -10,11 +10,12 @@
         :alt="$siteTitle"
       />
       <span
-        v-if="$siteTitle"
         ref="siteName"
         class="site-name"
         :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
+      >
+        Leaf<span class="theme-text">3</span> <small class="beta-badge">dev</small>
+      </span>
     </RouterLink>
 
     <div
