@@ -179,6 +179,20 @@ module.exports = {
     [
       'script',
       {
+        src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js',
+        type: 'module'
+      }
+    ],
+    [
+      'script',
+      {
+        src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js',
+        nomodule: "nomodule"
+      }
+    ],
+    [
+      'script',
+      {
         src: 'https://extend.vimeocdn.com/ga/72160148.js',
         defer: 'defer'
       }

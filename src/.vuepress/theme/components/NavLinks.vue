@@ -5,6 +5,18 @@
       <DropdownLink v-if="item.type === 'links'" :item="item" />
       <NavLink v-else :item="item" />
     </div>
+
+    <a
+      target="_blank"
+      href="https://github.com/leafsphp/leaf/tree/v3.x-dev"
+      class="nav-item"
+    >
+      <GitHub class="icon-container" h="23" w="23" />
+    </a>
+    <a target="_blank" href="https://twitter.com/leafphp" class="nav-item">
+      <Twitter class="nav-item icon-container" h="23" w="23" />
+    </a>
+    <Moon class="nav-item icon-container" h="23" w="23" />
   </nav>
 </template>
 
@@ -12,13 +24,19 @@
 import DropdownLink from '@theme/components/DropdownLink.vue'
 import { resolveNavLinkItem } from '../util'
 import NavLink from '@theme/components/NavLink.vue'
+import GitHub from 'vue-ionicons/dist/js/logo-github'
+import Twitter from 'vue-ionicons/dist/js/logo-twitter'
+import Moon from 'vue-ionicons/dist/js/ios-moon'
 
 export default {
   name: 'NavLinks',
 
   components: {
     NavLink,
-    DropdownLink
+    DropdownLink,
+    GitHub,
+    Twitter,
+    Moon,
   },
 
   computed: {
@@ -35,7 +53,7 @@ export default {
         const languageDropdown = {
           text: this.$themeLocaleConfig.selectText || 'Languages',
           ariaLabel: this.$themeLocaleConfig.ariaLabel || 'Select language',
-          items: Object.keys(locales).map(path => {
+          items: Object.keys(locales).map((path) => {
             const locale = locales[path]
             const text =
               (themeLocales[path] && themeLocales[path].label) || locale.lang
@@ -47,12 +65,12 @@ export default {
               // Try to stay on the same page
               link = currentLink.replace(this.$localeConfig.path, path)
               // fallback to homepage
-              if (!routes.some(route => route.path === link)) {
+              if (!routes.some((route) => route.path === link)) {
                 link = path
               }
             }
             return { text, link }
-          })
+          }),
         }
         return [...this.userNav, languageDropdown]
       }
@@ -60,9 +78,9 @@ export default {
     },
 
     userLinks() {
-      return (this.nav || []).map(link => {
+      return (this.nav || []).map((link) => {
         return Object.assign(resolveNavLinkItem(link), {
-          items: (link.items || []).map(resolveNavLinkItem)
+          items: (link.items || []).map(resolveNavLinkItem),
         })
       })
     },
@@ -91,62 +109,98 @@ export default {
       }
 
       return 'Source'
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="stylus">
-.nav-links
-  display inline-block
-  color $textColorPrimary !important
+.nav-links {
+  display: flex;
+  align-items: center;
+  color: $textColorPrimary !important;
 
-  .github-leaf
+  .icon-container {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 
+    svg {
+      fill: #e4e4e7;
+    }
 
-  .github
-    margin-bottom -5px
+    svg:hover {
+      fill: white;
+    }
+  }
 
-  a
-    line-height 1.4rem
-    color inherit
-    font-weight 500
+  .github {
+    margin-bottom: -5px;
+  }
 
-    &:hover, &.router-link-active
-      color $accentColor
+  a {
+    line-height: 1.4rem;
+    color: inherit;
+    font-weight: 500;
 
-  .nav-item
-    position relative
-    display inline-block
-    margin-left 1.5rem
-    line-height 2rem
+    &:hover, &.router-link-active {
+      color: $accentColor;
+    }
+  }
 
-    ul
-      background-color darken(#082936, 30%) !important
-      border 1px solid #082936
+  .nav-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 1.5rem;
+    line-height: 2rem;
 
-    span, li, a
-      color #fff !important
+    .dropdown-wrapper {
+      height: unset !important;
+    }
 
-    &:first-child
-      margin-left 0
+    ul {
+      background-color: darken(#082936, 30%) !important;
+      border: 1px solid #082936;
+    }
 
-  .repo-link
-    margin-left 1.5rem
-    color #fff !important
+    span, li, a {
+      color: #fff !important;
+    }
 
-@media (max-width: $MQMobile)
-  .nav-links
-    .nav-item, .repo-link
-      margin-left 0
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 
-@media (min-width: $MQMobile)
-  .nav-links a
-    color $textColor
-    &:hover, &.router-link-active
-      color $textColor
-  .nav-item > a:not(.external)
-    &:hover, &.router-link-active
-      margin-bottom -2px
-      border-bottom 2px solid lighten($accentColor, 8%)
+  .repo-link {
+    margin-left: 1.5rem;
+    color: #fff !important;
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .nav-links {
+    .nav-item, .repo-link {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (min-width: $MQMobile) {
+  .nav-links a {
+    color: $textColor;
+
+    &:hover, &.router-link-active {
+      color: $textColor;
+    }
+  }
+
+  .nav-item > a:not(.external) {
+    &:hover, &.router-link-active {
+      margin-bottom: -2px;
+      border-bottom: 2px solid lighten($accentColor, 8%);
+    }
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="theme-container"
+    class="theme-container -light"
     :class="pageClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
@@ -166,3 +166,90 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.theme-container.-light {
+  background-color: white !important;
+  color: rgb(89, 89, 97);
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #003543 !important;
+  }
+
+  .navbar {
+    background: rgba($color: white, $alpha: 0.8) !important;
+
+    a {
+      span {
+        color: #003543 !important;
+      }
+    }
+
+    .nav-item {
+      span, a {
+        color: #003543 !important;
+      }
+    }
+
+    .nav-dropdown {
+      background-color: white !important;
+      border-color: rgb(89, 89, 97) !important;
+    }
+
+    .dropdown-subitem-wrapper {
+      background-color: white !important;
+      border: none !important;
+    }
+
+    svg.ion__svg {
+      fill: #003543 !important;
+    }
+  }
+
+  .sidebar {
+    background: white !important;
+    color: #003543 !important;
+
+    a {
+      span {
+        color: rgb(89, 89, 97) !important;
+
+        &:hover {
+          color: #42b983 !important;
+        }
+      }
+    }
+
+    &.-left {
+      a {
+        &.active {
+          span {
+            color: #42b983 !important;
+            background: rgba($color: #42b983, $alpha: .2);
+          }
+        }
+      }
+    }
+
+    &.-right {
+      a.active {
+        span {
+          color: #42b983 !important;
+        }
+      }
+    }
+  }
+
+  code {
+    background: rgba($color: #42b983, $alpha: .1);
+  }
+
+  footer {
+    &:not(.main-footer) {
+      color: rgb(89, 89, 97) !important;
+    }
+
+    color: #fff !important;
+  }
+}
+</style>
