@@ -4,7 +4,7 @@ import { isActive, hashRE, groupHeaders } from '../util'
 export default {
   functional: true,
 
-  props: ['item', 'sidebarDepth'],
+  props: ['item', 'sidebarDepth', 'type'],
 
   render (h,
     {
@@ -17,7 +17,8 @@ export default {
       },
       props: {
         item,
-        sidebarDepth
+        sidebarDepth,
+        type
       }
     }) {
     // use custom active class matching logic
@@ -40,8 +41,10 @@ export default {
       1
     ].find(depth => depth !== undefined)
 
-    const displayAllHeaders = $themeLocaleConfig.displayAllHeaders
-      || $themeConfig.displayAllHeaders
+    const displayAllHeaders = ($themeLocaleConfig.displayAllHeaders
+      || $themeConfig.displayAllHeaders)
+
+      console.log(link, type);
 
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
@@ -73,7 +76,7 @@ function renderLink (h, to, text, active, level) {
     }
   }
 
-  return h('RouterLink', component, text)
+  return h('RouterLink', component, [h('span', {}, text)])
 }
 
 function renderChildren (h, children, path, route, maxDepth, depth = 1) {
@@ -121,7 +124,6 @@ a.sidebar-link
   &.active
     font-weight 600
     color $accentColor
-    border-left-color $accentColor
   .sidebar-group &
     padding-left 2rem
   .sidebar-sub-headers &

@@ -15,11 +15,19 @@ body
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   font-size 16px
-  background-color darken(#082936, 20%)
+  background-color rgb(0, 30, 38)
   color $textColorPrimary
 
 .page
   padding-left $sidebarWidth
+  padding-right $sidebarWidth
+
+@media (min-width: (1201px))
+  .navbar
+    padding-left 100px !important
+
+    .links
+      margin-right 100px !important
 
 .navbar
   position fixed
@@ -28,23 +36,24 @@ body
   left 0
   right 0
   height $navbarHeight
-  background-color darken(#082936, 30%)
+  background rgba(0, 30, 38, 0.8)
   color $textColorPrimary
   box-sizing border-box
-  border-bottom 1px solid $textColorSecondary
+  backdrop-filter: blur(5px);
+  // border-bottom 1px solid lighten(rgb(0, 30, 38), 2%);
 
   .home-link span
     color $textColorPrimary !important
 
   .links
     color $textColorPrimary
-    background-color darken(#082936, 30%) !important
+    background: transparent !important;
 
     .search-box
-      background-color darken(#082936, 30%) !important
+      background-color transparent !important;
 
       input
-        background-color darken(#082936, 30%) !important
+        background-color transparent !important;
         color $textColorPrimary
 
 html.with-beta-banner
@@ -71,11 +80,65 @@ hr
   z-index 10
   margin 0
   top 3.6rem
-  left 0
   bottom 0
   box-sizing border-box
-  border-right 1px solid lighten($textColorSecondary, 2%)
+  // border-right 1px solid lighten(rgb(0, 30, 38), 2%)
   overflow-y auto
+
+.sidebar.-left
+  left 0
+  padding-left 100px
+
+  .sidebar-sub-headers
+    display none !important
+
+  .sidebar-link.active
+    span
+      background: rgb(1, 42, 53);
+      width: 200px;
+      border-radius: 5px;
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+      margin-left -0.5rem
+
+@media (max-width: (1200px))
+  #twitter-widget-0
+    display none !important
+
+  .sidebar.-right
+    display none !important
+
+  .sidebar.-left
+    padding-left unset !important
+    width 220px
+
+  .page
+    padding-right unset !important
+    padding-left 220px !important
+
+@media (max-width: ($MQMobile + 1px))
+  .page
+    padding-left unset !important
+
+.sidebar.-right
+  right 0 !important
+
+  h4
+    margin-left 40px
+
+  .sidebar-heading
+    display none
+
+  .sidebar-links
+    margin-top -15px
+
+  .is-sub-group.depth-1
+    ul:not(.sidebar-sub-headers)
+      > li
+        > a:not(.active)
+          display none !important
 
 html.with-beta-banner
   .sidebar

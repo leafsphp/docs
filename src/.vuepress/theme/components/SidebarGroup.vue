@@ -48,6 +48,7 @@
         :items="item.children"
         :sidebar-depth="item.sidebarDepth"
         :depth="depth + 1"
+        :type="type"
       />
     </DropdownTransition>
   </section>
@@ -68,7 +69,8 @@ export default {
     'item',
     'open',
     'collapsable',
-    'depth'
+    'depth',
+    'type'
   ],
 
   // ref: https://vuejs.org/v2/docs/components-edge-cases.html#Circular-References-Between-Components

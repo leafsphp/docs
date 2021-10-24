@@ -12,12 +12,12 @@
         :item="item"
         :open="i === openGroupIndex"
         :collapsable="item.collapsable || item.collapsible"
-        :depth="depth"
+        :depth="type === 'right' ? 1 : depth"
         @toggle="toggleGroup(i)"
       />
       <SidebarLink
         v-else
-        :sidebar-depth="sidebarDepth"
+        :sidebar-depth="type === 'right' ? 1 : sidebarDepth"
         :item="item"
       />
     </li>
@@ -37,7 +37,8 @@ export default {
   props: [
     'items',
     'depth',  // depth of current sidebar links
-    'sidebarDepth' // depth of headers to be extracted
+    'sidebarDepth', // depth of headers to be extracted,
+    'type',
   ],
 
   data () {

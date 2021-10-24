@@ -30,6 +30,20 @@
         <slot name="page-bottom" />
       </template>
     </Page>
+
+    <Aside
+      v-if="!$page.frontmatter.home"
+      :items="sidebarItems"
+      @toggle-sidebar="toggleSidebar"
+      type="right"
+    >
+      <template #top>
+        <slot name="sidebar-top" />
+      </template>
+      <template #bottom>
+        <slot name="sidebar-bottom" />
+      </template>
+    </Aside>
   </div>
 </template>
 
@@ -38,6 +52,7 @@ import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
+import Aside from '@theme/components/Aside.vue'
 import BannerTop from '@theme/components/BannerTop.vue'
 import { resolveSidebarItems } from '../util'
 
@@ -48,6 +63,7 @@ export default {
     Home,
     Page,
     Sidebar,
+    Aside,
     Navbar,
     BannerTop,
   },
@@ -55,7 +71,7 @@ export default {
   data() {
     return {
       showTopBanner: false,
-      isSidebarOpen: false
+      isSidebarOpen: false,
     }
   },
 
@@ -94,7 +110,10 @@ export default {
     },
 
     shouldShowBanner() {
-      return this.$page.frontmatter.home && (this.$site.themeConfig.topBanner || false)
+      return (
+        this.$page.frontmatter.home &&
+        (this.$site.themeConfig.topBanner || false)
+      )
     },
 
     pageClasses() {
@@ -104,9 +123,9 @@ export default {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
           'no-sidebar': !this.shouldShowSidebar,
-          'has-top-banner': this.shouldShowBanner
+          'has-top-banner': this.shouldShowBanner,
         },
-        userPageClass
+        userPageClass,
       ]
     },
   },
@@ -129,7 +148,7 @@ export default {
     onTouchStart(e) {
       this.touchStart = {
         x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY
+        y: e.changedTouches[0].clientY,
       }
     },
 
@@ -143,7 +162,7 @@ export default {
           this.toggleSidebar(false)
         }
       }
-    }
-  }
+    },
+  },
 }
 </script>

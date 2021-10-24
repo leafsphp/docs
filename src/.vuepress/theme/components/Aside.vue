@@ -1,10 +1,7 @@
 <template>
   <aside :class="`sidebar -${type || 'left'}`">
-    <NavLinks />
-
-    <slot name="top" />
-
-    <SidebarLinks :depth="0" :type="type || 'left'" :items="items" />
+    <h4>Table of contents</h4>
+    <SidebarLinks :depth="1" type="right" :items="items" />
     <slot name="bottom" />
   </aside>
 </template>
@@ -14,7 +11,7 @@ import SidebarLinks from '@theme/components/SidebarLinks.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
 
 export default {
-  name: 'Sidebar',
+  name: 'Aside',
 
   components: { SidebarLinks, NavLinks },
 
