@@ -1,4 +1,4 @@
-# Introduction
+# Introduction <Badge text="New" />
 
 Modules are a new feature added in Leaf 3 which basically takes parts of Leaf and separates them into installable chunks which can be used both inside and outside of Leaf.
 
@@ -12,7 +12,25 @@ The biggest question people ask with Leaf 3 is why we decided to switch to modul
 
 [@mychidarko](https://github.com/mychidarko) put an article together on why we decided to switch to modules instead of maintaining the whole code together. We also have a [GitHub discussion](https://github.com/leafsphp/leaf/discussions/70) introducing leaf 3 and everything you need to know about it, we explain modules further here.
 
+## Installing modules
+
+Modules are always published on composer and can be installed through composer CLI or the leaf CLI.
+
+**Composer:**
+
+```sh
+composer require leafs/<module-name>
+```
+
+**Leaf CLI:**
+
+```sh
+leaf install <module-name>
+```
+
 ## List of available modules
+
+*This list is still being updated, you can keep checking for updates.*
 
 | Project                | Status                                                                                                                                                                                                                                                         | Description                                                       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |

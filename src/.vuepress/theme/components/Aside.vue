@@ -85,6 +85,9 @@ export default {
     *:not(:first-child)
       margin-top: 20px
 
+.sidebar.-right
+  padding-bottom: 50px
+
 @media (max-width: $MQMobile)
   .sidebar
     .nav-links

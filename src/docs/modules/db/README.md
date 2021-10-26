@@ -2,7 +2,7 @@
 title: "Leaf Db"
 ---
 
-# Leaf Db
+# 💽 Leaf Db
 <!-- markdownlint-disable no-inline-html -->
 
 Leaf Db is a new lightweight but powerful query builder which allows you quickly write dynamic queries, validate and perform operations on the data in just a single line of code.
@@ -13,9 +13,15 @@ You can install Leaf Db with composer:
 composer require leafs/db
 ```
 
+Or with leaf CLI:
+
+```sh
+leaf install db
+```
+
 From there, you can link your database and start writing some awesome queries.
 
-## 😵 Db Connection
+## Db Connection
 
 The first thing to always do is to connect to your database. Since all db operations are performed on the database, you can't do without it.
 
@@ -60,7 +66,7 @@ $db = new Leaf\Db;
 $db->autoConnect();
 ```
 
-## ❔ Queries
+## Queries
 
 ### Making simple queries
 
@@ -92,7 +98,7 @@ $db->select("users")->where("id", "1")->fetchObj();
 
 This is what Leaf Db does for you. A new way to write your Database queries without actually needing to write any real queries. Also, unlike other query builders, there's no need to create classes and models for every table you want to fetch from. Everything's accessible with one line of code.
 
-### 🖐 select
+## select
 
 As you saw in the example above, `select` makes writing select statements really simple.
 
@@ -174,6 +180,10 @@ $items = $db->select("items")
 ### orLike
 
 This is an alias for `orWhereLike`. So you can use `orLike` instead of `orWhereLike`
+
+## Getting your data
+
+After the query is run, the data is returned to leaf db. You can use the methods below to retrieve that data.
 
 ### fetchAll
 
@@ -257,6 +267,8 @@ $user = $db->select("users")->where("id", "1")->fetchAssoc();
 $user["id"]; // not $user->id
 ```
 
+## Table operations
+
 ### table
 
 `table` sets the table pointer for the db table being used. `table` can be combined with other methods like `search`.
@@ -275,7 +287,7 @@ $res = $db->table("items")->search("name", "chocola");
 
 This will try to find an item which has chocola in it's name field.
 
-### 📩 insert
+## insert
 
 `Insert` provides a much simpler syntax for making insert queries.
 
@@ -320,7 +332,7 @@ $db->insert("users")
 
 What if you already registered someone with the username mychi, this tiny flaw could break your authentication system. That's where `unique` comes in🧐
 
-### 🤞 unique
+### unique
 
 Just as the name implies, `unique` helps prevent duplicates in your database, fun fact, just chain one more method for this functionality🤗
 
@@ -347,7 +359,7 @@ Alternatively, you could just pack a truck load full of uniques in an array
 ->unique(["username", "email", "what-not", ...])
 ```
 
-### 📅 update
+## update
 
 Quickly write an update query.
 
@@ -357,7 +369,9 @@ $db->update("users")->params("location", "Ghana")->where("id", "1")->execute();
 
 This is generally how an update looks like. Just like with insert, you can add up uniques to make sure you don't have duplicates in your database.
 
-### ❌ delete
+**you can chain in unique here as well.**
+
+## delete
 
 Let's jump straight in for an example.
 
@@ -373,13 +387,13 @@ $db->delete("users")->where("id", "1")->execute();
 
 You have succesfully deleted user 1
 
-### 🌾 Extras
+## Extras
 
 At this point, there's still a whole lot you can do with Leaf Db.
 
 There are times when you have to insert data you don't know about. What happens if your user enters unsupported info. To fix this, you'll have to run a bunch of checks to find out what kind of information is being saved, but what if you could validate data before saving without writing any extensive validation? Well...prepare to be amazed🧐
 
-#### ⚖ validate
+### validate
 
 Validate makes sure that correct information is saved in your database. You simply need to chain the `validate` method.
 
@@ -394,7 +408,7 @@ $db->insert("users")
    ->execute();
 ```
 
-Validate takes in 2 parameters, a field to validate and a validation rule. You can find all the validation rules and what they do [here](leaf/v/2.5.0/core/forms?id=multiple-rule-validation). So what if you need to validate more than 1 parameter?
+Validate takes in 2 parameters, a field to validate and a validation rule. You can find all the validation rules and what they do [here](/docs/modules/forms/#multiple-rule-validation). So what if you need to validate more than 1 parameter?
 
 ```php
 $db->insert("users")
@@ -412,7 +426,7 @@ $db->insert("users")
 
 Amazing right?!
 
-#### 👻 hidden
+### hidden
 
 Not all information which is retrieved from the database is sent over to the client side or is added to the session or cookies. Usually, some fields are left out for "security" reasons. `hidden` returns the retrieved data without the `hidden` fields.
 
@@ -424,9 +438,13 @@ $db->select("users")->hidden("remember_token", "reset_q_id")->fetchAll();
 $db->select("users")->where("id", "1")->hidden("remember_token", "reset_q_id")->fetchObj();
 ```
 
-#### ➕ add
+### add
 
 That's right, just imagine doing the opposite of `hidden`, instead of hiding fields from the query data, `add` lets you add your own fields into the query data.
+
+::: tip NOTE
+This does not touch your database, it only appends a field into the data returned from the database.
+:::
 
 ```php
 $db->select("users")->add("tx_id", gID())->fetchAll();
@@ -440,13 +458,9 @@ $db->select("users")->where("id", "1")->add("tx_id", "d362d7t2366")->fetchObj();
 
 This is similar as the query above, except that this query is on the scale of a single user.
 
-#### bind
+### bind
 
 We've already seen `bind` in action, but we've not actually talked about it. This method allows you to bind parameters into your query.
-
-<p class="alert -error">
-  From v2.4-beta, <b>bind</b> no longer takes in the param binding type.
-</p>
 
 ```php
 $db->select("users WHERE username = ?")->bind("mychi")->fetchAssoc();
@@ -464,7 +478,7 @@ You can just pass multiple parameters into bind, as many as satisfy your query. 
 $db->select("users WHERE username = ? AND password = ?")->bind(["mychi", "password"])->fetchAssoc();
 ```
 
-#### 🔏 orderBy
+### orderBy
 
 orderBy allows you to arrange the query results according to a row, in ascending (asc) or descending (desc) order.
 
@@ -475,7 +489,7 @@ $items = $db->select("items")->orderBy("created_at")->all();
 ... orderBy("id", "desc")->all();
 ```
 
-#### 🚦 limit
+### limit
 
 When retrieving data from your database for use in applications, you might want to show only a specific number of values.
 
@@ -487,7 +501,7 @@ $items = $db->select("items")->limit($itemsPerPage)->fetchAll();
 $items = $db->select("items")->orderBy("id", "desc")->limit($itemsPerPage)->fetchAll();
 ```
 
-### 👎 error handling
+### error handling
 
 Errors come up all the time, user errors, that is. What happens when validation fails, or if someone has already registered a username. Leaf Db provides a simple way to track these errors.
 
