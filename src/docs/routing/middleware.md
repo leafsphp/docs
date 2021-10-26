@@ -116,10 +116,10 @@ If you are using leaf router outside of leaf, we suggest you use router hooks or
 App middleware which are created using `Leaf\Middleware` have also received a lot of fixes which make them easier and faster to use.
 
 ::: danger NOTE
-Router `add` had been renamed to `use`. This means that you will be using `use` to load your middleware instead.
+Router `add` has been renamed to `use`. This means that you will be using `use` to load your middleware instead.
 :::
 
-```php
+```php{14}
 // usually in a different file
 class Test extends Leaf\Middleware
 {

@@ -26,6 +26,7 @@ const sidebar = {
       title: 'Core',
       collapsable: false,
       children: [
+        '/docs/modules/cors',
         '/docs/tooling/container',
         '/docs/tooling/logging',
         '/docs/view',
@@ -56,12 +57,10 @@ const sidebar = {
           collapsable: true,
           children: [
             '/docs/modules/db/',
-            '/docs/modules/cors',
             '/docs/modules/auth',
             '/docs/modules/date',
             '/docs/modules/forms',
             '/docs/modules/fs',
-            '/docs/modules/logger',
             '/docs/modules/passwords'
           ]
         },

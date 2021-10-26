@@ -34,8 +34,6 @@ To get started with logging, you need to first install the Leaf logger module. T
 composer require leafs/logger
 ```
 
-You can find more information on the logger module [here](/docs/modules/logger)
-
 ::: tip Quick Tip
 Logger is already integrated with Leaf core on a base level and so there's no need to initialize it. You might never even need to use the logger module yourself.
 :::
