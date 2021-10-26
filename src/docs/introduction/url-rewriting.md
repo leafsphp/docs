@@ -10,7 +10,7 @@ Basically, we're trying to push all the requests made to the server to a single 
 
 This complex sounding feature can be achieved by adding a web server configuration depending on your server of choice.
 
-### Apache - .htaccess
+## Apache - .htaccess
 
 This is a basic example of an htaccess file. It basically re-routes all requests to our index.php file.
 
@@ -23,7 +23,7 @@ RewriteRule . index.php [L]
 
 Save as `.htaccess` in your the same directory as your "root file"
 
-### Nginx - nginx.conf
+## Nginx - nginx.conf
 
 A basic example with nginx web server
 
@@ -35,13 +35,3 @@ You can read below for an overview of url rewriting.
 
 - [Intro to URL rewriting](https://www.smashingmagazine.com/2011/11/introduction-to-url-rewriting/)
 - [.htaccess and nginx.conf variations](https://gist.github.com/bramus/5332525)
-
-<br>
-<hr>
-
-## Next steps
-
-- [Your first leaf app](leaf/v/2.5.0/intro/first)
-- [Routing](leaf/v/2.5.0/routing/)
-- [Request](leaf/v/2.5.0/http/request)
-- [Response](leaf/v/2.5.0/http/response)

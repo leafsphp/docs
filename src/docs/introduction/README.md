@@ -1,7 +1,8 @@
 # Introduction
 
-::: tip NOTE
-Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
+::: warning Watch out
+Leaf 3 is currently under active development, keep in mind that it might change in the future, and so is not production ready.
+Thank you in advance for your understanding 💛
 :::
 
 ## What is Leaf PHP?
@@ -9,6 +10,10 @@ Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out
 Leaf is a PHP framework that helps you create clean, simple but powerful web apps and APIs quickly and easily. Leaf introduces a cleaner and much simpler structure to the PHP language while maintaining it's flexibility. With a simple structure and a shallow learning curve, it's an excellent way to rapidly build powerful and high performant web apps and APIs.
 
 The core library is focused on the REST APIs only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Leaf is also perfectly capable of powering sophisticated MVC Applications with it's wide library of modules.
+
+::: tip NOTE
+Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
+:::
 
 <!-- If you’d like to learn more about Leaf before diving in, we created a video walking through the core principles and a sample project.
 
@@ -209,7 +214,7 @@ app()->get("/", function () {
   $greeting = request("greeting");
 
   // output json encoded data
-  json(["greeting" => $greeting]);
+  response(["greeting" => $greeting]);
 });
 
 app()->run();

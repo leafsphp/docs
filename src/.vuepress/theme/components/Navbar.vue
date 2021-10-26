@@ -122,7 +122,7 @@ $navbar-horizontal-padding = 1.5rem;
 
   .site-name {
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 600;
     color: $textColor !important;
     position: relative;
   }

@@ -3,10 +3,7 @@ const sidebar = {
     {
       title: 'codelabs',
       collapsable: false,
-      children: [
-        '/codelabs/',
-        '/codelabs/template',
-      ]
+      children: ['/codelabs/', '/codelabs/template']
     }
   ],
   guide: [
@@ -59,7 +56,7 @@ const sidebar = {
           collapsable: true,
           children: [
             '/docs/modules/db/',
-            '/docs/modules/db-old/',
+            '/docs/modules/cors',
             '/docs/modules/auth',
             '/docs/modules/date',
             '/docs/modules/forms',
@@ -89,7 +86,11 @@ const sidebar = {
         {
           title: 'Extras',
           collapsable: true,
-          children: ['/docs/modules/mvc-core/', '/docs/modules/mail']
+          children: [
+            '/docs/modules/mvc-core/',
+            '/docs/modules/mail',
+            '/docs/modules/db-old/'
+          ]
         }
       ]
     }
@@ -98,11 +99,7 @@ const sidebar = {
     {
       title: 'Leaf CLI',
       collapsable: false,
-      children: [
-        '/cli/',
-        '/cli/v/1.0/',
-        '/cli/v/2.0/'
-      ]
+      children: ['/cli/', '/cli/v/1.0/', '/cli/v/2.0/']
     }
   ],
   contributing: [

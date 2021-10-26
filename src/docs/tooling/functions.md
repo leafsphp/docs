@@ -2,7 +2,7 @@
 title: "Functional Mode"
 ---
 
-# Functional Mode
+# Functional Mode <Badge text="new" />
 
 "Functional Mode", as we call it is just a fancy name given to a bunch of predefined functions in your leaf app which allow you to create your entire app or API without relying on classes with lengthy initializers and namespaces. With functional mode, everything is handled for you under the hood and is given to you in one global function.
 
@@ -62,9 +62,11 @@ app()->run();
 
 The main difference here is that the second method sets the config before the Leaf app is initialized. This means that during initialization, Leaf will use the config that has been set, however, for the first method, the config is loaded only after Leaf is initialized and thus, not used in the initialization process.
 
-## Available functions
+## Available functions <Badge text="Experimental" type="warning" />
 
-### app
+This has been tagged as experimental because the available functions shipped with Leaf 3 core have been through a couple of iterations. Until the official alpha release, this will still be tagged as experimental, although a new standard is being introduced soon. For now, all confirmed functions will be tagged with <Badge text="confirmed" />
+
+### app <Badge text="confirmed" />
 
 This function returns the current instance of the Leaf application. If none exists, it creates and returns it.
 
@@ -90,9 +92,13 @@ app()->get("/", function () {
 app()->run();
 ```
 
-As seen on line 5, no app instance already exists and so one is created and returned.
+As seen on line 5, no app instance already exists and so one is created and returned. This gives you powerful tooling and lets you get rid of imports, namespaces...
 
-## _env
+::: warning NOTE
+In other frameworks like laravel which also ship an `app` method, calling `app` will return the laravel instance, not leaf's. In such situations, you can use the [app instance config](/docs/config/nsm#config-app-instance)
+:::
+
+## _env <Badge text="confirmed" />
 
 This global function allows you to get environment variables set in your `.env` file. `_env` takes in 2 parameters:
 
@@ -107,9 +113,27 @@ $mode = _env("APP_MODE");
 $mode = _env("APP_MODE", "production");
 ```
 
+## Extending
+
+These are the globals provided by default with Leaf, however, some Leaf modules come in with their own globals, for instance, `leafs/session` has the `session` and `flash` globals. All globals are named carefully to avoid conflicts with other popular PHP packages.
+
+::: warning NOTE
+Leaf and it's modules **only** set a global if a function with that name doesn't exist. This is to avoid unintentionally overwriting important functions in your code.
+:::
+
+If you run into a challenge like this, you can rename your functions if you defined them yourself.
+
+::: tip Extending
+Modules which extend functional mode will have a section on their documentation with a functional mode tag. You can always look out for that
+:::
+
 ## request
 
 `request` is a 2 way global function which allows you to either get data passed into your application or return the leaf request object.
+
+::: warning NOTE
+The request global is provided from the [leaf http module](/docs/modules/http). No need to install it since it comes with leaf 3 out of the box.
+:::
 
 ```php
 // return the username variable passed into the request
@@ -126,6 +150,10 @@ $username = request()->get("username");
 
 This global allows you to output json encoded data or return the leaf response object.
 
+::: warning NOTE
+The response global is provided from the [leaf http module](/docs/modules/http). No need to install it since it comes with leaf 3 out of the box.
+:::
+
 ```php
 // output json data
 response(["name" => "Mychi"]);
@@ -141,6 +169,10 @@ response()->markup("<b>Mychi</b>");
 
 `Route` is a function used to define routes using leaf router's `match` method. You can read [leaf router's docs](/docs/routing/) for more information.
 
+::: warning NOTE
+The request global is provided from the [leaf router module](/docs/routing/). No need to install it since it comes with leaf 3 out of the box.
+:::
+
 ```php
 Route("GET", "/", function () {
   response(["name" => "Mychi"]);
@@ -154,13 +186,3 @@ This method allows you to set headers for a response. It has this interface `set
 ```json
 setHeader("Content-Type", "application/json");
 ```
-
-## Extending
-
-These are the globals provided by default with Leaf, however, some Leaf modules come in with their own globals, for instance, `leafs/session` has the `session` and `flash` globals. All globals are named carefully to avoid conflicts with other popular PHP packages.
-
-::: warning NOTE
-Leaf and it's modules **only** set a global if a function with that name doesn't exist. This is to avoid unintentionally overwriting important functions in your code.
-:::
-
-If you run into a challenge like this, you can rename your functions if you defined them yourself.

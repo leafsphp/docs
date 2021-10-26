@@ -1,13 +1,17 @@
 # Installation
 
+::: tip Migrating
+If you want to migrate an existing Leaf 2 project, skip this and follow the [Migration Guide](/docs/migration/introduction.html)
+:::
+
 Leaf 3 is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements.
 
 There are four primary ways of adding Leaf PHP to a project:
 
-1. Download leaf through composer
-2. Download the leaf repo
+1. Use the [Leaf CLI](https://leafphp.dev/cli/) to scaffold a project [RECOMMENDED].
+2. Download leaf through composer
 3. Use [Leaf skeleton](https://leafphp.netlify.app/#/skeleton/v/2.0/) to quickstart your project
-4. Use the [Leaf CLI](https://leafphp.netlify.app/#/cli/) to scaffold a project, which provides a base setup with important modules.
+4. Download the leaf repo
 
 ## Release Notes
 
@@ -15,9 +19,29 @@ Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/
 
 Detailed release notes for each version are available on [GitHub](https://github.com/leafsphp/leaf/blob/v3.x-dev/CHANGELOG.md).
 
+## Leaf CLI
+
+Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/cli/v/2.0/) for more details.
+
+```sh
+leaf create <project-name> --v3
+```
+
+You can also install modules using the following syntax:
+
+```sh
+leaf install cors
+```
+
+You can then run your app using:
+
+```sh
+leaf serve
+```
+
 ## Composer
 
-Composer is the quickest and easiest way to set up leaf 3 from scratch.
+You can also set up a new leaf 3 project from scratch using composer:
 
 ```sh
 # latest stable
@@ -101,28 +125,19 @@ Although the setup for this method is a bit more complicated, it gives you full 
 
 ## Leaf skeleton
 
-::: warning NOTE
-Skeleton is not yet available for Leaf 3. We will let you know when you can install Leaf 3 with it.
-:::
-
 Leaf skeleton is an official leaf boilerplate that packs a default setup with optional MVC configuration and setup.
 
-You can install skeleton through composer.
+::: warning NOTE
+Skeleton with Leaf 3 is also available on the leaf cli. You can quickly scaffold a skeleton 3 project with:
+
+```sh
+leaf create <project-name> --skeleton --v3
+```
+
+:::
+
+The main installtion for skeleton is through composer.
 
 ```sh
 composer create-project leafs/skeleton <project-name>
-```
-
-## Leaf CLI
-
-Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/cli/) for more details.
-
-```sh
-leaf create <project-name> --v3
-```
-
-You can also install modules using the following syntax:
-
-```sh
-leaf install cors
 ```

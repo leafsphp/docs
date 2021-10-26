@@ -7,7 +7,7 @@ title: "Logging"
 
 Leaf now provides very well defined logging support for your apps. A sample log looks like this:
 
-```log
+```log{4-5}
 [2021-03-31 22:44:53]
 ERROR - ErrorException: Trying to access array offset on value of type int in /home/mychi/Projects/leafphp/leaf/src/Experimental/Cache.php:83
 Stack trace:
@@ -22,7 +22,9 @@ Stack trace:
 #8 {main}
 ```
 
-A Leaf provides a log object that writes data to a specific output. The actual writing of data is delegated to a log writer.
+The first lines usually contain the most important information, however, it may be different depending on the structure of your application.
+
+Leaf logger provides a log object that writes data to a specific output. The actual writing of data is delegated to a log writer.
 
 ## Getting started
 

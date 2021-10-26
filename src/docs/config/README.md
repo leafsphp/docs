@@ -5,7 +5,7 @@
 Leaf aims for zero configurations out of the box, as such, none of these configurations are required. But for those who want other options with Leaf, this is the place for you.
 :::
 
-There are two ways to apply settings to the Leaf application. First during Leaf application instantiation and second after instantiation. All settings can be applied at instantiation time by passing Leaf’s constructor an associative array. All settings can be retrieved and modified after instantiation, however some of them can not be done simply by using the config application instance method but will be demonstrated as necessary below. Before I list the available settings, I want to quickly explain how you may define and inspect settings with your Leaf application.
+There are three ways to apply settings to the Leaf application. First during Leaf application instantiation, second with the leaf config class and finally, after instantiation. All settings can be applied at instantiation time by passing Leaf’s constructor an associative array. All settings can be retrieved and modified after instantiation, however some of them can not be done simply by using the config application instance method but will be demonstrated as necessary below. Before I list the available settings, I want to quickly explain how you may define and inspect settings with your Leaf application.
 
 ## During Instantiation
 
@@ -28,7 +28,7 @@ Leaf\Config::set([
 ]);
 ```
 
-The best part of this is that you don't need to pass these configuration to any file or methods. Leaf automatically picks up all the configurations made in this file whether the configuration is done before of after initializing leaf.
+The best part of this is that you don't need to pass these configurations to any file or methods. Leaf automatically picks up all the configurations made in this file whether the configuration is done before of after initializing leaf.
 
 You can also get configuration values using `get`
 

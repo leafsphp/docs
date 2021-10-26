@@ -1,7 +1,9 @@
 # App Settings
 <!-- markdownlint-disable no-inline-html -->
 
-## app <sup class="new-tag-1"><small>New</small></sup>
+These are configurations leaf uses to seamlessly configure your applications.
+
+## app
 
 This is a new configuration that allows you to get information about your Leaf app and it's instance. It is recommended to **set** anything on this config key as Leaf automatically sets up everything you might need.
 
@@ -50,8 +52,6 @@ $app->setDown(function () {
 });
 ```
 
-<hr>
-
 ## debug
 
 If debugging is enabled, Leaf will use its built-in error handler to display diagnostic information for uncaught Exceptions. If debugging is disabled, Leaf will instead invoke your custom error handler, passing it the otherwise uncaught Exception as its first and only argument.
@@ -61,8 +61,6 @@ $app = new \Leaf\App([
   'debug' => true
 ]);
 ```
-
-<hr>
 
 ## http.version
 
@@ -76,8 +74,6 @@ $app = new \Leaf\App([
 // After instantiation
 $app->config('http.version', '1.1');
 ```
-
-<hr>
 
 ## log.dir
 
@@ -111,8 +107,6 @@ This setting tells leaf which file to write logs to.
 Leaf\Config::set("log.file", "crashes.log");
 ```
 
-<hr>
-
 ## log.level
 
 Leaf has these log levels:
@@ -141,13 +135,9 @@ $log = $app->getLog();
 $log->setLevel(\Leaf\Log::WARN);
 ```
 
-<hr>
-
 ## log.open
 
 This option takes in a boolean and determines whether Leaf should create the specified log file if it doesn't exist.
-
-<hr>
 
 ## log.writer
 
@@ -171,8 +161,6 @@ $app = new \Leaf\App([
 $app->logger()->setWriter(new \My\LogWriter());
 ```
 
-<hr>
-
 ## mode
 
 This is an identifier for the application’s current mode of operation. The mode does not affect a Leaf application’s internal functionality. Instead, the mode is only for you to optionally invoke your own code for a given mode with the `configMode()` application method.
@@ -185,8 +173,6 @@ $app = new \Leaf\App([
 ]);
 ```
 
-<hr>
-
 ## views.path
 
 The relative or absolute path to the filesystem directory that contains your Leaf application’s view files.
@@ -196,8 +182,6 @@ $app = new \Leaf\App([
   'views.path' => './views'
 ]);
 ```
-
-<hr>
 
 ## views.cachePath
 
