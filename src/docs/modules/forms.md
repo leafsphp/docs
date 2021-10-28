@@ -5,13 +5,21 @@ title: "Leaf Forms"
 <!-- markdownlint-disable no-inline-html -->
 # 🎢 Leaf Forms
 
-Since v1.5.0 Leaf Form has totally replaced Simple Validation from v1.2.0 which was discontinued in v1.3.0. Leaf Form contains methods to simply and quickly handle input from the user.
+Leaf Form contains methods to simply and quickly handle input from the user.
 
-<div class="alert -info">
-  Leaf forms from leaf v2.4.2 now use static methods.
-</div>
+## Installation
 
-<br>
+You can quickly install leaf forms using the following composer or the leaf cli.
+
+```sh
+composer require leafs/form
+```
+
+or
+
+```sh
+leaf install form
+```
 
 ## sanitizeInput
 
@@ -21,9 +29,11 @@ sanitizeInput offers basic security for input data, i.e. sanitizing input agains
 $username = Form::sanitizeInput($username);
 ```
 
+If you however need better sanitizing, you can check out the [anchor module](/docs/modules/anchor/)
+
 ## Form Submit
 
-This creates a form and submits it. You can call it a virtual form.  It takes in 3 parameters, the request type, the form action and the form data. Currently, it only supports GET and POST requests.
+This creates a form and submits it. You can call it a virtual form. It takes in 3 parameters, the request type, the form action and the form data. Currently, it only supports GET and POST requests.
 
 ```php
 Form::submit("POST", "/book/create", [
@@ -61,11 +71,15 @@ Validate simply makes sure that the selected parameters pass these validation te
 Parameters which fail the form validation are saved in the form's errors which can be accessed with `errors()`. So In case the validation fails, `validate` returns false, else true.
 
 ```php
-Form::validate([
+$validatorSuccess = Form::validate([
   "username" => "username",
   "email" => "email",
   "password" => "required"
 ]);
+
+if (!$validatorSuccess) {
+  response()->throwErr(Form::errors());
+}
 ```
 
 ### validateData
@@ -87,7 +101,7 @@ This method also allows you validate data, but compared, to the method above, th
 Form::validateField("username", "michael", "validUsername");
 ```
 
-#### Multiple Rule Validation
+### Multiple Rule Validation
 
 You can also pass an array as the rule parameter. If there's more than one rule, both of them will apply. Also, be sure not to use contradictory rules like `number` and `textOnly` or `username` and `email`.
 
@@ -99,22 +113,24 @@ Form::validate([
 ]);
 ```
 
+### Supported rules
+
 This is a list of all supported validate rules
 
-- required: field is required
-- number: must only contain numbers
-- text : must only contain text and spaces
-- textOnly: should be text **only**, no spaces allowed
-- validUsername: must only contain characters 0-9, A-Z and _
-- username: alias for validUsername
-- email: must be a valid email
-- NoSpaces: can't contain any spaces
-- (NEW) max: max length of a string
-- (NEW) min: min length of a string
+- `required`: field is required
+- `number`: must only contain numbers
+- `text` : must only contain text and spaces
+- `textOnly`: should be text **only**, no spaces allowed
+- `validUsername`: must only contain characters 0-9, A-Z and _
+- `username`: alias for validUsername
+- `email`: must be a valid email
+- `noSpaces`: can't contain any spaces
+- `max`: max length of a string (require arguments)
+- `min`: min length of a string (require arguments)
 
 **Note that these rules aren't case-sensitive, so you can type them anyway you prefer, as long as the spelling is the same.**
 
-### rule
+### Create your own rules
 
 Not every project is the same, as such, you might need validation rules which are not available by default in leaf. As such, the `rule` method has been created to give you leeway to write your own validation rules.
 
