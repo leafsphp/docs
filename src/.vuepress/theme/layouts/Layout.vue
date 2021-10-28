@@ -261,6 +261,10 @@ body.-light {
     background: rgba($color: #42b983, $alpha: .1);
   }
 
+  .custom-block {
+    background-color: lighten(#012a35, 5%) !important;
+  }
+
   footer {
     &:not(.main-footer) {
       color: rgb(89, 89, 97) !important;
