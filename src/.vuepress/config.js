@@ -26,10 +26,10 @@ const sidebar = {
       title: 'Core',
       collapsable: false,
       children: [
-        '/docs/modules/cors',
+        '/modules/cors/',
         '/docs/tooling/container',
         '/docs/tooling/logging',
-        '/docs/view',
+        '/docs/tooling/view',
         '/docs/tooling/functions'
       ]
     },
@@ -49,49 +49,7 @@ const sidebar = {
     },
     {
       title: 'Modules',
-      collapsable: false,
-      children: [
-        '/docs/modules/',
-        {
-          title: 'Core',
-          collapsable: true,
-          children: [
-            '/docs/modules/db/',
-            '/docs/modules/auth',
-            '/docs/modules/date',
-            '/docs/modules/forms',
-            '/docs/modules/fs',
-            '/docs/modules/passwords'
-          ]
-        },
-        {
-          title: 'Http',
-          collapsable: true,
-          children: [
-            '/docs/modules/http/',
-            '/docs/modules/session/',
-            '/docs/modules/cookies'
-          ]
-        },
-        {
-          title: 'Views',
-          collapsable: true,
-          children: [
-            '/docs/modules/views/bareui',
-            '/docs/modules/views/blade',
-            '/docs/modules/views/veins'
-          ]
-        },
-        {
-          title: 'Extras',
-          collapsable: true,
-          children: [
-            '/docs/modules/mvc-core/',
-            '/docs/modules/mail',
-            '/docs/modules/db-old/'
-          ]
-        }
-      ]
+      path: '/modules/'
     }
   ],
   cli: [
@@ -99,6 +57,72 @@ const sidebar = {
       title: 'Leaf CLI',
       collapsable: false,
       children: ['/cli/', '/cli/v/1.0/', '/cli/v/2.0/']
+    }
+  ],
+  modules: [
+    {
+      title: 'Quick links',
+      collapsable: false,
+      children: [
+        { title: 'Leaf Docs', path: '/docs/introduction/' },
+        { title: 'Leaf API', path: '/leaf-api/' },
+        { title: 'Leaf MVC', path: '/leaf-mvc/' },
+        { title: 'Skeleton', path: '/skeleton/' }
+      ]
+    },
+    {
+      title: 'Core',
+      collapsable: true,
+      children: [
+        '/modules/',
+        '/modules/db/',
+        '/modules/auth/',
+        '/modules/date/',
+        '/modules/forms/',
+        '/modules/fs/',
+        '/modules/passwords/'
+      ]
+    },
+    {
+      title: 'Http',
+      collapsable: true,
+      children: [
+        '/modules/http/',
+        '/modules/session/',
+        '/modules/cookies/'
+      ]
+    },
+    {
+      title: 'Router',
+      collapsable: true,
+      children: [
+        '/modules/router/',
+        '/modules/router/errors',
+        '/modules/router/sub-routing',
+        '/modules/router/dynamic',
+        '/modules/router/middleware',
+        '/modules/router/sub-patterns',
+        '/modules/router/sub-folder',
+        '/modules/router/controller'
+      ]
+    },
+    {
+      title: 'Views',
+      collapsable: true,
+      children: [
+        '/modules/views/bareui/',
+        '/modules/views/blade/',
+        '/modules/views/veins/'
+      ]
+    },
+    {
+      title: 'Extras',
+      collapsable: true,
+      children: [
+        '/modules/mvc-core/',
+        '/modules/mail/',
+        '/modules/db-old/'
+      ]
     }
   ],
   contributing: [
@@ -245,8 +269,24 @@ module.exports = {
               },
               {
                 text: 'Leaf Modules',
-                link: '/docs/modules/'
-              }
+                link: '/modules/'
+              },
+              {
+                text: 'Leaf MVC',
+                link: '/leaf-mvc/'
+              },
+              {
+                text: 'Leaf API',
+                link: '/leaf-api/'
+              },
+              {
+                text: 'Leaf Skeleton',
+                link: '/skeleton/'
+              },
+              {
+                text: 'Leaf UI',
+                link: '/ui/'
+              },
             ]
           }
         ]
@@ -265,10 +305,11 @@ module.exports = {
     sidebar: {
       collapsable: true,
       '/docs/contributing/': sidebar.contributing,
+      '/modules/': sidebar.modules,
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,
-      '/cli/': sidebar.cli
+      '/cli/': sidebar.cli,
     },
     smoothScroll: true,
     algolia: {

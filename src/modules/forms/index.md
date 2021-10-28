@@ -29,7 +29,7 @@ sanitizeInput offers basic security for input data, i.e. sanitizing input agains
 $username = Form::sanitizeInput($username);
 ```
 
-If you however need better sanitizing, you can check out the [anchor module](/docs/modules/anchor/)
+If you however need better sanitizing, you can check out the [anchor module](/modules/anchor/)
 
 ## Form Submit
 

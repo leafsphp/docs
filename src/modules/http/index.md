@@ -12,9 +12,10 @@ The Leaf Http module contains a bunch of handlers for managing the kinds and met
 
 The available classes in the Http module are:
 
-- [`Leaf\Http\Request`](/docs/modules/http/request)
-- [`Leaf\Http\Response`](/docs/modules/http/response)
-- [`Leaf\Http\Headers`](/docs/modules/http/headers)
+- [`Leaf\Http\Request`](/modules/http/request)
+- [`Leaf\Http\Response`](/modules/http/response)
+- [`Leaf\Http\Headers`](/modules/http/headers)
+- [`Leaf\Http\Cache`](/modules/http/cache)
 
 ## Installation
 
@@ -22,6 +23,12 @@ You can install the http module with composer:
 
 ```sh
 composer require leafs/http
+```
+
+or with leaf cli:
+
+```sh
+leaf install http
 ```
 
 From there you can use any of the classes above in your project.
@@ -32,20 +39,20 @@ Cookies and session are independent modules which are not added to the Http modu
 
 ## Request
 
-This is a developer friendly interface which allows you to interact with data coming into your application. [Read the docs](/docs/modules/http/request)
+This is a developer friendly interface which allows you to interact with data coming into your application. [Read the docs](/modules/http/request)
 
 ## Response
 
-This interface allows you to output data from your application in different forms. [Read the docs](/docs/modules/http/response)
+This interface allows you to output data from your application in different forms. [Read the docs](/modules/http/response)
 
 ## Headers
 
-This interface allows you to manage headers in your application. [Read the docs](/docs/modules/http/headers)
+This interface allows you to manage headers in your application. [Read the docs](/modules/http/headers)
 
 ## Session (module)
 
-This module allows you to manage session in your application. [Read the docs](/docs/modules/session/)
+This module allows you to manage session in your application. [Read the docs](/modules/session/)
 
 ## Cookies (module)
 
-This module allows you to manage cookies in your application. [Read the docs](/docs/modules/cookies)
+This module allows you to manage cookies in your application. [Read the docs](/modules/cookies)

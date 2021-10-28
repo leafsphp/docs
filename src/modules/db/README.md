@@ -408,7 +408,7 @@ $db->insert("users")
    ->execute();
 ```
 
-Validate takes in 2 parameters, a field to validate and a validation rule. You can find all the validation rules and what they do [here](/docs/modules/forms/#multiple-rule-validation). So what if you need to validate more than 1 parameter?
+Validate takes in 2 parameters, a field to validate and a validation rule. You can find all the validation rules and what they do [here](/modules/forms/#multiple-rule-validation). So what if you need to validate more than 1 parameter?
 
 ```php
 $db->insert("users")

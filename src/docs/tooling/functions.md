@@ -132,7 +132,7 @@ Modules which extend functional mode will have a section on their documentation 
 `request` is a 2 way global function which allows you to either get data passed into your application or return the leaf request object.
 
 ::: warning NOTE
-The request global is provided from the [leaf http module](/docs/modules/http). No need to install it since it comes with leaf 3 out of the box.
+The request global is provided from the [leaf http module](/modules/http). No need to install it since it comes with leaf 3 out of the box.
 :::
 
 ```php
@@ -151,7 +151,7 @@ $username = request()->get("username");
 This global allows you to output json encoded data or return the leaf response object.
 
 ::: warning NOTE
-The response global is provided from the [leaf http module](/docs/modules/http). No need to install it since it comes with leaf 3 out of the box.
+The response global is provided from the [leaf http module](/modules/http). No need to install it since it comes with leaf 3 out of the box.
 :::
 
 ```php

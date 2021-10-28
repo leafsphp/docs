@@ -115,7 +115,7 @@ $app->cors();
 // ...
 ```
 
-The cors method is automatically linked to the cors module by Leaf and so, no extra configuration is needed to make it work. Cors takes in some optional configuration, checkout the [cors module docs](/docs/modules/cors/). Also cors is no longer available on the response object.
+The cors method is automatically linked to the cors module by Leaf and so, no extra configuration is needed to make it work. Cors takes in some optional configuration, checkout the [cors module docs](/modules/cors/). Also cors is no longer available on the response object.
 
 ### Router
 
@@ -127,4 +127,4 @@ Some of the new features to keep an eye on in Leaf 3 include:
 
 - [Functional Mode](/docs/core/functional-mode.html) <Badge text="EXPERIMENTAL" type="warning" />
 - [Glopbal functions](/docs/core/globals/) <Badge text="EXPERIMENTAL" type="warning" />
-- [CORS module](/docs/modules/cors/)
+- [CORS module](/modules/cors/)
