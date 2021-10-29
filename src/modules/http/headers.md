@@ -1,5 +1,13 @@
+---
+aside: none
+---
+
 <!-- markdownlint-disable no-inline-html -->
 # 🏠 Application Headers
+
+::: warning Watch out
+Leaf request is a class available on the leaf http module. Check out the [http module docs](/modules/http/) for installation instructions.
+:::
 
 In previous versions of Leaf, Headers have been added to the request and response objects and could not be fully accesed directly, however, v2.4 provides a Headers object which allows you perform all header operations smoothly. Another amazing thing is that all Leaf Header methods are static, and so can be called directly without initializing the Headers object.
 

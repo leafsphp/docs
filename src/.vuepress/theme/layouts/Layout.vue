@@ -22,7 +22,7 @@
 
     <Home v-if="$page.frontmatter.home" />
 
-    <Page v-else :sidebar-items="sidebarItems">
+    <Page v-else :sidebar-items="sidebarItems" :config="shouldShowAside === false ? '-noAside' : '-aside'">
       <template #top>
         <slot name="page-top" />
       </template>
@@ -32,8 +32,8 @@
     </Page>
 
     <Aside
-      v-if="!$page.frontmatter.home"
-      :items="sidebarItems"
+      v-if="!$page.frontmatter.home && shouldShowAside"
+      :items="asideItems"
       @toggle-sidebar="toggleSidebar"
       type="right"
     >
@@ -54,7 +54,7 @@ import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
 import Aside from '@theme/components/Aside.vue'
 import BannerTop from '@theme/components/BannerTop.vue'
-import { resolveSidebarItems } from '../util'
+import { resolveSidebarItems, resolveAsideItems } from '../util'
 
 export default {
   name: 'Layout',
@@ -79,7 +79,7 @@ export default {
     const darkMode = window.localStorage["isDark"];
     const body = document.body;
 
-    console.log(darkMode);
+    console.log((!this.$page.frontmatter.aside || (this.$page.frontmatter.aside && this.$page.frontmatter.aside !== 'none')));
 
     if (darkMode === "true") {
       body.classList.remove("-light");
@@ -113,8 +113,21 @@ export default {
       )
     },
 
+    shouldShowAside() {
+      return (!this.$page.frontmatter.aside || (this.$page.frontmatter.aside && this.$page.frontmatter.aside !== 'none'));
+    },
+
     sidebarItems() {
       return resolveSidebarItems(
+        this.$page,
+        this.$page.regularPath,
+        this.$site,
+        this.$localePath
+      )
+    },
+
+    asideItems() {
+      return resolveAsideItems(
         this.$page,
         this.$page.regularPath,
         this.$site,

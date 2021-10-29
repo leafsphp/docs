@@ -7,27 +7,25 @@ title: "Leaf Date"
 
 Leaf Date makes formating date/time really easier, though the method names may appear weird, they're actually very easy to remeber😂
 
-<div class="alert -info">
-All date methods are now static and can be called from anywhere within your app.
-</div>
-
 ```php
 use Leaf\Date;
 
 Date::now();
 ```
 
-<br>
+## Installation
 
-You can also use the date object directly on the Leaf object.
+You can install leaf date through composer:
 
-```php
-$app = new Leaf\App;
-
-$app->date;
+```sh
+composer require leafs/date
 ```
 
-After this, all the Date methods will be available to us:
+or with leaf cli:
+
+```sh
+leaf install date
+```
 
 ## Date Methods
 

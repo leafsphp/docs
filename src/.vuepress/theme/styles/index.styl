@@ -22,6 +22,10 @@ body
   padding-left $sidebarWidth
   padding-right $sidebarWidth
 
+.page.-noAside
+  padding-right unset !important
+  padding-left 220px !important
+
 @media (min-width: (1201px))
   .navbar
     padding-left 100px !important
@@ -245,6 +249,9 @@ hr
 
   .sidebar-links
     margin-top -10px
+
+    a[href="/modules/"]
+      display none !important
 
   .is-sub-group.depth-1
     ul:not(.sidebar-sub-headers)

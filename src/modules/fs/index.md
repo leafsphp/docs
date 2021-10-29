@@ -9,9 +9,19 @@ This is a simple functionality inspired by node js' FileSystem(fs) module. Leaf 
 
 Leaf FS allows you to read/write to file, create, rename, copy and paste files/directories all with just a few lines of code. All this is performed while maintaining Leaf's simplicity.
 
-<div class="alert -info">
-  In v2.4, all FS methods have been made static, and can now be called from anywhere in your application.
-</div>
+## Installation
+
+You can install leaf fs through composer:
+
+```sh
+composer require leafs/fs
+```
+
+or with leaf cli:
+
+```sh
+leaf install fs
+```
 
 ## FS Directory Methods
 

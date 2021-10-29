@@ -6,7 +6,7 @@ title: "Cors"
 # ✨ CORS
 
 ::: tip Note
-In v3, CORS now has it's on module. You no longer have to patch in headers or use `evadeCors` which was pretty much a temporary patch.
+In v3, CORS now has it's own module. You no longer have to patch in headers or use `evadeCors` which was pretty much a temporary patch.
 :::
 
 This is a module used to enable and configure [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) with various options. This module can be used both in and out of Leaf and so can be considered a general module. It is also inspired by the [ExpressJS](https://github.com/expressjs/express) [cors package](https://github.com/expressjs/cors).
@@ -24,7 +24,6 @@ or
 ```sh
 leaf install cors
 ```
-
 
 ## Usage
 

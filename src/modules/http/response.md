@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 <!-- markdownlint-disable no-inline-html -->
 # Leaf Response
 
@@ -18,6 +22,10 @@ use Leaf\Http\Response;
 
 Response::json(["name" => "mychi"]);
 ```
+
+::: warning Watch out
+Leaf request is a class available on the leaf http module. Check out the [http module docs](/modules/http/) for installation instructions.
+:::
 
 ### 🎄 Response on the Leaf Instance
 

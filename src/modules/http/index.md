@@ -49,6 +49,10 @@ This interface allows you to output data from your application in different form
 
 This interface allows you to manage headers in your application. [Read the docs](/modules/http/headers)
 
+## Cache
+
+This interface allows you to manage http cache in your app. [Read the docs](/modules/http/cache)
+
 ## Session (module)
 
 This module allows you to manage session in your application. [Read the docs](/modules/session/)

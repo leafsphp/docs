@@ -4,6 +4,8 @@ const path = require('path')
 module.exports = (options, ctx) => {
   const { themeConfig, siteConfig } = ctx
 
+  console.log(ctx, "ctx")
+
   // resolve algolia
   const isAlgoliaSearch =
     themeConfig.algolia ||

@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <main :class="`page ${config}`">
     <slot name="top" />
 
     <Content class="theme-default-content" />
@@ -17,7 +17,7 @@ import PageNav from '@theme/components/PageNav.vue'
 
 export default {
   components: { PageEdit, PageNav },
-  props: ['sidebarItems']
+  props: ['sidebarItems', 'config']
 }
 </script>
 

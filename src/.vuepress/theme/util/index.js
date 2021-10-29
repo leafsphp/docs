@@ -146,6 +146,44 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
 
 /**
  * @param { Page } page
+ * @param { string } regularPath
+ * @param { SiteData } site
+ * @param { string } localePath
+ * @returns { SidebarGroup }
+ */
+export function resolveAsideItems (page, regularPath, site, localePath) {
+  const { pages, themeConfig } = site
+
+  const localeConfig = localePath && themeConfig.locales
+    ? themeConfig.locales[localePath] || themeConfig
+    : themeConfig
+
+  console.log(localeConfig)
+
+  let pageSidebarConfig = page.frontmatter.aside || localeConfig.aside || themeConfig.aside
+
+  if (!pageSidebarConfig) {
+    pageSidebarConfig =
+      page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
+  }
+
+  if (pageSidebarConfig === 'auto') {
+    return resolveHeaders(page)
+  }
+
+  const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
+  if (!sidebarConfig) {
+    return []
+  } else {
+    const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
+    return config
+      ? config.map(item => resolveItem(item, pages, base))
+      : []
+  }
+}
+
+/**
+ * @param { Page } page
  * @returns { SidebarGroup }
  */
 function resolveHeaders (page) {
