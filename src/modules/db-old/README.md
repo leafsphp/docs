@@ -5,11 +5,21 @@ title: "Leaf Db (Old)"
 <!-- markdownlint-disable no-inline-html -->
 # Leaf DB
 
-## Introduction
-
 This is Leaf's simple query builder created in Leaf v1 but still maintained till date. This class provides a convenient but usual way to quickly create and run database queries. It can be used to perform most database operations in your app. It currently supports Mysqli and PDO connections, though we still recommend using Mysqli. There's no need to worry about SQL injection as parameter binding is also supported and easy to use😉💪
 
-In v2.1, the Leaf Mysqli package is no longer bound to the Leaf object, so it can't be used without initialising the package.
+## Installation
+
+You can quickly install leaf db with composer or the leaf cli.
+
+```sh
+composer require leafs/db-old
+```
+
+or with leaf cli:
+
+```sh
+leaf install db-old
+```
 
 ## Initialising Leaf DB
 
@@ -93,15 +103,13 @@ $app->get('/users/{id}', function($id) use($app) {
 
 We've looked at making queries, but then `query()` still makes you type out whatever query you need to use. It's certainly easier than raw queries, but it's nothing impressive. Below are some of Leaf DB's handy methods to make queries even easier.💪😉
 
-<hr>
+### [Retrieving Data](/modules/db-old/select)
 
-### [Retrieving Data](leaf/v/2.5.0/database/select)
+Read the [select docs](/modules/db-old/select) for all the information on retrieving data from your database.
 
-<hr>
+### [Inserting Data](/modules/db-old/insert)
 
-### [Inserting Data](leaf/v/2.5.0/database/insert)
-
-<hr>
+Read the [insert docs](/modules/db-old/insert) for all the information on inserting data into your database.
 
 ### Updating Data
 

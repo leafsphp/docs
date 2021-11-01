@@ -1,9 +1,5 @@
----
-aside: none
----
-
-<!-- markdownlint-disable no-inline-html -->
 # Leaf Request
+<!-- markdownlint-disable no-inline-html -->
 
 ::: warning Watch out
 Leaf request is a class available on the leaf http module. Check out the [http module docs](/modules/http/) for installation instructions.

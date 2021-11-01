@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 <!-- markdownlint-disable no-inline-html -->
 # Inserting Data
 

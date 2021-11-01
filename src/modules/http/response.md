@@ -1,9 +1,9 @@
----
-aside: none
----
-
-<!-- markdownlint-disable no-inline-html -->
 # Leaf Response
+<!-- markdownlint-disable no-inline-html -->
+
+::: warning Watch out
+Leaf response is a class available on the leaf http module. Check out the [http module docs](/modules/http/) for installation instructions.
+:::
 
 The response object is an abstraction of your Leaf application’s HTTP response that is returned to the HTTP client. In v2, the response object has been directly bound to the main Leaf object.
 

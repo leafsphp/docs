@@ -75,6 +75,7 @@ const sidebar = {
       collapsable: true,
       children: [
         '/modules/',
+        '/modules/anchor/',
         '/modules/db/',
         '/modules/auth/',
         '/modules/date/',
@@ -88,7 +89,13 @@ const sidebar = {
       collapsable: true,
       children: [
         '/modules/http/',
+        '/modules/http/request',
+        '/modules/http/response',
+        '/modules/http/headers',
+        '/modules/http/cache',
+        '/modules/cors/',
         '/modules/session/',
+        '/modules/session/flash',
         '/modules/cookies/'
       ]
     },
@@ -112,7 +119,7 @@ const sidebar = {
       children: [
         '/modules/views/bareui/',
         '/modules/views/blade/',
-        '/modules/views/veins/'
+        '/modules/views/veins/',
       ]
     },
     {
@@ -121,7 +128,9 @@ const sidebar = {
       children: [
         '/modules/mvc-core/',
         '/modules/mail/',
-        '/modules/db-old/'
+        '/modules/db-old/',
+        '/modules/fetch/',
+        '/modules/redis/',
       ]
     }
   ],

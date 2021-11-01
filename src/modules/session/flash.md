@@ -5,6 +5,10 @@ title: "Flash messaging"
 <!-- markdownlint-disable no-inline-html -->
 # Leaf Flash
 
+::: warning Watch out
+Leaf flash is a class available on the leaf session module. Check out the [session module docs](/modules/session/) for installation instructions.
+:::
+
 This is a simple helper for creating and managing PHP flash messages. It is highly customizable just like the rest of Leaf and fits right into any project no matter it's size or scope.
 
 To get started, simply call the method you want to use. Leaf Flash uses static methods, so there's no need for initializing.

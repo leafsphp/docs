@@ -5,11 +5,21 @@ title: "Leaf Cookie"
 <!-- markdownlint-disable no-inline-html -->
 # 🍪 Cookies
 
-The Leaf application provides helper methods to send cookies with the HTTP response. From version 2.2 beta, the old `Leaf\Http\Cookies` package has been replaced by `Leaf\Http\Cookie`. This change also fixes the bug which prevented use of `Leaf\Http\Cookies` inside route handlers and controllers.
+This is a module which helps you create, interact with and manage your cookies. You can quickly install leaf cookies with composer or leaf cli.
 
-## Init
+```sh
+composer require leafs/cookies
+```
 
-Unlike the former `Leaf\Http\Cookies` package, you can use `Leaf\Http\Cookie` methods without initialising the class:
+or with leaf cli:
+
+```sh
+leaf install cookies
+```
+
+## Usage
+
+Laef cookie provides a `Leaf\Http\Cookie` class for quickly using cookie methods:
 
 ```php
 use Leaf\Http\Cookie;
@@ -116,4 +126,22 @@ This method removes all set cookies.
 
 ```php
 Cookie::unsetAll();
+```
+
+## Functional mode <Badge text="new" />
+
+Leaf cookie also hooks into leaf 3's functional mode. If you are using leaf 3, then this is the fastest way to use the cookie class.
+
+### cookie
+
+Cookie is a global method that can be used to create a cookie or return the cookie object.
+
+```php
+cookie("name", "Michael");
+```
+
+or return the cookie object:
+
+```php
+cookie()->unsetAll();
 ```

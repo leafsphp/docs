@@ -6,7 +6,7 @@ title: "Cors"
 # ✨ CORS
 
 ::: tip Note
-In v3, CORS now has it's own module. You no longer have to patch in headers or use `evadeCors` which was pretty much a temporary patch.
+In leaf v3, CORS now has it's own module. You no longer have to patch in headers or use `evadeCors` which was pretty much a temporary patch.
 :::
 
 This is a module used to enable and configure [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) with various options. This module can be used both in and out of Leaf and so can be considered a general module. It is also inspired by the [ExpressJS](https://github.com/expressjs/express) [cors package](https://github.com/expressjs/cors).
@@ -28,6 +28,18 @@ leaf install cors
 ## Usage
 
 After installing the cors module, the cors module is automatically linked to the leaf app and can be used directly without referencing it anywhere.
+
+::: tip Outside leaf
+Leaf CORS can also be used without leaf's core. You simply need to reference methods on `Leaf\Http\Cors` which is the class for cors.
+
+```php
+Leaf\Http\Cors::config([
+  "origin" => 'http://example.com',
+  "optionsSuccessStatus" => 200
+]);
+```
+
+:::
 
 ### Simple Usage (Enable *All* CORS Requests)
 

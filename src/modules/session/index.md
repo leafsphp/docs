@@ -3,13 +3,19 @@ title: "Session"
 ---
 
 <!-- markdownlint-disable no-inline-html -->
-# Leaf Sessions
+# Leaf Session
 
-Leaf offers simple session management to help you quickly build your apps and APIs.
+Leaf offers simple session management to help you quickly build your apps and APIs. You can quickly install leaf session with composer or leaf cli.
 
-<p class="alert -info">
-  All session methods are now static. You can now call session methods from anywhere within your Leaf app without initialization.
-</p>
+```sh
+composer require leafs/session
+```
+
+or with leaf cli:
+
+```sh
+leaf install session
+```
 
 ## Using Session
 
@@ -232,4 +238,48 @@ As you can see, you'd manually need to throw errors, this gives you more flexibi
 foreach (Session::errors() as $error => $value) {
   echo "<b>{$value}</b>";
 }
+```
+
+## Functional mode <Badge text="new" />
+
+Leaf session also hooks into leaf 3's functional mode. If you are using leaf 3, then this is the fastest way to use the session class.
+
+### session
+
+`session` is a global method that can be used to create a session or return the session object.
+
+```php
+session("name", "Michael");
+```
+
+With the above example, no session already exists, so leaf session will create a new one and set the name variable.
+
+You can also return the session object:
+
+```php
+session()->destroy();
+```
+
+### flash
+
+This is a simple class for getting and setting flash data or returning the leaf flash object.
+
+```php
+# set flash data
+flash("key", "value");
+
+# or
+flash([
+  "key" => "value",
+]);
+```
+
+```php
+# get flash data
+flash("key");
+```
+
+```php
+# return leaf session flash object
+flash()->set("This is a message");
 ```

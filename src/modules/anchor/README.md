@@ -1,10 +1,15 @@
-# Leaf Redis
+# Leaf Anchor <Badge text="new" />
 
-<!-- [![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/stable)](https://packagist.org/packages/leafs/leaf)
-[![Total Downloads](https://poser.pugx.org/leafs/leaf/downloads)](https://packagist.org/packages/leafs/leaf)
-[![License](https://poser.pugx.org/leafs/leaf/license)](https://packagist.org/packages/leafs/leaf) -->
+[![Latest Stable Version](https://poser.pugx.org/leafs/anchor/v/stable)](https://packagist.org/packages/leafs/anchor)
+[![Total Downloads](https://poser.pugx.org/leafs/anchor/downloads)](https://packagist.org/packages/leafs/anchor)
+[![License](https://poser.pugx.org/leafs/anchor/license)](https://packagist.org/packages/leafs/anchor)
 
-This is a new addition to Leaf's collection of packages. Unlike other packages, this one doesn't come pre-packaged with Leaf by default and so needs to be installed separately.
+Leaf anchor is a new module which contains basic security features for the leaf framework. This module is actively being developed and will be updated whenever a security vulnerability is discovered.
+
+::: danger NOTE
+The whole of leaf 3 and some of it's modules rely on this particular module. In case of updates, you **might** need to update the packages that rely on this module to receive the security updates.
+:::
+
 
 ## Installation
 
@@ -202,4 +207,3 @@ Ping the redis server
 ```php
 Leaf\Redis::ping();
 ```
-
