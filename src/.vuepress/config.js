@@ -76,11 +76,10 @@ const sidebar = {
       children: [
         '/modules/',
         '/modules/anchor/',
+        '/modules/anchor/csrf/',
         '/modules/db/',
         '/modules/auth/',
-        '/modules/date/',
         '/modules/forms/',
-        '/modules/fs/',
         '/modules/passwords/'
       ]
     },
@@ -119,7 +118,7 @@ const sidebar = {
       children: [
         '/modules/views/bareui/',
         '/modules/views/blade/',
-        '/modules/views/veins/',
+        '/modules/views/veins/'
       ]
     },
     {
@@ -127,10 +126,13 @@ const sidebar = {
       collapsable: true,
       children: [
         '/modules/mvc-core/',
+        '/modules/date/',
+        '/modules/fs/',
+        '/modules/aloe-cli/',
         '/modules/mail/',
         '/modules/db-old/',
         '/modules/fetch/',
-        '/modules/redis/',
+        '/modules/redis/'
       ]
     }
   ],
