@@ -295,7 +295,7 @@ $user = Leaf\Auth::login("users", [
 Leaf auth now allows you to use logins with the new `Leaf\Auth\Login` class. This will allows you to import only the login functionality without actually going through the whole auth class.
 
 ```php
-$user = Leaf\Auth\Login::init("users", [
+$user = Leaf\Auth\Login::user("users", [
   "username" => "mychi.darko",
   "password" => md5("test")
 ]);
@@ -348,7 +348,7 @@ When the login succeeds, you'll be redirected to GUARD_HOME. You can configure t
 In case there's something wrong and Auth can't sign the user in, it returns a falsy value.
 
 ```php
-$user = Leaf\Auth\Login::init("users", [
+$user = Leaf\Auth\Login::user("users", [
   "username" => $username,
   "password" => $password
 ]);
@@ -401,7 +401,7 @@ Leaf\Auth::register("users", [
 Leaf auth now allows you to register users with the new `Leaf\Auth\Register` class. This will allows you to import only the register functionality without actually going through the whole auth class.
 
 ```php
-$user = Leaf\Auth\Register::init("users", [
+$user = Leaf\Auth\Register::user("users", [
   "username" => "mychi.darko",
   "email" => "mickdd22@gmail.com",
   "field" => "value"
