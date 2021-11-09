@@ -50,8 +50,6 @@ After running this code, this is our new directory structure
 ├───index.php
 ```
 
-<hr>
-
 ### renameFolder
 
 renameFolder is used to rename a directory. It takes in two parameters: the directory you want to rename and it's new name/path.
@@ -61,8 +59,6 @@ FS::renameFolder("new");
 FS::renameFolder("home/new", "home/items");
 ```
 
-<hr>
-
 ### deleteFolder
 
 deleteFolder is used to delete a directory. It takes in two parameters: the directory you want to delete.
@@ -71,8 +67,6 @@ deleteFolder is used to delete a directory. It takes in two parameters: the dire
 FS::deleteFolder("new", "items");
 FS::deleteFolder("home/new", "home/items");
 ```
-
-<hr>
 
 ### listDir
 
@@ -90,8 +84,6 @@ This method lists all the folders in a particular directory.
 ```php
 FS::listDir("folder");
 ```
-
-<hr>
 
 ## FS File Methods
 

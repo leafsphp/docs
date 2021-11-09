@@ -11,15 +11,17 @@ Leaf router is now separated from Leaf and is now available as an installable mo
 
 Leaf router uses a single root file, to which all the server requests are redirected, it then takes these requests and matches them to rules you have defined. The results are then displayed to the user. It's actually a very simple concept.
 
-The router module is tied directly to Leaf Core, so once you initialize leaf, you can use routing.
+::: warning Note
+Leaf router is automatically installed and attached to your leaf apps, so you don't need to manually install it.
+:::
 
-Note that you can now use Leaf router outside of a leaf app. To do this, simply install the leaf router module:
+You can install the leaf router with composer:
 
 ```sh
 composer require leafs/router
 ```
 
-or
+or with leaf CLI:
 
 ```sh
 leaf install router
@@ -37,28 +39,6 @@ use Leaf\Router;
 Router::get("/", "PagesController@index");
 
 Router::run();
-```
-
-## Using a different router in Leaf
-
-Although Leaf integrates leaf router directly, you are free to import and use any router you want.
-
-1. Install whatever you want
-
-```bash
-composer require imaginary/router
-```
-
-2. Import and use it in your project
-
-```php
-// initialise imaginary router
-$imr = new Imaginary\Router();
-
-$imr->get("/", function() {
-  // you can still use leaf modules
-  response()->json(["title" => "hello"]);
-});
 ```
 
 ## Creating Routes

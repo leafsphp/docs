@@ -206,6 +206,18 @@ body.-light {
     color: #003543 !important;
   }
 
+  .search-box {
+    background-color: transparent !important;
+
+    input {
+      background-color: transparent !important;
+      color: #003543 !important;
+      background: url('/icons/search.svg') 0.3rem 0.7rem no-repeat !important;
+      background-size: 22px !important;
+      background-position-y: 5px !important;
+    }
+  }
+
   .navbar {
     background: rgba($color: white, $alpha: 0.8) !important;
 

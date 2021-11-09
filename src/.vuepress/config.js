@@ -59,6 +59,62 @@ const sidebar = {
       children: ['/cli/', '/cli/v/1.0/', '/cli/v/2.0/']
     }
   ],
+  aloe: [
+    {
+      title: 'Aloe CLI',
+      collapsable: false,
+      children: [
+        { title: 'Home', path: '/aloe-cli/' },
+        {
+          title: 'Getting Started',
+          path: '/aloe-cli/v/1.2.3/getting-started/'
+        }
+      ]
+    },
+    {
+      title: 'Default Commands',
+      collapsable: false,
+      children: [
+        {
+          title: 'Misc Commands',
+          path: '/aloe-cli/v/1.2.3/commands/misc-commands'
+        },
+        {
+          title: '"Generate" Commands',
+          path: '/aloe-cli/v/1.2.3/commands/g-commands'
+        },
+        {
+          title: '"Delete" Commands',
+          path: '/aloe-cli/v/1.2.3/commands/d-commands'
+        },
+        {
+          title: '"DB" Commands',
+          path: '/aloe-cli/v/1.2.3/commands/db-commands'
+        }
+      ]
+    },
+    {
+      title: 'Aloe CLI',
+      collapsable: false,
+      children: [
+        {
+          title: 'Custom Commands',
+          path: '/aloe-cli/v/1.2.3/commands/custom'
+        },
+        {
+          title: 'Command IO',
+          path: '/aloe-cli/v/1.2.3/commands/io'
+        }
+      ]
+    },
+    {
+      title: 'Aloe Misc',
+      collapsable: false,
+      children: [
+        { title: 'Aloe Libraries', path: '/aloe-cli/v/1.2.3/libraries' }
+      ]
+    },
+  ],
   modules: [
     {
       title: 'Quick links',
@@ -80,42 +136,53 @@ const sidebar = {
         '/modules/db/',
         '/modules/auth/',
         '/modules/forms/',
+        {
+          title: 'Http',
+          collapsable: true,
+          children: [
+            '/modules/http/',
+            '/modules/http/request',
+            '/modules/http/response',
+            '/modules/http/headers',
+            '/modules/http/cache',
+            '/modules/cors/',
+            '/modules/session/',
+            '/modules/session/flash',
+            '/modules/cookies/'
+          ]
+        },
+        {
+          title: 'Router',
+          collapsable: true,
+          children: [
+            '/modules/router/',
+            '/modules/router/errors',
+            '/modules/router/sub-routing',
+            '/modules/router/dynamic',
+            '/modules/router/middleware',
+            '/modules/router/sub-patterns',
+            '/modules/router/sub-folder',
+            '/modules/router/controller'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Helpers',
+      collapsable: true,
+      children: [
+        '/modules/date/',
+        '/modules/fs/',
+        '/aloe-cli/',
+        '/modules/fetch/',
         '/modules/passwords/'
-      ]
-    },
-    {
-      title: 'Http',
-      collapsable: true,
-      children: [
-        '/modules/http/',
-        '/modules/http/request',
-        '/modules/http/response',
-        '/modules/http/headers',
-        '/modules/http/cache',
-        '/modules/cors/',
-        '/modules/session/',
-        '/modules/session/flash',
-        '/modules/cookies/'
-      ]
-    },
-    {
-      title: 'Router',
-      collapsable: true,
-      children: [
-        '/modules/router/',
-        '/modules/router/errors',
-        '/modules/router/sub-routing',
-        '/modules/router/dynamic',
-        '/modules/router/middleware',
-        '/modules/router/sub-patterns',
-        '/modules/router/sub-folder',
-        '/modules/router/controller'
       ]
     },
     {
       title: 'Views',
       collapsable: true,
       children: [
+        '/modules/views/',
         '/modules/views/bareui/',
         '/modules/views/blade/',
         '/modules/views/veins/'
@@ -126,12 +193,8 @@ const sidebar = {
       collapsable: true,
       children: [
         '/modules/mvc-core/',
-        '/modules/date/',
-        '/modules/fs/',
-        '/modules/aloe-cli/',
         '/modules/mail/',
         '/modules/db-old/',
-        '/modules/fetch/',
         '/modules/redis/'
       ]
     }
@@ -218,7 +281,7 @@ module.exports = {
       'script',
       {
         src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js',
-        nomodule: "nomodule"
+        nomodule: 'nomodule'
       }
     ],
     [
@@ -275,6 +338,10 @@ module.exports = {
             text: 'Official Projects',
             items: [
               {
+                text: 'Aloe CLI',
+                link: '/aloe-cli/'
+              },
+              {
                 text: 'Leaf CLI',
                 link: '/cli/'
               },
@@ -297,7 +364,7 @@ module.exports = {
               {
                 text: 'Leaf UI',
                 link: '/ui/'
-              },
+              }
             ]
           }
         ]
@@ -320,6 +387,7 @@ module.exports = {
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,
+      '/aloe-cli/': sidebar.aloe,
       '/cli/': sidebar.cli,
     },
     smoothScroll: true,

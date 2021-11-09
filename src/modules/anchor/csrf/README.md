@@ -60,3 +60,55 @@ CSRF::config([
   "EXCEPT" => ["/"],
 ]);
 ```
+
+## Token
+
+A token is generated under the hood for your application, you can get this token to submit in forms using the `token` method.
+
+```php
+$csrfToken = Leaf\Anchor\CSRF::token();
+
+>> ["_token" => "TOKEN VALUE"]
+```
+
+To make things a bit easier, `token` returns associative array holding the token key name and the token itself. This is an example JSON represenation.
+
+```json
+{"_token": "TOKEN VALUE"}
+```
+
+## Form
+
+You would usually want to append a hidden input field holding the token to a form so it doesn't fail the CSRF check. Although you can use the `token` method above to do just that, the `form` method makes it a lot easier as it renders the input field and populates it with the token.
+
+```php
+<form ...>
+  <?php Leaf\Anchor\CSRF::form(); ?>
+  ...
+</form>
+```
+
+## Functional Mode
+
+Just as with other modules, leaf csrf also ships with global functions that make development a lot easier.
+
+### _token
+
+This method returns the CSRF token just as done with the `token` method above.
+
+```php
+$csrfToken = _token();
+
+>> ["_token" => "TOKEN VALUE"]
+```
+
+### _csrfField
+
+This directly renders the form field for the CSRF token generated.
+
+```php
+<form ...>
+  <?php _csrfField(); ?>
+  ...
+</form>
+```

@@ -11,7 +11,7 @@ The response object is an abstraction of your Leaf application’s HTTP response
 
 ### Static Response
 
-Response allows you to call methods statically, which means you don't need to initialize the whole package.
+Response allows you to call methods statically, which means you don't need to initialize the whole package. If you are using the http module out of leaf, this is also the way to go.
 
 ```php
 Leaf\Http\Response::json(["name" => "mychi"]);
@@ -22,10 +22,6 @@ use Leaf\Http\Response;
 
 Response::json(["name" => "mychi"]);
 ```
-
-::: warning Watch out
-Leaf request is a class available on the leaf http module. Check out the [http module docs](/modules/http/) for installation instructions.
-:::
 
 ### 🎄 Response on the Leaf Instance
 
@@ -160,7 +156,7 @@ renderMarkup()
 
 **Note** `page` has **NOTHING** to do with templating, it simply outputs an already defined web page.
 
-For templating with Leaf, [look here](leaf/v/2.5.0/views/blade/)
+For templating with Leaf, [look here](/modules/views/)
 
 **Status Code:**
 
@@ -169,8 +165,6 @@ In v2.4, you can add a status code to the page response as the second parameter.
 ```php
 $response->page("404.html", 404);
 ```
-
-<hr>
 
 ## markup
 
@@ -208,9 +202,7 @@ This feature just simply allows you to send a redirect response which redirects 
 if ($userHasAuth) return $response->redirect("/home");
 ```
 
-<hr>
-
-## 🏠 Headers
+## Headers
 
 An instance of `Leaf\Http\Headers` has been included in the response object. This allows you to quickly set response headers without including the Headers package.
 
@@ -227,13 +219,11 @@ $contentType = $response->headers->get('Content-Type');
 
 If a header with the given name does not exist, `null` is returned. You may specify header names with upper, lower, or mixed case with dashes or underscores. Use the naming convention with which you are most comfortable.
 
-<hr>
-
 ## Status
 
-<div class="alert -info">
+::: info Info
 You can directly set status codes on responses, there's no need to use this method unless you want to use PHP's output methods like <b>echo</b>
-</div>
+:::
 
 The HTTP response returned to the client will have a status code indicating the response’s type (e.g. 200 OK, 400 Bad Request, or 500 Server Error). You can use the Leaf application’s response object to set the HTTP response’s status like this:
 
@@ -247,15 +237,13 @@ You only need to set the response object’s status if you intend to return an H
 $status = $response->status();
 ```
 
-<hr>
-
 ## 🍪 Cookies
 
 You can also add a cookie using the response object. This uses Leaf Cookies.
 
 ### setCookie
 
-This method uses [Leaf Cookie's set](/lucky-charm/http/cookies?id=set)
+This method uses [Leaf Cookie's set](/modules/cookies/#set)
 
 ```php
 $app->response()->setCookie("name", "Michael");
@@ -263,7 +251,7 @@ $app->response()->setCookie("name", "Michael");
 
 ### simpleCookie
 
-This method uses [Leaf Cookie's simpleCookie](/lucky-charm/http/cookies?id=simplecookie)
+This method uses [Leaf Cookie's simpleCookie](/modules/cookies/#simplecookie)
 
 ```php
 $app->response()->simpleCookie("name", "Michael", "1 day");
@@ -271,8 +259,28 @@ $app->response()->simpleCookie("name", "Michael", "1 day");
 
 ### deleteCookie
 
-This method uses [Leaf Cookie's unset](/lucky-charm/http/cookies?id=unset)
+This method uses [Leaf Cookie's unset](/modules/cookies/#unset)
 
 ```php
 $app->response()->deleteCookie("name");
+```
+
+## Functional Mode <Badge text="New" />
+
+Response also adds a new `response` global which allows you quickly use the response object from wherever you are.
+
+```php
+response()->json([
+  "status" => "success",
+  "data" => "Hello",
+]);
+```
+
+You can also pass data directly to the response global. This will immediately call the `json` method above.
+
+```php
+response([
+  "status" => "success",
+  "data" => "Hello",
+]);
 ```

@@ -70,7 +70,7 @@ Session::set("username", $username);
 
 #### Setting multiple values
 
-In v2.0, `set` can take in an array if you wish to set multiple values or just want to use one.
+`set` can take in an array if you wish to set multiple values or just want to use one.
 
 ```php
 Session::set(["username" => $username, "mobile_number" => $mobile_number]);
@@ -208,7 +208,7 @@ You can also decode a serialized session using the `decode` method. It takes in 
 $success = Session::decode($sessionString);
 ```
 
-## flash <sup class="new-tag-1"><small>NEW</small></sup>
+## flash
 
 Leaf now provides extensive support for flash messages utilizing `Leaf\Flash`. This functionality is now available on the session method in the form of `flash`. You can set and get flash messages using this method.
 
@@ -267,11 +267,6 @@ This is a simple class for getting and setting flash data or returning the leaf 
 ```php
 # set flash data
 flash("key", "value");
-
-# or
-flash([
-  "key" => "value",
-]);
 ```
 
 ```php
