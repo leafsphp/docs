@@ -62,11 +62,7 @@ app()->run();
 
 The main difference here is that the second method sets the config before the Leaf app is initialized. This means that during initialization, Leaf will use the config that has been set, however, for the first method, the config is loaded only after Leaf is initialized and thus, not used in the initialization process.
 
-## Available functions <Badge text="Experimental" type="warning" />
-
-This has been tagged as experimental because the available functions shipped with Leaf 3 core have been through a couple of iterations. Until the official alpha release, this will still be tagged as experimental, although a new standard is being introduced soon. For now, all confirmed functions will be tagged with <Badge text="confirmed" />
-
-### app <Badge text="confirmed" />
+## app
 
 This function returns the current instance of the Leaf application. If none exists, it creates and returns it.
 
@@ -98,7 +94,7 @@ As seen on line 5, no app instance already exists and so one is created and retu
 In other frameworks like laravel which also ship an `app` method, calling `app` will return the laravel instance, not leaf's. In such situations, you can use the [app instance config](/docs/config/nsm#config-app-instance)
 :::
 
-## _env <Badge text="confirmed" />
+## _env
 
 This global function allows you to get environment variables set in your `.env` file. `_env` takes in 2 parameters:
 
@@ -165,24 +161,54 @@ Just as with request above, if nothing is passed into `response`, it returns the
 response()->markup("<b>Mychi</b>");
 ```
 
-## Route
+## cookie
 
-`Route` is a function used to define routes using leaf router's `match` method. You can read [leaf router's docs](/docs/routing/) for more information.
+This global allows you to set/get a cookie or return the leaf cookie object.
 
 ::: warning NOTE
-The request global is provided from the [leaf router module](/docs/routing/). No need to install it since it comes with leaf 3 out of the box.
+The cookie global is provided from the [leaf cookie module](/modules/cookies).
 :::
 
 ```php
-Route("GET", "/", function () {
-  response(["name" => "Mychi"]);
-});
+// set multiple cookies
+cookie(["name" => "Mychi", "code" => "PHP"]);
+
+// set single cookie
+cookie("name", "Mychi");
+
+// get cookie
+cookie("name");
 ```
 
-## setHeader
+Just as with request above, if nothing is passed into `cookie`, it returns the leaf cookie object.
 
-This method allows you to set headers for a response. It has this interface `setHeader($key, $value = "", $replace = true, $code = 200)`
+```php
+cookie()->set("name", "Mychi");
+```
 
-```json
-setHeader("Content-Type", "application/json");
+## Leaf CSRF
+
+Leaf CSRF provides 2 globals which make working with the package a whole lot easier.
+
+::: warning NOTE
+To get started you will need the [leaf csrf module](/modules/anchor/csrf/).
+:::
+
+### _token
+
+This method returns a generated CSRF token.
+
+```php
+$token = _token();
+```
+
+### _csrfField
+
+This method generates a CSRF field in a form for you.
+
+```php
+<form>
+  <?php _csrfField(); ?>
+  ...
+</form>
 ```

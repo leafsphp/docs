@@ -5,6 +5,15 @@ Leaf 3 is currently under active development, keep in mind that it might change 
 Thank you in advance for your understanding 💛
 :::
 
+::: tip Leaf 3 release 🚀
+Leaf 3 preview version 1 has been released. You can install it with composer:
+
+```sh
+composer require leafs/leaf v3.0-alpha
+```
+
+:::
+
 ## What is Leaf PHP?
 
 Leaf is a PHP framework that helps you create clean, simple but powerful web apps and APIs quickly and easily. Leaf introduces a cleaner and much simpler structure to the PHP language while maintaining it's flexibility. With a simple structure and a shallow learning curve, it's an excellent way to rapidly build powerful and high performant web apps and APIs.
