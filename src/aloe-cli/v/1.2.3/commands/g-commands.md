@@ -111,9 +111,7 @@ Options:
 
 ## Next Steps
 
-- [d Commands](/aloe-cli/v/1.1.0/commands/d-commands)
-- [Custom commands](/aloe-cli/v/1.1.0/commands/custom)
-- [Commands IO](/aloe-cli/v/1.1.0/commands/io)
-- [Creating Libraries](/aloe-cli/v/1.1.0/libraries)
-
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
+- [d Commands](/aloe-cli/v/1.2.3/commands/d-commands/)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
+- [Creating Libraries](/aloe-cli/v/1.2.3/libraries/)

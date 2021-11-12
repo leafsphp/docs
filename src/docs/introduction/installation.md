@@ -47,7 +47,10 @@ You can also set up a new leaf 3 project from scratch using composer:
 # latest stable
 $ composer require leafs/leaf
 
-# version 3
+# version 3 alpha
+$ composer require leafs/leaf v3.0-alpha
+
+# version 3 dev
 $ composer require leafs/leaf dev-v3.x-dev
 ```
 

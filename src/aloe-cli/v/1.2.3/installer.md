@@ -1,4 +1,4 @@
-# Aloe CLI: Installer
+# Aloe Installer
 
 Aloe installer allows you to quickly install files and routes from your library into the working directory. Aloe installer currently only suports Leaf MVC and Leaf API.
 
@@ -50,9 +50,7 @@ Aloe\Installer::installRoutes("package/Auth/Routes");
 
 ## Next Steps
 
-- [g Commands](/aloe-cli/v/1.1.0/commands/g-commands)
-- [Custom commands](/aloe-cli/v/1.1.0/commands/custom)
-- [Commands IO](/aloe-cli/v/1.1.0/commands/io)
-- [db commands](/aloe-cli/v/1.1.0/db-commands)
-
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
+- [g Commands](/aloe-cli/v/1.2.3/commands/g-commands/)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
+- [db commands](/aloe-cli/v/1.2.3/db-commands/)

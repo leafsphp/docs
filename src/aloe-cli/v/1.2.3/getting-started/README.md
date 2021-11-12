@@ -1,8 +1,8 @@
 # Aloe CLI: Getting Started
 
-<div class="alert -warning">
-    If you're using Leaf MVC or Leaf API, you can skip this page.
-</div>
+::: tip Note
+If you're using Leaf MVC or Leaf API, you can skip this page.
+:::
 
 Aloe CLI is a smart CLI that takes care of a lot of a whole lot of time consuming tasks during your development, allowing you to focus only on important stuff.
 
@@ -106,9 +106,7 @@ Leaf API's config includes a little twist which lets Aloe run in API first mode.
 
 ## Next Steps
 
-- [DB Commands](/aloe-cli/v/1.1.0/commands/db-commands)
-- [Custom commands](/aloe-cli/v/1.1.0/commands/custom)
-- [Commands IO](/aloe-cli/v/1.1.0/commands/io)
-- [Creating Libraries](/aloe-cli/v/1.1.0/libraries)
-
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
+- [DB Commands](/aloe-cli/v/1.2.3/commands/db-commands/)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
+- [Creating Libraries](/aloe-cli/v/1.2.3/libraries/)

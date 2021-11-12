@@ -111,9 +111,10 @@ const sidebar = {
       title: 'Aloe Misc',
       collapsable: false,
       children: [
-        { title: 'Aloe Libraries', path: '/aloe-cli/v/1.2.3/libraries' }
+        { title: 'Aloe Libraries', path: '/aloe-cli/v/1.2.3/libraries' },
+        '/aloe-cli/v/1.2.3/installer'
       ]
-    },
+    }
   ],
   modules: [
     {
