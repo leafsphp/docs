@@ -42,6 +42,25 @@ export PATH=$PATH:$HOME/.composer/vendor/bin
 echo $PATH
 ```
 
+::: tip NOTE
+To get leaf cli installed permanently, you will need to add your composer bin your `.bashrc` or `.zshrc` file on mac and linux.
+
+**zsh:**
+
+```sh
+echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+**bash:**
+
+```sh
+echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+:::
+
 ## Versions
 
 - [Version 1 Docs](/cli/v/1.0/)
