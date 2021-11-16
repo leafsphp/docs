@@ -200,7 +200,7 @@ export default {
 
 body.-light {
   background-color: white !important;
-  color: rgb(89, 89, 97);
+  color: rgb(12, 12, 12);
 
   h1, h2, h3, h4, h5, h6 {
     color: #003543 !important;
@@ -284,10 +284,25 @@ body.-light {
 
   code {
     background: rgba($color: #42b983, $alpha: .1);
+    font-weight: bold;
+  }
+
+  pre {
+    code {
+      font-weight: normal;
+    }
+  }
+
+  a {
+    font-weight: bold;
   }
 
   .custom-block {
     background-color: lighten(#012a35, 5%) !important;
+
+    a {
+      font-weight: normal;
+    }
   }
 
   footer {

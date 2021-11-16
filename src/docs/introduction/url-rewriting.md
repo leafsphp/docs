@@ -10,6 +10,12 @@ Basically, we're trying to push all the requests made to the server to a single 
 
 This complex sounding feature can be achieved by adding a web server configuration depending on your server of choice.
 
+<!-- ::: info Video Docs
+Watch URL rewriting explained.
+
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="URL rewriting explained">Watch URL rewriting explained on youtube</VideoLesson>
+::: -->
+
 ## Apache - .htaccess
 
 This is a basic example of an htaccess file. It basically re-routes all requests to our index.php file.

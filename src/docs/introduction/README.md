@@ -18,23 +18,25 @@ composer require leafs/leaf v3.0-alpha
 
 Leaf is a PHP framework that helps you create clean, simple but powerful web apps and APIs quickly and easily. Leaf introduces a cleaner and much simpler structure to the PHP language while maintaining it's flexibility. With a simple structure and a shallow learning curve, it's an excellent way to rapidly build powerful and high performant web apps and APIs.
 
-The core library is focused on the REST APIs only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Leaf is also perfectly capable of powering sophisticated MVC Applications with it's wide library of modules.
+The core library is focused mostly on REST APIs, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Leaf is also perfectly capable of powering sophisticated MVC Applications with it's wide library of modules.
 
-::: tip NOTE
+::: tip Migrating
 Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
 :::
 
-<!-- If you’d like to learn more about Leaf before diving in, we created a video walking through the core principles and a sample project.
-
-<VideoLesson href="https://youtube.com/" title="Watch a free video course on Leaf Mastery">Watch the leaf 3 intro video on youtube</VideoLesson> -->
-
 ## Getting Started
 
-::: tip Quick Tip
-The official guide assumes basic level knowledge of PHP. If you are totally new to PHP, you might want to take an introduction course - grasp the basics then come back! This is because you will basically be writing PHP code when using leaf (or any other framework).
-:::
+The official guide assumes **basic** level knowledge of PHP. If you are totally new to PHP, you might want to take an introduction course - grasp the basics then come back! This is because you will basically be writing PHP code when using leaf (or any other framework).
 
-### [Installation instructions here](/docs/introduction/installation.html)
+<!-- ::: info Video Docs
+Throughout the leaf documentation, you will see video links like the one just below. This gives you another means to follow along our documentation if you are more of a visual learner. We call this the video docs.
+
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the leaf 3 intro video on youtube</VideoLesson>
+::: -->
+
+### Installation
+
+To quickly get started with leaf, check out our [installation guide](/docs/introduction/installation.html). This gives you an in-depth explanation on how to setup leaf using various methods.
 
 Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
 

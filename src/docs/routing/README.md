@@ -11,7 +11,13 @@ Leaf router is now separated from Leaf and is now available as an installable mo
 
 Leaf router uses a single root file, to which all the server requests are redirected, it then takes these requests and matches them to rules you have defined. The results are then displayed to the user. It's actually a very simple concept.
 
-The router module is tied directly to Leaf Core, so once you initialize leaf, you can use routing.
+To make things simpler, we tied leaf router directly to the leaf instance, so once you initialize leaf, you can use routing.
+
+<!-- ::: info Video Docs
+Watch how to use the leaf router in your leaf applications.
+
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the routing guide on youtube</VideoLesson>
+::: -->
 
 Note that you can now use Leaf router outside of a leaf app. To do this, simply install the leaf router module:
 

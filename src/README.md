@@ -19,7 +19,7 @@ features:
   - title: Efficient ⏰
     details: |
       Blazing Fast<br>
-      < 60KB Runtime<br>
+      < 40KB Source<br>
       Crazy development time
 footer: |
   Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a><br>

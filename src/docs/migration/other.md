@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 # Migrating from other frameworks
 
 ::: info
@@ -6,14 +10,11 @@ New to Leaf PHP? Check out our [Essentials Guide](/docs/introduction/) to get st
 
 This page is for developers who have a working application in another framework and want to port over to Leaf. As far-fetched as this sounds, Leaf 3 makes it super easy to sprinkle pieces of Leaf into any existing application, gradually rewriting it without breaking any code. Leaf has always allowed users to integrate other libraries seamlessly into their leaf apps with no conflicts or complexities, now Leaf 3 allows you to go the other way: **integrating Leaf seamlessly into any application no matter which libraries or frameworks it was built with.**
 
-- [Quickstart](#quickstart)
+<!-- ::: info Video Docs
+Follow along as we migrate a Slim PHP application to use Leaf 3 and modules.
 
-<!-- ## Overview
-
-<br>
-<iframe src="https://player.vimeo.com/video/440868720" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path/Leaf3). -->
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the migration guide on youtube</VideoLesson>
+::: -->
 
 ## Quickstart
 
@@ -69,10 +70,8 @@ composer require leafs/http
 
 Now, we replace Slim's http handlers with Leaf's.
 
-```php{2-3,11-12}
+```php{9-10}
 <?php
-use Leaf\Http\Request;
-use Leaf\Http\Response;
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -80,8 +79,8 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = AppFactory::create();
 
 $app->get('/', function () {
-    $name = Request::get('name');
-    Response::markup("Hello, $name");
+    $name = request()->get('name');
+    response()->markup("Hello, $name");
 });
 
 $app->run();

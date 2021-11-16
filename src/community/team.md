@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 # Meet the Team
 
 Meet our highly motivated and community driven core team.

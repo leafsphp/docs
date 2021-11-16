@@ -209,6 +209,19 @@ const sidebar = {
         '/docs/contributing/doc-style-guide'
       ]
     }
+  ],
+  community: [
+    {
+      title: 'Community',
+      collapsable: false,
+      children: [
+        '/community/team',
+        '/community/join',
+        '/coc/',
+        '/community/contributing',
+        '/support/',
+      ]
+    }
   ]
 }
 
@@ -390,6 +403,8 @@ module.exports = {
       '/codelabs/': sidebar.codelabs,
       '/aloe-cli/': sidebar.aloe,
       '/cli/': sidebar.cli,
+      '/community/': sidebar.community,
+      '/coc/': sidebar.community,
     },
     smoothScroll: true,
     algolia: {

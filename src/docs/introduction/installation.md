@@ -13,6 +13,12 @@ There are four primary ways of adding Leaf PHP to a project:
 3. Use [Leaf skeleton](https://leafphp.netlify.app/#/skeleton/v/2.0/) to quickstart your project
 4. Download the leaf repo
 
+<!-- ::: info Video Docs
+You can take a look at our installation walkthrough on youtube.
+
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
+::: -->
+
 ## Release Notes
 
 Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/unstable)

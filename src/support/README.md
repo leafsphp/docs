@@ -1,6 +1,7 @@
 ---
 supportLeaf: true
 sidebar: auto
+aside: none
 ---
 
 # Sponsor Leaf Development

@@ -1,3 +1,7 @@
+---
+title: "Our Community"
+---
+
 # Join the Leaf PHP Community!
 
 Leaf's community is growing incredibly fast and if you're reading this, there's a good chance you're ready to join it. So... welcome!
@@ -8,7 +12,7 @@ Now we'll answer both what the community can do for you and what you can do for 
 
 ### Code of Conduct
 
-Our [Code of Conduct](/coc) is a guide to make it easier to enrich all of us and the technical communities in which we participate.
+Our [Code of Conduct](/coc/) is a guide to make it easier to enrich all of us and the technical communities in which we participate.
 
 ### Get Support
 
@@ -20,7 +24,7 @@ Our [Code of Conduct](/coc) is a guide to make it easier to enrich all of us and
 
 ### Contribute Code
 
-As with any project, there are rules to contributing. To ensure that we can help you or accept your pull request as quickly as possible, please read [the contributing guide](https://leafphp.netlify.app/#/contributing).
+As with any project, there are rules to contributing. To ensure that we can help you or accept your pull request as quickly as possible, please read [the contributing guide](/community/contributing/).
 
 After that, you'll be ready to contribute to Leaf's core repositories:
 

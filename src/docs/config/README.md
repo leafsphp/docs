@@ -7,6 +7,12 @@ Leaf aims for zero configurations out of the box, as such, none of these configu
 
 There are three ways to apply settings to the Leaf application. First during Leaf application instantiation, second with the leaf config class and finally, after instantiation. All settings can be applied at instantiation time by passing Leaf’s constructor an associative array. All settings can be retrieved and modified after instantiation, however some of them can not be done simply by using the config application instance method but will be demonstrated as necessary below. Before I list the available settings, I want to quickly explain how you may define and inspect settings with your Leaf application.
 
+<!-- ::: info Video Docs
+Everything you need to know about configuring your leaf apps.
+
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the config guide on youtube</VideoLesson>
+::: -->
+
 ## During Instantiation
 
 To define settings upon instantiation, pass an associative array into the Leaf constructor.
