@@ -6,18 +6,20 @@
       <NavLink v-else :item="item" />
     </div>
 
-    <a
-      target="_blank"
-      href="https://github.com/leafsphp/leaf/tree/v3.x-dev"
-      class="nav-item github-link"
-    >
-      <GitHub class="icon-container" h="23" w="23" />
-    </a>
-    <a target="_blank" href="https://twitter.com/leafphp" class="nav-item">
-      <Twitter class="nav-item icon-container" h="23" w="23" />
-    </a>
-    <Moon v-if="!isDark" @click.native="toggleMode" class="nav-item icon-container" h="23" w="23" />
-    <Sun v-else @click.native="toggleMode" class="nav-item icon-container" h="23" w="23" />
+    <div style="display:flex;" class="nav-item">
+      <a
+        target="_blank"
+        href="https://github.com/leafsphp/leaf/tree/v3.x-dev"
+        class="action-icon github-link nav-item"
+      >
+        <GitHub class="icon-container" h="23" w="23" />
+      </a>
+      <a target="_blank" href="https://twitter.com/leafphp" class="action-icon nav-item">
+        <Twitter class="icon-container" h="23" w="23" />
+      </a>
+      <Moon v-if="!isDark" @click.native="toggleMode" class="action-icon icon-container nav-item" h="23" w="23" />
+      <Sun v-else @click.native="toggleMode" class="action-icon icon-container nav-item" h="23" w="23" />
+    </div>
   </nav>
 </template>
 

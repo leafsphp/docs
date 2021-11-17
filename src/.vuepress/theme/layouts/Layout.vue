@@ -221,6 +221,12 @@ body.-light {
   .navbar {
     background: rgba($color: white, $alpha: 0.8) !important;
 
+    .sidebar-button {
+      .icon * {
+        fill: black !important;
+      }
+    }
+
     a {
       span {
         color: #003543 !important;
@@ -251,6 +257,13 @@ body.-light {
   .sidebar {
     background: white !important;
     color: #003543 !important;
+
+    > .nav-links {
+      * {
+        color: #003543 !important;
+        fill: #003543 !important;
+      }
+    }
 
     a {
       span {

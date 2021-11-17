@@ -22,9 +22,10 @@ body
   padding-left $sidebarWidth
   padding-right $sidebarWidth
 
-.page.-noAside
-  padding-right unset !important
-  padding-left 220px !important
+@media (min-width: $MQMobileNarrow)
+  .page.-noAside
+    padding-right unset !important
+    padding-left 220px !important
 
 @media (min-width: (1201px))
   .navbar
@@ -207,6 +208,16 @@ hr
 .sidebar.-left
   left 0
   padding-left 85px
+
+  @media (max-width: $MQMobileNarrow) {
+    background rgba(0, 30, 38, 0.9) !important;
+    backdrop-filter: blur(5px);
+
+    .nav-links .nav-item ul {
+      background-color: transparent !important;
+      border: none !important;
+    }
+  }
 
   .sidebar-sub-headers
     display none !important
