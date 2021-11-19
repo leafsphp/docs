@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 # Aloe Cli
 
 Aloe is a simple but powerful console service that makes building your leaf apps just a simple walk in the park. Aloe CLI ships with the default Leaf console tool in the newer versions of Leaf API, soon in Leaf MVC and Leaf API.

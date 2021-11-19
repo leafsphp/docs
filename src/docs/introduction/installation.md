@@ -13,12 +13,6 @@ There are four primary ways of adding Leaf PHP to a project:
 3. Use [Leaf skeleton](https://leafphp.netlify.app/#/skeleton/v/2.0/) to quickstart your project
 4. Download the leaf repo
 
-<!-- ::: info Video Docs
-You can take a look at our installation walkthrough on youtube.
-
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
-::: -->
-
 ## Release Notes
 
 Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/unstable)
@@ -26,6 +20,12 @@ Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/
 Detailed release notes for each version are available on [GitHub](https://github.com/leafsphp/leaf/blob/v3.x-dev/CHANGELOG.md).
 
 ## Leaf CLI
+
+<!-- ::: info Video Docs
+You can take a look at our leaf cli setup walkthrough on youtube.
+
+<VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
+::: -->
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/cli/v/2.0/) for more details.
 
@@ -46,6 +46,12 @@ leaf serve
 ```
 
 ## Composer
+
+<!-- ::: info Video Docs
+Learn how to set up a leaf app with composer.
+
+<VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the composer setup on youtube</VideoLesson>
+::: -->
 
 You can also set up a new leaf 3 project from scratch using composer:
 
@@ -78,9 +84,15 @@ You might want to check out [URL rewriting](/docs/introduction/url-rewriting.htm
 
 ## GitHub
 
+<!-- ::: info Video Docs
+Learn how to set up a leaf app from the leaf codebase.
+
+<VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the github setup on youtube</VideoLesson>
+::: -->
+
 You can also clone the leaf 3 branch.
 
-::: info Setup
+::: tip Setup ☁️
 You can directly download v3.x-dev here.
 
 <div style="margin-bottom: 30px;">

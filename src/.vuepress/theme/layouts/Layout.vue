@@ -138,7 +138,7 @@ export default {
     shouldShowBanner() {
       return (
         this.$page.frontmatter.home &&
-        (this.$site.themeConfig.topBanner || false)
+        (this.$page.frontmatter.topBanner || false)
       )
     },
 
@@ -204,6 +204,14 @@ body.-light {
 
   h1, h2, h3, h4, h5, h6 {
     color: #003543 !important;
+  }
+
+  .section-features .feature h2 {
+    border-bottom: none !important;
+  }
+
+  h2:not(.tagline) {
+    border-bottom: 1px solid #cececf !important;
   }
 
   .search-box {

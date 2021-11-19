@@ -1,8 +1,10 @@
----
-title: "Functional Mode"
----
-
 # Functional Mode <Badge text="new" />
+
+<!-- ::: info Video Docs
+Learn about leaf 3's new functional mode.
+
+<VideoLesson href="#" title="Functional mode">Watch the functional mode guide on youtube</VideoLesson>
+::: -->
 
 "Functional Mode", as we call it is just a fancy name given to a bunch of predefined functions in your leaf app which allow you to create your entire app or API without relying on classes with lengthy initializers and namespaces. With functional mode, everything is handled for you under the hood and is given to you in one global function.
 

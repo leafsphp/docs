@@ -16,7 +16,7 @@ To make things simpler, we tied leaf router directly to the leaf instance, so on
 <!-- ::: info Video Docs
 Watch how to use the leaf router in your leaf applications.
 
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the routing guide on youtube</VideoLesson>
+<VideoLesson href="#" title="Routing in leaf PHP">Watch the routing guide on youtube</VideoLesson>
 ::: -->
 
 Note that you can now use Leaf router outside of a leaf app. To do this, simply install the leaf router module:

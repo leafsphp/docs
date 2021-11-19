@@ -1,6 +1,6 @@
 # Introduction
 
-::: warning Watch out
+::: warning 🚧 Watch out
 Leaf 3 is currently under active development, keep in mind that it might change in the future, and so is not production ready.
 Thank you in advance for your understanding 💛
 :::
@@ -111,44 +111,67 @@ instead of
 Hello World
 ```
 
-Unlike the confusion above between the content type and echo, response makes sure that whatever content we're trying to render reflects in the content type. This is just one of the many things that response takes care of automatically.
+Unlike the confusion above between the content type and echo, leaf response makes sure that whatever content we're trying to render reflects in the content type. This is just one of the many things that response takes care of automatically.
 
-### Handling User Input
+## "Functional Mode"
 
-One very important part of building web apps/APIs is user input. Users may pass data into your leaf app through forms, http request bodies, urls, ...
+We have mostly talked about general features which are the same even in Leaf 2, now let's talk about some spice in Leaf 3.
 
-You must read this data and make sure it can't harm your system before performing any operations on it. This can be very clumsy when done raw with PHP, especially when the data comes in through multiple channels. Leaf has however prepared a simple handler for this: `Leaf\Http\Request`.
+::: tip
+This is just an introduction to functional mode, read the [functional mode documentation](/docs/tooling/functions.html) for the full explanation.
+:::
 
-<!-- user goes to /?greeting=hello%20world -->
+Basically, leaf 3 comes with global helper functions which take away the only pain anyone has ever had in using leaf, i.e. long namespaces and class initializers. Let's rewrite the first example in functional mode.
 
 ```php
 <?php
 
 require __DIR__ . "/vendor/autoload.php";
 
-use Leaf\Http\Request;
-use Leaf\Http\Response;
+app()->get("/", function () {
+  response()->markup("Hello world");
+});
 
-$app = new Leaf\App;
+app()->run();
+```
 
-$app->get("/", function () {
+You notice that we've gotten rid of the lengthy `use Leaf\Http\Response;` and even the leaf initializer. Leaf 3 helps you focus on only what matters: your application. Everything is either done for you under the hood or the provided to you in simple to use tools.
+
+::: info Note that
+From this point onwards, we will be using the functional mode syntax.
+:::
+
+### Handling User Input
+
+One very important part of building web apps/APIs is user input. Users may pass data into your leaf app through forms, http request bodies, urls, ...
+
+You must read this data and make sure it can't harm your system before performing any operations on it. This can be very clumsy when done raw with PHP, especially when the data comes in through multiple channels. Leaf has however prepared a simple handler for this: `Leaf\Http\Request`. Since we are using functional mode, we will use the `request` method instead of this lengthy class.
+
+user goes to /?greeting=hello%20world
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+app()->get("/", function () {
   // we can get the GET request data from the URL like this
-  $greeting = Request::get("greeting"); // hello world
+  $greeting = request()->get("greeting"); // hello world
 
   // output json encoded data
-  Response::json([
+  response()->json([
     "greeting" => $greeting
   ]);
 });
 
-$app->run();
+app()->run();
 ```
 
 The most beautiful thing about the request object is that all data passed into your app is automatically sanitized to prevent attacks like XSS. You have simple and safe code working for you.
 
 ### Installing modules
 
-Modules are pieces of functionality that have been packaged and shipped separately from Leaf core. Modules are used to extend Leaf's reach to perform some operations not available on the core. Modules were introduced with Leaf 3, but some of them can be used with earlier versions of Leaf. Modules can also be used in external libraries and frameworks as well. To install a module, simply run it's install script with composer.
+Modules are pieces of functionality that have been packaged and shipped separately from Leaf core. Modules are used to extend Leaf's reach to perform some operations not available on the core. Modules were introduced with Leaf 3, but some of them can be used with earlier versions of Leaf. Modules can also be used in external libraries and frameworks as well. To install a module, simply run it's install script with composer or use th leaf cli.
 
 To demonstrate this, we will expand the app above to output a template instead of the json data from earlier. For this, we will need a template module. Leaf has 3 template modules
 
@@ -162,7 +185,13 @@ For this demo, we will use bareUI. We can install bareUI with composer.
 composer require leafs/bareui
 ```
 
-After this, leaf automatically links the bareUI class for you and makes it available on the leaf object as `template`. So from there, we can do create our template. I'll name this `index.view.php` (bare ui templates end in `.view.php`)
+Or with leaf cli:
+
+```sh
+leaf install bareui
+```
+
+After this, leaf **automatically** links the bareUI class for you and makes it available on the leaf object as `template`. So from there, we can do create our template. I'll name this `index.view.php` (bare ui templates end in `.view.php`)
 
 ```php
 <!DOCTYPE html>
@@ -186,53 +215,24 @@ The next thing to do is to tell bareUI where to look for templates and finally r
 
 require __DIR__ . "/vendor/autoload.php";
 
-use Leaf\Http\Request;
-use Leaf\Http\Response;
-
-$app = new Leaf\App;
-
 // point to the templates directory
-$app->template->config("path", "./");
-
-$app->get("/", function () use($app) {
-  // we can get the GET request data from the URL like this
-  $greeting = Request::get("greeting"); // hello world
-
-  // render our template
-  $app->template->render("index", [
-    "greeting" => "Hello universe",
-  ]);
-});
-
-$app->run();
-```
-
-Just as you saw above, most Leaf modules require absolutely no configuration in order to work with leaf core. They just fit right in.
-
-## "Functional Mode"
-
-We have mostly talked about general features which are the same even in Leaf 2, now let's talk about some spice in Leaf 3. This is just an introduction to functional mode, read the [functional mode documentation](/docs/tooling/functions.html) for the full explanation.
-
-Basically, leaf 3 comes with global helper functions which take away the only pain anyone has ever had in using leaf, i.e. long namespaces. Let's rewrite the first example in functional mode.
-
-```php
-<?php
-
-require __DIR__ . "/vendor/autoload.php";
+app()->template->config("path", "./");
 
 app()->get("/", function () {
   // we can get the GET request data from the URL like this
-  $greeting = request("greeting");
+  $greeting = request()->get("greeting"); // hello world
 
-  // output json encoded data
-  response(["greeting" => $greeting]);
+  // render our template
+  echo app()->template->render("index", [
+    "greeting" => $greeting,
+  ]);
 });
 
 app()->run();
 ```
 
-You notice that we've gotten rid of the lengthy namespaces and even the leaf initializer. Leaf 3 helps you focus on only what matters: your application. Everything is either done for you under the hood or the provided to you in simple to use tools.
+Just as you saw above, most Leaf modules require absolutely no configuration in order to work with leaf core. They just fit right in.
 
 ## Ready for More?
 
-We've briefly introduced the most basic features of Leaf 3 - the rest of this guide will cover them and other advanced features with much finer details, so make sure to read through it all!
+We've briefly introduced the most basic features of Leaf 3 - the rest of this guide will cover them and other advanced features with much finer details, so make sure to read through it!

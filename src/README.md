@@ -3,6 +3,7 @@ home: true
 heroImage: /logo-circle.png
 heroText: Leaf 3.0
 tagline: Simple and elegant PHP
+topBanner: true
 actionButtons:
   - text: Get Started
     link: /docs/introduction/

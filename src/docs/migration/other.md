@@ -13,7 +13,7 @@ This page is for developers who have a working application in another framework 
 <!-- ::: info Video Docs
 Follow along as we migrate a Slim PHP application to use Leaf 3 and modules.
 
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the migration guide on youtube</VideoLesson>
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Migrating to v3">Watch the migration guide on youtube</VideoLesson>
 ::: -->
 
 ## Quickstart

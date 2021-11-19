@@ -14,7 +14,7 @@ Once leaf is initialized, a config named app is populated with the app instance 
 // ...
 $app = Leaf\Config::get("app")["instance"];
 
-app()->set404(Custom404::build());
+$app->set404(Custom404::build());
 ```
 
 <hr>

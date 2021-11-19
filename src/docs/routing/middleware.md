@@ -1,6 +1,12 @@
 # Middleware
 <!-- markdownlint-disable no-inline-html -->
 
+<!-- ::: info Video Docs
+Leaf how to use middleware in your leaf apps.
+
+<VideoLesson href="#" title="Middleware in leaf PHP">Watch the middleware guide on youtube</VideoLesson>
+::: -->
+
 Middleware are just methods that run before your code runs, be it a particular route or your whole application. Unlike many other frameworks and systems, Leaf gives you the opportunity to set global middleware that run before any and every route.
 
 ## ⏳ Before Route Middlewares

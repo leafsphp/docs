@@ -7,7 +7,7 @@ title: "Migration Guide"
 <!-- ::: info Video Docs
 [@mychidarko](https://github.com/mychidarko) gives a walkthrough on migrating a leaf 2 app to use leaf 3 and modules.
 
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the migration guide on youtube</VideoLesson>
+<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Migrating to v3">Watch the migration guide on youtube</VideoLesson>
 ::: -->
 
 This guide is primarily for users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3. **This is not something you have to read from top to bottom before trying out Leaf 3.** While it looks like a lot has changed, a lot of what you know and love about Leaf is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.

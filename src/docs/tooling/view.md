@@ -5,6 +5,12 @@ title: "Leaf View"
 <!-- markdownlint-disable no-inline-html -->
 # Leaf View
 
+<!-- ::: info Video Docs
+Learn how to use views in leaf PHP.
+
+<VideoLesson href="#" title="Views in leaf PHP">Watch the views guide on youtube</VideoLesson>
+::: -->
+
 Leaf view is a view manager for your leaf apps. This simply gives you the platform to register, configure and use as many templating engines as you want within your app. This means you can now ship your app with various engines, or rewrite your UIs with a different engine without having to translate or pull down the whole app first.
 
 Leaf view also allows you to run multiple instances of the same engine, with different configurations, values and all that.

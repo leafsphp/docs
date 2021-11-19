@@ -52,13 +52,6 @@ const sidebar = {
       path: '/modules/'
     }
   ],
-  cli: [
-    {
-      title: 'Leaf CLI',
-      collapsable: false,
-      children: ['/cli/', '/cli/v/1.0/', '/cli/v/2.0/']
-    }
-  ],
   aloe: [
     {
       title: 'Aloe CLI',
@@ -122,9 +115,9 @@ const sidebar = {
       collapsable: false,
       children: [
         { title: 'Leaf Docs', path: '/docs/introduction/' },
-        { title: 'Leaf API', path: '/leaf-api/' },
-        { title: 'Leaf MVC', path: '/leaf-mvc/' },
-        { title: 'Skeleton', path: '/skeleton/' }
+        { title: 'Leaf API', path: 'https://api.leafphp.dev' },
+        { title: 'Leaf MVC', path: 'https://mvc.leafphp.dev/' },
+        { title: 'Skeleton', path: 'https://skeleton.leafphp.dev/' }
       ]
     },
     {
@@ -357,7 +350,7 @@ module.exports = {
               },
               {
                 text: 'Leaf CLI',
-                link: '/cli/'
+                link: 'https://cli.leafphp.dev'
               },
               {
                 text: 'Leaf Modules',
@@ -365,19 +358,19 @@ module.exports = {
               },
               {
                 text: 'Leaf MVC',
-                link: '/leaf-mvc/'
+                link: 'https://mvc.leafphp.dev/'
               },
               {
                 text: 'Leaf API',
-                link: '/leaf-api/'
+                link: 'https://api.leafphp.dev/'
               },
               {
                 text: 'Leaf Skeleton',
-                link: '/skeleton/'
+                link: 'https://skeleton.leafphp.dev/'
               },
               {
                 text: 'Leaf UI',
-                link: '/ui/'
+                link: 'https://ui.leafphp.dev/'
               }
             ]
           }
@@ -402,7 +395,6 @@ module.exports = {
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,
       '/aloe-cli/': sidebar.aloe,
-      '/cli/': sidebar.cli,
       '/community/': sidebar.community,
       '/coc/': sidebar.community,
     },
