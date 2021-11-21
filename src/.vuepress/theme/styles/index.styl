@@ -419,6 +419,11 @@ th, td
     .sidebar
       top 0
 
+.theme-container.no-sidebar {
+  .page {
+    padding-left: 0 !important;
+  }
+}
 
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar
@@ -426,7 +431,7 @@ th, td
       display none
 
     .page
-      padding-left 0
+      padding-left 0 !important
 
 @require 'mobile.styl'
 

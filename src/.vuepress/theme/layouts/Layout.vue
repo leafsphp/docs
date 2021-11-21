@@ -22,7 +22,7 @@
 
     <Home v-if="$page.frontmatter.home" />
 
-    <Page v-else :sidebar-items="sidebarItems" :config="shouldShowAside === false ? '-noAside' : '-aside'">
+    <Page v-else :sidebar-items="sidebarItems" :config="shouldShowAside === false ? '-noAside' : '-aside' + $page.frontmatter.blog ? `-blog-${$page.frontmatter.blog}` : ''">
       <template #top>
         <slot name="page-top" />
       </template>
@@ -108,7 +108,7 @@ export default {
       const { frontmatter } = this.$page
       return (
         !frontmatter.home &&
-        frontmatter.sidebar !== false &&
+        (frontmatter.sidebar !== false && frontmatter.sidebar !== 'none') &&
         this.sidebarItems.length
       )
     },

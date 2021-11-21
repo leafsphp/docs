@@ -208,6 +208,7 @@ const sidebar = {
       title: 'Community',
       collapsable: false,
       children: [
+        '/blog/',
         '/community/team',
         '/community/join',
         '/coc/',
@@ -274,12 +275,6 @@ module.exports = {
     [
       'script',
       {
-        src: 'https://player.vimeo.com/api/player.js'
-      }
-    ],
-    [
-      'script',
-      {
         src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js',
         type: 'module'
       }
@@ -291,13 +286,6 @@ module.exports = {
         nomodule: 'nomodule'
       }
     ],
-    [
-      'script',
-      {
-        src: 'https://extend.vimeocdn.com/ga/72160148.js',
-        defer: 'defer'
-      }
-    ]
   ],
   themeConfig: {
     logo: '/logo-circle.png',
@@ -331,6 +319,10 @@ module.exports = {
             text: 'Community',
             ariaLabel: 'Community Menu',
             items: [
+              {
+                text: 'Blog',
+                link: '/blog/'
+              },
               {
                 text: 'Team',
                 link: '/community/team/'
@@ -397,6 +389,7 @@ module.exports = {
       '/aloe-cli/': sidebar.aloe,
       '/community/': sidebar.community,
       '/coc/': sidebar.community,
+      '/blog/': sidebar.community,
     },
     smoothScroll: true,
     algolia: {
