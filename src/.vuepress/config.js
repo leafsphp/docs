@@ -27,6 +27,7 @@ const sidebar = {
       collapsable: false,
       children: [
         '/modules/cors/',
+        {title: 'HTTP', path: '/modules/http/'},
         '/docs/tooling/container',
         '/docs/tooling/logging',
         '/docs/tooling/view',
