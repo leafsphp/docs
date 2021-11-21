@@ -285,7 +285,7 @@ module.exports = {
         src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js',
         nomodule: 'nomodule'
       }
-    ],
+    ]
   ],
   themeConfig: {
     logo: '/logo-circle.png',
@@ -316,6 +316,50 @@ module.exports = {
         text: 'Ecosystem',
         items: [
           {
+            text: 'Tooling',
+            ariaLabel: 'Tooling Menu',
+            items: [
+              {
+                text: 'Aloe CLI',
+                link: '/aloe-cli/'
+              },
+              {
+                text: 'Leaf CLI',
+                link: 'https://cli.leafphp.dev'
+              },
+              {
+                text: 'Leaf UI',
+                link: 'https://ui.leafphp.dev/'
+              }
+            ]
+          },
+          {
+            text: 'Core Projects',
+            items: [
+              {
+                text: 'Leaf Modules',
+                link: '/modules/'
+              },
+              {
+                text: 'Leaf MVC',
+                link: 'https://mvc.leafphp.dev/'
+              },
+              {
+                text: 'Leaf API',
+                link: 'https://api.leafphp.dev/'
+              },
+              {
+                text: 'Leaf Skeleton',
+                link: 'https://skeleton.leafphp.dev/'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        text: 'Community',
+        items: [
+          {
             text: 'Community',
             ariaLabel: 'Community Menu',
             items: [
@@ -334,38 +378,23 @@ module.exports = {
             ]
           },
           {
-            text: 'Official Projects',
+            text: 'Help',
+            ariaLabel: 'Help Menu',
             items: [
               {
-                text: 'Aloe CLI',
-                link: '/aloe-cli/'
+                text: 'Leaf Forum',
+                link: 'https://github.com/leafsphp/leaf/discussions/57'
               },
               {
-                text: 'Leaf CLI',
-                link: 'https://cli.leafphp.dev'
+                text: 'Discord',
+                link: 'https://discord.gg/Pkrm9NJPE3'
               },
               {
-                text: 'Leaf Modules',
-                link: '/modules/'
-              },
-              {
-                text: 'Leaf MVC',
-                link: 'https://mvc.leafphp.dev/'
-              },
-              {
-                text: 'Leaf API',
-                link: 'https://api.leafphp.dev/'
-              },
-              {
-                text: 'Leaf Skeleton',
-                link: 'https://skeleton.leafphp.dev/'
-              },
-              {
-                text: 'Leaf UI',
-                link: 'https://ui.leafphp.dev/'
+                text: 'GitHub',
+                link: 'https://github.com/leafsphp/leaf'
               }
             ]
-          }
+          },
         ]
       },
       {
@@ -389,7 +418,7 @@ module.exports = {
       '/aloe-cli/': sidebar.aloe,
       '/community/': sidebar.community,
       '/coc/': sidebar.community,
-      '/blog/': sidebar.community,
+      '/blog/': sidebar.community
     },
     smoothScroll: true,
     algolia: {
