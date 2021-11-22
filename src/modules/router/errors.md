@@ -14,29 +14,31 @@ Leaf's core router has specially prepared for 404 errors, and is bent on giving 
 For this reason, we've prepared the set404() method. You can use `set404` to display your own custom 404 page.
 
 ```php
-$app->set404(function() use($app) {
-  $app->response()->page("./pages/404.html");
+Router::set404(function() use($app) {
+  response()->page("./pages/404.html");
 });
 ```
 
-## Handling 500
+## Application Down
 
-By default, Leaf has 2 pre-built 500 error pages, the first is a general error page used in development. If you've ever run into an error during development, you've probably come across a nice looking page that gives you information about your error, line numbers and all that stuff, however, there's another error page used in production. You can switch to this by simply configuring Leaf's `debug` to `false`.
+Leaf router is also able to dynamically handle placing your application in maintainance mode using the `configure` method.
 
 ```php
-$app = new Leaf\App(["debug" => false]);
+Router::configure([
+  "app.down" => true,
+]);
 ```
 
-You'll have an error page which doesn't give details on the error, however, if logs are enabled, all the errors are saved to a log file in the background.
+Alternatively, you could also place your application in maintainance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set.
 
-If you still wish to use a custom handler, you can set one with `setErrorHandler`.
+::: warning Note that
+Leaf router expects you to manually load your `.env` file and will not be responsible for this. You can use [vlucas/phpdotenv](https://packagist.org/packages/vlucas/phpdotenv) to do this. After loading your `.env` variables into your app, leaf router will automatically pick them up.
+:::
+
+Along with this, we have prepared a simple method to display a custom maintainance error page: `setDown`.
 
 ```php
-// use an error handler from a package
-$app->setErrorHandler(['\Leaf\Exception\General', 'defaultError']);
-
-// use a custom function
-$app->setErrorHandler(function() use($app) {
-  $app->response()->page("./pages/500.html");
+Router::setDown(function () {
+  echo "Down for maintainance";
 });
 ```

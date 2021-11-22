@@ -97,7 +97,9 @@ $app = new \Leaf\App([
 $app->logger()->enabled(true);
 ```
 
+::: warning log.enabled
 Note that if `log.enabled` is set to `false`. Leaf will skip initializing anything related to logs, as such, you won't have access to `$app->logger()`, `$app->log` or `$app->logWriter`.
+:::
 
 ## log.file
 
@@ -163,7 +165,7 @@ $app->logger()->setWriter(new \My\LogWriter());
 
 ## mode
 
-This is an identifier for the application’s current mode of operation. The mode does not affect a Leaf application’s internal functionality. Instead, the mode is only for you to optionally invoke your own code for a given mode with the `configMode()` application method.
+This is an identifier for the application’s current mode of operation. The mode does not affect a Leaf application’s internal functionality. Instead, the mode is only for you to optionally invoke your own code for a given mode with the `script()` application method.
 
 The application mode is declared during instantiation, either as an environment variable or as an argument to the Leaf application constructor. It cannot be changed afterward. The mode may be anything you want — “development”, “test”, and “production” are typical, but you are free to use anything you want (e.g. “foo”).
 
@@ -171,6 +173,16 @@ The application mode is declared during instantiation, either as an environment 
 $app = new \Leaf\App([
   'mode' => 'development'
 ]);
+```
+
+```php
+// Only invoked if mode is "development"
+app()->script('development', function () use ($app) {
+    app()->config([
+        'log.enable' => false,
+        'debug' => true
+    ]);
+});
 ```
 
 ## views.path

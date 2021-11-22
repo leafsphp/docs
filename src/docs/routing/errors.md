@@ -46,3 +46,31 @@ app()->setErrorHandler(function() use($app) {
   response()->page("./pages/500.html");
 });
 ```
+
+## Application Down
+
+Leaf is also able to dynamically handle placing your application in maintainance mode using leaf config.
+
+```php
+app()->config("app.down", true);
+```
+
+Alternatively, you could also place your application in maintainance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set.
+
+::: warning Loading your env
+Leaf expects you to manually load your `.env` file and will not be responsible for this. You can use [vlucas/phpdotenv](https://packagist.org/packages/vlucas/phpdotenv) to do this. After loading your `.env` variables into your app, leaf router will automatically pick them up.
+:::
+
+::: tip Loading your env
+Your environment variables are automatically loaded into your application if you are using Leaf MVC, Leaf API or Skeleton.
+:::
+
+### Custom Down Handler
+
+Leaf comes with a beautiful application down handler which you can use in production. However, it might not match your theme, or you might have a maintainance screen designed by someone which needs to match that design. Leaf gives you the flexibility to display a custom maintainance error page using the `setDown` method.
+
+```php
+app()->setDown(function () {
+  echo "Down for maintainance";
+});
+```
