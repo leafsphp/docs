@@ -27,7 +27,7 @@ const sidebar = {
       collapsable: false,
       children: [
         '/modules/cors/',
-        {title: 'HTTP', path: '/modules/http/'},
+        { title: 'HTTP', path: '/modules/http/' },
         '/docs/tooling/container',
         '/docs/tooling/logging',
         '/docs/tooling/view',
@@ -199,6 +199,7 @@ const sidebar = {
       title: 'Contribute to the Docs',
       collapsable: false,
       children: [
+        '/community/contributing',
         '/docs/contributing/writing-guide',
         '/docs/contributing/doc-style-guide'
       ]
@@ -214,7 +215,7 @@ const sidebar = {
         '/community/join',
         '/coc/',
         '/community/contributing',
-        '/support/',
+        '/support/'
       ]
     }
   ]
@@ -300,40 +301,26 @@ module.exports = {
             link: '/docs/introduction/'
           },
           {
-            text: 'Codelabs',
-            link: '/codelabs/'
+            text: 'Contribute to Leaf',
+            link: '/community/contributing',
           },
           {
-            text: 'Contribute',
+            text: 'Contribute to docs',
             link: '/docs/contributing/writing-guide'
           },
           {
             text: 'Migration from Leaf 2',
             link: '/docs/migration/introduction'
-          }
+          },
+          {
+            text: 'Codelabs',
+            link: '/codelabs/'
+          },
         ]
       },
       {
         text: 'Ecosystem',
         items: [
-          {
-            text: 'Tooling',
-            ariaLabel: 'Tooling Menu',
-            items: [
-              {
-                text: 'Aloe CLI',
-                link: '/aloe-cli/'
-              },
-              {
-                text: 'Leaf CLI',
-                link: 'https://cli.leafphp.dev'
-              },
-              {
-                text: 'Leaf UI',
-                link: 'https://ui.leafphp.dev/'
-              }
-            ]
-          },
           {
             text: 'Core Projects',
             items: [
@@ -354,7 +341,25 @@ module.exports = {
                 link: 'https://skeleton.leafphp.dev/'
               }
             ]
-          }
+          },
+          {
+            text: 'Tooling',
+            ariaLabel: 'Tooling Menu',
+            items: [
+              {
+                text: 'Aloe CLI',
+                link: '/aloe-cli/'
+              },
+              {
+                text: 'Leaf CLI',
+                link: 'https://cli.leafphp.dev'
+              },
+              {
+                text: 'Leaf UI',
+                link: 'https://ui.leafphp.dev/'
+              }
+            ]
+          },
         ]
       },
       {
