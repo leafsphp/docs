@@ -314,7 +314,7 @@ module.exports = {
           },
           {
             text: 'Codelabs',
-            link: '/codelabs/'
+            link: 'https://codelabs.leafphp.dev'
           },
         ]
       },
