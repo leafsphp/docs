@@ -206,6 +206,14 @@ body.-light {
     color: #003543 !important;
   }
 
+  tr {
+    border-top: 1px solid #dfe2e5;
+
+    &:nth-child(2n) {
+      background-color: #d3dbdf !important;
+    }
+  }
+
   .section-features .feature h2 {
     border-bottom: none !important;
   }

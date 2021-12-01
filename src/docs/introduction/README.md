@@ -5,11 +5,11 @@ Leaf 3 is currently under active development, keep in mind that it might change 
 Thank you in advance for your understanding 💛
 :::
 
-::: tip Leaf 3 release 🚀
-Leaf 3 preview version 1 has been released. You can install it with composer:
+::: tip Leaf 3 release 🎊
+The official leaf 3 beta has been released. You can install it with composer:
 
 ```sh
-composer require leafs/leaf v3.0-alpha
+composer require leafs/leaf v3.0-beta
 ```
 
 :::

@@ -37,6 +37,23 @@ Auth::connect("host", "user", "password", "dbname");
 Auth::autoConnect();
 ```
 
+::: tip Functional Mode ⚡️
+Just as with other leaf modules, Leaf auth is able to extend leaf 3's functional mode to allow you easily and quickly handle authentication in your apps without having to use length namespaces and classes.
+
+Leaf auth provides the `auth` function which we will be using in the below code.
+
+**Getting started:**
+
+To get started with functional mode in leaf auth, you simply need to call the `auth` method.
+
+```php
+auth()->connect("127.0.0.1", "root", "", "dbName");
+```
+
+From there, you can do anything you want to with the auth method. Just as with the leaf core library itself, you no longer even need to initialize leaf auth.
+
+:::
+
 ## Auth Config
 
 Auth Config was added in v2.4.0-beta to give you more control over how leaf handles authentication in your apps. Auth has been configured perfectly for most apps, but not all use cases are the same, hence, this brilliant addition.
@@ -60,13 +77,13 @@ This also includes various configurations for doing things like:
 To set a config variable, you can simply call the `config` method.
 
 ```php
-Leaf\Auth::config("item", "value");
+auth()->config("item", "value");
 ```
 
 You can also pass in an array to set multiple configs at once:
 
 ```php
-Leaf\Auth::config([
+auth()->config([
   "item" => "value",
   "item2" => "value"
 ]);
@@ -74,98 +91,169 @@ Leaf\Auth::config([
 
 ### Settings
 
-- **USE_TIMESTAMPS:** This determines whether Leaf should add the default `created_at` and `updated_at` timestamps on register and update. Default is `true`.
+Below is a list of all available settings.
 
-- **PASSWORD_ENCODE** *This method has gone through a lot of changes since v2.4 beta, and may not work exactly the same way*. This setting is run when leaf wants to encode a password. It now uses `PASSWORD_DEFAULT` by defaullt for encryption.
+### USE_TIMESTAMPS
+
+This determines whether Leaf should add the default `created_at` and `updated_at` timestamps on register and update. Default is `true`.
+
+### PASSWORD_ENCODE
+
+*This setting has gone through a lot of changes since v2.4 beta, and may not work exactly the same way*. This setting is run when leaf wants to encode a password. It now uses `PASSWORD_DEFAULT` by defaullt for encryption.
 
 ```php
 // This turns off password encoding
-Leaf\Auth::config("PASSWORD_ENCODE", false);
+auth()->config("PASSWORD_ENCODE", false);
 
 // defult encoding (Leaf\Helpers\Password::hash)
-Leaf\Auth::config("PASSWORD_ENCODE", null);
+auth()->config("PASSWORD_ENCODE", null);
 
 // use md5. We're still keeping support for md5 :-)
-Leaf\Auth::config("PASSWORD_ENCODE", Password::MD5);
+auth()->config("PASSWORD_ENCODE", Password::MD5);
 
 // use custom method
-Leaf\Auth::config("PASSWORD_ENCODE", function($password) {
+auth()->config("PASSWORD_ENCODE", function($password) {
   return Password::hash($password);
 });
 ```
 
-- **PASSWORD_VERIFY** This setting is called when Leaf tries to verify a password. It works just like `PASSWORD_ENCODE` above.
+### PASSWORD_VERIFY
+
+This setting is called when Leaf tries to verify a password. It works just like `PASSWORD_ENCODE` above.
 
 ```php
 // This turns off password encoding
-Leaf\Auth::config("PASSWORD_VERIFY", false);
+auth()->config("PASSWORD_VERIFY", false);
 
 // defult encoding (Leaf\Helpers\Password::hash)
-Leaf\Auth::config("PASSWORD_VERIFY", null);
+auth()->config("PASSWORD_VERIFY", null);
 
 // use md5. We're still keeping support for md5 :-)
-Leaf\Auth::config("PASSWORD_VERIFY", Password::MD5);
+auth()->config("PASSWORD_VERIFY", Password::MD5);
 
 // use custom method
-Leaf\Auth::config("PASSWORD_VERIFY", function($password) {
+auth()->config("PASSWORD_VERIFY", function($password) {
   return Password::verify($password);
 });
 ```
 
-- **PASSWORD_KEY** allows you to change the password field name, maybe yours is passcode? This tells leaf to look for a user's password in that field. The example below tells leaf to search for passwords in the `passcode` column. (the default field is password)
+### PASSWORD_KEY
+
+This allows you to change the password field name, maybe yours is passcode? This tells leaf to look for a user's password in that field. The example below tells leaf to search for passwords in the `passcode` column. (the default field is password)
 
 ```php
-Leaf\Auth::config("PASSWORD_KEY", "passcode");
+auth()->config("PASSWORD_KEY", "passcode");
 ```
 
-- **HIDE_ID** takes in a boolean, and determines whether to hide the id in the user object. Default is `true`.
+### ID_KEY
 
-- **HIDE_PASSWORD** Just as the name implies, allows you to hide or show the password in the final results returned from auth. Default is `true`.
-
-- **LOGIN_PARAMS_ERROR** This is the error to show if there's an error with any parameter which isn't the password eg: username:
+`ID_KEY` allows you to set your primary key name. For instance, you might have used `_id` instead of `id`. This setting allows you to quickly and effectively switch your key name.
 
 ```php
-Leaf\Auth::config("LOGIN_PARAMS_ERROR", "Username is incorrect!");
+auth()->config("ID_KEY", "_id");
 ```
 
-Default is "Incorrect credentials!".
+### USE_UUID
 
-- **LOGIN_PASSWORD_ERROR** This is the error to show if there's an error with the password.
-
-Default is "Password is incorrect!".
+This simply allows you to set the value for user ids on your own. This is done in order to add support for UUIDs in your registrations and not go with the default SQL increments.
 
 ```php
-Leaf\Auth::config("LOGIN_PASSWORD_ERROR", "Password is incorrect!");
+auth()->config("USE_UUID", UUID::v4());
 ```
 
-- **USE_SESSION** Use session based authentication instead of the default JWT based auth. Without this setting enbled, you can't use any of the session methods below. Default is `false`.
+### HIDE_ID
 
-- **SESSION_ON_REGISTER** If true, a session will be created on a successful registration, else you it'll be created on login rather. Default is `false`.
+This is a boolean which determines whether to hide the id in the user object returned on login/register. Default is `true`.
 
-- **GUARD_LOGIN** The page route. Default is `/auth/login`.
+### AUTH_NO_PASS
 
-- **GUARD_REGISTER** The register page route. Default is `/auth/register`.
+This allows you to *manually* tell leaf auth that no password is required for authentication. When this is set to true, leaf auth will assume there is no password and act accordingly. If there is no password field set in the credentials passed into the `login` or `register` methods, leaf auth will automatically set this to `true`.
 
-<!-- - **GUARD_LOGOUT** Logout route handler. Default is `/auth/logout`. -->
+### HIDE_PASSWORD
 
-- **GUARD_HOME** Home page route. Default is `/home`.
+Just as the name implies, allows you to hide or show the password in the final results returned from auth. Default is `true`.
 
-- **SAVE_SESSION_JWT** Add an auth token to the auth session? This allows you save a generated JWT to the session. You might want to use this if you want to extend your app into an API. Default is `false`.
+### LOGIN_PARAMS_ERROR
 
-- **EXPERIMENTAL_WARNINGS** This option controls whether to show/hide experimental warnings from session components. Default is `true`. Turning this off allows you to use guards for JWT auth.
+This is the error to show if there's an error with any parameter which isn't the password eg: username:
 
-- **TOKEN_LIFETIME** How long the token can be used before it expires. Default is 1 day.
+```php
+auth()->config("LOGIN_PARAMS_ERROR", "Username is incorrect!");
+```
 
-- **TOKEN_SECRET** This is the secret key used to generate tokens for users on signup and register.
+Default is `Incorrect credentials!`.
 
-::: danger Note
-Unlike leaf auth in version 2, the leaf auth module has been broken up into subclasses for easier use and performance reasons. If you only use login and signup, there's no need to include a class with tons of features that you may not use.
+### LOGIN_PASSWORD_ERROR
+
+This is the error to show if there's an error with the password.
+
+Default is `Password is incorrect!`.
+
+```php
+auth()->config("LOGIN_PASSWORD_ERROR", "Password is incorrect!");
+```
+
+### USE_SESSION
+
+Use session based authentication instead of the default JWT based auth. Without this setting enbled, you can't use any of the session methods below. Default is `false`.
+
+### SESSION_ON_REGISTER
+
+If true, a session will be created on a successful registration, else you it'll be created on login rather. Default is `false`.
+
+### GUARD_LOGIN
+
+The page route. Default is `/auth/login`.
+
+### GUARD_REGISTER
+
+The register page route. Default is `/auth/register`.
+
+### GUARD_LOGOUT
+
+Logout route handler. Default is `/auth/logout`.
+
+### GUARD_HOME
+
+Home page route. Default is `/home`.
+
+### SAVE_SESSION_JWT
+
+Add an auth token to the auth session? This allows you save a generated JWT to the session. You might want to use this if you want to extend your app into an API. Default is `false`.
+
+### EXPERIMENTAL_WARNINGS
+
+This option controls whether to show/hide experimental warnings from session components. Default is `true`. Turning this off allows you to use guards for JWT auth.
+
+### TOKEN_LIFETIME
+
+How long the token can be used before it expires. Default is 1 day.
+
+### TOKEN_SECRET
+
+This is the secret key used to generate tokens for users on signup and register.
+
+::: danger Leaf Auth Refactor 🔥
+The leaf auth module has been broken up into subclasses for easier use and performance reasons. If you only use login and signup, there's no need to include a class with tons of features that you may not use.
+
+This doesn't change the way leaf auth works as this was done for performance and maintainability reasons. You can still use the auth class just as done in Leaf 2, however, this has been optimized using static methods which means unnecessary code will not be run.
+
+```php
+Leaf\Auth::session();
+```
+
 :::
 
 ## Session support
 
 ::: tip Leaf Auth Session
 Session has been moved into a sub class for easier management. To use auth session methods, you now have to use the `Leaf\Auth\Session` class.
+
+```php
+Leaf\Auth\Session::init();
+```
+
+This doesn't affect the use of the auth class, since it works just as it did in earlier versions.
 :::
 
 Session based authentication as the name implies creates and manages a session during the authentication to manage the user's logged in state. And all of this is done in 1 or 2 lines of code to maintain the simplicity and flexibility Leaf auth has always given.
@@ -173,13 +261,13 @@ Session based authentication as the name implies creates and manages a session d
 To get started with session support, just set the `USE_SESSION` setting to true.
 
 ```php
-Leaf\Auth::config("USE_SESSION", true);
+auth()->config("USE_SESSION", true);
 ```
 
 A much simpler way would be to simply call the `useSession` method.
 
 ```php
-Leaf\Auth\Session::init();
+auth()->useSession();
 ```
 
 ## Session methods
@@ -202,6 +290,21 @@ Leaf\Auth\Session::guard("auth");
 Leaf\Auth\Session::guard("guest");
 ```
 
+This is a lot easier with functional mode
+
+```php
+auth()->guard("guest");
+```
+
+::: tip The <code>auth</code> function
+Besides returning the auth object, you can also directly run a guard on the auth method.
+
+```php
+auth("guest");
+```
+
+:::
+
 ### save
 
 This method is used to save data to the auth session.
@@ -214,6 +317,12 @@ Leaf\Auth\Session::save([
   "rememberLogin" => false,
   "sessionActivity" => "login"
 ]);
+```
+
+As usual, this is easier with the auth class or with functional mode
+
+```php
+auth()->save("rememberLogin", false);
 ```
 
 ### length
@@ -230,6 +339,12 @@ LoginsDB::params(
 );
 
 LoginsDB::save();
+```
+
+Or with functional mode
+
+```php
+auth()->sessionLength();
 ```
 
 ### lastActive
@@ -266,6 +381,16 @@ if (Leaf\Auth\Session::status()) {
 }
 ```
 
+or with functional mode
+
+```php
+if (auth()->session()) {
+  return "logged in";
+} else {
+  return "guest mode";
+}
+```
+
 ### end
 
 Of course we'll need a method to logout/end our session. This is just the method for that.
@@ -274,9 +399,11 @@ Of course we'll need a method to logout/end our session. This is just the method
 Leaf\Auth\Session::end();
 ```
 
-**login, register and the other methods used in auth now integrate with auth when they're used. So login will start a session instead of returning a JWT.**
+Or with functional mode
 
-Read the section below to learn more about the main authentication methods and what session support that has been added.
+```php
+auth()->endSession();
+```
 
 ## Authentication methods
 
@@ -303,16 +430,25 @@ $user = Leaf\Auth\Login::user("users", [
 
 :::
 
+You can also use functional mode:
+
+```php
+$user = auth()->login("users", [
+  "username" => "mychi.darko",
+  "password" => md5("test")
+]);
+```
+
 If the user is successfully found, the user data is returned, if not, `null` is returned. You can get any error by calling the `errors` method.
 
 ```php
-$user = Leaf\Auth::login("users", [
+$user = auth()->login("users", [
   "username" => "mychi.darko",
   "password" => md5("test")
 ]); // returns null if failed
 
 if (!$user) {
-  $response->throwErr(Leaf\Auth::errors());
+  response()->throwErr(Leaf\Auth::errors());
 }
 ```
 
@@ -343,12 +479,23 @@ Leaf\Auth::login("users", [
 ]);
 ```
 
+Or with functional mode:
+
+```php
+auth()->useSession();
+
+auth()->login("users", [
+  "username" => $username,
+  "password" => $password
+]);
+```
+
 When the login succeeds, you'll be redirected to GUARD_HOME. You can configure the GUARD_HOME route to match the needs of your app.
 
 In case there's something wrong and Auth can't sign the user in, it returns a falsy value.
 
 ```php
-$user = Leaf\Auth\Login::user("users", [
+$user = auth()->login("users", [
   "username" => $username,
   "password" => $password
 ]);
@@ -356,7 +503,7 @@ $user = Leaf\Auth\Login::user("users", [
 if (!$user) {
   // you can pass the auth errors into a view
   return $blade->render("pages.auth.login", [
-    "errors" => Leaf\Auth::errors(),
+    "errors" => auth()->errors(),
     "username" => $username,
     "password" => $password,
   ]);
@@ -372,14 +519,14 @@ From v2.4-beta onwards, password encoding will no longer be available on the log
 ```php{1}
 $rules = ["username" => "ValidUsername"];
 
-$user = Leaf\Auth::login("users", $loginData, $rules);
+$user = auth()->login("users", $loginData, $rules);
 ```
 
 To get any errors, you need to call the `errors` method
 
 ```php
 if (!$user) {
-  $app->response->throwErr(Leaf\Auth::errors());
+  response()->throwErr(auth()->errors());
 }
 ```
 
@@ -390,7 +537,7 @@ if (!$user) {
 Register is a simple method used to create simple, secure user registrations. This option was `basicRegister` in earlier versions. It takes in a table to save users, the params(array) to save.
 
 ```php
-Leaf\Auth::register("users", [
+auth()->register("users", [
   "username" => "mychi.darko",
   "email" => "mickdd22@gmail.com",
   "field" => "value"
@@ -401,7 +548,7 @@ Leaf\Auth::register("users", [
 Leaf auth now allows you to register users with the new `Leaf\Auth\Register` class. This will allows you to import only the register functionality without actually going through the whole auth class.
 
 ```php
-$user = Leaf\Auth\Register::user("users", [
+$user = auth()->register("users", [
   "username" => "mychi.darko",
   "email" => "mickdd22@gmail.com",
   "field" => "value"
@@ -413,14 +560,14 @@ $user = Leaf\Auth\Register::user("users", [
 If the user is successfully saved, the user data is returned, if not, `false` is returned. You can get any error by calling the `errors` method.
 
 ```php
-$user = Leaf\Auth::register("users", [
+$user = auth()->register("users", [
   "username" => "mychi.darko",
   "email" => "mickdd22@gmail.com",
   "field" => "value"
 ]); // returns false if failed
 
 if ($user == false) {
-  $response->throwErr(Leaf\Auth::errors());
+  response()->throwErr(auth()->errors());
 }
 ```
 
@@ -443,8 +590,8 @@ So, we're telling `register` to alert us if someone has already registered with 
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
-$app->post("/register", function() {
-  Leaf\Auth::register(
+app()->post("/register", function() {
+  auth()->register(
     "users",
     request()->body(),
     ["username", "email"]
@@ -460,14 +607,14 @@ For an even better way, you can make sure that only the data you need is going i
 // select only the username, email and password from the request body
 $data = request()->get(["username", "email", "password"]);
 
-Leaf\Auth::register("users", $data);
+auth()->register("users", $data);
 ```
 
 The password encode option here has also been removed. Use the auth config above instead. The final parameter is now the validate param which is an array of rules to test the params.
 
 ```php
-$app->post("/register", function() use($app) {
-  Leaf\Auth::register(
+app()->post("/register", function() use($app) {
+  auth()->register(
     "users",
     request()->body(),
     ["username", "email"],
@@ -481,9 +628,9 @@ $app->post("/register", function() use($app) {
 Just as with login, register now integrates with session. To turn this feature on, just set the `USE_SESSION` setting or call the `useSession` method.
 
 ```php
-Leaf\Auth::useSession();
+auth()->useSession();
 
-Leaf\Auth::register("users", $credentials, [
+auth()->register("users", $credentials, [
   "username", "email"
 ]);
 ```
@@ -492,26 +639,26 @@ After a successful registration, you can redirect to GUARD_HOME or rather GUARD_
 
 ```php
 // set your login route...default is /auth/login
-Leaf\Auth::config("GUARD_LOGIN", "/login");
+auth()->config("GUARD_LOGIN", "/login");
 
 // Redirect to login after auth
-Leaf\Auth::config("SESSION_ON_REGISTER", false);
+auth()->config("SESSION_ON_REGISTER", false);
 
 // Login automatically after registration
-Leaf\Auth::config("SESSION_ON_REGISTER", true);
+auth()->config("SESSION_ON_REGISTER", true);
 ```
 
 In case there's something wrong and Auth can't register the user, it returns a falsy value.
 
 ```php
-$user = Leaf\Auth::register("users", $credentials, [
+$user = auth()->register("users", $credentials, [
   "username", "email"
 ]);
 
 if (!$user) {
   // you can pass the auth errors into a view
   return $blade->render("pages.auth.register", [
-    "errors" => Leaf\Auth::errors(),
+    "errors" => auth()->errors(),
     "username" => $username,
     "email" => $email,
     "password" => $password,
@@ -544,7 +691,7 @@ $uniques = ["username", "email"];
 // validation
 $validation = ["username" => "ValidUsername", "email" => "email"];
 
-$user = Leaf\Auth::update("users", $data, $where, $uniques, $validation);
+$user = auth()->update("users", $data, $where, $uniques, $validation);
 ```
 
 ::: tip USER CLASS
@@ -567,7 +714,7 @@ $user = Leaf\Auth\User::update("users", [
 Update also reeived session support. When a user is updated, the user is updated in the session and the updated user is also returned.
 
 ```php
-$user = Leaf\Auth::update("users", $data, $where, $uniques);
+$user = auth()->update("users", $data, $where, $uniques);
 ```
 
 <hr>
@@ -583,26 +730,26 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
 When tokens are added inside requests, you generally have to decode the token and query your database with the id returned to get the current user. Although Leaf Auth makes it really simple, it can get even simpler; by calling a single method. It takes in one parameter, the table to look for users.
 
 ```php
-$user = Leaf\Auth::user("users");
+$user = auth()->user("users");
 return $user["name"];
 ```
 
 In v2.4 beta, the table is set to `users` by default. So you can simply do this:
 
 ```php
-$user = Leaf\Auth::user();
+$user = auth()->user();
 ```
 
 We can catch any errors that occur, from fetching the user, working with the token...
 
 ```php
-$user = Leaf\Auth::user() ?? $request->throwErr(Leaf\Auth::errors());
+$user = auth()->user() ?? $request->throwErr(auth()->errors());
 ```
 
 `user` also takes in a second parameter, which is an array of items to hide from the user array.
 
 ```php
-$user = Leaf\Auth::user("users", ["id", "password"]);
+$user = auth()->user("users", ["id", "password"]);
 ```
 
 <hr>
@@ -612,7 +759,7 @@ $user = Leaf\Auth::user("users", ["id", "password"]);
 This is a method that decodes a token and returns the `user_id` field encoded in it.
 
 ```php
-$user_id = Leaf\Auth::id();
+$user_id = auth()->id();
 ```
 
 <hr>
@@ -622,7 +769,7 @@ $user_id = Leaf\Auth::id();
 Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solutions for token authentication. This provides a simple way to work with manual authentication and tokens. All methods here are now available in `Leaf\Auth`.
 
 ```php
-$payload = Leaf\Auth::validate($token);
+$payload = auth()->validate($token);
 ```
 
 <!-- Read [authentication](leaf/v/2.5.0/core/authentication) for more info -->
