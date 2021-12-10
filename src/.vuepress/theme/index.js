@@ -26,6 +26,12 @@ module.exports = (options, ctx) => {
 
     plugins: [
       ['@vuepress/active-header-links', options.activeHeaderLinks],
+      [
+        '@vuepress/google-analytics',
+        {
+          ga: 'UA-150463804-1'
+        }
+      ],
       '@vuepress/search',
       '@vuepress/plugin-nprogress',
       [

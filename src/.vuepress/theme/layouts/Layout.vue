@@ -79,8 +79,6 @@ export default {
     const darkMode = window.localStorage["isDark"];
     const body = document.body;
 
-    console.log((!this.$page.frontmatter.aside || (this.$page.frontmatter.aside && this.$page.frontmatter.aside !== 'none')));
-
     if (darkMode === "true") {
       body.classList.remove("-light");
     } else {

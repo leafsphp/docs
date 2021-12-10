@@ -287,7 +287,14 @@ module.exports = {
         src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js',
         nomodule: 'nomodule'
       }
-    ]
+    ],
+    // [
+    //   'script',
+    //   {
+    //     src: 'https://www.googletagmanager.com/gtag/js?id=UA-150463804-1',
+    //     async: 'true'
+    //   }
+    // ]
   ],
   themeConfig: {
     logo: '/logo-circle.png',
@@ -302,7 +309,7 @@ module.exports = {
           },
           {
             text: 'Contribute to Leaf',
-            link: '/community/contributing',
+            link: '/community/contributing'
           },
           {
             text: 'Contribute to docs',
@@ -315,7 +322,7 @@ module.exports = {
           {
             text: 'Codelabs',
             link: 'https://codelabs.leafphp.dev'
-          },
+          }
         ]
       },
       {
@@ -359,7 +366,7 @@ module.exports = {
                 link: 'https://ui.leafphp.dev/'
               }
             ]
-          },
+          }
         ]
       },
       {
@@ -400,7 +407,7 @@ module.exports = {
                 link: 'https://github.com/leafsphp/leaf'
               }
             ]
-          },
+          }
         ]
       },
       {
@@ -434,64 +441,52 @@ module.exports = {
     },
     topBanner: true
   },
-  plugins: [
-    [
-      '@vuepress/google-analytics',
-      {
-        ga: 'UA-150463804-1'
+  plugins: {
+    '@vuepress/google-analytics': {
+      ga: 'UA-150463804-1',
+    },
+    '@vuepress/last-updated': {
+      transformer(timestamp) {
+        const date = new Date(timestamp)
+
+        const digits = [
+          date.getUTCFullYear(),
+          date.getUTCMonth() + 1,
+          date.getUTCDate(),
+          date.getUTCHours(),
+          date.getUTCMinutes(),
+          date.getUTCSeconds()
+        ].map(num => String(num).padStart(2, '0'))
+
+        return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(
+          /{(\d)}/g,
+          (_, num) => digits[num]
+        )
       }
-    ],
-    [
-      '@vuepress/last-updated',
-      {
-        transformer(timestamp) {
-          const date = new Date(timestamp)
-
-          const digits = [
-            date.getUTCFullYear(),
-            date.getUTCMonth() + 1,
-            date.getUTCDate(),
-            date.getUTCHours(),
-            date.getUTCMinutes(),
-            date.getUTCSeconds()
-          ].map(num => String(num).padStart(2, '0'))
-
-          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(
-            /{(\d)}/g,
-            (_, num) => digits[num]
-          )
+    },
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: {
+        '/': {
+          message: 'New content is available.',
+          buttonText: 'Refresh'
         }
       }
-    ],
-    [
-      '@vuepress/pwa',
-      {
-        serviceWorker: true,
-        updatePopup: {
-          '/': {
-            message: 'New content is available.',
-            buttonText: 'Refresh'
-          }
-        }
+    },
+    'vuepress-plugin-container': {
+      type: 'info',
+      before: info =>
+        `<div class="custom-block info"><p class="custom-block-title">${info}</p>`,
+      after: '</div>'
+    },
+    markdown: {
+      lineNumbers: true,
+      /** @param {import('markdown-it')} md */
+      extendMarkdown: md => {
+        md.options.highlight = require('./markdown/highlight')(
+          md.options.highlight
+        )
       }
-    ],
-    [
-      'vuepress-plugin-container',
-      {
-        type: 'info',
-        before: info =>
-          `<div class="custom-block info"><p class="custom-block-title">${info}</p>`,
-        after: '</div>'
-      }
-    ]
-  ],
-  markdown: {
-    lineNumbers: true,
-    /** @param {import('markdown-it')} md */
-    extendMarkdown: md => {
-      md.options.highlight = require('./markdown/highlight')(
-        md.options.highlight
-      )
     }
   }
 }
