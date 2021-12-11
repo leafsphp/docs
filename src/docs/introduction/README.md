@@ -6,10 +6,10 @@ Thank you in advance for your understanding 💛
 :::
 
 ::: tip Leaf 3 release 🎊
-The official leaf 3 beta has been released. You can install it with composer:
+The official leaf 3 release candidate has been released. You can install it with composer:
 
 ```sh
-composer require leafs/leaf v3.0-beta
+composer require leafs/leaf v3.0-rc
 ```
 
 :::
