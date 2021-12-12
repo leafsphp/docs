@@ -201,7 +201,7 @@ body.-light {
   color: rgb(12, 12, 12);
 
   h1, h2, h3, h4, h5, h6 {
-    color: #003543 !important;
+    color: rgb(41, 41, 41) !important;
   }
 
   tr {

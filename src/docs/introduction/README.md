@@ -5,28 +5,50 @@ Leaf 3 is currently under active development, keep in mind that it might change 
 Thank you in advance for your understanding 💛
 :::
 
-::: tip Leaf 3 release 🎊
-The official leaf 3 release candidate has been released. You can install it with composer:
-
-```sh
-composer require leafs/leaf v3.0-rc
-```
-
-:::
-
 ## What is Leaf PHP?
 
-Leaf is a PHP framework that helps you create clean, simple but powerful web apps and APIs quickly and easily. Leaf introduces a cleaner and much simpler structure to the PHP language while maintaining it's flexibility. With a simple structure and a shallow learning curve, it's an excellent way to rapidly build powerful and high performant web apps and APIs.
+Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, simple but powerful web apps and APIs quickly and easily. Over the years, we've been focusing on delivering much simpler and performant code which can be used in all your PHP apps.
 
+Version 3 of Leaf brings more to the table with a theme centering on developer experience and usability, but not without all the goodies and ensuring users have the best experience as well. Leaf 3 does this with its amazing features:
+
+### 👩🏽‍🎓 Low barrier to entry
+
+Leaf is the easiest framework to learn with PHP newbies building powerful leaf apps in a few minutes of reading the docs/watching out tutorial videos. All you truly need to get started with Leaf is basic PHP knowledge and optional but recommended knowledge on some backend concepts like JWT auth and more.
+
+### ✈️ Lightweight
+
+Leaf 2 was lightweight and fast enough to be considered one of the most lightweight but powerful frameworks around, and Leaf 3 makes leaf 2 look like a joke. Leaf 3 can now be considered the most lightweight PHP framework with a source of less than 30kb and allows you to build full apps and APIs which end up less than 20mb including user dependencies (leaf api). This is a big haul compared to other frameworks which require dependencies and tons of files which end up more than 100mb.
+
+### 👨🏽‍🏭 Enables high developer productivity
+
+A whole lot of research and testing has been done to build amazing features which allow developers to focus on only what they need: their apps. Leaf 3 has put tons of strategies together to create the best developer experience known to PHP. From things like removing class initializers and creating global functions which allow you call classes from anywhere in your application, modules and other amazing leaf features.
+
+### 🏷 Powered by modules
+
+Leaf 3 and its ecosystem are heavily powered by modules, which are simply pieces of leaf's functionality shipped into independently installable libraries. Modules help make leaf even more lightweight and help developers only deal with features which they need in their applications. This means that you only install what you need.
+
+### 🐣 Easy to use features
+
+As mentioned above, a lot of research has gone into the developer experience for leaf 3 and one aspect was to make our existing features more performant and easier to use. We employed various strategies like modeling some features after popular libraries in other languages and frameworks. For instance, the API for leaf cors is almost an exact replica of the expressjs cors middleware.
+
+### 😶‍🌫️ Library/Framework compatibility
+
+Since the beginning of Leaf, we've set out to create code which could easily be integrated with other libraries and frameworks. No matter how powerful leaf is, we try to base of everything we do on simple concepts as opposed to other frameworks which need things like providers in order to access framework features in libraries.
+
+### 🚚 Scalability
+
+One of the most beautiful things about leaf is that, no matter what package you're using with leaf, if it works in developement, it will definitely work in production with near zero config, unless you want some special features. Leaf provides a core and other frameworks/libraries that build around leaf. This makes leaf appropriate for almost any project no matter it's size.
+
+All of these make
 The core library is focused mostly on REST APIs, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Leaf is also perfectly capable of powering sophisticated MVC Applications with it's wide library of modules.
-
-::: tip Migrating
-Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
-:::
 
 ## Getting Started
 
-The official guide assumes **basic** level knowledge of PHP. If you are totally new to PHP, you might want to take an introduction course - grasp the basics then come back! This is because you will basically be writing PHP code when using leaf (or any other framework).
+The official guide assumes **basic** level knowledge of PHP.
+
+::: warning 😵‍💫 Don't know PHP?
+If you are not familiar with PHP, we recommend that you check out the [W3Schools PHP Tutorial](https://www.w3schools.com/php/default.asp) before continuing. This is because you will basically be writing PHP code when using leaf (or any other framework).
+:::
 
 <!-- ::: info Video Docs
 Throughout the leaf documentation, you will see video links like the one just below. This gives you another means to follow along our documentation if you are more of a visual learner. We call this the video docs.
@@ -37,6 +59,10 @@ Throughout the leaf documentation, you will see video links like the one just be
 ### Installation
 
 To quickly get started with leaf, check out our [installation guide](/docs/introduction/installation.html). This gives you an in-depth explanation on how to setup leaf using various methods.
+
+::: tip Migrating
+Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
+:::
 
 Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
 

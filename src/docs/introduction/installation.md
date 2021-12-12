@@ -1,5 +1,9 @@
 # Installation
 
+::: tip Leaf 3 release 🎊
+The official leaf 3 release candidate has been released.
+:::
+
 ::: tip Migrating
 If you want to migrate an existing Leaf 2 project, skip this and follow the [Migration Guide](/docs/migration/introduction.html)
 :::
