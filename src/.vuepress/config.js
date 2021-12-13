@@ -13,6 +13,7 @@ const sidebar = {
       children: [
         '/docs/introduction/',
         '/docs/introduction/installation',
+        '/docs/introduction/history',
         '/docs/introduction/url-rewriting',
         '/docs/migration/introduction'
       ]

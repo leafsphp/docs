@@ -188,11 +188,11 @@ We see this preview as the structure for what leaf 3 will look like. So although
 
 We may or may not have multiple previews. This is simply depends on how well Leaf 3 performs and how many more features we need to test.
 
-<input type="checkbox" disabled> **Leaf 3 Beta - ??**
+<input type="checkbox" disabled checked> **Leaf 3 Beta - 21 Nov 2021**
 
 Once we feel feature complete, we'll release the official Beta version. This will be a build up on the latest preview changes, but will only include features that will make it to the final release. These features may still have uncovered bugs and the beta phase will be to fix all these. We encourage all community members/leaf enthusiasts to help with this🥺
 
-<input type="checkbox" disabled> **Leaf 3 RC - ??**
+<input type="checkbox" disabled checked> **Leaf 3 RC - 10 Dec 2021 (current)**
 
 Although this wasn't originally part of our release plan, we want to give everybody the chance to try leaf 3 in production. There will be no new features after the beta, meaning the RC will be exactly the same as the stable version.
 
@@ -202,4 +202,4 @@ This will be exactly the same as the RC if no bugs are found during the RC perio
 
 We plan to finalise the stable Leaf 3 release before the end of 2021, however, depending on how we sail through our beta and RCs, we may have to launch leaf 3 in January 2022. Along with Leaf 3, we will also release Leaf MVC 3, Leaf API 3, Skeleton 3, Leaf CLI 2 and a ton of other modules.
 
-Until then, you can always contribute to Leaf 3, leave a star, an issue if you notice any bug or just a little message in our forum ❤️
+Until then, you can always contribute to Leaf 3, leave a star, an issue if you notice any bug or just a little message in our [forum](https://github.com/leafsphp/leaf/discussions/37) ❤️
