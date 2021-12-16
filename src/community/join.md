@@ -17,8 +17,8 @@ Our [Code of Conduct](/coc/) is a guide to make it easier to enrich all of us an
 ### Get Support
 
 - [Forum](https://github.com/leafsphp/leaf/discussions/57): The best place to ask questions and get answers about Leaf and its ecosystem.
-- [Discord server](https://discord.gg/Pkrm9NJPE3): A place for Leaf devs to meet and chat in real time.
 - [GitHub](https://github.com/leafsphp/leaf): If you have a bug to report or feature to request, that's what the GitHub issues are for. We also welcome pull requests!
+- [Discord server](https://discord.gg/Pkrm9NJPE3): A place for Leaf devs to meet and chat in real time.
 
 <iframe src="https://discord.com/widget?id=891808595715436574&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
@@ -48,3 +48,11 @@ Apart from answering questions and sharing resources in the forum and chat, ther
 With the growth of Leaf, we need more hands to moderate activities on our discord chat, keep up with our documentation, GitHub discussions, twitter and the like.
 
 If you want to help with any of these, kindly reach out on twitter [@leafphp](https://twitter.com/leafphp) or email [mickdd22@gmail.com](mailto:mickdd22@gmail.com)
+
+## Updates
+
+- [Youtube](https://twitter.com/leafphp): Get online streams, talks and tutorials on leaf and community packages.
+
+- [Twitter](https://twitter.com/leafphp): Get timely updates on everything that happens in the leaf PHP ecosystem.
+
+<a class="twitter-timeline" href="https://twitter.com/leafphp?ref_src=twsrc%5Etfw">Tweets by leafphp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
