@@ -24,6 +24,8 @@ We accept donations through these channels:
 
 - [Become a backer or sponsor via OpenCollective](https://opencollective.com/leaf) (goes into a fund with transparent expense models supporting community efforts and events)
 
+<iframe src="https://github.com/sponsors/leafsphp/card" title="Sponsor leafsphp" height="180" width="100%" style="border: 0; border-radius: 10px;"></iframe>
+
 ## Current Premium Sponsors
 
 <support-OpenCollectiveSponsors />
