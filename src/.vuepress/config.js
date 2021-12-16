@@ -216,7 +216,13 @@ const sidebar = {
         '/community/join',
         '/coc/',
         '/community/contributing',
-        '/support/'
+        '/support/',
+        { title: 'Twitter', path: 'https://twitter.com/leafphp' },
+        { title: 'Discord', path: 'https://discord.gg/Pkrm9NJPE3' },
+        {
+          title: 'YouTube',
+          path: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw'
+        }
       ]
     }
   ]
