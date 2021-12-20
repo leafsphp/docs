@@ -34,6 +34,19 @@ $leafApp->get("/", function() {
 echo $leafApp->routes();
 ```
 
+::: tip Note ⚡️
+Although you can do all of these, there is actually no need to. This is because Leaf 3 comes with functional mode which allows you to use the app instance from anywhere in your app.
+
+```php
+$app = new Leaf\App;
+
+// somewhere else...
+
+app()->response()->json("hello");
+```
+
+:::
+
 ## app.down
 
 A new `app.down` config was added to replace the `mode=down` which caused problems in earlier releases. You can set this to true to place your app in a maintainance like state.

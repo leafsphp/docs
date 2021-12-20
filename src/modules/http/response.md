@@ -88,16 +88,27 @@ $response->throwErr("error", 500, true);
 
 <hr>
 
+## plain
+
+This method allows you to output plain text as your response. It takes in 2 parameters:
+
+- the data to output
+- http status code with 200 default (optional)
+
+```json
+response()->plain("hello");
+```
+
 ## json
 
-Json, a new method in v2.4, just as the name suggests allows you output json as a reponse. It is supposed to be a replacement for the `respond` and `respondWithCode` methods, as such, comes with the functionality of both of them.
+Json, a new method in v2.4, just as the name suggests allows you output json as a reponse.
 
 It takes in 4 parameters:
 
 - The data to output
-- The https status code of the data, default 200
-- Option to show/hide the status code in response body, default `false`
-- Option to use message instead of code, default `false`
+- The https status code of the data, default 200 (optional)
+- Option to show/hide the status code in response body, default `false` (optional)
+- Option to use message instead of code, default `false` (optional)
 
 ```php
 $response->json("Output", 200);
@@ -138,8 +149,6 @@ $response->json("Output", 200, true, true);
   "message": "200 OK"
 }
 ```
-
-<hr>
 
 ## page
 
@@ -191,6 +200,24 @@ echo "<h1>hello</h1>";
 ```
 
 The reason is, Leaf has default headers which set the content type to JSON, in order to correctly output HTML, you need to change this....Leaf has taken care of this with a bunch of other things, all within `markup` and `page`
+
+## download
+
+In v3, you can send a response which will be downloaded on the client. Note that in this case, the response should be a valid file.
+
+```php
+response()->download('file.zip', 'File name on client', 200);
+```
+
+As shown above, it takes in 3 parameters:
+
+- the file to send as response
+- The name of the file to show to client (optional, defaults to original filename)
+- Http status code (optional, defaults to 200)
+
+```php
+response()->download('item.jpg', 'Profile Pic', 200);
+```
 
 ## Redirect
 

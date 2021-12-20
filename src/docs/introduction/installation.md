@@ -4,10 +4,6 @@
 The official leaf 3 release candidate has been released.
 :::
 
-::: tip Migrating
-If you want to migrate an existing Leaf 2 project, skip this and follow the [Migration Guide](/docs/migration/introduction.html)
-:::
-
 Leaf 3 is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements.
 
 There are four primary ways of adding Leaf PHP to a project:
@@ -16,6 +12,10 @@ There are four primary ways of adding Leaf PHP to a project:
 2. Download leaf through composer
 3. Use [Leaf skeleton](https://leafphp.netlify.app/#/skeleton/v/2.0/) to quickstart your project
 4. Download the leaf repo
+
+::: tip Migrating
+If you want to migrate an existing Leaf 2 project, skip this and follow the [Migration Guide](/docs/migration/introduction.html)
+:::
 
 ## Release Notes
 

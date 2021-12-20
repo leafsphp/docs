@@ -150,6 +150,15 @@ Leaf\Http\Headers::contentHtml(200);
 echo "html here";
 ```
 
+### contentXml
+
+This method set's the content type of the response to `application/xml`, it also takes in an HTTP status code.
+
+```php
+Leaf\Http\Headers::contentXml(200);
+echo "Xml here";
+```
+
 ### contentJSON
 
 This method set's the content type of the response to `application/json`, it also takes in an HTTP status code.

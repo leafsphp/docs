@@ -14,7 +14,7 @@
         class="site-name"
         :class="{ 'can-hide': $site.themeConfig.logo }"
       >
-        Leaf<span class="theme-text">3</span> <small class="beta-badge">dev</small>
+        Leaf<span class="theme-text">3</span> <small class="beta-badge">RC</small>
       </span>
     </RouterLink>
 
