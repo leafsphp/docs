@@ -200,6 +200,15 @@ body.-light {
   background-color: white !important;
   color: rgb(12, 12, 12);
 
+  .hero {
+    h1 {
+      background: -webkit-linear-gradient(31deg, #333 1%, #42d392);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: rgb(41, 41, 41) !important;
   }

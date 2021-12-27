@@ -13,7 +13,8 @@ const sidebar = {
       children: [
         '/docs/introduction/',
         '/docs/introduction/installation',
-        '/docs/introduction/history',
+        '/docs/introduction/features',
+        '/community/history',
         '/docs/introduction/url-rewriting',
         '/docs/migration/introduction'
       ]
@@ -211,6 +212,7 @@ const sidebar = {
       title: 'Community',
       collapsable: false,
       children: [
+        '/community/faq',
         '/blog/',
         '/community/team',
         '/community/join',
@@ -394,7 +396,11 @@ module.exports = {
               {
                 text: 'Join',
                 link: '/community/join/'
-              }
+              },
+              {
+                text: 'FAQ',
+                link: '/community/faq/'
+              },
             ]
           },
           {

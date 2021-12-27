@@ -14,9 +14,9 @@ actionButtons:
     target: _blank
 features:
   - title: Approachable 👨🏾‍🏫
-    details: Learn only what you need on demand, super simple setup with ZERO config.
+    details: Builds on top of standard PHP with a flexible learning curve + ZERO config.
   - title: Versatile ☃️
-    details: Over powered functions and an ecosystem of modules and frameworks to go with.
+    details: A rich, incrementally adoptable ecosystem of modules to build powerful apps with.
   - title: Efficient ⏰
     details: |
       Blazing Fast<br>

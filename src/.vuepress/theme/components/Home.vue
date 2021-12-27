@@ -24,6 +24,17 @@
         </div>
       </header>
 
+      <section id="special-sponsor" v-if="data.sponsor">
+        <span>Special Sponsor</span>
+        <a href="#">
+          <picture>
+            <source type="image/png" srcset="/logo-circle.png">
+            <img alt="logo" width="97" height="36" src="/logo-circle.png">
+          </picture>
+        </a>
+        <span>Something</span>
+      </section>
+
       <section v-if="data.features && data.features.length" class="section-features">
         <div class="inner">
           <div v-for="(feature, index) in data.features" :key="index" class="feature">
@@ -138,6 +149,19 @@ export default {
     padding-top: calc(100px + 3rem);
   }
 
+  a.nav-link:hover {
+    &:not(.external) {
+      background-color: #42b983 !important;
+      color: white;
+    }
+
+    &.external {
+      border-color: #4f5959 !important;
+      background-color: #4f5959 !important;
+      color: white !important;
+    }
+  }
+
   .inner {
     max-width: 1260px;
     margin: 50px auto;
@@ -166,7 +190,13 @@ export default {
     width: 61%;
 
     h1 {
-      font-size: 3.2rem;
+      font-size: 60px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: -webkit-linear-gradient(315deg, #42d392 5%, #647eff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
       margin: 0;
     }
 
@@ -215,6 +245,30 @@ export default {
         margin-bottom: 10px;
       }
     }
+  }
+}
+
+#special-sponsor {
+  padding: 12px 24px;
+  text-align: center;
+  margin-top: -70px !important;
+  margin-bottom: 20px !important;
+  background: linear-gradient(315deg, darken(#42d392, 20%) 25%, #647eff);
+  border-radius: 4px;
+
+  span {
+    font-weight: 500;
+    font-size: 13px;
+    vertical-align: middle;
+    margin: 0 10px;
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 36px;
+    width: 40px;
+    // filter: grayscale(1) invert(1);
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <aside :class="`sidebar -${type || 'left'}`">
-    <h4>Table of contents</h4>
+    <h4>ON THIS PAGE</h4>
     <SidebarLinks :depth="1" type="right" :items="items" />
     <slot name="bottom" />
 
@@ -87,6 +87,13 @@ export default {
 
 .sidebar.-right
   padding-bottom: 50px
+
+  .sidebar-link.active
+    display none !important
+
+  .sidebar-sub-headers
+    .sidebar-link.active
+      display block !important
 
 @media (max-width: $MQMobile)
   .sidebar

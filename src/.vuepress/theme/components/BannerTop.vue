@@ -10,7 +10,7 @@
 <style lang="stylus">
 @require '../styles/config'
 $topBannerHeight ?= 5rem
-$topBannerHeightMobile ?= 3.125rem
+$topBannerHeightMobile ?= 35px
 
 // Banner
 #vs
