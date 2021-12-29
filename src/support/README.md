@@ -1,10 +1,10 @@
 ---
 supportLeaf: true
-sidebar: auto
+sidebar: none
 aside: none
 ---
 
-# Sponsor Leaf Development
+<h1 style="margin-top: 40px;">Support Leaf's Development</h1>
 
 Leaf PHP is not backed by any company or budget, we are just a bunch of random people working towards a goal: to make software development a beautiful experience for developers. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing.
 
