@@ -334,7 +334,16 @@ body.-light {
   }
 
   .custom-block {
-    background-color: lighten(#012a35, 5%) !important;
+    background-color: #f3f3f3 !important;
+    color: #444 !important;
+
+    p, b, i {
+      color: #444 !important;
+    }
+
+    p.custom-block-title {
+      color: #000 !important;
+    }
 
     a {
       font-weight: normal;
@@ -347,6 +356,18 @@ body.-light {
     }
 
     color: #fff !important;
+  }
+
+  .vt-box {
+    background: #f4f4f4;
+
+    h3 {
+      color: #3eaf7c !important;
+    }
+
+    small {
+      color: #3c3c3cb3;
+    }
   }
 }
 </style>
