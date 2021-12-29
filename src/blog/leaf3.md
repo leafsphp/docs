@@ -1,5 +1,5 @@
 ---
-sidebar: auto
+sidebar: none
 aside: none
 blog: 'post'
 ---
@@ -8,7 +8,7 @@ blog: 'post'
 
 # Introducing Leaf 3 🎉
 
-<p style="margin-top:0 !important;color:rgb(146, 173, 173);">
+<p style="margin-top:0 !important;color:#3eaf7c;">
   We've been planning a new release: version 3 of leaf which has been under development for the past couple of months. This post contains everything you need to know about Leaf 3 ⚡️
 </p>
 
@@ -203,3 +203,5 @@ This will be exactly the same as the RC if no bugs are found during the RC perio
 We plan to finalise the stable Leaf 3 release before the end of 2021, however, depending on how we sail through our beta and RCs, we may have to launch leaf 3 in January 2022. Along with Leaf 3, we will also release Leaf MVC 3, Leaf API 3, Skeleton 3, Leaf CLI 2 and a ton of other modules.
 
 Until then, you can always contribute to Leaf 3, leave a star, an issue if you notice any bug or just a little message in our [forum](https://github.com/leafsphp/leaf/discussions/37) ❤️
+
+[< Back to the blog](/blog/)
