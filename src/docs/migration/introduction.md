@@ -67,7 +67,7 @@ Note that leaf 3 is still under active development. We don't recommend switching
 - Install leaf 3
 
 ```sh
-composer require leafs/leaf dev-v3.x-dev
+composer require leafs/leaf v3.0-rc
 ```
 
 > You can delete your vendor folder before running the command above to make sure that all the dependencies are accurately reinstalled.
