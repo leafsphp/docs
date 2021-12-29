@@ -169,7 +169,7 @@ The most beautiful thing about the request object is that all data passed into y
 
 ### Installing modules
 
-Modules are pieces of functionality that have been packaged and shipped separately from Leaf core. Modules are used to extend Leaf's reach to perform some operations not available on the core. Modules were introduced with Leaf 3, but some of them can be used with earlier versions of Leaf. Modules can also be used in external libraries and frameworks as well. To install a module, simply run it's install script with composer or use th leaf cli.
+Modules are pieces of functionality that have been packaged and shipped separately from Leaf core. Modules are used to extend Leaf's reach to perform some operations not available on the core. Modules were introduced with Leaf 3, but some of them can be used with earlier versions of Leaf. Modules can also be used in external libraries and frameworks as well. To install a module, simply run it's install script with composer or use the leaf cli.
 
 To demonstrate this, we will expand the app above to output a template instead of the json data from earlier. For this, we will need a template module. Leaf has 3 template modules
 
