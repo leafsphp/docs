@@ -234,3 +234,22 @@ Just as you saw above, most Leaf modules require absolutely no configuration in 
 ## Ready for More?
 
 We've briefly introduced the most basic features of Leaf 3 - the rest of this guide will cover them and other advanced features with much finer details, so make sure to read through it!
+
+## Next Steps
+
+If you skipped the [Introduction](/guide/introduction), we strongly recommend reading it before moving on to the rest of the documentation.
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box" href="/docs/introduction/installation">
+    <h3 class="next-steps-link">Continue the Guide</h3>
+    <small class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</small>
+  </a>
+  <a class="vt-box" href="/docs/introduction/first-app">
+    <h3 class="next-steps-link">Follow the Tutorial</h3>
+    <small class="next-steps-caption">For those who prefer learning things hands-on. Let's build something real!</small>
+  </a>
+  <a class="vt-box" href="https://codelabs.leafphp.dev" target="_blank">
+    <h3 class="next-steps-link">Check out CodeLabs</h3>
+    <small class="next-steps-caption">Codelabs provides interactive tutorials with in-depth explanations.</small>
+  </a>
+</div>
