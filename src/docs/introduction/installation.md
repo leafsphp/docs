@@ -8,7 +8,7 @@ Leaf 3 is built by design to be incrementally adoptable. This means that it can 
 
 There are four primary ways of adding Leaf PHP to a project:
 
-1. Use the [Leaf CLI](https://leafphp.dev/cli/) to scaffold a project [RECOMMENDED].
+1. Use the [Leaf CLI](https://cli.leafphp.dev/) to scaffold a project [RECOMMENDED].
 2. Download leaf through composer
 3. Use [Leaf skeleton](https://leafphp.netlify.app/#/skeleton/v/2.0/) to quickstart your project
 4. Download the leaf repo
