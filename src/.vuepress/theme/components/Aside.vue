@@ -79,6 +79,9 @@ export default {
     display: flex
     flex-direction column
 
+    iframe
+      width: 100% !important
+
     *
       margin-left 40px
 
