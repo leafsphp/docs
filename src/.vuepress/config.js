@@ -12,11 +12,17 @@ const sidebar = {
       collapsable: false,
       children: [
         '/docs/introduction/',
-        '/docs/introduction/installation',
         '/docs/introduction/features',
-        '/community/history',
+      ]
+    },
+    {
+      title: 'Quick Start',
+      collapsable: false,
+      children: [
+        '/docs/introduction/installation',
+        '/docs/migration/introduction',
         '/docs/introduction/url-rewriting',
-        '/docs/migration/introduction'
+        '/docs/introduction/first-app',
       ]
     },
     {
@@ -212,6 +218,7 @@ const sidebar = {
       title: 'Community',
       collapsable: false,
       children: [
+        '/community/history',
         '/community/faq',
         '/blog/',
         '/community/team',
