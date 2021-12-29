@@ -2,7 +2,6 @@
   <div v-if="prev || next" class="page-nav">
     <p class="inner">
       <span v-if="prev" class="prev">
-        ←
         <a
           v-if="prev.type === 'external'"
           class="prev"
@@ -10,11 +9,15 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          {{ prev.title || prev.path }}
+          <small>&lt; Previous</small>
+          <h6>{{ prev.title || prev.path }}</h6>
           <OutboundLink />
         </a>
 
-        <RouterLink v-else class="prev" :to="prev.path">{{ prev.title || prev.path }}</RouterLink>
+        <RouterLink v-else class="prev" :to="prev.path">
+          <small style="color:#999;">&lt; Previous</small>
+          <h3 style="margin:0;">{{ prev.title || prev.path }}</h3>
+        </RouterLink>
       </span>
 
       <span v-if="next" class="next">
@@ -28,8 +31,10 @@
           <OutboundLink />
         </a>
 
-        <RouterLink v-else :to="next.path">{{ next.title || next.path }}</RouterLink>
-        →
+        <RouterLink v-else :to="next.path" style="display:flex; flex-direction: column;">
+          <small style="color:#999; float: right;">Next &gt;</small>
+          <h3 style="margin:0;">{{ next.title || next.path }}</h3>
+        </RouterLink>
       </span>
     </p>
   </div>
@@ -136,10 +141,17 @@ function flatten(items, res) {
     margin-top: 0;
     padding-top: 1rem;
     overflow: auto; // clear float
+    display: flex;
+    justify-content: space-between;
   }
 
   .next {
-    float: right;
+    display: block;
+    margin-left: auto;
+
+    small {
+      margin-left: auto;
+    }
   }
 }
 </style>
