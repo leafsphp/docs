@@ -220,7 +220,7 @@ const sidebar = {
       children: [
         '/community/history',
         '/community/faq',
-        '/blog/',
+        { title: 'Blog', path: 'https://blog.leafphp.dev' },
         '/community/team',
         '/community/join',
         '/coc/',
@@ -394,7 +394,7 @@ module.exports = {
             items: [
               {
                 text: 'Blog',
-                link: '/blog/'
+                link: 'https://blog.leafphp.dev'
               },
               {
                 text: 'Team',

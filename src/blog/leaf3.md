@@ -4,7 +4,7 @@ aside: none
 blog: 'post'
 ---
 
-[< Back](/blog/)
+[< Back](https://blog.leafphp.dev)
 
 # Introducing Leaf 3 🎉
 
@@ -204,4 +204,4 @@ We plan to finalise the stable Leaf 3 release before the end of 2021, however, d
 
 Until then, you can always contribute to Leaf 3, leave a star, an issue if you notice any bug or just a little message in our [forum](https://github.com/leafsphp/leaf/discussions/37) ❤️
 
-[< Back to the blog](/blog/)
+[< Back to the blog](https://blog.leafphp.dev/)
