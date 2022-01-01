@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-Most templating engines out there ship with a nice syntax, handy ways to use expressions, layouts and code blocks, however, there's one problem: speed! Bare UI is here to solve that. Bare UI is a barebones templating engine focused on speed, speed and more speed! It lacks all the syntatic sugar added in other engines like blade, but it also requires no compiling, no caching, just speed!
+Most templating engines out there ship with a nice syntax, handy ways to use expressions, layouts and code blocks, however, there's one problem: speed! Bare UI is here to solve that. Bare UI is a barebones templating engine focused on speed, speed and more speed! It lacks all the syntactic sugar added in other engines like blade, but it also requires no compiling, no caching, just speed!
 
 ## Installation
 
