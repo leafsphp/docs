@@ -24,7 +24,7 @@ features:
       Crazy development time
 footer: |
   Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a><br>
-  Copyright © 2019-2021 Michael Darko-Duodu
+  Copyright © 2019-2022 Michael Darko-Duodu
 socialIcons:
   - type: GitHub
     link: https://github.com/leafsphp/leaf/tree/v3.x
