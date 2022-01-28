@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"449.css@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/449.css/-/449.css-1.3.0.tgz#9dcadb559f4c0492d77eb83dbf62450558a8cbf6"
+  integrity sha512-tvUMlTo/n5cVP86xsPkD7XevAaf8pSC42A+MCc2zqiJIqHktl0UObY0IXrNg0cAVT4MkzeelYhhsDdA91C7/UQ==
+
 "@algolia/cache-browser-local-storage@4.11.0":
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/@algolia/cache-browser-local-storage/-/cache-browser-local-storage-4.11.0.tgz#1c168add00b398a860db6c86039e33b2843a9425"
