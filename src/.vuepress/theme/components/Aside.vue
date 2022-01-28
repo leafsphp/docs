@@ -1,6 +1,6 @@
 <template>
   <aside :class="`sidebar -${type || 'left'}`">
-    <h4>ON THIS PAGE</h4>
+    <h4 class="mt:_3">ON THIS PAGE</h4>
     <SidebarLinks :depth="1" type="right" :items="items" />
     <slot name="bottom" />
 

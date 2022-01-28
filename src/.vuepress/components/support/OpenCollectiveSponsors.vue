@@ -28,6 +28,20 @@
           alt="Leaf PHP supporter"
         >
       </a>
+
+      <!-- <h4>Donation</h4>
+      <a
+        :href="`https://opencollective.com/leaf/tiers/Donation/${index}/website`"
+        rel="sponsored noopener"
+        target="_blank"
+        v-for="(_, index) in new Array(featuredCount.platinum)"
+        :key="`opencollective-supporters-${index}`"
+      >
+        <img
+          :src="`https://opencollective.com/leaf/tiers/Donation/${index}/avatar.svg`"
+          alt="Leaf PHP donation"
+        >
+      </a> -->
     </template>
   </SponsorsLayout>
 </template>

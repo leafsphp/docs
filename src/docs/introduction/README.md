@@ -1,6 +1,6 @@
 # Introduction
 
-::: warning ⚡️ RC Release
+::: warning ⚡️ RC 2 Release
 Leaf 3 is currently in its "Release Candidate" phase, as such the API will not change, and it can be considered near production ready.
 
 If you however want to use the more stable version 2, you can find the docs at [archive.leafphp.dev](https://archive.leafphp.dev)
