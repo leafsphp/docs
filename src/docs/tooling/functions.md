@@ -16,7 +16,7 @@ Functional mode is 100% optional as seen in the examples in the introduction sec
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {
-  response(["name" => "Leaf"]);
+  response()->json(["name" => "Leaf"]);
 });
 
 app()->run();
@@ -38,7 +38,7 @@ require __DIR__ . "/vendor/autoload.php";
 app()->config(["app.down" => true]);
 
 app()->get("/", function () {
-  response(["name" => "Leaf"]);
+  response()->json(["name" => "Leaf"]);
 });
 
 app()->run();
@@ -56,7 +56,7 @@ require __DIR__ . "/vendor/autoload.php";
 Leaf\Config::set("app.down", true);
 
 app()->get("/", function () {
-  response(["name" => "Leaf"]);
+  response()->json(["name" => "Leaf"]);
 });
 
 app()->run();

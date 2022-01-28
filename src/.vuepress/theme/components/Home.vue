@@ -143,6 +143,12 @@ h2 {
   margin-bottom: 10px !important;
 }
 
+.badge {
+  padding: 0 6px !important;
+  border-left-width: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
 @include sm-down {
   .vt-box-container {
     margin-top: 10px;
