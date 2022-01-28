@@ -4,11 +4,15 @@
       <header class="hero">
         <div class="inner">
           <div class="left">
-            <img v-if="data.heroImage" :src="$withBase(data.heroImage)" :alt="data.heroAlt || 'hero'" />
+            <img
+              v-if="data.heroImage"
+              :src="$withBase(data.heroImage)"
+              :alt="data.heroAlt || 'hero'"
+            />
           </div>
 
           <div class="right">
-            <h1 id="main-title">{{ data.heroText || "Leaf PHP"}}</h1>
+            <h1 id="main-title">{{ data.heroText || 'Leaf PHP' }}</h1>
 
             <h2 class="tagline" v-if="tagline" v-html="tagline"></h2>
 
@@ -28,26 +32,41 @@
         <span>Special Sponsor</span>
         <a href="#">
           <picture>
-            <source type="image/png" srcset="/logo-circle.png">
-            <img alt="logo" width="97" height="36" src="/logo-circle.png">
+            <source type="image/png" srcset="/logo-circle.png" />
+            <img alt="logo" width="97" height="36" src="/logo-circle.png" />
           </picture>
         </a>
         <span>Something</span>
       </section>
 
-      <section v-if="data.features && data.features.length" class="section-features">
+      <section
+        v-if="data.features && data.features.length"
+        class="section-features"
+      >
         <div class="inner">
-          <div v-for="(feature, index) in data.features" :key="index" class="feature">
+          <div
+            v-for="(feature, index) in data.features"
+            :key="index"
+            class="feature"
+          >
             <h2>{{ feature.title }}</h2>
             <p v-html="feature.details"></p>
           </div>
         </div>
       </section>
 
-      <Content class="theme-default-content custom" />
+
     </div>
 
-    <section class="section-sponsors" :class="{ active: sponsorsActive }" ref="sponsors">
+    <section class="section-new section-features px-md-up:20">
+      <Content class="theme-default-content custom" />
+    </section>
+
+    <section
+      class="section-sponsors"
+      :class="{ active: sponsorsActive }"
+      ref="sponsors"
+    >
       <div class="inner">
         <OpenCollectiveSponsors />
       </div>
@@ -81,7 +100,7 @@ export default {
   },
 
   data: () => ({
-    sponsorsActive: false
+    sponsorsActive: false,
   }),
 
   computed: {
@@ -95,7 +114,7 @@ export default {
         this.$description ||
         'The Progressive JavaScript Framework'
       )
-    }
+    },
   },
 
   mounted() {
@@ -111,16 +130,50 @@ export default {
       const sponsorTop = this.$refs.sponsors.offsetTop
 
       this.sponsorsActive = window.pageYOffset > sponsorTop - 100
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 @import '@theme/styles/_settings.scss';
+@import '~449.css/scss/';
+
+h2 {
+  margin-bottom: 10px !important;
+}
+
+@include sm-down {
+  .vt-box-container {
+    margin-top: 10px;
+    flex-direction: column;
+
+    > * {
+      display: block;
+      margin-top: 10px !important;
+    }
+
+    .vt-box:not(:first-child):not(:last-child) {
+      margin: 0px;
+    }
+  }
+}
 
 .home {
   font-family: $fontHome;
+
+  .section-new {
+    padding-top: 200px;
+    padding-bottom: 200px;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      @extend .my\:_2;
+    }
+  }
 }
 
 .main-content {
@@ -191,7 +244,8 @@ export default {
 
     h1 {
       font-size: 60px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       background: -webkit-linear-gradient(315deg, #42d392 5%, #647eff);
       background-clip: text;
       -webkit-background-clip: text;
