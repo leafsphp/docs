@@ -4,7 +4,7 @@
     <SidebarLinks :depth="1" type="right" :items="items" />
     <slot name="bottom" />
 
-    <h4 style="margin-top: 50px;">Leaf Social</h4>
+    <h4 style="margin-top: 50px; margin-bottom: 20px;">Leaf Social</h4>
     <div class="leaf-links">
       <!-- repo link -->
       <iframe
