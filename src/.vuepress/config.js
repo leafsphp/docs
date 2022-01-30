@@ -3,17 +3,14 @@ const sidebar = {
     {
       title: 'codelabs',
       collapsable: false,
-      children: ['/codelabs/', '/codelabs/template']
-    }
+      children: ['/codelabs/', '/codelabs/template'],
+    },
   ],
   guide: [
     {
       title: 'Essentials',
       collapsable: false,
-      children: [
-        '/docs/introduction/',
-        '/docs/introduction/features',
-      ]
+      children: ['/docs/introduction/', '/docs/introduction/features'],
     },
     {
       title: 'Quick Start',
@@ -23,12 +20,12 @@ const sidebar = {
         '/docs/migration/introduction',
         '/docs/introduction/url-rewriting',
         '/docs/introduction/first-app',
-      ]
+      ],
     },
     {
       title: 'Config',
       collapsable: false,
-      children: ['/docs/config/', '/docs/config/nsm', '/docs/config/settings']
+      children: ['/docs/config/', '/docs/config/nsm', '/docs/config/settings'],
     },
     {
       title: 'Core',
@@ -39,8 +36,8 @@ const sidebar = {
         '/docs/tooling/container',
         '/docs/tooling/logging',
         '/docs/tooling/view',
-        '/docs/tooling/functions'
-      ]
+        '/docs/tooling/functions',
+      ],
     },
     {
       title: 'Routing',
@@ -53,13 +50,13 @@ const sidebar = {
         '/docs/routing/middleware',
         '/docs/routing/sub-patterns',
         '/docs/routing/sub-folder',
-        '/docs/routing/controller'
-      ]
+        '/docs/routing/controller',
+      ],
     },
     {
       title: 'Modules',
-      path: '/modules/'
-    }
+      path: '/modules/',
+    },
   ],
   aloe: [
     {
@@ -69,9 +66,9 @@ const sidebar = {
         { title: 'Home', path: '/aloe-cli/' },
         {
           title: 'Getting Started',
-          path: '/aloe-cli/v/1.2.3/getting-started/'
-        }
-      ]
+          path: '/aloe-cli/v/1.2.3/getting-started/',
+        },
+      ],
     },
     {
       title: 'Default Commands',
@@ -79,21 +76,21 @@ const sidebar = {
       children: [
         {
           title: 'Misc Commands',
-          path: '/aloe-cli/v/1.2.3/commands/misc-commands'
+          path: '/aloe-cli/v/1.2.3/commands/misc-commands',
         },
         {
           title: '"Generate" Commands',
-          path: '/aloe-cli/v/1.2.3/commands/g-commands'
+          path: '/aloe-cli/v/1.2.3/commands/g-commands',
         },
         {
           title: '"Delete" Commands',
-          path: '/aloe-cli/v/1.2.3/commands/d-commands'
+          path: '/aloe-cli/v/1.2.3/commands/d-commands',
         },
         {
           title: '"DB" Commands',
-          path: '/aloe-cli/v/1.2.3/commands/db-commands'
-        }
-      ]
+          path: '/aloe-cli/v/1.2.3/commands/db-commands',
+        },
+      ],
     },
     {
       title: 'Aloe CLI',
@@ -101,22 +98,22 @@ const sidebar = {
       children: [
         {
           title: 'Custom Commands',
-          path: '/aloe-cli/v/1.2.3/commands/custom'
+          path: '/aloe-cli/v/1.2.3/commands/custom',
         },
         {
           title: 'Command IO',
-          path: '/aloe-cli/v/1.2.3/commands/io'
-        }
-      ]
+          path: '/aloe-cli/v/1.2.3/commands/io',
+        },
+      ],
     },
     {
       title: 'Aloe Misc',
       collapsable: false,
       children: [
         { title: 'Aloe Libraries', path: '/aloe-cli/v/1.2.3/libraries' },
-        '/aloe-cli/v/1.2.3/installer'
-      ]
-    }
+        '/aloe-cli/v/1.2.3/installer',
+      ],
+    },
   ],
   modules: [
     {
@@ -126,8 +123,8 @@ const sidebar = {
         { title: 'Leaf Docs', path: '/docs/introduction/' },
         { title: 'Leaf API', path: 'https://api.leafphp.dev' },
         { title: 'Leaf MVC', path: 'https://mvc.leafphp.dev/' },
-        { title: 'Skeleton', path: 'https://skeleton.leafphp.dev/' }
-      ]
+        { title: 'Skeleton', path: 'https://skeleton.leafphp.dev/' },
+      ],
     },
     {
       title: 'Core',
@@ -136,9 +133,24 @@ const sidebar = {
         '/modules/',
         '/modules/anchor/',
         '/modules/anchor/csrf/',
-        '/modules/db/',
-        '/modules/auth/',
         '/modules/forms/',
+
+        {
+          title: 'Leaf Db',
+          collapsable: true,
+          children: [
+            '/modules/db/',
+            '/modules/db/v/1/',
+            '/modules/db/v/2/new',
+            '/modules/db/v/2/',
+            '/modules/db/v/2/builder',
+          ],
+        },
+        {
+          title: 'Leaf Auth',
+          collapsable: true,
+          children: ['/modules/auth/new', '/modules/auth/'],
+        },
         {
           title: 'Http',
           collapsable: true,
@@ -151,8 +163,8 @@ const sidebar = {
             '/modules/cors/',
             '/modules/session/',
             '/modules/session/flash',
-            '/modules/cookies/'
-          ]
+            '/modules/cookies/',
+          ],
         },
         {
           title: 'Router',
@@ -165,10 +177,10 @@ const sidebar = {
             '/modules/router/middleware',
             '/modules/router/sub-patterns',
             '/modules/router/sub-folder',
-            '/modules/router/controller'
-          ]
-        }
-      ]
+            '/modules/router/controller',
+          ],
+        },
+      ],
     },
     {
       title: 'Helpers',
@@ -178,8 +190,8 @@ const sidebar = {
         '/modules/fs/',
         '/aloe-cli/',
         '/modules/fetch/',
-        '/modules/passwords/'
-      ]
+        '/modules/passwords/',
+      ],
     },
     {
       title: 'Views',
@@ -188,8 +200,8 @@ const sidebar = {
         '/modules/views/',
         '/modules/views/bareui/',
         '/modules/views/blade/',
-        '/modules/views/veins/'
-      ]
+        '/modules/views/veins/',
+      ],
     },
     {
       title: 'Extras',
@@ -198,9 +210,9 @@ const sidebar = {
         '/modules/mvc-core/',
         '/modules/mail/',
         '/modules/db-old/',
-        '/modules/redis/'
-      ]
-    }
+        '/modules/redis/',
+      ],
+    },
   ],
   contributing: [
     {
@@ -209,9 +221,9 @@ const sidebar = {
       children: [
         '/community/contributing',
         '/docs/contributing/writing-guide',
-        '/docs/contributing/doc-style-guide'
-      ]
-    }
+        '/docs/contributing/doc-style-guide',
+      ],
+    },
   ],
   community: [
     {
@@ -230,11 +242,11 @@ const sidebar = {
         { title: 'Discord', path: 'https://discord.gg/Pkrm9NJPE3' },
         {
           title: 'YouTube',
-          path: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw'
-        }
-      ]
-    }
-  ]
+          path: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw',
+        },
+      ],
+    },
+  ],
 }
 
 module.exports = {
