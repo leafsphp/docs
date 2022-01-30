@@ -3,6 +3,10 @@
   to = "https://blog.leafphp.dev"
 
 [[redirects]]
+  from = "/codelabs/"
+  to = "https://codelabs.leafphp.dev"
+
+[[redirects]]
   from = "/docs/"
   to = "/docs/introduction.html"
 
