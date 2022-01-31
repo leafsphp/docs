@@ -1,8 +1,10 @@
 # Building Queries
 
+As demonstrated [before](/modules/db/v/2/#simple-queries), Leaf Db allows you to perfectly write SQL queries, however, it also provides simpler and more convenient methods for building queries. This means that you won't need to write any SQL statements.
+
 ## select
 
-As you saw in the example above, `select` makes writing select statements really simple.
+This is a method for quickly building select statements. The `SELECT` statement is used to select data from a database.
 
 It takes in 2 parameters:
 
@@ -11,7 +13,7 @@ It takes in 2 parameters:
 
 ```php
 // returns all items
-$items = $db->select("items")->all();
+$items = $db->select('items')->all();
 
 // returns the username & email of all buyers
 $buyers = $db->select("buyers", "username, email")->fetchAll();
@@ -63,10 +65,6 @@ whereLike("title", Db::includes("char"))
 whereLike("title", Db::word("char", "ter"))
 ```
 
-### like
-
-This is an alias for `whereLike`. So you can use `like` instead of `whereLike`
-
 ### orWhereLike
 
 This combines `orWhere` and `whereLike` in a sense that `orWhereLike` compares using `OR` instead of `AND`, just like `orWhere`, but instead uses the LIKE operator just as `whereLike` does. The interesting thing is that you can combine it with any other where block to make a more complex query.
@@ -77,96 +75,6 @@ $items = $db->select("items")
             ->whereLike("title", $db->beginsWith("sa"))
             ->orWhereLike("description", $db->beginsWith("sa"))
             ->all();
-```
-
-### orLike
-
-This is an alias for `orWhereLike`. So you can use `orLike` instead of `orWhereLike`
-
-## Getting your data
-
-After the query is run, the data is returned to leaf db. You can use the methods below to retrieve that data.
-
-### fetchAll
-
-`fetchAll` is a method that's used together with the `select` method. This method simply returns an array consisting of a lot of objects. It is mostly used when querying multiple rows.
-
-```php
-$items = $db->select("items")->fetchAll();
-```
-
-Although the query here is `$db->select("items")`, running just this would return nothing. To actually get the result of this query, you'd need to call `execute`, `fetchObj`, `fetchAssoc` or `fetchAll`
-
-### all
-
-`all` is an alias for `fetchAll`, but is shorter and more familiar with devs who have used other packages. Don't worry, `fetchAll` isn't getting deprecated, you can use it just as you've always done.
-
-### first
-
-`first` returns the first entity of all matching results for a certain query.
-
-```php
-function getFirstItem()
-{
-  // ...
-  return $db->select("items")->first();
-}
-```
-
-### last
-
-`last` returns the last entity of all matching results for a certain query.
-
-```php
-function getLastItem()
-{
-  // ...
-  return $db->select("items")->last();
-}
-```
-
-### execute
-
-This method is used on queries which don't return anything like insert, update and delete queries. This method just runs the desired query and returns `void`, however, if there is a problem, it returns `null`. You can then call `$db->errors()` to get the exact error.
-
-From v2.4-beta up, execute takes in an **optional** parameter, the type of values passed into `bind`, `params` or `where`
-
-```php
-$db->insert("users")->params(["username" => "mychi"])->execute("s");
-```
-
-### fetchObj
-
-This is just like `fetchAll` except that fetchObj is used on select queries usually involving one row
-
-```php
-$db->select("users")->where("id", "1")->fetchObj();
-```
-
-If `fetchAll` is used in this case, the result would look something like this:
-
-```php
-[
-  [
-    "id" => "1"
-  ]
-]
-```
-
-Also, note that `fetchObj` returns an object, so you can use the result like this
-
-```php
-$user = $db->select("users")->where("id", "1")->fetchObj();
-$user->id // not $user["id"]
-```
-
-### fetchAssoc
-
-This is just like the `fetchObj` method, except that it returns an associative array, not an object.
-
-```php
-$user = $db->select("users")->where("id", "1")->fetchAssoc();
-$user["id"]; // not $user->id
 ```
 
 ## Table operations

@@ -185,19 +185,131 @@ db()->select('users')->where('id', '1')->fetchObj();
 
 This is what Leaf Db does for you. A new way to write your Database queries without actually needing to write any real queries. Also, unlike other query builders, there's no need to create classes and models for every table you want to fetch from. Everything's accessible with one line of code.
 
-## Next Steps
+## Running queries
+
+There are different types of queries, some return values and others don't. Leaf Db provides a seamless way of handling both.
+
+### execute
+
+`execute` is a method on Leaf Db which allows you to run a query instantly. The `execute` method is used when the query is **NOT** expected to return a value.
+
+```php
+db()->query('CREATE DATABASE dbname')->execute();
+```
+
+### fetchAll
+
+`fetchAll` is a method simply returns all the results of a query. Under the hood, the query is run using `execute` and the value is retrieved and returned. This method is used when there are a lot of values to return.
+
+```php
+$users = db()->query('SELECT * FROM users')->fetchAll();
+```
+
+::: tip Aliases
+`fetchAll` has aliases adapted from other libraries and frameworks. Instead of `fetchAll`, you can use `all` and `get`
+
+```php
+$users = db()->query('SELECT * FROM users')->all();
+$users = db()->query('SELECT * FROM users')->get();
+```
+
+:::
+
+In this case, the `$users` variable with contain an array of associative arrays, but if you want an array of objects, you can pass `obj` or `object` as a parameter into `fetchAll`
+
+```php
+$users = db()->query('SELECT * FROM users')->fetchAll('obj');
+$users = db()->query('SELECT * FROM users')->all('object');
+$users = db()->query('SELECT * FROM users')->get('obj');
+```
+
+### fetchObj
+
+`fetchObj` is a method that fetches the next row and returns it as an object. It returns only one object, so it should be used only on queries that return a single item.
+
+```php
+$user = db()->query('SELECT * FROM users WHERE id = 1')->fetchObj();
+```
+
+::: tip Aliases
+Instead of `fetchObj`, you can use `obj`
+
+```php
+$user = db()->query('SELECT * FROM users WHERE id = 1')->obj();
+```
+
+:::
+
+::: warning Watch out
+`fetchObj` returns an object, so you can use the result like this:
+
+```php
+$user = db()->query('SELECT * FROM users WHERE id = 1')->obj();;
+$user->id // not $user["id"]
+```
+
+:::
+
+### fetchAssoc
+
+`fetchAssoc` is a method that fetches the next row and returns it as an array. It returns only one array, so it should be used only on queries that return a single item.
+
+```php
+$user = db()->query('SELECT * FROM users WHERE id = 1')->fetchAssoc();
+```
+
+::: tip Aliases
+Instead of `fetchAssoc`, you can use `assoc`
+
+```php
+$user = db()->query('SELECT * FROM users WHERE id = 1')->assoc();
+```
+
+:::
+
+::: warning Watch out
+`fetchAssoc` returns an array, so you can use the result like this:
+
+```php
+$user = db()->query('SELECT * FROM users WHERE id = 1')->assoc();;
+$user['id'] // not $user->id
+```
+
+:::
+
+### first
+
+`first` returns the first item in the database that matches the condition given.
+
+```php
+$user = db()->query('SELECT * FROM users')->first();
+```
+
+Although all our users are saved in the `users` table, `first` will return only the first record.
+
+### last
+
+`last` returns the last item in the database that matches the condition given.
+
+```php
+$user = db()->query('SELECT * FROM users')->last();
+```
+
+Although all our users are saved in the `users` table, `last` will return only the last record.
+
+<!-- ## Next Steps
 
 <div class="vt-box-container next-steps">
   <a class="vt-box h:_10 w:50" href="/modules/db/v/2/builder">
     <h3 class="next-steps-link mb:_1">Continue the Guide</h3>
     <small class="next-steps-caption">Learn how to build queries with Leaf Db's developer friendly syntax.</small>
   </a>
-  <!-- <a class="vt-box ml:_1" href="/modules/db/v/2/new" target="_blank">
+  <a class="vt-box ml:_1" href="/modules/db/v/2/new" target="_blank">
     <h3 class="next-steps-link">Follow the Tutorial</h3>
     <small class="next-steps-caption">For those who prefer learning things hands-on. Let's build something real!</small>
-  </a> -->
+  </a>
   <a class="vt-box w:50 ml:_1" href="/modules/db/v/2/new">
     <h3 class="next-steps-link">What's new in v2</h3>
     <small class="next-steps-caption">Check out all the changes in this new version of leaf db.</small>
   </a>
-</div>
+</div> -->
