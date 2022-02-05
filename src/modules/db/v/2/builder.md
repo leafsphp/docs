@@ -2,6 +2,22 @@
 
 As demonstrated [before](/modules/db/v/2/#simple-queries), Leaf Db allows you to perfectly write SQL queries, however, it also provides simpler and more convenient methods for building queries. This means that you won't need to write any SQL statements.
 
+## create <Badge text="New" />
+
+This method helps you build a query to create a database.
+
+```php
+db()->create('dbName')->execute();
+```
+
+## drop <Badge text="New" />
+
+This method helps you build a query to drop a database.
+
+```php
+db()->drop('dbName')->execute();
+```
+
 ## select
 
 This is a method for quickly building select statements. The `SELECT` statement is used to select data from a database.
@@ -13,10 +29,10 @@ It takes in 2 parameters:
 
 ```php
 // returns all items
-$items = $db->select('items')->all();
+$items = db()->select('items')->all();
 
 // returns the username & email of all buyers
-$buyers = $db->select("buyers", "username, email")->fetchAll();
+$buyers = db()->select("buyers", "username, email")->fetchAll();
 ```
 
 ### where
@@ -24,13 +40,24 @@ $buyers = $db->select("buyers", "username, email")->fetchAll();
 The where method allows you to quickly write a where block.
 
 ```php
-$user = $db->select("users")->where("username", "mychi")->first();
+$user = db()->select("users")->where("username", "mychi")->first();
 ```
 
 You can also pass in a bunch of params to check for:
 
 ```php
-$user = $db->select("users")->where(["username" => "mychi", "password" => "..."])->first();
+$user = db()->select("users")->where(["username" => "mychi", "password" => "..."])->first();
+```
+
+#### Comparators <Badge text="new" />
+
+v2 of leaf db introduces a third parameter to the `where` and `orWhere` blocks. This allows you to check how a value compares to another using `=`, `LIKE`, `>`, ...
+
+```php
+db()
+  ->select('items')
+  ->where('tag', 'LIKE', '%new%')
+  ->fetchAll();
 ```
 
 ### orWhere
@@ -38,44 +65,37 @@ $user = $db->select("users")->where(["username" => "mychi", "password" => "..."]
 `orWhere` also functions just like `where`, except that in the case of multiple parameters, `orWhere` returns results even if one of the conditions is met, but `where` only returns results if all the conditions are matched.
 
 ```php
-$users = $db->select("users")->orWhere(["username" => "mychi", "username" => "darko"])->all();
+$users = db()->select("users")->orWhere(["username" => "mychi", "username" => "darko"])->all();
 ```
 
-### whereLike
+Kind of like `SELECT * FROM users WHERE username = 'mychi' OR username = 'darko'`
 
-`whereLike` is technically the same as `where`, except that instead of comparing stuff "strictly equal", it finds something `like` the value, using the like operator.
+::: tip Chaining
+You can chain `where` and `orWhere` blocks together to make queries that use `AND` and `OR` operators.
 
 ```php
-$items = $db->select("items")->whereLike("title", "c%")->all();
+db()
+  ->select('users')
+  ->where('username', 'mychi')
+  ->orWhere('username', 'darko')
+  ->first();
 ```
 
-This finds any item with a title that starts with c. `%` can be used to modify how the `LIKE` comparism is done, however if you're not sure about the % works, leaf has Db helpers for you.
+This query will look for a username which is either `mychi` or `darko` and return whichever it finds first.
+
+:::
+
+### find
+
+This method allows you to quickly perform a check for the `id` key on a table. It takes in 1 parameter which is the id of the row to get.
 
 ```php
-// item begins with ...
-whereLike("title", Db::beginsWith("char"))
-
-// item ends with ...
-whereLike("title", Db::endsWith("char"))
-
-// item includes ...
-whereLike("title", Db::includes("char"))
-
-// item starts and ends with ...
-whereLike("title", Db::word("char", "ter"))
+$user = db()->select("users")->find(1);
 ```
 
-### orWhereLike
-
-This combines `orWhere` and `whereLike` in a sense that `orWhereLike` compares using `OR` instead of `AND`, just like `orWhere`, but instead uses the LIKE operator just as `whereLike` does. The interesting thing is that you can combine it with any other where block to make a more complex query.
-
-```php
-$items = $db->select("items")
-            ->where("published", true)
-            ->whereLike("title", $db->beginsWith("sa"))
-            ->orWhereLike("description", $db->beginsWith("sa"))
-            ->all();
-```
+::: tip Note
+Find returns the value it finds immediately, so you should not use `fetchAssoc` or any other fetch method on the value returned.
+:::
 
 ## Table operations
 
@@ -84,7 +104,7 @@ $items = $db->select("items")
 `table` sets the table pointer for the db table being used. `table` can be combined with other methods like `search`.
 
 ```php
-$db->table("items");
+db()->table("items");
 ```
 
 ### search
@@ -92,7 +112,7 @@ $db->table("items");
 Just as the name implies, you can use this method to search for a value in the database table. It is used with the `table` method.
 
 ```php
-$res = $db->table("items")->search("name", "chocola");
+$res = db()->table("items")->search("name", "chocola");
 ```
 
 This will try to find an item which has chocola in it's name field.
@@ -102,7 +122,7 @@ This will try to find an item which has chocola in it's name field.
 `Insert` provides a much simpler syntax for making insert queries.
 
 ```php
-$db->insert("users") // faster than $db->query("INSERT INTO users")
+db()->insert("users") // faster than db()->query("INSERT INTO users")
 ```
 
 ### params
@@ -110,19 +130,19 @@ $db->insert("users") // faster than $db->query("INSERT INTO users")
 This method is used on `insert` and `update` just like how `where` is used on `select` and `delete`.
 
 ```php
-$db->insert("users")->params("username", "mychi");
+db()->insert("users")->params(["username" => "mychi"]);
 ```
 
 To actually run this query, you have to call `execute`.
 
 ```php
-$db->insert("users")->params("username", "mychi")->execute();
+db()->insert("users")->params(["username" => "mychi"])->execute();
 ```
 
 This inserts a user with a username of mychi into the users table. But what if you wanted to add more params, simple!
 
 ```php
-$db->insert("users")->params([
+db()->insert("users")->params([
   "username" => "mychi",
   "email" => "mickdd22@gmail.com"
 ])->execute();
@@ -131,11 +151,11 @@ $db->insert("users")->params([
 You're free to arrange this query anyhow you see fit, it's still considered as a single chain.
 
 ```php
-$db->insert("users")
+db()->insert("users")
    ->params([
      "username" => "mychi",
      "email" => "mickdd22@gmail.com",
-     "password" => md5("test")
+     "password" => Leaf\Password::hash("test")
    ])
    ->execute();
 ```
@@ -147,7 +167,7 @@ What if you already registered someone with the username mychi, this tiny flaw c
 Just as the name implies, `unique` helps prevent duplicates in your database, fun fact, just chain one more method for this functionality🤗
 
 ```php
-$db->insert("users")
+db()->insert("users")
    ->params([
      "username" => "mychi",
      "email" => "mickdd22@gmail.com",
@@ -174,7 +194,7 @@ Alternatively, you could just pack a truck load full of uniques in an array
 Quickly write an update query.
 
 ```php
-$db->update("users")->params("location", "Ghana")->where("id", "1")->execute();
+db()->update("users")->params(["location" => "Ghana"])->where("id", "1")->execute();
 ```
 
 This is generally how an update looks like. Just like with insert, you can add up uniques to make sure you don't have duplicates in your database.
@@ -186,66 +206,31 @@ This is generally how an update looks like. Just like with insert, you can add u
 Let's jump straight in for an example.
 
 ```php
-$db->delete("users")->execute();// careful now🙂
+db()->delete("users")->execute(); // careful now🙂
 ```
 
-This code above, ladies and gentlemen, will wipe all your users resulting in 7 digit loses🤞
+::: danger Watch out
+Be careful when running `delete` queries without a `where` block. Doing that will wipe that whole table.
+:::
 
 ```php
-$db->delete("users")->where("id", "1")->execute();
+db()->delete("users")->where("id", "1")->execute();
 ```
 
 You have succesfully deleted user 1
 
 ## Extras
 
-At this point, there's still a whole lot you can do with Leaf Db.
-
-There are times when you have to insert data you don't know about. What happens if your user enters unsupported info. To fix this, you'll have to run a bunch of checks to find out what kind of information is being saved, but what if you could validate data before saving without writing any extensive validation? Well...prepare to be amazed🧐
-
-### validate
-
-Validate makes sure that correct information is saved in your database. You simply need to chain the `validate` method.
-
-```php
-$db->insert("users")
-   ->params([
-     "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
-     "password" => md5("test")
-   ])
-   ->validate("username", "validUsername")
-   ->execute();
-```
-
-Validate takes in 2 parameters, a field to validate and a validation rule. You can find all the validation rules and what they do [here](/modules/forms/#multiple-rule-validation). So what if you need to validate more than 1 parameter?
-
-```php
-$db->insert("users")
-   ->params([
-     "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
-     "password" => md5("test")
-   ])
-   ->validate([
-     "username" => "validUsername",
-     "email" => "email"
-   ])
-   ->execute();
-```
-
-Amazing right?!
-
 ### hidden
 
 Not all information which is retrieved from the database is sent over to the client side or is added to the session or cookies. Usually, some fields are left out for "security" reasons. `hidden` returns the retrieved data without the `hidden` fields.
 
 ```php
-$db->select("users")->hidden("remember_token", "reset_q_id")->fetchAll();
+db()->select("users")->hidden("remember_token", "reset_q_id")->fetchAll();
 ```
 
 ```php
-$db->select("users")->where("id", "1")->hidden("remember_token", "reset_q_id")->fetchObj();
+db()->select("users")->where("id", "1")->hidden("remember_token", "reset_q_id")->fetchObj();
 ```
 
 ### add
@@ -257,13 +242,13 @@ This does not touch your database, it only appends a field into the data returne
 :::
 
 ```php
-$db->select("users")->add("tx_id", gID())->fetchAll();
+db()->select("users")->add("tx_id", gID())->fetchAll();
 ```
 
 This query adds a `tx_id` field with a value generated from `gID` to every user
 
 ```php
-$db->select("users")->where("id", "1")->add("tx_id", "d362d7t2366")->fetchObj();
+db()->select("users")->where("id", "1")->add("tx_id", "d362d7t2366")->fetchObj();
 ```
 
 This is similar as the query above, except that this query is on the scale of a single user.
@@ -273,19 +258,19 @@ This is similar as the query above, except that this query is on the scale of a 
 We've already seen `bind` in action, but we've not actually talked about it. This method allows you to bind parameters into your query.
 
 ```php
-$db->select("users WHERE username = ?")->bind("mychi")->fetchAssoc();
+db()->select("users WHERE username = ?")->bind("mychi")->fetchAssoc();
 ```
 
 And yet again another syntax🧐 As said above, Leaf  Db is highly customizable, and allows you to write queries in a way that suits you. This statement above binds `mychi` to the username.
 
 ```php
-$db->select("users WHERE username = ? AND password = ?")->bind("mychi", "password")->fetchAssoc();
+db()->select("users WHERE username = ? AND password = ?")->bind("mychi", "password")->fetchAssoc();
 ```
 
 You can just pass multiple parameters into bind, as many as satisfy your query. If you feel more comfortable with arrays, you can use arrays.
 
 ```php
-$db->select("users WHERE username = ? AND password = ?")->bind(["mychi", "password"])->fetchAssoc();
+db()->select("users WHERE username = ? AND password = ?")->bind(["mychi", "password"])->fetchAssoc();
 ```
 
 ### orderBy
@@ -294,7 +279,7 @@ orderBy allows you to arrange the query results according to a row, in ascending
 
 ```php
 // if second param is not provided, desc is used by default
-$items = $db->select("items")->orderBy("created_at")->all();
+$items = db()->select("items")->orderBy("created_at")->all();
 
 ... orderBy("id", "desc")->all();
 ```
@@ -305,10 +290,10 @@ When retrieving data from your database for use in applications, you might want 
 
 ```php
 $itemsPerPage = 15;
-$items = $db->select("items")->limit($itemsPerPage)->fetchAll();
+$items = db()->select("items")->limit($itemsPerPage)->fetchAll();
 
 // you can use limit and orderBy together
-$items = $db->select("items")->orderBy("id", "desc")->limit($itemsPerPage)->fetchAll();
+$items = db()->select("items")->orderBy("id", "desc")->limit($itemsPerPage)->fetchAll();
 ```
 
 ### error handling
@@ -316,11 +301,11 @@ $items = $db->select("items")->orderBy("id", "desc")->limit($itemsPerPage)->fetc
 Errors come up all the time, user errors, that is. What happens when validation fails, or if someone has already registered a username. Leaf Db provides a simple way to track these errors.
 
 ```php
-$res = $db->insert("users")->params("username", "mychi")->unique("username")->execute();
-if ($res === false) $app->response->throwErr($db->errors());
+$res = db()->insert("users")->params("username", "mychi")->unique("username")->execute();
+if ($res === false) $app->response->throwErr(db()->errors());
 ```
 
-Using `$db->errors()` returns an array holding any errors which caused the query to fail. eg:
+Using `db()->errors()` returns an array holding any errors which caused the query to fail. eg:
 
 ```php
 [
