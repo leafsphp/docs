@@ -134,7 +134,6 @@ const sidebar = {
         '/modules/anchor/',
         '/modules/anchor/csrf/',
         '/modules/forms/',
-
         {
           title: 'Leaf Db',
           collapsable: true,
@@ -149,7 +148,11 @@ const sidebar = {
         {
           title: 'Leaf Auth',
           collapsable: true,
-          children: ['/modules/auth/new', '/modules/auth/'],
+          children: [
+            '/modules/auth/',
+            '/modules/auth/v/2/new',
+            // '/modules/auth/v/2/',
+          ],
         },
         {
           title: 'Http',
