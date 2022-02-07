@@ -1,5 +1,5 @@
 ---
-title: "Auth"
+title: "Auth v1"
 ---
 
 <!-- markdownlint-disable no-inline-html -->

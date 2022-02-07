@@ -26,11 +26,7 @@ composer require leafs/auth
 
 There are currently two versions of leaf db. Click on your version of choice to view it's docs.
 
-- [v1](/modules/db/v/1/)
-- [v2](/modules/db/v/2/)
-
-::: warning Sticking to v1
-If you don't use leaf auth, it is perfectly fine to stick to leaf db v1. However, if you use Leaf Auth, you will need to switch to v2 of leaf db.
-:::
+- [v1](/modules/auth/v/1/)
+- [v2](/modules/auth/v/2/)
 
 You can quickly upgrade by running the installation command above.
