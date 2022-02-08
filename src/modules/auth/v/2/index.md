@@ -126,7 +126,7 @@ Functional mode also makes the `guard`, `hasAuth` and `sessionUser` globals avai
 
 ### guard
 
-The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/v/2/session#guard).
+The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/v/2/session.html#guard).
 
 ### hasAuth
 

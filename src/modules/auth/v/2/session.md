@@ -1,6 +1,6 @@
 # Session support
 
-Session based authentication as the name implies, creates and manages a session during the authentication process to track the user's logged in state. Leaf auth allows you to do all of this in 1 or 2 lines of code.
+Session based authentication as the name implies, creates and manages a session during the authentication process to track the user's logged in state. Leaf auth provides an easy and developer friendly approach to handle this.
 
 To get started with session support, just set the `USE_SESSION` config to true.
 
@@ -34,12 +34,6 @@ Leaf\Auth::guard('auth');
 Leaf\Auth::guard('guest');
 ```
 
-This is a lot easier with functional mode
-
-```php
-auth()->guard('guest');
-```
-
 ::: tip The <code>guard</code> method
 You can directly run a guard on the `guard` method.
 
@@ -48,7 +42,7 @@ guard('guest');
 ```
 
 :::
-
+<!-- 
 ### save
 
 This method is used to save data to the auth session.
@@ -67,36 +61,22 @@ As usual, this is easier with the auth class or with functional mode
 
 ```php
 auth()->save('rememberLogin', false);
-```
+``` -->
 
 ### length
 
 With length, you can get how long a user has been logged in. You can save the session time logs to your database in order to track users' login logs. The available logs are `SESSION_STARTED_AT` and `SESSION_LAST_ACTIVITY` which are automatically tracked by Leaf.
 
 ```php
-// LoginsDB is a user defined method to save a login log
-
-// ...
-LoginsDB::params(
-  'logged_in_at',
-  date('D, d M Y H:i:s', Leaf\Auth\Session::length()),
-);
-
-LoginsDB::save();
-```
-
-Or with functional mode
-
-```php
-auth()->sessionLength();
+$sessionDuration = auth()->length();
 ```
 
 ### lastActive
 
-lastActive allows you to get how much time has passed since the last session activity.
+`lastActive` allows you to get how much time has passed since the last session activity.
 
 ```php
-$userLastSeen = Leaf\Auth\Session::lastActive();
+$userLastSeen = auth()->lastActive();
 ```
 
 ### refresh
@@ -106,45 +86,35 @@ As the name implies, you can refresh the session with this method. Refreshing so
 ```php
 if ($newAccountAdded) {
   // will delete old session data
-  Leaf\Auth\Session::refresh();
+  Leaf\Auth::refresh();
 } else {
   // will keep session data
-  Leaf\Auth\Session::refresh(false);
+  auth()->refresh(false);s
 }
 ```
 
 ### status
 
-`status` checks whether a user session is ongoing by looking for keys specific to Leaf session auth so it doesn't confuse a Leaf auth session with user defined sessions. Returns true if a session is found and false if there's no session found.
+`status` checks whether a user session is ongoing by looking for keys specific to Leaf session auth so it doesn't confuse a Leaf auth session with user defined sessions. Returns the user if a session is found and false if there's no session found.
 
 ```php
-if (Leaf\Auth\Session::status()) {
+if (auth()->status()) {
   return 'logged in';
 } else {
   return 'guest mode';
 }
 ```
 
-or with functional mode
-
-```php
-if (auth()->session()) {
-  return 'logged in';
-} else {
-  return 'guest mode';
-}
-```
-
-### end
+### logout
 
 Of course we'll need a method to logout/end our session. This is just the method for that.
 
 ```php
-Leaf\Auth\Session::end();
+auth()->logout();
 ```
 
-Or with functional mode
+You can also pass in a route to redirect to after logging out.
 
 ```php
-auth()->endSession();
+auth()->logout('/home');
 ```
