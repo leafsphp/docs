@@ -10,13 +10,13 @@ Simple auth is a module which takes away the pain involved with anything authent
 You can install auth through composer or leaf cli.
 
 ```sh
-composer require leafs/auth
+composer require leafs/auth v1.1.2
 ```
 
 or
 
 ```sh
-leaf install auth
+leaf install auth@1.1.2
 ```
 
 ::: warning Note that
