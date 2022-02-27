@@ -17,9 +17,13 @@ composer require leafs/auth
 
 From there, you can link your database and start writing some awesome queries.
 
-::: info Coming from v1
-If you are coming from Leaf Auth v1, we recommend checking the [changelog](/modules/auth/v/2/new)
+<!-- ::: info Coming from v1
+If you are coming from Leaf Auth v1, we recommend checking the [changelog](/modules/auth/v/2.1/v1-new)
 :::
+
+::: info Coming from v2.0
+If you are coming from Leaf Auth v1, we recommend checking the [changelog](/modules/auth/v/2.1/v2.0-new)
+::: -->
 
 ## Db Connection
 
@@ -126,7 +130,7 @@ Functional mode also makes the `guard`, `hasAuth` and `sessionUser` globals avai
 
 ### guard
 
-The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/v/2/session.html#guard).
+The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/v/2.1/session.html#guard).
 
 ### hasAuth
 
@@ -136,19 +140,19 @@ The guard method is a shortcut method for `Auth::guard()`. You can find the guar
 
 This method returns the active session user or null if there's no session user.
 
-<!-- ## Next Steps
+## Next Steps
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box h:_10 w:50" href="/modules/db/v/2/builder">
-    <h3 class="next-steps-link mb:_1">Continue the Guide</h3>
-    <small class="next-steps-caption">Learn how to build queries with Leaf Db's developer friendly syntax.</small>
+  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/config">
+    <h3 class="next-steps-link mb:_1">v2.0 Config</h3>
+    <small class="next-steps-caption">Configure leaf auth to meet your needs.</small>
   </a>
-  <a class="vt-box ml:_1" href="/modules/db/v/2/new" target="_blank">
-    <h3 class="next-steps-link">Follow the Tutorial</h3>
-    <small class="next-steps-caption">For those who prefer learning things hands-on. Let's build something real!</small>
+  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/methods">
+    <h3 class="next-steps-link">v2.0 Methods</h3>
+    <small class="next-steps-caption">Docs on all the methods provided in v2.0</small>
   </a>
-  <a class="vt-box w:50 ml:_1" href="/modules/db/v/2/new">
-    <h3 class="next-steps-link">What's new in v2</h3>
-    <small class="next-steps-caption">Check out all the changes in this new version of leaf db.</small>
+  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/session">
+    <h3 class="next-steps-link">v2.0 Sessions</h3>
+    <small class="next-steps-caption">Session support with auth v2.0.</small>
   </a>
-</div> -->
+</div>

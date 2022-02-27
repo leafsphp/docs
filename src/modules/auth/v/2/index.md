@@ -17,9 +17,9 @@ composer require leafs/auth v2.0
 
 From there, you can link your database and start writing some awesome queries.
 
-::: info Coming from v1
+<!-- ::: info Coming from v1
 If you are coming from Leaf Auth v1, we recommend checking the [changelog](/modules/auth/v/2/new)
-:::
+::: -->
 
 ## Db Connection
 
