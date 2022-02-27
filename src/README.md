@@ -115,7 +115,7 @@ $appInstance = app()->config('app.instance');
 
 Along with Leaf 3, we shipped leaf CLI 2 which is a complete rewrite of the earlier v1. Leaf CLI is a simple, fast and very easy to use console tool for creating and managing your leaf apps. Leaf CLI 2 is completely powered by composer which makes it faster and more stable than the earlier v1.
 
-![image](https://user-images.githubusercontent.com/26604242/151559420-3750c9cb-991a-4744-a9ff-de3afeac28fa.png)
+![image](https://user-images.githubusercontent.com/26604242/155889414-973af204-44c2-476d-b7ef-a6ebf8a87fa6.png)
 
 You can find the complete guide on [cli.leafphp.dev](https://cli.leafphp.dev)
 
