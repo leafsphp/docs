@@ -152,7 +152,7 @@ const sidebar = {
             '/modules/auth/',
             '/modules/auth/v/1/',
             '/modules/auth/v/2/',
-            '/modules/auth/v/2.1/new',
+            // '/modules/auth/v/2.1/v2.0-new',
             '/modules/auth/v/2.1/',
             '/modules/auth/v/2.1/config',
             '/modules/auth/v/2.1/methods',
