@@ -2,14 +2,18 @@
 
 These are the main functionality provided by leaf auth.
 
+::: tip New in v2.1
+Following the addition of the [DB_TABLE](/modules/auth/v/2.1/config.html#db-table) config, the table parameter has been removed from leaf auth. This means that you can now pass in only the credentials on a user `login`, `register` or `update`.
+:::
+
 ## login
 
 Login is used to create a simple, secure user login.
 
-**It takes in a table to search for users and a set of parameters for the login.**
+**It takes in a set of parameters for the login.**
 
 ```php
-$user = auth()->login('users', [
+$user = auth()->login([
   'username' => 'mychi.darko',
   'password' => 'test'
 ]);
@@ -18,7 +22,7 @@ $user = auth()->login('users', [
 If the user is successfully found, the user data is returned, if not, `null` is returned. You can get any error by calling the `errors` method.
 
 ```php
-$user = auth()->login('users', [
+$user = auth()->login([
   'username' => 'mychi.darko',
   'password' => 'test'
 ]); // returns null if failed
@@ -49,7 +53,7 @@ Login now has session support which allows login to create a session instead of 
 ```php
 auth()->useSession();
 
-auth()->login('users', [
+auth()->login([
   'username' => $username,
   'password' => $password
 ]);
@@ -61,7 +65,8 @@ In case there's something wrong and Auth can't sign the user in, it returns a fa
 
 ```php
 auth()->useSession();
-auth()->login('users', [
+
+$user = auth()->login([
   'username' => $username,
   'password' => $password
 ]);
@@ -78,20 +83,20 @@ if (!$user) {
 
 ### Password Encoding
 
-Leaf auth has a very simple and straightforward implementation for password encoding. You can use default password protection with the leaf password helper or use your own method for hashing. All of this can be configured with [auth settings](/modules/auth/v/2/config.html#password-encode)
+Leaf auth has a very simple and straightforward implementation for password encoding. You can use default password protection with the leaf password helper or use your own method for hashing. All of this can be configured with [auth settings](/modules/auth/v/2.1/config.html#password-encode)
 
 ### Validation
 
 This version of leaf auth has separated validation into it's own method. This allows you to have cleaner methods which are more readable. Validation uses [leaf form](/modules/forms) under the hood, which makes it simple and easy to use. You can find more about form rules in the [leaf form validation docs](/modules/forms/#supported-rules).
 
 ```php{1}
-$validation = auth()->validate(['username' => 'ValidUsername']);
+$validation = auth()->validate(['firstname' => 'noSpaces']);
 
 if (!$validation) {
   response()->throwErr(auth()->errors());
 }
 
-$user = auth()->login('users', $loginData);
+$user = auth()->login($loginData);
 
 if (!$user) {
   response()->throwErr(auth()->errors());
@@ -100,10 +105,10 @@ if (!$user) {
 
 ## register
 
-Register is a simple method used to create simple, secure user registrations. **It takes in a table to save users, the params(array) to save and any items which should be unique.**
+Register is a simple method used to create simple, secure user registrations. **It takes in the params(array) to save and any items which should be unique.**
 
 ```php
-auth()->register('users', [
+auth()->register([
   'username' => 'mychi.darko',
   'email' => 'mickdd22@gmail.com',
   'field' => 'value'
@@ -113,7 +118,7 @@ auth()->register('users', [
 If the user is successfully saved, the user data is returned, if not, `null` is returned. You can get any error by calling the `errors` method.
 
 ```php
-$user = auth()->register('users', [
+$user = auth()->register([
   'username' => 'mychi.darko',
   'email' => 'mickdd22@gmail.com',
   'field' => 'value'
@@ -128,28 +133,23 @@ if (!$user) {
 
 Let's say you want to check whether the username a user just entered has been taken, you'd have to write a bunch of conditional code, making the code count larger and more error prone, right?
 
-Well, `register` solves this problem smoothly. `register` has a 3rd parameter: an array of unique values which makes sure that the same value can't be saved twice.
+Well, `register` solves this problem smoothly. `register` has a 2nd parameter: an array of unique values which makes sure that the same value can't be saved twice.
 
 ```php
-$db->register(
-  'users',
+auth()->register(
   ['name' => 'mychi', 'email' => 'm@m.com', 'pass' => '1234'],
   ['name', 'email']
 );
 ```
 
-We are telling `register` to alert us if someone has already registered with the name `mychi` or the email `m@m.com`. This is because we passed `['name', 'email']` as the 3rd param to `register`.
+We are telling `register` to alert us if someone has already registered with the name `mychi` or the email `m@m.com`. This is because we passed `['name', 'email']` as the 2nd param to `register`.
 
 **With uniques, you can cut down on your whole app:**
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
 app()->post('/register', function() {
-  auth()->register(
-    'users',
-    request()->body(),
-    ['username', 'email']
-  );
+  auth()->register(request()->body(), ['username', 'email']);
 });
 ```
 
@@ -161,7 +161,7 @@ For an even better way, you can make sure that only the data you need is going i
 // select only the username, email and password from the request body
 $data = request()->get(['username', 'email', 'password']);
 
-auth()->register('users', $data);
+auth()->register($data);
 ```
 
 ### `register` session support
@@ -171,12 +171,12 @@ Just as with login, register now integrates with session. To turn this feature o
 ```php
 auth()->useSession();
 
-auth()->register('users', $credentials, [
+auth()->register($credentials, [
   'username', 'email'
 ]);
 ```
 
-After a successful registration, you can redirect to GUARD_HOME or rather GUARD_LOGIN if you want the user to login after registration.
+After a successful registration, you can redirect to `GUARD_HOME` or rather `GUARD_LOGIN` if you want the user to login after registration.
 
 ```php
 // set your login route...default is /auth/login
@@ -192,7 +192,7 @@ auth()->config('SESSION_ON_REGISTER', true);
 In case there's something wrong and Auth can't register the user, it returns a falsy value.
 
 ```php
-$user = auth()->register('users', $credentials, [
+$user = auth()->register($credentials, [
   'username', 'email'
 ]);
 
@@ -209,9 +209,8 @@ if (!$user) {
 
 ## update
 
-There's a login method, a register method, so why not a user update method? This method takes the stress out of updating a user's information. Update takes in 3 parameters:
+There's a login method, a register method, so why not a user update method? This method takes the stress out of updating a user's information. Update takes in 2 parameters:
 
-- The table to look for users
 - The data to update
 - Unique values (optional)
 
@@ -221,12 +220,12 @@ The `update` method has been rewritten completely from the ground up. The bigges
 
 ```php
 // data to update
-$data = request()->get(["username", "email"]);
+$data = request()->get(['username', 'email']);
 
 // unique data
-$uniques = ["username", "email"];
+$uniques = ['username', 'email'];
 
-$user = auth()->update("users", $data, $uniques);
+$user = auth()->update($data, $uniques);
 ```
 
 ::: tip Something little
@@ -238,7 +237,7 @@ Uniques in `update` work a bit different from `register`, in `update`, Leaf trie
 When a user is updated, the user is updated in the session and the updated user is also returned.
 
 ```php
-$user = auth()->update("users", $data, $uniques);
+$user = auth()->update($data, $uniques);
 ```
 
 <!-- ::: details Detailed Explanation
@@ -256,10 +255,10 @@ $user = auth()->user();
 return $user['name'];
 ```
 
-As mentioned, `user` queries your database for the full user information. By default, the table to look for users has been set to `users`. You can pass in a table of your choice like this:
+As mentioned, `user` queries your database for the full user information. You can specify your custom table using the [DB_TABLE](/modules/auth/v/2.1/config.html#db-table) config like this:
 
 ```php
-$user = auth()->user('all_users');
+$user = auth()->config('DB_TABLE', 'all_users');
 ```
 
 We can catch any errors that occur, from fetching the user, working with the token...
@@ -268,10 +267,10 @@ We can catch any errors that occur, from fetching the user, working with the tok
 $user = auth()->user() ?? $request->throwErr(auth()->errors());
 ```
 
-`user` also takes in a second parameter, which is an array of items to hide from the returned user array.
+`user` also allows you to pass an array of items to hide from the returned user array.
 
 ```php
-$user = auth()->user('users', ['id', 'password']);
+$user = auth()->user(['id', 'password']);
 ```
 
 ## id
@@ -289,3 +288,16 @@ $userId = auth()->id();
 ```php
 $payload = auth()->validate($token);
 ``` -->
+
+<!-- ## Next Steps
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box w:100" href="/modules/auth/v/2.1/config">
+    <h3 class="next-steps-link mb:_1">v2.0 Config</h3>
+    <small class="next-steps-caption">Configure leaf auth to meet your needs.</small>
+  </a>
+  <a class="vt-box w:100 ml-md-up:_1" href="/modules/auth/v/2.1/session">
+    <h3 class="next-steps-link">v2.0 Sessions</h3>
+    <small class="next-steps-caption">Session support with auth v2.0.</small>
+  </a>
+</div> -->
