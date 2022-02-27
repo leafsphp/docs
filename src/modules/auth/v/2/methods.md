@@ -65,7 +65,8 @@ In case there's something wrong and Auth can't sign the user in, it returns a fa
 
 ```php
 auth()->useSession();
-auth()->login('users', [
+
+$user = auth()->login('users', [
   'username' => $username,
   'password' => $password
 ]);
@@ -135,7 +136,7 @@ Let's say you want to check whether the username a user just entered has been ta
 Well, `register` solves this problem smoothly. `register` has a 3rd parameter: an array of unique values which makes sure that the same value can't be saved twice.
 
 ```php
-$db->register(
+auth()->register(
   'users',
   ['name' => 'mychi', 'email' => 'm@m.com', 'pass' => '1234'],
   ['name', 'email']
