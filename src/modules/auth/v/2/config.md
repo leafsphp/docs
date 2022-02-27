@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 # Auth Config
 
 Auth Config was added to give you more control over how leaf handles authentication in your apps. Auth has been configured perfectly for most apps, but not all use cases are the same, hence, this brilliant addition.
@@ -199,3 +203,16 @@ Leaf\Auth::session();
     <small class="next-steps-caption">Check out all the changes in this new version of leaf db.</small>
   </a>
 </div> -->
+
+## Next Steps
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box w:100" href="/modules/auth/v/2/methods">
+    <h3 class="next-steps-link">v2.0 Methods</h3>
+    <small class="next-steps-caption">Docs on all the methods provided in v2.0</small>
+  </a>
+  <a class="vt-box w:100 ml-md-up:_1" href="/modules/auth/v/2/session">
+    <h3 class="next-steps-link">v2.0 Sessions</h3>
+    <small class="next-steps-caption">Session support with auth v2.0.</small>
+  </a>
+</div>

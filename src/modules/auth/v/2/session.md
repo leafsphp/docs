@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 # Session support
 
 Session based authentication as the name implies, creates and manages a session during the authentication process to track the user's logged in state. Leaf auth provides an easy and developer friendly approach to handle this.
@@ -118,3 +122,16 @@ You can also pass in a route to redirect to after logging out.
 ```php
 auth()->logout('/home');
 ```
+
+## Next Steps
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box w:100" href="/modules/auth/v/2/config">
+    <h3 class="next-steps-link mb:_1">v2.0 Config</h3>
+    <small class="next-steps-caption">Configure leaf auth to meet your needs.</small>
+  </a>
+  <a class="vt-box w:100 ml-md-up:_1" href="/modules/auth/v/2/methods">
+    <h3 class="next-steps-link">v2.0 Methods</h3>
+    <small class="next-steps-caption">Docs on all the methods provided in v2.0</small>
+  </a>
+</div>

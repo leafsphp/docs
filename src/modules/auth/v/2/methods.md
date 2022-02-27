@@ -1,3 +1,7 @@
+---
+aside: none
+---
+
 # Authentication methods
 
 These are the main functionality provided by leaf auth.
@@ -289,3 +293,16 @@ $userId = auth()->id();
 ```php
 $payload = auth()->validate($token);
 ``` -->
+
+## Next Steps
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box w:100" href="/modules/auth/v/2/config">
+    <h3 class="next-steps-link mb:_1">v2.0 Config</h3>
+    <small class="next-steps-caption">Configure leaf auth to meet your needs.</small>
+  </a>
+  <a class="vt-box w:100 ml-md-up:_1" href="/modules/auth/v/2/session">
+    <h3 class="next-steps-link">v2.0 Sessions</h3>
+    <small class="next-steps-caption">Session support with auth v2.0.</small>
+  </a>
+</div>
