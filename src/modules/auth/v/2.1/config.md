@@ -36,6 +36,10 @@ auth()->config([
 
 Below is a list of all available settings.
 
+### DB_TABLE <sup><Badge text="NEW" /></sup>
+
+The `DB_TABLE` config allows you to set a particular table which leaf auth will perform operations on. Leaf auth will use this database table for storing and retrieving users. By default, it is set to `users`. This allows you to login, signup, update and fetch users without explicitly adding a table each time.
+
 ### USE_TIMESTAMPS
 
 This determines whether Leaf should add the default `created_at` and `updated_at` timestamps on register and update. Default is `true`.
