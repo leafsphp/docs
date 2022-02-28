@@ -177,6 +177,10 @@ $validation = form()->validate('password', 'min:8');
 
 In the example above, `{value}` will be the value of `password` which the user passes into request, and `{params}` will be `8`: that's the parameter passed to the `min` rule.
 
+::: warning Note
+This only works for in-built rules, for custom rules, you can set your own error message using the `addError` method as done below.
+:::
+
 ### Create your own rules
 
 Not every project is the same, as such, you might need validation rules which are not available by default in leaf. As such, the `rule` method has been created to give you leeway to write your own validation rules.
