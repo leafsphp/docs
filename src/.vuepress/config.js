@@ -135,6 +135,15 @@ const sidebar = {
         '/modules/anchor/csrf/',
         '/modules/forms/',
         {
+          title: 'Leaf Forms',
+          collapsable: true,
+          children: [
+            '/modules/forms/',
+            '/modules/forms/v/1/',
+            '/modules/forms/v/1.2/',
+          ],
+        },
+        {
           title: 'Leaf Db',
           collapsable: true,
           children: [
