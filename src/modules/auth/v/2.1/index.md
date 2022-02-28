@@ -1,4 +1,4 @@
-# Getting Started
+# Auth v2.1
 <!-- markdownlint-disable no-inline-html -->
 
 ## Installation
