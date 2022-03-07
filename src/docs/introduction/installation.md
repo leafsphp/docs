@@ -25,11 +25,11 @@ Detailed release notes for each version are available on [GitHub](https://github
 
 ## Leaf CLI
 
-<!-- ::: info Video Docs
+::: info Video Docs
 You can take a look at our leaf cli setup walkthrough on youtube.
 
-<VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
-::: -->
+<VideoLesson href="https://www.youtube.com/watch?v=yb3LUYHtopQ" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
+:::
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/cli/v/2.0/) for more details.
 
