@@ -14,6 +14,12 @@ The biggest question people ask with Leaf 3 is why we decided to switch to modul
 
 ## Installing modules
 
+::: info Video Docs
+You can take a look at our leaf cli video on youtube.
+
+<VideoLesson href="https://www.youtube.com/watch?v=K9jSl_xpr48" title="Working with packages on the Leaf CLI">Working with modules and the leaf cli</VideoLesson>
+:::
+
 Modules are always published on composer and can be installed through composer CLI or the leaf CLI.
 
 **Composer:**
