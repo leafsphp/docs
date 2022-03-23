@@ -129,7 +129,7 @@ body
           a
             color $accentColor
 
-    @media (max-width: 1900px)
+    @media (max-width: 1900000px)
       .search-box
         input
           cursor pointer
@@ -239,6 +239,11 @@ hr
 .sidebar.-left
   left 0
   padding-left 85px
+
+  @media only screen and (min-width: 1530px) {
+    left: unset !important;
+    right: 75vw !important;
+  }
 
   @media (max-width: $MQMobileNarrow) {
     background rgba(0, 30, 38, 0.9) !important;

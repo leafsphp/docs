@@ -14,24 +14,27 @@
         class="site-name"
         :class="{ 'can-hide': $site.themeConfig.logo }"
       >
-        Leaf<span class="theme-text">3</span> <small class="beta-badge">RC 2</small>
+        Leaf<span class="theme-text">3</span>
+        <small class="beta-badge">RC 2</small>
       </span>
     </RouterLink>
 
     <div
       class="links"
-      :style="linksWrapMaxWidth ? {
-        'max-width': linksWrapMaxWidth + 'px'
-      } : {}"
+      :style="
+        linksWrapMaxWidth
+          ? {
+              'max-width': linksWrapMaxWidth + 'px',
+            }
+          : {}
+      "
     >
       <NavLinks class="can-hide" />
       <SearchBox
         v-if="
           isAlgoliaSearch === false &&
-            (
-              $site.themeConfig.search !== false &&
-              $page.frontmatter.search !== false
-            )
+          $site.themeConfig.search !== false &&
+          $page.frontmatter.search !== false
         "
       />
       <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
@@ -52,12 +55,12 @@ export default {
     SidebarButton,
     NavLinks,
     SearchBox,
-    AlgoliaSearchBox
+    AlgoliaSearchBox,
   },
 
   data() {
     return {
-      linksWrapMaxWidth: null
+      linksWrapMaxWidth: null,
     }
   },
 
@@ -70,7 +73,7 @@ export default {
 
     isAlgoliaSearch() {
       return !!(this.algolia && this.algolia.apiKey && this.algolia.indexName)
-    }
+    },
   },
 
   mounted() {
@@ -90,7 +93,7 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
-  }
+  },
 }
 
 function css(el, property) {
@@ -108,6 +111,25 @@ $navbar-horizontal-padding = 1.5rem;
 .navbar {
   padding: $navbar-vertical-padding $navbar-horizontal-padding;
   line-height: $navbarHeight - 1.4rem;
+
+  @media only screen and (min-width: 1530px) {
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+
+    .links {
+      right: 3.4rem !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  @media only screen and (min-width: 1900px) {
+    max-width: calc(200vw - (75vw * 2) + 40rem - 15px);
+
+    .links {
+      right: 2.2rem !important;
+    }
+  }
 
   a, img {
     display: inline-block;
