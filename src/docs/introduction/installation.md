@@ -19,9 +19,9 @@ If you want to migrate an existing Leaf 2 project, skip this and follow the [Mig
 
 ## Release Notes
 
-Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/unstable)
+Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/stable)
 
-Detailed release notes for each version are available on [GitHub](https://github.com/leafsphp/leaf/blob/v3.x-dev/CHANGELOG.md).
+Detailed release notes this version available on [GitHub](https://github.com/leafsphp/leaf/releases/tag/v3.0).
 
 ## Leaf CLI
 
