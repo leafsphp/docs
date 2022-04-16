@@ -116,4 +116,3 @@ Options:
 - [Commands IO](/aloe-cli/v/1.1.0-beta/commands/io)
 - [Creating Libraries](/aloe-cli/v/1.1.0-beta/libraries)
 
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)

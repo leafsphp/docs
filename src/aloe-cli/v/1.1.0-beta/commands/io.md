@@ -327,4 +327,3 @@ This allows you to display a link on only part of your output.
 - [Commands IO](/aloe-cli/v/1.1.0-beta/commands/io)
 - [DB commands](/aloe-cli/v/1.1.0-beta/db-commands)
 
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
