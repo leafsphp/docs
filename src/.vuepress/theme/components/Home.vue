@@ -58,10 +58,6 @@
 
     </div>
 
-    <section class="section-new section-features px-md-up:20">
-      <Content class="theme-default-content custom" />
-    </section>
-
     <section
       class="section-sponsors"
       :class="{ active: sponsorsActive }"
@@ -70,6 +66,10 @@
       <div class="inner">
         <OpenCollectiveSponsors />
       </div>
+    </section>
+
+    <section class="section-new section-features px-md-up:20">
+      <Content class="theme-default-content custom" />
     </section>
 
     <footer class="main-footer">

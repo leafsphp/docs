@@ -12,7 +12,7 @@
         <img
           :src="`https://opencollective.com/leaf/tiers/backer/${index}/avatar.svg`"
           alt="Leaf PHP backer"
-        >
+        />
       </a>
 
       <h4>Supporter</h4>
@@ -26,7 +26,7 @@
         <img
           :src="`https://opencollective.com/leaf/tiers/supporter/${index}/avatar.svg`"
           alt="Leaf PHP supporter"
-        >
+        />
       </a>
 
       <!-- <h4>Donation</h4>
@@ -51,15 +51,15 @@ import SponsorsLayout from '@theme/components/sponsors/SponsorsLayout.vue'
 
 export default {
   components: {
-    SponsorsLayout
+    SponsorsLayout,
   },
 
   data: () => ({
     featuredCount: {
       platium: 3,
-      gold: 10
-    }
-  })
+      gold: 10,
+    },
+  }),
 }
 </script>
 
