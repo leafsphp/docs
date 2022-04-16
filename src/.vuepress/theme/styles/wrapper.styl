@@ -1,11 +1,25 @@
 $wrapper
   max-width $contentWidth
   margin 0 auto
-  padding 2rem 2.5rem
+  padding 94px 0 96px 64px
+
+  h1
+    font-size 38px !important
+
   @media (max-width: $MQNarrow)
     padding 2rem 2rem
   @media (max-width: $MQMobileNarrow)
-    padding 2rem 1.5rem
+    padding 85px 1.5rem
+
+    h1
+      font-size 32px !important
+
+    h2
+      font-size 24px !important
+
+    h3
+      font-size 18px !important
+      margin 30px 0 20px !important
 
   html.with-beta-banner &
     padding-top calc(2rem + 3rem)

@@ -273,65 +273,63 @@ module.exports = {
     [
       'link',
       {
-        href:
-          'https://fonts.googleapis.com/css?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500|DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700|Inter:300,400,500,600|Open+Sans:400,600;display=swap',
-        rel: 'stylesheet'
-      }
+        href: 'https://fonts.googleapis.com/css?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500|DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700|Inter:300,400,500,600|Open+Sans:400,600;display=swap',
+        rel: 'stylesheet',
+      },
     ],
     [
       'link',
       {
-        href:
-          'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-        rel: 'stylesheet'
-      }
+        href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        rel: 'stylesheet',
+      },
     ],
     [
       'link',
       {
         rel: 'icon',
-        href: '/logo-circle.png'
-      }
+        href: '/logo-circle.png',
+      },
     ],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     [
       'meta',
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
     ],
     [
       'meta',
-      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
     ],
     [
       'link',
       {
         rel: 'apple-touch-icon',
-        href: '/images/icons/apple-icon-152x152.png'
-      }
+        href: '/images/icons/apple-icon-152x152.png',
+      },
     ],
     [
       'meta',
       {
         name: 'msapplication-TileImage',
-        content: '/images/icons/ms-icon-144x144.png'
-      }
+        content: '/images/icons/ms-icon-144x144.png',
+      },
     ],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
     [
       'script',
       {
         src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js',
-        type: 'module'
-      }
+        type: 'module',
+      },
     ],
     [
       'script',
       {
         src: 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js',
-        nomodule: 'nomodule'
-      }
+        nomodule: 'nomodule',
+      },
     ],
     // [
     //   'script',
@@ -350,25 +348,25 @@ module.exports = {
         items: [
           {
             text: 'Guide',
-            link: '/docs/introduction/'
+            link: '/docs/introduction/',
           },
           {
             text: 'Contribute to Leaf',
-            link: '/community/contributing'
+            link: '/community/contributing',
           },
           {
             text: 'Contribute to docs',
-            link: '/docs/contributing/writing-guide'
+            link: '/docs/contributing/writing-guide',
           },
           {
             text: 'Migration from Leaf 2',
-            link: '/docs/migration/introduction'
+            link: '/docs/migration/introduction',
           },
           {
             text: 'Codelabs',
-            link: 'https://codelabs.leafphp.dev'
-          }
-        ]
+            link: 'https://codelabs.leafphp.dev',
+          },
+        ],
       },
       {
         text: 'Ecosystem',
@@ -378,21 +376,21 @@ module.exports = {
             items: [
               {
                 text: 'Leaf Modules',
-                link: '/modules/'
+                link: '/modules/',
               },
               {
                 text: 'Leaf MVC',
-                link: 'https://mvc.leafphp.dev/'
+                link: 'https://mvc.leafphp.dev/',
               },
               {
                 text: 'Leaf API',
-                link: 'https://api.leafphp.dev/'
+                link: 'https://api.leafphp.dev/',
               },
               {
                 text: 'Leaf Skeleton',
-                link: 'https://skeleton.leafphp.dev/'
-              }
-            ]
+                link: 'https://skeleton.leafphp.dev/',
+              },
+            ],
           },
           {
             text: 'Tooling',
@@ -400,19 +398,19 @@ module.exports = {
             items: [
               {
                 text: 'Aloe CLI',
-                link: '/aloe-cli/'
+                link: '/aloe-cli/',
               },
               {
                 text: 'Leaf CLI',
-                link: 'https://cli.leafphp.dev'
+                link: 'https://cli.leafphp.dev',
               },
               {
                 text: 'Leaf UI',
-                link: 'https://ui.leafphp.dev/'
-              }
-            ]
-          }
-        ]
+                link: 'https://ui.leafphp.dev/',
+              },
+            ],
+          },
+        ],
       },
       {
         text: 'Community',
@@ -423,21 +421,21 @@ module.exports = {
             items: [
               {
                 text: 'Blog',
-                link: 'https://blog.leafphp.dev'
+                link: 'https://blog.leafphp.dev',
               },
               {
                 text: 'Team',
-                link: '/community/team/'
+                link: '/community/team/',
               },
               {
                 text: 'Join',
-                link: '/community/join/'
+                link: '/community/join/',
               },
               {
                 text: 'FAQ',
-                link: '/community/faq/'
+                link: '/community/faq/',
               },
-            ]
+            ],
           },
           {
             text: 'Help',
@@ -445,24 +443,28 @@ module.exports = {
             items: [
               {
                 text: 'Leaf Forum',
-                link: 'https://github.com/leafsphp/leaf/discussions/57'
+                link: 'https://github.com/leafsphp/leaf/discussions/57',
+              },
+              {
+                text: 'YouTube',
+                link: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw',
               },
               {
                 text: 'Discord',
-                link: 'https://discord.gg/Pkrm9NJPE3'
+                link: 'https://discord.gg/Pkrm9NJPE3',
               },
               {
                 text: 'GitHub',
-                link: 'https://github.com/leafsphp/leaf'
-              }
-            ]
-          }
-        ]
+                link: 'https://github.com/leafsphp/leaf',
+              },
+            ],
+          },
+        ],
       },
       {
         text: 'Support Leaf',
-        link: '/support/'
-      }
+        link: '/support/',
+      },
     ],
     repo: 'leafsphp/docs',
     editLinks: true,
@@ -480,15 +482,15 @@ module.exports = {
       '/aloe-cli/': sidebar.aloe,
       '/community/': sidebar.community,
       '/coc/': sidebar.community,
-      '/blog/': sidebar.community
+      '/blog/': sidebar.community,
     },
     smoothScroll: true,
     algolia: {
       indexName: 'leafphp-v3',
       appId: '',
-      apiKey: ''
+      apiKey: '',
     },
-    topBanner: true
+    topBanner: true,
   },
   plugins: {
     '@vuepress/google-analytics': {
@@ -504,38 +506,38 @@ module.exports = {
           date.getUTCDate(),
           date.getUTCHours(),
           date.getUTCMinutes(),
-          date.getUTCSeconds()
-        ].map(num => String(num).padStart(2, '0'))
+          date.getUTCSeconds(),
+        ].map((num) => String(num).padStart(2, '0'))
 
         return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(
           /{(\d)}/g,
           (_, num) => digits[num]
         )
-      }
+      },
     },
     '@vuepress/pwa': {
       serviceWorker: true,
       updatePopup: {
         '/': {
           message: 'New content is available.',
-          buttonText: 'Refresh'
-        }
-      }
+          buttonText: 'Refresh',
+        },
+      },
     },
     'vuepress-plugin-container': {
       type: 'info',
-      before: info =>
+      before: (info) =>
         `<div class="custom-block info"><p class="custom-block-title">${info}</p>`,
-      after: '</div>'
+      after: '</div>',
     },
     markdown: {
       lineNumbers: true,
       /** @param {import('markdown-it')} md */
-      extendMarkdown: md => {
+      extendMarkdown: (md) => {
         md.options.highlight = require('./markdown/highlight')(
           md.options.highlight
         )
-      }
-    }
-  }
+      },
+    },
+  },
 }

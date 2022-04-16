@@ -19,7 +19,7 @@
       :to="item.path"
       @click.native="$emit('toggle')"
     >
-      <span>{{ item.title }}</span>
+      <span class="group-title">{{ item.title }}</span>
       <span
         v-if="collapsable"
         class="arrow"

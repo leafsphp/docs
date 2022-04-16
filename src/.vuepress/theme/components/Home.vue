@@ -263,7 +263,7 @@ h2 {
     .tagline {
       padding: 0;
       margin: 0;
-      border-bottom: 0;
+      border-top: none !important;
       font-weight: 300;
     }
   }
@@ -352,7 +352,7 @@ h2 {
 
   .feature {
     h2 {
-      border-bottom: 0;
+      border-top: none !important;
       color: $green;
       font-weight: 400;
     }
