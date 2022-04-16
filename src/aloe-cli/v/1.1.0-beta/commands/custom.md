@@ -106,4 +106,3 @@ $console->register([
 - [G Commands](/aloe-cli/v/1.1.0-beta/commands/g-commands)
 - [DB commands](/aloe-cli/v/1.1.0-beta/db-commands)
 
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
