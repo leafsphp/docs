@@ -21,4 +21,3 @@ Aloe libraries simply serve a bunch of commands to the Aloe CLI. ALoe CLI has fu
 - [Commands IO](/aloe-cli/v/1.0/commands/io)
 - [db commands](/aloe-cli/v/1.0/db-commands)
 
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
