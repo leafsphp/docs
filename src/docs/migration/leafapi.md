@@ -34,7 +34,7 @@ This will quickly setup leaf 3 with the default modules. From there, create your
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {
-  response(["name" => "Leaf"]);
+  app()->response(["name" => "Leaf"]);
 });
 
 app()->run();

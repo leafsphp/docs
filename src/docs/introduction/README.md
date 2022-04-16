@@ -1,14 +1,17 @@
 # Introduction
 
-::: warning ⚡️ RC 2 Release
-Leaf 3 is currently in its "Release Candidate" phase. As such, the API will not change, and it can be considered near production ready.
+::: tip ⚡️ Official Release
+This is the documentation for Leaf v3.0.
 
-If you, however, want to use the more stable version 2, you can find the docs at [archive.leafphp.dev](https://archive.leafphp.dev)
+- [**Leaf 2 docs**](https://archive.leafphp.dev)
+- [**Leaf 1 docs**](https://v1.leafphp.dev)
 :::
 
 ## What is Leaf PHP?
 
 Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, simple, but powerful web apps and APIs quickly and easily. Over the years, we've been focusing on delivering much simpler and more performant code, which can be used in all your PHP apps.
+
+<br>
 
 Version 3 of Leaf brings more to the table with a theme centring on developer experience and usability, but with all the goodies while ensuring users have the best experience as well.
 

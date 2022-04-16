@@ -30,13 +30,13 @@ Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path
 
 ## Quickstart
 
-If you want to quickly try out Leaf 3 in a new project:
+If you want to quickly try out Leaf 3 in a new project, create a folder and run:
 
 ```sh
-composer require leafs/leaf dev-v3.x-dev
+composer require leafs/leaf
 ```
 
-This will quickly setup leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
+This will quickly setup a leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
 
 ```php
 <?php
@@ -44,7 +44,7 @@ This will quickly setup leaf 3 with the default modules. From there, create your
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {
-  response(["name" => "Leaf"]);
+  response()->json(["name" => "Leaf"]);
 });
 
 app()->run();
@@ -56,24 +56,46 @@ You can run this with the built in php server
 php -S localhost:5500
 ```
 
+Alternatively, you can use the Leaf CLI:
+
+```sh
+leaf create <app-name> --v3
+```
+
+And run the sample app with:
+
+```sh
+leaf serve
+```
+
 ### Migrating from leaf 2
 
 As mentioned before, we've made leaf 3 as backwards compatible with Leaf 2.5+ as possible. This means that moving from v2 to v3 will be a breeze or close.
 
-::: warning
-Note that leaf 3 is still under active development. We don't recommend switching to Leaf 3 yet for production ready apps. You can go ahead if it's a personal project or just want to try out leaf 3.
-:::
-
 - Install leaf 3
 
 ```sh
-composer require leafs/leaf v3.0-rc
+composer require leafs/leaf
 ```
 
-> You can delete your vendor folder before running the command above to make sure that all the dependencies are accurately reinstalled.
+Or with leaf CLI
+
+```sh
+leaf install leaf
+```
+
+::: tip Watch out
+You should probably delete your `vendor` folder and `package-lock.json` before running the command above to make sure that all the dependencies are accurately reinstalled.
+:::
 
 - After this, it's just a matter of installing the modules required in your project.
 For example, if you use `Leaf\Auth`, you will need to install the auth module. This can be done with:
+
+```sh
+leaf install auth
+```
+
+Or with composer:
 
 ```sh
 composer require leafs/auth

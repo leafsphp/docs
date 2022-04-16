@@ -60,11 +60,8 @@ Learn how to set up a leaf app with composer.
 You can also set up a new leaf 3 project from scratch using composer:
 
 ```sh
-# latest stable
+# latest stable (v3)
 $ composer require leafs/leaf
-
-# version 3 release candidate
-$ composer require leafs/leaf v3.0-rc.2
 
 # version 3 dev
 $ composer require leafs/leaf dev-v3.x-dev
