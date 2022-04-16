@@ -112,4 +112,3 @@ Available commands:
   scaffold:auth  Scaffold basic app authentication
 ```
 
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
