@@ -55,4 +55,3 @@ Aloe\Installer::installRoutes("package/Auth/Routes");
 - [Commands IO](/aloe-cli/v/1.1.0-beta/commands/io)
 - [db commands](/aloe-cli/v/1.1.0-beta/db-commands)
 
-Built with ❤ by [**Mychi Darko**](//mychi.netlify.app)
