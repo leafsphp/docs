@@ -202,7 +202,7 @@ body.-light {
 
   .hero {
     h1 {
-      background: -webkit-linear-gradient(31deg, #333 1%, #42d392);
+      background: -webkit-linear-gradient(31deg, #328c63 1%, #42f3f2);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
