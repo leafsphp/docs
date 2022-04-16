@@ -110,10 +110,16 @@ You can clearly see there are no namespaces or class initializers.
 
 ## Using leaf 3
 
-We are glad to announce that the first preview of Leaf 3 has been released for public use. It is stable and you can expect it to work just fine. Note that the latest preview version is a snapshot of the `v3.x` branch. You can install this using composer.
+We are glad to announce that Leaf 3 has been released for public use. It is stable and you can expect it to work just fine. You can install this using the leaf CLI.
 
 ```sh
-composer require leafs/leaf v3.0-alpha
+leaf install leaf
+```
+
+Or with composer:
+
+```sh
+composer require leafs/leaf
 ```
 
 If you however want to keep up with the development of Leaf 3 and have the latest updates the moment they're pushed, you can install from the `v3.x-dev` branch.
