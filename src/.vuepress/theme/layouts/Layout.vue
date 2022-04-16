@@ -226,7 +226,7 @@ body.-light {
   }
 
   h2:not(.tagline) {
-    border-bottom: 1px solid #cececf !important;
+    border-top: 1px solid #cececf !important;
   }
 
   .search-box {

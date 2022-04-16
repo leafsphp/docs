@@ -177,7 +177,7 @@ body
         background-position-y: 5px !important;
 
 p
-  line-height 1.7 !important
+  line-height 1.5 !important
 
 html.with-beta-banner
   .navbar
@@ -377,9 +377,10 @@ h1, h2, h3, h4, h5, h6
   line-height 1.45
 
   {$contentClass}:not(.custom) > &
-    margin-top (0.5rem - $navbarHeight)
-    padding-top ($navbarHeight + 1rem)
-    margin-bottom 0
+    margin 4rem 0 1.8rem;
+    padding-top: 1.8rem;
+    font-size: 24px;
+    letter-spacing: -0.02em;
 
     &:first-child
       display flex
@@ -404,7 +405,7 @@ h1
 h2
   font-size 1.65rem
   padding-bottom .3rem
-  border-bottom 1px solid lighten($textColorSecondary, 2%);
+  border-top 1px solid lighten($textColorSecondary, 10%);
 
 h3
   font-size 1.35rem
