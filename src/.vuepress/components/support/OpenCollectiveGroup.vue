@@ -1,16 +1,6 @@
 <template>
   <div class="sponsor-group open-collective-sponsors sponsor-section">
-    <a
-      v-for="i in 10"
-      :key="i"
-      :href="`${url}/${i}/website`"
-      target="_blank"
-      rel="noopener"
-    >
-      <img
-        :src="`${url}/${i}/avatar.svg`"
-      >
-    </a>
+    <script src="https://opencollective.com/leaf/banner.js"></script>
   </div>
 </template>
 

@@ -16,7 +16,7 @@ You can support Leaf PHP development via the following methods:
 
 We accept donations through these channels:
 
-<support-Coins />
+<support-OpenCollectiveGroup />
 
 ## Recurring Pledges
 
