@@ -36,4 +36,4 @@ Since the beginning of Leaf, we've set out to create code which could easily be 
 
 ## 🚚 Scalability
 
-One of the most beautiful things about leaf is that, no matter what package you're using with leaf, if it works in developement, it will definitely work in production with near zero config, unless you want some special features. Leaf provides a core and other frameworks/libraries that build around leaf. This makes leaf appropriate for almost any project no matter it's size.
+One of the most beautiful things about leaf is that, no matter what package you're using with leaf, if it works in development, it will definitely work in production with near zero config, unless you want some special features. Leaf provides a core and other frameworks/libraries that build around leaf. This makes leaf appropriate for almost any project no matter it's size.
