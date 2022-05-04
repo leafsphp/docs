@@ -30,6 +30,16 @@ In sample benchmarks, Leaf even out-performs frameworks like Slim PHP which was 
 
 As mentioned above, Leaf 3 is one of the most lightweight PHP frameworks with a source of about 30kb. With Leaf 3's functional mode, a hello world application can be prepared in just 10 lines of code, including spaces and PHP initializers.
 
+## What's the difference between Leaf 2 and Leaf 3?
+
+Leaf 3 is the current, latest major version of Leaf. It contains new features that are not present in Leaf 2 (most notably functional mode and modules), and also contains a few breaking changes that makes it incompatible with Leaf 2. Despite the differences, the majority of Leaf APIs are shared between the two major versions, so almost all of your Leaf 2 knowledge will continue to work in Leaf 3.
+
+In general, Leaf 3 provides smaller bundle sizes, better performance, better scalability, and better IDE support. If you are starting a new project today, Leaf 3 is the recommended choice. The only reason for you to consider Leaf 2 as of now is if you feel Leaf 3 is too modular, of course this is solved if you use Leaf 3 with Leaf MVC or Leaf API.
+
+Since both Leaf 2 and 3 are wired to accept any PHP code, all external libraries usable in Leaf 2 will still work perfectly with Leaf 3. If you intend to migrate an existing Leaf 2 app to Leaf 3, consult the dedicated Leaf 3 Migration Guide.
+
+Leaf 2 will receive a final minor release (2.7) in 2022. This minor release will backport a selected subset of new features from Leaf 3. After that, Leaf 2 will enter maintenance mode: it will no longer ship new features, but will continue to receive critical bug fixes and security updates.
+
 ## Does Leaf scale?
 
 Yes. Despite a common misconception that Leaf is only suitable for simple use cases, Leaf is perfectly capable of handling large scale applications:
