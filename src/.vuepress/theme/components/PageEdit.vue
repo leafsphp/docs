@@ -7,12 +7,8 @@
         <template v-if="editLink">
           <br />
           <span class="edit-link">
-          Caught a mistake or want to contribute to the documentation?
-            <a
-              :href="editLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            Caught a mistake or want to contribute to the documentation?
+            <a :href="editLink" target="_blank" rel="noopener noreferrer">
               {{ editLinkText }}
               <OutboundLink />
             </a>
@@ -125,12 +121,14 @@ export default {
 }
 
 .page-edit {
-  padding: 0 1.5rem;
-  max-width: 720px;
-  margin: 0 auto;
   font-size: 0.95em;
   color: #eaecef;
   text-align: center;
+
+  max-width: 740px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-right: 20px;
 
   p {
     margin: 0.8rem auto;
