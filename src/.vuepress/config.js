@@ -173,10 +173,29 @@ const sidebar = {
           collapsable: true,
           children: [
             '/modules/http/',
-            '/modules/http/request',
-            '/modules/http/response',
-            '/modules/http/headers',
-            '/modules/http/cache',
+            {
+              title: 'Http v1',
+              collapsable: true,
+              children: [
+                '/modules/http/v/1/',
+                '/modules/http/v/1/request',
+                '/modules/http/v/1/response',
+                '/modules/http/v/1/headers',
+                '/modules/http/v/1/cache',
+              ],
+            },
+            {
+              title: 'Http v2',
+              collapsable: true,
+              children: [
+                '/modules/http/v/2/',
+                '/modules/http/v/2/request',
+                '/modules/http/v/2/response',
+                '/modules/http/v/2/headers',
+                '/modules/http/v/2/cache',
+                '/modules/http/v/2/status',
+              ],
+            },
             '/modules/cors/',
             '/modules/session/',
             '/modules/session/flash',
