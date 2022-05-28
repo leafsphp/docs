@@ -73,6 +73,14 @@ This is a method which has existed since v1 of Leaf. `throwErr` was an attempt a
 
 Due to a certain number of new features added, most methods are no longer static. Not to worry, you can still use functional mode which means there's still no need to initialize the entire response object.
 
+- ***Headers Object***
+
+In version 2, the headers object has been removed. To set headers, you can use the `withHeader` method.
+
+- ***Cookies Object***
+
+Just like the headers object, we also got rid of the cookies object. You can use the `withCookie` method instead.
+
 ## New in v2
 
 We completely rethought the original implementation of the response object. Although similar to the original implementation, v2 provides a simpler and much easier to use API, taking advantage of things like method chaining and auto detecting of response types.
@@ -101,7 +109,7 @@ response()->xml('<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" versio
 
 ## `json`
 
-This method allows you output json as a reponse.
+This method allows you output json as a response.
 
 It takes in 3 parameters:
 
@@ -149,7 +157,7 @@ $app->get('/homepage', function() use($response) {
 
 With this, whenever the route `/homepage` is invoked, Leaf loads up `home.html` and outputs it to the user.
 
-**Note** `page` has **NOTHING** to do with templating, it simply outputs an already defined web page.
+**Note** The `page` method has **NOTHING** to do with templating, it simply outputs an already defined web page.
 
 For templating with Leaf, [look here](/modules/views/)
 
@@ -249,7 +257,7 @@ This is a new method which allows you to output some data and close your app rig
 It takes in 2 parameters: the data to output and the http status code (default: 500).
 
 ```php
-reponse()->exit('This will be output as markup');
+response()->exit('This will be output as markup');
 
 // code below won't run
 ```

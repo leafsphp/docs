@@ -101,7 +101,7 @@ response()->plain("hello");
 
 ## json
 
-Json, a new method in v2.4, just as the name suggests allows you output json as a reponse.
+Json, a new method in v2.4, just as the name suggests allows you output json as a response.
 
 It takes in 4 parameters:
 
