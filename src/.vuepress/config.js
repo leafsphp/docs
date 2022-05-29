@@ -133,7 +133,6 @@ const sidebar = {
         '/modules/',
         '/modules/anchor/',
         '/modules/anchor/csrf/',
-        '/modules/forms/',
         {
           title: 'Leaf Forms',
           collapsable: true,
