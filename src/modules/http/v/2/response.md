@@ -52,7 +52,7 @@ response([
 ]);
 ```
 
-**THIS WOULD NO LONGER WORK!!**
+**THIS WILL NO LONGER WORK!!**
 :::
 
 An HTTP response has three primary properties:
@@ -84,6 +84,20 @@ Just like the headers object, we also got rid of the cookies object. You can use
 ## New in v2
 
 We completely rethought the original implementation of the response object. Although similar to the original implementation, v2 provides a simpler and much easier to use API, taking advantage of things like method chaining and auto detecting of response types.
+
+### Method Chaining
+
+This is the biggest addition to Leaf Http in version 2. Method chaining allows you to be more expressive with your code and basically fit everything better. There's just a single rule you need to follow here: ***the method you want to output should be the last thing you call.***
+
+If you want to output some JSON with a header `something`, you should always set the header before calling the JSON method.
+
+```php
+// ☑️ CORRECT
+response()->withHeader('something', 'value')->json('data');
+
+// ❌ HEADER ERROR
+response()->json('data')->withHeader('something', 'value');
+```
 
 ## `plain`
 
@@ -270,20 +284,50 @@ response()->exit(['data' => 'This will be output as JSON'], 500);
 
 ## Headers
 
-An instance of `Leaf\Http\Headers` has been included in the response object. This allows you to quickly set response headers without including the Headers package.
+::: danger Watch Out
+Version 1 of Leaf Http came with an attached instance of the header object. This has been removed in version 2 and replaced with the `withHeader` method.
+:::
+
+This method gives you a quick and simple way to set headers for your response. It takes in 4 parameters:
+
+- The header name or an array of headers (key-value pairs)
+- The header value if header key is a string
+- A boolean on whether to replace the header if it's already set
+- An Http status code to associate to header.
 
 ```php
-$app = new \Leaf\App;
-response()->headers->set('Content-Type', 'application/json');
+response()
+  ->withHeader('something', 'something')
+  ->withHeader('somethingAgain', 'something', true, 200)
+  ->withHeader(['somethingElse' => 'another'])
 ```
 
-You may also fetch `headers` from the response object’s headers property, too:
+## Cookies
+
+::: danger Watch Out
+Version 1 of Leaf Http came with an attached instance of the cookie object. This has been removed in version 2 and replaced with the `withCookie` method.
+:::
+
+This method gives you a quick and simple way to set cookies for your response. It takes in 3 parameters:
+
+- The name of the cookie
+- The value of cookie
+- When the cookie expires. Default: 7 days
 
 ```php
-$contentType = response()->headers->get('Content-Type');
+response()->withCookie("name", "Michael", "1 day")->json('...');
 ```
 
-If a header with the given name does not exist, `null` is returned. You may specify header names with upper, lower, or mixed case with dashes or underscores. Use the naming convention with which you are most comfortable.
+### withoutCookie
+
+This method allows you to remove existing cookies from your response. So you're basically returning a response without selected cookies.
+
+```php
+response()->withoutCookie("name")->json('...');
+
+// cookie array
+response()->withoutCookie(["name", "something"])->json('...');
+```
 
 ## Status
 
@@ -301,32 +345,4 @@ You only need to set the response object’s status if you intend to return an H
 
 ```php
 $status = response()->status();
-```
-
-## 🍪 Cookies
-
-You can also add a cookie using the response object. This uses Leaf Cookies.
-
-### setCookie
-
-This method uses [Leaf Cookie's set](/modules/cookies/#set)
-
-```php
-response()->setCookie("name", "Michael");
-```
-
-### simpleCookie
-
-This method uses [Leaf Cookie's simpleCookie](/modules/cookies/#simplecookie)
-
-```php
-response()->simpleCookie("name", "Michael", "1 day");
-```
-
-### deleteCookie
-
-This method uses [Leaf Cookie's unset](/modules/cookies/#unset)
-
-```php
-response()->deleteCookie("name");
 ```
