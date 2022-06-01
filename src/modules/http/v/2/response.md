@@ -329,6 +329,14 @@ response()->withoutCookie("name")->json('...');
 response()->withoutCookie(["name", "something"])->json('...');
 ```
 
+### withFlash Method
+
+This is a new method which allows you add some flash messages to a response. It is usually used with redirects like this:
+
+```php
+response()->withFlash('message', 'something')->redirect('/somewhere');
+```
+
 ## Status
 
 ::: info Info
