@@ -121,7 +121,7 @@ From there, we can head back inside our app and connect to our database.
 
 ```php
 $db = new Leaf\Db;
-$db->connect('127.0.0.1', 'username', 'password', 'dbname');
+$db->connect('127.0.0.1', 'dbname', 'username', 'password');
 ```
 
 We can place this before before our routes so we can use the `$db` variable everywhere.
@@ -134,7 +134,7 @@ What we want to do here is retrieve all the data from our notes table, we can do
 
 ```php
 $db = new Leaf\Db;
-$db->connect('127.0.0.1', 'username', 'password', 'dbname');
+$db->connect('127.0.0.1', 'dbname', 'username', 'password');
 
 // pass db into the callback using `use`
 app()->get('/notes', function () use($db) {
@@ -242,7 +242,7 @@ app()->post('/notes/new', function () use($db) {
 require __DIR__ . '/vendor/autoload.php';
 
 $db = new Leaf\Db;
-$db->connect('127.0.0.1', 'username', 'password', 'dbname');
+$db->connect('127.0.0.1', 'dbname', 'username', 'password');
 
 app()->get('/notes', function () use($db) {
   $notes = $db->select('notes')->all();
