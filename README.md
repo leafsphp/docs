@@ -1,31 +1,25 @@
-# Leaf 3
+# vuejs.org
 
-This site is built with [VuePress](https://vuepress.vuejs.org/). Site content is written in Markdown format located in `src`.
+## Contributing
 
-## Writing
+This site is built with [VitePress](https://github.com/vuejs/vitepress) and depends on [@vue/theme](https://github.com/vuejs/vue-theme). Site content is written in Markdown format located in `src`. For simple edits, you can directly edit the file on GitHub and generate a Pull Request.
 
-See the [Leaf Docs Writing Guide](/) for our rules and recommendations on writing and maintaining documentation.
-
-## Developing
-
-1. Clone repository
+For local development, [pnpm](https://pnpm.io/) is preferred as package manager:
 
 ```bash
-git clone git@github.com:leafsphp/docs.git
+pnpm i
+pnpm run dev
 ```
 
-2. Install dependencies
+This project requires Node.js to be `v14.0.0` or higher, because we use new JavaScript features in our code, such as optional chaining.
 
-```bash
-yarn # or npm install
-```
 
-3. Start local development environment
+## Working on the content
 
-```bash
-yarn serve # or npm run serve
-```
+- See VitePress docs on supported [Markdown Extensions](https://vitepress.vuejs.org/guide/markdown.html) and the ability to [use Vue syntax inside markdown](https://vitepress.vuejs.org/guide/using-vue.html).
 
-## Deploying
+- See the [Writing Guide](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) for our rules and recommendations on writing and maintaining documentation content.
 
-The site is automatically deployed when commits land in `master`, via [Netlify](https://www.netlify.com/).
+## Working on the theme
+
+If changes need to made for the theme, check out the [instructions for developing the theme alongside the docs](https://github.com/vuejs/vue-theme#developing-with-real-content).
