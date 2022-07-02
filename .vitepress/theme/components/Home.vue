@@ -6,28 +6,27 @@ import Banner from './Banner.vue';
 </script>
 
 <template>
-  <Banner />
   <section id="hero">
-    <div class="inner flex">
-      <div class="left">
-        <img src="https://leafphp.dev/logo-circle.png" alt="" />
+    <div class="flex flex:center-all">
+      <img src="logo-circle.png" class="w:20 mr:_10" alt="Leaf" />
+      <div class="content-left">
+        <h1 class="tagline">
+          <span class="accent">Leaf 3.0</span>
+        </h1>
+        <p class="description">
+          Simple and elegant PHP
+        </p>
+        <p class="actions">
+          <vue-mastery-modal />
+          <a class="get-started" href="/guide/introduction.html">
+            Get Started
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
+              <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
+            </svg>
+          </a>
+          <a class="setup" href="/guide/quick-start.html">Install</a>
+        </p>
       </div>
-      <h1 class="tagline">
-        <span class="accent">Leaf 3.0</span>
-      </h1>
-      <p class="description">
-        Simple and elegant PHP
-      </p>
-      <p class="actions">
-        <vue-mastery-modal />
-        <a class="get-started" href="/guide/introduction.html">
-          Get Started
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
-            <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
-          </svg>
-        </a>
-        <a class="setup" href="/guide/quick-start.html">Install</a>
-      </p>
     </div>
   </section>
 
@@ -71,10 +70,11 @@ import Banner from './Banner.vue';
   </section>
 
   <section id="sponsors">
-    <h2>Platinum Sponsors</h2>
-    <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
-    <SponsorsGroup tier="gold" placement="landing" />
+    <h2>Sponsors</h2>
+    <SponsorsGroup tier="sponsor" showLabel placement="landing" />
+
+    <h2>Code Contributors</h2>
+    <SponsorsGroup tier="code" showLabel placement="landing" />
   </section>
 
   <NewsLetter />
@@ -87,7 +87,7 @@ section {
 
 #hero {
   padding: 96px 32px;
-  text-align: center;
+  text-align: left;
 }
 
 .tagline {

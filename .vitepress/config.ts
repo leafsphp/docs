@@ -76,7 +76,7 @@ const nav = [
           },
           {
             text: 'GitHub Discussions',
-            link: 'https://github.com/vuejs/core/discussions'
+            link: 'https://github.com/leafsphp/core/discussions'
           },
           { text: 'DEV Community', link: 'https://dev.to/t/vue' }
         ]
@@ -550,6 +550,7 @@ export const sidebar = {
 }
 
 export default defineConfigWithTheme<ThemeConfig>({
+  logo: '/logo-circle.png',
   extends: baseConfig,
   lang: 'en-US',
   title: 'Leaf PHP',
@@ -564,13 +565,6 @@ export default defineConfigWithTheme<ThemeConfig>({
     [
       'meta',
       {
-        rel: 'stylesheet',
-        href: '449.css'
-      }
-    ],
-    [
-      'link',
-      {
         name: 'twitter:image',
         content:
           'https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc'
@@ -579,9 +573,68 @@ export default defineConfigWithTheme<ThemeConfig>({
     [
       'link',
       {
+        rel: 'preload',
+        as: 'style',
+        href: '/449.css'
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: '/449.css'
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/logo-circle.png'
+      }
+    ],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    [
+      'meta',
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0'
+      }
+    ],
+    [
+      'meta',
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
+    ],
+    [
+      'link',
+      {
+        rel: 'apple-touch-icon',
+        href: '/images/icons/apple-icon-152x152.png'
+      }
+    ],
+    [
+      'meta',
+      {
+        name: 'msapplication-TileImage',
+        content: '/images/icons/ms-icon-144x144.png'
+      }
+    ],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+    [
+      'link',
+      {
         href: 'https://fonts.googleapis.com/css?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500|DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700|Inter:300,400,500,600|Open+Sans:400,600;display=swap',
         rel: 'stylesheet'
       }
+    ],
+    [
+      'style',
+      {},
+      fs.readFileSync(
+        path.resolve(__dirname, './inlined-scripts/global.css'),
+        'utf-8'
+      )
     ],
     [
       'script',
@@ -631,7 +684,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'vuejs/docs',
+      repo: 'leafsphp/docs',
       text: 'Edit this page on GitHub'
     },
 
@@ -640,7 +693,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: 'MIT License',
         link: 'https://opensource.org/licenses/MIT'
       },
-      copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
+      copyright: `Copyright © 2019-${new Date().getFullYear()} Michael Darko-Duodu`
     }
   },
 

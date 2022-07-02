@@ -5,9 +5,10 @@ import { VTLink } from '@vue/theme'
 <template>
   <section id="newsletter" class="NewsLetter">
     <div class="container">
-      <h2 class="title">Subscribe to our weekly newsletter.</h2>
+      <h2 class="title">Leaf PHP Social.</h2>
+      <!-- <h2 class="title">Subscribe to our weekly newsletter.</h2> -->
 
-      <div class="form">
+      <!-- <div class="form">
         <form
           class="box"
           id="revue-form"
@@ -36,17 +37,16 @@ import { VTLink } from '@vue/theme'
             />
           </div>
         </form>
-      </div>
+      </div> -->
 
       <p class="help">
-        You can read the previous issues and listen to our podcast at
-        <VTLink
-          class="link"
-          href="https://news.vuejs.org/"
-          no-icon
-        >news.vuejs.org</VTLink>. You may also go social at
-        <VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink>, or join our home at
-        <VTLink class="link" href="https://chat.vuejs.org/" no-icon>Discord</VTLink>.
+        You can read our blog posts at
+        <VTLink class="link" href="https://blog.leafphp.dev/" no-icon>blog.leafphp.dev</VTLink>. You may also go social
+        at
+        <VTLink class="link" href="https://twitter.com/leafphp" no-icon>Twitter</VTLink>, or join our
+        <VTLink class="link" href="https://github.com/leafsphp/leaf/discussions/57" no-icon>discussions</VTLink> or
+        watch our <VTLink class="link" href="https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw" no-icon>videos on
+          YouTube.</VTLink>
       </p>
     </div>
   </section>
