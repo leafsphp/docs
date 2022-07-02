@@ -55,7 +55,91 @@ const sidebar = {
     },
     {
       title: 'Modules',
-      path: '/modules/',
+      collapsable: true,
+      children: [
+        '/modules/',
+        {
+          title: 'Leaf Forms',
+          collapsable: true,
+          children: [
+            '/modules/forms/',
+            '/modules/forms/v/1/',
+            '/modules/forms/v/1.2/',
+          ],
+        },
+        {
+          title: 'Leaf Db',
+          collapsable: true,
+          children: [
+            '/modules/db/',
+            '/modules/db/v/1/',
+            '/modules/db/v/2/new',
+            '/modules/db/v/2/',
+            '/modules/db/v/2/builder',
+          ],
+        },
+        {
+          title: 'Leaf Auth',
+          collapsable: true,
+          children: [
+            '/modules/auth/',
+            '/modules/auth/v/1/',
+            '/modules/auth/v/2/',
+            // '/modules/auth/v/2.1/v2.0-new',
+            '/modules/auth/v/2.1/',
+            '/modules/auth/v/2.1/config',
+            '/modules/auth/v/2.1/methods',
+            '/modules/auth/v/2.1/session',
+          ],
+        },
+        {
+          title: 'Http',
+          collapsable: true,
+          children: [
+            '/modules/http/',
+            {
+              title: 'Http v1',
+              collapsable: true,
+              children: [
+                '/modules/http/v/1/',
+                '/modules/http/v/1/request',
+                '/modules/http/v/1/response',
+                '/modules/http/v/1/headers',
+                '/modules/http/v/1/cache',
+              ],
+            },
+            {
+              title: 'Http v2',
+              collapsable: true,
+              children: [
+                '/modules/http/v/2/',
+                '/modules/http/v/2/request',
+                '/modules/http/v/2/response',
+                '/modules/http/v/2/headers',
+                '/modules/http/v/2/cache',
+                '/modules/http/v/2/status',
+              ],
+            },
+          ],
+        },
+        '/modules/session/',
+        '/modules/session/flash',
+        '/modules/cookies/',
+        {
+          title: 'Router',
+          collapsable: true,
+          children: [
+            '/modules/router/',
+            '/modules/router/errors',
+            '/modules/router/sub-routing',
+            '/modules/router/dynamic',
+            '/modules/router/middleware',
+            '/modules/router/sub-patterns',
+            '/modules/router/sub-folder',
+            '/modules/router/controller',
+          ],
+        },
+      ],
     },
   ],
   aloe: [
@@ -493,7 +577,8 @@ module.exports = {
     sidebar: {
       collapsable: true,
       '/docs/contributing/': sidebar.contributing,
-      '/modules/': sidebar.modules,
+      '/modules/': sidebar.guide,
+      // '/modules/': sidebar.modules,
       '/docs/': sidebar.guide,
       '/community/': sidebar.guide,
       '/codelabs/': sidebar.codelabs,

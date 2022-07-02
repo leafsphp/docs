@@ -1,5 +1,5 @@
 <template>
-  <SponsorsLayout extra-classes="sponsors__open-collective">
+  <SponsorsLayout extra-classes="sponsors__open-collective py:_10">
     <template #heading>Contributors & Sponsors</template>
 
     <template #content>

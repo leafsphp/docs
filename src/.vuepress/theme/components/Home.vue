@@ -68,9 +68,7 @@
       </div>
     </section>
 
-    <section class="section-new section-features px-md-up:20">
-      <Content class="theme-default-content custom" />
-    </section>
+    <Content class="theme-default-content custom" />
 
     <footer class="main-footer">
       <p v-if="data.socialIcons">
@@ -434,4 +432,10 @@ footer.main-footer {
     }
   }
 }
+</style>
+
+<style lang="scss" scoped>
+@import '@theme/styles/_settings.scss';
+@import '~449.css/scss/';
+
 </style>
