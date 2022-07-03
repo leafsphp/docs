@@ -25,15 +25,15 @@ const nav = [
       }
     ]
   },
-  {
-    text: 'API',
-    activeMatch: `^/api/`,
-    link: '/api/'
-  },
-  {
-    text: 'Playground',
-    link: 'https://sfc.vuejs.org'
-  },
+  // {
+  //   text: 'API',
+  //   activeMatch: `^/api/`,
+  //   link: '/api/'
+  // },
+  // {
+  //   text: 'Playground',
+  //   link: 'https://sfc.vuejs.org'
+  // },
   {
     text: 'Ecosystem',
     activeMatch: `^/ecosystem/`,
@@ -111,14 +111,14 @@ const nav = [
     ]
   },
   {
-    text: 'Sponsor',
-    link: '/sponsor/'
+    text: 'Support Leaf',
+    link: '/support/'
   },
-  {
-    text: 'Partners',
-    link: '/partners/',
-    activeMatch: `^/partners/`
-  }
+  // {
+  //   text: 'Partners',
+  //   link: '/partners/',
+  //   activeMatch: `^/partners/`
+  // }
 ]
 
 export const sidebar = {
@@ -667,14 +667,14 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     },
 
-    carbonAds: {
-      code: 'CEBDT27Y',
-      placement: 'vuejsorg'
-    },
+    // carbonAds: {
+    //   code: 'CEBDT27Y',
+    //   placement: 'vuejsorg'
+    // },
 
     socialLinks: [
       { icon: 'languages', link: '/translations/' },
-      { icon: 'github', link: 'https://github.com/leafsphp/' },
+      { icon: 'github', link: 'https://github.com/leafsphp/leaf' },
       { icon: 'twitter', link: 'https://twitter.com/leafphp' },
       { icon: 'discord', link: 'https://discord.gg/Pkrm9NJPE3' }
       // {

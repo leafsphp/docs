@@ -23,7 +23,7 @@ export default Object.assign({}, VPTheme, {
       'navbar-title': () => h(NavTitle),
       'sidebar-top': () => h(PreferenceSwitch),
       'aside-mid': () => h(SponsorsAside),
-      'aside-bottom': () => h(VueJobs)
+      // 'aside-bottom': () => h(VueJobs)
     })
   },
   enhanceApp({ app }: { app: App }) {
