@@ -124,7 +124,7 @@ function injectCreateApp(src: string): string {
 
 export function resolveSFCExample(
   raw: ExampleData,
-  preferComposition: boolean
+  preferFunctional: boolean
 ) {
   const files: Record<string, string> = {}
   forEachComponent(
@@ -134,13 +134,13 @@ export function resolveSFCExample(
       const desc = raw['description.txt'] as string
       let sfcContent =
         desc && filename === 'App' ? `<!--\n${desc.trim()}\n-->\n\n` : ``
-      if (preferComposition && composition) {
+      if (preferFunctional && composition) {
         sfcContent += `<script setup>\n${toScriptSetup(
           composition,
           template
         )}<\/script>\n\n`
       }
-      if (!preferComposition && options) {
+      if (!preferFunctional && options) {
         sfcContent += `<script>\n${options}<\/script>\n\n`
       }
       sfcContent += `<template>\n${indent(template)}</template>`
@@ -155,7 +155,7 @@ export function resolveSFCExample(
 
 export function resolveNoBuildExample(
   raw: ExampleData,
-  preferComposition: boolean
+  preferFunctional: boolean
 ) {
   const files: Record<string, string> = {}
 
@@ -169,7 +169,7 @@ export function resolveNoBuildExample(
     raw,
     files,
     (filename, { template, composition, options, style }) => {
-      let js = (preferComposition ? composition : options) || ''
+      let js = (preferFunctional ? composition : options) || ''
       // rewrite imports to *.vue
       js = js.replace(
         /import (.*) from '(.*)\.vue'/g,

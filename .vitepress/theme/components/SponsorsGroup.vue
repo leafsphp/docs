@@ -215,7 +215,7 @@ onMounted(async () => {
         <p class="sponsor-label" v-if="showLabel">{{ name }}</p>
       </a>
     </template>
-    <a v-if="placement !== 'page' && tier !== 'special' && tier !== 'code'" href="/sponsor/"
+    <a v-if="placement !== 'page' && tier !== 'special' && tier !== 'code'" href="/support/"
       class="sponsor-item action">Your image</a>
   </div>
 </template>

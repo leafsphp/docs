@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Repl, ReplStore } from '@vue/repl'
+import { Repl, ReplStore } from './Repl/vue-repl'
 import { inject, watch, version, Ref, ref, computed, nextTick } from 'vue'
 import { data } from './tutorial.data'
 import {
@@ -7,7 +7,7 @@ import {
   resolveNoBuildExample,
   onHashChange
 } from '../examples/utils'
-import '@vue/repl/style.css'
+import './Repl/style.css'
 import PreferenceSwitch from '/@theme/components/PreferenceSwitch.vue'
 import {
   VTFlyout,
@@ -22,7 +22,7 @@ const store = new ReplStore({
 
 const instruction = ref<HTMLElement>()
 
-const preferComposition = inject('prefer-composition') as Ref<boolean>
+const preferFunctional = inject('prefer-composition') as Ref<boolean>
 const preferSFC = inject('prefer-sfc') as Ref<boolean>
 
 const currentStep = ref('')
@@ -78,8 +78,8 @@ function updateExample(scroll = false) {
 
   store.setFiles(
     preferSFC.value
-      ? resolveSFCExample(content, preferComposition.value)
-      : resolveNoBuildExample(content, preferComposition.value),
+      ? resolveSFCExample(content, preferFunctional.value)
+      : resolveNoBuildExample(content, preferFunctional.value),
     preferSFC.value ? 'App.vue' : 'index.html'
   )
 
@@ -95,7 +95,7 @@ function toggleResult() {
   updateExample()
 }
 
-watch([preferComposition, preferSFC], () => updateExample())
+watch([preferFunctional, preferSFC], () => updateExample())
 
 onHashChange(() => {
   showingHint.value = false

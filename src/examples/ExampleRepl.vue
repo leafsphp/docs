@@ -9,7 +9,7 @@ const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
 })
 
-const preferComposition = inject('prefer-composition') as Ref<boolean>
+const preferFunctional = inject('prefer-composition') as Ref<boolean>
 const preferSFC = inject('prefer-sfc') as Ref<boolean>
 
 watchEffect(updateExample)
@@ -29,8 +29,8 @@ function updateExample() {
   }
   store.setFiles(
     preferSFC.value
-      ? resolveSFCExample(data[hash], preferComposition.value)
-      : resolveNoBuildExample(data[hash], preferComposition.value),
+      ? resolveSFCExample(data[hash], preferFunctional.value)
+      : resolveNoBuildExample(data[hash], preferFunctional.value),
     preferSFC.value ? 'App.vue' : 'index.html'
   )
 }

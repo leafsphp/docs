@@ -3,17 +3,21 @@ import { VTSwitch, VTIconChevronDown } from '@vue/theme'
 import { useRoute } from 'vitepress'
 import { inject, Ref } from 'vue'
 import {
-  preferCompositionKey,
-  preferComposition,
+  preferFunctionalKey,
+  preferFunctional,
   preferSFCKey,
   preferSFC
 } from './preferences'
 
 const route = useRoute()
 const show = $computed(() =>
-  /^\/(guide|tutorial|examples)\//.test(route.path)
+  /^\/(guide|docs|tutorial|examples)\//.test(route.path)
 )
-const showSFC = $computed(() => !/^\/guide/.test(route.path))
+const showFullText = $computed(() =>
+  /^\/(tutorial|examples)\//.test(route.path)
+)
+// const showSFC = $computed(() => !/^\/guide|docs/.test(route.path))
+const showSFC = false
 
 let isOpen = $ref(true)
 
@@ -29,9 +33,9 @@ const restoreOutline = (e: Event) => {
   ;(e.target as HTMLElement).classList.remove('no-outline')
 }
 
-const toggleCompositionAPI = useToggleFn(
-  preferCompositionKey,
-  preferComposition,
+const toggleFunctionalMode = useToggleFn(
+  preferFunctionalKey,
+  preferFunctional,
   'prefer-composition'
 )
 const toggleSFC = useToggleFn(preferSFCKey, preferSFC, 'prefer-sfc')
@@ -73,19 +77,19 @@ function useToggleFn(
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
-        <label class="options-label" @click="toggleCompositionAPI(false)"
-          >Options</label
+        <label class="options-label" @click="toggleFunctionalMode(false)"
+          >Regular</label
         >
         <VTSwitch
           class="api-switch"
-          aria-label="prefer composition api"
-          :aria-checked="preferComposition"
-          @click="toggleCompositionAPI()"
+          aria-label="prefer functional mode"
+          :aria-checked="preferFunctional"
+          @click="toggleFunctionalMode()"
         />
         <label
           class="composition-label"
-          @click="toggleCompositionAPI(true)"
-          >Composition</label
+          @click="toggleFunctionalMode(true)"
+          >{{ showFullText ? 'Functional' : 'Func' }} Mode</label
         >
         <a
           class="switch-link"
