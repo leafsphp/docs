@@ -75,7 +75,7 @@ function useToggleFn(
           @click="toggleFunctionalMode()" />
         <label class="composition-label" @click="toggleFunctionalMode(true)">{{ showFullText ? 'Functional' : 'Fn' }}
           Mode</label>
-        <a class="switch-link" title="About API preference" href="/docs/introduction/#functional-mode"
+        <a class="switch-link" title="About API preference" href="/docs/introduction/#class-mode-vs-functional-mode"
           @click="closeSideBar">?</a>
       </div>
       <div class="switch-container" v-if="showSFC">

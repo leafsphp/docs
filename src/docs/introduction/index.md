@@ -92,12 +92,10 @@ In addition, we can output data with <span class="class-mode">`Leaf\Http\Respons
 
 require __DIR__ . "/vendor/autoload.php";
 
-use Leaf\Http\Response;
-
 $app = new Leaf\App;
 
-$app->get("/", function () {
-  Response::markup("Hello world");
+$app->get("/", function () use($app) {
+  $app->response()->markup("Hello world");
 });
 
 $app->run();
@@ -124,6 +122,8 @@ We use `response` here instead of `echo` because it takes care of a lot of issue
 
 </div>
 
+<div class="class-mode">
+
 ```php
 <?php
 
@@ -140,6 +140,27 @@ $app->get("/", function () {
 
 $app->run();
 ```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+app()->get("/", function () {
+  // set content-type to json
+  Leaf\Http\Headers::contentJSON();
+
+  echo "<b>Hello world</b>";
+});
+
+app()->run();
+```
+
+</div>
 
 When we run this, we get:
 
@@ -207,7 +228,48 @@ app()->run();
 
 The most beautiful thing about the request object is that all data passed into your app is automatically sanitized to prevent attacks like XSS. You have simple and safe code working for you.
 
-### Installing modules
+## Class mode vs Functional mode
+
+Leaf supports two different ways of writing your code:
+
+- Using functional mode which you saw above
+- Using class mode which is what has been used from Leaf v1
+
+### Class Mode
+
+This method is the default for most frameworks. Since leaf comes with classes, you can entirely build your aplication using those classes. like the `Leaf\Http\Response` class.
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new Leaf\App;
+
+$app->get("/", function () {
+  echo "Hello world";
+});
+
+$app->run();
+```
+
+### Functional Mode
+
+Classes become annoying to use and repeat, especially because of namespaces. You also sometimes need to put the instance of a class into a function's scope with `use`. Getting the particular instance of a class can be difficult which sometimes leads to reinitializing the class. For these reasons (and more), we created scopeless functions which allow you to quickly build your applications. These functions return instances of Leaf's classes so you don't need to use the classes yourself.
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+app()->get("/", function () {
+  echo "Hello world";
+});
+
+app()->run();
+```
+
+## Installing modules
 
 Modules are pieces of functionality that have been packaged and shipped separately from the Leaf core. Modules are used to extend Leaf's reach by performing operations not available on the core. Modules were introduced with Leaf 3, but some of them can be used with earlier versions of Leaf. Modules can also be used in external libraries and frameworks as well. To install a module, simply run its install script with composer or use the leaf CLI.
 
@@ -248,6 +310,34 @@ After this, Leaf **automatically** links the BareUI class for you and makes it a
 
 The next thing to do is to tell BareUI where to look for templates and finally render `index.view.php`.
 
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new Leaf\App();
+
+// point to the templates directory
+$app->template->config("path", "./");
+
+$app->get("/", function () use($app) {
+  // we can get the GET request data from the URL like this
+  $greeting = $app->request()->get("greeting"); // hello world
+
+  // render our template
+  echo $app->template->render("index", [
+    "greeting" => $greeting,
+  ]);
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
 ```php
 <?php
 
@@ -268,6 +358,8 @@ app()->get("/", function () {
 
 app()->run();
 ```
+
+</div>
 
 Just as you saw above, most Leaf modules require absolutely no configuration in order to work with the Leaf core. They just fit right in.
 

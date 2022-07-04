@@ -13,7 +13,7 @@ title: "Migration Guide"
 This guide is primarily for users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3. **This is not something you have to read from top to bottom before trying out Leaf 3.** While it looks like a lot has changed, a lot of what you know and love about Leaf is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
 
 ::: warning Coming from another library
-Migrating from another framework? [READ THIS](/docs/migration/other/) to get started.
+Migrating from another framework? [READ THIS](/docs/migration/other) to get started.
 :::
 
 - [Quickstart](#quickstart)
