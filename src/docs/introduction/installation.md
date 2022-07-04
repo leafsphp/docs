@@ -69,6 +69,26 @@ $ composer require leafs/leaf dev-v3.x-dev
 
 After insalling Leaf, you need to create your index.php file which will be the entry point to your application.
 
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new Leaf\App;
+
+$app->get("/", function () use($app) {
+  $app->response()->json(["message" => "Hello World!"]);
+});
+
+$app->run();
+```
+
+</div>
+
+<div class="functional-mode">
+
 ```php
 <?php
 
@@ -80,6 +100,8 @@ app()->get("/", function () {
 
 app()->run();
 ```
+
+</div>
 
 You might want to check out [URL rewriting](/docs/introduction/url-rewriting.html).
 

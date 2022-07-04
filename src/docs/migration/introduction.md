@@ -152,6 +152,8 @@ composer require leafs/cors
 
 - Replace the original cors configuration with the cors module. (This is done under the hood for you, all you need to do now call the cors method on your leaf app)
 
+<div class="class-mode">
+
 Replace this:
 
 ```php
@@ -171,6 +173,27 @@ $app->cors();
 
 // ...
 ```
+
+</div>
+<div class="functional-mode">
+
+Replace this:
+
+```php
+app()->evadeCors(true);
+
+// ...
+```
+
+with...
+
+```php
+app()->cors();
+
+// ...
+```
+
+</div>
 
 The cors method is automatically linked to the cors module by Leaf and so, no extra configuration is needed to make it work. Cors takes in some optional configuration, checkout the [cors module docs](/modules/cors/). Also cors is no longer available on the response object.
 

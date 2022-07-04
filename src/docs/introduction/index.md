@@ -115,7 +115,7 @@ app()->get("/", function () {
   response()->markup("Hello world");
 });
 
-$app->run();
+app()->run();
 ```
 
 We use `response` here instead of `echo` because it takes care of a lot of issues for us under the hood and renders exactly what we expect. Let's look at an example below.

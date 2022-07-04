@@ -37,7 +37,7 @@ Done.
 Or with composer:
 
 ```sh
-composer require leafs/leaf v3.0-rc
+composer require leafs/leaf
 ```
 
 After this, you will need to create an `index.php` file. *This is already done for you if you used Leaf CLI.*
