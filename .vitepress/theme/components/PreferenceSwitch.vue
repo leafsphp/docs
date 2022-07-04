@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { VTSwitch, VTIconChevronDown } from '@mychi/leaf-theme'
 import { useRoute } from 'vitepress'
-import { inject, Ref } from 'vue'
+import { inject, onMounted, Ref } from 'vue'
 import {
   preferFunctionalKey,
   preferFunctional,
   preferSFCKey,
   preferSFC
 } from './preferences'
+
+onMounted(() => {
+  document.documentElement.classList.add('prefer-functional')
+})
 
 const route = useRoute()
 const show = $computed(() =>
@@ -65,7 +69,7 @@ function useToggleFn(
   <div v-if="show" class="preference-switch">
     <button class="toggle" aria-label="preference switches toggle" aria-controls="preference-switches"
       :aria-expanded="isOpen" @click="toggleOpen" @mousedown="removeOutline" @blur="restoreOutline">
-      <span>API Preference</span>
+      <span>Style Preference</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
