@@ -10,7 +10,14 @@ import {
 } from './preferences'
 
 onMounted(() => {
-  document.documentElement.classList.add('prefer-functional')
+  if (typeof localStorage === 'undefined') {
+    return
+  }
+
+  if (!localStorage.getItem(preferFunctionalKey)) {
+    document.documentElement.classList.add('prefer-functional')
+  }
+
 })
 
 const route = useRoute()
