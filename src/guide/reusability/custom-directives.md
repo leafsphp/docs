@@ -33,7 +33,7 @@ const vFocus = {
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 const focus = {
@@ -82,7 +82,7 @@ export default {
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 Similar to components, custom directives must be registered so that they can be used in templates. In the example above, we are using local registration via the `directives` option.
 

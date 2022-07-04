@@ -4,7 +4,7 @@
 
 Computed properties allow us to declaratively compute derived values. However, there are cases where we need to perform "side effects" in reaction to state changes - for example, mutating the DOM, or changing another piece of state based on the result of an async operation.
 
-<div class="options-api">
+<div class="class-mode">
 
 With Options API, we can use the [`watch` option](/api/options-state.html#watch) to trigger a function whenever a reactive property changes:
 
@@ -153,7 +153,7 @@ watch(
 
 ## Deep Watchers
 
-<div class="options-api">
+<div class="class-mode">
 
 `watch` is shallow by default: the callback will only trigger when the watched property has been assigned a new value - it won't trigger on nested property changes. If you want the callback to fire on all nested mutations, you need to use a deep watcher:
 
@@ -220,7 +220,7 @@ watch(
 Deep watch requires traversing all nested properties in the watched object, and can be expensive when used on large data structures. Use it only when necessary and beware of the performance implications.
 :::
 
-<div class="options-api">
+<div class="class-mode">
 
 ## Eager Watchers \*
 
@@ -302,7 +302,7 @@ By default, user-created watcher callbacks are called **before** Vue component u
 
 If you want to access the DOM in a watcher callback **after** Vue has updated it, you need to specify the `flush: 'post'` option:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -342,7 +342,7 @@ watchPostEffect(() => {
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ## `this.$watch()` \*
 
@@ -364,7 +364,7 @@ This is useful when you need to conditionally set up a watcher, or only watch so
 
 ## Stopping a Watcher
 
-<div class="options-api">
+<div class="class-mode">
 
 Watchers declared using the `watch` option or the `$watch()` instance method are automatically stopped when the owner component is unmounted, so in most cases you don't need to worry about stopping the watcher yourself.
 

@@ -1,6 +1,6 @@
 # Computed Properties
 
-<div class="options-api">
+<div class="class-mode">
   <VueSchoolLink href="https://vueschool.io/lessons/computed-properties-in-vue-3" title="Free Vue.js Computed Properties Lesson"/>
 </div>
 
@@ -12,7 +12,7 @@
 
 In-template expressions are very convenient, but they are meant for simple operations. Putting too much logic in your templates can make them bloated and hard to maintain. For example, if we have an object with a nested array:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -58,7 +58,7 @@ At this point, the template is getting a bit cluttered. We have to look at it fo
 
 That's why for complex logic that includes reactive data, it is recommended to use a **computed property**. Here's the same example, refactored:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -97,7 +97,7 @@ Try to change the value of the `books` array in the application `data` and you w
 
 You can data-bind to computed properties in templates just like a normal property. Vue is aware that `this.publishedBooksMessage` depends on `this.author.books`, so it will update any bindings that depend on `this.publishedBooksMessage` when `this.author.books` changes.
 
-See also: [Typing Computed Properties](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
+See also: [Typing Computed Properties](/guide/typescript/class-mode.html#typing-computed-properties) <sup class="vt-badge ts" />
 
 </div>
 
@@ -146,7 +146,7 @@ You may have noticed we can achieve the same result by invoking a method in the 
 <p>{{ calculateBooksMessage() }}</p>
 ```
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 // in component
@@ -174,7 +174,7 @@ Instead of a computed property, we can define the same function as a method. For
 
 This also means the following computed property will never update, because `Date.now()` is not a reactive dependency:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 computed: {
@@ -202,7 +202,7 @@ Why do we need caching? Imagine we have an expensive computed property `list`, w
 
 Computed properties are by default getter-only. If you attempt to assign a new value to a computed property, you will receive a runtime warning. In the rare cases where you need a "writable" computed property, you can create one by providing both a getter and a setter:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {

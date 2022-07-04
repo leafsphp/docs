@@ -42,7 +42,7 @@ To hide the link unless it is focused, you can add the following style:
 
 Once a user changes route, bring focus back to the skip link. This can be achieved by calling focus on the skip link's template ref (assuming usage of `vue-router`):
 
-<div class="options-api">
+<div class="class-mode">
 
 ```vue
 <script>

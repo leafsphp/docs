@@ -6,7 +6,7 @@ Using `v-bind` and `v-on` together, we can create two-way bindings on form input
 <input :value="text" @input="onInput">
 ```
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 methods: {

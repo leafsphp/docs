@@ -39,13 +39,15 @@ To quickly get started with Leaf, check out our [installation guide](/docs/intro
 Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
 :::
 
-Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
+Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](https://codelabs.leafphp.dev) for real world examples and use-cases.
 
 ## Hello world example
 
 At the core of Leaf PHP is a system that enables us to declaratively define applications using a friendly and straight-forward syntax:
 
 **index.php:**
+
+<div class="class-mode">
 
 ```php
 <?php
@@ -61,9 +63,29 @@ $app->get("/", function () {
 $app->run();
 ```
 
+</div>
+
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+app()->get("/", function () {
+  echo "Hello world";
+});
+
+app()->run();
+```
+
+</div>
+
 We have already created our very first Leaf app! This is as simple as it gets.
 
-In addition, we can output data with `Leaf\Http\Response`. This is a module that allows us to output data of various types without any hassle.
+In addition, we can output data with <span class="class-mode">`Leaf\Http\Response`</span><span class="functional-mode">Leaf response</span>. This is a module that allows us to output data of various types without any hassle.
+
+<div class="class-mode">
 
 ```php
 <?php
@@ -82,6 +104,25 @@ $app->run();
 ```
 
 Now you might be wondering why we need to go through all of this just to return some HTML when we can just use echo. The reason for this is simple. `Response` takes care of a lot of issues for us under the hood and renders exactly what we expect. Let's look at an example below.
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+app()->get("/", function () {
+  response()->markup("Hello world");
+});
+
+$app->run();
+```
+
+We use `response` here instead of `echo` because it takes care of a lot of issues for us under the hood and renders exactly what we expect. Let's look at an example below.
+
+</div>
 
 ```php
 <?php
@@ -137,10 +178,6 @@ app()->run();
 ```
 
 You'll notice that we've gotten rid of the lengthy `use Leaf\Http\Response;` and even the leaf initializer. Leaf 3 helps you focus on only what matters: your application. Everything is either done for you under the hood or made available to you in easy-to-use tools.
-
-::: info Note that
-From this point onward, we will be using the functional mode syntax.
-:::
 
 ### Handling User Input
 

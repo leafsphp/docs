@@ -130,7 +130,7 @@ Make sure to return a function instead of directly returning values! The `setup(
 :::
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 We can declare render functions using the `render` option:
 
@@ -267,7 +267,7 @@ h('div', [ok.value ? h('div', 'yes') : h('span', 'no')])
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
@@ -314,7 +314,7 @@ h(
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 h(
@@ -487,7 +487,7 @@ JSX equivalent:
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 In render functions, slots can be accessed from [`this.$slots`](/api/component-instance.html#slots):
 
@@ -574,7 +574,7 @@ export default {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 import { h, KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
@@ -609,7 +609,7 @@ export default {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -664,7 +664,7 @@ function MyComponent(props, { slots, emit, attrs }) {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 As there is no `this` reference for a functional component, Vue will pass in the `props` as the first argument:
 

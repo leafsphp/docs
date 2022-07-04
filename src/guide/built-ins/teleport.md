@@ -54,7 +54,7 @@ const open = ref(false)
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```vue
 <script>

@@ -1,7 +1,7 @@
 import path from 'path'
 import { createMarkdownRenderer } from 'vitepress'
 import { readExamples, ExampleData } from '../examples/examples.data'
-import createHighlighter from '@vue/theme/highlight'
+import createHighlighter from '@mychi/leaf-theme/highlight'
 
 export declare const data: Record<string, ExampleData>
 

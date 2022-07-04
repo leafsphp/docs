@@ -85,7 +85,7 @@ Our `$translate` function will take a string such as `greetings.hello`, look ins
 <h1>{{ $translate('greetings.hello') }}</h1>
 ```
 
-See also: [Augmenting Global Properties](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+See also: [Augmenting Global Properties](/guide/typescript/class-mode.html#augmenting-global-properties) <sup class="vt-badge ts" />
 
 :::tip
 Use global properties scarcely, since it can quickly become confusing if too many global properties injected by different plugins are used throughout an app.
@@ -125,7 +125,7 @@ console.log(i18n.greetings.hello)
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {

@@ -11,7 +11,7 @@ Let's keep building on top of the todo list from the last step. Here, we've alre
 
 The next improvement we can add is to be able to hide already completed todos. We already have a button that toggles the `hideCompleted` state. But how do we render different list items based on that state?
 
-<div class="options-api">
+<div class="class-mode">
 
 Introducing <a target="_blank" href="/guide/essentials/computed.html">computed property</a>. We can declare a property that is reactively computed from other properties using the `computed` option:
 

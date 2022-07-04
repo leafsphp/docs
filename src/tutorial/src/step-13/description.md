@@ -34,7 +34,7 @@ export default {
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -49,7 +49,7 @@ export default {
 
 </div>
 
-The first argument to <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> is the event name. Any additional arguments are passed on to the event listener.
+The first argument to <span class="class-mode">`this.$emit()`</span><span class="composition-api">`emit()`</span> is the event name. Any additional arguments are passed on to the event listener.
 
 The parent can listen to child-emitted events using `v-on` - here the handler receives the extra argument from the child emit call and assigns it to local state:
 

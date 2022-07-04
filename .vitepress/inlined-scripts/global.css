@@ -4,3 +4,25 @@
   --vt-c-bg-mute: #002c3b;
   --vt-c-bg-dark: #001318;
 }
+
+.dark .CodeMirror {
+  color: var(--symbols);
+  --symbols: #89ddff;
+  --base: #a6accd;
+  --comment: #6d6d6d;
+  --keyword: #89ddff;
+  --string: #c3e88d;
+  --variable: #e879f9;
+  --number: #f78c6c;
+  --tags: #f07178;
+  --brackets: var(--symbols);
+  --property: #f07178;
+  --attribute: #c792ea;
+  --cursor: #fff;
+  --selected-bg: rgba(255, 255, 255, 0.1);
+  --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
+}
+
+.vt-doc div[class*='language-'] {
+    background-color: #001318 !important;
+}

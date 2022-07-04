@@ -4,7 +4,7 @@ A common need for data binding is manipulating an element's class list and inlin
 
 ## Binding HTML Classes
 
-<div class="options-api">
+<div class="class-mode">
   <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Free Vue.js Dynamic CSS Classes Lesson"/>
 </div>
 
@@ -33,7 +33,7 @@ const hasError = ref(false)
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {
@@ -76,7 +76,7 @@ const classObject = reactive({
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {
@@ -111,7 +111,7 @@ const classObject = computed(() => ({
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {
@@ -149,7 +149,7 @@ const errorClass = ref('text-danger')
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {
@@ -260,7 +260,7 @@ const fontSize = ref(30)
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {
@@ -296,7 +296,7 @@ const styleObject = reactive({
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {

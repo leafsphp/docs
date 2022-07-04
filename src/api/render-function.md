@@ -213,7 +213,7 @@ For manually resolving a registered component by name.
   ```
 
   </div>
-  <div class="options-api">
+  <div class="class-mode">
 
   ```js
   const { h, resolveComponent } = Vue

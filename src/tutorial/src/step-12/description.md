@@ -38,7 +38,7 @@ Once declared, the `msg` prop is exposed on `this` and can be used in the child 
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 // in child component

@@ -90,7 +90,7 @@ const objectOfAttrs = {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 data() {

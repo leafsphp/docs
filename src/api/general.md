@@ -58,7 +58,7 @@ A utility for waiting for the next DOM update flush.
   ```
 
   </div>
-  <div class="options-api">
+  <div class="class-mode">
 
   ```vue
   <script>

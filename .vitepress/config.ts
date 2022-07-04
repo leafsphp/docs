@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import { defineConfigWithTheme } from 'vitepress'
-import type { Config as ThemeConfig } from '@vue/theme'
-import baseConfig from '@vue/theme/config'
+import type { Config as ThemeConfig } from '@mychi/leaf-theme'
+import baseConfig from '@mychi/leaf-theme/config'
 import { headerPlugin } from './headerMdPlugin'
 
 const nav = [
@@ -10,11 +10,27 @@ const nav = [
     text: 'Docs',
     activeMatch: `^/(docs|style-guide|examples)/`,
     items: [
-      { text: 'Guide', link: '/docs/introduction' },
-      { text: 'Tutorial', link: '/tutorial/' },
-      { text: 'Examples', link: '/examples/' },
-      { text: 'Quick Start', link: '/guide/quick-start' },
+      { text: 'Guide', link: '/docs/introduction/' },
+      // { text: 'Tutorial', link: '/tutorial/' },
+      // { text: 'Examples', link: '/examples/' },
+      // { text: 'Quick Start', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
+      {
+        text: 'Contribute to Leaf',
+        link: '/community/contributing'
+      },
+      {
+        text: 'Contribute to docs',
+        link: '/docs/contributing/writing-guide'
+      },
+      {
+        text: 'Migration from Leaf 2',
+        link: '/docs/migration/introduction'
+      },
+      {
+        text: 'Codelabs',
+        link: 'https://codelabs.leafphp.dev'
+      },
       {
         text: 'Vue 2 Docs',
         link: 'https://v2.vuejs.org'
@@ -39,81 +55,100 @@ const nav = [
     activeMatch: `^/ecosystem/`,
     items: [
       {
-        text: 'Resources',
-        items: [
-          { text: 'Partners', link: '/partners/' },
-          { text: 'Themes', link: '/ecosystem/themes' },
-          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
-          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
-        ]
-      },
-      {
-        text: 'Core Libraries',
-        items: [
-          { text: 'Vue Router', link: 'https://router.vuejs.org/' },
-          { text: 'Pinia', link: 'https://pinia.vuejs.org/' }
-        ]
-      },
-      {
-        text: 'Video Courses',
+        text: 'Core Projects',
         items: [
           {
-            text: 'Vue Mastery',
-            link: 'https://www.vuemastery.com/courses/'
+            text: 'Leaf Modules',
+            link: '/modules/'
           },
           {
-            text: 'Vue School',
-            link: 'https://vueschool.io/?friend=vuejs&utm_source=Vuejs.org&utm_medium=Link&utm_content=Navbar%20Dropdown'
+            text: 'Leaf MVC',
+            link: 'https://mvc.leafphp.dev/'
+          },
+          {
+            text: 'Leaf API',
+            link: 'https://api.leafphp.dev/'
+          },
+          {
+            text: 'Leaf Skeleton',
+            link: 'https://skeleton.leafphp.dev/'
+          }
+        ]
+      },
+      {
+        text: 'Tooling',
+        ariaLabel: 'Tooling Menu',
+        items: [
+          {
+            text: 'Aloe CLI',
+            link: '/aloe-cli/'
+          },
+          {
+            text: 'Leaf CLI',
+            link: 'https://cli.leafphp.dev'
+          },
+          {
+            text: 'Leaf UI',
+            link: 'https://ui.leafphp.dev/'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    text: 'Community',
+    activeMatch: `^/(about|community)/`,
+    items: [
+      {
+        text: 'Community',
+        ariaLabel: 'Community Menu',
+        items: [
+          {
+            text: 'Blog',
+            link: 'https://blog.leafphp.dev'
+          },
+          {
+            text: 'Team',
+            link: '/community/team'
+          },
+          {
+            text: 'Join',
+            link: '/community/join'
+          },
+          {
+            text: 'FAQ',
+            link: '/community/faq'
           }
         ]
       },
       {
         text: 'Help',
+        ariaLabel: 'Help Menu',
         items: [
           {
-            text: 'Discord Chat',
-            link: 'https://discord.com/invite/HBherRA'
+            text: 'Leaf Forum',
+            link: 'https://github.com/leafsphp/leaf/discussions/57'
           },
           {
-            text: 'GitHub Discussions',
-            link: 'https://github.com/leafsphp/core/discussions'
+            text: 'YouTube',
+            link: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw'
           },
-          { text: 'DEV Community', link: 'https://dev.to/t/vue' }
+          {
+            text: 'Discord',
+            link: 'https://discord.gg/Pkrm9NJPE3'
+          },
+          {
+            text: 'GitHub',
+            link: 'https://github.com/leafsphp/leaf'
+          }
         ]
       },
-      {
-        text: 'News',
-        items: [
-          { text: 'Blog', link: 'https://blog.vuejs.org/' },
-          { text: 'Twitter', link: 'https://twitter.com/vuejs' },
-          { text: 'Newsletter', link: 'https://news.vuejs.org/' },
-          { text: 'Events', link: 'https://events.vuejs.org/' }
-        ]
-      }
-    ]
-  },
-  {
-    text: 'About',
-    activeMatch: `^/about/`,
-    items: [
-      { text: 'FAQ', link: '/about/faq' },
-      { text: 'Team', link: '/about/team' },
-      { text: 'Releases', link: '/about/releases' },
-      {
-        text: 'Community Guide',
-        link: '/about/community-guide'
-      },
-      { text: 'Code of Conduct', link: '/about/coc' },
-      {
-        text: 'The Documentary',
-        link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
-      }
     ]
   },
   {
     text: 'Support Leaf',
     link: '/support/'
-  },
+  }
   // {
   //   text: 'Partners',
   //   link: '/partners/',
@@ -121,213 +156,101 @@ const nav = [
   // }
 ]
 
+const mainSidebar = [
+  {
+    text: 'Essentials',
+    items: [
+      { text: 'Introduction', link: '/docs/introduction/' },
+      { text: 'Features', link: '/docs/introduction/features' }
+    ]
+  },
+  {
+    text: 'Quick Start',
+    items: [
+      { text: 'Installation', link: '/docs/introduction/installation' },
+      { text: 'Migration Guide', link: '/docs/migration/introduction' },
+      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
+      { text: 'Your first app', link: '/docs/introduction/first-app' }
+    ]
+  },
+  {
+    text: 'Config',
+    items: [
+      { text: 'Overview', link: '/docs/config/' },
+      { text: 'Instance and Mode', link: '/docs/config/nsm' },
+      { text: 'App settings', link: '/docs/config/settings' }
+    ]
+  },
+  {
+    text: 'Core',
+    items: [
+      { text: 'CORS', link: '/modules/cors/' },
+      { text: 'HTTP', link: '/modules/http/' },
+      { text: 'Container', link: '/docs/tooling/container' },
+      { text: 'Logging', link: '/docs/tooling/logging' },
+      { text: 'Leaf View', link: '/docs/tooling/view' },
+      { text: 'Functional Mode', link: '/docs/tooling/functions' }
+    ]
+  },
+  {
+    text: 'Routing',
+    items: [
+      { text: 'Basic Routing', link: '/docs/routing/' },
+      { text: 'Error Handling', link: '/docs/routing/errors' },
+      { text: 'Sub routing', link: '/docs/routing/sub-routing' },
+      { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
+      { text: 'Middleware', link: '/docs/routing/middleware' },
+      {
+        text: 'Optional Route sub-patterns',
+        link: '/docs/routing/sub-patterns'
+      },
+      { text: 'Subfolder support', link: '/docs/routing/sub-folder' },
+      { text: 'Using controllers', link: '/docs/routing/controller' }
+    ]
+  },
+  {
+    text: 'Modules',
+    items: [
+      { text: 'Introduction', link: '/modules/' },
+      {
+        text: 'Leaf Forms',
+        link: '/modules/forms/',
+      },
+      {
+        text: 'Leaf Db',
+        link: '/modules/db/',
+      },
+      {
+        text: 'Leaf Auth',
+        link: '/modules/auth/',
+      },
+      {
+        text: 'Leaf Http',
+        link: '/modules/http/',
+      },
+      {
+        text: 'Leaf Session',
+        link: '/modules/session/',
+      },
+      {
+        text: 'Leaf Flash',
+        link: '/modules/session/flash',
+      },
+      {
+        text: 'Leaf Cookies',
+        link: '/modules/cookies/',
+      },
+      {
+        text: 'Leaf Router',
+        link: '/modules/router/',
+      },
+    ]
+  }
+]
+
 export const sidebar = {
-  '/guide/': [
-    {
-      text: 'Getting Started',
-      items: [
-        { text: 'Introduction', link: '/guide/introduction' },
-        {
-          text: 'Quick Start',
-          link: '/guide/quick-start'
-        }
-      ]
-    },
-    {
-      text: 'Essentials',
-      items: [
-        {
-          text: 'Creating an Application',
-          link: '/guide/essentials/application'
-        },
-        {
-          text: 'Template Syntax',
-          link: '/guide/essentials/template-syntax'
-        },
-        {
-          text: 'Reactivity Fundamentals',
-          link: '/guide/essentials/reactivity-fundamentals'
-        },
-        {
-          text: 'Computed Properties',
-          link: '/guide/essentials/computed'
-        },
-        {
-          text: 'Class and Style Bindings',
-          link: '/guide/essentials/class-and-style'
-        },
-        {
-          text: 'Conditional Rendering',
-          link: '/guide/essentials/conditional'
-        },
-        { text: 'List Rendering', link: '/guide/essentials/list' },
-        {
-          text: 'Event Handling',
-          link: '/guide/essentials/event-handling'
-        },
-        { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
-        {
-          text: 'Lifecycle Hooks',
-          link: '/guide/essentials/lifecycle'
-        },
-        { text: 'Watchers', link: '/guide/essentials/watchers' },
-        { text: 'Template Refs', link: '/guide/essentials/template-refs' },
-        {
-          text: 'Components Basics',
-          link: '/guide/essentials/component-basics'
-        }
-      ]
-    },
-    {
-      text: 'Components In-Depth',
-      items: [
-        {
-          text: 'Registration',
-          link: '/guide/components/registration'
-        },
-        { text: 'Props', link: '/guide/components/props' },
-        { text: 'Events', link: '/guide/components/events' },
-        {
-          text: 'Fallthrough Attributes',
-          link: '/guide/components/attrs'
-        },
-        { text: 'Slots', link: '/guide/components/slots' },
-        {
-          text: 'Provide / inject',
-          link: '/guide/components/provide-inject'
-        },
-        {
-          text: 'Async Components',
-          link: '/guide/components/async'
-        }
-      ]
-    },
-    {
-      text: 'Reusability',
-      items: [
-        {
-          text: 'Composables',
-          link: '/guide/reusability/composables'
-        },
-        {
-          text: 'Custom Directives',
-          link: '/guide/reusability/custom-directives'
-        },
-        { text: 'Plugins', link: '/guide/reusability/plugins' }
-      ]
-    },
-    {
-      text: 'Built-in Components',
-      items: [
-        { text: 'Transition', link: '/guide/built-ins/transition' },
-        {
-          text: 'TransitionGroup',
-          link: '/guide/built-ins/transition-group'
-        },
-        { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
-        { text: 'Teleport', link: '/guide/built-ins/teleport' },
-        { text: 'Suspense', link: '/guide/built-ins/suspense' }
-      ]
-    },
-    {
-      text: 'Scaling Up',
-      items: [
-        { text: 'Single-File Components', link: '/guide/scaling-up/sfc' },
-        { text: 'Tooling', link: '/guide/scaling-up/tooling' },
-        { text: 'Routing', link: '/guide/scaling-up/routing' },
-        {
-          text: 'State Management',
-          link: '/guide/scaling-up/state-management'
-        },
-        { text: 'Testing', link: '/guide/scaling-up/testing' },
-        {
-          text: 'Server-Side Rendering (SSR)',
-          link: '/guide/scaling-up/ssr'
-        }
-      ]
-    },
-    {
-      text: 'Best Practices',
-      items: [
-        {
-          text: 'Production Deployment',
-          link: '/guide/best-practices/production-deployment'
-        },
-        {
-          text: 'Performance',
-          link: '/guide/best-practices/performance'
-        },
-        {
-          text: 'Accessibility',
-          link: '/guide/best-practices/accessibility'
-        },
-        {
-          text: 'Security',
-          link: '/guide/best-practices/security'
-        }
-      ]
-    },
-    {
-      text: 'TypeScript',
-      items: [
-        { text: 'Overview', link: '/guide/typescript/overview' },
-        {
-          text: 'TS with Composition API',
-          link: '/guide/typescript/composition-api'
-        },
-        {
-          text: 'TS with Options API',
-          link: '/guide/typescript/options-api'
-        }
-      ]
-    },
-    {
-      text: 'Extra Topics',
-      items: [
-        {
-          text: 'Ways of Using Vue',
-          link: '/guide/extras/ways-of-using-vue'
-        },
-        {
-          text: 'Composition API FAQ',
-          link: '/guide/extras/composition-api-faq'
-        },
-        {
-          text: 'Reactivity in Depth',
-          link: '/guide/extras/reactivity-in-depth'
-        },
-        {
-          text: 'Rendering Mechanism',
-          link: '/guide/extras/rendering-mechanism'
-        },
-        {
-          text: 'Render Functions & JSX',
-          link: '/guide/extras/render-function'
-        },
-        {
-          text: 'Vue and Web Components',
-          link: '/guide/extras/web-components'
-        },
-        {
-          text: 'Animation Techniques',
-          link: '/guide/extras/animation'
-        },
-        {
-          text: 'Reactivity Transform',
-          link: '/guide/extras/reactivity-transform'
-        }
-        // {
-        //   text: 'Building a Library for Vue',
-        //   link: '/guide/extras/building-a-library'
-        // },
-        // { text: 'Custom Renderers', link: '/guide/extras/custom-renderer' },
-        // {
-        //   text: 'Vue for React Devs',
-        //   link: '/guide/extras/vue-for-react-devs'
-        // }
-      ]
-    }
-  ],
+  '/docs/': mainSidebar,
+  '/modules/': mainSidebar,
   '/api/': [
     {
       text: 'Global API',

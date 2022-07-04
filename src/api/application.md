@@ -131,7 +131,7 @@ Provide a value that can be injected in all descendent components within the app
   ```
 
   </div>
-  <div class="options-api">
+  <div class="class-mode">
 
   ```js
   export default {

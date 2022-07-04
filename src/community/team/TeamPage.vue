@@ -1,29 +1,35 @@
 <script setup lang="ts">
-import { VTLink } from '@vue/theme'
+import { VTLink } from '@mychi/leaf-theme'
 import membersCoreData from './members-core.json'
-import membersEmeritiData from './members-emeriti.json'
-import membersPartnerData from './members-partner.json'
+// import membersEmeritiData from './members-emeriti.json'
+// import membersPartnerData from './members-partner.json'
 import TeamHero from './TeamHero.vue'
 import TeamList from './TeamList.vue'
 import type { Member } from './Member'
 </script>
+
+<!-- members data
+"website": {
+  "label": "evanyou.me",
+  "url": "https://evanyou.me"
+},
+ -->
 
 <template>
   <div class="TeamPage">
     <TeamHero>
       <template #title>Meet the Team</template>
       <template #lead
-        >The development of Vue and its ecosystem is guided by an international
-        team, some of whom have chosen to be
-        <span class="nowrap">featured below.</span></template
+        >The development of Leaf and its ecosystem is guided by a our
+        <span class="nowrap">core team.</span></template
       >
 
-      <template #action>
+      <!-- <template #action>
         <VTLink
-          href="https://github.com/vuejs/governance/blob/master/Team-Charter.md"
+          href="https://github.com/Leafjs/governance/blob/master/Team-Charter.md"
           >Learn more about teams</VTLink
         >
-      </template>
+      </template> -->
     </TeamHero>
 
     <TeamList :members="membersCoreData">
@@ -31,28 +37,28 @@ import type { Member } from './Member'
       <template #lead
         >Core team members are those who are actively involved in the
         maintenance of one or more core projects. They have made significant
-        contributions to the Vue ecosystem, with a long term commitment to the
+        contributions to the Leaf ecosystem, with a long term commitment to the
         success of the project and its users.</template
       >
     </TeamList>
 
-    <TeamList :members="membersEmeritiData as Member[]">
+    <!-- <TeamList :members="membersEmeritiData as Member[]">
       <template #title>Core Team Emeriti</template>
       <template #lead
         >Here we honor some no-longer-active core team members who have made
         valuable contributions in the past.</template
       >
-    </TeamList>
+    </TeamList> -->
 
-    <TeamList :members="membersPartnerData as Member[]">
+    <!-- <TeamList :members="membersPartnerData as Member[]">
       <template #title>Community Partners</template>
       <template #lead
-        >Some members of the Vue community have so enriched it, that they
+        >Some members of the Leaf community have so enriched it, that they
         deserve special mention. We've developed a more intimate relationship
         with these key partners, often coordinating with them on upcoming
         features and news.</template
       >
-    </TeamList>
+    </TeamList> -->
   </div>
 </template>
 

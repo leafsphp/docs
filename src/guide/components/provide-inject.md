@@ -59,7 +59,7 @@ Providing reactive values allows the descendent components using the provided va
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 To provide data to a component's descendants, use the [`provide`](/api/options-composition.html#provide) option:
 
@@ -142,7 +142,7 @@ export default {
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 To inject data provided by an ancestor component, use the [`inject`](/api/options-composition.html#inject) option:
 
@@ -213,7 +213,7 @@ const value = inject('key', () => new ExpensiveClass())
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -287,7 +287,7 @@ provide('read-only-count', readonly(count))
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 In order to make injections reactively linked to the provider, we need to provide a computed property using the [computed()](/api/reactivity-core.html#computed) function:
 
@@ -354,7 +354,7 @@ See also: [Typing Provide / Inject](/guide/typescript/composition-api.html#typin
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 // in provider component

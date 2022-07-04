@@ -93,7 +93,7 @@ export default {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 Local registration is done using the `components` option:
 

@@ -38,6 +38,10 @@ composer require leafs/leaf
 
 This will quickly setup a leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
 
+<div class="functional-mode">
+
+When using functional mode:
+
 ```php
 <?php
 
@@ -49,6 +53,27 @@ app()->get("/", function () {
 
 app()->run();
 ```
+
+</div>
+<div class="class-mode">
+
+When using classes:
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new \Leaf\App();
+
+$app->get("/", function () use($app) {
+  $app->response()->json(["name" => "Leaf"]);
+});
+
+$app->run();
+```
+
+</div>
 
 You can run this with the built in php server
 

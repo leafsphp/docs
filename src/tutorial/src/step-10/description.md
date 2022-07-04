@@ -18,7 +18,7 @@ watch(count, (newCount) => {
 `watch()` can directly watch a ref, and the callback gets fired whenever `count`'s value changes. `watch()` can also watch other types of data sources - more details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {

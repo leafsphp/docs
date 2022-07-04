@@ -2,7 +2,7 @@
 
 > This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
 
-<div class="options-api">
+<div class="class-mode">
   <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Free Vue.js Props Lesson"/>
 </div>
 
@@ -38,7 +38,7 @@ Notice the argument passed to `defineProps()` is the same as the value provided 
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 Props are declared using the [`props`](/api/options-state.html#props) option:
 
@@ -56,7 +56,7 @@ export default {
 
 In addition to declaring props using an array of strings, we can also use the object syntax:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -94,9 +94,9 @@ For each property in the object declaration syntax, the key is the name of the p
 
 This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about [prop validation](#prop-validation) further down this page.
 
-<div class="options-api">
+<div class="class-mode">
 
-See also: [Typing Component Props](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
+See also: [Typing Component Props](/guide/typescript/class-mode.html#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -132,7 +132,7 @@ defineProps({
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -234,7 +234,7 @@ In the two examples above, we happen to pass string values, but _any_ type of va
 
 If you want to pass all the properties of an object as props, you can use [`v-bind` without an argument](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` instead of `:prop-name`). For example, given a `post` object:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -289,7 +289,7 @@ props.foo = 'bar'
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -318,7 +318,7 @@ There are usually two cases where it's tempting to mutate a prop:
    ```
 
    </div>
-   <div class="options-api">
+   <div class="class-mode">
 
    ```js
    export default {
@@ -347,7 +347,7 @@ There are usually two cases where it's tempting to mutate a prop:
    ```
 
    </div>
-   <div class="options-api">
+   <div class="class-mode">
 
    ```js
    export default {
@@ -373,7 +373,7 @@ The main drawback of such mutations is that it allows the child component to aff
 
 Components can specify requirements for their props, such as the types you've already seen. If a requirement is not met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that is intended to be used by others.
 
-To specify prop validations, you can provide an object with validation requirements to the <span class="composition-api">`defineProps()` macro</span><span class="options-api">`props` option</span>, instead of an array of strings. For example:
+To specify prop validations, you can provide an object with validation requirements to the <span class="composition-api">`defineProps()` macro</span><span class="class-mode">`props` option</span>, instead of an array of strings. For example:
 
 <div class="composition-api">
 
@@ -427,7 +427,7 @@ Code inside the `defineProps()` argument **cannot access other variables declare
 :::
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -495,7 +495,7 @@ When prop validation fails, Vue will produce a console warning (if using the dev
 If using [Type-based props declarations](/api/sfc-script-setup.html#typescript-only-features), Vue will try its best to compile the type annotations into equivalent runtime prop declarations. For example, `defineProps<{ msg: string }>` will be compiled into `{ msg: { type: String, required: true }}`.
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ::: tip Note
 Note that props are validated **before** a component instance is created, so instance properties (e.g. `data`, `computed`, etc.) will not be available inside `default` or `validator` functions.
@@ -538,7 +538,7 @@ defineProps({
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -565,7 +565,7 @@ defineProps({
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -598,7 +598,7 @@ defineProps({
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {

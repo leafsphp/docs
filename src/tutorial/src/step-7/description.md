@@ -25,7 +25,7 @@ There are two ways to update the list:
    ```
 
      </div>
-     <div class="options-api">
+     <div class="class-mode">
 
    ```js
    this.todos.push(newTodo)
@@ -42,7 +42,7 @@ There are two ways to update the list:
    ```
 
      </div>
-     <div class="options-api">
+     <div class="class-mode">
 
    ```js
    this.todos = this.todos.filter(/* ... */)

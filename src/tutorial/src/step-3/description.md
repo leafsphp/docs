@@ -16,4 +16,4 @@ Because `v-bind` is used so frequently, it has a dedicated shorthand syntax:
 <div :id="dynamicId"></div>
 ```
 
-Now, try to add a dynamic `class` binding to the `<h1>`, using the `titleClass` <span class="options-api">data property</span><span class="composition-api">ref</span> as its value. If it's bound correctly, the text should turn red.
+Now, try to add a dynamic `class` binding to the `<h1>`, using the `titleClass` <span class="class-mode">data property</span><span class="composition-api">ref</span> as its value. If it's bound correctly, the text should turn red.

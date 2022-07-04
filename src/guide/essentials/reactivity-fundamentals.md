@@ -5,12 +5,12 @@ outline: deep
 # Reactivity Fundamentals
 
 :::tip API Preference
-This page and many other chapters later in the guide contain different content for Options API and Composition API. Your current preference is <span class="options-api">Options API</span><span class="composition-api">Composition API</span>. You can toggle between the API styles using the "API Preference" switches at the top of the left sidebar.
+This page and many other chapters later in the guide contain different content for Options API and Composition API. Your current preference is <span class="class-mode">Options API</span><span class="composition-api">Composition API</span>. You can toggle between the API styles using the "API Preference" switches at the top of the left sidebar.
 :::
 
 ## Declaring Reactive State
 
-<div class="options-api">
+<div class="class-mode">
 
 With Options API, we use the `data` option to declare reactive state of a component. The option value should be a function that returns an object. Vue will call the function when creating a new component instance, and wrap the returned object in its reactivity system. Any top-level properties of this object are proxied on the component instance (`this` in methods and lifecycle hooks):
 
@@ -161,7 +161,7 @@ Top-level imports and variables declared in `<script setup>` are automatically u
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ## Declaring Methods \*
 
@@ -232,7 +232,7 @@ function increment() {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 import { nextTick } from 'vue'
@@ -255,7 +255,7 @@ export default {
 
 In Vue, state is deeply reactive by default. This means you can expect changes to be detected even when you mutate nested objects or arrays:
 
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {
@@ -530,7 +530,7 @@ console.log(map.get('count').value)
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ### Stateful Methods \*
 

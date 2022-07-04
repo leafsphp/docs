@@ -241,9 +241,9 @@ During SSR, each request URL maps to a desired state of our application. There i
 
 ### Component Lifecycle Hooks
 
-Since there are no dynamic updates, lifecycle hooks such as <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> or <span class="options-api">`updated`</span><span class="composition-api">`onUpdated`</span> will **NOT** be called during SSR and will only be executed on the client.<span class="options-api"> The only hooks that are called during SSR are `beforeCreate` and `created`</span>
+Since there are no dynamic updates, lifecycle hooks such as <span class="class-mode">`mounted`</span><span class="composition-api">`onMounted`</span> or <span class="class-mode">`updated`</span><span class="composition-api">`onUpdated`</span> will **NOT** be called during SSR and will only be executed on the client.<span class="class-mode"> The only hooks that are called during SSR are `beforeCreate` and `created`</span>
 
-You should avoid code that produces side effects that need cleanup in <span class="options-api">`beforeCreate` and `created`</span><span class="composition-api">`setup()` or the root scope of `<script setup>`</span>. An example of such side effects is setting up timers with `setInterval`. In client-side only code we may setup a timer and then tear it down in <span class="options-api">`beforeUnmount`</span><span class="composition-api">`onBeforeUnmount`</span> or <span class="options-api">`unmounted`</span><span class="composition-api">`onUnmounted`</span>. However, because the unmount hooks will never be called during SSR, the timers will stay around forever. To avoid this, move your side-effect code into <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> instead.
+You should avoid code that produces side effects that need cleanup in <span class="class-mode">`beforeCreate` and `created`</span><span class="composition-api">`setup()` or the root scope of `<script setup>`</span>. An example of such side effects is setting up timers with `setInterval`. In client-side only code we may setup a timer and then tear it down in <span class="class-mode">`beforeUnmount`</span><span class="composition-api">`onBeforeUnmount`</span> or <span class="class-mode">`unmounted`</span><span class="composition-api">`onUnmounted`</span>. However, because the unmount hooks will never be called during SSR, the timers will stay around forever. To avoid this, move your side-effect code into <span class="class-mode">`mounted`</span><span class="composition-api">`onMounted`</span> instead.
 
 ### Access to Platform-Specific APIs
 
@@ -251,7 +251,7 @@ Universal code cannot assume access to platform-specific APIs, so if your code d
 
 For tasks that are shared between server and client but with different platform APIs, it's recommended to wrap the platform-specific implementations inside a universal API, or use libraries that do this for you. For example, you can use [`node-fetch`](https://github.com/node-fetch/node-fetch) to use the same fetch API on both server and client.
 
-For browser-only APIs, the common approach is to lazily access them inside client-only lifecycle hooks such as <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>.
+For browser-only APIs, the common approach is to lazily access them inside client-only lifecycle hooks such as <span class="class-mode">`mounted`</span><span class="composition-api">`onMounted`</span>.
 
 Note that if a third-party library is not written with universal usage in mind, it could be tricky to integrate it into a server-rendered app. You _might_ be able to get it working by mocking some of the globals, but it would be hacky and may interfere with the environment detection code of other libraries.
 

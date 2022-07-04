@@ -7,7 +7,7 @@ const get = (key: string, defaultValue = false): boolean =>
     ? JSON.parse(localStorage.getItem(key) || String(defaultValue))
     : defaultValue
 
-export const preferFunctionalKey = 'vue-docs-prefer-composition'
+export const preferFunctionalKey = 'vue-docs-prefer-functional'
 export const preferFunctional = ref(get(preferFunctionalKey))
 
 export const preferSFCKey = 'vue-docs-prefer-sfc'

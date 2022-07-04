@@ -181,7 +181,7 @@ Note that although the `attrs` object here always reflect the latest fallthrough
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 If needed, you can access a component's fallthrough attributes via the `$attrs` instance property:
 

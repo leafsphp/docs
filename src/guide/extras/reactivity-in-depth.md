@@ -200,7 +200,7 @@ count.value++
 
 In fact, this is pretty close to how a Vue component keeps the state and the DOM in sync - each component instance creates a reactive effect to render and update the DOM. Of course, Vue components use much more efficient ways to update the DOM than `innerHTML`. This is discussed in [Rendering Mechanism](./rendering-mechanism).
 
-<div class="options-api">
+<div class="class-mode">
 
 The `ref()`, `computed()` and `watchEffect()` APIs are all part of the Composition API. If you have only been using Options API with Vue so far, you'll notice that Composition API is closer to how Vue's reactivity system works under the hood. In fact, in Vue 3 the Options API is implemented on top of the Composition API. All property access on the component instance (`this`) triggers getter/setters for reactivity tracking, and options like `watch` and `computed` invoke their Composition API equivalents internally.
 
@@ -233,7 +233,7 @@ It's great that Vue's reactivity system automatically tracks dependencies, but i
 
 ### Component Debugging Hooks
 
-We can debug what dependencies are used during a component's render and which dependency is triggering an update using the <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> and <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> lifecycle hooks. Both hooks will receive a debugger event which contains information on the dependency in question. It is recommended to place a `debugger` statement in the callbacks to interactively inspect the dependency:
+We can debug what dependencies are used during a component's render and which dependency is triggering an update using the <span class="class-mode">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> and <span class="class-mode">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> lifecycle hooks. Both hooks will receive a debugger event which contains information on the dependency in question. It is recommended to place a `debugger` statement in the callbacks to interactively inspect the dependency:
 
 <div class="composition-api">
 
@@ -252,7 +252,7 @@ onRenderTriggered((event) => {
 ```
 
 </div>
-<div class="options-api">
+<div class="class-mode">
 
 ```js
 export default {

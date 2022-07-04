@@ -12,5 +12,5 @@ updates:
     allow:
       - dependency-name: 'vue'
       - dependency-name: 'vitepress'
-      - dependency-name: '@vue/theme'
+      - dependency-name: '@mychi/leaf-theme'
       - dependency-name: '@vue/repl'

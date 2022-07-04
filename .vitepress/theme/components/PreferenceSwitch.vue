@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VTSwitch, VTIconChevronDown } from '@vue/theme'
+import { VTSwitch, VTIconChevronDown } from '@mychi/leaf-theme'
 import { useRoute } from 'vitepress'
 import { inject, Ref } from 'vue'
 import {
@@ -26,17 +26,17 @@ const toggleOpen = () => {
 }
 
 const removeOutline = (e: Event) => {
-  ;(e.target as HTMLElement).classList.add('no-outline')
+  ; (e.target as HTMLElement).classList.add('no-outline')
 }
 
 const restoreOutline = (e: Event) => {
-  ;(e.target as HTMLElement).classList.remove('no-outline')
+  ; (e.target as HTMLElement).classList.remove('no-outline')
 }
 
 const toggleFunctionalMode = useToggleFn(
   preferFunctionalKey,
   preferFunctional,
-  'prefer-composition'
+  'prefer-functional'
 )
 const toggleSFC = useToggleFn(preferSFCKey, preferSFC, 'prefer-sfc')
 const closeSideBar = inject('close-sidebar') as () => void
@@ -47,7 +47,7 @@ function useToggleFn(
   className: string
 ) {
   if (typeof localStorage === 'undefined') {
-    return () => {}
+    return () => { }
   }
   const classList = document.documentElement.classList
   return (value = !state.value) => {
@@ -63,64 +63,43 @@ function useToggleFn(
 
 <template>
   <div v-if="show" class="preference-switch">
-    <button
-      class="toggle"
-      aria-label="preference switches toggle"
-      aria-controls="preference-switches"
-      :aria-expanded="isOpen"
-      @click="toggleOpen"
-      @mousedown="removeOutline"
-      @blur="restoreOutline"
-    >
+    <button class="toggle" aria-label="preference switches toggle" aria-controls="preference-switches"
+      :aria-expanded="isOpen" @click="toggleOpen" @mousedown="removeOutline" @blur="restoreOutline">
       <span>API Preference</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
-        <label class="options-label" @click="toggleFunctionalMode(false)"
-          >Regular</label
-        >
-        <VTSwitch
-          class="api-switch"
-          aria-label="prefer functional mode"
-          :aria-checked="preferFunctional"
-          @click="toggleFunctionalMode()"
-        />
-        <label
-          class="composition-label"
-          @click="toggleFunctionalMode(true)"
-          >{{ showFullText ? 'Functional' : 'Func' }} Mode</label
-        >
-        <a
-          class="switch-link"
-          title="About API preference"
-          href="/guide/introduction.html#api-styles"
-          @click="closeSideBar"
-          >?</a
-        >
+        <label class="options-label w:_10" @click="toggleFunctionalMode(false)">Class Mode</label>
+        <VTSwitch class="api-switch" aria-label="prefer functional mode" :aria-checked="preferFunctional"
+          @click="toggleFunctionalMode()" />
+        <label class="composition-label" @click="toggleFunctionalMode(true)">{{ showFullText ? 'Functional' : 'Fn' }}
+          Mode</label>
+        <a class="switch-link" title="About API preference" href="/docs/introduction/#functional-mode"
+          @click="closeSideBar">?</a>
       </div>
       <div class="switch-container" v-if="showSFC">
         <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
-        <VTSwitch
-          class="sfc-switch"
-          aria-label="prefer single file component"
-          :aria-checked="preferSFC"
-          @click="toggleSFC()"
-        />
+        <VTSwitch class="sfc-switch" aria-label="prefer single file component" :aria-checked="preferSFC"
+          @click="toggleSFC()" />
         <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
-        <a
-          class="switch-link"
-          title="About SFC"
-          href="/guide/scaling-up/sfc.html"
-          @click="closeSideBar"
-          >?</a
-        >
+        <a class="switch-link" title="About SFC" href="/guide/scaling-up/sfc.html" @click="closeSideBar">?</a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+html.prefer-functional .composition-label,
+html:not(.prefer-functional) .options-label {
+  color: var(--vt-c-green);
+}
+
+html.prefer-functional .options-label,
+html:not(.prefer-functional) .composition-label {
+  color: var(--vt-c-text-1);
+}
+
 .preference-switch {
   font-size: 12px;
   border-bottom: 1px solid var(--vt-c-divider-light);
@@ -210,6 +189,7 @@ function useToggleFn(
     font-size: 11px;
     padding: 8px 12px;
   }
+
   .switch-container label:first-child {
     width: 46px;
   }
@@ -217,33 +197,37 @@ function useToggleFn(
 </style>
 
 <style>
-.composition-api,
+.functional-mode,
 .sfc {
   display: none;
 }
 
-.prefer-composition .options-api,
+.prefer-functional .class-mode,
 .prefer-sfc .html {
   display: none;
 }
 
-.prefer-composition .composition-api,
+/* body:not(.prefer-functional) .functional-mode {
+  display: none;
+} */
+
+.prefer-functional .functional-mode,
 .prefer-sfc .sfc {
   display: initial;
 }
 
-.prefer-composition .api-switch .vt-switch-check {
+.prefer-functional .api-switch .vt-switch-check {
   transform: translateX(18px);
 }
 
 .composition-label,
 .sfc-label,
-.prefer-composition .options-label,
+.prefer-functional .options-label w:_10,
 .prefer-sfc .no-sfc-label {
   color: var(--vt-c-text-3);
 }
 
-.prefer-composition .composition-label,
+.prefer-functional .composition-label,
 .prefer-sfc .sfc-label {
   color: var(--vt-c-text-1);
 }
@@ -252,8 +236,8 @@ function useToggleFn(
   transform: translateX(18px);
 }
 
-.tip .options-api,
-.tip .composition-api {
+.tip .class-mode,
+.tip .functional-mode {
   color: var(--vt-c-text-code);
   /* transition: color 0.5s; */
   font-weight: 600;

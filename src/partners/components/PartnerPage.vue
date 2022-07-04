@@ -3,7 +3,7 @@ import data from '../partners.json'
 import { Partner } from './type'
 import { normalizeName } from './utils'
 import PartnerCard from './PartnerCard.vue'
-import { VTIconChevronLeft } from '@vue/theme'
+import { VTIconChevronLeft } from '@mychi/leaf-theme'
 
 const { partner } = defineProps<{
   partner: string

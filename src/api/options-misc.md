@@ -44,7 +44,7 @@ Explicitly declare a display name for the component.
 
 - **Example**
 
-  <div class="options-api">
+  <div class="class-mode">
 
   ```vue
   <script>

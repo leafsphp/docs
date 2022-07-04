@@ -55,4 +55,4 @@ If you want to help with any of these, kindly reach out on twitter [@leafphp](ht
 
 - [Twitter](https://twitter.com/leafphp): Get timely updates on everything that happens in the leaf PHP ecosystem.
 
-<a class="twitter-timeline" href="https://twitter.com/leafphp?ref_src=twsrc%5Etfw">Tweets by leafphp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- <a class="twitter-timeline" href="https://twitter.com/leafphp?ref_src=twsrc%5Etfw">Tweets by leafphp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->

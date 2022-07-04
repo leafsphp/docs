@@ -38,7 +38,7 @@ app.component('MyComponent', defineAsyncComponent(() =>
 ))
 ```
 
-<div class="options-api">
+<div class="class-mode">
 
 You can also use `defineAsyncComponent` when [registering a component locally](/guide/components/registration.html#local-registration):
 

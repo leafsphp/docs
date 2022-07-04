@@ -14,7 +14,7 @@ import {
   VTIconChevronLeft,
   VTIconChevronRight,
   VTLink
-} from '@vue/theme'
+} from '@mychi/leaf-theme'
 
 const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
@@ -22,7 +22,7 @@ const store = new ReplStore({
 
 const instruction = ref<HTMLElement>()
 
-const preferFunctional = inject('prefer-composition') as Ref<boolean>
+const preferFunctional = inject('prefer-functional') as Ref<boolean>
 const preferSFC = inject('prefer-sfc') as Ref<boolean>
 
 const currentStep = ref('')
@@ -80,7 +80,7 @@ function updateExample(scroll = false) {
     preferSFC.value
       ? resolveSFCExample(content, preferFunctional.value)
       : resolveNoBuildExample(content, preferFunctional.value),
-    preferSFC.value ? 'App.vue' : 'index.html'
+    preferSFC.value ? 'App.php' : 'index.html'
   )
 
   if (scroll) {
@@ -144,6 +144,26 @@ updateExample()
     />
   </section>
 </template>
+
+<style>
+.dark .CodeMirror {
+  color: var(--symbols);
+  --symbols: #89ddff;
+  --base: #a6accd;
+  --comment: #6d6d6d;
+  --keyword: #89ddff;
+  --string: #c3e88d;
+  --variable: #e879f9;
+  --number: #f78c6c;
+  --tags: #f07178;
+  --brackets: var(--symbols);
+  --property: #f07178;
+  --attribute: #c792ea;
+  --cursor: #fff;
+  --selected-bg: rgba(255, 255, 255, 0.1);
+  --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
+}
+</style>
 
 <style scoped>
 .tutorial {

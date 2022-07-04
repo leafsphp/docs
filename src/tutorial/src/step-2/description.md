@@ -70,7 +70,7 @@ Notice how we did not need to use `.value` when accessing the `message` ref in t
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 State that can trigger updates when changed are considered **reactive**. In Vue, reactive state is held in components. In the example code, the object being passed to `createApp()` is a component.
 
@@ -123,7 +123,7 @@ Now, try to create some reactive state yourself, and use it to render dynamic te
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 Now, try to create a data property yourself, and use it as the text content for the `<h1>` in the template.
 

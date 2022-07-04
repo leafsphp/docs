@@ -14,7 +14,7 @@ import ChildComp from './ChildComp.vue'
 </div>
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 <div class="sfc">
 
 ```js

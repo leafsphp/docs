@@ -54,7 +54,7 @@ const currentView = computed(() => {
 
 </div>
 
-<div class="options-api">
+<div class="class-mode">
 
 ```vue
 <script>
