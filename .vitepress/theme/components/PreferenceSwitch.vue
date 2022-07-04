@@ -11,7 +11,7 @@ import {
 
 const route = useRoute()
 const show = $computed(() =>
-  /^\/(guide|docs|tutorial|examples)\//.test(route.path)
+  /^\/(guide|docs|tutorial|examples)\//.test(route.path) && !/^\/docs\/tooling\/functions\//.test(route.path.replace('.html', '/'))
 )
 const showFullText = $computed(() =>
   /^\/(tutorial|examples)\//.test(route.path)
