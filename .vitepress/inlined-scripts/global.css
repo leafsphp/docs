@@ -26,3 +26,7 @@
 .vt-doc div[class*='language-'] {
     background-color: #001318 !important;
 }
+
+.vt-doc [class*='language-'] pre, .vt-doc [class*='language-'] code span {
+  font-family: DM Mono !important;
+}
