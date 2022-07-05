@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   449.css: ^1.3.0
   '@codemirror/lang-php': ^6.0.0
-  '@mychi/leaf-theme': ^0.1.0
+  '@mychi/leaf-theme': ^0.1.2
   '@types/markdown-it': ^12.2.3
   '@types/node': ^16.9.1
   '@vue/repl': ^1.2.4
@@ -15,7 +15,7 @@ specifiers:
 dependencies:
   449.css: 1.3.0
   '@codemirror/lang-php': 6.0.0
-  '@mychi/leaf-theme': 0.1.0_vue@3.2.37
+  '@mychi/leaf-theme': 0.1.2_vue@3.2.37
   '@vue/repl': 1.2.4_vue@3.2.37
   dynamics.js: 1.1.5
   gsap: 3.9.0
@@ -382,8 +382,8 @@ packages:
       '@lezer/lr': 1.1.0
     dev: false
 
-  /@mychi/leaf-theme/0.1.0_vue@3.2.37:
-    resolution: {integrity: sha512-wp1KQ84wus5D1I44BmaFV2dUyu4Sguv1YyqQ9BRAph754iePVTezy7clQByGtSQ8hYlRDcbFIdAZlswypONkFg==}
+  /@mychi/leaf-theme/0.1.2_vue@3.2.37:
+    resolution: {integrity: sha512-XF1GwumTVjvPC44dSGKWNIE1Hvj8RTVNdHGD/BYN6hB0Qb2j7dNpFuHTnFZCtVQ6dBT59Lg87yi3DtArmOmAdw==}
     dependencies:
       '@algolia/client-search': 4.10.5
       '@docsearch/css': 3.0.0
