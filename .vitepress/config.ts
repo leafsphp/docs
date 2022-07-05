@@ -142,7 +142,7 @@ const nav = [
             link: 'https://github.com/leafsphp/leaf'
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -184,8 +184,11 @@ const mainSidebar = [
   {
     text: 'Core',
     items: [
+      { text: 'Request', link: '/modules/http/v/2/request' },
+      { text: 'Response', link: '/modules/http/v/2/response' },
+      { text: 'Headers', link: '/modules/http/v/2/headers' },
       { text: 'CORS', link: '/modules/cors/' },
-      { text: 'HTTP', link: '/modules/http/' },
+      { text: 'Session', link: '/modules/session/' },
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Logging', link: '/docs/tooling/logging' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
@@ -209,41 +212,57 @@ const mainSidebar = [
     ]
   },
   {
+    text: 'Extras',
+    items: [
+      { text: 'Database', link: '/modules/cors/' },
+      { text: 'Cookies', link: '/modules/http/v/2/request' },
+      { text: 'Session Flash', link: '/modules/http/v/2/response' },
+      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      { text: 'Leaf Forms', link: '/modules/forms/' },
+      { text: 'Container', link: '/docs/tooling/container' },
+      { text: 'Logging', link: '/docs/tooling/logging' },
+      { text: 'Leaf View', link: '/docs/tooling/view' },
+      { text: 'Functional Mode', link: '/docs/tooling/functions' }
+    ]
+  },
+  {
     text: 'Modules',
+    collapsible: true,
+    collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/' },
       {
         text: 'Leaf Forms',
-        link: '/modules/forms/',
+        link: '/modules/forms/'
       },
       {
         text: 'Leaf Db',
-        link: '/modules/db/',
+        link: '/modules/db/'
       },
       {
         text: 'Leaf Auth',
-        link: '/modules/auth/',
+        link: '/modules/auth/'
       },
       {
         text: 'Leaf Http',
-        link: '/modules/http/',
+        link: '/modules/http/'
       },
       {
         text: 'Leaf Session',
-        link: '/modules/session/',
+        link: '/modules/session/'
       },
       {
         text: 'Leaf Flash',
-        link: '/modules/session/flash',
+        link: '/modules/session/flash'
       },
       {
         text: 'Leaf Cookies',
-        link: '/modules/cookies/',
+        link: '/modules/cookies/'
       },
       {
         text: 'Leaf Router',
-        link: '/modules/router/',
-      },
+        link: '/modules/router/'
+      }
     ]
   }
 ]
@@ -583,11 +602,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     sidebar,
     algolia: {
       indexName: 'leafphp',
-      appId: 'R85Z7WOAMV',
-      apiKey: '3e362df52b3d61c87047825428a0eb13',
-      searchParameters: {
-        facetFilters: ['version:v3']
-      }
+      appId: 'Q38TT8XUN9',
+      apiKey: '91fc50bf651a76ce68220f14e75e38f4'
+      // searchParameters: {
+      //   facetFilters: ['version:v3']
+      // }
     },
 
     // carbonAds: {
