@@ -1,10 +1,3 @@
-.dark {
-  --vt-c-bg: #001e26;
-  --vt-c-bg-soft: #002f3b;
-  --vt-c-bg-mute: #002c3b;
-  --vt-c-bg-dark: #001318;
-}
-
 .dark .CodeMirror {
   color: var(--symbols);
   --symbols: #89ddff;
@@ -23,8 +16,8 @@
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
 }
 
-.vt-doc div[class*='language-'] {
-    background-color: #001318 !important;
+.dark .custom-block div[class*='language-'] {
+  background-color: var(--vt-c-bg) !important;
 }
 
 .vt-doc [class*='language-'] pre, .vt-doc [class*='language-'] code span {
