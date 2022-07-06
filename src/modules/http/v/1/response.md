@@ -30,7 +30,7 @@ Since Response is already bound to the Leaf instance, you can do this:
 ```php{4}
 $app = new Leaf\App;
 
-$app->get("/text", function() use($app) {
+$app->get("/text", function () use($app) {
   $app->response()->markup("This is text");
 });
 ```
@@ -45,7 +45,7 @@ With this method, you manually initialise the Response object, and then pass it 
 $app = new Leaf\App;
 $response = new Leaf\Http\Response;
 
-$app->post("/login", function() use($response) {
+$app->post("/login", function () use($response) {
   // ...
   $response->json(["username" => $user]);
 });
@@ -68,7 +68,7 @@ The response object provides helper methods, described next, that help you inter
 You can get more info on http status codes [here](https://www.restapitutorial.com/httpstatuscodes.html).
 
 ```php
-$app->post('/name', function() use($app) {
+$app->post('/name', function () use($app) {
   $name = $app->request->get("name");
   if (!$name) $app->response()->throwErr('Name is required', 500);
 
@@ -155,7 +155,7 @@ $response->json("Output", 200, true, true);
 This is a simple method that outputs a webpage. This method can also be used to achieve server side routing, for example:
 
 ```php
-$app->get('/homepage', function() use($response) {
+$app->get('/homepage', function () use($response) {
   $response->page('link/to/home.html');
 });
 ```
@@ -188,7 +188,7 @@ $code = "<h2>Hello</h2>";
 We simply pass it into the response...like this
 
 ```php
-$app->get('/homepage', function() use($app) {
+$app->get('/homepage', function () use($app) {
   $app->response()->markup($code);
 });
 ```
