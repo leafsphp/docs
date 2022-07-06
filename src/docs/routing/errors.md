@@ -20,7 +20,7 @@ Leaf's core router has specially prepared for 404 errors, and is bent on giving 
 For this reason, we've prepared the set404() method. You can use `set404` to display your own custom 404 page.
 
 ```php
-app()->set404(function() use($app) {
+app()->set404(function () use($app) {
   response()->page("./pages/404.html");
 });
 ```
@@ -42,7 +42,7 @@ If you still wish to use a custom handler, you can set one with `setErrorHandler
 app()->setErrorHandler(['\Leaf\Exception\General', 'defaultError']);
 
 // use a custom function
-app()->setErrorHandler(function() use($app) {
+app()->setErrorHandler(function () use($app) {
   response()->page("./pages/500.html");
 });
 ```

@@ -63,7 +63,7 @@ So, we're telling `add` to alert us if someone has already registered with the n
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
-$app->post("/register", function() use($app, $db) {
+$app->post("/register", function () use($app, $db) {
   $db->add("users", $app->request->body(), ["username", "email"]);
 });
 ```

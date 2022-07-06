@@ -28,7 +28,7 @@ If you are using request in a leaf app, leaf automatically binds the request cla
 ```php{4}
 $app = new Leaf\App;
 
-$app->post("/user/change-username", function() use($app) {
+$app->post("/user/change-username", function () use($app) {
   echo $app->request()->get("username");
 });
 ```
@@ -38,7 +38,7 @@ $app->post("/user/change-username", function() use($app) {
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
 
 ```php{2}
-app()->post("/items/add", function() {
+app()->post("/items/add", function () {
   echo request()->get("username");
 });
 ```
@@ -58,7 +58,7 @@ $name = request("name");
 `get()` is a general purpose method which retrieves a particular item from the request body. In simpler terms, it works like `$_POST['key']` but works for all request types. It takes in one parameter: the key of the parameter you wish to get.
 
 ```php
-$app->post('/name/add', function() use($app) {
+$app->post('/name/add', function () use($app) {
   $name = $app->request()->get('name');
 });
 
@@ -149,7 +149,7 @@ echo $username;
 `body()` is another general purpose method which retrieves the key => value pairs of the entire request body. In simpler terms, it works like `$_POST` but works for all request types. In v2.4, `body` can also retrieve files passed into the request.
 
 ```php
-$app->post('/name/add', function() use($app) {
+$app->post('/name/add', function () use($app) {
   $body = $app->request()->body();
 });
 ```

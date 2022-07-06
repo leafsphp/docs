@@ -59,7 +59,7 @@ auth()->config("PASSWORD_ENCODE", null);
 auth()->config("PASSWORD_ENCODE", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_ENCODE", function($password) {
+auth()->config("PASSWORD_ENCODE", function ($password) {
   return Password::hash($password);
 });
 ```
@@ -79,7 +79,7 @@ auth()->config("PASSWORD_VERIFY", null);
 auth()->config("PASSWORD_VERIFY", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_VERIFY", function($password) {
+auth()->config("PASSWORD_VERIFY", function ($password) {
   return Password::verify($password);
 });
 ```

@@ -24,7 +24,7 @@ use Leaf\Http\Session;
 
 $app = new Leaf\App;
 
-$app->get("/text", function() use($session) {
+$app->get("/text", function () use($session) {
   Session::set("name", "Michael Darko");
 });
 ```
@@ -149,7 +149,7 @@ Session::unset(['name', 'email']);
 `reset` simply re-initialises a session.
 
 ```php
-$app->post('/session/reset', function() use($session) {
+$app->post('/session/reset', function () use($session) {
  Session::reset();
 });
 ```

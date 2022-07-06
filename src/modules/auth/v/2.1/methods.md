@@ -148,7 +148,7 @@ We are telling `register` to alert us if someone has already registered with the
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
-app()->post('/register', function() {
+app()->post('/register', function () {
   auth()->register(request()->body(), ['username', 'email']);
 });
 ```

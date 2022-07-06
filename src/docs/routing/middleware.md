@@ -16,7 +16,7 @@ Leaf's Core router supports Before Route Middlewares, which are executed before 
 Like route handling functions, you hook a handling function to a combination of one or more HTTP request methods and a specific route pattern.
 
 ```php
-$app->before('GET|POST', '/admin/.*', function() {
+$app->before('GET|POST', '/admin/.*', function () {
     if (!isset($_SESSION['user'])) {
         header('location: /auth/login');
         exit();
@@ -34,7 +34,7 @@ $homeMiddleware = function () {
     echo "Home middleware";
 };
 
-$app->get("/home", ["middleware" => $homeMiddleware, function() {
+$app->get("/home", ["middleware" => $homeMiddleware, function () {
     echo "User Home";
 }]);
 ```
@@ -46,7 +46,7 @@ Unlike route handling functions, more than one before route middleware is execut
 Before route middlewares are route specific. Using a general route pattern (viz. all URLs), they can become Before Router Middlewares (in other projects sometimes referred to as before app middlewares) which are always executed, no matter what the requested URL is.
 
 ```php
-$app->before('GET', '/.*', function() {
+$app->before('GET', '/.*', function () {
     // ... this will always be executed
 });
 ```
@@ -86,7 +86,7 @@ This hook runs when leaf completely finishes route execution and cleans up on th
 ```php
 $app = new Leaf\App;
 
-$app->run(function() {
+$app->run(function () {
     echo "Final thing to run";
 });
 ```
@@ -94,7 +94,7 @@ $app->run(function() {
 Also note that the final function may return a value for further use if need be.
 
 ```php
-$time = Leaf\Router::run(function() {
+$time = Leaf\Router::run(function () {
     return Leaf\Date::now();
 });
 
@@ -106,7 +106,7 @@ To get started with hooks, simply use the `hook` method to define the hook you w
 **It doesn't matter the order in which you define hooks. Leaf router will run them in the correct order.**
 
 ```php
-$app->hook("router.before", function() {
+$app->hook("router.before", function () {
     Leaf\Http\Headers::resetStatus(202);
 });
 ```

@@ -61,7 +61,7 @@ composer require imaginary/router
 // initialise imaginary router
 $imr = new Imaginary\Router();
 
-$imr->get("/", function() {
+$imr->get("/", function () {
   // you can still use leaf modules
   response()->json(["title" => "hello"]);
 });
@@ -73,13 +73,13 @@ $imr->get("/", function() {
 From this point onwards, we will assume that you are using Leaf router inside a leaf app, as such, we will use the app syntax:
 
 ```php
-app()->get('/', function() {...});
+app()->get('/', function () {...});
 ```
 
 If however, you are using leaf router outside leaf, simply change `app()`/`$app` to the router class:
 
 ```php
-Router::get('/', function() {...});
+Router::get('/', function () {...});
 ```
 
 :::
@@ -94,7 +94,7 @@ You can add a route that handles only GET HTTP requests with the Leaf router's g
 - The route callback
 
 ```php
-app()->get('/home', function() {
+app()->get('/home', function () {
   // your code
 });
 ```
@@ -107,7 +107,7 @@ You can add a route that handles only POST HTTP requests with the Leaf router's 
 - The route callback
 
 ```php
-app()->post('/users/add', function() use($request) {
+app()->post('/users/add', function () use($request) {
   $user = $request->get('user');
   // create a new user
 });
@@ -124,7 +124,7 @@ You can add a route that handles only PUT HTTP requests with the Leaf router’s
 - The route callback
 
 ```php
-app()->put('/book/edit/{id}', function($id) {
+app()->put('/book/edit/{id}', function ($id) {
   // your code
 });
 ```
@@ -137,7 +137,7 @@ You can add a route that handles only DELETE HTTP requests with the Leaf router'
 - The route callback
 
 ```php
-app()->delete('/quotes/{id}', function($id) {
+app()->delete('/quotes/{id}', function ($id) {
   // delete quote
 });
 ```
@@ -150,7 +150,7 @@ You can add a route that handles only OPTIONS HTTP requests with the Leaf router
 - The route callback
 
 ```php
-app()->options('/quotes/{id}', function($id) {
+app()->options('/quotes/{id}', function ($id) {
   // return headers
 });
 ```
@@ -163,7 +163,7 @@ You can add a route that handles only PATCH HTTP requests with the Leaf router's
 - The route callback
 
 ```php
-app()->patch('/post/{id}', function($id) {
+app()->patch('/post/{id}', function ($id) {
   // your code
 });
 ```
@@ -176,7 +176,7 @@ You can add a route that handles all HTTP requests with the Leaf router's all() 
 - The route callback
 
 ```php
-app()->all('/post/{id}', function($id) {
+app()->all('/post/{id}', function ($id) {
   // your code
 });
 ```
@@ -222,7 +222,7 @@ You can add a route that handles a couple of HTTP methods with the Leaf router's
 - The route callback
 
 ```php
-app()->match('GET|POST', '/people', function() {
+app()->match('GET|POST', '/people', function () {
   // your code
 });
 ```
@@ -242,7 +242,7 @@ This is the biggest change Leaf router has seen over the period of a year. Route
 Leaf route handlers are usually callable functions like this:
 
 ```php
-app()->get("/home", function() {
+app()->get("/home", function () {
   echo "User Home";
 });
 ```
@@ -256,7 +256,7 @@ app()->get("/home", "HomeController@index");
 This means there was no space to chain additional items to the route, this is solved by route options.
 
 ```php
-app()->get("/home", ["name" => "home", function() {
+app()->get("/home", ["name" => "home", function () {
     echo "User Home";
 }]);
 ```
@@ -282,7 +282,7 @@ app()->group("/user", ["namespace" => "\\", function () {
 From v2.5.0 of Leaf, you can give route names which you can call them with instead of using the path (Inspired by vue-router).
 
 ```php
-app()->get("/home", ["name" => "home", function() {
+app()->get("/home", ["name" => "home", function () {
   echo "User Home";
 }]);
 ```

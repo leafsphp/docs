@@ -112,7 +112,7 @@ auth()->config("PASSWORD_ENCODE", null);
 auth()->config("PASSWORD_ENCODE", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_ENCODE", function($password) {
+auth()->config("PASSWORD_ENCODE", function ($password) {
   return Password::hash($password);
 });
 ```
@@ -132,7 +132,7 @@ auth()->config("PASSWORD_VERIFY", null);
 auth()->config("PASSWORD_VERIFY", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_VERIFY", function($password) {
+auth()->config("PASSWORD_VERIFY", function ($password) {
   return Password::verify($password);
 });
 ```
@@ -590,7 +590,7 @@ So, we're telling `register` to alert us if someone has already registered with 
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
-app()->post("/register", function() {
+app()->post("/register", function () {
   auth()->register(
     "users",
     request()->body(),
@@ -613,7 +613,7 @@ auth()->register("users", $data);
 The password encode option here has also been removed. Use the auth config above instead. The final parameter is now the validate param which is an array of rules to test the params.
 
 ```php
-app()->post("/register", function() use($app) {
+app()->post("/register", function () use($app) {
   auth()->register(
     "users",
     request()->body(),

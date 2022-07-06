@@ -25,7 +25,7 @@ Examples
 Placeholders are easier to use than PRCEs, but offer you less control as they internally get translated to a PRCE that matches any character (.*).
 
 ```php
-app()->get('/movies/{movieId}/photos/{photoId}', function($movieId, $photoId) {
+app()->get('/movies/{movieId}/photos/{photoId}', function ($movieId, $photoId) {
     echo 'Movie #' . $movieId . ', photo #' . $photoId);
 });
 ```
@@ -33,7 +33,7 @@ app()->get('/movies/{movieId}/photos/{photoId}', function($movieId, $photoId) {
 **Note:** the name of the placeholder does not need to match with the name of the parameter that is passed into the route handling function...although it's adviced:
 
 ```php
-app()->get('/movies/{foo}/photos/{bar}', function($movieId, $photoId) {
+app()->get('/movies/{foo}/photos/{bar}', function ($movieId, $photoId) {
     echo 'Movie #' . $movieId . ', photo #' . $photoId);
 });
 ```
@@ -63,12 +63,12 @@ The subpatterns defined in Dynamic PCRE-based Route Patterns are converted to pa
 
 ```php
 // Bad
-app()->get('/hello/\w+', function($name) {
+app()->get('/hello/\w+', function ($name) {
     echo 'Hello ' . htmlentities($name);
 });
 
 // Good
-app()->get('/hello/(\w+)', function($name) {
+app()->get('/hello/(\w+)', function ($name) {
     echo 'Hello ' . htmlentities($name);
 });
 ```
@@ -78,7 +78,7 @@ app()->get('/hello/(\w+)', function($name) {
 When multiple subpatterns are defined, the resulting route handling parameters are passed into the route handling function in the order they are defined in:
 
 ```php
-app()->get('/movies/(\d+)/photos/(\d+)', function($movieId, $photoId) {
+app()->get('/movies/(\d+)/photos/(\d+)', function ($movieId, $photoId) {
     echo 'Movie #' . $movieId . ', photo #' . $photoId);
 });
 ```

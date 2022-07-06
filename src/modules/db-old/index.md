@@ -84,7 +84,7 @@ Queries with with Leaf DB are much like what you're used to. Though a query buil
 ```php
 $db->connect($host, $user, $password, $dbname);
 
-$app->get('/users/all', function() use($app) {
+$app->get('/users/all', function () use($app) {
   $users = $db->query("SELECT username FROM users")->fetchAll();
   $app->response()->json($users);
 });
@@ -95,7 +95,7 @@ As normal as this seems, we take it a step further by providing you with a much 
 ```php
 $db->connect($host, $user, $password, $dbname);
 
-$app->get('/users/{id}', function($id) use($app) {
+$app->get('/users/{id}', function ($id) use($app) {
   $user = $db->query("SELECT username FROM users WHERE id = ?", [$id])->fetchObj();
   $app->response()->json($user);
 });

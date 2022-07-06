@@ -188,7 +188,7 @@ Not every project is the same, as such, you might need validation rules which ar
 *You will need to use `addError` to save error messages when the validation fails.*
 
 ```php
-form()->rule("max", function($field, $value, $params) {
+form()->rule("max", function ($field, $value, $params) {
   if (strlen($value) > $params) {
     form()->addError($field, "$field can't be more than $params characters");
     return false;

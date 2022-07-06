@@ -24,7 +24,7 @@ If you are using request in a leaf app, leaf automatically binds the request cla
 ```php{4}
 $app = new Leaf\App;
 
-$app->post("/user/change-username", function() use($app) {
+$app->post("/user/change-username", function () use($app) {
   echo $app->request()->get("username");
 });
 ```
@@ -34,7 +34,7 @@ $app->post("/user/change-username", function() use($app) {
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
 
 ```php{2}
-app()->post("/items/add", function() {
+app()->post("/items/add", function () {
   echo request()->get("username");
 });
 ```
@@ -231,7 +231,7 @@ In case `description` was not passed into the request above, Leaf will return `N
 <div class="class-mode">
 
 ```php
-$app->post('/name/add', function() use($app) {
+$app->post('/name/add', function () use($app) {
   $body = $app->request()->body();
 });
 ```
@@ -240,7 +240,7 @@ $app->post('/name/add', function() use($app) {
 <div class="functional-mode">
 
 ```php
-app()->post('/name/add', function() {
+app()->post('/name/add', function () {
   $body = request()->body();
 });
 ```
