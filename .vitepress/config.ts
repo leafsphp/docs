@@ -170,7 +170,8 @@ const mainSidebar = [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
-      { text: 'Your first app', link: '/docs/introduction/first-app' }
+      { text: 'Your first app', link: '/docs/introduction/first-app' },
+      { text: 'Functional Mode', link: '/docs/tooling/functions' }
     ]
   },
   {
@@ -192,7 +193,7 @@ const mainSidebar = [
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Logging', link: '/docs/tooling/logging' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
-      { text: 'Functional Mode', link: '/docs/tooling/functions' }
+      { text: 'Middleware', link: '/docs/routing/middleware' },
     ]
   },
   {
@@ -202,7 +203,6 @@ const mainSidebar = [
       { text: 'Error Handling', link: '/docs/routing/errors' },
       { text: 'Sub routing', link: '/docs/routing/sub-routing' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
-      { text: 'Middleware', link: '/docs/routing/middleware' },
       {
         text: 'Optional Route sub-patterns',
         link: '/docs/routing/sub-patterns'
