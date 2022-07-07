@@ -1,8 +1,8 @@
 # Getting Started
 
-Welcome to the Vue tutorial!
+Welcome to the Leaf tutorial!
 
-The goal of this tutorial is to quickly give you an experience of what it feels like to work with Vue, right in the browser. It does not aim to be comprehensive, and you don't need to understand everything before moving on. However, after you complete it, make sure to also read the <a target="_blank" href="/guide/introduction.html">Guide</a> which covers each topic in more details.
+This is an attempt to give you the experience of what it feels like to work with Leaf, right in your browser. It aims to give you the basic knowledge required to build a simple Leaf project. You don't need to understand everything before moving on, however, after you complete it, make sure to also read the <a target="_blank" href="/docs/introduction/">docs which cover each topic</a> in more details.
 
 ## Prerequisites
 

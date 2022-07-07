@@ -11,8 +11,6 @@ This is the documentation for Leaf v3.0.
 
 Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, simple, but powerful web apps and APIs quickly and easily. Over the years, we've been focusing on delivering much simpler and more performant code, which can be used in all your PHP apps.
 
-<br>
-
 Version 3 of Leaf brings more to the table with a theme centring on developer experience and usability, but with all the goodies while ensuring users have the best experience as well.
 
 [→ Checkout Leaf 3's features](/docs/introduction/features)
@@ -52,12 +50,12 @@ At the core of Leaf PHP is a system that enables us to declaratively define appl
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
-$app->get("/", function () {
-  echo "Hello world";
+$app->get('/', function () {
+  echo 'Hello world';
 });
 
 $app->run();
@@ -70,10 +68,10 @@ $app->run();
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
-  echo "Hello world";
+app()->get('/', function () {
+  echo 'Hello world';
 });
 
 app()->run();
@@ -83,19 +81,19 @@ app()->run();
 
 We have already created our very first Leaf app! This is as simple as it gets.
 
-In addition, we can output data with <span class="class-mode">`Leaf\Http\Response`</span><span class="functional-mode">Leaf response</span>. This is a module that allows us to output data of various types without any hassle.
+In addition, we can output data with Leaf response. This is a module that allows us to output data of various types without any hassle.
 
 <div class="class-mode">
 
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
-$app->get("/", function () use($app) {
-  $app->response()->markup("Hello world");
+$app->get('/', function () use($app) {
+  $app->response()->markup('Hello world');
 });
 
 $app->run();
@@ -109,10 +107,10 @@ Now you might be wondering why we need to go through all of this just to return 
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
-  response()->markup("Hello world");
+app()->get('/', function () {
+  response()->markup('Hello world');
 });
 
 app()->run();
@@ -127,15 +125,15 @@ We use `response` here instead of `echo` because it takes care of a lot of issue
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
-$app->get("/", function () {
+$app->get('/', function () {
   // set content-type to json
   Leaf\Http\Headers::contentJSON();
 
-  echo "<b>Hello world</b>";
+  echo '<b>Hello world</b>';
 });
 
 $app->run();
@@ -148,13 +146,13 @@ $app->run();
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
+app()->get('/', function () {
   // set content-type to json
   Leaf\Http\Headers::contentJSON();
 
-  echo "<b>Hello world</b>";
+  echo '<b>Hello world</b>';
 });
 
 app()->run();
@@ -162,21 +160,11 @@ app()->run();
 
 </div>
 
-When we run this, we get:
-
-```json
-"<b>Hello world</b>"
-```
-
-instead of
-
-```html
-Hello World
-```
+When we run this, we get "\<b>Hello world\</b>" instead of **Hello World**
 
 Unlike the confusion above between the content type and echo, Leaf response makes sure that whatever content we're trying to render is reflected in the content type. This is just one of the many things that response takes care of automatically.
 
-## "Functional Mode"
+## Functional Mode
 
 We have mostly talked about general features that are the same even in Leaf 2, so let's talk about some spice in Leaf 3.
 
@@ -189,10 +177,10 @@ Basically, leaf 3 comes with global helper functions that take away the only pai
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
-  response()->markup("Hello world");
+app()->get('/', function () {
+  response()->markup('Hello world');
 });
 
 app()->run();
@@ -211,15 +199,15 @@ The user navigates to /?greeting=hello%20world
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
+app()->get('/', function () {
   // we can get the GET request data from the URL like this
-  $greeting = request()->get("greeting"); // hello world
+  $greeting = request()->get('greeting'); // hello world
 
   // output json encoded data
   response()->json([
-    "greeting" => $greeting
+    'greeting' => $greeting
   ]);
 });
 
@@ -233,7 +221,7 @@ The most beautiful thing about the request object is that all data passed into y
 Leaf supports two different ways of writing your code:
 
 - Using functional mode which you saw above
-- Using class mode which is what has been used from Leaf v1
+- Using class mode which is what has been used since Leaf v1
 
 ### Class Mode
 
@@ -279,16 +267,16 @@ To demonstrate this, we will expand the app above to output a template instead o
 - Blade: A port of the laravel blade templating engine
 - Leaf Veins: Lightweight but powerful templating
 
-For this demo, we will use BareUI. We can install BareUI with composer.
-
-```sh
-composer require leafs/bareui
-```
-
-Or with Leaf CLI:
+For this demo, we will use BareUI. We can install BareUI with leaf CLI.
 
 ```sh
 leaf install bareui
+```
+
+Or with composer:
+
+```sh
+composer require leafs/bareui
 ```
 
 After this, Leaf **automatically** links the BareUI class for you and makes it available on the leaf object as `template`. So from there, we can create our template. I'll name this `index.view.php` (BareUI templates end in `.view.php`)

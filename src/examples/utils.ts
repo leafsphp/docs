@@ -7,7 +7,11 @@ export type ExampleData = {
   _hint?: ExampleData
 }
 
-function indent(str: string): string {
+function indent(str?: string): string {
+  if (!str) {
+    return '';
+  }
+
   return str
     .split('\n')
     .map((l) => (l.trim() ? `  ${l}` : l))
@@ -88,6 +92,7 @@ function forEachComponent(
 ) {
   for (const filename in raw) {
     const content = raw[filename]
+
     if (
       filename === 'description.txt' ||
       filename === 'description.md' ||
@@ -98,12 +103,12 @@ function forEachComponent(
       files[filename] = content
     } else {
       const {
-        'template.html': template,
-        'composition.js': composition,
-        'options.js': options,
+        'template.php': template,
+        'functionalMode.php': functionalMode,
+        'classMode.php': classMode,
         'style.css': style
       } = content
-      cb(filename, { template, composition, options, style })
+      cb(filename, { template, functionalMode, classMode, style })
     }
   }
 }
@@ -130,24 +135,23 @@ export function resolveSFCExample(
   forEachComponent(
     raw,
     files,
-    (filename, { template, composition, options, style }) => {
+    (filename, { template, functionalMode, classMode, style }) => {
       const desc = raw['description.txt'] as string
-      let sfcContent =
-        desc && filename === 'App' ? `<!--\n${desc.trim()}\n-->\n\n` : ``
-      if (preferFunctional && composition) {
-        sfcContent += `<script setup>\n${toScriptSetup(
-          composition,
-          template
-        )}<\/script>\n\n`
+      let sfcContent = ''
+      if (preferFunctional && functionalMode) {
+        sfcContent += `${functionalMode}`
+      } else if (!preferFunctional && classMode) {
+        sfcContent += `${classMode}`
+      } else {
+        sfcContent += `${indent(template)}`
       }
-      if (!preferFunctional && options) {
-        sfcContent += `<script>\n${options}<\/script>\n\n`
-      }
-      sfcContent += `<template>\n${indent(template)}</template>`
-      if (style) {
-        sfcContent += `\n\n<style>\n${style}</style>`
-      }
-      files[filename + '.vue'] = sfcContent
+      // if (!preferFunctional && classMode) {
+      //   sfcContent += `<script>\n${classMode}<\/script>\n\n`
+      // }
+      // if (style) {
+      //   sfcContent += `\n\n<style>\n${style}</style>`
+      // }
+      files[filename + '.php'] = sfcContent
     }
   )
   return files
@@ -171,15 +175,15 @@ export function resolveNoBuildExample(
     (filename, { template, composition, options, style }) => {
       let js = (preferFunctional ? composition : options) || ''
       // rewrite imports to *.vue
-      js = js.replace(
-        /import (.*) from '(.*)\.vue'/g,
-        "import $1 from '$2.js'"
-      )
+      // js = js.replace(
+      //   /import (.*) from '(.*)\.vue'/g,
+      //   "import $1 from '$2.js'"
+      // )
 
       const _template = indent(toKebabTags(template).trim())
       if (style) css += style
 
-      if (filename === 'App') {
+      if (filename === 'index') {
         if (js) {
           html += `<script type="module">\n${injectCreateApp(
             js

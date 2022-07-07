@@ -16,6 +16,15 @@ import {
   VTLink
 } from '@mychi/leaf-theme'
 
+const output = ref('')
+
+const run = () => {
+  output.value = JSON.stringify({
+    message: 'hello',
+  })
+  // console.log(store.state.files);
+}
+
 const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
 })
@@ -76,11 +85,11 @@ function updateExample(scroll = false) {
 
   const content = showingHint.value ? data[hash]._hint! : data[hash]
 
+  console.log(data, 'data')
+
   store.setFiles(
-    preferSFC.value
-      ? resolveSFCExample(content, preferFunctional.value)
-      : resolveNoBuildExample(content, preferFunctional.value),
-    preferSFC.value ? 'App.php' : 'index.html'
+    resolveSFCExample(content, preferFunctional.value),
+    'index.php'
   )
 
   if (scroll) {
@@ -141,6 +150,8 @@ updateExample()
       :clearConsole="false"
       :showImportMap="false"
       @keyup="showingHint = false"
+      :output="output"
+      :run="run"
     />
   </section>
 </template>

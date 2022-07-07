@@ -31,7 +31,7 @@ function updateExample() {
     preferSFC.value
       ? resolveSFCExample(data[hash], preferFunctional.value)
       : resolveNoBuildExample(data[hash], preferFunctional.value),
-    preferSFC.value ? 'App.php' : 'index.html'
+    preferSFC.value ? 'index.php' : 'index.html'
   )
 }
 </script>
