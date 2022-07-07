@@ -16,6 +16,14 @@
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
 }
 
+.custom-block {
+  color: var(--vt-c-text-1) !important;
+}
+
+.custom-block .custom-block-title {
+  font-weight: 600 !important;
+}
+
 .dark .custom-block div[class*='language-'] {
   background-color: var(--vt-c-bg) !important;
 }
