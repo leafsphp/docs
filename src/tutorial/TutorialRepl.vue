@@ -19,9 +19,13 @@ import {
 const output = ref('')
 
 const run = () => {
-  output.value = JSON.stringify({
-    message: 'hello',
-  })
+  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🚀 Compiling your code...</div>'
+
+  setTimeout(() => {
+    output.value = JSON.stringify({
+      message: 'hello',
+    })
+  }, 3000);
   // console.log(store.state.files);
 }
 
@@ -194,7 +198,6 @@ updateExample()
   width: 45%;
   height: var(--height);
   padding: 0 32px 24px;
-  border-right: 1px solid var(--vt-c-divider-light);
   font-size: 15px;
   overflow-y: auto;
   position: relative;
