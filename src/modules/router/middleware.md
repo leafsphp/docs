@@ -127,7 +127,7 @@ class Test extends Leaf\Middleware
     {
         echo "my test middleware";
         
-        $this->callNext();
+        $this->next();
     }
 }
 
