@@ -11,7 +11,7 @@
   "dependencies": {
     "449.css": "^1.3.0",
     "@codemirror/lang-php": "^6.0.0",
-    "@mychi/leaf-theme": "^0.1.4",
+    "@mychi/leaf-theme": "^0.1.5",
     "@vue/repl": "^1.2.4",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.9.0",
