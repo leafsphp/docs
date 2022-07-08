@@ -1,4 +1,5 @@
-# Leaf CSRF  <Badge text="EXPERIMENTAL" type="warning" />
+# Leaf CSRF 
+<!-- <Badge text="EXPERIMENTAL" type="warning" /> -->
 
 [![Latest Stable Version](https://poser.pugx.org/leafs/csrf/v/stable)](https://packagist.org/packages/leafs/csrf)
 [![Total Downloads](https://poser.pugx.org/leafs/csrf/downloads)](https://packagist.org/packages/leafs/csrf)

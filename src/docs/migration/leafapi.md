@@ -125,6 +125,6 @@ The cors method is automatically linked to the cors module by Leaf and so, no ex
 
 Some of the new features to keep an eye on in Leaf 3 include:
 
-- [Functional Mode](/docs/core/functional-mode.html) <Badge text="EXPERIMENTAL" type="warning" />
-- [Glopbal functions](/docs/core/globals/) <Badge text="EXPERIMENTAL" type="warning" />
+<!-- - [Functional Mode](/docs/core/functional-mode.html) <Badge text="EXPERIMENTAL" type="warning" /> -->
+<!-- - [Glopbal functions](/docs/core/globals/) <Badge text="EXPERIMENTAL" type="warning" /> -->
 - [CORS module](/modules/cors/)

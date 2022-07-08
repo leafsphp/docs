@@ -1,4 +1,5 @@
-# Leaf Anchor <Badge text="new" />
+# Leaf Anchor
+<!-- <Badge text="new" /> -->
 
 [![Latest Stable Version](https://poser.pugx.org/leafs/anchor/v/stable)](https://packagist.org/packages/leafs/anchor)
 [![Total Downloads](https://poser.pugx.org/leafs/anchor/downloads)](https://packagist.org/packages/leafs/anchor)

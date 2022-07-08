@@ -5,7 +5,7 @@ title: "Authentication helper"
 <!-- markdownlint-disable no-inline-html -->
 # 🧨 Leaf Authentication
 
-Authentication provides simple methods to help with manual authentication and working with tokens. In v2, Authentication has been added to Leaf Heplers, so it's now just an authentication helper. If you want a much simpler way, you can check out [Simple Auth](leaf/v/2.5.0/core/auth).
+Authentication provides simple methods to help with manual authentication and working with tokens. In v2, Authentication has been added to Leaf Heplers, so it's now just an authentication helper. If you want a much simpler way, you can check out [Simple Auth](/modules/auth/).
 
 ## Working with tokens
 

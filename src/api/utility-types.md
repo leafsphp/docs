@@ -30,7 +30,7 @@ Used to annotate a prop with more advanced types when using runtime props declar
   }
   ```
 
-- **See also:** [Guide - Typing Component Props](/guide/typescript/class-mode.html#typing-component-props)
+<!-- - **See also:** [Guide - Typing Component Props](/guide/typescript/class-mode.html#typing-component-props) -->
 
 ## ComponentCustomProperties
 
@@ -49,11 +49,11 @@ Used to augment the component instance type to support custom global properties.
   }
   ```
 
-  :::tip
+  <!-- :::tip
   Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/class-mode.html#augmenting-global-properties) for more details.
-  :::
+  ::: -->
 
-- **See also:** [Guide - Augmenting Global Properties](/guide/typescript/class-mode.html#augmenting-global-properties)
+<!-- - **See also:** [Guide - Augmenting Global Properties](/guide/typescript/class-mode.html#augmenting-global-properties) -->
 
 ## ComponentCustomOptions
 
@@ -71,11 +71,11 @@ Used to augment the component options type to support custom options.
   }
   ```
 
-  :::tip
+  <!-- :::tip
   Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/class-mode.html#augmenting-global-properties) for more details.
-  :::
+  ::: -->
 
-- **See also:** [Guide - Augmenting Custom Options](/guide/typescript/class-mode.html#augmenting-custom-options)
+<!-- - **See also:** [Guide - Augmenting Custom Options](/guide/typescript/class-mode.html#augmenting-custom-options) -->
 
 ## ComponentCustomProps
 
@@ -98,9 +98,9 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
   <MyComponent hello="world" />
   ```
 
-  :::tip
+  <!-- :::tip
   Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/class-mode.html#augmenting-global-properties) for more details.
-  :::
+  ::: -->
 
 ## CSSProperties
 
@@ -125,9 +125,9 @@ Used to augment allowed values in style property bindings.
   <div :style="{ '--bg-color': 'blue' }">
   ```
 
- :::tip
+ <!-- :::tip
   Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/class-mode.html#augmenting-global-properties) for more details.
-  :::
+  ::: -->
   
   :::info See also
 SFC `<style>` tags support linking CSS values to dynamic component state using the `v-bind CSS` function. This allows for custom properties without type augmentation. 

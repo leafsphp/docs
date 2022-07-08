@@ -62,4 +62,4 @@ This module allows you to manage session in your application. [Read the docs](/m
 
 ## Cookies (module)
 
-This module allows you to manage cookies in your application. [Read the docs](/modules/cookies)
+This module allows you to manage cookies in your application. [Read the docs](/modules/cookies/)

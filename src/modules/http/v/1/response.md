@@ -292,7 +292,8 @@ This method uses [Leaf Cookie's unset](/modules/cookies/#unset)
 $app->response()->deleteCookie("name");
 ```
 
-## Functional Mode <Badge text="New" />
+## Functional Mode
+<!-- <Badge text="New" /> -->
 
 Response also adds a new `response` global which allows you quickly use the response object from wherever you are.
 

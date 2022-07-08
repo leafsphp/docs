@@ -138,7 +138,8 @@ In some cases, for whatever reason, you may want to return the users generated i
 $randomUsers = (new UserFactory)->create(3)->get();
 ```
 
-## Schema <Badge text="New" />
+## Schema
+<!-- <Badge text="New" /> -->
 
 ::: warning NOTE THAT
 Schema isn't compatible with Skeleton by default since it doesn't come with aloe cli.

@@ -128,7 +128,8 @@ This method removes all set cookies.
 Cookie::unsetAll();
 ```
 
-## Functional mode <Badge text="new" />
+## Functional mode
+<!-- <Badge text="new" /> -->
 
 Leaf cookie also hooks into leaf 3's functional mode. If you are using leaf 3, then this is the fastest way to use the cookie class.
 

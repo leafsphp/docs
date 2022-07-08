@@ -1,4 +1,5 @@
-# Http Status Helper <Badge text="new" />
+# Http Status Helper
+<!-- <Badge text="new" /> -->
 <!-- markdownlint-disable no-inline-html -->
 
 This is an http status code helper created in attempt to refactor the response object a bit and speed up the whole Http module flow. It provides various constants and messages for various status codes.

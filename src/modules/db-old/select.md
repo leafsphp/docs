@@ -125,7 +125,7 @@ $db->choose("books", "*", ["author" => "mychi.darko", "published" => "2019"], "L
 
 #### Validation
 
-`choose` also has inbuilt validation which validates parameters according to set rules. This uses the [`Leaf\Form->validate`](leaf/v/2.5.0/core/forms) method. You can check it out for more information on validation.
+`choose` also has inbuilt validation which validates parameters according to set rules. This uses the [`Leaf\Form->validate`](/modules/forms/) method. You can check it out for more information on validation.
 
 `choose` takes in a fifth parameter which is a boolean, this is whether of not to validate the data passed into `choose` using the default checks.
 
@@ -148,7 +148,7 @@ $db->choose("books", "*", ["author" => "mychi.darko", "published" => "2019"], "L
 
 Here, we're telling `choose` that the **author** parameter should be a valid username, and the **published** param should contain only numbers. If any of these conditions(rules) are not met, the application throws an error and breaks.
 
-You can view all validation rules [here](leaf/v/2.5.0/core/form?id=validation)
+You can view all validation rules [here](/modules/forms/#validation)
 
 ```php
 $db->choose($table, $fields, $params, $options, $defaultChecks, $validation);

@@ -2,7 +2,8 @@
 
 As demonstrated [before](/modules/db/v/2/#simple-queries), Leaf Db allows you to perfectly write SQL queries, however, it also provides simpler and more convenient methods for building queries. This means that you won't need to write any SQL statements.
 
-## create <Badge text="New" />
+## create
+<!-- <Badge text="New" /> -->
 
 This method helps you build a query to create a database.
 
@@ -10,7 +11,8 @@ This method helps you build a query to create a database.
 db()->create('dbName')->execute();
 ```
 
-## drop <Badge text="New" />
+## drop
+<!-- <Badge text="New" /> -->
 
 This method helps you build a query to drop a database.
 
@@ -49,7 +51,8 @@ You can also pass in a bunch of params to check for:
 $user = db()->select("users")->where(["username" => "mychi", "password" => "..."])->first();
 ```
 
-#### Comparators <Badge text="new" />
+#### Comparators
+<!-- <Badge text="new" /> -->
 
 v2 of leaf db introduces a third parameter to the `where` and `orWhere` blocks. This allows you to check how a value compares to another using `=`, `LIKE`, `>`, ...
 

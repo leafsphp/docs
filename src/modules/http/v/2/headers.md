@@ -110,7 +110,8 @@ Leaf\Http\Headers::remove("WWW-Authenticate");
 Leaf\Http\Headers::remove(["Content-Type", "WWW-Authenticate"]);
 ```
 
-## `has` <sup><Badge text="new" /></sup>
+## `has`
+<!-- <sup><Badge text="new" /></sup> -->
 
 This method allows you to check if a header has been set in the current request. It returns `true` if the header has been set and `false` otherwise.
 

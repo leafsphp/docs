@@ -651,7 +651,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
     optimizeDeps: {
       include: ['gsap', 'dynamics.js'],
-      exclude: ['@vue/repl']
+      exclude: ['@vue/repl', '@mychi/leaf-theme']
     },
     // @ts-ignore
     ssr: {

@@ -96,7 +96,7 @@ This not only documents your component, but will also warn other developers usin
 
 <div class="class-mode">
 
-See also: [Typing Component Props](/guide/typescript/class-mode.html#typing-component-props) <sup class="vt-badge ts" />
+<!-- See also: [Typing Component Props](/guide/typescript/class-mode.html#typing-component-props) <sup class="vt-badge ts" /> -->
 
 </div>
 

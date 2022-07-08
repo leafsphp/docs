@@ -764,7 +764,7 @@ $user_id = auth()->id();
 
 <hr>
 
-<!-- ### [Leaf Authentication Methods](leaf/v/2.5.0/core/authentication) -->
+<!-- ### [Leaf Authentication Methods](/docs/core/authentication) -->
 
 Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solutions for token authentication. This provides a simple way to work with manual authentication and tokens. All methods here are now available in `Leaf\Auth`.
 
@@ -772,4 +772,4 @@ Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solution
 $payload = auth()->validate($token);
 ```
 
-<!-- Read [authentication](leaf/v/2.5.0/core/authentication) for more info -->
+<!-- Read [authentication](/docs/core/authentication) for more info -->

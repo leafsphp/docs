@@ -125,7 +125,7 @@ See also: [Typing Event Handlers](/guide/typescript/composition-api.html#typing-
 </div>
 <div class="class-mode">
 
-See also: [Typing Event Handlers](/guide/typescript/class-mode.html#typing-event-handlers) <sup class="vt-badge ts" />
+<!-- See also: [Typing Event Handlers](/guide/typescript/class-mode.html#typing-event-handlers) <sup class="vt-badge ts" /> -->
 
 </div>
 

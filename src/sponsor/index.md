@@ -29,7 +29,7 @@ If you are building a product where your target customers are developers, you wi
 
 ## Sponsoring Vue as an Individual
 
-If you are an individual user and have enjoyed the productivity of using Vue, consider donating as a sign of appreciation - like buying us coffee once in a while. Many of our team members accept sponsorships and donations via GitHub Sponsors. Look for the "Sponsor" button on each team member's profile on our [team page](/about/team).
+If you are an individual user and have enjoyed the productivity of using Vue, consider donating as a sign of appreciation - like buying us coffee once in a while. Many of our team members accept sponsorships and donations via GitHub Sponsors. Look for the "Sponsor" button on each team member's profile on our [team page](/community/team).
 
 You can also try to convince your employer to sponsor Vue as a business. This may not be easy, but business sponsorships typically make a much larger impact on the sustainability of OSS projects than individual donations, so you will help us much more if you succeed.
 

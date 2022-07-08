@@ -210,5 +210,5 @@ If using Vue CLI or a webpack-based setup, TypeScript in template expressions re
 
 ## API-Specific Recipes
 
-- [TS with Composition API](./composition-api)
-- [TS with Options API](./class-mode)
+<!-- - [TS with Composition API](./composition-api)
+- [TS with Options API](./class-mode) -->

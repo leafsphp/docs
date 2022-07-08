@@ -114,7 +114,7 @@ app()->post('/users/add', function () use($request) {
 ```
 
 Using Post Params
-View [Request](leaf/v/2.5.0/http/request) for more info on handling params
+View [Request](/modules/http/v/2/request) for more info on handling params
 
 ### PUT requests
 
@@ -187,7 +187,7 @@ app()->all('/post/{id}', function ($id) {
 
 ### Resource Routes
 
-This section assumes you've read [working with controllers](leaf/v/2.5.0/routing/controller). In an MVC application, controllers play a major role as they're the bridge between your view and your model.
+This section assumes you've read [working with controllers](/docs/routing/controller). In an MVC application, controllers play a major role as they're the bridge between your view and your model.
 
 A resource route simply creates all the routes needed to successfully handle a particular feature. This sounds a bit bleak, let's look at an example.
 
@@ -211,7 +211,7 @@ app()->match("GET|HEAD", "/posts/{id}", "$controller@show");
 app()->run();
 ```
 
-Resource routes are handled by a [resource controller](leaf/v/2.5.0/routing/controller?id=resource-controller).
+Resource routes are handled by a [resource controller](/docs/routing/controller?id=resource-controller).
 
 ### Route "Hooking"
 

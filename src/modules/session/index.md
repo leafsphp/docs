@@ -33,7 +33,8 @@ $app->get("/text", function () use($session) {
 });
 ```
 
-## Functional mode <Badge text="new" />
+## Functional mode
+<!-- <Badge text="new" /> -->
 
 Leaf session also hooks into leaf 3's functional mode. If you are using leaf 3, then this is the fastest way to use the session class.
 

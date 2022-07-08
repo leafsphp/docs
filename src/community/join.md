@@ -26,7 +26,7 @@ Our [Code of Conduct](/coc/) is a guide to make it easier to enrich all of us an
 
 ### Contribute Code
 
-As with any project, there are rules to contributing. To ensure that we can help you or accept your pull request as quickly as possible, please read [the contributing guide](/community/contributing/).
+As with any project, there are rules to contributing. To ensure that we can help you or accept your pull request as quickly as possible, please read [the contributing guide](/community/contributing).
 
 After that, you'll be ready to contribute to Leaf's core repositories:
 

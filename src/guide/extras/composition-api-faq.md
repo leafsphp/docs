@@ -70,7 +70,7 @@ Take the folder explorer component from Vue CLI's GUI as an example: this compon
 
 The [original version](https://github.com/vuejs/vue-cli/blob/a09407dd5b9f18ace7501ddb603b95e31d6d93c0/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue#L198-L404) of the component was written in Options API. If we give each line of code a color based on the logical concern it is dealing with, this is how it looks:
 
-<img alt="folder component before" src="./images/class-mode.png" width="129" height="500" style="margin: 1.2em auto">
+<!-- <img alt="folder component before" src="./images/class-mode.png" width="129" height="500" style="margin: 1.2em auto"> -->
 
 Notice how code dealing with the same logical concern is forced to be split under different options, located in different parts of the file. In a component that is several hundred lines long, understanding and navigating a single logical concern requires constantly scrolling up and down the file, making it much more difficult than it should be. In addition, if we ever intend to extract a logical concern into a reusable utility, it takes quite a bit of work to find and extract the right pieces of code from different parts of the file.
 

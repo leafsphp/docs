@@ -35,21 +35,24 @@ Recipes should generally:
 
 We request that you follow the template below. We understand, however, that there are times when you may necessarily need to deviate for clarity or flow. Either way, all experiments should at some point discuss the nuance of the choice made using this pattern, preferably in the form of the alternative patterns section.
 
-### Base Example <Badge text="required" type="error" />
+### Base Example
+<!-- <Badge text="required" type="error" /> -->
 
 1. Articulate the problem in a sentence or two.
 2. Explain the simplest possible solution in a sentence or two.
 3. Show a small code sample.
 4. Explain what this accomplishes in a sentence.
 
-### Details about the Value <Badge text="required" type="error" />
+### Details about the Value
+<!-- <Badge text="required" type="error" /> -->
 
 1. Address common questions that one might have while looking at the example. (Blockquotes are great for this)
 2. Show examples of common missteps and how they can be avoided.
 3. Show very simple code samples of good and bad patterns.
 4. Discuss why this may be a compelling pattern. Links for reference are not required but encouraged.
 
-### Real-World Example <Badge text="required" type="error" />
+### Real-World Example
+<!-- <Badge text="required" type="error" /> -->
 
 Demonstrate the code that would power a common or interesting use case, either by:
 
@@ -58,15 +61,18 @@ Demonstrate the code that would power a common or interesting use case, either b
 
 If you choose to do the latter, you should still talk through what it is and does.
 
-### Additional Context <Badge text="optional" />
+### Additional Context
+<!-- <Badge text="optional" /> -->
 
 It's extremely helpful to write a bit about this pattern, where else it would apply, why it works well, and run through a bit of code as you do so or give people further reading materials here.
 
-### When To Avoid This Pattern <Badge text="optional" />
+### When To Avoid This Pattern
+<!-- <Badge text="optional" /> -->
 
 This section is not required, but heavily recommended. It won't make sense to write it for something very simple such as toggling classes based on state change, but for more advanced patterns like mixins it's vital. The answer to most questions about development is ["It depends!"](https://codepen.io/rachsmith/pen/YweZbG), this section embraces that. Here, we'll take an honest look at when the pattern is useful and when it should be avoided, or when something else makes more sense.
 
-### Alternative Patterns <Badge text="required with avoidance section" type="warning" />
+### Alternative Patterns
+<!-- <Badge text="required with avoidance section" type="warning" /> -->
 
 This section is required when you've provided the section above about avoidance. It's important to explore other methods so that people told that something is an antipattern in certain situations are not left wondering. In doing so, consider that the web is a big tent and that many people have different codebase structures and are solving different goals. Is the app large or small? Are they integrating Leaf into an existing project, or are they building from scratch? Are their users only trying to achieve one goal or many? Is there a lot of asynchronous data? All of these concerns will impact alternative implementations. A good codelabs experiment gives developers this context.
 

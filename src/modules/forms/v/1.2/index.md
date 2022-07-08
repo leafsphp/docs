@@ -21,7 +21,8 @@ or
 leaf install form
 ```
 
-## Functional Mode <sup><Badge text="New" /></sup>
+## Functional Mode
+<!-- <sup><Badge text="New" /></sup> -->
 
 Leaf form now supports leaf 3's functional mode which allows you to simply call the `form` method from anywhere in your code. This returns an instance of the `Leaf\Form` class, so in case you can't use functional mode, simply call your method on `Leaf\Form`.
 
@@ -90,7 +91,8 @@ if (!$validatorSuccess) {
 }
 ```
 
-#### Inline validate <Badge text="New" />
+#### Inline validate
+<!-- <Badge text="New" /> -->
 
 For single rules, using an array takes up a few more lines and looks a bit clustered. For those cases, you can run your validation rules inline:
 
@@ -149,11 +151,13 @@ This is a list of all supported validate rules
 - `noSpaces`: can't contain any spaces
 - `max`: max length of a string (requires arguments)
 - `min`: min length of a string (requires arguments)
-- `date`: string should be a valid date <Badge text="New" />
+- `date`: string should be a valid date
+<!-- <Badge text="New" /> -->
 
 **Note that these rules aren't case-sensitive, so you can type them anyway you prefer, as long as the spelling is the same.**
 
-### Custom Error Messages <sup><Badge text="New" /></sup>
+### Custom Error Messages
+<!-- <sup><Badge text="New" /></sup> -->
 
 This has been one of the most sought after features in leaf form, and now it comes pre-packaged in this version. Using custom error messages, you can take your app a step further and define custom error messages in your language of choice. You can do this using the `messages` method.
 

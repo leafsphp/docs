@@ -12,7 +12,7 @@ Now we'll answer both what the community can do for you and what you can do for 
 
 ### Code of Conduct
 
-Our [Code of Conduct](/about/coc) is a guide to make it easier to enrich all of us and the technical communities in which we participate.
+Our is a guide to make it easier to enrich all of us and the technical communities in which we participate.
 
 ### Stay in the Know
 

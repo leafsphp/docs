@@ -8,7 +8,7 @@ import Banner from './Banner.vue';
 <template>
   <section id="hero">
     <div class="flex flex:center-all">
-      <img src="logo-circle.png" class="w:20 mr:_10 d-sm-down:none hero-logo" alt="Leaf" />
+      <img src="/logo-circle.png" class="w:20 mr:_10 d-sm-down:none hero-logo" alt="Leaf" />
       <div class="content-left">
         <h1 class="tagline">
           <span class="accent">Leaf 3.0</span>

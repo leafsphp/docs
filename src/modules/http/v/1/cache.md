@@ -1,4 +1,5 @@
-# Http Cache <Badge text="new" />
+# Http Cache
+<!-- <Badge text="new" /> -->
 <!-- markdownlint-disable no-inline-html -->
 
 ::: warning Watch out

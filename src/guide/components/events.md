@@ -199,7 +199,7 @@ export default {
 }
 ```
 
-See also: [Typing Component Emits](/guide/typescript/class-mode.html#typing-component-emits) <sup class="vt-badge ts" />
+<!-- See also: [Typing Component Emits](/guide/typescript/class-mode.html#typing-component-emits) <sup class="vt-badge ts" /> -->
 
 </div>
 

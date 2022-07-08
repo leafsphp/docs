@@ -217,7 +217,7 @@ You don't have to commit to only one style during the learning phase. The rest o
 
 ## Still Got Questions?
 
-Check out our [FAQ](/about/faq).
+Check out our [FAQ](/community/faq).
 
 ## Pick Your Learning Path
 

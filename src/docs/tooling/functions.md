@@ -1,4 +1,5 @@
-# Functional Mode <Badge text="new" />
+# Functional Mode
+<!-- <Badge text="new" /> -->
 
 <!-- ::: info Video Docs
 Learn about leaf 3's new functional mode.
@@ -130,7 +131,7 @@ Modules which extend functional mode will have a section on their documentation 
 `request` is a 2 way global function which allows you to either get data passed into your application or return the leaf request object.
 
 ::: warning NOTE
-The request global is provided from the [leaf http module](/modules/http). No need to install it since it comes with leaf 3 out of the box.
+The request global is provided from the [leaf http module](/modules/http/). No need to install it since it comes with leaf 3 out of the box.
 :::
 
 ```php
@@ -149,7 +150,7 @@ $username = request()->get("username");
 This global allows you to output json encoded data or return the leaf response object.
 
 ::: warning NOTE
-The response global is provided from the [leaf http module](/modules/http). No need to install it since it comes with leaf 3 out of the box.
+The response global is provided from the [leaf http module](/modules/http/). No need to install it since it comes with leaf 3 out of the box.
 :::
 
 ```php
@@ -168,7 +169,7 @@ response()->markup("<b>Mychi</b>");
 This global allows you to set/get a cookie or return the leaf cookie object.
 
 ::: warning NOTE
-The cookie global is provided from the [leaf cookie module](/modules/cookies).
+The cookie global is provided from the [leaf cookie module](/modules/cookies/).
 :::
 
 ```php

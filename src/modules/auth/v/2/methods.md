@@ -87,7 +87,7 @@ Leaf auth has a very simple and straightforward implementation for password enco
 
 ### Validation
 
-This version of leaf auth has separated validation into it's own method. This allows you to have cleaner methods which are more readable. Validation uses [leaf form](/modules/forms) under the hood, which makes it simple and easy to use. You can find more about form rules in the [leaf form validation docs](/modules/forms/#supported-rules).
+This version of leaf auth has separated validation into it's own method. This allows you to have cleaner methods which are more readable. Validation uses [leaf form](/modules/forms/) under the hood, which makes it simple and easy to use. You can find more about form rules in the [leaf form validation docs](/modules/forms/#supported-rules).
 
 ```php{1}
 $validation = auth()->validate(['username' => 'ValidUsername']);
@@ -287,7 +287,7 @@ This method returns the id of the currently logged in user. In the case of JWTs,
 $userId = auth()->id();
 ```
 
-<!-- ### [Leaf Authentication Methods](leaf/v/2.5.0/core/authentication) -->
+<!-- ### [Leaf Authentication Methods](/docs/core/authentication) -->
 
 <!-- Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solutions for token authentication. This provides a simple way to work with manual authentication and tokens. All methods here are now available in `Leaf\Auth`.
 

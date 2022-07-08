@@ -1,4 +1,5 @@
-# Releases <Badge text="WIP" />
+# Releases
+<!-- <Badge text="WIP" /> -->
 
 ## Release Notes
 
