@@ -257,6 +257,14 @@ app()->get("/", function () {
 app()->run();
 ```
 
+## Modes in the docs
+
+Just as leaf allows you to write your code in 2 ways, with functional mode or class mode, our docs come with examples prepared for both.
+
+You can click on this switch in the sidebar to toggle the mode of the examples on our documentation.
+
+![Switcher](https://user-images.githubusercontent.com/26604242/178108346-c9c22a19-6a82-4786-ac3e-00cbfe69cba8.png)
+
 ## Installing modules
 
 Modules are pieces of functionality that have been packaged and shipped separately from the Leaf core. Modules are used to extend Leaf's reach by performing operations not available on the core. Modules were introduced with Leaf 3, but some of them can be used with earlier versions of Leaf. Modules can also be used in external libraries and frameworks as well. To install a module, simply run its install script with composer or use the leaf CLI.
