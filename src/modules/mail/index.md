@@ -231,7 +231,7 @@ $email = $mail->write([
 ]);
 
 if (!$email) {
-  $app->response->throwErr($mail->errors());
+  $app->response->exit($mail->errors());
 }
 
 $email->send();

@@ -388,7 +388,7 @@ $isGetRequest = $app->request()->typeIs("GET");
 $isPostRequest = $app->request()->typeIs("post");
 $isDeleteRequest = $app->request()->typeIs("Delete");
 
-if ($isGetRequest) $app->response()->throwErr("GET method not allowed");
+if ($isGetRequest) $app->response()->exit("GET method not allowed");
 ```
 
 </div>
@@ -399,7 +399,7 @@ $isGetRequest = request()->typeIs("GET");
 $isPostRequest = request()->typeIs("post");
 $isDeleteRequest = request()->typeIs("Delete");
 
-if ($isGetRequest) response()->throwErr("GET method not allowed");
+if ($isGetRequest) response()->exit("GET method not allowed");
 ```
 
 </div>

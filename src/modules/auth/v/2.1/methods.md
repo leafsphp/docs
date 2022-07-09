@@ -28,7 +28,7 @@ $user = auth()->login([
 ]); // returns null if failed
 
 if (!$user) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 ```
 
@@ -93,13 +93,13 @@ This version of leaf auth has separated validation into it's own method. This al
 $validation = auth()->validate(['firstname' => 'noSpaces']);
 
 if (!$validation) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 
 $user = auth()->login($loginData);
 
 if (!$user) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 ```
 
@@ -125,7 +125,7 @@ $user = auth()->register([
 ]); // returns null if failed
 
 if (!$user) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 ```
 
@@ -264,7 +264,7 @@ $user = auth()->config('DB_TABLE', 'all_users');
 We can catch any errors that occur, from fetching the user, working with the token...
 
 ```php
-$user = auth()->user() ?? $request->throwErr(auth()->errors());
+$user = auth()->user() ?? $request->exit(auth()->errors());
 ```
 
 `user` also allows you to pass an array of items to hide from the returned user array.

@@ -87,7 +87,7 @@ If the validation fails, it returns `null`, you can get any error by calling the
 $payload = Auth::validateToken("SECRET PHRASE"); // returns null if failed
 
 if (!$payload) {
-  $response->throwErr(Auth::errors());
+  $response->exit(Auth::errors());
 }
 ```
 
@@ -107,7 +107,7 @@ If the validation fails, it returns `null`, you can get any error by calling the
 $payload = Auth::validate($token, "SECRET PHRASE"); // returns null if failed
 
 if (!$payload) {
-  $response->throwErr(Auth::errors());
+  $response->exit(Auth::errors());
 }
 ```
 

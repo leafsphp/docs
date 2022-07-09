@@ -78,7 +78,7 @@ $validatorSuccess = Form::validate([
 ]);
 
 if (!$validatorSuccess) {
-  response()->throwErr(Form::errors());
+  response()->exit(Form::errors());
 }
 ```
 

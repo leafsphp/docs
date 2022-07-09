@@ -87,7 +87,7 @@ $validatorSuccess = form()->validate([
 ]);
 
 if (!$validatorSuccess) {
-  response()->throwErr(form()->errors());
+  response()->exit(form()->errors());
 }
 ```
 
@@ -100,7 +100,7 @@ For single rules, using an array takes up a few more lines and looks a bit clust
 $validation = form()->validate('firstname', 'nospaces');
 
 if (!$validation) {
-  response()->throwErr(form()->errors());
+  response()->exit(form()->errors());
 }
 ```
 
