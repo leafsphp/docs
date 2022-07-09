@@ -61,12 +61,12 @@
   padding-left: 20px !important;
 }
 
-.CodeMirror-code {
-  padding-top: 10px !important;
+.CodeMirror-cursors {
+  margin-top: 14px;
 }
 
 .CodeMirror-gutters {
-  padding-top: 10px !important;
+  /* padding-top: 10px !important; */
   border: none !important;
 }
 

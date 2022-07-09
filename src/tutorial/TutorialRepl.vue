@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Repl, ReplStore } from './Repl/vue-repl'
+import axios from 'axios';
 import { inject, watch, version, Ref, ref, computed, nextTick } from 'vue'
 import { data } from './tutorial.data'
 import {
@@ -18,20 +19,50 @@ import {
 
 const output = ref('')
 
-const run = () => {
-  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🚀 Compiling your code...</div>'
-
-  setTimeout(() => {
-    output.value = JSON.stringify({
-      message: 'hello',
-    })
-  }, 3000);
-  // console.log(store.state.files);
-}
-
 const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
 })
+
+const run = async (files: Record<string, any>) => {
+  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🚀 Compiling your code...</div>'
+
+  const form = new FormData();
+  const rawFiles: any = {};
+
+  Object.keys(files).forEach((filename) => {
+    form.set(filename, files[filename].code);
+    rawFiles[filename] = files[filename].code;
+  });
+
+  let { data: folder } = await axios.post('http://localhost:3600/compile', form);
+
+  if (!folder) {
+    return store.state.errors.push('Internal system error, please try again');
+  } else {
+    store.state.errors = [];
+  }
+
+  try {
+    let { data: res } = await axios.get(
+      `http://localhost:3600/${folder.folder}`
+    );
+
+    console.log(rawFiles, res, 'files');
+
+    if (typeof res !== 'string') {
+      res = JSON.stringify(res);
+    }
+
+    output.value = res;
+  } catch (error: any) {
+    output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
+    if (error.response.data) {
+      store.state.errors.push(error.response.data);
+    } else {
+      store.state.errors.push(error);
+    }
+  }
+}
 
 const instruction = ref<HTMLElement>()
 
