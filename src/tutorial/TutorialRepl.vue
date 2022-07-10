@@ -42,18 +42,25 @@ const run = async (files: Record<string, any>) => {
     store.state.errors = [];
   }
 
+  const config = JSON.parse(files['request.json'].code || '');
+  console.log(config, 'config');
+
   try {
-    let { data: res } = await axios.get(
-      `http://localhost:3600/${folder.folder}`
-    );
+    let { data: res } = await axios({
+      url: `http://localhost:3600/${folder.folder}${config.path || '/'}`,
+      method: config.method || 'GET',
+      data: config.data || {},
+    });
 
     console.log(rawFiles, res, 'files');
 
     if (typeof res !== 'string') {
       res = JSON.stringify(res);
+      return output.value = res;
     }
 
-    output.value = res;
+    console.log('here');
+    output.value = `<iframe srcdoc='${res}'></iframe>`;
   } catch (error: any) {
     output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
     if (error.response.data) {
