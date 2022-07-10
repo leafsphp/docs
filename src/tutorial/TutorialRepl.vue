@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Repl, ReplStore } from './Repl/vue-repl'
 import axios from 'axios';
-import { inject, watch, version, Ref, ref, computed, nextTick } from 'vue'
+import { inject, watch, version, Ref, ref, computed, nextTick, onBeforeUnmount, onMounted } from 'vue'
 import { data } from './tutorial.data'
 import {
   resolveSFCExample,
@@ -17,10 +17,18 @@ import {
   VTLink
 } from '@mychi/leaf-theme'
 
-const output = ref('')
+const output = ref('<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;"><img src="https://user-images.githubusercontent.com/26604242/178155909-362f06e6-9da9-473b-b47f-1219b4e65ae2.png"><div style="margin-top:10px;">🚀 Click the run button to compile your code</div></div>')
 
 const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
+})
+
+onMounted(() => {
+  document.body.classList.add('-is-tutorial')
+})
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('-is-tutorial')
 })
 
 const run = async (files: Record<string, any>) => {
@@ -43,12 +51,13 @@ const run = async (files: Record<string, any>) => {
   }
 
   try {
-    const config = JSON.parse(files['request.json'].code || '');
+    let config = JSON.parse(files['request.json'].code || '');
+    config = config.length ? config : null;
 
     let { data: res } = await axios({
-      url: `http://localhost:3600${folder.folder}${config.path || '/'}`,
-      method: config.method || 'GET',
-      data: config.data || {},
+      url: `http://localhost:3600${folder.folder}${config?.path ?? '/'}`,
+      method: config?.method ?? 'GET',
+      data: config?.data ?? {},
       params: config?.method?.toUpperCase() === "GET" ? config.data : {},
     });
 
@@ -61,7 +70,7 @@ const run = async (files: Record<string, any>) => {
     output.value = `<iframe srcdoc='${res}'></iframe>`;
   } catch (error: any) {
     output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
-    if (error.response.data) {
+    if (error?.response?.data) {
       store.state.errors.push(error.response.data);
     } else {
       store.state.errors.push(error);
