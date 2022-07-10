@@ -70,7 +70,7 @@
   border: none !important;
 }
 
-.vue-repl .tab-buttons, .vue-repl .file-selector, .vue-repl .left {
+.vue-repl .tab-buttons, .vue-repl .file-selector, .vue-repl .left, .vue-repl {
   border: none !important;
 }
 
