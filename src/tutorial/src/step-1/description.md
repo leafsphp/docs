@@ -10,11 +10,7 @@ The tutorial assumes basic familiarity with PHP. If you are totally new to PHP, 
 
 ## HOW TO USE THIS TUTORIAL
 
-<details>
-<summary>Layout</summary>
-
 You can edit the code <span class="wide">on the right</span><span class="narrow">below</span> and see the result when you click on the "RUN" button found right next to the preview tab below.
-</details>
 
 <details>
 <summary>Options for running</summary>
