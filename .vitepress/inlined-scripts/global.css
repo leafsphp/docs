@@ -25,6 +25,10 @@
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
 }
 
+.-is-tutorial .VPNavBar {
+  border-bottom: 1px solid var(--vt-c-divider-light) !important;
+}
+
 .custom-block {
   color: var(--vt-c-text-1) !important;
 }
