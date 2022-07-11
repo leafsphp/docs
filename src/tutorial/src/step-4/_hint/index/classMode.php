@@ -19,7 +19,10 @@ $app->get('/page', function () use($app) {
 });
 
 $app->get('/exit', function () use($app) {
-  $app->response()->exit('something');
+  if (!file_exists('./page.html')) {
+    $app->response()->exit('Folder not found');
+  }
+
   $app->response()->page('./page.html');
 });
 
