@@ -43,14 +43,86 @@ app()->run();
 
 </div>
 
-Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
+**Copy and paste the code above in the editor and click on run to see the results.**
+
+You'll notice that although we're outputting html, the browser renders JSON because of the content type. That and many more inconsistencies have been addressed in the response object. To get started with the response object, <span class="class-mode">you can call the `response` method on the leaf instance or use the `Leaf\Http\Response` class.</span><span class="functional-mode">you can simply call the `response` function from anywhere in your app</span>
+
+<div class="class-mode">
+
+```php{8}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  $app->response()->markup('something');
+});
+
+// don't forget to call run
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php{6}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  response()->markup('something');
+});
+
+// don't forget to call run
+app()->run();
+```
+
+</div>
+
+In this exercise, we'll be rendering various content types with leaf response. Let's jump right into it.
 
 <br>
 
-## THE ROUTE PATH
+## WORKING WITH JSON
 
-Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.
+Today, most APIs output JSON to the client, and this requires you to set a content type and encode your data as JSON. All of this however, has been taken by leaf. All you need to do is to call the `json` method on the leaf response object. The JSON method takes in some data to output and the [http status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to attach
 
-::: tip Watch out
-When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
-:::
+<div class="class-mode">
+
+```php{8}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  $app->response()->json('something');
+});
+
+// don't forget to call run
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php{6}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  response()->json('something');
+});
+
+// don't forget to call run
+app()->run();
+```
+
+</div>
+
+Try outputing an array or associative array with the `json` method from the editor. You can do this in the slot that says `// 1. json output`

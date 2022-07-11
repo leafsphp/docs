@@ -2,7 +2,24 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// 1. put route here
-// 2. custom url path here
+app()->get('/', function () {
+  // 1. json output
+});
+
+app()->get('/markup', function () {
+  // 2. markup output
+});
+
+app()->get('/page', function () {
+  // 3. page output
+});
+
+app()->get('/redirect', function () {
+  // 4. redirect output
+});
+
+app()->get('/redirected', function () {
+  echo 'redirected here';
+});
 
 app()->run();

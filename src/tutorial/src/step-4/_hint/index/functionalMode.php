@@ -3,11 +3,25 @@
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  echo "hello world";
+  response()->json([
+    'greeting' => 'Hello World'
+  ]);
 });
 
-app()->put('/custom', function () {
-  echo "custom route";
+app()->get('/markup', function () {
+  response()->markup('<h2>Hello World</h2>');
+});
+
+app()->get('/page', function () {
+  response()->page('./page.html');
+});
+
+app()->get('/redirect', function () {
+  response()->redirect('/redirected');
+});
+
+app()->get('/redirected', function () {
+  echo 'redirected here';
 });
 
 app()->run();
