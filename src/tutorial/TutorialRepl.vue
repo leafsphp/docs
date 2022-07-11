@@ -52,7 +52,7 @@ const run = async (files: Record<string, any>) => {
 
   try {
     let config = JSON.parse(files['request.json'].code || '');
-    config = config.length ? config : null;
+    config = config.path ? config : null;
 
     let { data: res, headers } = await axios({
       url: `http://localhost:3600${folder.folder}${config?.path ?? '/'}`,
@@ -63,7 +63,7 @@ const run = async (files: Record<string, any>) => {
 
     console.log('headers', headers);
 
-    if (headers['content-type'] === 'application/json') {
+    if (headers['content-type'] === 'application/json' && typeof res === 'string') {
       return output.value = res.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
     }
 
