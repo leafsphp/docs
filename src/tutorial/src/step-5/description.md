@@ -1,47 +1,58 @@
-# Form Bindings
+# Creating routes using shortcuts
 
-Using `v-bind` and `v-on` together, we can create two-way bindings on form input elements:
+We saw in the previous tutorial how to create routes on the base level with leaf, however, it get annoying typing `GET` or `POST` in front of every route over and over again. To get rid of this pain, leaf has shortcut methods which provide a crisp and simple way to create and use routes.
 
-```vue-html
-<input :value="text" @input="onInput">
-```
+This method allows you to call an [HTTP method](https://restfulapi.net/http-methods/) directly on the leaf/leaf router instance. Let's look at an example:
 
 <div class="class-mode">
 
-```js
-methods: {
-  onInput(e) {
-    // a v-on handler receives the native DOM event
-    // as the argument.
-    this.text = e.target.value
-  }
-}
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  echo "Something nice";
+});
+
+// don't forget to call run
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+// for a get request
+app()->get('/', function () {
+  echo "Something nice";
+});
+
+// for a post request
+app()->post('/', function () {
+  echo "Something nice";
+});
+
+// don't forget to call run
+app()->run();
 ```
 
 </div>
 
-<div class="composition-api">
+Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
 
-```js
-function onInput(e) {
-  // a v-on handler receives the native DOM event
-  // as the argument.
-  text.value = e.target.value
-}
-```
+<br>
 
-</div>
+## THE ROUTE PATH
 
-Try typing in the input box - you should see the text in `<p>` updating as you type.
+Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.
 
-To simplify two-way bindings, Vue provides a directive, `v-model`, which is essentially a syntax sugar for the above:
-
-```vue-html
-<input v-model="text">
-```
-
-`v-model` automatically syncs the `<input>`'s value with the bound state, so we no longer need to use an event handler for that.
-
-`v-model` works not only on text inputs, but also other input types such as checkboxes, radio buttons, and select dropdowns. We cover more details in <a target="_blank" href="/guide/essentials/forms.html">Guide - Form Bindings</a>.
-
-Now, try to refactor the code to use `v-model` instead.
+::: tip Watch out
+When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
+:::
