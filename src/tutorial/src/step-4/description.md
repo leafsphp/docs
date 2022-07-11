@@ -1,111 +1,56 @@
-# Event Listeners
+# Leaf response
 
-We can listen to DOM events using the `v-on` directive:
+Since we've looked at creating a route, we need to know how to output data from our route. In the earlier example, we used `echo` to output data from our app. That approach however has some issues.
 
-```vue-html
-<button v-on:click="increment">{{ count }}</button>
-```
-
-Due to its frequent use, `v-on` also has a shorthand syntax:
-
-```vue-html
-<button @click="increment">{{ count }}</button>
-```
+If the content type of your app is set to `application/json`, using echo to output `<b>something</b>` will give you JSON instead of html. We can test this with the editor on the right.
 
 <div class="class-mode">
 
-Here, `increment` references a function declared using the `methods` option:
+```php
+<?php
 
-<div class="sfc">
+require __DIR__ . '/vendor/autoload.php';
 
-```js{7-12}
-export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
-  methods: {
-    increment() {
-      // update component state
-      this.count++
-    }
-  }
-}
+header('Content-Type: application/json');
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  echo "<b>Something</b>";
+});
+
+// don't forget to call run
+$app->run();
 ```
 
 </div>
-<div class="html">
+<div class="functional-mode">
 
-```js{7-12}
-createApp({
-  data() {
-    return {
-      count: 0
-    }
-  },
-  methods: {
-    increment() {
-      // update component state
-      this.count++
-    }
-  }
-})
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+header('Content-Type: application/json');
+
+app()->get('/', function () {
+  echo "<b>Something</b>";
+});
+
+// don't forget to call run
+app()->run();
 ```
 
 </div>
 
-Inside a method, we can access the component instance using `this`. The component instance exposes the data properties declared by `data`. We can update the component state by mutating these properties.
+Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
 
-</div>
+<br>
 
-<div class="composition-api">
+## THE ROUTE PATH
 
-<div class="sfc">
+Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.
 
-Here, `increment` is referencing a function declared in `<script setup>`:
-
-```vue{6-9}
-<script setup>
-import { ref } from 'vue'
-
-const count = ref(0)
-
-function increment() {
-  // update component state
-  count.value++
-}
-</script>
-```
-
-</div>
-
-<div class="html">
-
-Here, `increment` is referencing a method in the object returned from `setup()`:
-
-```js{$}
-setup() {
-  const count = ref(0)
-
-  function increment(e) {
-    // update component state
-    count.value++
-  }
-
-  return {
-    count,
-    increment
-  }
-}
-```
-
-</div>
-
-Inside the function, we can update the component state by mutating refs.
-
-</div>
-
-Event handlers can also use inline expressions, and can simplify common tasks with modifiers. These details are covered in <a target="_blank" href="/guide/essentials/event-handling.html">Guide - Event Handling</a>.
-
-Now, try to implement the `increment` <span class="class-mode">method</span><span class="composition-api">function</span> yourself and bind it to the button using `v-on`.
+::: tip Watch out
+When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
+:::
