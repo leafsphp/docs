@@ -126,3 +126,156 @@ app()->run();
 </div>
 
 Try outputing an array or associative array with the `json` method from the editor. You can do this in the slot that says `// 1. json output`
+
+<br>
+
+## WORKING WITH MARKUP
+
+Just as we output JSON above, we can also output some markup using the `markup` method on the leaf response object. It takes in some data to output and the http status code.
+
+<div class="class-mode">
+
+```php{8}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  $app->response()->markup('something');
+});
+
+// don't forget to call run
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php{6}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  response()->markup('something');
+});
+
+// don't forget to call run
+app()->run();
+```
+
+</div>
+
+Your task is to output some valid HTML with the `markup` method from the editor. You can do this in the slot that says `// 2. markup output`  
+
+::: tip
+Don't forget to configure your `request.json` file with the correct path.
+:::
+
+<br>
+
+## RENDERING PAGES
+
+Sometimes, simply being able to render html or PHP isn't enough. You may have some pre-built pages which you need to render, and that's what the `page` method was built for.
+
+<div class="class-mode">
+
+```php{8}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  $app->response()->page('./index.html');
+});
+
+// don't forget to call run
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php{6}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  response()->page('./index.html');
+});
+
+// don't forget to call run
+app()->run();
+```
+
+</div>
+
+We've created a `page.html` file for this exercise. Your task is to output the html page using leaf response's `page` method. You can do this in the slot that says `// 3. page output`
+
+::: tip
+Don't forget to configure your `request.json` file with the correct path.
+:::
+
+<br>
+
+## EXITING AFTER A RESPONSE
+
+Some things require you to throw some kind of error but maybe in JSON or html form. The `exit` method allows you to output some data and immediately exit your application. This means that nothing after the `exit` method would run.
+
+<div class="class-mode">
+
+```php{9}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  if (!is_dir('./project')) {
+    $app->response()->exit('Folder not found');
+    // nothing below will run if exit is executed
+  }
+
+  $app->response()->markup('folder found');
+});
+
+// don't forget to call run
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php{7}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  if (!is_dir('./project')) {
+    response()->exit('Folder not found');
+    // nothing below will run if exit is executed
+  }
+
+  response()->markup('folder found');
+});
+
+// don't forget to call run
+app()->run();
+```
+
+</div>
+
+This code simply checks for a folder. If the folder is found, we output some markup, otherwise, we output an error and exit the application.
+
+Using the example above, check for the `index.html` file in your editor. If the `index.html` file isn't found, throw and error with `exit`. You can do this in the slot that says `// 4. exit output`
+
+::: tip
+Don't forget to configure your `request.json` file with the correct path.
+:::
