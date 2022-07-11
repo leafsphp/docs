@@ -10,7 +10,7 @@ export default {
   async load() {
     const md = createMarkdownRenderer(process.cwd(), {
       // @ts-ignore
-      highlight: await createHighlighter()
+      // highlight: await createHighlighter()
     }, '/')
     const files = readExamples(path.resolve(__dirname, './src'))
     for (const step in files) {
