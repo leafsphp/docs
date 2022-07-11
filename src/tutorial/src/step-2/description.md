@@ -1,130 +1,108 @@
-# Declarative Rendering
+# Intro to creating routes
 
-<div class="sfc">
+At the core of Leaf is a carefully crafted router which allows you declaratively define routes without tons of configuration and stuff like that. Since the router is integrated with leaf on a core level, it is initialized together with leaf and is available in functional mode as well.
 
-What you see in the editor is a Vue Single File Component (SFC). An SFC is a reusable self-contained block of code that encapsulates HTML, CSS and JavaScript that belong together, written inside a `.vue` file.
-
-</div>
-
-The core feature of Vue is **declarative rendering**: using a template syntax that extends HTML, we can describe how the HTML should look like based on JavaScript state. When the state changes, the HTML updates automatically.
-
-<div class="composition-api">
-
-State that can trigger updates when changed are considered **reactive**. We can declare reactive state using Vue's `reactive()` API. Objects created from `reactive()` are JavaScript [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that work just like normal objects:
-
-```js
-import { reactive } from 'vue'
-
-const counter = reactive({
-  count: 0
-})
-
-console.log(counter.count) // 0
-counter.count++
-```
-
-`reactive()` only works on objects (including arrays and built-in types like `Map` and `Set`). `ref()`, on the other hand, can take any value type and create an object that exposes the inner value under a `.value` property:
-
-```js
-import { ref } from 'vue'
-
-const message = ref('Hello World!')
-
-console.log(message.value) // "Hello World!"
-message.value = 'Changed'
-```
-
-Details on `reactive()` and `ref()` are discussed in <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">Guide - Reactivity Fundamentals</a>.
-
-<div class="sfc">
-
-Reactive state declared in the component's `<script setup>` block can be used directly in the template. This is how we can render dynamic text based on the value of the `counter` object and `message` ref, using mustaches syntax:
-
-</div>
-
-<div class="html">
-
-The object being passed to `createApp()` is a Vue component. A component's state should be declared inside its `setup()` function, and returned using an object:
-
-```js{2,5}
-setup() {
-  const counter = reactive({ count: 0 })
-  const message = ref('Hello World!')
-  return {
-    counter,
-    message
-  }
-}
-```
-
-Properties in the returned object will be made available in the template. This is how we can render dynamic text based on the value of `message`, using mustaches syntax:
-
-</div>
-
-```vue-html
-<h1>{{ message }}</h1>
-<p>count is: {{ counter.count }}</p>
-```
-
-Notice how we did not need to use `.value` when accessing the `message` ref in templates: it is automatically unwrapped for more succinct usage.
-
-</div>
+Defining a route is pretty straight forward: tell leaf the methods which should be allowed to access the route you're defining. This can be done with `match`. This method takes in the [HTTP methods](https://restfulapi.net/http-methods/) which should be able to access that route, the [route path](https://www.toolsqa.com/rest-assured/rest-routes/) and the handler for that route. The handler is a function which you define yourself. Let's look at an example:
 
 <div class="class-mode">
 
-State that can trigger updates when changed are considered **reactive**. In Vue, reactive state is held in components. In the example code, the object being passed to `createApp()` is a component.
+```php{7-9}
+<?php
 
-We can declare reactive state using the `data` component option, which should be a function that returns an object:
+require __DIR__ . '/vendor/autoload.php';
 
-<div class="sfc">
+$app = new Leaf\App;
 
-```js{3-5}
-export default {
-  data() {
-    return {
-      message: 'Hello World!'
-    }
-  }
-}
+$app->match('GET', '/', function () {
+  echo "Something nice";
+});
 ```
 
 </div>
-<div class="html">
+<div class="functional-mode">
 
-```js{3-5}
-createApp({
-  data() {
-    return {
-      message: 'Hello World!'
-    }
-  }
-})
+```php{5-7}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->match('GET', '/', function () {
+  echo "Something nice";
+});
 ```
 
 </div>
 
-The `message` property will be made available in the template. This is how we can render dynamic text based on the value of `message`, using mustaches syntax:
-
-```vue-html
-<h1>{{ message }}</h1>
-```
-
-</div>
-
-The content inside the mustaches is not limited to just identifiers or paths - we can use any valid JavaScript expression:
-
-```vue-html
-<h1>{{ message.split('').reverse().join('') }}</h1>
-```
-
-<div class="composition-api">
-
-Now, try to create some reactive state yourself, and use it to render dynamic text content for the `<h1>` in the template.
-
-</div>
+One thing to note is that after defining all your routes, you need to call the `run` method. This method dispatches all the routes and makes them available to run.
 
 <div class="class-mode">
 
-Now, try to create a data property yourself, and use it as the text content for the `<h1>` in the template.
+```php{7-9}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->match('GET', '/', function () {
+  echo "Something nice";
+});
+
+$app->run();
+```
 
 </div>
+<div class="functional-mode">
+
+```php{5-7}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->match('GET', '/', function () {
+  echo "Something nice";
+});
+
+app()->run();
+```
+
+</div>
+
+On the right, you have a structure which has an empty slot for your routes. Try to create a route for the `/` path using the `match` method. **Replace `// 1. match route here` with your `match` route**
+
+<br>
+
+## THE ROUTE PATH
+
+Usually route paths are descriptive and give you an idea of what that route is doing. For instance, a login route is usually `/login` or `/auth/login`. After successfully running your route above, your next task is to change the route path to anything of your choice.
+
+::: tip Watch out
+When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
+:::
+
+<br>
+
+## ADD MULTIPLE ROUTE METHODS
+
+Some routes may be accessible with say, GET and POST requests. Leaf allows you to create routes with support for multiple http methods. You probably used only `GET` in your code above, but you can pass multiple http methods separated by `|`. So for both GET and POST, you'll have `GET|PUT`.
+
+<div class="class-mode">
+
+```php
+$app->match('GET|POST', '/', function () {
+  echo "works with both get and post";
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->match('GET|POST', '/', function () {
+  echo "works with both get and post";
+});
+```
+
+</div>
+
+Your task this time is to create a route which supports both POST and PUT requests.

@@ -1,19 +1,58 @@
-# Attribute Bindings
+# Creating routes using shortcuts
 
-in Vue, mustaches are only used for text interpolation. To bind an attribute to a dynamic value, we use the `v-bind` directive:
+We saw in the previous tutorial how to create routes on the base level with leaf, however, it get annoying typing `GET` or `POST` in front of every route over and over again. To get rid of this pain, leaf has shortcut methods which provide a crisp and simple way to create and use routes.
 
-```vue-html
-<div v-bind:id="dynamicId"></div>
+This method allows you to call an [HTTP method](https://restfulapi.net/http-methods/) directly on the leaf/leaf router instance. Let's look at an example:
+
+<div class="class-mode">
+
+```php{7-9}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () {
+  echo "Something nice";
+});
+
+// don't forget to call run
+$app->run();
 ```
 
-A **directive** is a special attribute that starts with the `v-` prefix. They are part of Vue's template syntax. Similar to text interpolations, directive values are JavaScript expressions that have access to the component's state. The full details of `v-bind` and directive syntax are discussed in <a target="_blank" href="/guide/essentials/template-syntax.html">Guide - Template Syntax</a>.
+</div>
+<div class="functional-mode">
 
-The part after the colon (`:id`) is the "argument" of the directive. Here, the element's `id` attribute will be synced with the `dynamicId` property from the component's state.
+```php{5-7}
+<?php
 
-Because `v-bind` is used so frequently, it has a dedicated shorthand syntax:
+require __DIR__ . '/vendor/autoload.php';
 
-```vue-html
-<div :id="dynamicId"></div>
+// for a get request
+app()->get('/', function () {
+  echo "Something nice";
+});
+
+// for a post request
+app()->post('/', function () {
+  echo "Something nice";
+});
+
+// don't forget to call run
+app()->run();
 ```
 
-Now, try to add a dynamic `class` binding to the `<h1>`, using the `titleClass` <span class="class-mode">data property</span><span class="composition-api">ref</span> as its value. If it's bound correctly, the text should turn red.
+</div>
+
+Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
+
+<br>
+
+## THE ROUTE PATH
+
+Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.
+
+::: tip Watch out
+When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
+:::
