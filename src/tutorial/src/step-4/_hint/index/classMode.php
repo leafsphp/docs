@@ -4,26 +4,23 @@ require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App();
 
-$app->get('/', function () {
-  response()->json([
+$app->get('/', function () use($app) {
+  $app->response()->json([
     'greeting' => 'Hello World'
   ]);
 });
 
-$app->get('/markup', function () {
-  response()->markup('<h2>Hello World</h2>');
+$app->get('/markup', function () use($app) {
+  $app->response()->markup('<h2>Hello World</h2>');
 });
 
-$app->get('/page', function () {
-  response()->page('./page.html');
+$app->get('/page', function () use($app) {
+  $app->response()->page('./page.html');
 });
 
-$app->get('/redirect', function () {
-  response()->redirect('/redirected');
-});
-
-$app->get('/redirected', function () {
-  echo 'redirected here';
+$app->get('/exit', function () use($app) {
+  $app->response()->exit('something');
+  $app->response()->page('./page.html');
 });
 
 $app->run();

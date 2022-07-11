@@ -16,12 +16,9 @@ app()->get('/page', function () {
   response()->page('./page.html');
 });
 
-app()->get('/redirect', function () {
-  response()->redirect('/redirected');
-});
-
-app()->get('/redirected', function () {
-  echo 'redirected here';
+app()->get('/exit', function () {
+  response()->exit('something');
+  response()->page('./page.html');
 });
 
 app()->run();
