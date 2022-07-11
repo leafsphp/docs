@@ -54,12 +54,18 @@ const run = async (files: Record<string, any>) => {
     let config = JSON.parse(files['request.json'].code || '');
     config = config.length ? config : null;
 
-    let { data: res } = await axios({
+    let { data: res, headers } = await axios({
       url: `http://localhost:3600${folder.folder}${config?.path ?? '/'}`,
       method: config?.method ?? 'GET',
       data: config?.data ?? {},
       params: config?.method?.toUpperCase() === "GET" ? config.data : {},
     });
+
+    console.log('headers', headers);
+
+    if (headers['content-type'] === 'application/json') {
+      return output.value = res.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    }
 
     if (typeof res !== 'string') {
       // res = `<html><body>${JSON.stringify(res)}</body></html>`;
