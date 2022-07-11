@@ -2,16 +2,12 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->match('GET', '/', function () {
+app()->get('/', function () {
   echo "hello world";
 });
 
-app()->match('GET', '/custom', function () {
+app()->put('/custom', function () {
   echo "custom route";
-});
-
-app()->match('POST|PUT', '/upload', function () {
-  echo "POST & PUT route";
 });
 
 app()->run();
