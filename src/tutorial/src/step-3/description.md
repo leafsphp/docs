@@ -6,7 +6,7 @@ This method allows you to call an [HTTP method](https://restfulapi.net/http-meth
 
 <div class="class-mode">
 
-```php{7-9}
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -24,7 +24,7 @@ $app->run();
 </div>
 <div class="functional-mode">
 
-```php{5-7}
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
