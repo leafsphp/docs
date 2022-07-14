@@ -1,8 +1,8 @@
-# Creating routes using shortcuts
+# Leaf request
 
-We saw in the previous tutorial how to create routes on the base level with leaf, however, it get annoying typing `GET` or `POST` in front of every route over and over again. To get rid of this pain, leaf has shortcut methods which provide a crisp and simple way to create and use routes.
+In the previous exercise, we looked at Leaf response. In this one, we'll look at the leaf response object. This is an object which helps us retrieve the information coming into our app. Leaf makes this pretty simple by giving you straightforward methods which you can use pretty easily.
 
-This method allows you to call an [HTTP method](https://restfulapi.net/http-methods/) directly on the leaf/leaf router instance. Let's look at an example:
+To get started with the request object, <span class="class-mode">you can call the `request` method on the leaf instance or use the `Leaf\Http\Request` class.</span><span class="functional-mode">you can simply call the `request` function from anywhere in your app</span>
 
 <div class="class-mode">
 
@@ -13,8 +13,9 @@ require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
-$app->get('/', function () {
-  echo "Something nice";
+$app->get('/', function () use($app) {
+  $data = $app->request()->get('name');
+  $app->response()->json($data);
 });
 
 // don't forget to call run
@@ -31,12 +32,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 // for a get request
 app()->get('/', function () {
-  echo "Something nice";
-});
-
-// for a post request
-app()->post('/', function () {
-  echo "Something nice";
+  $data = request()->get('name');
+  response()->json($data);
 });
 
 // don't forget to call run
@@ -45,14 +42,131 @@ app()->run();
 
 </div>
 
-Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
+For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app.
 
 <br>
 
-## THE ROUTE PATH
+## RETURNING ALL DATA PASSED IN YOUR APP
 
-Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.
+Leaf allows you to get every bit of data passed into your app all at once. This includes get request data, post request data, url encoded data, files and all of those.
 
-::: tip Watch out
-When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
-:::
+To get all this data, you simply need to call the `body` method. As the name implies, this method returns the entire body of a request.
+
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->body();
+  $app->response()->json($data);
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  $data = request()->body();
+  response()->json($data);
+});
+
+app()->run();
+```
+
+</div>
+
+You can try this out in the editor.
+
+### GETTING A PARTICULAR ITEM FROM THE REQUEST
+
+Although we have an entire pool of data being passed in, sometimes you need to grab one item, maybe for validation. You can do this simply using the `get` method.
+
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->get('name');
+  $app->response()->json($data);
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  $data = request()->get('name');
+  response()->json($data);
+});
+
+app()->run();
+```
+
+</div>
+
+Your task is to get the `country` passed into the request.
+
+### MULTIPLE SPECIFIC ITEMS FROM REQUEST
+
+You can retrieve items from the request one by one, but sometimes, you might need particular items from the request for a specific task. Leaf allows you to retrieve all these items using the same `get` method. But instead of passing in a string, you pass an array of items you want to get.
+
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->get(['name', 'country']);
+  $app->response()->json($data);
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  $data = request()->get(['name', 'country']);
+  response()->json($data);
+});
+
+app()->run();
+```
+
+</div>
+
+In the editor, try retrieving the `country` and `city` fields.
