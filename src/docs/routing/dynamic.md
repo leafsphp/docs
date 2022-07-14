@@ -11,7 +11,7 @@ Learn how leaf handles dynamic routing.
 <VideoLesson href="#" title="Dynamic routing in leaf PHP">Watch the routing guide on youtube</VideoLesson>
 ::: -->
 
-## 🐥 Named Params
+## Named Params
 
 *This guide assumes you have read [Simple Routing](/docs/routing/)*
 
@@ -38,9 +38,7 @@ app()->get('/movies/{foo}/photos/{bar}', function ($movieId, $photoId) {
 });
 ```
 
-<hr>
-
-## 🧐 PCRE Based Params
+## PCRE Based Params
 
 Basically, PCRE based patterns are just another way to use routes dynamically. This type of Route Patterns contain dynamic parts which can vary per request. The varying parts are named subpatterns and are defined using regular expressions.
 
