@@ -1,4 +1,4 @@
-# Dynamic routing
+# Updating items in a database
 
 In the previous exercise, we looked at Leaf response. In this one, we'll look at the leaf response object. This is an object which helps us retrieve the information coming into our app. Leaf makes this pretty simple by giving you straightforward methods which you can use pretty easily.
 
