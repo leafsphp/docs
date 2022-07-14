@@ -1,104 +1,172 @@
-# Computed Property
+# Dynamic routing
 
-Let's keep building on top of the todo list from the last step. Here, we've already added a toggle functionality to each todo. This is done by adding a `done` property to each todo object, and using `v-model` to bind it to a checkbox:
+In the previous exercise, we looked at Leaf response. In this one, we'll look at the leaf response object. This is an object which helps us retrieve the information coming into our app. Leaf makes this pretty simple by giving you straightforward methods which you can use pretty easily.
 
-```vue-html{2}
-<li v-for="todo in todos">
-  <input type="checkbox" v-model="todo.done">
-  ...
-</li>
-```
-
-The next improvement we can add is to be able to hide already completed todos. We already have a button that toggles the `hideCompleted` state. But how do we render different list items based on that state?
+To get started with the request object, <span class="class-mode">you can call the `request` method on the leaf instance or use the `Leaf\Http\Request` class.</span><span class="functional-mode">you can simply call the `request` function from anywhere in your app</span>
 
 <div class="class-mode">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">computed property</a>. We can declare a property that is reactively computed from other properties using the `computed` option:
+```php
+<?php
 
-<div class="sfc">
+require __DIR__ . '/vendor/autoload.php';
 
-```js
-export default {
-  // ...
-  computed: {
-    filteredTodos() {
-      // return filtered todos based on `this.hideCompleted`
-    }
-  }
-}
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->get('name');
+  $app->response()->json($data);
+});
+
+// don't forget to call run
+$app->run();
 ```
 
 </div>
-<div class="html">
+<div class="functional-mode">
 
-```js
-createApp({
-  // ...
-  computed: {
-    filteredTodos() {
-      // return filtered todos based on `this.hideCompleted`
-    }
-  }
-})
-```
+```php
+<?php
 
-</div>
+require __DIR__ . '/vendor/autoload.php';
 
-</div>
-<div class="composition-api">
+// for a get request
+app()->get('/', function () {
+  $data = request()->get('name');
+  response()->json($data);
+});
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. We can create a computed ref that computes its `.value` based on other reactive data sources:
-
-<div class="sfc">
-
-```js{8-11}
-import { ref, computed } from 'vue'
-
-const hideCompleted = ref(false)
-const todos = ref([
-  /* ... */
-])
-
-const filteredTodos = computed(() => {
-  // return filtered todos based on
-  // `todos.value` & `hideCompleted.value`
-})
-```
-
-</div>
-<div class="html">
-
-```js{10-13}
-import { createApp, ref, computed } from 'vue'
-
-createApp({
-  setup() {
-    const hideCompleted = ref(false)
-    const todos = ref([
-      /* ... */
-    ])
-
-    const filteredTodos = computed(() => {
-      // return filtered todos based on
-      // `todos.value` & `hideCompleted.value`
-    })
-
-    return {
-      // ...
-    }
-  }
-})
+// don't forget to call run
+app()->run();
 ```
 
 </div>
 
-</div>
+For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app.
 
-```diff
-- <li v-for="todo in todos">
-+ <li v-for="todo in filteredTodos">
+<br>
+
+## RETURNING ALL DATA PASSED IN YOUR APP
+
+Leaf allows you to get every bit of data passed into your app all at once. This includes get request data, post request data, url encoded data, files and all of those.
+
+To get all this data, you simply need to call the `body` method. As the name implies, this method returns the entire body of a request.
+
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->body();
+  $app->response()->json($data);
+});
+
+$app->run();
 ```
 
-A computed property tracks other reactive state used in its computation as dependencies. It caches the result and automatically updates it when its dependencies change.
+</div>
+<div class="functional-mode">
 
-Now, try to add the `filteredTodos` computed property and implement its computation logic! If implemented correctly, checking off a todo when hiding completed items should instantly hide it as well.
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  $data = request()->body();
+  response()->json($data);
+});
+
+app()->run();
+```
+
+</div>
+
+You can try this out in the editor.
+
+### GETTING A PARTICULAR ITEM FROM THE REQUEST
+
+Although we have an entire pool of data being passed in, sometimes you need to grab one item, maybe for validation. You can do this simply using the `get` method.
+
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->get('name');
+  $app->response()->json($data);
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  $data = request()->get('name');
+  response()->json($data);
+});
+
+app()->run();
+```
+
+</div>
+
+Your task is to get the `country` passed into the request.
+
+### MULTIPLE SPECIFIC ITEMS FROM REQUEST
+
+You can retrieve items from the request one by one, but sometimes, you might need particular items from the request for a specific task. Leaf allows you to retrieve all these items using the same `get` method. But instead of passing in a string, you pass an array of items you want to get.
+
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App;
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->get(['name', 'country']);
+  $app->response()->json($data);
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  $data = request()->get(['name', 'country']);
+  response()->json($data);
+});
+
+app()->run();
+```
+
+</div>
+
+In the editor, try retrieving the `country` and `city` fields.
