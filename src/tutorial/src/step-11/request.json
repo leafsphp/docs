@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "path": "/",
+  "data": {
+    "name": "Michael Darko",
+    "country": "Ghana",
+    "city": "Accra"
+  }
+}
