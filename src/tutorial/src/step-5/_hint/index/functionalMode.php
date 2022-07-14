@@ -3,11 +3,13 @@
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  echo "hello world";
+  $data = request()->get('country');
+  response()->json($data);
 });
 
-app()->put('/custom', function () {
-  echo "custom route";
+app()->put('/multi', function () {
+  $data = request()->get(['country', 'city']);
+  response()->json($data);;
 });
 
 app()->run();
