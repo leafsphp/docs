@@ -34,8 +34,8 @@ Leaf CORS can also be used without Leaf's core. You simply need to reference met
 
 ```php
 Leaf\Http\Cors::config([
-  "origin" => 'http://example.com',
-  "optionsSuccessStatus" => 200
+  'origin' => 'http://example.com',
+  'optionsSuccessStatus' => 200,
 ]);
 ```
 
@@ -44,14 +44,14 @@ Leaf\Http\Cors::config([
 ### Simple Usage (Enable *All* CORS Requests)
 
 ```php
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
 $app->cors();
 
 $app->get('/products/{id}', function () use($app) {
-  $app->response()->json(["message" => "This is CORS-enabled for all origins!"]);
+  $app->response()->json(['message' => 'This is CORS-enabled for all origins!']);
 });
 
 $app->run();
@@ -62,17 +62,17 @@ You can alternatively call `Leaf\Http\Cors::config()` instead of `$app->cors()` 
 ### Configuring CORS
 
 ```php
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
 $app->cors([
-  "origin" => 'http://example.com',
-  "optionsSuccessStatus" => 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  'origin' => 'http://example.com',
+  'optionsSuccessStatus' => 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 ]);
 
 $app->get('/products/{id}', function () use($app) {
-  $app->response()->json(["message" => "This is CORS-enabled for all origins!"]);
+  $app->response()->json(['message' => 'This is CORS-enabled for all origins!']);
 });
 
 $app->run();
