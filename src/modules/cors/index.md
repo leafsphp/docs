@@ -50,7 +50,7 @@ $app = new Leaf\App;
 
 $app->cors();
 
-$app->get('/products/{id}', function () use($app) {
+$app->get('/products/{id}', function () use ($app) {
   $app->response()->json(['message' => 'This is CORS-enabled for all origins!']);
 });
 
@@ -71,7 +71,7 @@ $app->cors([
   'optionsSuccessStatus' => 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 ]);
 
-$app->get('/products/{id}', function () use($app) {
+$app->get('/products/{id}', function () use ($app) {
   $app->response()->json(['message' => 'This is CORS-enabled for all origins!']);
 });
 
