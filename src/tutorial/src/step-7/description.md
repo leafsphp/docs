@@ -1,48 +1,79 @@
 # Handling CORS
 
-In the previous exercise, we looked at Leaf response. In this one, we'll look at the leaf response object. This is an object which helps us retrieve the information coming into our app. Leaf makes this pretty simple by giving you straightforward methods which you can use pretty easily.
+<details>
+<summary>What is CORS</summary>
 
-To get started with the request object, <span class="class-mode">you can call the `request` method on the leaf instance or use the `Leaf\Http\Request` class.</span><span class="functional-mode">you can simply call the `request` function from anywhere in your app</span>
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served.
+
+For Ajax and HTTP request methods that can modify data (usually HTTP methods other than GET, or for POST usage with certain MIME types), the specification mandates that browsers "preflight" the request, soliciting supported methods from the server with an HTTP OPTIONS request method, and then, upon "approval" from the server, sending the actual request with the actual HTTP request method. Servers can also notify clients whether "credentials" (including Cookies and HTTP Authentication data) should be sent with requests.
+
+</details>
+
+Leaf provides a CORS package which helps you simply configure and handle CORS in your app. This package allows you to configure which origins (websites), headers, ... should be allowed in your app.
+
+<details>
+<summary>Adding leaf CORS to a project</summary>
+
+::: tip
+This has already been done for you in the editor, so you can just go ahead and use it.
+:::
+
+To get started with this in your project, you'll need to install it with the leaf CLI or composer:
+
+```sh
+leaf install cors
+```
+
+Or with composer:
+
+```sh
+composer require leafs/cors
+```
+
+</details>
+
+Once the CORS package is added, it is automatically attached to the leaf instance, so you can configure it by calling the `cors` method.
 
 <div class="class-mode">
 
-```php
+```php{7}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
+$app->cors();
+
 $app->get('/', function () use($app) {
   $data = $app->request()->get('name');
   $app->response()->json($data);
 });
 
-// don't forget to call run
 $app->run();
 ```
 
 </div>
 <div class="functional-mode">
 
-```php
+```php{5}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
-// for a get request
+app()->cors();
+
 app()->get('/', function () {
   $data = request()->get('name');
   response()->json($data);
 });
 
-// don't forget to call run
 app()->run();
 ```
 
 </div>
 
-For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app.
+Trying the example above in the editor will throw a CORS error. You can open up the console of this website to view the exact CORS error.
 
 <br>
 

@@ -2,7 +2,11 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// 1. put route here
-// 2. custom url path here
+app()->cors();
+
+app()->get('/', function () {
+  $data = request()->get('name');
+  response()->json($data);
+});
 
 app()->run();

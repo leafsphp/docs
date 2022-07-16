@@ -2,12 +2,11 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/', function () {
-  echo "hello world";
-});
+app()->cors();
 
-app()->put('/custom', function () {
-  echo "custom route";
+app()->get('/', function () {
+  $data = request()->get('name');
+  response()->json($data);
 });
 
 app()->run();

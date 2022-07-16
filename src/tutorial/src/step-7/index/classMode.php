@@ -4,7 +4,11 @@ require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App();
 
-// 1. put route here
-// 2. custom url path here
+$app->cors();
+
+$app->get('/', function () use($app) {
+  $data = $app->request()->get('name');
+  $app->response()->json($data);
+});
 
 $app->run();
