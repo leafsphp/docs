@@ -57,6 +57,7 @@ const run = async (files: Record<string, any>) => {
     let { data: res, headers } = await axios({
       url: `http://localhost:3600${folder.folder}${config?.path ?? '/'}`,
       method: config?.method ?? 'GET',
+      headers: config?.headers ?? {},
       data: config?.data ?? {},
       params: config?.method?.toUpperCase() === "GET" ? config.data : {},
     });
@@ -75,6 +76,7 @@ const run = async (files: Record<string, any>) => {
 
     output.value = `<iframe srcdoc='${res}'></iframe>`;
   } catch (error: any) {
+    console.log(error, 'error')
     output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
     if (error?.response?.data) {
       store.state.errors.push(error.response.data);
