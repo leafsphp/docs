@@ -73,65 +73,27 @@ app()->run();
 
 </div>
 
-Trying the example above in the editor will throw a CORS error. You can open up the console of this website to view the exact CORS error.
+Using <span class="class-mode">`$app->cors()`</span><span class="functional-mode">`app()->cors()`</span> automatically configures your app to accept any origin and header.
 
-<br>
+<details>
+<summary>Advanced info on config</summary>
 
-## RETURNING ALL DATA PASSED IN YOUR APP
+Unlike when you use `*` for CORS configuration in the normal header, Leaf CORS actually uses your original header so you can use other features like allow credentials whiles supporting any origin.
+</details>
 
-Leaf allows you to get every bit of data passed into your app all at once. This includes get request data, post request data, url encoded data, files and all of those.
-
-To get all this data, you simply need to call the `body` method. As the name implies, this method returns the entire body of a request.
+::: tip CORS and the editor
+The editor already handles CORS for you if you don't add your own cors config, however, if you want to return a CORS error, you can simply comment out the `cors()` line.
 
 <div class="class-mode">
 
-```php
+```php{7}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
-$app->get('/', function () use($app) {
-  $data = $app->request()->body();
-  $app->response()->json($data);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-app()->get('/', function () {
-  $data = request()->body();
-  response()->json($data);
-});
-
-app()->run();
-```
-
-</div>
-
-You can try this out in the editor.
-
-### GETTING A PARTICULAR ITEM FROM THE REQUEST
-
-Although we have an entire pool of data being passed in, sometimes you need to grab one item, maybe for validation. You can do this simply using the `get` method.
-
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
+// $app->cors();
 
 $app->get('/', function () use($app) {
   $data = $app->request()->get('name');
@@ -144,10 +106,12 @@ $app->run();
 </div>
 <div class="functional-mode">
 
-```php
+```php{5}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+
+// app()->cors();
 
 app()->get('/', function () {
   $data = request()->get('name');
@@ -159,23 +123,31 @@ app()->run();
 
 </div>
 
-Your task is to get the `country` passed into the request.
+You can open up the console to view the full CORS error.
 
-### MULTIPLE SPECIFIC ITEMS FROM REQUEST
+:::
 
-You can retrieve items from the request one by one, but sometimes, you might need particular items from the request for a specific task. Leaf allows you to retrieve all these items using the same `get` method. But instead of passing in a string, you pass an array of items you want to get.
+<br>
+
+## CONFIGURING LEAF CORS
+
+The examples above allow all origins and headers to access your app, however, in most cases, you'll want to limit the origin to a particular app or service. Leaf makes it easy to configure this by simply passing an array into the `cors` function.
 
 <div class="class-mode">
 
-```php
+```php{7-9}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
+$app->cors([
+  'origin' => 'http://somewhere.com'
+]);
+
 $app->get('/', function () use($app) {
-  $data = $app->request()->get(['name', 'country']);
+  $data = $app->request()->get('name');
   $app->response()->json($data);
 });
 
@@ -185,13 +157,17 @@ $app->run();
 </div>
 <div class="functional-mode">
 
-```php
+```php{5-7}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
+app()->cors([
+  'origin' => 'http://somewhere.com'
+]);
+
 app()->get('/', function () {
-  $data = request()->get(['name', 'country']);
+  $data = request()->get('name');
   response()->json($data);
 });
 
@@ -200,4 +176,34 @@ app()->run();
 
 </div>
 
-In the editor, try retrieving the `country` and `city` fields.
+All configuration you need to do is passed in through the associative array. Trying this example will throw a CORS error because the origin for this website is `leafphp.dev` but the origin in the example is `somewhere.com`. You can open up the console to see the full cors.
+
+## Configuration Options
+
+* `origin`: Configures the **Access-Control-Allow-Origin** CORS header. Possible values:
+  * `String` - set `origin` to a specific origin. For example if you set it to `"http://example.com"` only requests from "http://example.com" will be allowed.
+  * `RegExp` - set `origin` to a regular expression pattern which will be used to test the request origin. If it's a match, the request origin will be reflected. For example the pattern `/example\.com$/` will reflect any request that is coming from an origin ending with "example.com".
+  * `Array` - set `origin` to an array of valid origins. Each origin can be a `String` or a `RegExp`. For example `["http://example1.com", "/\.example2\.com$/"]` will accept any request from "http://example1.com" or from a subdomain of "example2.com".
+  * `Function` - set `origin` to a function implementing some custom logic. The function takes the request origin as the first parameter and a callback (called as `callback(err, origin)`, where `origin` is a non-function value of the `origin` option) as the second.
+* `methods`: Configures the **Access-Control-Allow-Methods** CORS header. Expects a comma-delimited string (ex: 'GET,PUT,POST') or an array (ex: `['GET', 'PUT', 'POST']`).
+* `allowedHeaders`: Configures the **Access-Control-Allow-Headers** CORS header. Expects a comma-delimited string (ex: 'Content-Type,Authorization') or an array (ex: `['Content-Type', 'Authorization']`). If not specified, defaults to reflecting the headers specified in the request's **Access-Control-Request-Headers** header.
+* `exposedHeaders`: Configures the **Access-Control-Expose-Headers** CORS header. Expects a comma-delimited string (ex: 'Content-Range,X-Content-Range') or an array (ex: `['Content-Range', 'X-Content-Range']`). If not specified, no custom headers are exposed.
+* `credentials`: Configures the **Access-Control-Allow-Credentials** CORS header. Set to `true` to pass the header, otherwise it is omitted.
+* `maxAge`: Configures the **Access-Control-Max-Age** CORS header. Set to an integer to pass the header, otherwise it is omitted.
+* `preflightContinue`: Pass the CORS preflight response to the next handler.
+* `optionsSuccessStatus`: Provides a status code to use for successful `OPTIONS` requests, since some legacy browsers (IE11, various SmartTVs) choke on `204`.
+
+The default configuration is the equivalent of:
+
+```json
+{
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "allowedHeaders": "*",
+  "exposedHeaders": "",
+  "credentials": false,
+  "maxAge": null,
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204,
+}
+```
