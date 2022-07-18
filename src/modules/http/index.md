@@ -44,7 +44,7 @@ Cookies and session are independent modules which are not added to the Http modu
 
 ## Versions
 
-There are currently two versions of leaf http. Click on your version of choice to view it's docs.
+There are currently two versions of Leaf Http. Click on your version of choice to view its docs.
 
 - [v1](/modules/http/v/1/)
 - [v2](/modules/http/v/2/)
