@@ -42,7 +42,7 @@ const run = async (files: Record<string, any>) => {
     rawFiles[filename] = files[filename].code;
   });
 
-  let { data: folder } = await axios.post('http://localhost:3600/compile', form);
+  let { data: folder } = await axios.post('https://leaf-sandbox-server.herokuapp.com/compile', form);
 
   if (!folder) {
     return store.state.errors.push('Internal system error, please try again');
@@ -50,12 +50,14 @@ const run = async (files: Record<string, any>) => {
     store.state.errors = [];
   }
 
+  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🏃‍♂️ Running your code...</div>'
+
   try {
     let config = JSON.parse(files['request.json'].code || '');
     config = config.path ? config : null;
 
     let { data: res, headers } = await axios({
-      url: `http://localhost:3600${folder.folder}${config?.path ?? '/'}`,
+      url: `https://leaf-sandbox-server.herokuapp.com${folder.folder}${config?.path ?? '/'}`,
       method: config?.method ?? 'GET',
       headers: config?.headers ?? {},
       data: config?.data ?? {},
@@ -69,9 +71,8 @@ const run = async (files: Record<string, any>) => {
     }
 
     if (typeof res !== 'string') {
-      // res = `<html><body>${JSON.stringify(res)}</body></html>`;
-      res = JSON.stringify(res);
-      return output.value = res;
+      res = `<html><body style="overflow:scroll">${JSON.stringify(res)}</body></html>`;
+      // return output.value = JSON.stringify(res);
     }
 
     output.value = `<iframe srcdoc='${res}'></iframe>`;

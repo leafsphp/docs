@@ -1,8 +1,8 @@
 # Validating request data
 
-In the previous exercise, we looked at Leaf response. In this one, we'll look at the leaf response object. This is an object which helps us retrieve the information coming into our app. Leaf makes this pretty simple by giving you straightforward methods which you can use pretty easily.
+Different apps require different kinds of information, for instance, your app may require a phone number and password to sign in, but another may require an email and password to sign in. In some cases, users may be able to pass in whatever data they think of directly into your apps. This is even more true in case your leaf app is an API. For this reason, you should always validate or verify the data that is passed into your app.
 
-To get started with the request object, <span class="class-mode">you can call the `request` method on the leaf instance or use the `Leaf\Http\Request` class.</span><span class="functional-mode">you can simply call the `request` function from anywhere in your app</span>
+Leaf once again makes this process simple. We will use the leaf form module to write validation rules for our data. To get started with leaf form, <span class="class-mode">you can use the `Leaf\Form` class.</span><span class="functional-mode">you can simply call the `form` function from anywhere in your app</span>
 
 <div class="class-mode">
 
@@ -14,11 +14,10 @@ require __DIR__ . '/vendor/autoload.php';
 $app = new Leaf\App;
 
 $app->get('/', function () use($app) {
-  $data = $app->request()->get('name');
-  $app->response()->json($data);
+  $rules = Leaf\Form::supportedRules();
+  $app->response()->json($rules);
 });
 
-// don't forget to call run
 $app->run();
 ```
 
@@ -30,31 +29,70 @@ $app->run();
 
 require __DIR__ . '/vendor/autoload.php';
 
-// for a get request
 app()->get('/', function () {
-  $data = request()->get('name');
-  response()->json($data);
+  $rules = form()->supportedRules();
+  response()->json($rules);
 });
 
-// don't forget to call run
 app()->run();
 ```
 
 </div>
 
-For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app.
+For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app. We'll also be using different validation rules against this data.
 
 <br>
 
-## RETURNING ALL DATA PASSED IN YOUR APP
+## VALIDATION RULES
 
-Leaf allows you to get every bit of data passed into your app all at once. This includes get request data, post request data, url encoded data, files and all of those.
+Leaf comes with some default validation rules, if you run the code above, then you'd already know some of these rules. If you haven't already done so, the code above returns all the supported validations rules leaf has by default. Throughout this exercise, we'll be using different validation rules to validate our data.
 
-To get all this data, you simply need to call the `body` method. As the name implies, this method returns the entire body of a request.
+<details>
+<summary>Validation rule list</summary>
+
+| Validation rule     |  Purpose                                     |
+|:--------------------|:---------------------------------------------|
+| required            | field is required                             |
+| number              | must only contain numbers                    |
+| text                | must only contain text and spaces            |
+| textOnly            | should be text only, no spaces allowed       |
+| validUsername       | must only contain characters 0-9, A-Z and _  |
+| username            | alias for validUsername                      |
+| email               | must be a valid email                        |
+| noSpaces            | can't contain any spaces                     |
+| max                 | max length of a string (requires arguments)  |
+| min                 | min length of a string (requires arguments)  |
+| date                | string should be a valid date                |
+
+::: tip Note
+These rules are **NOT** case-sensitive, so you can type them anyway you prefer, as long as the spelling is the same.
+:::
+
+</details>
+
+<br>
+
+## VALIDATING OUR DATA
+
+We've looked at all the default validation rules, but you might be asking how we can actually use these to validate our data. We can do this by calling the `validate` method on leaf form.
+
+::: tip request.json
+This is the data we're passing into our app.
+
+```json
+{
+  "name": "Michael Darko",
+  "country": "Ghana",
+  "city": "Accra",
+  "email": "mychi.darko@gmail.com"
+}
+```
+
+:::
 
 <div class="class-mode">
 
-```php
+```php{8-11}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -62,8 +100,14 @@ require __DIR__ . '/vendor/autoload.php';
 $app = new Leaf\App;
 
 $app->get('/', function () use($app) {
-  $data = $app->request()->body();
-  $app->response()->json($data);
+  $isValid = Leaf\Form::validate([
+    'email' => 'email',
+    'name' => 'text',
+  ]);
+
+  $app->response()->json(
+    $isValid ? 'success' : Leaf\Form::errors()
+  );
 });
 
 $app->run();
@@ -72,14 +116,20 @@ $app->run();
 </div>
 <div class="functional-mode">
 
-```php
+```php{6-9}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  $data = request()->body();
-  response()->json($data);
+  $isValid = form()->validate([
+    'email' => 'email',
+    'name' => 'text',
+  ]);
+
+  response()->json(
+    $isValid ? 'success' : form()->errors()
+  );
 });
 
 app()->run();
@@ -87,86 +137,10 @@ app()->run();
 
 </div>
 
-You can try this out in the editor.
+We passed an array into the `validate` function above. The array tells the `validate` function what rule to run against what data. The `email` rule is run against the email field we passed to make sure it's a valid email. In the same way, we're running the `text` method against the name field to make sure that it only contains text and spaces. You can try this out in the editor.
 
-### GETTING A PARTICULAR ITEM FROM THE REQUEST
+If you want the validation to fail, you can edit the `data` in the `request.json` file with invalid data.
 
-Although we have an entire pool of data being passed in, sometimes you need to grab one item, maybe for validation. You can do this simply using the `get` method.
-
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $data = $app->request()->get('name');
-  $app->response()->json($data);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-app()->get('/', function () {
-  $data = request()->get('name');
-  response()->json($data);
-});
-
-app()->run();
-```
-
-</div>
-
-Your task is to get the `country` passed into the request.
-
-### MULTIPLE SPECIFIC ITEMS FROM REQUEST
-
-You can retrieve items from the request one by one, but sometimes, you might need particular items from the request for a specific task. Leaf allows you to retrieve all these items using the same `get` method. But instead of passing in a string, you pass an array of items you want to get.
-
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $data = $app->request()->get(['name', 'country']);
-  $app->response()->json($data);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-app()->get('/', function () {
-  $data = request()->get(['name', 'country']);
-  response()->json($data);
-});
-
-app()->run();
-```
-
-</div>
-
-In the editor, try retrieving the `country` and `city` fields.
+::: danger WIP
+WIP
+:::
