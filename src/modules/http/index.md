@@ -24,13 +24,13 @@ The available classes in the Http module are:
 
 ## Installation
 
-You can install the http module with the [leaf cli](https://cli.leafphp.dev):
+You can install the http module with the [Leaf CLI](https://cli.leafphp.dev):
 
 ```sh
 leaf install http
 ```
 
-or with composer:
+or with Composer:
 
 ```sh
 composer require leafs/http
@@ -63,7 +63,7 @@ This interface allows you to manage headers in your application. [Read the docs]
 
 ## Cache
 
-This interface allows you to manage http cache in your app. [Read the docs](/modules/http/v/2/cache)
+This interface allows you to manage HTTP cache in your app. [Read the docs](/modules/http/v/2/cache)
 
 ## Session (module)
 
