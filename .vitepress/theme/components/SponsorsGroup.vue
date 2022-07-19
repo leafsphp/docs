@@ -18,7 +18,7 @@ interface SponsorData {
 let data = $ref<SponsorData>()
 let pending = false
 
-const base = `https://sponsors.vuejs.org`
+const base = `https://sponsors.leafphp.dev`
 </script>
 
 <script setup lang="ts">
@@ -56,6 +56,21 @@ onMounted(async () => {
         special: [],
         sponsor: [
           {
+            name: "Casprine Asempah",
+            url: "https://github.com/casprine",
+            img: "https://images.opencollective.com/guest-c72a498e/avatar.png",
+          },
+          {
+            name: "Farhan Yahaya",
+            url: "https://github.com/doc-han",
+            img: "https://avatars.githubusercontent.com/u/35382021?v=4",
+          },
+          {
+            name: "Vano",
+            url: "#",
+            img: "https://images.opencollective.com/guest-32634fda/avatar.png",
+          },
+          {
             name: "Aaron Smith",
             url: "https://opencollective.com/aaron-smith3",
             img: "https://images.opencollective.com/aaron-smith3/08ee620/avatar/256.png",
@@ -64,16 +79,6 @@ onMounted(async () => {
             name: "Peter Bogner",
             url: "https://opencollective.com/peter-bogner",
             img: "https://images.opencollective.com/peter-bogner/avatar/256.png",
-          },
-          {
-            name: "Vano",
-            url: "#",
-            img: "https://images.opencollective.com/guest-32634fda/avatar.png",
-          },
-          {
-            name: "Casprine",
-            url: "https://github.com/casprine",
-            img: "https://images.opencollective.com/guest-c72a498e/avatar.png",
           },
         ],
         code: [
