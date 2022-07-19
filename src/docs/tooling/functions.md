@@ -7,17 +7,17 @@ Learn about leaf 3's new functional mode.
 <VideoLesson href="#" title="Functional mode">Watch the functional mode guide on youtube</VideoLesson>
 ::: -->
 
-"Functional Mode", as we call it is just a fancy name given to a bunch of predefined functions in your leaf app which allow you to create your entire app or API without relying on classes with lengthy initializers and namespaces. With functional mode, everything is handled for you under the hood and is given to you in one global function.
+Functional Mode, as we call it is just a fancy name given to a bunch of predefined functions in your leaf app which allow you to create your entire app or API without relying on classes with lengthy initializers and namespaces. With functional mode, everything is handled for you under the hood and is given to you in one global function.
 
 Functional mode is 100% optional as seen in the examples in the introduction section. It also requires zero setup or configuration since it's available right after installing Leaf.
 
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
-  response()->json(["name" => "Leaf"]);
+app()->get('/', function () {
+  response()->json(['message' => 'Leaf is amazing!']);
 });
 
 app()->run();
@@ -34,12 +34,12 @@ There is a configuration method on leaf which allows you to set extra configurat
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->config(["app.down" => true]);
+app()->config('app.down', true);
 
-app()->get("/", function () {
-  response()->json(["name" => "Leaf"]);
+app()->get('/', function () {
+  response()->json(['name' => 'Leaf']);
 });
 
 app()->run();
@@ -52,12 +52,12 @@ Besides this, you can use the `Leaf\Config` class to pass in configuration optio
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-Leaf\Config::set("app.down", true);
+Leaf\Config::set('app.down', true);
 
-app()->get("/", function () {
-  response()->json(["name" => "Leaf"]);
+app()->get('/', function () {
+  response()->json(['name' => 'Leaf']);
 });
 
 app()->run();
@@ -85,7 +85,7 @@ $app->get("/", function () {
 require __DIR__ . "/vendor/autoload.php";
 
 app()->get("/", function () {
-  response(["name" => "Leaf"]);
+  response()->json(["name" => "Leaf"]);
 });
 
 app()->run();
@@ -128,37 +128,15 @@ Modules which extend functional mode will have a section on their documentation 
 
 ## request
 
-`request` is a 2 way global function which allows you to either get data passed into your application or return the leaf request object.
-
-::: warning NOTE
-The request global is provided from the [leaf http module](/modules/http/). No need to install it since it comes with leaf 3 out of the box.
-:::
+`request` is a global function which returns the leaf request object. The request global is provided from the [leaf http module](/modules/http/) which comes with leaf 3 out of the box, so there's no need to install it.
 
 ```php
-// return the username variable passed into the request
-$username = request("username");
-```
-
-If no value is passed into request, the leaf request object is returned.
-
-```php
-$username = request()->get("username");
+$username = request()->get('username');
 ```
 
 ## response
 
-This global allows you to output json encoded data or return the leaf response object.
-
-::: warning NOTE
-The response global is provided from the [leaf http module](/modules/http/). No need to install it since it comes with leaf 3 out of the box.
-:::
-
-```php
-// output json data
-response(["name" => "Mychi"]);
-```
-
-Just as with request above, if nothing is passed into `response`, it returns the leaf response object.
+This global returns the leaf response object. The response global is provided from the [leaf http module](/modules/http/) so there's no need to install it since it comes with leaf 3 out of the box.
 
 ```php
 response()->markup("<b>Mychi</b>");
@@ -166,11 +144,7 @@ response()->markup("<b>Mychi</b>");
 
 ## cookie
 
-This global allows you to set/get a cookie or return the leaf cookie object.
-
-::: warning NOTE
-The cookie global is provided from the [leaf cookie module](/modules/cookies/).
-:::
+This global allows you to set/get a cookie or return the leaf cookie object. The cookie global is provided from the [leaf cookie module](/modules/cookies/).
 
 ```php
 // set multiple cookies
@@ -183,7 +157,7 @@ cookie("name", "Mychi");
 cookie("name");
 ```
 
-Just as with request above, if nothing is passed into `cookie`, it returns the leaf cookie object.
+If nothing is passed into `cookie`, it returns the leaf cookie object.
 
 ```php
 cookie()->set("name", "Mychi");
@@ -191,11 +165,7 @@ cookie()->set("name", "Mychi");
 
 ## Leaf CSRF
 
-Leaf CSRF provides 2 globals which make working with the package a whole lot easier.
-
-::: warning NOTE
-To get started you will need the [leaf csrf module](/modules/anchor/csrf/).
-:::
+Leaf CSRF provides 2 globals which make working with the package a whole lot easier. To get started you will need to install the [leaf csrf module](/modules/anchor/csrf/).
 
 ### _token
 
@@ -214,4 +184,22 @@ This method generates a CSRF field in a form for you.
   <?php _csrfField(); ?>
   ...
 </form>
+```
+
+## Leaf Form
+
+Leaf form also provides a `form` method which returns the entire leaf form object.
+
+```php
+form()->validate(...);
+```
+
+You will however need to install the [leaf form module](/modules/form/) to get started.
+
+## Leaf Db
+
+After installing the leaf db module, you'll have access to the `db` global. This function returns an active instance of the database class.
+
+```php
+db()->connect(...);
 ```

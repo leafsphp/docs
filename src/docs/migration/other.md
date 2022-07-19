@@ -72,7 +72,7 @@ Now, we replace Slim's http handlers with Leaf's.
 
 <div class="class-mode">
 
-```php{10-11}
+```php{8,11-12}
 <?php
 
 use Slim\Factory\AppFactory;
@@ -80,10 +80,11 @@ use Slim\Factory\AppFactory;
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
+$leaf = new Leaf\App();
 
-$app->get('/', function () use($app) {
-    $name = $app->request()->get('name');
-    $app->response()->markup("Hello, $name");
+$app->get('/', function () use($leaf) {
+    $name = $leaf->request()->get('name');
+    $leaf->response()->markup("Hello, $name");
 });
 
 $app->run();
