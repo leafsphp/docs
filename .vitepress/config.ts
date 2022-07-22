@@ -193,7 +193,7 @@ const mainSidebar = [
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Logging', link: '/docs/tooling/logging' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
-      { text: 'Middleware', link: '/docs/routing/middleware' },
+      { text: 'Middleware', link: '/docs/routing/middleware' }
     ]
   },
   {
@@ -212,9 +212,20 @@ const mainSidebar = [
     ]
   },
   {
+    text: 'Database',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Leaf DB Module', link: '/modules/db/' },
+      { text: 'Leaf DB v1', link: '/modules/db/v/1/' },
+      { text: 'New in v2', link: '/modules/db/v/2/new' },
+      { text: 'Leaf DB v2', link: '/modules/db/v/2/' },
+      { text: 'Query Builder', link: '/modules/db/v/2/builder' },
+    ]
+  },
+  {
     text: 'Extras',
     items: [
-      { text: 'Database', link: '/modules/cors/' },
       { text: 'Cookies', link: '/modules/http/v/2/request' },
       { text: 'Session Flash', link: '/modules/http/v/2/response' },
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
