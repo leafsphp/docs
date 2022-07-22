@@ -22,7 +22,7 @@ onMounted(() => {
 
 const route = useRoute()
 const show = $computed(() =>
-  /^\/(guide|docs|tutorial|examples|modules)\//.test(route.path) && !/^\/(docs\/tooling\/functions|docs\/config)\//.test(route.path.replace('.html', '/'))
+  /^\/(guide|docs|tutorial|examples|modules)\//.test(route.path) && !/^\/(docs\/tooling\/functions|docs\/config|modules\/db\/v\/1)\//.test(route.path.replace('.html', '/'))
 )
 const showFullText = $computed(() =>
   /^\/(tutorial|examples)\//.test(route.path)
