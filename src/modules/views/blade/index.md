@@ -44,6 +44,21 @@ $blade->configure("app/views", "app/views/cache");
 
 Since Blade is also bound directly to the Leaf object, you can directly do this
 
+<div class="functional-mode">
+
+```php
+db()->create('dbname')->execute();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->create('dbname')->execute();
+```
+
+</div>
+
 ```php
 $app->blade->configure("app/views", "app/views/cache");
 ```
