@@ -14,7 +14,7 @@ vuepress provides a custom container plugin to create alert boxes. There are fou
 **Markdown Examples**
 
 ```
-::: info
+::: tip
 You can find more information at this site.
 :::
 
@@ -33,7 +33,7 @@ This is something we do not recommend. Use at your own risk.
 
 **Rendered Markdown**
 
-::: info
+::: tip
 You can find more information at this site.
 :::
 
