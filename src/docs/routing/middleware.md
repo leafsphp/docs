@@ -1,7 +1,7 @@
 # Middleware
 <!-- markdownlint-disable no-inline-html -->
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Leaf how to use middleware in your leaf apps.
 
 <VideoLesson href="#" title="Middleware in leaf PHP">Watch the middleware guide on youtube</VideoLesson>
