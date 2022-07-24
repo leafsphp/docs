@@ -1,6 +1,6 @@
 # Your first app
 
-::: info Pre-requisites
+::: tip Pre-requisites
 
 - Basic PHP knowledge
 

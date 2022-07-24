@@ -25,7 +25,7 @@ Detailed release notes this version available on [GitHub](https://github.com/lea
 
 ## Leaf CLI
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 You can take a look at our leaf cli setup walkthrough on youtube.
 
 <VideoLesson href="https://www.youtube.com/watch?v=yb3LUYHtopQ" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
@@ -51,7 +51,7 @@ leaf serve
 
 ## Composer
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to set up a leaf app with composer.
 
 <VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the composer setup on youtube</VideoLesson>
@@ -107,7 +107,7 @@ You might want to check out [URL rewriting](/docs/introduction/url-rewriting.htm
 
 ## GitHub
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to set up a leaf app from the leaf codebase.
 
 <VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the github setup on youtube</VideoLesson>
