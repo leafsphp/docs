@@ -5,7 +5,7 @@ title: "Logging"
 <!-- markdownlint-disable no-inline-html -->
 # Logging
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to set up logging in your leaf apps.
 
 <VideoLesson href="#" title="Logging in leaf PHP">Watch the logging guide on youtube</VideoLesson>

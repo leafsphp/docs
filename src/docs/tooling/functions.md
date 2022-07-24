@@ -1,7 +1,7 @@
 # Functional Mode
 <!-- <Badge text="new" /> -->
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn about leaf 3's new functional mode.
 
 <VideoLesson href="#" title="Functional mode">Watch the functional mode guide on youtube</VideoLesson>

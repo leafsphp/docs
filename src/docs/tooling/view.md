@@ -1,11 +1,7 @@
----
-title: "Leaf View"
----
-
 <!-- markdownlint-disable no-inline-html -->
 # Leaf View
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to use views in leaf PHP.
 
 <VideoLesson href="#" title="Views in leaf PHP">Watch the views guide on youtube</VideoLesson>
@@ -94,6 +90,21 @@ app()->veins->render("app");
 
 If you don't want to set up your engine to the Leaf instance, you can still use it on the View class:
 
+<div class="functional-mode">
+
+```php
+View::attach(\Leaf\Veins\Template::class, "veins");
+
+// $veins becomes available after attaching it
+View::veins()->configure([
+    'veins_dir' => app()->config("views.path"),
+    'cache_dir' => app()->config("views.cachePath"),
+]);
+```
+
+</div>
+<div class="class-mode">
+
 ```php
 View::attach(\Leaf\Veins\Template::class, "veins");
 
@@ -103,3 +114,5 @@ View::veins()->configure([
     'cache_dir' => $app->config("views.cachePath"),
 ]);
 ```
+
+</div>
