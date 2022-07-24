@@ -17,7 +17,7 @@ composer require leafs/db
 
 From there, you can link your database and start writing some awesome queries.
 
-::: info Coming from v1
+::: tip Coming from v1
 If you are coming from Leaf Db v1, we recommend checking the [changelog](/modules/db/v/2/new)
 :::
 
