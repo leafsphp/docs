@@ -2,7 +2,7 @@
 
 MVC core is a module that contains components for transforming leaf into a full-blown MVC framework. MVC Core is used in Leaf MVC, Leaf API and skeleton. It comes with features like controllers, models, eloquent from laravel, factories and more.
 
-::: info Building with MVC
+::: tip Building with MVC
 If you want a pre-built MVC setup, we recommend checking out Leaf MVC or Leaf API which come with a ton of features in addition to those offered by Leaf and MVC core. You can checkout Skeleton if you want a basic MVC setup without any weird additions.
 :::
 
