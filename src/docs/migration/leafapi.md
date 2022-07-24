@@ -1,6 +1,6 @@
 # Introduction
 
-::: info
+::: tip
 Leaf 3 is not yet available with Leaf 3. This means that you need to add Leaf 3 to your project manually.
 :::
 
