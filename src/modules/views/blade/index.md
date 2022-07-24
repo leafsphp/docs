@@ -1,9 +1,5 @@
----
-title: "Leaf Blade"
----
-
 <!-- markdownlint-disable no-inline-html -->
-# 🔪 Blade Templating
+# Leaf Blade
 
 This is Leaf's implementation of Laravel's blade templating engine.
 
