@@ -248,7 +248,7 @@ If a header with the given name does not exist, `null` is returned. You may spec
 
 ## Status
 
-::: info Info
+::: tip Info
 You can directly set status codes on responses, there's no need to use this method unless you want to use PHP's output methods like <b>echo</b>
 :::
 
