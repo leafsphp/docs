@@ -4,7 +4,7 @@ title: "Migration Guide"
 
 # Introduction
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 [@mychidarko](https://github.com/mychidarko) gives a walkthrough on migrating a leaf 2 app to use leaf 3 and modules.
 
 <VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Migrating to v3">Watch the migration guide on youtube</VideoLesson>
