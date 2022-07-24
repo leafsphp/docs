@@ -5,7 +5,7 @@ title: "Basic routing"
 # Routing
 <!-- markdownlint-disable no-inline-html -->
 
-::: info
+::: tip
 Leaf router is now separated from Leaf and is now available as an installable module via composer or the leaf cli.
 :::
 

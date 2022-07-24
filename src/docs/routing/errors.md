@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to handle errors in your leaf app, during and after development.
 
 <VideoLesson href="#" title="Error handling in leaf PHP">Watch the error handling guide on youtube</VideoLesson>

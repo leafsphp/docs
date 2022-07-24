@@ -77,7 +77,7 @@ $app->run();
 
 </div>
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Watch how to use the leaf router in your leaf applications.
 
 <VideoLesson href="#" title="Routing in leaf PHP">Watch the routing guide on youtube</VideoLesson>

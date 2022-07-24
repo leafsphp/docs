@@ -1,7 +1,7 @@
 # Dynamic Routing
 <!-- markdownlint-disable no-inline-html -->
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how leaf handles dynamic routing.
 
 <VideoLesson href="#" title="Dynamic routing in leaf PHP">Watch the routing guide on youtube</VideoLesson>
