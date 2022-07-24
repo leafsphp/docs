@@ -610,7 +610,7 @@ response()->withFlash('message', 'something')->redirect('/somewhere');
 
 ## Status
 
-::: info Info
+::: tip Info
 You can directly set status codes on responses, there's no need to use this method unless you want to use PHP's output methods like <b>echo</b>
 :::
 

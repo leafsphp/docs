@@ -3,7 +3,7 @@
 
 This is a simple object which allows you to manage the way headers are used in your application. It contains methods to set and get headers in your app.
 
-::: info
+::: tip
 You can still use most header methods from within the response and request objects, you can refer to those if you want to, however, this package comes with ore features and better useability.  
 :::
 
