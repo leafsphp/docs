@@ -1,7 +1,3 @@
----
-title: "Session"
----
-
 <!-- markdownlint-disable no-inline-html -->
 # Leaf Session
 
@@ -19,26 +15,14 @@ composer require leafs/session
 
 ## Using Session
 
-You can quickly get started with Leaf session by using the `Leaf\Http\Session` class.
+<div class="functional-mode">
 
-```php
-
-require __DIR__ . "/vendor/autoload.php";
-
-$app = new Leaf\App;
-$session = new Leaf\Http\Session;
-
-$app->get("/text", function () use($session) {
-  $session->set("name", "Michael Darko");
-});
-```
-
-## Functional mode
+### Functional mode
 <!-- <Badge text="new" /> -->
 
 Leaf session also hooks into leaf 3's functional mode. If you are using leaf 3, then this is the fastest way to use the session class.
 
-### session
+#### session
 
 `session` is a global method that can be used to create a session or return the session object.
 
@@ -54,7 +38,7 @@ You can call any session method on the `session` function:
 session()->destroy();
 ```
 
-### flash
+#### flash
 
 This is a simple class for getting and setting flash data or returning the leaf flash object.
 
@@ -62,6 +46,27 @@ This is a simple class for getting and setting flash data or returning the leaf 
 # return leaf session flash object
 flash()->set("This is a message");
 ```
+
+</div>
+<div class="class-mode">
+
+### Session Class
+
+You can quickly get started with Leaf session by using the `Leaf\Http\Session` class.
+
+```php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new Leaf\App;
+$session = new Leaf\Http\Session;
+
+$app->get("/text", function () use($session) {
+  $session->set("name", "Michael Darko");
+});
+```
+
+</div>
 
 <div class="class-mode">
 
@@ -97,8 +102,6 @@ use Leaf\Http\Session;
 
 $sessionBody = Session::body();
 ```
-
-<hr>
 
 </div>
 
@@ -149,8 +152,6 @@ session()->set([
 ```
 
 </div>
-
-<hr>
 
 ### get
 
@@ -211,8 +212,6 @@ $html = session()->get("blog", false);
 
 </div>
 
-<hr>
-
 ## retrieve
 
 `retrieve` returns the requested value and removes it from the session, just like calling `get` first and then `unset` for the same key.
@@ -237,8 +236,6 @@ $username = session()->retrieve("username");
 
 </div>
 
-<hr>
-
 ### body
 
 This method returns the {key => value} pairs of all the session data including any CSRF data as an associative array.
@@ -257,8 +254,6 @@ $body = session()->body();
 ```
 
 </div>
-
-<hr>
 
 ### unset
 
@@ -287,8 +282,6 @@ session()->unset(['name', 'email']);
 
 </div>
 
-<hr>
-
 ### reset
 
 `reset` simply re-initialises a session.
@@ -311,8 +304,6 @@ app()->post('/session/reset', function () {
 ```
 
 </div>
-
-<hr>
 
 ### id
 
@@ -351,8 +342,6 @@ $id = session()->id("new session id");
 ```
 
 </div>
-
-<hr>
 
 ### regenerate
 
@@ -477,7 +466,9 @@ if (!$user) $response->exit($session->errors());
 ```php
 $user = session()->get("user");
 
-if (!$user) response()->exit(session()->errors());
+if (!$user) {
+  response()->exit(session()->errors());
+}
 ```
 
 </div>
