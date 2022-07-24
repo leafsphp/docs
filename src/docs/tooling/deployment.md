@@ -1,116 +1,38 @@
 # Production Deployment
 
-::: info
-Most of the tips below are enabled by default if you are using [Leaf CLI](https://cli.leafphp.org). This section is only relevant if you are using a custom build setup.
-:::
+Leaf is made to work the same way no matter the environment. This means that if your application works in development, it will work in production. However, this means there are some stuff from development that will show in production if left that way. For this reason, we need to make a few tweaks for the production environment. In this document, we'll cover some great starting points for making sure your Leaf application is deployed properly.
 
 ## Turn on Production Mode
 
-During development, Leaf provides a lot of warnings to help you with common errors and pitfalls. However, these warning strings become useless in production and bloat your app's payload size. In addition, some of these warning checks have small runtime costs that can be avoided in [production mode](https://cli.leafphp.org/docs/mode-and-env.html#modes).
+Leaf is set to development mode by default, however, there are things like development errors which we don't want to see in production. For this reason, we need to turn on production mode. We can do this simply by updating the leaf configuration.
 
-### Without Build Tools
+<div class="functional-mode">
 
-If you are using the full build, i.e. directly including Leaf via a script tag without a build tool, make sure to use the minified version for production. This can be found in the [Installation guide](/docs/introduction/installation.html#cdn).
-
-### With Build Tools
-
-When using a build tool like Webpack or Browserify, the production mode will be determined by `process.env.NODE_ENV` inside Leaf's source code, and it will be in development mode by default. Both build tools provide ways to overwrite this variable to enable Leaf's production mode, and warnings will be stripped by minifiers during the build. Leaf CLI has this pre-configured for you, but it would be beneficial to know how it is done:
-
-#### Webpack
-
-In Webpack 4+, you can use the `mode` option:
-
-```js
-module.exports = {
-  mode: 'production'
-}
+```php
+app()->config('debug', false);
 ```
 
-#### Browserify
+</div>
+<div class="class-mode">
 
-- Run your bundling command with the actual `NODE_ENV` environment variable set to `"production"`. This tells `Leafify` to avoid including hot-reload and development related code.
-
-- Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle. This allows the minifier to strip out all the warnings in Leaf's source code wrapped in env variable conditional blocks. For example:
-
-  ```bash
-  NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
-  ```
-
-- Or, using [envify](https://github.com/hughsk/envify) with Gulp:
-
-  ```js
-  // Use the envify custom module to specify environment variables
-  const envify = require('envify/custom')
-
-  browserify(browserifyOptions)
-    .transform(Leafify)
-    .transform(
-      // Required in order to process node_modules files
-      { global: true },
-      envify({ NODE_ENV: 'production' })
-    )
-    .bundle()
-  ```
-
-- Or, using [envify](https://github.com/hughsk/envify) with Grunt and [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
-
-  ```js
-  // Use the envify custom module to specify environment variables
-  const envify = require('envify/custom')
-
-  browserify: {
-    dist: {
-      options: {
-        // Function to deviate from grunt-browserify's default order
-        configure: (b) =>
-          b
-            .transform('Leafify')
-            .transform(
-              // Required in order to process node_modules files
-              { global: true },
-              envify({ NODE_ENV: 'production' })
-            )
-            .bundle()
-      }
-    }
-  }
-  ```
-
-#### Rollup
-
-Use [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
-
-```js
-const replace = require('@rollup/plugin-replace')
-
-rollup({
-  // ...
-  plugins: [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify( 'production' )
-    })
-  ]
-}).then(...)
+```php
+$app->config('debug', false);
 ```
 
-## Pre-Compiling Templates
+</div>
 
-When using in-DOM templates or in-JavaScript template strings, the template-to-render-function compilation is performed on the fly. This is usually fast enough in most cases, but is best avoided if your application is performance-sensitive.
+## Autoloader Optimization
 
-<!-- The easiest way to pre-compile templates is using [Single-File Components](/docs/single-file-component.html) - the associated build setups automatically performs pre-compilation for you, so the built code contains the already compiled render functions instead of raw template strings. -->
+When deploying to production, make sure that you are optimizing Composer's class autoloader map so Composer can quickly find the proper file to load for a given class:
 
-If you are using Webpack, and prefer separating JavaScript and template files, you can use [Leaf-template-loader](https://github.com/ktsn/Leaf-template-loader), which also transforms the template files into JavaScript render functions during the build step.
+```sh
+composer install --optimize-autoloader
+```
 
-## Extracting Component CSS
+::: tip
+In addition to optimizing the autoloader, you should always be sure to include a `composer.lock` file in your project's source control repository. Your project's dependencies can be installed much faster when a `composer.lock` file is present.
+:::
 
-When using Single-File Components, the CSS inside components are injected dynamically as `<style>` tags via JavaScript. This has a small runtime cost, and if you are using server-side rendering it will cause a "flash of unstyled content". Extracting the CSS across all components into the same file will avoid these issues, and also result in better CSS minification and caching.
+## Walkthroughs
 
-Refer to the respective build tool documentations to see how it's done:
-
-- [Webpack + Leaf-loader](https://Leaf-loader.leafphp.org/en/configurations/extract-css.html) (the `Leaf-cli` webpack template has this pre-configured)
-- [Browserify + Leafify](https://github.com/leafsphp/Leafify#css-extraction)
-- [Rollup + rollup-plugin-Leaf](https://rollup-plugin-Leaf.leafphp.org/)
-
-## Tracking Runtime Errors
-
-If a runtime error occurs during a component's render, it will be passed to the global `app.config.errorHandler` config function if it has been set. It might be a good idea to leverage this hook together with an error-tracking service like [Sentry](https://sentry.io), which provides [an official integration](https://sentry.io/for/Leaf/) for Leaf.
+We're adding some step-by-step walkthroughs to deploying on different providers on our codelabs platform. You can find every experiment related to deployment [here](https://codelabs.leafphp.dev/experiments/hosting/)
