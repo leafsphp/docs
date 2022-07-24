@@ -171,7 +171,9 @@ const mainSidebar = [
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
-      { text: 'Functional Mode', link: '/docs/tooling/functions' }
+      { text: 'Functional Mode', link: '/docs/tooling/functions' },
+      { text: 'Deployment', link: '/docs/tooling/deployment' },
+      // { text: 'Testing', link: '/docs/tooling/testing' },
     ]
   },
   {
@@ -183,21 +185,26 @@ const mainSidebar = [
     ]
   },
   {
-    text: 'Core',
+    text: 'The basics',
+    collapsible: false,
+    collapsed: false,
     items: [
       { text: 'Request', link: '/modules/http/v/2/request' },
       { text: 'Response', link: '/modules/http/v/2/response' },
       { text: 'Headers', link: '/modules/http/v/2/headers' },
       { text: 'CORS', link: '/modules/cors/' },
       { text: 'Session', link: '/modules/session/' },
+      { text: 'Session Flash', link: '/modules/session/flash' },
+      { text: 'Cookies', link: '/modules/cookies/' },
       { text: 'Container', link: '/docs/tooling/container' },
-      { text: 'Logging', link: '/docs/tooling/logging' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
       { text: 'Middleware', link: '/docs/routing/middleware' }
     ]
   },
   {
     text: 'Routing',
+    collapsible: true,
+    collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
       { text: 'Error Handling', link: '/docs/routing/errors' },
@@ -220,14 +227,35 @@ const mainSidebar = [
       { text: 'Leaf DB v1', link: '/modules/db/v/1/' },
       { text: 'New in v2', link: '/modules/db/v/2/new' },
       { text: 'Leaf DB v2', link: '/modules/db/v/2/' },
-      { text: 'Query Builder', link: '/modules/db/v/2/builder' },
+      { text: 'Query Builder', link: '/modules/db/v/2/builder' }
+    ]
+  },
+  {
+    text: 'Templating',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Introduction', link: '/modules/views/' },
+      { text: 'Bare UI', link: '/modules/views/bareui/' },
+      { text: 'Leaf Blade', link: '/modules/views/blade/' },
+      { text: 'Leaf Veins', link: '/modules/views/veins/' }
+    ]
+  },
+  {
+    text: 'Utilities',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
+      { text: 'Logging', link: '/docs/tooling/logging' },
+      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      { text: 'Container', link: '/docs/tooling/container' },
+      { text: 'Leaf View', link: '/docs/tooling/view' }
     ]
   },
   {
     text: 'Extras',
     items: [
-      { text: 'Cookies', link: '/modules/http/v/2/request' },
-      { text: 'Session Flash', link: '/modules/http/v/2/response' },
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Leaf Forms', link: '/modules/forms/' },
       { text: 'Container', link: '/docs/tooling/container' },
