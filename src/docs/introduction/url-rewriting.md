@@ -1,10 +1,6 @@
----
-title: "URL Rewriting"
----
-
 <!-- markdownlint-disable no-inline-html -->
 
-## 👩‍🏫 Introduction
+# URL Rewriting
 
 Basically, we're trying to push all the requests made to the server to a single root file, so a request made to `/home.php` will be directed to the root file of our choice....usually `index.php`.
 
