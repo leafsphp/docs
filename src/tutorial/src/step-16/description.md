@@ -11,3 +11,10 @@ At this point, you should have a good idea of what it's like to work with Leaf. 
 - Check out our practical videos on [YouTube](https://youtube.com/)
 
 We can't wait to see what you build next!
+
+<div class="vt-box-container">
+  <a class="vt-box" href="/docs/introduction/first-app" style="flex: 0 50%;">
+    <h3 class="next-steps-link">Continue the Guide</h3>
+    <small class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</small>
+  </a>
+</div>
