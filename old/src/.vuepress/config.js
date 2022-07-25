@@ -545,7 +545,7 @@ module.exports = {
             items: [
               {
                 text: 'Leaf Forum',
-                link: 'https://github.com/leafsphp/leaf/discussions/57',
+                link: 'https://github.com/leafsphp/leaf/discussions/37',
               },
               {
                 text: 'YouTube',
