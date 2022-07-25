@@ -3,33 +3,11 @@
 
 The request object is an abstraction of the current HTTP request and allows you to easily interact with any data passed into your application.
 
-## Request class
+## Usage
 
-The request class allows you to quickly access all the features of leaf request.
+<div class="functional-mode">
 
-```php
-Leaf\Http\Request::get("name");
-
-// or
-
-use Leaf\Http\Request;
-
-Request::get("name");
-```
-
-## Request on the Leaf Instance
-
-If you are using request in a leaf app, leaf automatically binds the request class to the leaf instance, so you can always access the leaf request object without having to include any classes or namespaces.
-
-```php{4}
-$app = new Leaf\App;
-
-$app->post("/user/change-username", function () use($app) {
-  echo $app->request()->get("username");
-});
-```
-
-## Functional Mode
+- ### Functional Mode
 <!-- <Badge text="new" /> -->
 
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
@@ -51,6 +29,52 @@ $name = request("name");
 
 **THIS WILL NO LONGER WORK**
 :::
+
+</div>
+<div class="class-mode">
+
+- ### Request class
+
+The request class allows you to quickly access all the features of leaf request.
+
+```php
+Leaf\Http\Request::get("name");
+
+// or
+
+use Leaf\Http\Request;
+
+Request::get("name");
+```
+
+</div>
+
+- ### Request on the Leaf Instance
+
+If you are using request in a leaf app, leaf automatically binds the request class to the leaf instance, so you can always access the leaf request object without having to include any classes or namespaces.
+
+<div class="functional-mode">
+
+```php{4}
+app()->post("/user/change-username", function () {
+  echo app()->request()->get("username");
+});
+```
+
+Although you can do this, there's no need to go with this method since you have access to the `request` global.
+
+</div>
+<div class="class-mode">
+
+```php{4}
+$app = new Leaf\App;
+
+$app->post("/user/change-username", function () use($app) {
+  echo $app->request()->get("username");
+});
+```
+
+</div>
 
 ## `get`
 
