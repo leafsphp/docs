@@ -173,7 +173,8 @@ const mainSidebar = [
       { text: 'Leaf tutorial', link: '/tutorial/' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
-      { text: 'Deployment', link: '/docs/tooling/deployment' },
+      { text: 'Modules', link: '/modules/' },
+      { text: 'Deployment', link: '/docs/tooling/deployment' }
       // { text: 'Testing', link: '/docs/tooling/testing' },
     ]
   },
@@ -224,15 +225,44 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf DB Module', link: '/modules/db/' },
+      { text: 'Introduction', link: '/modules/db/' },
       { text: 'Leaf DB v1', link: '/modules/db/v/1/' },
       { text: 'New in v2', link: '/modules/db/v/2/new' },
       { text: 'Leaf DB v2', link: '/modules/db/v/2/' },
-      { text: 'Query Builder', link: '/modules/db/v/2/builder' }
+      { text: 'Query Builder', link: '/modules/db/v/2/builder' },
+      { text: 'Leaf Redis', link: '/modules/redis/' }
     ]
   },
   {
-    text: 'Templating',
+    text: 'Authentication',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Introduction', link: '/modules/auth/' },
+      { text: 'Leaf Auth v1', link: '/modules/auth/v/1/' },
+      { text: 'Leaf Auth v2', link: '/modules/auth/v/2/' },
+      { text: 'Leaf Auth v2.1', link: '/modules/auth/v/2.1/' },
+      { text: 'Auth Config', link: '/modules/auth/v/2.1/config' },
+      { text: 'Auth Methods', link: '/modules/auth/v/2.1/methods' },
+      { text: 'Session Support', link: '/modules/auth/v/2.1/session' }
+    ]
+  },
+  {
+    text: 'Utilities',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
+      { text: 'Leaf Password', link: '/modules/password/' },
+      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      { text: 'Leaf Date', link: '/modules/date/' },
+      { text: 'File System', link: '/modules/fs/' },
+      { text: 'Leaf Fetch', link: '/modules/fetch/' },
+      { text: 'Logging', link: '/docs/tooling/logging' }
+    ]
+  },
+  {
+    text: 'Frontend',
     collapsible: true,
     collapsed: true,
     items: [
@@ -243,66 +273,14 @@ const mainSidebar = [
     ]
   },
   {
-    text: 'Utilities',
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
-      { text: 'Logging', link: '/docs/tooling/logging' },
-      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
-      { text: 'Container', link: '/docs/tooling/container' },
-      { text: 'Leaf View', link: '/docs/tooling/view' }
-    ]
-  },
-  {
     text: 'Extras',
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
-      { text: 'Leaf Forms', link: '/modules/forms/' },
-      { text: 'Container', link: '/docs/tooling/container' },
-      { text: 'Logging', link: '/docs/tooling/logging' },
-      { text: 'Leaf View', link: '/docs/tooling/view' },
-      { text: 'Functional Mode', link: '/docs/tooling/functions' }
-    ]
-  },
-  {
-    text: 'Modules',
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: 'Introduction', link: '/modules/' },
-      {
-        text: 'Leaf Forms',
-        link: '/modules/forms/'
-      },
-      {
-        text: 'Leaf Db',
-        link: '/modules/db/'
-      },
-      {
-        text: 'Leaf Auth',
-        link: '/modules/auth/'
-      },
-      {
-        text: 'Leaf Http',
-        link: '/modules/http/'
-      },
-      {
-        text: 'Leaf Session',
-        link: '/modules/session/'
-      },
-      {
-        text: 'Leaf Flash',
-        link: '/modules/session/flash'
-      },
-      {
-        text: 'Leaf Cookies',
-        link: '/modules/cookies/'
-      },
-      {
-        text: 'Leaf Router',
-        link: '/modules/router/'
-      }
+      { text: 'Anchor', link: '/modules/anchor/' },
+      { text: 'CSRF', link: '/modules/anchor/csrf/' },
+      { text: 'MVC Core', link: '/modules/mvc-core/' },
+      { text: 'Leaf Mail', link: '/modules/mail/' },
+      { text: 'Leaf DB (Old)', link: '/modules/db-old/' }
     ]
   }
 ]
