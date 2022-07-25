@@ -170,6 +170,7 @@ const mainSidebar = [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
+      { text: 'Leaf tutorial', link: '/tutorial/' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
