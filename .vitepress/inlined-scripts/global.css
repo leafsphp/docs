@@ -82,3 +82,11 @@
   padding: 15px;
   font-size: 16px;
 }
+
+.next-steps-link {
+  margin: 0px !important;
+}
+
+.vt-box-container .vt-box {
+  padding: 46px 36px !important;
+}
