@@ -254,7 +254,7 @@ const mainSidebar = [
     items: [
       { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
       { text: 'Leaf Password', link: '/modules/password/' },
-      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      // { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Leaf Date', link: '/modules/date/' },
       { text: 'File System', link: '/modules/fs/' },
       { text: 'Leaf Fetch', link: '/modules/fetch/' },
