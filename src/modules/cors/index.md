@@ -1,9 +1,5 @@
----
-title: "Cors"
----
-
 <!-- markdownlint-disable no-inline-html -->
-# ✨ CORS
+# CORS
 
 ::: tip Note
 In leaf v3, CORS now has it's own module. You no longer have to patch in headers or use `evadeCors` which was pretty much a temporary patch.
