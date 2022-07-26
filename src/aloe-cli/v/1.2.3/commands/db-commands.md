@@ -56,7 +56,7 @@ Usage:
 
 ## Next Steps
 
-- [Aloe Commands](/aloe-cli/v/1.2.3/commands/default/)
-- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
-- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
-- [Creating Libraries](/aloe-cli/v/1.2.3/libraries/)
+- [Aloe Commands](/aloe-cli/v/1.2.3/commands/default)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io)
+- [Creating Libraries](/aloe-cli/v/1.2.3/libraries)

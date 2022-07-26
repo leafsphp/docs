@@ -111,7 +111,7 @@ Options:
 
 ## Next Steps
 
-- [d Commands](/aloe-cli/v/1.2.3/commands/d-commands/)
-- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
-- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
-- [Creating Libraries](/aloe-cli/v/1.2.3/libraries/)
+- [d Commands](/aloe-cli/v/1.2.3/commands/d-commands)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io)
+- [Creating Libraries](/aloe-cli/v/1.2.3/libraries)

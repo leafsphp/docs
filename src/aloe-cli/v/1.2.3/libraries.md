@@ -16,7 +16,7 @@ Aloe libraries simply serve a bunch of commands to the Aloe CLI. ALoe CLI has fu
 
 ## Next Steps
 
-- [Installer](/aloe-cli/v/1.2.3/installer/)
-- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
-- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
-- [db commands](/aloe-cli/v/1.2.3/db-commands/)
+- [Installer](/aloe-cli/v/1.2.3/installer)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io)
+- [db commands](/aloe-cli/v/1.2.3/db-commands)

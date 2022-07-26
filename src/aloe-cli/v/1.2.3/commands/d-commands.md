@@ -84,7 +84,7 @@ Arguments:
 
 ## Next Steps
 
-- [DB Commands](/aloe-cli/v/1.2.3/commands/db-commands/)
-- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
-- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
-- [Creating Libraries](/aloe-cli/v/1.2.3/libraries/)
+- [DB Commands](/aloe-cli/v/1.2.3/commands/db-commands)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io)
+- [Creating Libraries](/aloe-cli/v/1.2.3/libraries)
