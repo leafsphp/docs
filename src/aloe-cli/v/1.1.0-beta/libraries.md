@@ -13,10 +13,3 @@ $console->register(\Aloe\UI::commands());
 ## Creating your own libraries
 
 Aloe libraries simply serve a bunch of commands to the Aloe CLI. ALoe CLI has full support for Symfony console commands, so all symfony commands can also be run through Aloe CLI. After defining all your commands, you can simply return all their classes as an array to be registered.
-
-## Next Steps
-
-- [Installer](/aloe-cli/v/1.1.0-beta/installer)
-- [Custom commands](/aloe-cli/v/1.1.0-beta/commands/custom)
-- [Commands IO](/aloe-cli/v/1.1.0-beta/commands/io)
-- [db commands](/aloe-cli/v/1.1.0-beta/db-commands)

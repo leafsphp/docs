@@ -47,3 +47,10 @@ Installing routes involves referencing routes files in the main route file.
 ```php
 Aloe\Installer::installRoutes("package/Auth/Routes");
 ```
+
+## Next Steps
+
+- [g Commands](/aloe-cli/v/1.1.0-beta/commands/g-commands)
+- [Custom commands](/aloe-cli/v/1.1.0-beta/commands/custom)
+- [Commands IO](/aloe-cli/v/1.1.0-beta/commands/io)
+- [db commands](/aloe-cli/v/1.1.0-beta/db-commands)

@@ -8,4 +8,3 @@ This section talks about using and creating libraries for Aloe CLI, as well as s
 - [Custom commands](/aloe-cli/v/1.1.0-beta/commands/custom)
 - [Commands IO](/aloe-cli/v/1.1.0-beta/commands/io)
 - [Creating Libraries](/aloe-cli/v/1.1.0-beta/libraries)
-
