@@ -1,9 +1,15 @@
 # Leaf Anchor
 <!-- <Badge text="new" /> -->
 
+<div style="display:flex;">
+
 [![Latest Stable Version](https://poser.pugx.org/leafs/anchor/v/stable)](https://packagist.org/packages/leafs/anchor)
+
 [![Total Downloads](https://poser.pugx.org/leafs/anchor/downloads)](https://packagist.org/packages/leafs/anchor)
+
 [![License](https://poser.pugx.org/leafs/anchor/license)](https://packagist.org/packages/leafs/anchor)
+
+</div>
 
 Leaf anchor is a new module which contains basic security features for the leaf framework. This module is actively being developed and will be updated whenever a security vulnerability is discovered.
 
@@ -39,6 +45,7 @@ The `sanitize` on leaf anchor handles all of this for you so you don't have to w
 
 ```php
 <?php
+
 require __DIR__ . "vendor/autoload.php";
 
 $data = $_POST["data"];
@@ -51,6 +58,7 @@ This also works on arrays
 
 ```php
 <?php
+
 require __DIR__ . "vendor/autoload.php";
 
 $data = Leaf\Anchor::sanitize($_POST);
