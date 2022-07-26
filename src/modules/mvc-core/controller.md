@@ -1,7 +1,5 @@
 <!-- markdownlint-disable no-inline-html -->
-# 🎮 Core Controller
-
-## Overview
+# Core Controller
 
 Instead of defining all of your request handling logic as Closures in route files, you may wish to organize this behavior using Controller classes. Controllers can group related request handling logic into a single class.
 
@@ -45,8 +43,6 @@ Now, when a request matches the specified route URI, the `show` method on the `U
 > Controllers are **not** required to extend a base class. However, you will not have access to convenient features provided by Leaf Model
 <!-- such as the middleware, validate, and dispatch methods. -->
 
-<hr>
-
 ## Base Controller Features
 
 ### Default Templating
@@ -78,8 +74,6 @@ class NameController extends Controller {
 
 You can view more info on Veins [here](/modules/views/veins/)
 
-<hr>
-
 ### Responses
 
 Leaf Core controller contains methods to appropriately return data to the user.
@@ -100,8 +94,6 @@ class NameController extends Controller {
 
 You can view more on responses [here](/modules/http/v/2/response)
 
-<hr>
-
 ### file_upload
 
 file_upload is for simple file uploads. It takes in 3 parameters, the path to save the file, the file and the file type(optional). It returns an array `[true, $filename]` if successful and `[false, $error]` if the upload fails.
@@ -119,8 +111,6 @@ class NameController extends Controller {
   }
 }
 ```
-
-<hr>
 
 ### Forms
 
