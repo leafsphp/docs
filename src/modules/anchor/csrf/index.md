@@ -1,9 +1,15 @@
-# Leaf CSRF 
+# Leaf CSRF
 <!-- <Badge text="EXPERIMENTAL" type="warning" /> -->
 
+<div style="display:flex;">
+
 [![Latest Stable Version](https://poser.pugx.org/leafs/csrf/v/stable)](https://packagist.org/packages/leafs/csrf)
+
 [![Total Downloads](https://poser.pugx.org/leafs/csrf/downloads)](https://packagist.org/packages/leafs/csrf)
+
 [![License](https://poser.pugx.org/leafs/csrf/license)](https://packagist.org/packages/leafs/csrf)
+
+</div>
 
 ::: danger NOTE
 This is an experimental module. Please open an issue if you notice any bugs or malfunctions.
