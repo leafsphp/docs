@@ -4,7 +4,7 @@ This section talks about using and creating libraries for Aloe CLI, as well as s
 
 ## Plugging in libraries
 
-As seen in [registering commands](aloe-cli/v/1.1.0/commands/custom?id=registering-commands), Aloe provides a neat `register` method which allows you to extend aloe's command range. Aloe libraries usually take advantage of this to return an array instead of manually returning commands one by one.
+As seen in [registering commands](/aloe-cli/v/1.2.3/commands/custom?id=registering-commands), Aloe provides a neat `register` method which allows you to extend aloe's command range. Aloe libraries usually take advantage of this to return an array instead of manually returning commands one by one.
 
 ```php
 $console->register(\Aloe\UI::commands());
