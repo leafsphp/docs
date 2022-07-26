@@ -110,4 +110,3 @@ Leaf API's config includes a little twist which lets Aloe run in API first mode.
 - [Custom commands](/aloe-cli/v/1.1.0/commands/custom)
 - [Commands IO](/aloe-cli/v/1.1.0/commands/io)
 - [Creating Libraries](/aloe-cli/v/1.1.0/libraries)
-

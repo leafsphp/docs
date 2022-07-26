@@ -54,4 +54,3 @@ Aloe\Installer::installRoutes("package/Auth/Routes");
 - [Custom commands](/aloe-cli/v/1.1.0/commands/custom)
 - [Commands IO](/aloe-cli/v/1.1.0/commands/io)
 - [db commands](/aloe-cli/v/1.1.0/db-commands)
-

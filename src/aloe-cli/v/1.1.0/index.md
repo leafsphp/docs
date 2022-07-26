@@ -111,4 +111,3 @@ Available commands:
  scaffold
   scaffold:auth  Scaffold basic app authentication
 ```
-
