@@ -10,9 +10,27 @@ Aloe CLI is a smart CLI that takes care of a lot of a whole lot of time consumin
 
 *Currently, Aloe is only fully supported by Leaf MVC and Leaf API, as some commands may not work on other setups.*
 
+For better support if you're not using Leaf MVC or Leaf API, you'll need to install Leaf MVC Core which contains all of Leaf's MVC utilities including a special autoloader and configuration...
+
+```sh
+leaf install mvc-core
+```
+
+Or with composer:
+
+```sh
+composer require leafs/mvc-core
+```
+
 ## Installation
 
-As mentioned, other systems may not fully support Aloe, but you can install Aloe with composer.
+After installing MVC Core, you can install Aloe with leaf CLI.
+
+```sh
+leaf install aloe
+```
+
+Or with composer:
 
 ```sh
 composer require leafs/aloe
@@ -20,7 +38,7 @@ composer require leafs/aloe
 
 ## Setup
 
-After installing aloe, you need to set it up so you can run commands like `php leaf ...`. To do this, simply create a file with the name you want to run in your console. eg: To run commands using `php console ...`, you'll need to create a file named `console`. With Leaf API and Leaf MVC, this file is named `leaf` which is the reason you run commmands with `php leaf ...`. I'll name this file `poison` which means I'll run commands like `php poison serve`
+After installing aloe, you need to set it up so you can run commands like `php leaf ...`. To do this, simply create a file with the name you want to run in your console. eg: To run commands using `php console ...`, you'll need to create a file named `console`. With Leaf API and Leaf MVC, this file is named `leaf` which is the reason you run commmands with `php leaf ...`. We'll name this file `poison` which means we'll run commands like `php poison serve`
 
 In the `poison` file, we need to do a couple of things:
 
@@ -46,17 +64,41 @@ The setup used in Leaf MVC looks like this:
 |
 */
 require __DIR__ . '/vendor/autoload.php';
+```
 
+Next, we need to create an autoloader to map some App paths. Some things like migrations are required directly from Aloe and so, we need to tell Aloe where to find them. MVC Core has setup pretty much everything, so all we need to is pass the directories to find and setup stuff like controllers, models, ...
+
+```php
 /*
 |--------------------------------------------------------------------------
-| Register The Leaf Command Auto Loader
+| Load MVC Core
 |--------------------------------------------------------------------------
 |
-| Require all the files containing the Leaf Commands
+| MVC core provides Leaf's auto loading, configuration and shortcut
+| functions right off the bat.
 |
 */
-require __DIR__ . '/Config/bootstrap.php';
+Leaf\Core::paths([
+  'controllersPath' => 'app/controllers',
+  'modelsPath' => 'app/models',
+  'migrationsPath' => 'app/database/migrations',
+  'seedsPath' => 'app/database/seeds',
+  'factoriesPath' => 'app/database/factories',
+  'helpersPath' => 'app/helpers',
+  'viewsPath' => 'app/views',
+  'configPath' => 'config',
+  'storagePath' => 'storage',
+  'commandsPath' => 'app/console',
+  'routesPath' => 'app/routes',
+  'libPath' => 'lib',
+  'publicPath' => 'public',
+  'databaseStoragePath' => 'storage/app/db'
+]);
+```
 
+This config tells aloe where to find everything it needs to get going. Under the hood, any work needed will be done for you. From here, it's simply a matter of adding our env, initializing our database and aloe.
+
+```php
 /*
 |--------------------------------------------------------------------------
 | Bring in (env)
@@ -65,7 +107,22 @@ require __DIR__ . '/Config/bootstrap.php';
 | Quickly use our environment variables
 |
 */
-file_exists(__DIR__ . "/.env") && \Dotenv\Dotenv::create(__DIR__)->load();
+try {
+  \Dotenv\Dotenv::createUnsafeImmutable(__DIR__)->load();
+} catch (\Throwable $th) {
+  trigger_error($th);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Additional Leaf Database Config
+|--------------------------------------------------------------------------
+|
+| Load leaf database configuration
+|
+*/
+Leaf\Database::config(DatabaseConfig());
+Leaf\Database::connect();
 
 /*
 |--------------------------------------------------------------------------
@@ -75,7 +132,7 @@ file_exists(__DIR__ . "/.env") && \Dotenv\Dotenv::create(__DIR__)->load();
 | Initialise aloe CLI
 |
 */
-$console = new \Aloe\Console("Leaf MVC", "v2.3");
+$console = new \Aloe\Console("Leaf MVC", "v3.0");
 
 /*
 |--------------------------------------------------------------------------
@@ -104,9 +161,11 @@ Leaf API's config includes a little twist which lets Aloe run in API first mode.
 \Aloe\Command\Config::$env = "API";
 ```
 
+So depending on your use case, the API commands may be of more use.
+
 ## Next Steps
 
-- [DB Commands](/aloe-cli/v/1.2.3/commands/db-commands/)
-- [Custom commands](/aloe-cli/v/1.2.3/commands/custom/)
-- [Commands IO](/aloe-cli/v/1.2.3/commands/io/)
-- [Creating Libraries](/aloe-cli/v/1.2.3/libraries/)
+- [DB Commands](/aloe-cli/v/1.2.3/commands/db-commands)
+- [Custom commands](/aloe-cli/v/1.2.3/commands/custom)
+- [Commands IO](/aloe-cli/v/1.2.3/commands/io)
+- [Creating Libraries](/aloe-cli/v/1.2.3/libraries)

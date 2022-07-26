@@ -1,17 +1,13 @@
----
-aside: none
----
+# Aloe CLI
 
-# Aloe Cli
-
-Aloe is a simple but powerful console service that makes building your leaf apps just a simple walk in the park. Aloe CLI ships with the default Leaf console tool in the newer versions of Leaf API, soon in Leaf MVC and Leaf API.
+Aloe is a simple but powerful console service that makes building your leaf apps just a simple walk in the park. Aloe CLI ships with the default Leaf console tool in the newer versions of Leaf API, Leaf MVC and Skeleton.
 
 Aloe comes with a predefined set of commands which provide project scaffolding, database and app management right from the console. It also introduces a much simpler and cleaner way to write your commands.
 
 ## Aloe List
 
 ```bash
-Leaf MVC v2.0
+ALOE
 
 Usage:
   command [options] [arguments]
