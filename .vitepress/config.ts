@@ -278,9 +278,18 @@ const mainSidebar = [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Anchor', link: '/modules/anchor/' },
       { text: 'CSRF', link: '/modules/anchor/csrf/' },
-      { text: 'MVC Core', link: '/modules/mvc-core/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
       { text: 'Leaf DB (Old)', link: '/modules/db-old/' }
+    ]
+  },
+  {
+    text: 'MVC Tools',
+    items: [
+      { text: 'MVC Core', link: '/modules/mvc-core/' },
+      { text: 'Models', link: '/modules/mvc-core/model' },
+      { text: 'Factories', link: '/modules/mvc-core/factories' },
+      { text: 'Controller', link: '/modules/mvc-core/controller' },
+      { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
     ]
   }
 ]
