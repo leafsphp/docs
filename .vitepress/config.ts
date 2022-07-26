@@ -297,6 +297,63 @@ const mainSidebar = [
 export const sidebar = {
   '/docs/': mainSidebar,
   '/modules/': mainSidebar,
+  '/aloe-cli/': [
+    {
+      text: 'Aloe CLI',
+      collapsible: false,
+      items: [
+        { text: 'Home', link: '/aloe-cli/' },
+        {
+          text: 'Getting Started',
+          link: '/aloe-cli/v/1.2.3/getting-started/'
+        }
+      ]
+    },
+    {
+      text: 'Default Commands',
+      collapsible: false,
+      items: [
+        {
+          text: 'Misc Commands',
+          link: '/aloe-cli/v/1.2.3/commands/misc-commands'
+        },
+        {
+          text: '"Generate" Commands',
+          link: '/aloe-cli/v/1.2.3/commands/g-commands'
+        },
+        {
+          text: '"Delete" Commands',
+          link: '/aloe-cli/v/1.2.3/commands/d-commands'
+        },
+        {
+          text: '"DB" Commands',
+          link: '/aloe-cli/v/1.2.3/commands/db-commands'
+        }
+      ]
+    },
+    {
+      text: 'Aloe CLI',
+      collapsible: false,
+      items: [
+        {
+          text: 'Custom Commands',
+          link: '/aloe-cli/v/1.2.3/commands/custom'
+        },
+        {
+          text: 'Command IO',
+          link: '/aloe-cli/v/1.2.3/commands/io'
+        }
+      ]
+    },
+    {
+      text: 'Aloe Misc',
+      collapsible: false,
+      items: [
+        { text: 'Aloe Libraries', link: '/aloe-cli/v/1.2.3/libraries' },
+        { text: 'Aloe Installer', link: '/aloe-cli/v/1.2.3/installer' }
+      ]
+    }
+  ],
   '/api/': [
     {
       text: 'Global API',
