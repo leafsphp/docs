@@ -24,4 +24,3 @@ composer require leafs/aloe
 - [Custom commands](/aloe-cli/v/1.0/commands/custom)
 - [Commands IO](/aloe-cli/v/1.0/commands/io)
 - [Creating Libraries](/aloe-cli/v/1.0/libraries)
-
