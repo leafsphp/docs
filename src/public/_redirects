@@ -1,7 +1,9 @@
-/docs/                       /docs/introduction.html
-/guide/doc-style-guide.html  /docs/contributing/doc-style-guide.html
-/docs/writing-guide.html     /docs/contributing/writing-guide.html
-/resources/*                 /ecosystem/:splat
+/docs/                                   /docs/introduction.html
+/docs/contributing/doc-style-guide.html  /community/contributing/doc-style-guide.html
+/guide/doc-style-guide.html              /community/contributing/doc-style-guide.html
+/docs/contributing/writing-guide.html    /community/contributing/writing-guide.html
+/docs/writing-guide.html                 /community/contributing/writing-guide.html
+/resources/*                             /ecosystem/:splat
 
-/blog/                       https://blog.leafphp.dev
-/codelabs/                   https://codelabs.leafphp.dev
+/blog/                                   https://blog.leafphp.dev
+/codelabs/                               https://codelabs.leafphp.dev
