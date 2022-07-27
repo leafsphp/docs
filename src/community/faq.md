@@ -58,7 +58,7 @@ As you see above, all of these setups/frameworks are built using leaf as their c
 
 ## How do I contribute to Leaf?
 
-We appreciate your interest! Please check out our [Contribution Guide](/community/contributing).
+We appreciate your interest! Please check out our [Contribution Guide](/community/contributing/).
 
 <!-- ## What's the difference between Leaf 2 and Leaf 3?
 

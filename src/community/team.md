@@ -1,6 +1,7 @@
 ---
 page: true
 title: Meet the Team
+sidebar: false
 ---
 
 <script setup>

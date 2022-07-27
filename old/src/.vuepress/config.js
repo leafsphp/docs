@@ -338,8 +338,8 @@ const sidebar = {
       title: 'Contribute to the Docs',
       collapsable: false,
       children: [
-        '/community/contributing',
-        '/docs/contributing/writing-guide',
+        '/community/contributing/',
+        '/community/contributing/writing-guide',
         '/docs/contributing/doc-style-guide',
       ],
     },
@@ -355,7 +355,7 @@ const sidebar = {
         '/community/team',
         '/community/join',
         '/coc/',
-        '/community/contributing',
+        '/community/contributing/',
         '/support/',
         { title: 'Twitter', path: 'https://twitter.com/leafphp' },
         { title: 'Discord', path: 'https://discord.gg/Pkrm9NJPE3' },
@@ -454,11 +454,11 @@ module.exports = {
           },
           {
             text: 'Contribute to Leaf',
-            link: '/community/contributing',
+            link: '/community/contributing/',
           },
           {
             text: 'Contribute to docs',
-            link: '/docs/contributing/writing-guide',
+            link: '/community/contributing/writing-guide',
           },
           {
             text: 'Migration from Leaf 2',
