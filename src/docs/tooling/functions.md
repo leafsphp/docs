@@ -194,7 +194,7 @@ Leaf form also provides a `form` method which returns the entire leaf form objec
 form()->validate(...);
 ```
 
-You will however need to install the [leaf form module](/modules/form/) to get started.
+You will however need to install the leaf form module to get started.
 
 ## Leaf Db
 
