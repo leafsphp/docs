@@ -325,4 +325,4 @@ This allows you to display a link on only part of your output.
 - [G Commands](/aloe-cli/v/1.2.3/commands/g-commands)
 - [Custom commands](/aloe-cli/v/1.2.3/commands/custom)
 - [Commands IO](/aloe-cli/v/1.2.3/commands/io)
-- [DB commands](/aloe-cli/v/1.2.3/db-commands)
+- [DB commands](/aloe-cli/v/1.2.3/commands/db-commands)

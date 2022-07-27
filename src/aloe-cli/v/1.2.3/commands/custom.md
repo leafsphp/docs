@@ -104,4 +104,4 @@ $console->register([
 - [Commands IO](/aloe-cli/v/1.2.3/commands/io)
 - [libraries](/aloe-cli/v/1.2.3/libraries)
 - [G Commands](/aloe-cli/v/1.2.3/commands/g-commands)
-- [DB commands](/aloe-cli/v/1.2.3/db-commands)
+- [DB commands](/aloe-cli/v/1.2.3/commands/db-commands)
