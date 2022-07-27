@@ -48,7 +48,7 @@ class MailSendCommand extends Command
 ```
 
 We can add an argument to find the user to send the email to, and output a message while sending the email.
-These can be done in the `config` and `handle` methods respectively. [Read more](/aloe-cli/v/1.1.0-beta/commands/io) here.
+These can be done in the `config` and `handle` methods respectively. [Read more](/aloe-cli/v/1.2.3/commands/io) here.
 
 ```php
 public function config()
