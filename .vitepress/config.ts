@@ -8,21 +8,10 @@ import { headerPlugin } from './headerMdPlugin'
 const nav = [
   {
     text: 'Docs',
-    activeMatch: `^/(docs|style-guide|examples)/`,
+    activeMatch: `^/(docs|style-guide|examples|tutorial)/`,
     items: [
       { text: 'Guide', link: '/docs/introduction/' },
-      // { text: 'Tutorial', link: '/tutorial/' },
-      // { text: 'Examples', link: '/examples/' },
-      // { text: 'Quick Start', link: '/guide/quick-start' },
-      // { text: 'Style Guide', link: '/style-guide/' },
-      {
-        text: 'Contribute to Leaf',
-        link: '/community/contributing'
-      },
-      {
-        text: 'Contribute to docs',
-        link: '/docs/contributing/writing-guide'
-      },
+      { text: 'Tutorial', link: '/tutorial/' },
       {
         text: 'Migration from Leaf 2',
         link: '/docs/migration/introduction'
@@ -32,24 +21,11 @@ const nav = [
         link: 'https://codelabs.leafphp.dev'
       },
       {
-        text: 'Vue 2 Docs',
-        link: 'https://v2.vuejs.org'
+        text: 'Leaf 2 Docs',
+        link: 'https://archive.leafphp.dev'
       },
-      {
-        text: 'Migration from Vue 2',
-        link: 'https://v3-migration.vuejs.org/'
-      }
     ]
   },
-  // {
-  //   text: 'API',
-  //   activeMatch: `^/api/`,
-  //   link: '/api/'
-  // },
-  // {
-  //   text: 'Playground',
-  //   link: 'https://sfc.vuejs.org'
-  // },
   {
     text: 'Ecosystem',
     activeMatch: `^/ecosystem/`,
@@ -103,6 +79,14 @@ const nav = [
         text: 'Community',
         ariaLabel: 'Community Menu',
         items: [
+          {
+            text: 'Contribute to Leaf',
+            link: '/community/contributing/'
+          },
+          {
+            text: 'Contribute to docs',
+            link: '/community/contributing/writing-guide'
+          },
           {
             text: 'Blog',
             link: 'https://blog.leafphp.dev'
@@ -289,7 +273,34 @@ const mainSidebar = [
       { text: 'Models', link: '/modules/mvc-core/model' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
       { text: 'Controller', link: '/modules/mvc-core/controller' },
-      { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
+      { text: 'API Controller', link: '/modules/mvc-core/api-controller' }
+    ]
+  }
+]
+
+const communitySidebar = [
+  {
+    text: 'Community',
+    collapsible: false,
+    items: [
+      { text: 'History', link: '/community/history' },
+      { text: 'FAQ', link: '/community/faq' },
+      { text: 'Blog', link: 'https://blog.leafphp.dev' },
+      { text: 'Meet the Team', link: '/community/team' },
+      { text: 'Our Community', link: '/community/join' },
+      { text: 'Code of Conduct', link: '/coc/' },
+      { text: 'Contribution Guide', link: '/community/contributing/' },
+      {
+        text: 'Writing Guide',
+        link: '/community/contributing/writing-guide'
+      },
+      { text: 'Support Leaf', link: '/support/' },
+      { text: 'Twitter', link: 'https://twitter.com/leafphp' },
+      { text: 'Discord', link: 'https://discord.gg/Pkrm9NJPE3' },
+      {
+        text: 'YouTube',
+        link: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw'
+      }
     ]
   }
 ]
@@ -354,6 +365,8 @@ export const sidebar = {
       ]
     }
   ],
+  '/community/': communitySidebar,
+  '/coc/': communitySidebar,
   '/api/': [
     {
       text: 'Global API',
