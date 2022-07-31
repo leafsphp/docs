@@ -69,6 +69,7 @@ Leaf\Http\Cors::config([
 
 <div class="class-mode">
 
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
