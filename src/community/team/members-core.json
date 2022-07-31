@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Michael Darko",
+    "title": "Creator",
+    "company": "Leaf PHP",
+    "projects": [
+      {
+        "label": "leafsphp/*",
+        "url": "https://www.github.com/leafsphp"
+      }
+    ],
+    "location": "Ghana",
+    "languages": ["English"],
+    "socials": {
+      "github": "mychidarko",
+      "twitter": "mychidarko"
+    },
+    "sponsor": false
+  }
+]

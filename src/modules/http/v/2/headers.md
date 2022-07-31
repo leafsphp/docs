@@ -3,7 +3,7 @@
 
 This is a simple object which allows you to manage the way headers are used in your application. It contains methods to set and get headers in your app.
 
-::: info
+::: tip
 You can still use most header methods from within the response and request objects, you can refer to those if you want to, however, this package comes with ore features and better useability.  
 :::
 
@@ -110,7 +110,8 @@ Leaf\Http\Headers::remove("WWW-Authenticate");
 Leaf\Http\Headers::remove(["Content-Type", "WWW-Authenticate"]);
 ```
 
-## `has` <sup><Badge text="new" /></sup>
+## `has`
+<!-- <sup><Badge text="new" /></sup> -->
 
 This method allows you to check if a header has been set in the current request. It returns `true` if the header has been set and `false` otherwise.
 

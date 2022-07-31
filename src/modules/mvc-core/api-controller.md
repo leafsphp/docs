@@ -1,11 +1,9 @@
 <!-- markdownlint-disable no-inline-html -->
-# 🎮 Core API Controller
-
-## 📖 Overview
+# Core API Controller
 
 Instead of defining all of your request handling logic as Closures in route files, you may wish to organize this behavior using Controller classes. Controllers can group related request handling logic into a single class. This particular base controller is made specially for APIs, it's been stripped of anything that would not be used in an API.
 
-## 🚝 Defining Controllers
+## Defining API Controllers
 
 Below is an example of a basic API controller class. Note that the controller extends the base controller class included with Leaf(`Leaf\APIController`). The base class provides a few convenience methods
 <!-- such as the middleware method, which may be used to attach middleware to controller actions: -->
@@ -45,8 +43,6 @@ Now, when a request matches the specified route URI, the `show` method on the `U
 > Controllers are **not** required to extend a base class. However, you will not have access to convenient features provided by Leaf Model
 <!-- such as the middleware, validate, and dispatch methods. -->
 
-<hr>
-
 ## Base Controller Features
 
 ### Responses
@@ -67,9 +63,7 @@ class NameController extends Controller {
 }
 ```
 
-You can view more on responses [here](leaf/v/2.5.0/http/response)
-
-<hr>
+You can view more on responses [here](/modules/http/v/2/response)
 
 ### file_upload
 
@@ -89,8 +83,6 @@ class NameController extends Controller {
 }
 ```
 
-<hr>
-
 ### Forms
 
 The base controller also gives you a simple way to handle form data
@@ -105,4 +97,4 @@ public function index() {
 }
 ```
 
-Read more on Leaf Forms [here](leaf/v/2.5.0/core/forms)
+Read more on Leaf Forms [here](/modules/forms/)

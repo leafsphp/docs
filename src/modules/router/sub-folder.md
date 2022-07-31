@@ -12,8 +12,8 @@ Out-of-the box Leaf's Core router will run in any (sub)folder you place it into 
 Say you have a server hosting the domain www.example.org using public_html/ as its document root, with this little entry script index.php:
 
 ```php
-$app->get('/', function() { echo 'Index'; });
-$app->get('/hello', function() { echo 'Hello!'; });
+$app->get('/', function () { echo 'Index'; });
+$app->get('/hello', function () { echo 'Hello!'; });
 ```
 
 - If your were to place this file (along with its accompanying .htaccess file or the like) at the document root level (e.g. public_html/index.php), Leaf's Core router will mount all routes onto the domain root (e.g. /) and thus respond to [https://www.example.org/](https://www.example.org/) and [https://www.example.org/hello](https://www.example.org/hello).
@@ -28,8 +28,8 @@ In case you don't want Leaf's Core router to automatically adapt itself to the f
 // Override auto base path detection
 $app->setBasePath('/');
 
-$app->get('/', function() { echo 'Index'; });
-$app->get('/hello', function() { echo 'Hello!'; });
+$app->get('/', function () { echo 'Index'; });
+$app->get('/hello', function () { echo 'Hello!'; });
 
 $app->run();
 ```

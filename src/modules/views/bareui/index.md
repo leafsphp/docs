@@ -19,6 +19,21 @@ BareUI takes a fully static approach which means you can use all of it's methods
 ::: tip Quick Tip
 BareUI has deep integrations with Leaf core by default. This means that if you're using BareUI in leaf, it will always be available on the leaf instance as `template`.
 
+<div class="functional-mode">
+
+```php
+db()->create('dbname')->execute();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->create('dbname')->execute();
+```
+
+</div>
+
 ```php
 app()->template->config("path", "./views");
 ```
@@ -44,6 +59,21 @@ There are currently only 2 options to configure.
 - path (string): This tells leaf where to look for templates.
 - params (array): These are a bunch of base parameters that will be available in all of your templates.
 
+<div class="functional-mode">
+
+```php
+db()->create('dbname')->execute();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->create('dbname')->execute();
+```
+
+</div>
+
 ```php
 // app() will be available in all templates
 app()->template->config("params", ["app" => function () {
@@ -53,6 +83,21 @@ app()->template->config("params", ["app" => function () {
 ```
 
 `template.view.php`
+
+<div class="functional-mode">
+
+```php
+db()->create('dbname')->execute();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->create('dbname')->execute();
+```
+
+</div>
 
 ```php
 <?php
@@ -92,6 +137,21 @@ Let's look at a simple template:
 
 We can render this from where we want the UI to show:
 
+<div class="functional-mode">
+
+```php
+db()->create('dbname')->execute();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->create('dbname')->execute();
+```
+
+</div>
+
 ```php
 echo $app->template->render("welcome", [
     "var" => "Something",
@@ -99,6 +159,21 @@ echo $app->template->render("welcome", [
 ```
 
 Since bare UI templates are just raw PHP, you can do stuff like this:
+
+<div class="functional-mode">
+
+```php
+db()->create('dbname')->execute();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->create('dbname')->execute();
+```
+
+</div>
 
 ```php
 echo $app->template->render("app", [

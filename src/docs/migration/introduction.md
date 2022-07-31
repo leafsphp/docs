@@ -4,7 +4,7 @@ title: "Migration Guide"
 
 # Introduction
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 [@mychidarko](https://github.com/mychidarko) gives a walkthrough on migrating a leaf 2 app to use leaf 3 and modules.
 
 <VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Migrating to v3">Watch the migration guide on youtube</VideoLesson>
@@ -13,7 +13,7 @@ title: "Migration Guide"
 This guide is primarily for users with prior Leaf 2 experience who want to learn about the new features and changes in Leaf 3. **This is not something you have to read from top to bottom before trying out Leaf 3.** While it looks like a lot has changed, a lot of what you know and love about Leaf is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
 
 ::: warning Coming from another library
-Migrating from another framework? [READ THIS](/docs/migration/other/) to get started.
+Migrating from another framework? [READ THIS](/docs/migration/other) to get started.
 :::
 
 - [Quickstart](#quickstart)
@@ -38,6 +38,10 @@ composer require leafs/leaf
 
 This will quickly setup a leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
 
+<div class="functional-mode">
+
+When using functional mode:
+
 ```php
 <?php
 
@@ -49,6 +53,27 @@ app()->get("/", function () {
 
 app()->run();
 ```
+
+</div>
+<div class="class-mode">
+
+When using classes:
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new \Leaf\App();
+
+$app->get("/", function () use($app) {
+  $app->response()->json(["name" => "Leaf"]);
+});
+
+$app->run();
+```
+
+</div>
 
 You can run this with the built in php server
 
@@ -127,6 +152,8 @@ composer require leafs/cors
 
 - Replace the original cors configuration with the cors module. (This is done under the hood for you, all you need to do now call the cors method on your leaf app)
 
+<div class="class-mode">
+
 Replace this:
 
 ```php
@@ -146,6 +173,27 @@ $app->cors();
 
 // ...
 ```
+
+</div>
+<div class="functional-mode">
+
+Replace this:
+
+```php
+app()->evadeCors(true);
+
+// ...
+```
+
+with...
+
+```php
+app()->cors();
+
+// ...
+```
+
+</div>
 
 The cors method is automatically linked to the cors module by Leaf and so, no extra configuration is needed to make it work. Cors takes in some optional configuration, checkout the [cors module docs](/modules/cors/). Also cors is no longer available on the response object.
 

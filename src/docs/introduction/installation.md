@@ -25,13 +25,13 @@ Detailed release notes this version available on [GitHub](https://github.com/lea
 
 ## Leaf CLI
 
-::: info Video Docs
+<!-- ::: tip Video Docs
 You can take a look at our leaf cli setup walkthrough on youtube.
 
 <VideoLesson href="https://www.youtube.com/watch?v=yb3LUYHtopQ" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
-:::
+::: -->
 
-Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/cli/v/2.0/) for more details.
+Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.dev) for more details.
 
 ```sh
 leaf create <project-name> --v3
@@ -51,7 +51,7 @@ leaf serve
 
 ## Composer
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to set up a leaf app with composer.
 
 <VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the composer setup on youtube</VideoLesson>
@@ -69,6 +69,26 @@ $ composer require leafs/leaf dev-v3.x-dev
 
 After insalling Leaf, you need to create your index.php file which will be the entry point to your application.
 
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new Leaf\App;
+
+$app->get("/", function () use($app) {
+  $app->response()->json(["message" => "Hello World!"]);
+});
+
+$app->run();
+```
+
+</div>
+
+<div class="functional-mode">
+
 ```php
 <?php
 
@@ -81,11 +101,13 @@ app()->get("/", function () {
 app()->run();
 ```
 
+</div>
+
 You might want to check out [URL rewriting](/docs/introduction/url-rewriting.html).
 
 ## GitHub
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to set up a leaf app from the leaf codebase.
 
 <VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the github setup on youtube</VideoLesson>

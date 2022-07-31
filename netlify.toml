@@ -1,19 +1,8 @@
-[[redirects]]
-  from = "/blog/"
-  to = "https://blog.leafphp.dev"
+[build.environment]
+  NODE_VERSION = "16"
+  NPM_FLAGS = "--version" # prevent Netlify npm install
 
-[[redirects]]
-  from = "/codelabs/"
-  to = "https://codelabs.leafphp.dev"
+[build]
+  publish = ".vitepress/dist"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npm run build"
 
-[[redirects]]
-  from = "/docs/"
-  to = "/docs/introduction.html"
-
-[[redirects]]
- from = "guide/doc-style-guide.html"
- to = "/docs/contributing/doc-style-guide.html"
-
-[[redirects]]
-  from = "/docs/writing-guide.html"
-  to = "/docs/contributing/writing-guide.html"

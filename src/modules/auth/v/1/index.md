@@ -112,7 +112,7 @@ auth()->config("PASSWORD_ENCODE", null);
 auth()->config("PASSWORD_ENCODE", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_ENCODE", function($password) {
+auth()->config("PASSWORD_ENCODE", function ($password) {
   return Password::hash($password);
 });
 ```
@@ -132,7 +132,7 @@ auth()->config("PASSWORD_VERIFY", null);
 auth()->config("PASSWORD_VERIFY", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_VERIFY", function($password) {
+auth()->config("PASSWORD_VERIFY", function ($password) {
   return Password::verify($password);
 });
 ```
@@ -590,7 +590,7 @@ So, we're telling `register` to alert us if someone has already registered with 
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
-app()->post("/register", function() {
+app()->post("/register", function () {
   auth()->register(
     "users",
     request()->body(),
@@ -613,7 +613,7 @@ auth()->register("users", $data);
 The password encode option here has also been removed. Use the auth config above instead. The final parameter is now the validate param which is an array of rules to test the params.
 
 ```php
-app()->post("/register", function() use($app) {
+app()->post("/register", function () use($app) {
   auth()->register(
     "users",
     request()->body(),
@@ -764,7 +764,7 @@ $user_id = auth()->id();
 
 <hr>
 
-<!-- ### [Leaf Authentication Methods](leaf/v/2.5.0/core/authentication) -->
+<!-- ### [Leaf Authentication Methods](/docs/core/authentication) -->
 
 Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solutions for token authentication. This provides a simple way to work with manual authentication and tokens. All methods here are now available in `Leaf\Auth`.
 
@@ -772,4 +772,4 @@ Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solution
 $payload = auth()->validate($token);
 ```
 
-<!-- Read [authentication](leaf/v/2.5.0/core/authentication) for more info -->
+<!-- Read [authentication](/docs/core/authentication) for more info -->

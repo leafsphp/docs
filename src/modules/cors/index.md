@@ -1,9 +1,5 @@
----
-title: "CORS"
----
-
 <!-- markdownlint-disable no-inline-html -->
-# ✨ CORS
+# CORS
 
 ::: tip Note
 In Leaf v3, CORS now has its own module. You no longer have to patch in headers or use `evadeCors` which was pretty much a temporary patch.
@@ -16,21 +12,49 @@ This is a module used to enable and configure [CORS](http://en.wikipedia.org/wik
 You can install CORS through Composer or the Leaf CLI.
 
 ```sh
-composer reqiure leafs/cors
+leaf install cors
 ```
 
 or
 
 ```sh
-leaf install cors
+composer reqiure leafs/cors
 ```
 
 ## Usage
 
-After installing the CORS module, the CORS module is automatically linked to the Leaf app and can be used directly without referencing it anywhere.
+After installing the cors module, Leaf automatically links it to your app, so it can be used directly without referencing it anywhere. To get started, simply call the `cors` method on the leaf instance.
 
-::: tip Outside Leaf
-Leaf CORS can also be used without Leaf's core. You simply need to reference methods on `Leaf\Http\Cors` which is the class for CORS.
+<div class="class-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Leaf\App();
+$app->cors();
+
+// ... your app
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->cors();
+
+// ... your app
+```
+
+</div>
+
+::: tip Usage Outside leaf
+Leaf CORS can also be used without leaf's core. You simply need to reference methods on `Leaf\Http\Cors` which is the class for cors.
 
 ```php
 Leaf\Http\Cors::config([
@@ -43,40 +67,70 @@ Leaf\Http\Cors::config([
 
 ### Simple Usage (Enable *All* CORS Requests)
 
-```php
+<div class="class-mode">
+
+<?php
+
 require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App;
 
 $app->cors();
 
-$app->get('/products/{id}', function () use ($app) {
-  $app->response()->json(['message' => 'This is CORS-enabled for all origins!']);
+$app->get('/products/{id}', function () use($app) {
+  $app->response()->json([
+    'message' => 'This is CORS-enabled for all origins!'
+  ]);
 });
 
 $app->run();
 ```
+
+</div>
+<div class="functional-mode">
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->cors();
+
+app()->get('/products/{id}', function () {
+  response()->json([
+    "message" => "This is CORS-enabled for all origins!"
+  ]);
+});
+
+app()->run();
+```
+
+</div>
 
 You can alternatively call `Leaf\Http\Cors::config()` instead of `$app->cors()` in the example above.
 
 ### Configuring CORS
 
+<div class="class-mode">
+
 ```php
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
 $app->cors([
   'origin' => 'http://example.com',
   'optionsSuccessStatus' => 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 ]);
-
-$app->get('/products/{id}', function () use ($app) {
-  $app->response()->json(['message' => 'This is CORS-enabled for all origins!']);
-});
-
-$app->run();
 ```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->cors([
+  "origin" => 'http://example.com',
+  "optionsSuccessStatus" => 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+]);
+```
+
+</div>
 
 ## Configuration Options
 

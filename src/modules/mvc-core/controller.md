@@ -1,7 +1,5 @@
 <!-- markdownlint-disable no-inline-html -->
-# 🎮 Core Controller
-
-## Overview
+# Core Controller
 
 Instead of defining all of your request handling logic as Closures in route files, you may wish to organize this behavior using Controller classes. Controllers can group related request handling logic into a single class.
 
@@ -45,13 +43,11 @@ Now, when a request matches the specified route URI, the `show` method on the `U
 > Controllers are **not** required to extend a base class. However, you will not have access to convenient features provided by Leaf Model
 <!-- such as the middleware, validate, and dispatch methods. -->
 
-<hr>
-
 ## Base Controller Features
 
 ### Default Templating
 
-Using the core controller, you already have access to templating with [Leaf Veins](leaf/v/2.5.0/views/veins). You can simply configure and render your template whenever you want to.
+Using the core controller, you already have access to templating with [Leaf Veins](/modules/views/veins/). You can simply configure and render your template whenever you want to.
 
 ```php
 use Leaf\Controller;
@@ -76,9 +72,7 @@ class NameController extends Controller {
 }
 ```
 
-You can view more info on Veins [here](leaf/v/2.5.0/views/veins)
-
-<hr>
+You can view more info on Veins [here](/modules/views/veins/)
 
 ### Responses
 
@@ -98,9 +92,7 @@ class NameController extends Controller {
 }
 ```
 
-You can view more on responses [here](leaf/v/2.5.0/http/response)
-
-<hr>
+You can view more on responses [here](/modules/http/v/2/response)
 
 ### file_upload
 
@@ -120,8 +112,6 @@ class NameController extends Controller {
 }
 ```
 
-<hr>
-
 ### Forms
 
 The base controller also gives you a simple way to handle form data
@@ -136,4 +126,4 @@ public function index() {
 }
 ```
 
-Read more on Leaf Forms [here](leaf/v/2.5.0/core/forms)
+Read more on Leaf Forms [here](/modules/forms/)

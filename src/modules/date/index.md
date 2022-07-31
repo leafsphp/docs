@@ -1,9 +1,5 @@
----
-title: "Leaf Date"
----
-
 <!-- markdownlint-disable no-inline-html -->
-# 📆 Leaf Date
+# Leaf Date
 
 Leaf Date makes formating date/time really easier, though the method names may appear weird, they're actually very easy to remeber😂
 

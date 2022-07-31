@@ -3,9 +3,9 @@ title: "Leaf FileSystem"
 ---
 
 <!-- markdownlint-disable no-inline-html -->
-# 📂 Leaf FS
+# Leaf FS
 
-This is a simple functionality inspired by node js' FileSystem(fs) module. Leaf FS aims to make directory and file management much simpler than what you're currently used to, so as to speed up and ease the dev process.😊👌😎
+This is a simple functionality inspired by node js' FileSystem(fs) module. Leaf FS aims to make directory and file management much simpler than what you're currently used to, so as to speed up and ease the dev process.
 
 Leaf FS allows you to read/write to file, create, rename, copy and paste files/directories all with just a few lines of code. All this is performed while maintaining Leaf's simplicity.
 

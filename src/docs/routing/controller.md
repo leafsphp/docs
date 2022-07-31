@@ -1,7 +1,3 @@
----
-title: "Using Controllers"
----
-
 # Using Controllers
 <!-- markdownlint-disable no-inline-html -->
 
@@ -20,6 +16,18 @@ class HomeController {
 
 To handle a route using this controller, we'll have to import the controller, and then define a simple route
 
+<div class="functional-mode">
+
+```php
+require "HomeController.php";
+
+// we leave out the second parameter for now
+app()->get("/home");
+```
+
+</div>
+<div class="class-mode">
+
 ```php
 $app = new Leaf\App;
 
@@ -29,7 +37,20 @@ require "HomeController.php";
 $app->get("/home");
 ```
 
+</div>
+
 When using controllers, instead of defining a closure or function as the second parameter of your route, you rather pass in a string of the controller's class name and the function you want to use. In this case, `"HomeController@index"`, so remember, it's `Class@Method`
+
+<div class="functional-mode">
+
+```php
+require "HomeController.php";
+
+app()->get("/home", "HomeController@index");
+```
+
+</div>
+<div class="class-mode">
 
 ```php
 $app = new Leaf\App;
@@ -39,15 +60,40 @@ require "HomeController.php";
 $app->get("/home", "HomeController@index");
 ```
 
+</div>
+
 ## Controller Namespaces
 
 In case you're using an auto loader or using leaf in another framework and  you have your controllers in another directory, you can do sommething like this
+
+<div class="functional-mode">
+
+```php
+app()->get('/(\d+)', '\App\Controllers\User@showProfile');
+```
+
+</div>
+<div class="class-mode">
 
 ```php
 $app->get('/(\d+)', '\App\Controllers\User@showProfile');
 ```
 
+</div>
+
 But this gets tedious if you have a lot of routes. So Leaf allows you to set a "general" namespace, you can set the default namespace to use on your router instance via `setNamespace()`
+
+<div class="functional-mode">
+
+```php
+app()->setNamespace('\App\Controllers');
+
+app()->get('/users/(\d+)', 'User@showProfile');
+app()->get('/cars/(\d+)', 'Car@showProfile');
+```
+
+</div>
+<div class="class-mode">
 
 ```php
 $app->setNamespace('\App\Controllers');
@@ -55,6 +101,8 @@ $app->setNamespace('\App\Controllers');
 $app->get('/users/(\d+)', 'User@showProfile');
 $app->get('/cars/(\d+)', 'Car@showProfile');
 ```
+
+</div>
 
 ## Resource Controller
 

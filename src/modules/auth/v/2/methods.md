@@ -28,7 +28,7 @@ $user = auth()->login('users', [
 ]); // returns null if failed
 
 if (!$user) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 ```
 
@@ -87,19 +87,19 @@ Leaf auth has a very simple and straightforward implementation for password enco
 
 ### Validation
 
-This version of leaf auth has separated validation into it's own method. This allows you to have cleaner methods which are more readable. Validation uses [leaf form](/modules/forms) under the hood, which makes it simple and easy to use. You can find more about form rules in the [leaf form validation docs](/modules/forms/#supported-rules).
+This version of leaf auth has separated validation into it's own method. This allows you to have cleaner methods which are more readable. Validation uses [leaf form](/modules/forms/) under the hood, which makes it simple and easy to use. You can find more about form rules in the [leaf form validation docs](/modules/forms/#supported-rules).
 
 ```php{1}
 $validation = auth()->validate(['username' => 'ValidUsername']);
 
 if (!$validation) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 
 $user = auth()->login('users', $loginData);
 
 if (!$user) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 ```
 
@@ -125,7 +125,7 @@ $user = auth()->register('users', [
 ]); // returns null if failed
 
 if (!$user) {
-  response()->throwErr(auth()->errors());
+  response()->exit(auth()->errors());
 }
 ```
 
@@ -149,7 +149,7 @@ We are telling `register` to alert us if someone has already registered with the
 For instance, if you know the exact data you'll be receiving in your app, let's say a username, email and password from a register form, you can do something like this:
 
 ```php
-app()->post('/register', function() {
+app()->post('/register', function () {
   auth()->register(
     'users',
     request()->body(),
@@ -270,7 +270,7 @@ $user = auth()->user('all_users');
 We can catch any errors that occur, from fetching the user, working with the token...
 
 ```php
-$user = auth()->user() ?? $request->throwErr(auth()->errors());
+$user = auth()->user() ?? $request->exit(auth()->errors());
 ```
 
 `user` also takes in a second parameter, which is an array of items to hide from the returned user array.
@@ -287,7 +287,7 @@ This method returns the id of the currently logged in user. In the case of JWTs,
 $userId = auth()->id();
 ```
 
-<!-- ### [Leaf Authentication Methods](leaf/v/2.5.0/core/authentication) -->
+<!-- ### [Leaf Authentication Methods](/docs/core/authentication) -->
 
 <!-- Leaf Auth now uses the `Leaf\Helpers\Authentication` package to provide solutions for token authentication. This provides a simple way to work with manual authentication and tokens. All methods here are now available in `Leaf\Auth`.
 

@@ -1,7 +1,7 @@
 # Middleware
 <!-- markdownlint-disable no-inline-html -->
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Leaf how to use middleware in your leaf apps.
 
 <VideoLesson href="#" title="Middleware in leaf PHP">Watch the middleware guide on youtube</VideoLesson>
@@ -9,135 +9,385 @@ Leaf how to use middleware in your leaf apps.
 
 Middleware are just methods that run before your code runs, be it a particular route or your whole application. Unlike many other frameworks and systems, Leaf gives you the opportunity to set global middleware that run before any and every route.
 
-## ⏳ Before Route Middlewares
+::: warning Using middleware outside Leaf
+All the examples below assume you are using leaf router in a leaf app, and so use leaf's instance of the router with `$app` or `app()`. If you're however using Leaf router outside leaf, you can replace `$app`/`app()` with `Leaf\Router`.
+:::
 
-Leaf's Core router supports Before Route Middlewares, which are executed before the route handling is processed.
+## Before Route Middlewares
+
+This type of middleware runs before a particular route is invoked. To get started, simply pass in the route you want to run the middleware before.
 
 Like route handling functions, you hook a handling function to a combination of one or more HTTP request methods and a specific route pattern.
 
+<div class="class-mode">
+
 ```php
-$app->before('GET|POST', '/admin/.*', function() {
-    if (!isset($_SESSION['user'])) {
-        header('location: /auth/login');
-        exit();
-    }
+$app->before('GET|POST', '/admin/.*', function () {
+  if (!isset($_SESSION['user'])) {
+    header('location: /auth/login');
+    exit();
+  }
 });
 ```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->before('GET|POST', '/admin/.*', function () {
+  if (!isset($_SESSION['user'])) {
+    header('location: /auth/login');
+    exit();
+  }
+});
+```
+
+</div>
+
+::: tip Note
+Unlike route handling functions, more than one before route middleware is executed when more than one route match is found.
+
+<div class="class-mode">
+
+```php
+$app->before('GET|POST', '/admin/.*', function () {
+  if (!isset($_SESSION['user'])) {
+    header('location: /auth/login');
+    exit();
+  }
+});
+
+$app->before('GET|POST', '/admin/.*', function () {
+  if (!isset($_SESSION['user_secret'])) {
+    header('location: /auth/login');
+    exit();
+  }
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->before('GET|POST', '/admin/.*', function () {
+  if (!isset($_SESSION['user'])) {
+    header('location: /auth/login');
+    exit();
+  }
+});
+
+app()->before('GET|POST', '/admin/.*', function () {
+  if (!isset($_SESSION['user_secret'])) {
+    header('location: /auth/login');
+    exit();
+  }
+});
+```
+
+</div>
+
+:::
+
+Using this same concept, you can run your middleware on every route. We call this before router middleware.
+
+## Before Router Middlewares
+
+Before route middlewares are route specific. Using a general route pattern (viz. all URLs), they can become Before Router Middlewares (in other projects sometimes referred to as before app middlewares) which are always executed, no matter what the requested URL is.
+
+<div class="class-mode">
+
+```php
+$app->before('GET', '/.*', function () {
+  // ... this will always be executed
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->before('GET', '/.*', function () {
+  // ... this will always be executed
+});
+```
+
+</div>
+
+As you can see, the only difference between before route and before router middleware is the route pattern.
 
 ## Middleware route option
 
 This is a new way to quickly setup middleware for a particular route. Leaf has the before method which allows you to set a route specific middleware, but that means defining the same route twice, not to mention, you may mistake the middleware for the main route as they have the same syntax. This problem is solved by the middleware option. **If your prefer using `before`, you can always do so.**
 
-```php
-// you can define it in a different file
-$homeMiddleware = function () {
-    echo "Home middleware";
-};
+Let's take this function which we're using as our middleware:
 
-$app->get("/home", ["middleware" => $homeMiddleware, function() {
-    echo "User Home";
+```php
+$midfn = function () {
+  echo 'Home middleware';
+};
+```
+
+We can use this middleware directly on our route like this:
+
+<div class="class-mode">
+
+```php
+$app->get('/home', ['middleware' => $midfn, function () {
+  echo 'User Home';
 }]);
 ```
 
-Unlike route handling functions, more than one before route middleware is executed when more than one route match is found.
-
-## ✨ Before Router Middlewares
-
-Before route middlewares are route specific. Using a general route pattern (viz. all URLs), they can become Before Router Middlewares (in other projects sometimes referred to as before app middlewares) which are always executed, no matter what the requested URL is.
+</div>
+<div class="functional-mode">
 
 ```php
-$app->before('GET', '/.*', function() {
-    // ... this will always be executed
-});
+app()->get('/home', ['middleware' => $midfn, function () {
+  echo 'User Home';
+}]);
 ```
 
-### Router Hooks
+</div>
+
+## App middleware
+
+This type of middleware uses the `Leaf\Middleware` class under the hood. It provides a more structured way to define and use middleware in your apps. It allows you to define middleware classes as done in other frameworks like Laravel. This fits right in if you intend to build MVC applications.
+
+::: warning Usage outside Leaf
+Since `Leaf\Middleware` is part of Leaf's core, this type of middleware can't be used without Leaf. We suggest you use router hooks or before router middleware above if you're building without Leaf core.
+:::
+
+Using this method, you define your middleware class which should extend the `Leaf\Middleware` class. After that, your middleware code should be defined in the `call` method as done below:
+
+```php
+class TestMiddleware extends Leaf\Middleware
+{
+    public function call()
+    {
+        echo "my test middleware";
+
+        $this->next();
+    }
+}
+```
+
+One thing to note is your `call` method should always call `$this->next()`. This forwards the incoming request to the next middleware or your application if there's no other middleware.
+
+After defining the middleware, the next step is to tell Leaf to actually run your middleware. To do this, you can simply call the `use` method on the Leaf instance.
+
+<div class="class-mode">
+
+```php
+$app = new Leaf\App();
+
+$app->use(new TestMiddleware);
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->use(new TestMiddleware);
+```
+
+</div>
+
+## Router Hooks
 
 Hooks basically allow you to hook into Leaf router and execute a callback at a given time. For instance, you can execute a function just before Leaf fires off routes. You can also execute a callback before the main middleware executes or even after Leaf has completely executed a route.
 
 There are 6 hooks that you can now use with Leaf router listed below in execution order:
 
-#### `router.before`
+**It doesn't matter the order in which you define hooks. Leaf router will run them in the correct order.**
+
+### `router.before`
 
 This hook runs before Leaf router begins any operations, even before app middleware are triggered.
 
-#### `router.before.route`
+<div class="class-mode">
+
+```php
+$app->hook('router.before', function () {
+  // do something
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->hook('router.before', function () {
+  // do something
+});
+```
+
+</div>
+
+### `router.before.route`
 
 This hook runs just after the app middleware have run, just before the route specific middleware.
 
-#### `router.before.dispatch`
+<div class="class-mode">
+
+```php
+$app->hook('router.before.route', function () {
+  // do something
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->hook('router.before.route', function () {
+  // do something
+});
+```
+
+</div>
+
+### `router.before.dispatch`
 
 This hook runs just before routes are dispatched.
 
-#### `router.after.dispatch`
+<div class="class-mode">
+
+```php
+$app->hook('router.before.dispatch', function () {
+  // do something
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->hook('router.before.dispatch', function () {
+  // do something
+});
+```
+
+</div>
+
+### `router.after.dispatch`
 
 This hook runs just after routes are dispatched.
 
-#### `router.after.route`
+<div class="class-mode">
+
+```php
+$app->hook('router.after.dispatch', function () {
+  // do something
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->hook('router.after.dispatch', function () {
+  // do something
+});
+```
+
+</div>
+
+### `router.after.route`
 
 This hook runs after Leaf router has finished up with routing and cleaning up, just before the execution of internal code.
 
-#### `router.after`
+<div class="class-mode">
+
+```php
+$app->hook('router.after.route', function () {
+  // do something
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->hook('router.after.route', function () {
+  // do something
+});
+```
+
+</div>
+
+### `router.after`
 
 This hook runs when leaf completely finishes route execution and cleans up on the internal code as well. This is the last thing Leaf router does before exiting.
 
-**Note** Unlike the above hooks, `router.after` can be directly assigned by passing a function into Leaf router's `run` method.
+<div class="class-mode">
+
+```php
+$app->hook('router.after', function () {
+  // do something
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->hook('router.after', function () {
+  // do something
+});
+```
+
+</div>
+
+::: tip Note
+Unlike the above hooks, `router.after` can be directly assigned by passing a function into Leaf router's `run` method.
+
+<div class="class-mode">
 
 ```php
 $app = new Leaf\App;
 
-$app->run(function() {
-    echo "Final thing to run";
+// define routes
+
+$app->run(function () {
+  echo "Final thing to run";
 });
 ```
 
-Also note that the final function may return a value for further use if need be.
+</div>
+<div class="functional-mode">
 
 ```php
-$time = Leaf\Router::run(function() {
-    return Leaf\Date::now();
+// define routes
+
+app()->run(function () {
+  echo "Final thing to run";
+});
+```
+
+</div>
+
+Also note that the final function may return a value for further use if need be.
+
+<div class="class-mode">
+
+```php
+$time = $app->run(function () {
+  return Leaf\Date::now();
 });
 
 saveToLogs("app finished executing", $time);
 ```
 
-To get started with hooks, simply use the `hook` method to define the hook you want to use.
-
-**It doesn't matter the order in which you define hooks. Leaf router will run them in the correct order.**
+</div>
+<div class="functional-mode">
 
 ```php
-$app->hook("router.before", function() {
-    Leaf\Http\Headers::resetStatus(202);
+$time = app()->run(function () {
+  return Leaf\Date::now();
 });
+
+saveToLogs("app finished executing", $time);
 ```
 
-The example above makes sure that every response gets sent with a `202 Accepted` https status instead of the original status code. As you can see, `hook` takes in the hook you wish to set and a callable/callback to execute.
+</div>
 
-### App middleware
-
-::: warning
-If you are using leaf router outside of leaf, we suggest you use router hooks or before router middleware above.
 :::
-
-App middleware which are created using `Leaf\Middleware` have also received a lot of fixes which make them easier and faster to use.
-
-::: danger NOTE
-Router `add` has been renamed to `use`. This means that you will be using `use` to load your middleware instead.
-:::
-
-```php{14}
-// usually in a different file
-class Test extends Leaf\Middleware
-{
-    public function call()
-    {
-        echo "my test middleware";
-        
-        $this->callNext();
-    }
-}
-
-$app = new Leaf\App;
-
-$app->use(new Test);
-```

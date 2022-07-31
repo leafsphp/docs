@@ -36,7 +36,8 @@ auth()->config([
 
 Below is a list of all available settings.
 
-### DB_TABLE <sup><Badge text="NEW" /></sup>
+### DB_TABLE
+<!-- <sup><Badge text="NEW" /></sup> -->
 
 The `DB_TABLE` config allows you to set a particular table which leaf auth will perform operations on. Leaf auth will use this database table for storing and retrieving users. By default, it is set to `users`. This allows you to login, signup, update and fetch users without explicitly adding a table each time.
 
@@ -59,7 +60,7 @@ auth()->config("PASSWORD_ENCODE", null);
 auth()->config("PASSWORD_ENCODE", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_ENCODE", function($password) {
+auth()->config("PASSWORD_ENCODE", function ($password) {
   return Password::hash($password);
 });
 ```
@@ -79,7 +80,7 @@ auth()->config("PASSWORD_VERIFY", null);
 auth()->config("PASSWORD_VERIFY", Password::MD5);
 
 // use custom method
-auth()->config("PASSWORD_VERIFY", function($password) {
+auth()->config("PASSWORD_VERIFY", function ($password) {
   return Password::verify($password);
 });
 ```

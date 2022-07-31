@@ -26,7 +26,7 @@ $container = $application["container"];
 $container->response->json("hello");
 
 // use the $app instance
-$leafApp->get("/", function() {
+$leafApp->get("/", function () {
   echo "something";
 });
 

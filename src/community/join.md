@@ -16,7 +16,7 @@ Our [Code of Conduct](/coc/) is a guide to make it easier to enrich all of us an
 
 ### Get Support
 
-- [Forum](https://github.com/leafsphp/leaf/discussions/57): The best place to ask questions and get answers about Leaf and its ecosystem.
+- [Forum](https://github.com/leafsphp/leaf/discussions/37): The best place to ask questions and get answers about Leaf and its ecosystem.
 - [GitHub](https://github.com/leafsphp/leaf): If you have a bug to report or feature to request, that's what the GitHub issues are for. We also welcome pull requests!
 - [Discord server](https://discord.gg/Pkrm9NJPE3): A place for Leaf devs to meet and chat in real time.
 
@@ -55,4 +55,4 @@ If you want to help with any of these, kindly reach out on twitter [@leafphp](ht
 
 - [Twitter](https://twitter.com/leafphp): Get timely updates on everything that happens in the leaf PHP ecosystem.
 
-<a class="twitter-timeline" href="https://twitter.com/leafphp?ref_src=twsrc%5Etfw">Tweets by leafphp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- <a class="twitter-timeline" href="https://twitter.com/leafphp?ref_src=twsrc%5Etfw">Tweets by leafphp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->

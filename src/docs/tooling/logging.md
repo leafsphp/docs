@@ -5,7 +5,7 @@ title: "Logging"
 <!-- markdownlint-disable no-inline-html -->
 # Logging
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Learn how to set up logging in your leaf apps.
 
 <VideoLesson href="#" title="Logging in leaf PHP">Watch the logging guide on youtube</VideoLesson>
@@ -34,7 +34,13 @@ Leaf logger provides a log object that writes data to a specific output. The act
 
 ## Getting started
 
-To get started with logging, you need to first install the Leaf logger module. This will allow leaf log all errors and exception if the config is enabled. You can do this with composer:
+To get started with logging, you need to first install the Leaf logger module. This will allow leaf log all errors and exception if the config is enabled. You can do this with leaf CLI:
+
+```sh
+leaf install logger
+```
+
+Or with composer:
 
 ```sh
 composer require leafs/logger
@@ -79,16 +85,65 @@ This line above will create a new log file for every day there's a log.
 
 > `getDateToday` is a custom function that returns the date for a specific day.
 
+Putting it all together, we'll have something like this:
+
+<div class="class-mode">
+
+```php
+$app = new Leaf\App([
+  'log.enabled' => true,
+  'log.dir' => __DIR__ . '/logs/',
+  'log.file' => getDateToday() . '_crash_logs.log',
+]);
+
+$app->get('/', function () {
+  echo 'something';
+});
+
+$app->run();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+Leaf\Config::set([
+  'log.enabled' => true,
+  'log.dir' => __DIR__ . '/logs/',
+  'log.file' => getDateToday() . '_crash_logs.log',
+]);
+
+app()->get('/', function () {
+  echo 'something';
+});
+
+app()->run();
+```
+
+</div>
+
 ## How to log data
 
 As mentioned before, you might never need to use the logger manually, however, if you want to manually log some data, you can do it on the logger method found on the leaf instance. This is automatically created by leaf when the logger module is installed.
 
+<div class="class-mode">
+
 ```php
-<?php
 $log = $app->logger();
 ```
 
+</div>
+<div class="functional-mode">
+
+```php
+$log = app()->logger();
+```
+
+</div>
+
 The log object provides the following PSR-3 interface
+
+<div class="class-mode">
 
 ```php
 $app->logger()->debug(mixed $object);
@@ -100,5 +155,21 @@ $app->logger()->critical(mixed $object);
 $app->logger()->alert(mixed $object);
 $app->logger()->emergency(mixed $object);
 ```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->logger()->debug(mixed $object);
+app()->logger()->info(mixed $object);
+app()->logger()->notice(mixed $object);
+app()->logger()->warning(mixed $object);
+app()->logger()->error(mixed $object);
+app()->logger()->critical(mixed $object);
+app()->logger()->alert(mixed $object);
+app()->logger()->emergency(mixed $object);
+```
+
+</div>
 
 Each log object method accepts one mixed argument. The argument is usually a string, but the argument can be anything. The log object will pass the argument to its log writer. It is the log writer’s responsibility to write arbitrary input to the appropriate destination.

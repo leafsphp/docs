@@ -14,7 +14,7 @@ Leaf's core router has specially prepared for 404 errors, and is bent on giving 
 For this reason, we've prepared the set404() method. You can use `set404` to display your own custom 404 page.
 
 ```php
-Router::set404(function() use($app) {
+Router::set404(function () use($app) {
   response()->page("./pages/404.html");
 });
 ```

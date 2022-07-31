@@ -271,7 +271,7 @@ This version of Leaf continues the goal of making Leaf features more flexible an
 - Added `Form::rule` which allows you to create your own rules for form validation.
 
 ```php
-Form::rule("max", function($field, $value, $params) {
+Form::rule("max", function ($field, $value, $params) {
     if (strlen($value) > $params) {
         Form::addError($field, "$field can't be more than $params characters");
         return false;

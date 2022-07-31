@@ -1,16 +1,12 @@
----
-title: "URL Rewriting"
----
-
 <!-- markdownlint-disable no-inline-html -->
 
-## 👩‍🏫 Introduction
+# URL Rewriting
 
 Basically, we're trying to push all the requests made to the server to a single root file, so a request made to `/home.php` will be directed to the root file of our choice....usually `index.php`.
 
 This complex sounding feature can be achieved by adding a web server configuration depending on your server of choice.
 
-<!-- ::: info Video Docs
+<!-- ::: tip Video Docs
 Watch URL rewriting explained.
 
 <VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="URL rewriting explained">Watch URL rewriting explained on youtube</VideoLesson>

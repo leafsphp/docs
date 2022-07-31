@@ -1,8 +1,6 @@
----
-title: "Instance and Mode"
----
-
 <!-- markdownlint-disable no-inline-html -->
+
+# Instance and Mode
 
 ## Config app instance
 

@@ -1,9 +1,5 @@
----
-title: "Leaf Mail"
----
-
 <!-- markdownlint-disable no-inline-html -->
-# 📮 Leaf Mail
+# Leaf Mail
 
 Leaf mail is a cool feature added in Leaf v2 after the main beta test. Leaf Mail quickly let's you send emails both text and HTML, with attachments and a whole lot of various customizations quickly and efficiently. It is built on the [PHPMailer Library](https://github.com/PHPMailer/PHPMailer) as such, all it's methods also work in Leaf Mail. Leaf mail is now shipped as a leaf 3 module which can be installed in any project.
 
@@ -231,7 +227,7 @@ $email = $mail->write([
 ]);
 
 if (!$email) {
-  $app->response->throwErr($mail->errors());
+  $app->response->exit($mail->errors());
 }
 
 $email->send();

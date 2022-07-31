@@ -38,7 +38,7 @@ composer require leafs/http
 
 From there you can use any of the classes above in your project.
 
-::: info
+::: tip
 Cookies and session are independent modules which are not added to the Http module. This is because, the use of session and cookies is relatively low in APIs. If you however want to use sessions and cookies, you can read their guides for information on them.
 :::
 
@@ -71,4 +71,4 @@ This module allows you to manage session in your application. [Read the docs](/m
 
 ## Cookies (module)
 
-This module allows you to manage cookies in your application. [Read the docs](/modules/cookies)
+This module allows you to manage cookies in your application. [Read the docs](/modules/cookies/)

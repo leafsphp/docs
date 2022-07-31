@@ -2,7 +2,7 @@
 
 Over the years, leaf has had suport for many in-built templating engines. Although none of them are shipped with leaf by default any more, leaf still supports all of them.
 
-::: info Note That
+::: tip Note That
 You can use any templating engine you prefer with leaf, however, these templating engines are specifically created for leaf but can be used outside leaf apps as well.
 :::
 
