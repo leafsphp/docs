@@ -723,7 +723,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'leafsphp/docs',
+      repo: 'leafsphp/docs#master',
       text: 'Edit this page on GitHub'
     },
 
