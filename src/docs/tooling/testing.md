@@ -82,7 +82,7 @@ After this, you can run your tests with Alchemy like this:
 ./vendor/bin/alchemy run --phpunit
 ```
 
-<!-- Or with Leaf CLI
+Or with Leaf CLI
 
 ```sh
 leaf test:run --phpunit
