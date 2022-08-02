@@ -46,9 +46,9 @@ leaf test:run
 
 You should see something like this:
 
-- PHPUnit
+- PestPHP
 
-![pest run](https://user-images.githubusercontent.com/26604242/182264487-6db016be-bee3-40d2-bb75-64d34d893e6a.png)
+![phpunit](https://user-images.githubusercontent.com/26604242/182213801-501067c4-d77c-4769-b18a-d83573047b84.png)
 
 <!-- ## Testing with [PHPUnit](https://phpunit.de/)
 
@@ -90,9 +90,9 @@ leaf test:run --phpunit
 
 You should get something like this: -->
 
-- PestPHP
+- PHPUnit
 
-![phpunit](https://user-images.githubusercontent.com/26604242/182213801-501067c4-d77c-4769-b18a-d83573047b84.png)
+![pest run](https://user-images.githubusercontent.com/26604242/182264487-6db016be-bee3-40d2-bb75-64d34d893e6a.png)
 
 ## Config
 
