@@ -1,5 +1,9 @@
 # Installation
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 ::: tip Leaf 3 release 🎊
 The official leaf 3 release candidate has been released.
 :::
@@ -25,11 +29,12 @@ Detailed release notes this version available on [GitHub](https://github.com/lea
 
 ## Leaf CLI
 
-<!-- ::: tip Video Docs
-You can take a look at our leaf cli setup walkthrough on youtube.
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="You can take a look at our leaf cli setup walkthrough on youtube."
+  link="https://www.youtube.com/watch?v=yb3LUYHtopQ"
+/>
 
-<VideoLesson href="https://www.youtube.com/watch?v=yb3LUYHtopQ" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
-::: -->
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.dev) for more details.
 
