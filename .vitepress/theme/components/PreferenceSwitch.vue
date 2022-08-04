@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VTSwitch, VTIconChevronDown } from '@mychi/leaf-theme'
+import { VTSwitch, VTIconChevronDown } from '@leafphp/docs-theme'
 import { useRoute } from 'vitepress'
 import { inject, onMounted, Ref } from 'vue'
 import {

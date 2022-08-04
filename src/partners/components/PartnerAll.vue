@@ -3,7 +3,7 @@ import PartnerHero from './PartnerHero.vue'
 import PartnerList from './PartnerList.vue'
 import PartnerJoin from './PartnerJoin.vue'
 import { Partner } from './type'
-import { VTIconSearch } from '@mychi/leaf-theme'
+import { VTIconSearch } from '@leafphp/docs-theme'
 
 let query = $ref('')
 

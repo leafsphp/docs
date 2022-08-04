@@ -1,6 +1,6 @@
 import './styles/index.css'
 import { h, App } from 'vue'
-import { VPTheme } from '@mychi/leaf-theme'
+import { VPTheme } from '@leafphp/docs-theme'
 import PreferenceSwitch from './components/PreferenceSwitch.vue'
 import {
   preferFunctional,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { VTLink } from '@mychi/leaf-theme'
+import { VTLink } from '@leafphp/docs-theme'
 import ThemeProduct from './ThemeProduct.vue'
 
 const props = defineProps({
