@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VTLink } from '@mychi/leaf-theme'
+import { VTLink } from '@leafphp/docs-theme'
 import membersCoreData from './members-core.json'
 // import membersEmeritiData from './members-emeriti.json'
 // import membersPartnerData from './members-partner.json'

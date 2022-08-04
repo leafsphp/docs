@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import { defineConfigWithTheme } from 'vitepress'
-import type { Config as ThemeConfig } from '@mychi/leaf-theme'
-import baseConfig from '@mychi/leaf-theme/config'
+import type { Config as ThemeConfig } from '@leafphp/docs-theme'
+import baseConfig from '@leafphp/docs-theme/config'
 import { headerPlugin } from './headerMdPlugin'
 
 const nav = [
@@ -748,7 +748,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
     optimizeDeps: {
       include: ['gsap', 'dynamics.js'],
-      exclude: ['@vue/repl', '@mychi/leaf-theme']
+      exclude: ['@vue/repl', '@leafphp/docs-theme']
     },
     // @ts-ignore
     ssr: {

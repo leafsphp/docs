@@ -11,7 +11,7 @@ import {
   VTIconMapPin,
   VTIconTwitter,
   VTLink
-} from '@mychi/leaf-theme'
+} from '@leafphp/docs-theme'
 import type { Member } from './Member'
 
 const props = defineProps<{

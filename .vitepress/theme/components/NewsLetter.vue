@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VTLink } from '@mychi/leaf-theme'
+import { VTLink } from '@leafphp/docs-theme'
 </script>
 
 <template>

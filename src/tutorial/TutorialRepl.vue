@@ -15,7 +15,7 @@ import {
   VTIconChevronLeft,
   VTIconChevronRight,
   VTLink
-} from '@mychi/leaf-theme'
+} from '@leafphp/docs-theme'
 
 const output = ref('<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;"><img src="https://user-images.githubusercontent.com/26604242/178155909-362f06e6-9da9-473b-b47f-1219b4e65ae2.png"><div style="margin-top:10px;">🚀 Click the run button to compile your code</div></div>')
 
