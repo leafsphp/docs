@@ -14,17 +14,11 @@ New to Leaf PHP? Check out our [Essentials Guide](/docs/introduction/) to get st
 .
 This page is for developers who have a working application in another framework and want to port over to Leaf. As far-fetched as this sounds, Leaf 3 makes it super easy to sprinkle pieces of Leaf into any existing application, gradually rewriting it without breaking any code. Leaf has always allowed users to integrate other libraries seamlessly into their leaf apps with no conflicts or complexities, now Leaf 3 allows you to go the other way: **integrating Leaf seamlessly into any application no matter which libraries or frameworks it was built with.**
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+<!-- <VideoDocs
+  subject="Watch the migration guide on youtube"
+  description="Follow along as we migrate a Slim PHP application to use Leaf 3 and modules."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
-
-<!-- ::: tip Video Docs
-Follow along as we migrate a Slim PHP application to use Leaf 3 and modules.
-
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Migrating to v3">Watch the migration guide on youtube</VideoLesson>
-::: -->
+/> -->
 
 ## Quickstart
 

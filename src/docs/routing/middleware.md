@@ -5,17 +5,11 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+<!-- <VideoDocs
+  subject="Watch the middleware guide on youtube"
+  description="Leaf how to use middleware in your leaf apps."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
-
-<!-- ::: tip Video Docs
-Leaf how to use middleware in your leaf apps.
-
-<VideoLesson href="#" title="Middleware in leaf PHP">Watch the middleware guide on youtube</VideoLesson>
-::: -->
+/> -->
 
 Middleware are just methods that run before your code runs, be it a particular route or your whole application. Unlike many other frameworks and systems, Leaf gives you the opportunity to set global middleware that run before any and every route.
 

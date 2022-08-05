@@ -33,7 +33,7 @@ If you are not familiar with PHP, we recommend that you check out the [W3Schools
 <VideoDocs
   subject="Watch the leaf 3 installation walkthrough"
   description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
-  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+  link="https://www.youtube.com/embed/PuOk5xqTIsA"
 />
 
 To quickly get started with Leaf, check out our [installation guide](/docs/introduction/installation.html). This gives you an in-depth explanation of how to set up leaf using various methods.

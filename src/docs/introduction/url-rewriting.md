@@ -10,17 +10,11 @@ Basically, we're trying to push all the requests made to the server to a single 
 
 This complex sounding feature can be achieved by adding a web server configuration depending on your server of choice.
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+<!-- <VideoDocs
+  subject="Watch URL rewriting explained on youtube"
+  description="Watch URL rewriting explained."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
-
-<!-- ::: tip Video Docs
-Watch URL rewriting explained.
-
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="URL rewriting explained">Watch URL rewriting explained on youtube</VideoLesson>
-::: -->
+/> -->
 
 ## Apache - .htaccess
 

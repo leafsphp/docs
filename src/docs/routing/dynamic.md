@@ -5,17 +5,11 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+<!-- <VideoDocs
+  subject="Watch the routing guide on youtube"
+  description="Learn how leaf handles dynamic routing."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
-
-<!-- ::: tip Video Docs
-Learn how leaf handles dynamic routing.
-
-<VideoLesson href="#" title="Dynamic routing in leaf PHP">Watch the routing guide on youtube</VideoLesson>
-::: -->
+/> -->
 
 ## Named Params
 

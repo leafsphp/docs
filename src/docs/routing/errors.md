@@ -6,17 +6,11 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+<!-- <VideoDocs
+  subject="Watch the error handling guide on youtube"
+  description="Learn how to handle errors in your leaf app, during and after development."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
-
-<!-- ::: tip Video Docs
-Learn how to handle errors in your leaf app, during and after development.
-
-<VideoLesson href="#" title="Error handling in leaf PHP">Watch the error handling guide on youtube</VideoLesson>
-::: -->
+/> -->
 
 In earlier versions, Leaf would always display default server error pages in case of errors like 404 and 500 errors, however, v2.5.0-beta introduced automatic displaying of error pages for both 404 and 500 errors. This simply means that by default, a pre-built error page will be shown in case of errors, however, you can also define your own error handlers.
 

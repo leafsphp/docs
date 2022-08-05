@@ -5,17 +5,11 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+<!-- <VideoDocs
+  subject="Watch the functional mode guide on youtube"
+  description="Learn about leaf 3's new functional mode."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
-
-<!-- ::: tip Video Docs
-Learn about leaf 3's new functional mode.
-
-<VideoLesson href="#" title="Functional mode">Watch the functional mode guide on youtube</VideoLesson>
-::: -->
+/> -->
 
 Functional Mode, as we call it is just a fancy name given to a bunch of predefined functions in your leaf app which allow you to create your entire app or API without relying on classes with lengthy initializers and namespaces. With functional mode, everything is handled for you under the hood and is given to you in one global function.
 
