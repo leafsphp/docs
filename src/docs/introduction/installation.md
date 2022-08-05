@@ -35,7 +35,6 @@ Detailed release notes this version available on [GitHub](https://github.com/lea
   link="https://www.youtube.com/watch?v=yb3LUYHtopQ"
 />
 
-
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.dev) for more details.
 
 ```sh
