@@ -37,6 +37,10 @@
   font-weight: 600 !important;
 }
 
+.custom-block:not(.tip):not(.info):not(.warning):not(.danger)::before {
+  content: '' !important;
+}
+
 .dark .custom-block div[class*='language-'] {
   background-color: var(--vt-c-bg) !important;
 }

@@ -3,12 +3,12 @@ const { title, description, subject, link } = defineProps(['title', 'description
 </script>
 
 <template>
-  <div className="custom-block tip">
+  <div className="custom-block">
     <p className="custom-block-title">{{ title ?? 'Video Docs' }}</p>
     <p>{{ description }}</p>
 
     <section className="video-lesson">
-      <a :href="link" target="_blank" rel="sponsored noopener" :title="title">
+      <a :href="link" target="_blank" rel="sponsored noopener" :title="subject">
         {{ subject }}
       </a>
     </section>
