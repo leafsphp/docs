@@ -1,6 +1,16 @@
 # Functional Mode
 <!-- <Badge text="new" /> -->
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/>
+
 <!-- ::: tip Video Docs
 Learn about leaf 3's new functional mode.
 

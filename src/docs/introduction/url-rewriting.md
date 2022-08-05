@@ -2,9 +2,19 @@
 
 # URL Rewriting
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Basically, we're trying to push all the requests made to the server to a single root file, so a request made to `/home.php` will be directed to the root file of our choice....usually `index.php`.
 
 This complex sounding feature can be achieved by adding a web server configuration depending on your server of choice.
+
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/>
 
 <!-- ::: tip Video Docs
 Watch URL rewriting explained.

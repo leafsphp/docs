@@ -1,3 +1,4 @@
+<!-- markdownlint-disable no-inline-html -->
 # Introduction
 
 ::: tip ⚡️ Official Release
@@ -6,6 +7,10 @@ This is the documentation for Leaf v3.0.
 - [**Leaf 2 docs**](https://archive.leafphp.dev)
 - [**Leaf 1 docs**](https://v1.leafphp.dev)
 :::
+
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
 ## What is Leaf PHP?
 
@@ -23,19 +28,13 @@ The official guide assumes **basic** level knowledge of PHP.
 If you are not familiar with PHP, we recommend that you check out the [W3Schools PHP Tutorial](https://www.w3schools.com/php/default.asp) before continuing. This is because you will basically be writing PHP code when using Leaf (or any other framework).
 :::
 
+### Installation
+
 <VideoDocs
   subject="Watch the leaf 3 installation walkthrough"
   description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
 />
-
-<!-- ::: tip Video Docs
-Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs.
-
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="Introduction to leaf PHP">Watch the Leaf 3 intro video on YouTube</VideoLesson>
-::: -->
-
-### Installation
 
 To quickly get started with Leaf, check out our [installation guide](/docs/introduction/installation.html). This gives you an in-depth explanation of how to set up leaf using various methods.
 

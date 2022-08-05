@@ -1,3 +1,4 @@
+<!-- markdownlint-disable no-inline-html -->
 # Installation
 
 <script setup>
@@ -55,6 +56,12 @@ leaf serve
 
 ## Composer
 
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/>
+
 <!-- ::: tip Video Docs
 Learn how to set up a leaf app with composer.
 
@@ -110,6 +117,12 @@ app()->run();
 You might want to check out [URL rewriting](/docs/introduction/url-rewriting.html).
 
 ## GitHub
+
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/>
 
 <!-- ::: tip Video Docs
 Learn how to set up a leaf app from the leaf codebase.

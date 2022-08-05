@@ -1,6 +1,10 @@
 # Introduction
 <!-- <Badge text="New" /> -->
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Modules are a new feature added in Leaf 3 which basically takes parts of Leaf and separates them into installable chunks which can be used both inside and outside of Leaf.
 
 Modules are framework/library agnostic, which means that they'll work just about everywhere with zero config just as with Leaf itself.
@@ -14,6 +18,12 @@ The biggest question people ask with Leaf 3 is why we decided to switch to modul
 [@mychidarko](https://github.com/mychidarko) put an article together on why we decided to switch to modules instead of maintaining the whole code together. We also have a [GitHub discussion](https://github.com/leafsphp/leaf/discussions/70) introducing leaf 3 and everything you need to know about it, we explain modules further here.
 
 ## Installing modules
+
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/>
 
 <!-- ::: tip Video Docs
 You can take a look at our leaf cli video on youtube.

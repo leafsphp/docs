@@ -1,9 +1,9 @@
----
-title: "Basic routing"
----
-
-# Routing
 <!-- markdownlint-disable no-inline-html -->
+# Basic Routing
+
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
 ::: tip
 Leaf router is now separated from Leaf and is now available as an installable module via composer or the leaf cli.
@@ -76,6 +76,12 @@ $app->run();
 ```
 
 </div>
+
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="Throughout the leaf documentation, you will see video links like the one just below. If you are a visual learner, this gives you another way to follow along with our documentation. We call these the video docs."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/>
 
 <!-- ::: tip Video Docs
 Watch how to use the leaf router in your leaf applications.
