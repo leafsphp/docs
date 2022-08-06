@@ -1,12 +1,36 @@
 # Testing
 
-Leaf is built with testing in mind. Although support for testing in your Leaf apps isn't included out of the box, we have provided a simple solution to get you up and testing in less than a minute. All you need to do is install the Alchemy test runner.
+Leaf is built with testing in mind. However, since you might need to quickly setup a project for a showcase or non-mainstream reason, we don't add any test library to the default Leaf installation, but can be added by simply installing our Alchemy module.
 
+::: warning Note
 Before you continue, keep in mind that Alchemy is only a test runner, not a test framework. Alchemy runs tests using [Pest](https://pestphp.com/)/[PHPUnit](https://phpunit.de/) (Pest by default).
+:::
 
-## Installing Alchemy
+## Why Test?
 
-You can quickly install alchemy using Leaf CLI:
+Automated tests help you and your team build complex Leaf apps quickly and confidently by preventing regressions and encouraging you to break apart your application into testable functions, modules, classes, and components. As with any app, your new Leaf app can break in many ways, and it's important that you can catch these issues and fix them before releasing.
+
+## When to Test
+
+Start testing early! We recommend you begin writing tests as soon as you can. The longer you wait to add tests to your application, the more dependencies your application will have, and the harder it will be to start.
+
+## Adding tests to a new project
+
+From Leaf CLI v2.3, you will be asked if you wish to add tests to your application. From there, Alchemy and default tests are setup for you. You can update and run these tests using the Leaf CLI:
+
+```sh
+leaf test
+```
+
+Or directly from Alchemy:
+
+```sh
+./vendor/bin/alchemy run
+```
+
+## Adding tests to an existing project
+
+If you've already setup a Leaf project, you can add tests by simply installing the Alchemy module. You can do this with the Leaf CLI:
 
 ```sh
 leaf install alchemy
@@ -32,7 +56,13 @@ If you're using PHPUnit, you'll have to add a `--phpunit` option to the setup co
 ./vendor/bin/alchemy setup --phpunit
 ```
 
-After this, you can add the specific tests you need in your app. You can then execute these tests using the `run` command:
+After this, you can add the specific tests you need in your app. You can then execute these tests using the Leaf CLI:
+
+```sh
+leaf test
+```
+
+Or directly from Alchemy:
 
 ```sh
 ./vendor/bin/alchemy run

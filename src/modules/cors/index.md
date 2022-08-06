@@ -18,7 +18,7 @@ leaf install cors
 or
 
 ```sh
-composer reqiure leafs/cors
+composer require leafs/cors
 ```
 
 ## Usage

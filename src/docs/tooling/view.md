@@ -1,11 +1,15 @@
 <!-- markdownlint-disable no-inline-html -->
 # Leaf View
 
-<!-- ::: tip Video Docs
-Learn how to use views in leaf PHP.
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
-<VideoLesson href="#" title="Views in leaf PHP">Watch the views guide on youtube</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Watch the views guide on youtube"
+  description="Learn how to use views in leaf PHP."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/> -->
 
 Leaf view is a view manager for your leaf apps. This simply gives you the platform to register, configure and use as many templating engines as you want within your app. This means you can now ship your app with various engines, or rewrite your UIs with a different engine without having to translate or pull down the whole app first.
 

@@ -1,4 +1,10 @@
+<!-- markdownlint-disable no-inline-html -->
+
 # Installation
+
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
 ::: tip Leaf 3 release 🎊
 The official leaf 3 release candidate has been released.
@@ -25,11 +31,11 @@ Detailed release notes this version available on [GitHub](https://github.com/lea
 
 ## Leaf CLI
 
-<!-- ::: tip Video Docs
-You can take a look at our leaf cli setup walkthrough on youtube.
-
-<VideoLesson href="https://www.youtube.com/watch?v=yb3LUYHtopQ" title="Install leaf PHP">Watch the leaf 3 installation walkthrough</VideoLesson>
-::: -->
+<VideoDocs
+  subject="Watch the leaf 3 installation walkthrough"
+  description="You can take a look at our leaf cli setup walkthrough on youtube."
+  link="https://www.youtube.com/embed/PuOk5xqTIsA"
+/>
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.dev) for more details.
 
@@ -51,11 +57,11 @@ leaf serve
 
 ## Composer
 
-<!-- ::: tip Video Docs
-Learn how to set up a leaf app with composer.
-
-<VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the composer setup on youtube</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Watch the composer setup on youtube"
+  description="Learn how to set up a leaf app with composer."
+  link="https://www.youtube.com/watch?v=t-pNURSTOKw"
+/> -->
 
 You can also set up a new leaf 3 project from scratch using composer:
 
@@ -107,21 +113,19 @@ You might want to check out [URL rewriting](/docs/introduction/url-rewriting.htm
 
 ## GitHub
 
-<!-- ::: tip Video Docs
-Learn how to set up a leaf app from the leaf codebase.
-
-<VideoLesson href="https://www.youtube.com/watch?v=t-pNURSTOKw" title="Install leaf PHP">Watch the github setup on youtube</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Watch the github setup on youtube"
+  description="Learn how to set up a leaf app from the leaf codebase."
+  link="https://www.youtube.com/watch?v=t-pNURSTOKw"
+/> -->
 
 You can also clone the leaf 3 branch.
 
-::: tip Setup ☁️
+::: tip Setup
 You can directly download v3.x-dev here.
 
 <div style="margin-bottom: 30px;">
-  <a
-  href="https://github.com/leafsphp/leaf/tree/v3.x-dev"
->Download Repo</a>
+  <a href="https://github.com/leafsphp/leaf/releases/latest">Download Repo</a>
 </div>
 :::
 

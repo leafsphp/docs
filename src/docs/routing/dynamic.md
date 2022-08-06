@@ -1,11 +1,15 @@
 # Dynamic Routing
 <!-- markdownlint-disable no-inline-html -->
 
-<!-- ::: tip Video Docs
-Learn how leaf handles dynamic routing.
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
-<VideoLesson href="#" title="Dynamic routing in leaf PHP">Watch the routing guide on youtube</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Watch the routing guide on youtube"
+  description="Learn how leaf handles dynamic routing."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/> -->
 
 ## Named Params
 

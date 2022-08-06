@@ -158,8 +158,8 @@ const mainSidebar = [
       { text: 'Your first app', link: '/docs/introduction/first-app' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
       { text: 'Modules', link: '/modules/' },
-      { text: 'Deployment', link: '/docs/tooling/deployment' }
-      // { text: 'Testing', link: '/docs/tooling/testing' },
+      { text: 'Deployment', link: '/docs/tooling/deployment' },
+      { text: 'Testing', link: '/docs/tooling/testing' },
     ]
   },
   {
@@ -660,6 +660,13 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+    [
+      'link',
+      {
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+        rel: 'stylesheet'
+      }
+    ],
     [
       'link',
       {

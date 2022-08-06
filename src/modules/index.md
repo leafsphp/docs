@@ -1,6 +1,10 @@
 # Introduction
 <!-- <Badge text="New" /> -->
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Modules are a new feature added in Leaf 3 which basically takes parts of Leaf and separates them into installable chunks which can be used both inside and outside of Leaf.
 
 Modules are framework/library agnostic, which means that they'll work just about everywhere with zero config just as with Leaf itself.
@@ -15,11 +19,11 @@ The biggest question people ask with Leaf 3 is why we decided to switch to modul
 
 ## Installing modules
 
-<!-- ::: tip Video Docs
-You can take a look at our leaf cli video on youtube.
-
-<VideoLesson href="https://www.youtube.com/watch?v=K9jSl_xpr48" title="Working with packages on the Leaf CLI">Working with modules and the leaf cli</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Working with modules and the leaf cli"
+  description="You can take a look at our leaf cli video on youtube."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/> -->
 
 Modules are always published on composer and can be installed through composer CLI or the leaf CLI.
 

@@ -1,15 +1,15 @@
----
-title: "Logging"
----
-
 <!-- markdownlint-disable no-inline-html -->
 # Logging
 
-<!-- ::: tip Video Docs
-Learn how to set up logging in your leaf apps.
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
-<VideoLesson href="#" title="Logging in leaf PHP">Watch the logging guide on youtube</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Watch the logging guide on youtube"
+  description="Learn how to set up logging in your leaf apps."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/> -->
 
 Leaf now provides very well defined logging support for your apps. A sample log looks like this:
 

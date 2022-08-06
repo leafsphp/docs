@@ -2,15 +2,19 @@
 
 # URL Rewriting
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Basically, we're trying to push all the requests made to the server to a single root file, so a request made to `/home.php` will be directed to the root file of our choice....usually `index.php`.
 
 This complex sounding feature can be achieved by adding a web server configuration depending on your server of choice.
 
-<!-- ::: tip Video Docs
-Watch URL rewriting explained.
-
-<VideoLesson href="https://www.youtube.com/embed/BTcUgeOZLyM" title="URL rewriting explained">Watch URL rewriting explained on youtube</VideoLesson>
-::: -->
+<!-- <VideoDocs
+  subject="Watch URL rewriting explained on youtube"
+  description="Watch URL rewriting explained."
+  link="https://www.youtube.com/embed/BTcUgeOZLyM"
+/> -->
 
 ## Apache - .htaccess
 
