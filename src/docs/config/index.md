@@ -1,5 +1,9 @@
-# Overview
 <!-- markdownlint-disable no-inline-html -->
+# Overview
+
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
 ::: tip
 Leaf aims for zero configurations out of the box, as such, none of these configurations are required. But for those who want other options with Leaf, this is the place for you.
