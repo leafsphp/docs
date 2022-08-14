@@ -1,8 +1,8 @@
 <!-- markdownlint-disable no-inline-html -->
-# Introduction
+# Introdução
 
-::: tip ⚡️ Official Release
-This is the documentation for Leaf v3.0.
+::: tip ⚡️ Oficial Release
+Está é a documentação do Lead v3.0 
 
 - [**Leaf 2 docs**](https://archive.leafphp.dev)
 - [**Leaf 1 docs**](https://v1.leafphp.dev)
@@ -12,23 +12,23 @@ This is the documentation for Leaf v3.0.
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-## What is Leaf PHP?
+## O que é Leaf PHP?
 
-Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, simple, but powerful web apps and APIs quickly and easily. Over the years, we've been focusing on delivering much simpler and more performant code, which can be used in all your PHP apps.
+Leaf é um pequeno e leve framework PHP para iniciar rapidamente aplicativos web e APIs limpos, simples, mas poderosos, de forma rápida e fácil. Ao longo dos anos, nós temos nos concentrado em entregar software mais simples e com mais perfomance, que podem ser usado em todos seus aplicativos PHP. 
 
-Version 3 of Leaf brings more to the table with a theme centring on developer experience and usability, but with all the goodies while ensuring users have the best experience as well.
+A versão 3 do Leaf traz mais para o centro a experiência do desenvolvedor e a usabilidade, mas com todas vantagens, garantindo que os usuários também tenham a melhor experiência.
 
 [→ Checkout Leaf 3's features](/docs/introduction/features)
 
 ## Getting Started
 
-The official guide assumes **basic** level knowledge of PHP.
+Este guia presume que você tenha um conhecimento **básico** de PHP.
 
-::: warning 😵‍💫 Don't know PHP?
-If you are not familiar with PHP, we recommend that you check out the [W3Schools PHP Tutorial](https://www.w3schools.com/php/default.asp) before continuing. This is because you will basically be writing PHP code when using Leaf (or any other framework).
+::: warning 😵‍💫 Não conheço PHP?
+Se você não tem conhecimento com PHP, nós recomendamos que você confira o [W3Schools PHP Tutorial](https://www.w3schools.com/php/default.asp) antes de continuar. Quando você usa Leaf (ou outro framework) você está basicamente escrevendo código PHP.
 :::
 
-### Installation
+### Instalação
 
 <VideoDocs
   subject="Watch the leaf 3 installation walkthrough"
@@ -44,7 +44,7 @@ Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out
 
 Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](https://codelabs.leafphp.dev) for real world examples and use-cases.
 
-## Hello world example
+## Exemplo "Olá Mundo"
 
 At the core of Leaf PHP is a system that enables us to declaratively define applications using a friendly and straight-forward syntax:
 
