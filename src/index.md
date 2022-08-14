@@ -1,6 +1,6 @@
 ---
 page: true
-title: Leaf PHP - Simple and elegant PHP
+title: Leaf PHP - Simples e elegante PHP
 ---
 
 <script setup>
