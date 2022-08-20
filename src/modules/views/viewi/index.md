@@ -92,7 +92,7 @@ One neat trick to help you avoid manually importing your Viewi components is to 
 ...
 "autoload": {
   "psr-4": {
-    "Components\\": "viewi-app/Components/",
+    "Components\\": "viewi-app/Components/"
   }
 }
 ```
