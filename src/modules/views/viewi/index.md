@@ -85,6 +85,7 @@ Create the following folders:
 - `viewi-app/build` for compiled server-side components
 - `viewi-app/Components` for your front-end application (templates, services, models)
 
+::: tip Autoloading your components
 One neat trick to help you avoid manually importing your Viewi components is to set them up with composer's autoloader. We can do this by heading over to our `composer.json` file and adding the `viewi-app/Components` folder to our `composer.json` file.
 
 ```json
@@ -95,6 +96,10 @@ One neat trick to help you avoid manually importing your Viewi components is to 
   }
 }
 ```
+
+AFTER ADDING THIS, DELETE YOUR `vendor` FOLDER AND REINSTALL YOUR DEPENDENCIES.
+
+:::
 
 With this, we can call our components on the `Components` namespace. In our little example, we'll be creating the counter example found on the Viewi docs. To start, we'll create our `viewi-app/Components/Views/Counter/Counter.php` file:
 
