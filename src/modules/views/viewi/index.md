@@ -124,9 +124,22 @@ class Counter extends BaseComponent
 Now all that is left is to create an HTML view for this component. We'll do this in a new `viewi-app/Components/Views/Counter/Counter.html` file:
 
 ```html
-<button (click)="decrement()" class="mui-btn mui-btn--accent">-</button>
-<span class="mui--text-dark mui--text-title">$count</span>
-<button (click)="increment()" class="mui-btn mui-btn--accent">+</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viewi App</title>
+</head>
+<body>
+  <button (click)="decrement()" class="mui-btn mui-btn--accent">-</button>
+  <span class="mui--text-dark mui--text-title">$count</span>
+  <button (click)="increment()" class="mui-btn mui-btn--accent">+</button>
+
+  <ViewiScripts />
+</body>
+</html>
 ```
 
 With this, our component has been created successfully. Now, we need to add a route and link this component to that route.
