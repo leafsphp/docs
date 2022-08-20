@@ -303,3 +303,76 @@ $app->run();
 </div>
 
 One thing to note is that you can pick only the options you need and configure those. You don't need to pass in the entire Viewi configuration.
+
+## Deployment
+
+To make your application production ready you need to make these steps:
+
+- Ensure that `PageEngine::DEV_MODE` is set to `false`
+- Recommended (but not required) to set `PageEngine::MINIFY` to `true`
+- Optionally you can set `PageEngine::COMBINE_JS` to `true`
+
+Then you need to build your app:
+
+<div class="functional-mode">
+
+```php{8-12,17}
+<?php
+
+use Viewi\PageEngine;
+use Components\Views\Counter\Counter;
+
+require __DIR__ . "/vendor/autoload.php";
+
+viewi()->init([
+  PageEngine::DEV_MODE => false,
+  PageEngine::MINIFY => true,
+  PageEngine::COMBINE_JS => true
+]);
+
+viewi()->get('/', Counter::class);
+
+// after your viewi routes
+viewi()->compile();
+
+app()->get('/route', function () {
+  echo 'This is a leaf route';
+});
+
+app()->run();
+```
+
+</div>
+<div class="class-mode">
+
+```php{12-16,21}
+<?php
+
+use Viewi\PageEngine;
+use Components\Views\Counter\Counter;
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = new Leaf\App();
+
+$viewi = new Leaf\Viewi\Engine();
+$viewi->setLeafInstance($app);
+$viewi->init([
+  PageEngine::DEV_MODE => false,
+  PageEngine::MINIFY => true,
+  PageEngine::COMBINE_JS => true
+]);
+
+$viewi->get('/', Counter::class);
+
+// after your viewi routes
+$viewi->compile();
+
+$app->get('/route', function () {
+  echo 'This is a leaf route';
+});
+
+$app->run();
+```
+
+</div>
