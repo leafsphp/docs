@@ -66,6 +66,11 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/35382021?v=4",
           },
           {
+            name: "Lucas Chaplain",
+            url: "https://www.lucaschaplain.design/",
+            img: "https://images.opencollective.com/sptaule/aa5f956/avatar/256.png",
+          },
+          {
             name: "Vano",
             url: "#",
             img: "https://images.opencollective.com/guest-32634fda/avatar.png",
