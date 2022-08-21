@@ -97,8 +97,7 @@ One neat trick to help you avoid manually importing your Viewi components is to 
 }
 ```
 
-AFTER ADDING THIS, DELETE YOUR `vendor` FOLDER AND REINSTALL YOUR DEPENDENCIES.
-
+RUN THE `composer update` COMMAND TO UPDATE THE COMPOSER AUTOLOADER.
 :::
 
 With this, we can call our components on the `Components` namespace. In our little example, we'll be creating the counter example found on the Viewi docs. To start, we'll create our `viewi-app/Components/Views/Counter/Counter.php` file:
