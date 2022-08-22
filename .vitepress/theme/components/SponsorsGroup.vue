@@ -15,7 +15,7 @@ interface SponsorData {
 }
 
 // shared data across instances so we load only once
-let data = $ref<SponsorData>()
+let data = $ref<any>()
 let pending = false
 
 const base = `https://sponsors.leafphp.dev`
@@ -69,6 +69,11 @@ onMounted(async () => {
             name: "Lucas Chaplain",
             url: "https://www.lucaschaplain.design/",
             img: "https://images.opencollective.com/sptaule/aa5f956/avatar/256.png",
+          },
+          {
+            name: "Dawuda Iddris",
+            url: "https://github.com/dawoodiddris",
+            img: "https://avatars.githubusercontent.com/u/31323758?v=4",
           },
           {
             name: "Vano",
@@ -214,8 +219,7 @@ onMounted(async () => {
     <template v-if="data && visible">
       <a v-for="{ url, img, name } of data[tier]" class="sponsor-item" :href="url" target="_blank"
         rel="sponsored noopener">
-        <img v-if="img.startsWith('http')" :src="img"
-          :class="showLabel ? '-with-label' : ''" :alt="name" />
+        <img v-if="img.startsWith('http')" :src="img" :class="showLabel ? '-with-label' : ''" :alt="name" />
         <picture v-else-if="img.endsWith('png')">
           <source type="image/avif" :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`" />
           <img :src="`${base}/images/${img}`" :class="showLabel ? '-with-label' : ''" :alt="name" />
