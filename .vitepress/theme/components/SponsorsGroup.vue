@@ -113,6 +113,11 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/22559657?&v=4",
           },
           {
+            name: "Ivan Voitovych",
+            url: "https://github.com/ivanvoitovych/",
+            img: "https://avatars.githubusercontent.com/u/9718423?v=4",
+          },
+          {
             name: "Pjotr Savitski",
             url: "https://github.com/pjotrsavitski",
             img: "https://avatars.githubusercontent.com/u/518331?&v=4",
@@ -201,6 +206,36 @@ onMounted(async () => {
             name: "Dreamer0x01",
             url: "https://github.com/Dreamer0x01",
             img: "https://avatars.githubusercontent.com/u/12978365?v=4",
+          },
+          {
+            name: "N'Bayramberdiyev",
+            url: "https://github.com/nbayramberdiyev",
+            img: "https://avatars.githubusercontent.com/u/23094428?v=4",
+          },
+          {
+            name: "Robin",
+            url: "https://github.com/MrAnyx",
+            img: "https://avatars.githubusercontent.com/u/44176707?v=4",
+          },
+          {
+            name: "Doeke Norg",
+            url: "https://github.com/doekenorg",
+            img: "https://avatars.githubusercontent.com/u/529515?v=4",
+          },
+          {
+            name: "Francisco Ernesto Teixeira",
+            url: "https://github.com/netinhoteixeira",
+            img: "https://avatars.githubusercontent.com/u/1563399?v=4",
+          },
+          {
+            name: "Ryan Gunn",
+            url: "https://github.com/bluesn4rfer",
+            img: "https://avatars.githubusercontent.com/u/86926422?v=4",
+          },
+          {
+            name: "Shahlin Ibrahim",
+            url: "https://github.com/shahlin",
+            img: "https://avatars.githubusercontent.com/u/32275018?v=4",
           },
         ],
       };
