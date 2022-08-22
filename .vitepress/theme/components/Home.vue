@@ -189,7 +189,7 @@ html:not(.dark) .accent,
 }
 
 .dark #special-sponsor img {
-  filter: grayscale(1) invert(1);
+  filter: grayscale(1);
 }
 
 #highlights {

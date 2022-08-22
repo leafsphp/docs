@@ -336,9 +336,9 @@ onMounted(async () => {
   transition: filter 0.2s ease;
 }
 
-.dark .aside .sponsor-item img,
-.dark .landing .sponsor-item img {
-  filter: grayscale(1) invert(1);
+.aside .sponsor-item img,
+.landing .sponsor-item img {
+  filter: grayscale(1);
 }
 
 .dark .aside .sponsor-item:hover,
