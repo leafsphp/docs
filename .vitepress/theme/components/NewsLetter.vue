@@ -47,6 +47,12 @@ import { VTLink } from '@leafphp/docs-theme'
         <VTLink class="link" href="https://github.com/leafsphp/leaf/discussions/37" no-icon>discussions</VTLink> or
         watch our <VTLink class="link" href="https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw" no-icon>videos on
           YouTube.</VTLink>
+
+      <div class="flex flex:center-all mt:_4">
+        <a href="https://www.netlify.com">
+          <img src="https://www.netlify.com/v3/img/components/netlify-dark.svg" alt="Deploys by Netlify" />
+        </a>
+      </div>
       </p>
     </div>
   </section>
