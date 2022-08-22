@@ -341,6 +341,11 @@ onMounted(async () => {
   filter: grayscale(1);
 }
 
+.aside .sponsor-item:hover img,
+.landing .sponsor-item:hover img {
+  filter: grayscale(0);
+}
+
 .dark .aside .sponsor-item:hover,
 .dark .landing .sponsor-item:hover {
   color: var(--vt-c-indigo);
