@@ -5,4 +5,3 @@
 [build]
   publish = ".vitepress/dist"
   command = "npx pnpm i --store=node_modules/.pnpm-store && npm run build"
-
