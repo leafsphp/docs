@@ -53,14 +53,13 @@ onMounted(async () => {
 
     setTimeout(() => {
       data = {
-        special: [
+        special: [],
+        sponsor: [
           {
             name: "Netlify",
             url: "https://netlify.com",
             img: "https://user-images.githubusercontent.com/26604242/186772985-b21c2850-3cc3-41c6-9299-fe9cc5bac46a.png",
           },
-        ],
-        sponsor: [
           {
             name: "Casprine Asempah",
             url: "https://github.com/casprine",
