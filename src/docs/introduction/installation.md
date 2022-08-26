@@ -129,7 +129,7 @@ You can directly download v3.x-dev here.
 </div>
 :::
 
-After downlaoding repo, you need to create an autoloader.
+After downloading repo, you need to create an autoloader.
 
 **Example autoloader: `autoloader.php`**
 

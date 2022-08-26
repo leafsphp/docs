@@ -2,7 +2,7 @@
 import NewsLetter from './NewsLetter.vue'
 import SponsorsGroup from './SponsorsGroup.vue';
 import VueMasteryModal from './VueMasteryModal.vue';
-import Banner from './Banner.vue';
+// import Banner from './Banner.vue';
 </script>
 
 <template>
@@ -31,20 +31,15 @@ import Banner from './Banner.vue';
   </section>
 
   <!-- TODO make dynamic based on data -->
-  <!-- <section id="special-sponsor">
+  <!-- <section id="special-sponsor" class="flex-col">
     <span>Special Sponsor</span>
-    <a href="https://www.dcloud.io/hbuilderx.html?hmsr=vue-en&hmpl=&hmcu=&hmkw=&hmci=">
-      <picture>
-        <source type="image/avif" srcset="/images/sponsors/hbuilder.avif" />
-        <img
-          alt="hbuilder logo"
-          width="97"
-          height="36"
-          src="/images/sponsors/hbuilder.png"
-        />
-      </picture>
+    <a href="https://netlify.com" class="mt:_1" target="_blank">
+      <img
+        alt="netlify logo"
+        style="border-radius: 500px; width: 35px;"
+        src="https://user-images.githubusercontent.com/26604242/186772985-b21c2850-3cc3-41c6-9299-fe9cc5bac46a.png" />
+      <div>Netlify</div>
     </a>
-    <span>Advanced IDE for Vue</span>
   </section> -->
 
   <section id="highlights" class="vt-box-container">
