@@ -2,7 +2,7 @@
 import NewsLetter from './NewsLetter.vue'
 import SponsorsGroup from './SponsorsGroup.vue';
 import VueMasteryModal from './VueMasteryModal.vue';
-import Banner from './Banner.vue';
+// import Banner from './Banner.vue';
 </script>
 
 <template>

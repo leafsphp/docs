@@ -611,6 +611,14 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
     [
+      'meta',
+      {
+        name: 'og:image',
+        content:
+          'https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc'
+      }
+    ],
+    [
       'link',
       {
         rel: 'preload',
