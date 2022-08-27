@@ -108,19 +108,24 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/303321?v=4",
           },
           {
+            name: "Daniel Lemes",
+            url: "https://github.com/lemesdaniel",
+            img: "https://avatars.githubusercontent.com/u/587064?v=4",
+          },
+          {
             name: "Ademílson F. Tonato",
             url: "https://github.com/ftonato",
             img: "https://avatars.githubusercontent.com/u/5417662?v=4",
           },
           {
-            name: "Tobias Herber",
-            url: "https://github.com/herber",
-            img: "https://avatars.githubusercontent.com/u/22559657?&v=4",
-          },
-          {
             name: "Ivan Voitovych",
             url: "https://github.com/ivanvoitovych/",
             img: "https://avatars.githubusercontent.com/u/9718423?v=4",
+          },
+          {
+            name: "Tobias Herber",
+            url: "https://github.com/herber",
+            img: "https://avatars.githubusercontent.com/u/22559657?&v=4",
           },
           {
             name: "Pjotr Savitski",
@@ -196,6 +201,11 @@ onMounted(async () => {
             name: "Pisyek K.",
             url: "https://github.com/pisyek",
             img: "https://avatars.githubusercontent.com/u/10695986?v=4",
+          },
+          {
+            name: "Rafael Morais",
+            url: "https://github.com/rafaelcanical",
+            img: "https://avatars.githubusercontent.com/u/924985?v=4",
           },
           {
             name: "wfsdaj",
