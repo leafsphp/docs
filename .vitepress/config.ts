@@ -252,6 +252,7 @@ const mainSidebar = [
     items: [
       { text: 'Introduction', link: '/modules/views/' },
       { text: 'Bare UI', link: '/modules/views/bareui/' },
+      { text: 'Viewi PHP', link: '/modules/views/viewi/' },
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
       { text: 'Leaf Veins', link: '/modules/views/veins/' }
     ]
@@ -605,6 +606,14 @@ export default defineConfigWithTheme<ThemeConfig>({
       'meta',
       {
         name: 'twitter:image',
+        content:
+          'https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc'
+      }
+    ],
+    [
+      'meta',
+      {
+        name: 'og:image',
         content:
           'https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc'
       }

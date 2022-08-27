@@ -15,7 +15,7 @@ interface SponsorData {
 }
 
 // shared data across instances so we load only once
-let data = $ref<SponsorData>()
+let data = $ref<any>()
 let pending = false
 
 const base = `https://sponsors.leafphp.dev`
@@ -56,6 +56,11 @@ onMounted(async () => {
         special: [],
         sponsor: [
           {
+            name: "Netlify",
+            url: "https://netlify.com",
+            img: "https://user-images.githubusercontent.com/26604242/186772985-b21c2850-3cc3-41c6-9299-fe9cc5bac46a.png",
+          },
+          {
             name: "Casprine Asempah",
             url: "https://github.com/casprine",
             img: "https://images.opencollective.com/guest-c72a498e/avatar.png",
@@ -64,6 +69,16 @@ onMounted(async () => {
             name: "Farhan Yahaya",
             url: "https://github.com/doc-han",
             img: "https://avatars.githubusercontent.com/u/35382021?v=4",
+          },
+          {
+            name: "Lucas Chaplain",
+            url: "https://www.lucaschaplain.design/",
+            img: "https://images.opencollective.com/sptaule/aa5f956/avatar/256.png",
+          },
+          {
+            name: "Dawuda Iddris",
+            url: "https://github.com/dawoodiddris",
+            img: "https://avatars.githubusercontent.com/u/31323758?v=4",
           },
           {
             name: "Vano",
@@ -101,6 +116,11 @@ onMounted(async () => {
             name: "Tobias Herber",
             url: "https://github.com/herber",
             img: "https://avatars.githubusercontent.com/u/22559657?&v=4",
+          },
+          {
+            name: "Ivan Voitovych",
+            url: "https://github.com/ivanvoitovych/",
+            img: "https://avatars.githubusercontent.com/u/9718423?v=4",
           },
           {
             name: "Pjotr Savitski",
@@ -192,6 +212,36 @@ onMounted(async () => {
             url: "https://github.com/Dreamer0x01",
             img: "https://avatars.githubusercontent.com/u/12978365?v=4",
           },
+          {
+            name: "N'Bayramberdiyev",
+            url: "https://github.com/nbayramberdiyev",
+            img: "https://avatars.githubusercontent.com/u/23094428?v=4",
+          },
+          {
+            name: "Robin",
+            url: "https://github.com/MrAnyx",
+            img: "https://avatars.githubusercontent.com/u/44176707?v=4",
+          },
+          {
+            name: "Doeke Norg",
+            url: "https://github.com/doekenorg",
+            img: "https://avatars.githubusercontent.com/u/529515?v=4",
+          },
+          {
+            name: "Francisco Ernesto Teixeira",
+            url: "https://github.com/netinhoteixeira",
+            img: "https://avatars.githubusercontent.com/u/1563399?v=4",
+          },
+          {
+            name: "Ryan Gunn",
+            url: "https://github.com/bluesn4rfer",
+            img: "https://avatars.githubusercontent.com/u/86926422?v=4",
+          },
+          {
+            name: "Shahlin Ibrahim",
+            url: "https://github.com/shahlin",
+            img: "https://avatars.githubusercontent.com/u/32275018?v=4",
+          },
         ],
       };
     }, 30);
@@ -209,8 +259,7 @@ onMounted(async () => {
     <template v-if="data && visible">
       <a v-for="{ url, img, name } of data[tier]" class="sponsor-item" :href="url" target="_blank"
         rel="sponsored noopener">
-        <img v-if="img.startsWith('http')" :src="img"
-          :class="showLabel ? '-with-label' : ''" :alt="name" />
+        <img v-if="img.startsWith('http')" :src="img" :class="showLabel ? '-with-label' : ''" :alt="name" />
         <picture v-else-if="img.endsWith('png')">
           <source type="image/avif" :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`" />
           <img :src="`${base}/images/${img}`" :class="showLabel ? '-with-label' : ''" :alt="name" />
@@ -292,9 +341,14 @@ onMounted(async () => {
   transition: filter 0.2s ease;
 }
 
-.dark .aside .sponsor-item img,
-.dark .landing .sponsor-item img {
-  filter: grayscale(1) invert(1);
+.aside .sponsor-item img,
+.landing .sponsor-item img {
+  filter: grayscale(1);
+}
+
+.aside .sponsor-item:hover img,
+.landing .sponsor-item:hover img {
+  filter: grayscale(0);
 }
 
 .dark .aside .sponsor-item:hover,
