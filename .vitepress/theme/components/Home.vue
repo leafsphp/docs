@@ -14,17 +14,17 @@ import VueMasteryModal from './VueMasteryModal.vue';
           <span class="accent">Leaf 3.0</span>
         </h1>
         <p class="description">
-          Simple and elegant PHP
+          PHP simples e elegante
         </p>
         <p class="actions">
           <vue-mastery-modal />
           <a class="get-started" href="/docs/introduction/">
-            Get Started
+            Comece
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
               <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
             </svg>
           </a>
-          <a class="setup" href="/docs/introduction/installation.html">Install</a>
+          <a class="setup" href="/docs/introduction/installation.html">Instalar</a>
         </p>
       </div>
     </div>
@@ -44,31 +44,31 @@ import VueMasteryModal from './VueMasteryModal.vue';
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable 👨🏾‍🏫</h2>
+      <h2>Acessível 👨🏾‍🏫</h2>
       <p>
-        Builds on top of standard PHP with a flexible learning curve + ZERO config.
+        O Leaf se baseia no PHP padrão com uma curva de aprendizado flexível + configuração ZERO.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile ☃️</h2>
+      <h2>Versátil ☃️</h2>
       <p>
-        A rich, incrementally adoptable ecosystem of modules to build powerful apps with.
+        Um rico ecossistema de módulos adotáveis de forma incremental para criar aplicativos poderosos.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Efficient ⏰</h2>
+      <h2>Eficiente ⏰</h2>
       <p>
-        Blazing Fast <br>
-        &lsaquo;40KB Source <br>
-        Crazy development time </p>
+        Muito rápido <br>
+        &lsaquo;Fonte de 40KB <br>
+        Tempo de desenvolvimento rápido louco </p>
     </div>
   </section>
 
   <section id="sponsors">
-    <h2>Sponsors</h2>
+    <h2>Patrocinadores</h2>
     <SponsorsGroup tier="sponsor" showLabel placement="landing" />
 
-    <h2>Code Contributors</h2>
+    <h2>Contribuintes de código</h2>
     <SponsorsGroup tier="code" showLabel placement="landing" />
   </section>
 
