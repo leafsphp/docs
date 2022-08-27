@@ -198,6 +198,11 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/10695986?v=4",
           },
           {
+            name: "Rafael Morais",
+            url: "https://github.com/rafaelcanical",
+            img: "https://avatars.githubusercontent.com/u/924985?v=4",
+          },
+          {
             name: "wfsdaj",
             url: "https://github.com/wfsdaj",
             img: "https://avatars.githubusercontent.com/u/36911167?v=4",
