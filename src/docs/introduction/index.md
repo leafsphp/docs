@@ -16,11 +16,11 @@ import VideoDocs from '/@theme/components/VideoDocs.vue'
 
 Leaf é um pequeno e leve framework PHP para iniciar rapidamente aplicativos web e APIs limpos, simples, mas poderosos, de forma rápida e fácil. Ao longo dos anos, nós temos nos concentrado em entregar software mais simples e com mais perfomance, que podem ser usado em todos seus aplicativos PHP. 
 
-A versão 3 do Leaf traz mais para o centro a experiência do desenvolvedor e a usabilidade, mas com todas vantagens, garantindo que os usuários também tenham a melhor experiência.
+A versão 3 do Leaf tem mais a oferecer com temática centrada na experiência e a usabilidade do desenvolvedor, mas com todas vantagens garantindo que os usuários também tenham a melhor experiência.
 
 [→ Checkout Leaf 3's features](/docs/introduction/features)
 
-## Getting Started
+## Iniciando
 
 Este guia presume que você tenha um conhecimento **básico** de PHP.
 
