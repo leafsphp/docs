@@ -81,6 +81,11 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/31323758?v=4",
           },
           {
+            name: "King David Gyimah",
+            url: "https://github.com/kdgyimah",
+            img: "https://avatars.githubusercontent.com/u/29569594?v=4",
+          },
+          {
             name: "Vano",
             url: "#",
             img: "https://images.opencollective.com/guest-32634fda/avatar.png",
