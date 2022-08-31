@@ -94,3 +94,16 @@
 .vt-box-container .vt-box {
   padding: 46px 36px !important;
 }
+
+.VPFooter {
+  border-top: none !important;
+}
+
+.join-button {
+  text-decoration: none;
+  background: white;
+  padding: 10px 20px;
+  color: black;
+  font-weight: 700;
+  border-radius: 4px;
+}
