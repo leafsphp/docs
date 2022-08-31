@@ -69,7 +69,7 @@ import { VTLink } from '@leafphp/docs-theme'
 
 .dark .NewsLetter {
   border-top-color: var(--vt-c-divider-light);
-  border-bottom-color: transparent;
+  border-bottom-color: var(--vt-c-divider-light);
   background: var(--vt-c-bg);
 }
 
