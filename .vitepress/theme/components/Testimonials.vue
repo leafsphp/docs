@@ -1,4 +1,10 @@
-<script setup>
+<script setup lang="ts">
+const activeCard = $ref(1);
+const showAll = $ref(false);
+
+const showOnly = (maxText: number, input: string) =>
+  input.length > maxText ? `${input.substring(0, maxText)}...` : input;
+
 const testimonials = [
   {
     name: 'propeller-aaron',
@@ -34,19 +40,21 @@ Thanks!`,
       <h2 class="title mb:_5">Loved by thousands of <br> product people like you.</h2>
 
       <div class="flex" style="gap: 10px;">
-        <a :href="testimonial.url" style="max-width: 33%" class="css-2ilrjx" target="_blank"
-          v-for="testimonial in testimonials">
-          <div class="css-itvw0n p:_4 border-radius:sm" style="background: var(--vt-c-bg);">
+        <a :href="testimonial.url"
+          :style="`max-width: 33%;`"
+          class="css-2ilrjx" target="_blank" v-for="(testimonial, index) in testimonials">
+          <div @mouseover="showAll = true; activeCard = index" @mouseleave="showAll = false; activeCard = index"
+            class="css-itvw0n p:_4 border-radius:sm" style="background: var(--vt-c-bg);">
             <p class="css-rltemf">
-              {{  testimonial.description  }}
+              {{ activeCard === index && showAll ? testimonial.description : showOnly(135, testimonial.description) }}
             </p>
 
             <div class="flex flex:center-start mt:_2">
               <img :src="testimonial?.image" class="w:_4 h:_4 border-radius:50 mr:_1" alt="">
 
               <div>
-                <h6>{{  testimonial?.name  }}</h6>
-                <small class="css-sllbpf">@{{  testimonial?.username  }}
+                <h6>{{ testimonial?.name }}</h6>
+                <small class="css-sllbpf">@{{ testimonial?.username }}
                   <!-- {{ testimonial?.date }} -->
                 </small>
               </div>
