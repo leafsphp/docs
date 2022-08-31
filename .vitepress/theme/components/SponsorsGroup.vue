@@ -331,6 +331,10 @@ onMounted(async () => {
   color: var(--vt-c-text-3);
 }
 
+.sponsor-item img {
+  border-radius: 50%;
+}
+
 .sponsor-item img:not(.-with-label) {
   max-width: calc(var(--max-width) - 30px);
   max-height: calc(var(--max-width) / 2 - 20px);
