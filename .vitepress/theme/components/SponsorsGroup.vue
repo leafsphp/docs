@@ -66,6 +66,11 @@ onMounted(async () => {
             img: "https://images.opencollective.com/guest-c72a498e/avatar.png",
           },
           {
+            name: "Vano",
+            url: "#",
+            img: "https://images.opencollective.com/guest-32634fda/avatar.png",
+          },
+          {
             name: "Farhan Yahaya",
             url: "https://github.com/doc-han",
             img: "https://avatars.githubusercontent.com/u/35382021?v=4",
@@ -86,9 +91,9 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/29569594?v=4",
           },
           {
-            name: "Vano",
-            url: "#",
-            img: "https://images.opencollective.com/guest-32634fda/avatar.png",
+            name: "Andy Kwesi Apenteng",
+            url: "https://github.com/andykwesi",
+            img: "https://avatars.githubusercontent.com/u/36931378?v=4",
           },
           {
             name: "Aaron Smith",
