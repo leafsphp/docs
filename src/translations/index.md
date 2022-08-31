@@ -13,9 +13,7 @@ Translation efforts are managed in the [leafphp-translations](https://github.com
 
 ## Translations
 
-The Leaf documentation has recently undergone a major revision, so there are no completed translations in other languages yet.
-
-Translation efforts are managed in the [leafphp-translations](https://github.com/leafphp-translations/) GitHub organization. There are currently the following translations underway. If you want to contribute, you can open an issue to express your interest.
+There are currently the following translations underway. If you want to contribute, you can open an issue to express your interest.
 
 - [Brazilian Portuguese (WIP)](https://pt-br.leafphp.dev)
 
