@@ -35,7 +35,7 @@ Thanks!`,
 </script>
 
 <template>
-  <section id="newsletter" class="testimonials flex-col flex:center-all py:_10">
+  <section id="newsletter" class="testimonials flex-col d-sm-down:none flex:center-all py:_10">
     <div class="css-1if0kxm">
       <h2 class="title mb:_5">Loved by thousands of <br> product people like you.</h2>
 
