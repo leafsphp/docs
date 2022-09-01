@@ -39,11 +39,11 @@ Thanks!`,
     <div class="css-1if0kxm">
       <h2 class="title mb:_5">Loved by thousands of <br> product people like you.</h2>
 
-      <div class="flex" style="gap: 10px;">
-        <a :href="testimonial.url"
-          :style="`max-width: 33%;`"
+      <div class="flex" style="gap: 10px; transition: ease all .3s;">
+        <div
+          :style="`max-width: ${activeCard === index && showAll ? '100%' : '33%'}; display: ${activeCard !== index && showAll ? 'none' : 'auto'}`"
           class="css-2ilrjx" target="_blank" v-for="(testimonial, index) in testimonials">
-          <div @mouseover="showAll = true; activeCard = index" @mouseleave="showAll = false; activeCard = index"
+          <div @click="showAll = !showAll; activeCard = index" @mouseleave="showAll = false; activeCard = index"
             class="css-itvw0n p:_4 border-radius:sm" style="background: var(--vt-c-bg);">
             <p class="css-rltemf">
               {{ activeCard === index && showAll ? testimonial.description : showOnly(135, testimonial.description) }}
@@ -60,7 +60,7 @@ Thanks!`,
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
