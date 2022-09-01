@@ -42,7 +42,7 @@ Thanks!`,
       <div class="flex" style="gap: 10px; transition: ease all .3s;">
         <div
           :style="`max-width: ${activeCard === index && showAll ? '100%' : '33%'}; display: ${activeCard !== index && showAll ? 'none' : 'auto'}`"
-          class="css-2ilrjx" target="_blank" v-for="(testimonial, index) in testimonials">
+          class="css-2ilrjx cursor:pointer" target="_blank" v-for="(testimonial, index) in testimonials">
           <div @click="showAll = !showAll; activeCard = index" @mouseleave="showAll = false; activeCard = index"
             class="css-itvw0n p:_4 border-radius:sm" style="background: var(--vt-c-bg);">
             <p class="css-rltemf">
