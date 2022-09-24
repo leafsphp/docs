@@ -81,6 +81,11 @@ onMounted(async () => {
             img: "https://images.opencollective.com/sptaule/aa5f956/avatar/256.png",
           },
           {
+            name: "Incognito",
+            url: "https://opencollective.com/user-9d5c0b5a",
+            img: "https://images.opencollective.com/user-9d5c0b5a/avatar/256.png",
+          },
+          {
             name: "Dawuda Iddris",
             url: "https://github.com/dawoodiddris",
             img: "https://avatars.githubusercontent.com/u/31323758?v=4",
