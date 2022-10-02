@@ -429,8 +429,8 @@ You can get the HTTP request’s root URI and resource URI with the request obje
 $app = new \Leaf\App;
 
 //Get root URI
-$rootUri = $app->request()->getRootUri();
+$rootUri = $app->request()->getScriptName();
 
 //Get resource URI
-$resourceUri = $app->request()->getResourceUri();
+$resourceUri = $app->request()->getPathInfo();
 ```

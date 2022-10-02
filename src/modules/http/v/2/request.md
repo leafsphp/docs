@@ -766,7 +766,7 @@ The resource URI is the virtual URI path of an application resource. The resourc
 
 Assume the Leaf application is installed in a physical subdirectory **/foo** beneath your virtual host’s document root. Also assume the full HTTP request URL (what you’d see in the browser location bar) is **/foo/books/1**. The root URI is /foo (the path to the physical directory in which the Leaf application is instantiated) and the resource URI is **/books/1** (the path to the application resource).
 
-You can get the HTTP request’s root URI and resource URI with the request object’s `getRootUri()` and `getResourceUri()` methods:
+You can get the HTTP request’s root URI and resource URI with the request object’s `getScriptName()` and `getPathInfo()` methods:
 
 <div class="class-mode">
 
@@ -774,10 +774,10 @@ You can get the HTTP request’s root URI and resource URI with the request obje
 $app = new \Leaf\App;
 
 //Get root URI
-$rootUri = $app->request()->getRootUri();
+$rootUri = $app->request()->getScriptName();
 
 //Get resource URI
-$resourceUri = $app->request()->getResourceUri();
+$resourceUri = $app->request()->getPathInfo();
 ```
 
 </div>
@@ -785,10 +785,10 @@ $resourceUri = $app->request()->getResourceUri();
 
 ```php
 //Get root URI
-$rootUri = request()->getRootUri();
+$rootUri = request()->getScriptName();
 
 //Get resource URI
-$resourceUri = request()->getResourceUri();
+$resourceUri = request()->getPathInfo();
 ```
 
 </div>
