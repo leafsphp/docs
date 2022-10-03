@@ -23,7 +23,7 @@ const nav = [
       {
         text: 'Leaf 2 Docs',
         link: 'https://archive.leafphp.dev'
-      },
+      }
     ]
   },
   {
@@ -159,7 +159,7 @@ const mainSidebar = [
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
       { text: 'Modules', link: '/modules/' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
-      { text: 'Testing', link: '/docs/tooling/testing' },
+      { text: 'Testing', link: '/docs/tooling/testing' }
     ]
   },
   {
@@ -275,6 +275,15 @@ const mainSidebar = [
       { text: 'Factories', link: '/modules/mvc-core/factories' },
       { text: 'Controller', link: '/modules/mvc-core/controller' },
       { text: 'API Controller', link: '/modules/mvc-core/api-controller' }
+    ]
+  },
+  {
+    text: 'Archive',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Leaf Http', link: '/modules/http/' },
+      { text: 'Leaf Http v1', link: '/modules/http/v/1/' }
     ]
   }
 ]
@@ -718,8 +727,8 @@ export default defineConfigWithTheme<ThemeConfig>({
       appId: 'Q38TT8XUN9',
       apiKey: '91fc50bf651a76ce68220f14e75e38f4'
       // searchParameters: {
-      //   facetFilters: ['version:v3']
-      // }
+      //   facetFilters: ['version:v3'],
+      // },
     },
 
     // carbonAds: {
