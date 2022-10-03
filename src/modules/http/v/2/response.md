@@ -611,7 +611,7 @@ response()->withFlash('message', 'something')->redirect('/somewhere');
 ## Status
 
 ::: tip Info
-You can directly set status codes on responses, there's no need to use this method unless you want to use PHP's output methods like <b>echo</b>
+You can directly set status codes on responses, however, you can use this method to declaratively set a status code for you Leaf responses or if you want to use PHP's output methods like <b>echo</b>
 :::
 
 The HTTP response returned to the client will have a status code indicating the response’s type (e.g. 200 OK, 400 Bad Request, or 500 Server Error). You can use the Leaf application’s response object to set the HTTP response’s status like this:
@@ -619,7 +619,26 @@ The HTTP response returned to the client will have a status code indicating the 
 <div class="class-mode">
 
 ```php
+$app->response()->status(400)->json(['message' => 'home']);
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+response()->status(400)->json(['message' => 'home']);
+```
+
+</div>
+
+Or with a native PHP response:
+
+<div class="class-mode">
+
+```php
 $app->response()->status(400);
+
+echo 'This is the main output';
 ```
 
 </div>
@@ -627,23 +646,10 @@ $app->response()->status(400);
 
 ```php
 response()->status(400);
+
+echo 'This is the main output';
 ```
 
 </div>
 
-You only need to set the response object’s status if you intend to return an HTTP response that does not have a 200 OK status. You can just as easily fetch the response object’s current HTTP status by invoking the same method without an argument, like this:
-
-<div class="class-mode">
-
-```php
-$status = $app->response()->status();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-$status = response()->status();
-```
-
-</div>
+You only need to set the response object’s status if you intend to return an HTTP response that does not have a 200 OK status.
