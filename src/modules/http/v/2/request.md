@@ -1,5 +1,6 @@
 # Leaf Request
 <!-- markdownlint-disable no-inline-html -->
+<!-- markdownlint-disable no-duplicate-header -->
 
 The request object is an abstraction of the current HTTP request and allows you to easily interact with any data passed into your application.
 
