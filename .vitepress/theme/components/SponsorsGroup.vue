@@ -138,6 +138,11 @@ onMounted(async () => {
             img: "https://avatars.githubusercontent.com/u/9718423?v=4",
           },
           {
+            name: "Vitor Rodrigues",
+            url: "https://github.com/vs0uz4",
+            img: "https://avatars.githubusercontent.com/u/2080547?v=4",
+          },
+          {
             name: "Tobias Herber",
             url: "https://github.com/herber",
             img: "https://avatars.githubusercontent.com/u/22559657?&v=4",

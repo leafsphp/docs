@@ -69,6 +69,10 @@ app()->run();
 
 The main difference here is that the second method sets the config before the Leaf app is initialized. This means that during initialization, Leaf will use the config that has been set, however, for the first method, the config is loaded only after Leaf is initialized and thus, not used in the initialization process.
 
+::: tip Note
+This is no longer an issue as Leaf will reactively set the config, and so you won't experience any issues with setting the config later in your app with `app->config()`. Of course, you can still use `Leaf\Config` to skip the reactivity process.
+:::
+
 ## app
 
 This function returns the current instance of the Leaf application. If none exists, it creates and returns it.
