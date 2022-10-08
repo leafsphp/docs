@@ -68,4 +68,4 @@ leaf serve <filename>
 
 Since Eien is tied to Leaf, it means that you can't use it with other frameworks. This is because Leaf is built with a very specific architecture that makes it very fast and efficient. This means that you can't use Eien with other frameworks like Laravel, Symfony, etc.
 
-Another major thing to watch out for is the use of PHP functions for responses. All your headers and cookies need to pass through Leaf directly, otherwise Eien won't be able to handle them right
+Another major thing to watch out for is the use of PHP functions for responses. All your headers and cookies need to pass through Leaf directly, otherwise Eien won't be able to handle them right. This means you can't use inbuilt PHP functions like `header()` or `setcookie()`. You'll need you use Leaf's `response->withHeader()` and `response->withCookie()` functions instead.
