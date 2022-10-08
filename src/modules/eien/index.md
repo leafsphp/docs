@@ -5,12 +5,10 @@ Eien is Leaf's implementation of a high-speed, high-performance server based on 
 When serving Leaf apps with Eien, you gain additional performance improvements due to Leaf's lightweight and super fast nature.
 
 ::: warning Note that
-
 Eien runs on Swoole, so you need to have the swoole extension installed.
 
 - [Swoole Installation docs](https://openswoole.com/docs/get-started/installation)
 - [In case you have errors installing swoole on Mac](https://parsinta.com/articles/setup-php-swoole-in-your-mac-os)
-
 :::
 
 ## Installation
