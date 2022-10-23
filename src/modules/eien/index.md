@@ -42,7 +42,7 @@ Eien has been configured to rely on some features available in only v3 of Leaf. 
   </div>
 </div>
 
-***From the Benchmarks above, Leaf was 34x faster when used with Eien.***
+***From the Benchmarks above, Leaf was 40x faster when used with Eien.***
 
 ## Basic Usage
 
