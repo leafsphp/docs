@@ -74,7 +74,7 @@ Putting it all together, your `index.php` file should look like this:
 ```php
 <?php
 
-require_once __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 
 $app = new Leaf\App();
 
@@ -94,7 +94,7 @@ $server
 ```php
 <?php
 
-require_once __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 
 app()->get('/', function () {
   return "Hello World";
