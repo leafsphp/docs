@@ -38,7 +38,7 @@ Eien has been configured to rely on some features available in only v3 of Leaf. 
   </div>
   <div>
     <b>Leaf WITH Eien:</b>
-    <img width="746" alt="IMG_5389" src="https://user-images.githubusercontent.com/26604242/197389448-53554f78-9544-4dee-ba6a-e6c5def841df.png">
+    <img width="746" alt="IMG_5389" src="https://user-images.githubusercontent.com/26604242/197391242-05bcc64f-db4f-45d8-a657-3f79367c4046.png">
   </div>
 </div>
 
