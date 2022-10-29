@@ -11,7 +11,7 @@
 
 <body>
   <h1>🎉 Congratulations!</h1>
-  <canvas id="confetti-holder" width="1202" height="757"></canvas>
+  <canvas id="confetti-holder"></canvas>
 
   <script>
     var confettiSettings = {
