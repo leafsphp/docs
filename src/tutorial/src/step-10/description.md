@@ -121,8 +121,7 @@ After that, create another route and run this query to insert some data into the
 ```sql
 INSERT INTO users (name, email)
 VALUES
-  ('John Doe', 'johndoe@test.com'),
-  ('Jane Doe', 'janedoe@test.com')
+  ('John Doe', 'johndoe@test.com')
 ```
 
 To prove that all what we just did actually works, we'll need to fetch the data we just inserted. We've prepared a query for you to fetch the data. You can run the query as is or you can modify it to suit your needs.

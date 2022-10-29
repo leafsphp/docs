@@ -1,4 +1,4 @@
-# User login
+# User registration
 
 ::: danger WIP
 WIP

@@ -1,4 +1,4 @@
-# Updating items in a database
+# Reading items in a database
 
 ::: danger WIP
 WIP

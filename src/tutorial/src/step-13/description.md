@@ -1,4 +1,4 @@
-# Deleting items in a database
+# Updating items in a database
 
 ::: danger WIP
 WIP
