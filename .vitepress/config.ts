@@ -12,6 +12,7 @@ const nav = [
     items: [
       { text: 'Guide', link: '/docs/introduction/' },
       { text: 'Tutorial', link: '/tutorial/' },
+      { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
       {
         text: 'Migration from Leaf 2',
         link: '/docs/migration/introduction'
