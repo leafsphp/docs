@@ -11,6 +11,10 @@ const nav = [
     activeMatch: `^/(docs|style-guide|examples|tutorial)/`,
     items: [
       { text: 'Guide', link: '/docs/introduction/' },
+      {
+        text: 'Leaf Modules',
+        link: '/modules/'
+      },
       { text: 'Tutorial', link: '/tutorial/' },
       { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
       {
@@ -34,10 +38,6 @@ const nav = [
       {
         text: 'Core Projects',
         items: [
-          {
-            text: 'Leaf Modules',
-            link: '/modules/'
-          },
           {
             text: 'Leaf MVC',
             link: 'https://mvc.leafphp.dev/'
