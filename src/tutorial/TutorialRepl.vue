@@ -75,7 +75,13 @@ const run = async (files: Record<string, any>) => {
     output.value = `<iframe srcdoc='${res}'></iframe>`;
   } catch (error: any) {
     console.log(error, 'error')
-    output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
+
+    if (error?.response?.data) {
+      output.value = `<iframe srcdoc='${error.response.data.replace(/'/g, '"')}'></iframe>`;
+    } else {
+      output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
+    }
+
     store.state.errors.push((error?.response?.data ?? error) as never);
   }
 }
@@ -228,6 +234,10 @@ updateExample()
 
 .tutorial h2 {
   margin-top: 3.5rem !important;
+}
+
+.tutorial h3 {
+  margin-top: 1.5rem !important;
 }
 </style>
 
