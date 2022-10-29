@@ -47,8 +47,6 @@ app()->run();
 
 Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
 
-<br>
-
 ## THE ROUTE PATH
 
 Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.

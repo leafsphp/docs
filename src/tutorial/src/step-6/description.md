@@ -84,8 +84,6 @@ Note that we passed the dynamic value as a variable into the handling function: 
 
 Now try recreating the twitter experience in the editor. Create a route that takes in a dynamic username. When this route is run, output the username that was passed into the url.
 
-<br>
-
 ## URLS WITH MULTIPLE DYNAMIC PARTS
 
 In some cases, your URL may have multiple dynamic parts. For example, you may want to have a route that takes in a username and a post id. This is also possible with Leaf. Let's look at how this works:
@@ -124,8 +122,6 @@ app()->run();
 </div>
 
 As shown above, you can have as many dynamic parts as you want. Leaf will automatically create a variable for each dynamic part in the route. You can then use these variables in your handling function. Try this out in the editor.
-
-<br>
 
 ## LIMITING DYNAMIC URLS TO PARTICULAR TYPES
 

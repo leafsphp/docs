@@ -41,8 +41,6 @@ app()->run();
 
 For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app. We'll also be using different validation rules against this data.
 
-<br>
-
 ## VALIDATION RULES
 
 Leaf comes with some default validation rules, if you run the code above, then you'd already know some of these rules. If you haven't already done so, the code above returns all the supported validations rules leaf has by default. Throughout this exercise, we'll be using different validation rules to validate our data.
@@ -69,8 +67,6 @@ These rules are **NOT** case-sensitive, so you can type them anyway you prefer, 
 :::
 
 </details>
-
-<br>
 
 ## VALIDATING OUR DATA
 
@@ -141,8 +137,6 @@ We passed an array into the `validate` function above. The array tells the `vali
 
 If you want the validation to fail, you can edit the `data` in the `request.json` file with invalid data.
 
-<br>
-
 ## MULTIPLE VALIDATION RULES
 
 So far, we've only looked at validating data against a single rule. But what if we want to validate data against multiple rules? We can do this by passing an array of rules into the `validate` function. For example, we can validate the email field against the `email` and `required` rules.
@@ -152,8 +146,6 @@ So far, we've only looked at validating data against a single rule. But what if 
 ```
 
 You can add as many rules as you want to the array, however, the order of the rules matter. If you want to validate a field against the `required` rule first, then you should put the `required` rule first in the array. You should also be sure not to use conflicting rules. For example, you can't use the `textOnly` rule and the `number` rule together.
-
-<br>
 
 ## VALIDATION RULE ARGUMENTS
 
@@ -165,8 +157,6 @@ Some rules require some form of argument to work. For example, the `max` rule re
 
 To pass a rule an argument, you simply add a `:` after the rule name and then add the argument. This also applies to the `min` rule.
 
-<br>
-
 ## YOUR TASK
 
 Your task is to write validation rules for the data below.
@@ -177,8 +167,6 @@ Your task is to write validation rules for the data below.
 - **email** - Should be a valid email
 
 Sample data has already been provided in the `request.json` file. You can edit this to get different data in your app.
-
-<br>
 
 ## BONUS: CREATE YOUR OWN RULE
 

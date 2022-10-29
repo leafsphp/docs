@@ -44,8 +44,6 @@ app()->run();
 
 For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app.
 
-<br>
-
 ## RETURNING ALL DATA PASSED IN YOUR APP
 
 Leaf allows you to get every bit of data passed into your app all at once. This includes get request data, post request data, url encoded data, files and all of those.

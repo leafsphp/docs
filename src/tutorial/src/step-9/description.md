@@ -18,8 +18,6 @@ Leaf\FS::createFolder("logs/new");
 
 You can try this out in the editor.
 
-<br>
-
 ## CREATING FILES
 
 Just as with folders, Leaf also has a method to create files. The method is called `createFile`.

@@ -70,8 +70,6 @@ app()->run();
 
 On the right, you have a structure which has an empty slot for your routes. Try to create a route for the `/` path using the `match` method. **Replace `// 1. match route here` with your `match` route**
 
-<br>
-
 ## THE ROUTE PATH
 
 Usually route paths are descriptive and give you an idea of what that route is doing. For instance, a login route is usually `/login` or `/auth/login`. After successfully running your route above, your next task is to change the route path to anything of your choice.
@@ -79,8 +77,6 @@ Usually route paths are descriptive and give you an idea of what that route is d
 ::: tip Watch out
 When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
 :::
-
-<br>
 
 ## ADD MULTIPLE ROUTE METHODS
 

@@ -84,8 +84,6 @@ app()->run();
 
 In this exercise, we'll be rendering various content types with leaf response. Let's jump right into it.
 
-<br>
-
 ## WORKING WITH JSON
 
 Today, most APIs output JSON to the client, and this requires you to set a content type and encode your data as JSON. All of this however, has been taken by leaf. All you need to do is to call the `json` method on the leaf response object. The JSON method takes in some data to output and the [http status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to attach
@@ -126,8 +124,6 @@ app()->run();
 </div>
 
 Try outputing an array or associative array with the `json` method from the editor. You can do this in the slot that says `// 1. json output`
-
-<br>
 
 ## WORKING WITH MARKUP
 
@@ -174,8 +170,6 @@ Your task is to output some valid HTML with the `markup` method from the editor.
 Don't forget to configure your `request.json` file with the correct path.
 :::
 
-<br>
-
 ## RENDERING PAGES
 
 Sometimes, simply being able to render html or PHP isn't enough. You may have some pre-built pages which you need to render, and that's what the `page` method was built for.
@@ -220,8 +214,6 @@ We've created a `page.html` file for this exercise. Your task is to output the h
 ::: tip
 Don't forget to configure your `request.json` file with the correct path.
 :::
-
-<br>
 
 ## EXITING AFTER A RESPONSE
 

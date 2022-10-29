@@ -127,8 +127,6 @@ You can open up the console to view the full CORS error.
 
 :::
 
-<br>
-
 ## CONFIGURING LEAF CORS
 
 The examples above allow all origins and headers to access your app, however, in most cases, you'll want to limit the origin to a particular app or service. Leaf makes it easy to configure this by simply passing an array into the `cors` function.

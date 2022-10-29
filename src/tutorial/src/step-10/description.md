@@ -2,7 +2,7 @@
 
 Leaf provides a lightweight db client/query builder which can be used to make queries quickly and easily. We call this query builder Leaf DB. Just like any other database client out there, you need to make a database connection first. You can do this with the `connect` method. This method takes in all the parameters you need to connect to your database.
 
-## Connecting to your database
+## CONNECTING TO YOUR DATABASE
 
 As mentioned above, we'll use the `connect` method to connect to our database. This method takes in a hostname, dbname, username, password and options in that order. This means that a db connection will look something like this:
 

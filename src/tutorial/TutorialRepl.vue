@@ -225,6 +225,10 @@ updateExample()
   --selected-bg: rgba(255, 255, 255, 0.1);
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
 }
+
+.tutorial h2 {
+  margin-top: 3.5rem !important;
+}
 </style>
 
 <style scoped>
