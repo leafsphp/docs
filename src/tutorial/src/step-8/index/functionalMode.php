@@ -2,7 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// 1. put route here
-// 2. custom url path here
+// Your app here
 
 app()->run();
