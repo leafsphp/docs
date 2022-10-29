@@ -143,8 +143,6 @@ function updateExample(scroll = false) {
 
   const content = showingHint.value ? data[hash]._hint! : data[hash]
 
-  console.log(data, 'data')
-
   store.setFiles(
     resolveSFCExample(content, preferFunctional.value),
     'index.php'
@@ -242,6 +240,10 @@ updateExample()
   --height: calc(
     100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px)
   );
+}
+
+.tutorial * {
+  transition: ease all .3s;
 }
 
 .preference-switch {
