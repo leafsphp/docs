@@ -1,4 +1,4 @@
-# Updating items in a database
+# User registration
 
 ::: danger WIP
 WIP
