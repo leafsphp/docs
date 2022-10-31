@@ -1,8 +1,8 @@
 # Leaf response
 
-Since we've looked at creating a route, we need to know how to output data from our route. In the earlier example, we used `echo` to output data from our app. That approach however has some issues.
+Since we've looked at creating a route, we need to know how to output data from our route. In the earlier example, we used **`echo`** to output data from our app. That approach however has some issues.
 
-If the content type of your app is set to `application/json`, using echo to output `<b>something</b>` will give you JSON instead of html. We can test this with the editor on the right.
+If the content type of your app is set to **`application/json`**, using echo to output **`<b>something</b>`** will give you JSON instead of html. We can test this with the editor on the right.
 
 <div class="class-mode">
 
@@ -16,7 +16,7 @@ header('Content-Type: application/json');
 $app = new Leaf\App;
 
 $app->get('/', function () {
-  echo "<b>Something</b>";
+  echo '<b>Something</b>';
 });
 
 // don't forget to call run
@@ -34,7 +34,7 @@ require __DIR__ . '/vendor/autoload.php';
 header('Content-Type: application/json');
 
 app()->get('/', function () {
-  echo "<b>Something</b>";
+  echo '<b>Something</b>';
 });
 
 // don't forget to call run
@@ -57,7 +57,7 @@ require __DIR__ . '/vendor/autoload.php';
 $app = new Leaf\App;
 
 $app->get('/', function () {
-  $app->response()->markup('something');
+  $app->response()->markup('<b>something</b>');
 });
 
 // don't forget to call run
@@ -73,7 +73,7 @@ $app->run();
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  response()->markup('something');
+  response()->markup('<b>something</b>');
 });
 
 // don't forget to call run
@@ -83,8 +83,6 @@ app()->run();
 </div>
 
 In this exercise, we'll be rendering various content types with leaf response. Let's jump right into it.
-
-<br>
 
 ## WORKING WITH JSON
 
@@ -126,8 +124,6 @@ app()->run();
 </div>
 
 Try outputing an array or associative array with the `json` method from the editor. You can do this in the slot that says `// 1. json output`
-
-<br>
 
 ## WORKING WITH MARKUP
 
@@ -174,8 +170,6 @@ Your task is to output some valid HTML with the `markup` method from the editor.
 Don't forget to configure your `request.json` file with the correct path.
 :::
 
-<br>
-
 ## RENDERING PAGES
 
 Sometimes, simply being able to render html or PHP isn't enough. You may have some pre-built pages which you need to render, and that's what the `page` method was built for.
@@ -220,8 +214,6 @@ We've created a `page.html` file for this exercise. Your task is to output the h
 ::: tip
 Don't forget to configure your `request.json` file with the correct path.
 :::
-
-<br>
 
 ## EXITING AFTER A RESPONSE
 

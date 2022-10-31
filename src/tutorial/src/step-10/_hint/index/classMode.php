@@ -12,12 +12,39 @@ $db->connect(
   'cc589b17'
 );
 
-$app->get('/', function () {
-  echo "hello world";
+$app->get('/', function () use($app, $db) {
+  $result = $db
+    ->query('
+      DROP TABLE IF EXISTS users;
+      CREATE TABLE users (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(30) NOT NULL,
+        email VARCHAR(50),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    ')
+    ->execute();
+
+  $app->response()->json($result);
 });
 
-$app->put('/custom', function () {
-  echo "custom route";
+$app->get('/insert', function () use($app, $db) {
+  $result = $db
+    ->query("
+      INSERT INTO users (name, email)
+      VALUES ('John Doe', 'johndoe@test.com')
+    ")
+    ->execute();
+
+  $app->response()->json($result);
+});
+
+$app->get('/users', function () use($app, $db) {
+  $users = $db->query('SELECT * FROM users')->get();
+
+  $app->response()->json([
+    'users' => $users,
+  ]);
 });
 
 $app->run();

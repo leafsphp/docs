@@ -1,10 +1,25 @@
-<?php
+<!DOCTYPE html>
+<html>
 
-require __DIR__ . '/vendor/autoload.php';
+<head>
+  <title>Congratulations!</title>
 
-$app = new Leaf\App();
+  <script src="https://unpkg.com/vue@3"></script>
+  <script type="text/javascript" src="https://agezao.github.io/confetti-js/dist/index.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
 
-// 1. put route here
-// 2. custom url path here
+<body>
+  <h1>🎉 Congratulations!</h1>
+  <canvas id="confetti-holder"></canvas>
 
-$app->run();
+  <script>
+    var confettiSettings = {
+      target: "confetti-holder"
+    };
+    var confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+  </script>
+</body>
+
+</html>

@@ -4,12 +4,17 @@ require __DIR__ . '/vendor/autoload.php';
 
 $app = new Leaf\App();
 
-$app->get('/', function () {
-  echo "hello world";
+$app->get('/user/${username}', function ($username) {
+  echo "hello, $username";
 });
 
-$app->put('/custom', function () {
-  echo "custom route";
+$app->get('/users/{uId}/posts/{pId}', function ($uId, $pId) use ($app) {
+  $app->response()->markup("Post #$pId was created by user #$uId");
+});
+
+// username example using pcre
+$app->get('/users/(\w+)', function ($username) {
+  echo "hello, $username";
 });
 
 $app->run();

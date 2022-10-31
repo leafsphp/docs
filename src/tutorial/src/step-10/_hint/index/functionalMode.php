@@ -10,11 +10,38 @@ db()->connect(
 );
 
 app()->get('/', function () {
-  echo "hello world";
+  $result = db()
+    ->query('
+      DROP TABLE IF EXISTS users;
+      CREATE TABLE users (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(30) NOT NULL,
+        email VARCHAR(50),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    ')
+    ->execute();
+
+  response()->json($result);
 });
 
-app()->put('/custom', function () {
-  echo "custom route";
+app()->get('/insert', function () {
+  $result = db()
+    ->query("
+      INSERT INTO users (name, email)
+      VALUES ('John Doe', 'johndoe@test.com')
+    ")
+    ->execute();
+
+  response()->json($result);
+});
+
+app()->get('/users', function () {
+  $users = db()->query('SELECT * FROM users')->get();
+
+  response()->json([
+    'users' => $users,
+  ]);
 });
 
 app()->run();

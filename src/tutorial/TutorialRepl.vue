@@ -5,7 +5,6 @@ import { inject, watch, version, Ref, ref, computed, nextTick, onBeforeUnmount, 
 import { data } from './tutorial.data'
 import {
   resolveSFCExample,
-  resolveNoBuildExample,
   onHashChange
 } from '../examples/utils'
 import './Repl/style.css'
@@ -45,7 +44,7 @@ const run = async (files: Record<string, any>) => {
   let { data: folder } = await axios.post('https://leaf-sandbox-server.herokuapp.com/compile', form);
 
   if (!folder) {
-    return store.state.errors.push('Internal system error, please try again');
+    return store.state.errors.push('Internal system error, please try again' as never);
   } else {
     store.state.errors = [];
   }
@@ -54,7 +53,7 @@ const run = async (files: Record<string, any>) => {
 
   try {
     let config = JSON.parse(files['request.json'].code || '');
-    config = config.path ? config : null;
+    config = config?.path ? config : null;
 
     let { data: res, headers } = await axios({
       url: `https://leaf-sandbox-server.herokuapp.com${folder.folder}${config?.path ?? '/'}`,
@@ -63,8 +62,6 @@ const run = async (files: Record<string, any>) => {
       data: config?.data ?? {},
       params: config?.method?.toUpperCase() === "GET" ? config.data : {},
     });
-
-    console.log('headers', headers);
 
     if (headers['content-type'] === 'application/json' && typeof res === 'string') {
       return output.value = res.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
@@ -78,12 +75,14 @@ const run = async (files: Record<string, any>) => {
     output.value = `<iframe srcdoc='${res}'></iframe>`;
   } catch (error: any) {
     console.log(error, 'error')
-    output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
+
     if (error?.response?.data) {
-      store.state.errors.push(error.response.data);
+      output.value = `<iframe srcdoc='${error.response.data.replace(/'/g, '"')}'></iframe>`;
     } else {
-      store.state.errors.push(error);
+      output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">❌ Could not compile</div>'
     }
+
+    store.state.errors.push((error?.response?.data ?? error) as never);
   }
 }
 
@@ -135,15 +134,15 @@ const showingHint = ref(false)
 
 function updateExample(scroll = false) {
   let hash = location.hash.slice(1)
+
   if (!data.hasOwnProperty(hash)) {
     hash = 'step-1'
     location.replace(`/tutorial/#${hash}`)
   }
+
   currentStep.value = hash
 
   const content = showingHint.value ? data[hash]._hint! : data[hash]
-
-  console.log(data, 'data')
 
   store.setFiles(
     resolveSFCExample(content, preferFunctional.value),
@@ -232,6 +231,14 @@ updateExample()
   --selected-bg: rgba(255, 255, 255, 0.1);
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
 }
+
+.tutorial h2 {
+  margin-top: 3.5rem !important;
+}
+
+.tutorial h3 {
+  margin-top: 1.5rem !important;
+}
 </style>
 
 <style scoped>
@@ -242,6 +249,10 @@ updateExample()
   --height: calc(
     100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px)
   );
+}
+
+.tutorial * {
+  transition: ease all .3s;
 }
 
 .preference-switch {

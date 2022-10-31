@@ -41,8 +41,6 @@ app()->run();
 
 For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app. We'll also be using different validation rules against this data.
 
-<br>
-
 ## VALIDATION RULES
 
 Leaf comes with some default validation rules, if you run the code above, then you'd already know some of these rules. If you haven't already done so, the code above returns all the supported validations rules leaf has by default. Throughout this exercise, we'll be using different validation rules to validate our data.
@@ -69,8 +67,6 @@ These rules are **NOT** case-sensitive, so you can type them anyway you prefer, 
 :::
 
 </details>
-
-<br>
 
 ## VALIDATING OUR DATA
 
@@ -141,6 +137,76 @@ We passed an array into the `validate` function above. The array tells the `vali
 
 If you want the validation to fail, you can edit the `data` in the `request.json` file with invalid data.
 
-::: danger WIP
-WIP
-:::
+## MULTIPLE VALIDATION RULES
+
+So far, we've only looked at validating data against a single rule. But what if we want to validate data against multiple rules? We can do this by passing an array of rules into the `validate` function. For example, we can validate the email field against the `email` and `required` rules.
+
+```php
+'email' => ['required', 'email'],
+```
+
+You can add as many rules as you want to the array, however, the order of the rules matter. If you want to validate a field against the `required` rule first, then you should put the `required` rule first in the array. You should also be sure not to use conflicting rules. For example, you can't use the `textOnly` rule and the `number` rule together.
+
+## VALIDATION RULE ARGUMENTS
+
+Some rules require some form of argument to work. For example, the `max` rule requires an argument to work. The argument tells the `max` rule how long the string should be. For example, if we want to validate the name field against the `max` rule, we can do this by passing the `max` rule an argument of `10`.
+
+```php
+'username' => 'max:10',
+```
+
+To pass a rule an argument, you simply add a `:` after the rule name and then add the argument. This also applies to the `min` rule.
+
+## YOUR TASK
+
+Your task is to write validation rules for the data below.
+
+- **name** - Should be text with spaces only
+- **country** - Should be required,
+- **city** - Should be required,
+- **email** - Should be a valid email
+
+Sample data has already been provided in the `request.json` file. You can edit this to get different data in your app.
+
+## BONUS: CREATE YOUR OWN RULE
+
+Leaf Form has rules for the most used kinds of validation, however, you may need your validation rules to work in ways not specified by Leaf. For this reason, we've added functionality to create your own validation rules.
+
+To create your own rule, you can use the `rule` method on the <span class="class-mode">`Leaf\Form` class</span><span class="class-mode">`form` method</span>. `rule` takes two arguments, the first is the name of the rule and the second is a callback function.
+
+Let's create a rule that checks if a string contains a word passed in.
+
+<div class="class-mode">
+
+```php
+Leaf\Form::rule("contains", function ($field, $value, string $params) {
+  if (strpos($value, $params) === false) {
+    Leaf\Form::addError($field, "$field must contain $params");
+    return false;
+  }
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+form()->rule("contains", function ($field, $value, string $params) {
+  if (strpos($value, $params) === false) {
+    form()->addError($field, "$field must contain $params");
+    return false;
+  }
+});
+```
+
+</div>
+
+You might have also noticed the `addError` method in the code above. This method is used to add an error to the error list. It takes two arguments, the first is the field name and the second is the error message. You can use this method to add your own custom error messages.
+
+After this, we can use our rule just like any other:
+
+```php
+'username' => 'contains:Leaf',
+```
+
+This section only brushed through creating your custom rules, you can [read the docs](/modules/forms/v/1.2/#create-your-own-rules) for more info.

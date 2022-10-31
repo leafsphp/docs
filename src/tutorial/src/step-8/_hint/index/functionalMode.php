@@ -3,11 +3,16 @@
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  echo "hello world";
-});
+  $isValid = form()->validate([
+    'name' => 'text',
+    'country' => ['required', 'text'],
+    'city' => 'required',
+    'email' => 'email',
+  ]);
 
-app()->put('/custom', function () {
-  echo "custom route";
+  response()->json(
+    $isValid ? 'success' : form()->errors()
+  );
 });
 
 app()->run();
