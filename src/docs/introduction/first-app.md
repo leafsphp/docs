@@ -17,7 +17,7 @@ We recommend using the [Leaf CLI](https://cli.leafphp.dev) for creating and mana
 To get started, we will need to generate a leaf application. We can do this simply with Leaf CLI:
 
 ```sh
-leaf create <your-project-name> --basic --v3
+leaf create <your-project-name> --basic --v3 --no-tests
 ```
 
 <!-- ```sh
