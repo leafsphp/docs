@@ -38,11 +38,11 @@ Eien has been configured to rely on some features available in only v3 of Leaf. 
   </div>
   <div>
     <b>Leaf WITH Eien:</b>
-    <img width="746" alt="IMG_5389" src="https://user-images.githubusercontent.com/26604242/197391242-05bcc64f-db4f-45d8-a657-3f79367c4046.png">
+    <img width="746" alt="IMG_5389" src="https://user-images.githubusercontent.com/26604242/209453269-73bbfb71-8c5d-4792-aa92-049a3517e128.png">
   </div>
 </div>
 
-***From the Benchmarks above, Leaf was 40x faster when used with Eien.***
+***From the Benchmarks above, Leaf was 68x faster when used with Eien.***
 
 ## Basic Usage
 
@@ -67,3 +67,57 @@ leaf serve <filename>
 Since Eien is tied to Leaf, it means that you can't use it with other frameworks. This is because Leaf is built with a very specific architecture that makes it very fast and efficient. This means that you can't use Eien with other frameworks like Laravel, Symfony, etc.
 
 Another major thing to watch out for is the use of PHP functions for responses. All your headers and cookies need to pass through Leaf directly, otherwise Eien won't be able to handle them right. This means you can't use inbuilt PHP functions like `header()` or `setcookie()`. You'll need you use Leaf's `response->withHeader()` and `response->withCookie()` functions instead.
+
+## WebSockets
+
+> A WebSocket server is a network communication protocol which supports full-duplex communication over a TCP connection. A WebSocket server usually operations on traditional HTTP ports like 80 or 443, this makes it compatible with the HTTP protocol, but you can select other ports to run on. Compared with the HTTP protocol, which is stateless, a WebSocket Server can maintain a persistent connection, making it a stateful protocol. The connection between the client and server is kept alive.
+
+Eien now allows you to create routes that use websockets with Leaf. Just as with all of Leaf, there's no need for any configuration. You can just create a route and start using websockets.
+
+To create a websocket route, simply use the `ws` method on the leaf app. Note that under the hood, only one websocket instance is created, however, you can create as many routes as you want. These routes will share the instance and will be smartly handled automatically by Eien.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->ws('/ws-route', function () {
+  response()->json([
+    "message" => "Hello from websocket"
+  ]);
+});
+
+app()->run();
+```
+
+As you can see, the websocket route is just like any other route. The only difference is that you use the `ws` method instead of the `get` or `post` method. You can use Leaf request, response, db and other modules just as you would in any other part of your app.
+
+The handler function for the websocket route is a callback function that will be called when a client sends a message to the websocket route. The callback function receives a `Swoole\WebSocket\Server` instance as it's first argument. It also receives a `Swoole\WebSocket\Frame` instance as it's second argument. The `Swoole\WebSocket\Server` instance is the websocket server instance and the `Swoole\WebSocket\Frame` instance is the message sent by the client.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->ws('/ws-route', function ($server, $frame) {
+  $server->push($frame->fd, "Hello from websocket");
+});
+
+app()->run();
+```
+
+Of course, you can use Leaf's request and response modules to handle your websocket routes which is recommended over directly using the `Swoole\WebSocket\Server` instance.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->ws('/ws-route', function () {
+  response()->json([
+    "message" => "Hello from websocket"
+  ]);
+});
+
+app()->run();
+```
