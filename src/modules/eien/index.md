@@ -38,11 +38,11 @@ Eien has been configured to rely on some features available in only v3 of Leaf. 
   </div>
   <div>
     <b>Leaf WITH Eien:</b>
-    <img width="746" alt="IMG_5389" src="https://user-images.githubusercontent.com/26604242/209453269-73bbfb71-8c5d-4792-aa92-049a3517e128.png">
+    <img width="746" alt="IMG_5389" src="https://user-images.githubusercontent.com/26604242/209473926-43485e5b-7ab2-4851-a5ee-fdb2b90973e7.png">
   </div>
 </div>
 
-***From the Benchmarks above, Leaf was 68x faster when used with Eien.***
+***From the Benchmarks above, Leaf was 76x faster when used with Eien.***
 
 ## Basic Usage
 
