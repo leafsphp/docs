@@ -68,7 +68,7 @@ Since Eien is tied to Leaf, it means that you can't use it with other frameworks
 
 Another major thing to watch out for is the use of PHP functions for responses. All your headers and cookies need to pass through Leaf directly, otherwise Eien won't be able to handle them right. This means you can't use inbuilt PHP functions like `header()` or `setcookie()`. You'll need you use Leaf's `response->withHeader()` and `response->withCookie()` functions instead.
 
-## WebSockets
+## WebSockets <sup class="vt-badge experimental" data-text="Beta" />
 
 > A WebSocket server is a network communication protocol which supports full-duplex communication over a TCP connection. A WebSocket server usually operations on traditional HTTP ports like 80 or 443, this makes it compatible with the HTTP protocol, but you can select other ports to run on. Compared with the HTTP protocol, which is stateless, a WebSocket Server can maintain a persistent connection, making it a stateful protocol. The connection between the client and server is kept alive.
 
