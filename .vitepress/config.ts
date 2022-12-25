@@ -239,7 +239,7 @@ const mainSidebar = [
     items: [
       { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
       { text: 'Leaf Password', link: '/modules/password/' },
-      // { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      { text: 'Leaf Anchor', link: '/modules/anchor/' },
       { text: 'Leaf Date', link: '/modules/date/' },
       { text: 'File System', link: '/modules/fs/' },
       { text: 'Leaf Fetch', link: '/modules/fetch/' },
@@ -259,10 +259,10 @@ const mainSidebar = [
     ]
   },
   {
-    text: 'Extras',
+    text: 'Digging Deeper',
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
-      { text: 'Anchor', link: '/modules/anchor/' },
+      { text: 'Eien Server', link: '/modules/eien/' },
       { text: 'CSRF', link: '/modules/anchor/csrf/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
       { text: 'Leaf DB (Old)', link: '/modules/db-old/' }
