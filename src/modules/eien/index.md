@@ -75,7 +75,7 @@ Another major thing to watch out for is the use of PHP functions for responses. 
 Eien now allows you to create routes that use websockets with Leaf. Just as with all of Leaf, there's no need for any configuration. You can just create a route and start using websockets.
 
 ::: warning Note
-Since Websockets are still untested with Leaf, you'll need to install the beta versions of Leaf, Eien and Leaf Http to use websockets. You can do this by running the following commands:
+Since Eien's WebSocket functionality is still not fully production tested, it is only available through the beta channel. You'll need to install the beta versions of Leaf, Eien and Leaf Http to use websockets. You can do this by running the following commands:
 
 ```sh
 leaf install leaf@3.2.2-beta eien@dev-main http@dev-main
