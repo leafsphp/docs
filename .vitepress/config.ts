@@ -185,7 +185,8 @@ const mainSidebar = [
       { text: 'Cookies', link: '/modules/cookies/' },
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
-      { text: 'Middleware', link: '/docs/routing/middleware' }
+      { text: 'Middleware', link: '/docs/routing/middleware' },
+      { text: 'Leaf CLI', link: 'https://cli.leafphp.dev' }
     ]
   },
   {
@@ -239,7 +240,7 @@ const mainSidebar = [
     items: [
       { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
       { text: 'Leaf Password', link: '/modules/password/' },
-      // { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      { text: 'Leaf Anchor', link: '/modules/anchor/' },
       { text: 'Leaf Date', link: '/modules/date/' },
       { text: 'File System', link: '/modules/fs/' },
       { text: 'Leaf Fetch', link: '/modules/fetch/' },
@@ -259,10 +260,10 @@ const mainSidebar = [
     ]
   },
   {
-    text: 'Extras',
+    text: 'Digging Deeper',
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
-      { text: 'Anchor', link: '/modules/anchor/' },
+      { text: 'Eien Server', link: '/modules/eien/' },
       { text: 'CSRF', link: '/modules/anchor/csrf/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
       { text: 'Leaf DB (Old)', link: '/modules/db-old/' }
@@ -275,7 +276,8 @@ const mainSidebar = [
       { text: 'Models', link: '/modules/mvc-core/model' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
       { text: 'Controller', link: '/modules/mvc-core/controller' },
-      { text: 'API Controller', link: '/modules/mvc-core/api-controller' }
+      { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
+      { text: 'Aloe CLI', link: '/aloe-cli/' }
     ]
   },
   {
