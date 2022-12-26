@@ -185,7 +185,8 @@ const mainSidebar = [
       { text: 'Cookies', link: '/modules/cookies/' },
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
-      { text: 'Middleware', link: '/docs/routing/middleware' }
+      { text: 'Middleware', link: '/docs/routing/middleware' },
+      { text: 'Leaf CLI', link: 'https://cli.leafphp.dev' }
     ]
   },
   {
@@ -275,7 +276,8 @@ const mainSidebar = [
       { text: 'Models', link: '/modules/mvc-core/model' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
       { text: 'Controller', link: '/modules/mvc-core/controller' },
-      { text: 'API Controller', link: '/modules/mvc-core/api-controller' }
+      { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
+      { text: 'Aloe CLI', link: '/aloe-cli/' }
     ]
   },
   {
