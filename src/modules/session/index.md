@@ -128,7 +128,7 @@ session()->set("username", $username);
 
 </div>
 
-#### Setting multiple values
+- Setting multiple values
 
 `set` can take in an array if you wish to set multiple values or just want to use one.
 
@@ -172,7 +172,7 @@ $item = session()->get('item');
 
 </div>
 
-#### Multiple Get
+- Multiple Get
 
 You can also return many fields at once from the session:
 
@@ -191,7 +191,7 @@ $user = session()->get(["username", "email"]);
 
 </div>
 
-#### Security Fixes
+- Security Fixes
 
 `set` has also received a bunch of security fixes which prevent maliscious scripts from being passed into your application. You can choose to turn this feature off, maybe for html values:
 
@@ -212,7 +212,7 @@ $html = session()->get("blog", false);
 
 </div>
 
-## retrieve
+### retrieve
 
 `retrieve` returns the requested value and removes it from the session, just like calling `get` first and then `unset` for the same key.
 
@@ -447,6 +447,8 @@ echo session()->flash(); // my flash message
 ```
 
 </div>
+
+For more advanced uses of flash messages, you can check out the [Flash Session](/modules/session/flash) documentation.
 
 ## Error Handling
 
