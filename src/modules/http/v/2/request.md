@@ -486,7 +486,7 @@ The HTTP specification states that HTTP header names may be uppercase, lowercase
 
 ### Cookies
 
-Leaf also provides a simple `cookies` method on the request object which allows you to get cookie data.
+Leaf also provides a `cookies` method on the request object which allows you to get cookie data.
 
 <div class="class-mode">
 

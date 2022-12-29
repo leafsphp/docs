@@ -252,7 +252,7 @@ response()->json("Output", 200, true);
 
 ### `page`
 
-This is a simple method that outputs an HTML/PHP file. This method can also be used to achieve server side routing, for example:
+This is a method that outputs an HTML/PHP file. This method can also be used to achieve server side routing, for example:
 
 <div class="class-mode">
 
