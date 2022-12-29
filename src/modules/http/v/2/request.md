@@ -1,4 +1,5 @@
 # Leaf Request
+
 <!-- markdownlint-disable no-inline-html -->
 <!-- markdownlint-disable no-duplicate-header -->
 
@@ -11,6 +12,7 @@ There are different ways you can access an instance of the Leaf request object. 
 <div class="functional-mode">
 
 ### Functional Mode
+
 <!-- <Badge text="new" /> -->
 
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
@@ -443,6 +445,42 @@ $headers = request()->headers(['ACCEPT_CHARSET', 'X-Header-Name']);
 </div>
 
 Note that Leaf will automatically sanitize the headers that come into your application. This means that you don't have to worry about malicious scripts being passed into your application. If you however want to disable this feature, you can pass in a boolean option to the second field of the `headers` method. By default, this option is enabled.
+
+<div class="class-mode">
+
+```php
+$charset = $app->request()->headers('ACCEPT_CHARSET', false);
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+$charset = request()->headers('ACCEPT_CHARSET', false);
+```
+
+</div>
+
+Also, the `hasHeader` method may be used to determine if the request contains a given header:
+
+<div class="class-mode">
+
+```php
+if ($app->request()->hasHeader('X-Header-Name')) {
+    //
+}
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+if (request()->hasHeader('X-Header-Name')) {
+    //
+}
+```
+
+</div>
 
 The HTTP specification states that HTTP header names may be uppercase, lowercase, or mixed-case. Leaf is smart enough to parse and return header values whether you request a header value using upper, lower, or mixed case header name, with either underscores or dashes. So use the naming convention with which you are most comfortable.
 
