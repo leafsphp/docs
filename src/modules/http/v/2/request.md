@@ -477,7 +477,7 @@ request()->cookies();
 
 Every HTTP request has a method (e.g. GET or POST). You can obtain the current HTTP request method via the Leaf application's request object:
 
-### typeIs
+### `typeIs`
 
 This method allows you to check what method type a request uses.
 
@@ -548,6 +548,25 @@ $isXHR = $app->request()->isXhr();
 ```php
 $isXHR = request()->isAjax();
 $isXHR = request()->isXhr();
+```
+
+</div>
+
+### `isFormData`
+
+This method allows you to check if the request body contains parsed form data, or if the request is a form data request.
+
+<div class="class-mode">
+
+```php
+$isXHR = $app->request()->isFormData();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+$isXHR = request()->isFormData();
 ```
 
 </div>
