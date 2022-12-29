@@ -27,16 +27,16 @@ The biggest question people ask with Leaf 3 is why we decided to switch to modul
 
 Modules are always published on composer and can be installed through composer CLI or the leaf CLI.
 
-**Composer:**
-
-```sh
-composer require leafs/<module-name>
-```
-
 **Leaf CLI:**
 
 ```sh
 leaf install <module-name>
+```
+
+**Composer:**
+
+```sh
+composer require leafs/<module-name>
 ```
 
 ## List of available modules
