@@ -2,13 +2,15 @@
 <!-- markdownlint-disable no-inline-html -->
 <!-- markdownlint-disable no-duplicate-header -->
 
-The request object is an abstraction of the current HTTP request and allows you to easily interact with any data passed into your application.
+The request object provides an interface for accessing and manipulating the current HTTP request being handled by your application, as well as retrieving input, cookies, and files that were submitted with the request.
 
 ## Usage
 
+There are different ways you can access an instance of the Leaf request object. We've listed a couple of them below, every method below will return the active instance of Leaf request.
+
 <div class="functional-mode">
 
-- ### Functional Mode
+### Functional Mode
 <!-- <Badge text="new" /> -->
 
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
@@ -34,7 +36,7 @@ $name = request("name");
 </div>
 <div class="class-mode">
 
-- ### Request class
+### Request class
 
 The request class allows you to quickly access all the features of leaf request.
 
@@ -50,13 +52,13 @@ Request::get("name");
 
 </div>
 
-- ### Request on the Leaf Instance
+### Request on the Leaf Instance
 
 If you are using request in a leaf app, leaf automatically binds the request class to the leaf instance, so you can always access the leaf request object without having to include any classes or namespaces.
 
 <div class="functional-mode">
 
-```php{4}
+```php{2}
 app()->post("/user/change-username", function () {
   echo app()->request()->get("username");
 });
@@ -77,7 +79,11 @@ $app->post("/user/change-username", function () use($app) {
 
 </div>
 
-## `get`
+## Basic Request Information
+
+The request instance has several methods that allow you to inspect the HTTP request made to your application. Some useful methods include:
+
+### `get`
 
 `get()` is a general purpose method which retrieves a particular item from the request body. In simpler terms, it works like `$_POST['key']` but works for all request types. It takes in one parameter: the key of the parameter you wish to get.
 
@@ -123,7 +129,7 @@ $picture = request()->get("image");
 
 </div>
 
-### Multiple select
+#### Multiple select
 
 In v2.4, you can retrieve a couple of fields you want, and not just one. You can also use this as a filter to return only the data you want in your app instead of using `body` which dumps all request data.
 
@@ -167,7 +173,7 @@ echo $username;
 
 </div>
 
-### Security Fixes
+#### Security Fixes
 
 `get()` has also received a bunch of security fixes which prevent maliscious scripts from being passed into your application. In v2.4, you can choose not to sanitize data coming into your application by passing in `false` as the second parameter.
 
@@ -196,7 +202,7 @@ $blog = request()->get("blogBody", false);
 
 </div>
 
-## `try`
+### `try`
 
 `try()` works just like `get` above, except that it conditionally returns items in the request. Let's look at an example:
 
@@ -229,7 +235,7 @@ The available parameters are:
 - bool - Sanitize output? Default `true`
 - bool - Remove empty strings from return data? Default `false`
 
-## `params`
+### `params`
 
 Params is another method which works just like the `get` method above, however, unlike `get` and `try` above, it allows you to specify defaults for items in case they are not found. It also does NOT support multiple select.
 
@@ -250,7 +256,7 @@ request()->params('description', 'No Description');
 
 In case `description` was not passed into the request above, Leaf will return `No Description` instead of an null field.
 
-## `body`
+### `body`
 
 `body()` is another general purpose method which retrieves the key => value pairs of the entire request body. In simpler terms, it works like `$_POST` but works for all request types. In v2.4, `body` can also retrieve files passed into the request.
 
@@ -273,7 +279,7 @@ app()->post('/name/add', function () {
 
 </div>
 
-### Security Fixes
+#### Security Fixes
 
 `body` has also received a bunch of security fixes which prevent maliscious scripts from being passed into your application. It accepts a boolean option which determines if the data coming into your application is sanitized or not. This means that you can turn off the sanitization in case you trust the source of data. By default, this option is enabled.
 
@@ -306,7 +312,7 @@ $body = request()->body(false);
 
 </div>
 
-## files
+### `files`
 
 Files returns an array holding key values pairs of files passed into your app.
 
@@ -338,6 +344,63 @@ list($profile, $avatar) = array_values($app->request()->files(["profile", "avata
 
 ```php
 list($profile, $avatar) = array_values(request()->files(["profile", "avatar"]));
+```
+
+</div>
+
+### `rawData`
+
+This method allows you to access the raw PHP input stream only. This works with requests like JSON and xml-http requests. It takes in a string or array of the data you want to retrieve and the default if that data isn't found.
+
+<div class="class-mode">
+
+```php
+$app->request()->rawData('description', 'No Description');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->rawData('description', 'No Description');
+```
+
+</div>
+
+### `urlData`
+
+This method allows you to access GET request data only. It takes in a string or array of the data you want to retrieve and the default if that data isn't found.
+
+<div class="class-mode">
+
+```php
+$app->request()->urlData('item', 'default');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->urlData('item', 'default');
+```
+
+</div>
+
+### `postData`
+
+This method allows you to access the post request data only. It takes in a string or array of the data you want to retrieve and the default if that data isn't found.
+
+<div class="class-mode">
+
+```php
+$app->request()->postData('description', 'No Description');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->postData('description', 'No Description');
 ```
 
 </div>
