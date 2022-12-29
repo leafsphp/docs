@@ -1,7 +1,7 @@
 # Sub-folder support
 <!-- markdownlint-disable no-inline-html -->
 
-## 📖 Overview
+## Overview
 
 Out-of-the box Leaf's Core router will run in any (sub)folder you place it into … no adjustments to your code are needed. You can freely move your entry script index.php around, and the router will automatically adapt itself to work relatively from the current folder's path by mounting all routes onto that basePath.
 
