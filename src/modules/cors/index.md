@@ -9,19 +9,19 @@ This is a module used to enable and configure [CORS](http://en.wikipedia.org/wik
 
 ## Installation
 
-You can install CORS through Composer or the Leaf CLI.
+You can install CORS through the Leaf CLI.
 
 ```sh
 leaf install cors
 ```
 
-or
+or with composer
 
 ```sh
 composer require leafs/cors
 ```
 
-## Usage
+## Basic Usage
 
 After installing the cors module, Leaf automatically links it to your app, so it can be used directly without referencing it anywhere. To get started, simply call the `cors` method on the leaf instance.
 

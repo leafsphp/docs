@@ -3,7 +3,11 @@
 
 The response object is an abstraction of your Leaf application’s HTTP response that is returned to the HTTP client.
 
-## Response on the Leaf Instance
+## Using the Response object
+
+Leaf offers a couple of ways to use the response object in your application.
+
+### Response on the Leaf Instance
 
 Since Response is already bound to the Leaf instance, you can do this:
 
@@ -30,7 +34,9 @@ app()->get("/text", function () {
 
 Although we've added this, we don't want to force you to do stuff in only one way, so you can still use the `v1.x` method.
 
-## Initialising the Response object
+<div class="class-mode">
+
+### Initialising the Response object
 
 With this method, you manually initialise the Response object, and then pass it into your route.
 
@@ -44,7 +50,10 @@ $app->post("/login", function () use($response) {
 });
 ```
 
-## Functional Mode
+</div>
+<div class="functional-mode">
+
+### Functional Mode
 
 Response also takes advantage of Leaf 3's functional mode with the `response` global which allows you quickly use the response object from wherever you are.
 
@@ -67,6 +76,8 @@ response([
 
 **THIS WILL NO LONGER WORK!!**
 :::
+
+</div>
 
 An HTTP response has three primary properties:
 
@@ -127,7 +138,11 @@ response()->json('data')->withHeader('something', 'value');
 
 </div>
 
-## `plain`
+## Response Methods
+
+This section covers all methods provided in the response object which allow you to output some kind of data.
+
+### `plain`
 
 This method allows you to output plain text as your response. It takes in 2 parameters:
 
@@ -149,7 +164,7 @@ response()->plain("hello");
 
 </div>
 
-## `xml`
+### `xml`
 
 This method allows you to output xml as your response. It takes in 2 parameters:
 
@@ -175,7 +190,7 @@ response()->xml(
 
 </div>
 
-## `json`
+### `json`
 
 This method allows you output json as a response.
 
@@ -235,9 +250,9 @@ response()->json("Output", 200, true);
 }
 ```
 
-## `page`
+### `page`
 
-This is a simple method that outputs an HTML/PHP file. This method can also be used to achieve server side routing, for example:
+This is a method that outputs an HTML/PHP file. This method can also be used to achieve server side routing, for example:
 
 <div class="class-mode">
 
@@ -283,7 +298,7 @@ response()->page("404.html", 404);
 
 </div>
 
-## `markup`
+### `markup`
 
 This method outputs some HTML/PHP:
 
@@ -331,7 +346,7 @@ response()->markup("<h2>Hello</h2>", 201);
 
 </div>
 
-## `download`
+### `download`
 
 In v3, you can send a response which will be downloaded on the client. Note that in this case, the response should be a valid file.
 
@@ -397,7 +412,7 @@ response()->download(
 
 </div>
 
-## `noContent`
+### `noContent`
 
 The HTTP 204 No Content success status response code indicates that a request has succeeded, but that the client doesn't need to navigate away from its current page. This method allows you to quickly create a 204 response.
 
@@ -416,7 +431,7 @@ response()->noContent();
 
 </div>
 
-## `redirect`
+### `redirect`
 
 This feature just simply allows you to send a redirect response which redirects to a different route.
 
@@ -460,7 +475,7 @@ response()->redirect('/home', 307);
 
 </div>
 
-## `exit`
+### `exit`
 
 This is a new method which allows you to output some data and close your app right after. This means that it acts as a sort of early-return for your app, so right after outputting some data, it quits and makes sure that no other code is executed from your app until the next request comes through.
 
@@ -589,7 +604,7 @@ response()->withoutCookie(["name", "something"])->json('...');
 
 </div>
 
-### withFlash Method
+## withFlash Method
 
 This is a new method which allows you add some flash messages to a response. It is usually used with redirects like this:
 

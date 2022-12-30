@@ -653,7 +653,20 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    [
+      'meta',
+      {
+        name: 'background_color',
+        content: '#001e26'
+      }
+    ],
+    [
+      'meta',
+      {
+        name: 'theme-color',
+        content: '#001e26'
+      }
+    ],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     [
       'meta',

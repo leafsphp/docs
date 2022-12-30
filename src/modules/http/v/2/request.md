@@ -1,14 +1,18 @@
 # Leaf Request
+
 <!-- markdownlint-disable no-inline-html -->
 <!-- markdownlint-disable no-duplicate-header -->
 
-The request object is an abstraction of the current HTTP request and allows you to easily interact with any data passed into your application.
+The request object provides an interface for accessing and manipulating the current HTTP request being handled by your application, as well as retrieving input, cookies, and files that were submitted with the request.
 
-## Usage
+## Using the request object
+
+There are different ways you can access an instance of the Leaf request object. We've listed a couple of them below, every method below will return the active instance of Leaf request.
 
 <div class="functional-mode">
 
-- ### Functional Mode
+### Functional Mode
+
 <!-- <Badge text="new" /> -->
 
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
@@ -34,7 +38,7 @@ $name = request("name");
 </div>
 <div class="class-mode">
 
-- ### Request class
+### Request class
 
 The request class allows you to quickly access all the features of leaf request.
 
@@ -50,13 +54,13 @@ Request::get("name");
 
 </div>
 
-- ### Request on the Leaf Instance
+### Request on the Leaf Instance
 
 If you are using request in a leaf app, leaf automatically binds the request class to the leaf instance, so you can always access the leaf request object without having to include any classes or namespaces.
 
 <div class="functional-mode">
 
-```php{4}
+```php{2}
 app()->post("/user/change-username", function () {
   echo app()->request()->get("username");
 });
@@ -77,7 +81,11 @@ $app->post("/user/change-username", function () use($app) {
 
 </div>
 
-## `get`
+## Basic Request Information
+
+The request instance has several methods that allow you to inspect the HTTP request made to your application. Some useful methods include:
+
+### `get`
 
 `get()` is a general purpose method which retrieves a particular item from the request body. In simpler terms, it works like `$_POST['key']` but works for all request types. It takes in one parameter: the key of the parameter you wish to get.
 
@@ -123,7 +131,7 @@ $picture = request()->get("image");
 
 </div>
 
-### Multiple select
+#### Multiple select
 
 In v2.4, you can retrieve a couple of fields you want, and not just one. You can also use this as a filter to return only the data you want in your app instead of using `body` which dumps all request data.
 
@@ -167,7 +175,7 @@ echo $username;
 
 </div>
 
-### Security Fixes
+#### Security Fixes
 
 `get()` has also received a bunch of security fixes which prevent maliscious scripts from being passed into your application. In v2.4, you can choose not to sanitize data coming into your application by passing in `false` as the second parameter.
 
@@ -196,7 +204,7 @@ $blog = request()->get("blogBody", false);
 
 </div>
 
-## `try`
+### `try`
 
 `try()` works just like `get` above, except that it conditionally returns items in the request. Let's look at an example:
 
@@ -229,7 +237,7 @@ The available parameters are:
 - bool - Sanitize output? Default `true`
 - bool - Remove empty strings from return data? Default `false`
 
-## `params`
+### `params`
 
 Params is another method which works just like the `get` method above, however, unlike `get` and `try` above, it allows you to specify defaults for items in case they are not found. It also does NOT support multiple select.
 
@@ -250,7 +258,7 @@ request()->params('description', 'No Description');
 
 In case `description` was not passed into the request above, Leaf will return `No Description` instead of an null field.
 
-## `body`
+### `body`
 
 `body()` is another general purpose method which retrieves the key => value pairs of the entire request body. In simpler terms, it works like `$_POST` but works for all request types. In v2.4, `body` can also retrieve files passed into the request.
 
@@ -273,7 +281,7 @@ app()->post('/name/add', function () {
 
 </div>
 
-### Security Fixes
+#### Security Fixes
 
 `body` has also received a bunch of security fixes which prevent maliscious scripts from being passed into your application. It accepts a boolean option which determines if the data coming into your application is sanitized or not. This means that you can turn off the sanitization in case you trust the source of data. By default, this option is enabled.
 
@@ -306,9 +314,9 @@ $body = request()->body(false);
 
 </div>
 
-## files
+### `files`
 
-Files returns an array holding key values pairs of files passed into your app.
+You may access uploaded files that are included with the request using the `files` method. This returns the raw file to you:
 
 <div class="class-mode">
 
@@ -342,9 +350,143 @@ list($profile, $avatar) = array_values(request()->files(["profile", "avatar"]));
 
 </div>
 
-## Cookies
+### `rawData`
 
-Leaf also provides a simple `cookies` method on the request object which allows you to get cookie data.
+This method allows you to access the raw PHP input stream only. This works with requests like JSON and xml-http requests. It takes in a string or array of the data you want to retrieve and the default if that data isn't found.
+
+<div class="class-mode">
+
+```php
+$app->request()->rawData('description', 'No Description');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->rawData('description', 'No Description');
+```
+
+</div>
+
+### `urlData`
+
+This method allows you to access GET request data only. It takes in a string or array of the data you want to retrieve and the default if that data isn't found.
+
+<div class="class-mode">
+
+```php
+$app->request()->urlData('item', 'default');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->urlData('item', 'default');
+```
+
+</div>
+
+### `postData`
+
+This method allows you to access the post request data only. It takes in a string or array of the data you want to retrieve and the default if that data isn't found.
+
+<div class="class-mode">
+
+```php
+$app->request()->postData('description', 'No Description');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->postData('description', 'No Description');
+```
+
+</div>
+
+## Request Headers and Cookies
+
+The request instance also contains methods which allow you retrieve headers and cookies from the incoming request.
+
+### Headers
+
+A Leaf application will automatically parse all HTTP request headers. You can access the request headers using the request object's `headers` method.
+
+<div class="class-mode">
+
+```php
+// Get request headers as associative array
+$headers = $app->request()->headers();
+
+// Get the ACCEPT_CHARSET header
+$charset = $app->request()->headers('ACCEPT_CHARSET');
+
+// Get some specific headers as an array
+$headers = $app->request()->headers(['ACCEPT_CHARSET', 'X-Header-Name']);
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+// Get request headers as associative array
+$headers = request()->headers();
+
+// Get the ACCEPT_CHARSET header
+$charset = request()->headers('ACCEPT_CHARSET');
+
+// Get some specific headers as an array
+$headers = request()->headers(['ACCEPT_CHARSET', 'X-Header-Name']);
+```
+
+</div>
+
+Note that Leaf will automatically sanitize the headers that come into your application. This means that you don't have to worry about malicious scripts being passed into your application. If you however want to disable this feature, you can pass in a boolean option to the second field of the `headers` method. By default, this option is enabled.
+
+<div class="class-mode">
+
+```php
+$charset = $app->request()->headers('ACCEPT_CHARSET', false);
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+$charset = request()->headers('ACCEPT_CHARSET', false);
+```
+
+</div>
+
+Also, the `hasHeader` method may be used to determine if the request contains a given header:
+
+<div class="class-mode">
+
+```php
+if ($app->request()->hasHeader('X-Header-Name')) {
+    //
+}
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+if (request()->hasHeader('X-Header-Name')) {
+    //
+}
+```
+
+</div>
+
+The HTTP specification states that HTTP header names may be uppercase, lowercase, or mixed-case. Leaf is smart enough to parse and return header values whether you request a header value using upper, lower, or mixed case header name, with either underscores or dashes. So use the naming convention with which you are most comfortable.
+
+### Cookies
+
+Leaf also provides a `cookies` method on the request object which allows you to get cookie data.
 
 <div class="class-mode">
 
@@ -369,40 +511,11 @@ request()->cookies();
 
 </div>
 
-## headers
-
-A Leaf application will automatically parse all HTTP request headers. You can access the request headers using the request object's `headers` method.
-
-<div class="class-mode">
-
-```php
-// Get request headers as associative array
-$headers = $app->request()->headers();
-
-// Get the ACCEPT_CHARSET header
-$charset = $app->request()->headers('ACCEPT_CHARSET');
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-// Get request headers as associative array
-$headers = request()->headers();
-
-// Get the ACCEPT_CHARSET header
-$charset = request()->headers('ACCEPT_CHARSET');
-```
-
-</div>
-
-The HTTP specification states that HTTP header names may be uppercase, lowercase, or mixed-case. Leaf is smart enough to parse and return header values whether you request a header value using upper, lower, or mixed case header name, with either underscores or dashes. So use the naming convention with which you are most comfortable.
-
-## Request Methods
+## Request Method functions
 
 Every HTTP request has a method (e.g. GET or POST). You can obtain the current HTTP request method via the Leaf application's request object:
 
-### typeIs
+### `typeIs`
 
 This method allows you to check what method type a request uses.
 
@@ -454,15 +567,9 @@ request()->getMethod();
 
 </div>
 
-## Fixes in v2
+### XHR
 
-### Bug fixes for `x-www-form-urlencoded data`
-
-Requests with the content type `application/x-www-form-urlencoded data` had some inconsistencies being read in v1 of leaf, but all those issues have been taken care of in version 2 of leaf.
-
-## XHR
-
-When using a Javascript framework like MooTools or jQuery to execute an XMLHttpRequest, the XMLHttpRequest will usually be sent with a **X-Requested-With** HTTP header. The Leaf application will detect the HTTP request’s **X-Requested-With** header and flag the request as such. If for some reason an XMLHttpRequest cannot be sent with the **X-Requested-With** HTTP header, you can force the Leaf application to assume an HTTP request is an XMLHttpRequest by setting a GET, POST, or PUT parameter in the HTTP request named “isajax” with a truthy value.
+When using a Javascript framework like MooTools or jQuery to execute an XMLHttpRequest, the XMLHttpRequest will usually be sent with a **`X-Requested-With`** HTTP header. The Leaf application will detect the HTTP request’s **`X-Requested-With`** header and flag the request as such. If for some reason an XMLHttpRequest cannot be sent with the **`X-Requested-With`** HTTP header, you can force the Leaf application to assume an HTTP request is an XMLHttpRequest by setting a GET, POST, or PUT parameter in the HTTP request named “isajax” with a truthy value.
 
 Use the request object’s `isAjax()` or `isXhr()` method to tell if the current request is an XHR/Ajax request:
 
@@ -483,106 +590,30 @@ $isXHR = request()->isXhr();
 
 </div>
 
-## Helpers
+### `isFormData`
 
-The Leaf application’s request object provides several helper methods to fetch common HTTP request information:
-
-## Content Type
-
-Fetch the request’s content type (e.g. “application/json;charset=utf-8”):
+This method allows you to check if the request body contains parsed form data, or if the request is a form data request.
 
 <div class="class-mode">
 
 ```php
-$app->request()->getContentType();
+$isXHR = $app->request()->isFormData();
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-request()->getContentType();
+$isXHR = request()->isFormData();
 ```
 
 </div>
 
-## Media Type
+## Request Path, Host & Client
 
-Fetch the request’s media type (e.g. “application/json”):
+This section contains methods which allow you to retrieve information about the request path, host and client.
 
-<div class="class-mode">
-
-```php
-$app->request()->getMediaType();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-request()->getMediaType();
-```
-
-</div>
-
-## Media Type Params
-
-Fetch the request’s media type parameters (e.g. [charset => “utf-8”]):
-
-<div class="class-mode">
-
-```php
-$app->request()->getMediaTypeParams();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-request()->getMediaTypeParams();
-```
-
-</div>
-
-## Content Charset
-
-Fetch the request’s content character set (e.g. “utf-8”):
-
-<div class="class-mode">
-
-```php
-$app->request()->getContentCharset();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-request()->getContentCharset();
-```
-
-</div>
-
-## Content Length
-
-Fetch the request’s content length:
-
-<div class="class-mode">
-
-```php
-$app->request()->getContentLength();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-request()->getContentLength();
-```
-
-</div>
-
-## Host
+### Host
 
 Fetch the request’s host (e.g. “leafphp.dev”):
 
@@ -601,7 +632,7 @@ $app->request()->getHost();
 
 </div>
 
-## Host with Port
+### Host with Port
 
 Fetch the request’s host with port (e.g. “leafphp.dev:80”):
 
@@ -620,7 +651,7 @@ request()->getHostWithPort();
 
 </div>
 
-## Port
+### Port
 
 Fetch the request’s port (e.g. 80):
 
@@ -639,7 +670,7 @@ request()->getPort();
 
 </div>
 
-## Scheme
+### Scheme
 
 Fetch the request’s scheme (e.g. “http” or “https”):
 
@@ -658,7 +689,7 @@ request()->getScheme();
 
 </div>
 
-## Path
+### Path
 
 Fetch the request’s path (root URI + resource URI):
 
@@ -677,7 +708,7 @@ request()->getPath();
 
 </div>
 
-## URL
+### URL
 
 Fetch the request’s URL (scheme + host [ + port if non-standard ]):
 
@@ -696,7 +727,7 @@ request()->getUrl();
 
 </div>
 
-## IP Address
+### IP Address
 
 Fetch the request’s IP address:
 
@@ -715,7 +746,7 @@ request()->getIp();
 
 </div>
 
-## Referer
+### Referer
 
 Fetch the request’s referrer:
 
@@ -734,7 +765,7 @@ request()->getReferrer();
 
 </div>
 
-## User Agent
+### User Agent
 
 Fetch the request’s user agent string:
 
@@ -753,15 +784,15 @@ request()->getUserAgent();
 
 </div>
 
-## Paths
+### Paths
 
 Every HTTP request received by a Leaf application will have a root URI and a resource URI.
 
-## Root URI
+#### Root URI
 
 The root URI is the physical URL path of the directory in which the Leaf application is instantiated and run. If a Leaf application is instantiated in **index.php** within the top-most directory of the virtual host’s document root, the root URI will be an empty string. If a Leaf application is instantiated and run in **index.php** within a physical subdirectory of the virtual host’s document root, the root URI will be the path to that subdirectory with a leading slash and without a trailing slash.
 
-## Resource URI
+#### Resource URI
 
 The resource URI is the virtual URI path of an application resource. The resource URI will be matched to the Leaf application’s routes.
 
@@ -790,6 +821,105 @@ $rootUri = request()->getScriptName();
 
 //Get resource URI
 $resourceUri = request()->getPathInfo();
+```
+
+</div>
+
+## Content Type Methods
+
+The Leaf application’s request object provides several helper methods for inspecting the content type of the current HTTP request.
+
+### Content Type
+
+Fetch the request’s content type (e.g. “application/json;charset=utf-8”):
+
+<div class="class-mode">
+
+```php
+$app->request()->getContentType();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->getContentType();
+```
+
+</div>
+
+### Media Type
+
+Fetch the request’s media type (e.g. “application/json”):
+
+<div class="class-mode">
+
+```php
+$app->request()->getMediaType();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->getMediaType();
+```
+
+</div>
+
+### Media Type Params
+
+Fetch the request’s media type parameters (e.g. [charset => “utf-8”]):
+
+<div class="class-mode">
+
+```php
+$app->request()->getMediaTypeParams();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->getMediaTypeParams();
+```
+
+</div>
+
+### Content Charset
+
+Fetch the request’s content character set (e.g. “utf-8”):
+
+<div class="class-mode">
+
+```php
+$app->request()->getContentCharset();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->getContentCharset();
+```
+
+</div>
+
+### Content Length
+
+Fetch the request’s content length:
+
+<div class="class-mode">
+
+```php
+$app->request()->getContentLength();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+request()->getContentLength();
 ```
 
 </div>

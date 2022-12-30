@@ -3,7 +3,7 @@
   "short_name": "Leaf PHP",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#3eaf7c",
+  "background_color": "#001e26",
   "description": "Leaf PHP framework documentation",
   "icons": [
     {
