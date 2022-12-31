@@ -23,11 +23,20 @@ There are four primary ways of adding Leaf PHP to a project:
 If you want to migrate an existing Leaf 2 project, skip this and follow the [Migration Guide](/docs/migration/introduction.html)
 :::
 
-## Release Notes
+## Technical Requirements
 
-Latest version 3 release: ![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/stable)
+Before creating your first Leaf application you must:
 
-Detailed release notes this version available on [GitHub](https://github.com/leafsphp/leaf/releases/tag/v3.0).
+- Install PHP 7.2 or higher and these PHP extensions (which are installed and enabled by default in most PHP installations): json, zip;
+  ::: warning Note that
+  Note that some specific modules require PHP 7.4, so to be safe, we recommend PHP 7.4 as your minimum PHP version.
+  :::
+- [Install Composer](https://getcomposer.org/download/), which is used to install PHP packages.
+- Optionally, you can also install [Leaf CLI](https://cli.leafphp.dev). This provides all the tools you need to create and manage your Leaf application locally.
+
+Leaf 3 works as far back as PHP 7.2, however, some modules require PHP 7.4, so we advice using a minimum of PHP 7.4. There's also full support for PHP 8.
+
+You'll also need some PHP extensions like json extension and the zip extension
 
 ## Leaf CLI
 
