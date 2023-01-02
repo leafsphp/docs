@@ -153,7 +153,13 @@ const mainSidebar = [
     text: 'Quick Start',
     items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
+      { text: 'Using Docker', link: '/docs/introduction/docker' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
+    ]
+  },
+  {
+    text: 'Introduction',
+    items: [
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Leaf tutorial', link: '/tutorial/' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
