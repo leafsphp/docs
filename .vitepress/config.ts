@@ -165,8 +165,9 @@ const mainSidebar = [
       { text: 'Your first app', link: '/docs/introduction/first-app' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
       { text: 'Modules', link: '/modules/' },
+      { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
-      { text: 'Testing', link: '/docs/tooling/testing' }
+      { text: 'Testing', link: '/docs/tooling/testing' },
     ]
   },
   {
@@ -192,7 +193,6 @@ const mainSidebar = [
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
       { text: 'Middleware', link: '/docs/routing/middleware' },
-      { text: 'Leaf CLI', link: 'https://cli.leafphp.dev' }
     ]
   },
   {
