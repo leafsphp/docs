@@ -91,7 +91,7 @@ or with leaf 2:
 leaf create <project-name> --v2
 ```
 
-This will now prompt you to select a preset <Badge text="New in v2" />
+This will now prompt you to select a preset
 
 ```sh
 Creating a new Leaf app "<project-name>" in ./projects-directory.
@@ -175,7 +175,7 @@ You can also specify the port to run your leaf app on using the `--port` or `-p`
 leaf serve -p 3000
 ```
 
-### File watching <Badge text="New in v2.1.0" />
+### File watching
 
 In v2.1, you can also start the leaf server with hot module watching. This reloads your application anytime a change is made to your application code. To get started, simply start the leaf server with the `--watch` flag.
 
@@ -183,7 +183,7 @@ In v2.1, you can also start the leaf server with hot module watching. This reloa
 leaf serve --port 8000 --watch
 ```
 
-### Dependency Management <Badge text="New in v2.0.10" />
+### Dependency Management
 
 The serve command also now installs dependencies when there is no `vendor` folder present in the current working directory.
 
@@ -239,7 +239,7 @@ You can also pass in a bunch of packages to install at once.
 leaf install ui db illuminate/support
 ```
 
-***Versioning <Badge text="new in 2.0.5" />***
+***Versioning***
 
 Leaf CLI also allows you to install a particular version of any package using `@`
 
@@ -247,7 +247,7 @@ Leaf CLI also allows you to install a particular version of any package using `@
 leaf install ui@1.0 illuminate/support@9.0.2
 ```
 
-***Package Chaining <Badge text="new in 2.0.5" />***
+***Package Chaining***
 
 You can now add a bunch of packages to install as done with composer, npm and other CLIs as well.
 
@@ -283,7 +283,7 @@ v2 contains an easy way to quickly update leaf cli to the latest version.
 leaf update
 ```
 
-## Running Scripts <Badge text="New in v2.0.9" />
+## Running Scripts
 
 Leaf CLI also now allows you run scripts defined in your `composer.json` file. For example, if you have this in your composer.json:
 
