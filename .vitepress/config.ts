@@ -637,12 +637,19 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
     [
-      'style',
-      {},
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/global.css'),
-        'utf-8'
-      )
+      'link',
+      {
+        rel: 'preload',
+        as: 'style',
+        href: '/global.css'
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: '/global.css'
+      }
     ],
     [
       'link',
