@@ -5,8 +5,8 @@ const show = $ref(false);
 </script>
 
 <template>
-  <div className="custom-block">
-    <p className="custom-block-title">{{ title ?? 'Video Docs' }}</p>
+  <div className="custom-block video-docs">
+    <p className="video-docs-title">{{ title ?? 'Video Docs' }}</p>
     <p>{{ description }}</p>
 
     <section className="video-lesson">
