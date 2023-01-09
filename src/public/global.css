@@ -29,19 +29,19 @@
   border-bottom: 1px solid var(--vt-c-divider-light) !important;
 }
 
-.custom-block {
+.video-docs {
   color: var(--vt-c-text-1) !important;
 }
 
-.custom-block .custom-block-title {
+.video-docs .video-docs-title {
   font-weight: 600 !important;
 }
 
-.custom-block:not(.tip):not(.info):not(.warning):not(.danger)::before {
+.video-docs:not(.tip):not(.info):not(.warning):not(.danger)::before {
   content: '' !important;
 }
 
-.dark .custom-block div[class*='language-'] {
+.dark .video-docs div[class*='language-'] {
   background-color: var(--vt-c-bg) !important;
 }
 
