@@ -21,7 +21,7 @@ const description = computed(() => {
 
 <template>
   <section class="ThemeListItem">
-    <h2 class="title">{{ provider.name }}</h2>
+    <h2 class="title">{{ provider.name }} <sup class="vt-badge wip" /></h2>
     <p class="description" v-html="description" />
 
     <div class="container">
