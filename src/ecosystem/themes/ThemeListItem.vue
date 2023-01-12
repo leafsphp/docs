@@ -32,7 +32,7 @@ const description = computed(() => {
       </div>
     </div>
 
-    <div class="action">
+    <div class="action" v-if="provider.seeMoreUrl">
       <VTLink class="action-link" :href="provider.seeMoreUrl" no-icon>
         See More Themes from {{ provider.name }}
       </VTLink>
@@ -48,7 +48,7 @@ const description = computed(() => {
 
 @media (min-width: 768px) {
   .ThemeListItem {
-    padding-top: 24px;
+    padding-top: 48px;
   }
 }
 
@@ -95,26 +95,27 @@ const description = computed(() => {
 }
 
 .products {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   margin: -16px -12px;
+  gap: 24px;
 }
 
 .product {
   flex-shrink: 0;
-  padding: 16px 12px;
+  padding: 24px;
   width: 100%;
+  background-color: var(--vt-c-bg-soft);
+  border-radius: 16px;
 }
 
-@media (min-width: 640px) {
-  .product {
-    width: 50%;
-  }
+.product .image {
+  height: 250px !important;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1700px) {
   .product {
-    width: calc(100% / 3);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

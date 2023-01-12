@@ -1,6 +1,7 @@
 <template>
   <div class="ThemeHero">
-    <div class="container">
+    <div class="container flex-col flex:center-all">
+      <img class="w:10 hero-logo" src="/logo-circle.png" />
       <h1 class="title">
         <slot name="title" />
       </h1>
@@ -12,13 +13,17 @@
 </template>
 
 <style scoped>
+.lead {
+  text-align: center;
+}
+
 .ThemeHero {
   padding: 48px 24px;
 }
 
 @media (min-width: 768px) {
   .ThemeHero {
-    padding: 64px 32px 48px;
+    padding: 72px 48px 96px;
   }
 }
 
@@ -40,8 +45,10 @@
 
 @media (min-width: 768px) {
   .title {
-    line-height: 40px;
-    font-size: 40px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 50px;
   }
 }
 
