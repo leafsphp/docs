@@ -62,7 +62,7 @@ const nav = [
           },
           {
             text: 'Leaf CLI',
-            link: 'https://cli.leafphp.dev'
+            link: '/docs/cli/'
           },
           {
             text: 'Leaf UI',
