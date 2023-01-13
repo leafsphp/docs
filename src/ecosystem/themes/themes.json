@@ -7,29 +7,17 @@
         "name": "Complete authentication system",
         "price": 0,
         "description": "This project is a complete authentication system built with Leaf 3. It includes a full user registration system, email verification, password reset, and more.",
-        "url": "https://github.com/leafsphp/demos/tree/main/leaf3-core-auth",
-        "image": "https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc"
+        "url": "https://github.com/leafsphp/demos/tree/main/leaf/auth",
+        "image": "https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc",
+        "tags": ["basic"]
       },
       {
-        "name": "Complete authentication system",
+        "name": "Complete authentication system (Dockerized)",
         "price": 0,
-        "description": "This project is a complete authentication system built with Leaf 3. It includes a full user registration system, email verification, password reset, and more.",
-        "url": "https://github.com/leafsphp/demos/tree/main/leaf3-core-auth",
-        "image": "https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc"
-      },
-      {
-        "name": "Complete authentication system",
-        "price": 0,
-        "description": "This project is a complete authentication system built with Leaf 3. It includes a full user registration system, email verification, password reset, and more.",
-        "url": "https://github.com/leafsphp/demos/tree/main/leaf3-core-auth",
-        "image": "https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc"
-      },
-      {
-        "name": "Complete authentication system",
-        "price": 0,
-        "description": "This project is a complete authentication system built with Leaf 3. It includes a full user registration system, email verification, password reset, and more.",
-        "url": "https://github.com/leafsphp/demos/tree/main/leaf3-core-auth",
-        "image": "https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc"
+        "description": "This project is a complete authentication system built with Leaf 3 and docker. It includes a full user registration system, email verification, password reset, and more.",
+        "url": "https://github.com/leafsphp/demos/tree/main/leaf/docker-auth",
+        "image": "https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc",
+        "tags": ["basic", "docker"]
       }
     ]
   }
