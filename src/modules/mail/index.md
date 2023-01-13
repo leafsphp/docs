@@ -155,7 +155,7 @@ Only specific values are accepted, any other values entered will be ignored. The
 $email->write([
   "subject" => "This is a full Write Test",
   "template" => "./template.html",
-  "recepient_email" => "mychi.darko@gmail.com",
+  "recepient_email" => "mychi@leafphp.dev",
   "sender_name" => "Leaf PHP Framework",
   "attachment" => "./../attachment.txt"
 ]);
@@ -249,7 +249,7 @@ But this is sometimes not the 'preffered' way of doing things, so we have the `s
 $mail = new Leaf\Mail;
 $mail->smtp_debug();
 
-$email->basic("Learn Leaf PHP #2", "", "mychi.darko@gmail.com", "Leaf PHP");
+$email->basic("Learn Leaf PHP #2", "", "mychi@leafphp.dev", "Leaf PHP");
 $email->loadTemplate("./template.html");
 $email->attach("./docs.md");
 

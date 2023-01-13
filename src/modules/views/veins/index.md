@@ -60,7 +60,7 @@ Imagine this object
 ```php
 $user = (object) [
   'name' => 'Michael Darko',
-  'email' => 'mickdd22@gmail.com',
+  'email' => 'mychi@leafphp.dev',
   'verified' => true
 ];
 ```

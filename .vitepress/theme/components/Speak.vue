@@ -17,7 +17,7 @@
         experience for your attendees.
       </p>
       <div class="flex flex:center-all">
-        <a href="mailto:mickdd22@gmail.com?subject=Invitation to speak at our next event" rel="noopener" target="_blank"
+        <a href="mailto:mychi@leafphp.dev?subject=Invitation to speak at our next event" rel="noopener" target="_blank"
           class="join-button mt:_3 w-xs:100 flex flex:center-all">
           Reach out to us
         </a>

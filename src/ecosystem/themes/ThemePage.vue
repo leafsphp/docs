@@ -17,7 +17,7 @@ import ThemeContact from './ThemeContact.vue'
 
     <ThemeContact>
       Want to feature your work here?
-      <a class="link" href="mailto:mickdd22@gmail.com?subject=Product+Showcase">Contact us!</a>
+      <a class="link" href="mailto:mychi@leafphp.dev?subject=Product+Showcase">Contact us!</a>
     </ThemeContact>
   </div>
 </template>

@@ -459,7 +459,7 @@ example success response:
 [
   "user" => [
     "username" => "mychi.darko",
-    "email" => "mickdd22@gmail.com",
+    "email" => "mychi@leafphp.dev",
     "created_at" => "2019-09-20 13:47:48"
   ],
   "token" => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzYxMzUzMjgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTU3NjEzNjIyOCwidXNlcklkIjoxfQ.7FODXGGJKioGQVX4ic0DJLoMIQTVUlsd4zFAJA4DAkg"
@@ -539,7 +539,7 @@ Register is a simple method used to create simple, secure user registrations. Th
 ```php
 auth()->register("users", [
   "username" => "mychi.darko",
-  "email" => "mickdd22@gmail.com",
+  "email" => "mychi@leafphp.dev",
   "field" => "value"
 ]);
 ```
@@ -550,7 +550,7 @@ Leaf auth now allows you to register users with the new `Leaf\Auth\Register` cla
 ```php
 $user = auth()->register("users", [
   "username" => "mychi.darko",
-  "email" => "mickdd22@gmail.com",
+  "email" => "mychi@leafphp.dev",
   "field" => "value"
 ]);
 ```
@@ -562,7 +562,7 @@ If the user is successfully saved, the user data is returned, if not, `false` is
 ```php
 $user = auth()->register("users", [
   "username" => "mychi.darko",
-  "email" => "mickdd22@gmail.com",
+  "email" => "mychi@leafphp.dev",
   "field" => "value"
 ]); // returns false if failed
 
@@ -700,7 +700,7 @@ Leaf auth now allows you to register users with the new `Leaf\Auth\USER` class. 
 ```php
 $user = Leaf\Auth\User::update("users", [
   "username" => "mychi.darko",
-  "email" => "mickdd22@gmail.com",
+  "email" => "mychi@leafphp.dev",
   "field" => "value"
 ], ["id" => "1"]);
 ```

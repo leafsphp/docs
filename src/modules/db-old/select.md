@@ -110,7 +110,7 @@ $db->choose("users", "*", ["id" => 2])->fetchObj();
 If you don't need the whole row, you can use:
 
 ```php
-$db->choose("users", "username, mobile", ["email" => "mickdd22@gmail.com"])->fetchObj();
+$db->choose("users", "username, mobile", ["email" => "mychi@leafphp.dev"])->fetchObj();
 ```
 
 #### Data Options

@@ -314,7 +314,7 @@ This inserts a user with a username of mychi into the users table. But what if y
 ```php
 $db->insert("users")->params([
   "username" => "mychi",
-  "email" => "mickdd22@gmail.com"
+  "email" => "mychi@leafphp.dev"
 ])->execute();
 ```
 
@@ -324,7 +324,7 @@ You're free to arrange this query anyhow you see fit, it's still considered as a
 $db->insert("users")
    ->params([
      "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
+     "email" => "mychi@leafphp.dev",
      "password" => md5("test")
    ])
    ->execute();
@@ -340,7 +340,7 @@ Just as the name implies, `unique` helps prevent duplicates in your database, fu
 $db->insert("users")
    ->params([
      "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
+     "email" => "mychi@leafphp.dev",
      "password" => md5("test")
    ])
    ->unique("username", "email")
@@ -401,7 +401,7 @@ Validate makes sure that correct information is saved in your database. You simp
 $db->insert("users")
    ->params([
      "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
+     "email" => "mychi@leafphp.dev",
      "password" => md5("test")
    ])
    ->validate("username", "validUsername")
@@ -414,7 +414,7 @@ Validate takes in 2 parameters, a field to validate and a validation rule. You c
 $db->insert("users")
    ->params([
      "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
+     "email" => "mychi@leafphp.dev",
      "password" => md5("test")
    ])
    ->validate([

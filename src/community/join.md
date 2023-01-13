@@ -47,7 +47,7 @@ Apart from answering questions and sharing resources in the forum and chat, ther
 
 With the growth of Leaf, we need more hands to moderate activities on our discord chat, keep up with our documentation, GitHub discussions, twitter and the like.
 
-If you want to help with any of these, kindly reach out on twitter [@leafphp](https://twitter.com/leafphp) or email [mickdd22@gmail.com](mailto:mickdd22@gmail.com)
+If you want to help with any of these, kindly reach out on twitter [@leafphp](https://twitter.com/leafphp) or email [mychi@leafphp.dev](mailto:mychi@leafphp.dev)
 
 ## Updates
 
