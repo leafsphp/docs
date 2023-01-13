@@ -69,6 +69,16 @@ const nav = [
             link: 'https://ui.leafphp.dev/'
           }
         ]
+      },
+      {
+        text: 'Resources',
+        ariaLabel: 'Resources Menu',
+        items: [
+          {
+            text: 'Project Showcase',
+            link: '/ecosystem/showcase'
+          },
+        ]
       }
     ]
   },
