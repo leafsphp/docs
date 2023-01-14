@@ -1,7 +1,7 @@
 <template>
   <div class="ThemeHero">
     <div class="container flex-col flex:center-all">
-      <img class="w:10 hero-logo" src="/logo-circle.png" />
+      <img class="w:10 w-xs:20 hero-logo" src="/logo-circle.png" />
       <h1 class="title">
         <slot name="title" />
       </h1>
@@ -39,8 +39,10 @@
 
 .title {
   line-height: 32px;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 500;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {

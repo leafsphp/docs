@@ -101,6 +101,16 @@ const description = computed(() => {
   gap: 24px;
 }
 
+@media only screen and (max-width: 640px) {
+  .container {
+    max-width: none !important;
+  }
+
+  .products {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .product {
   flex-shrink: 0;
   padding: 24px;
