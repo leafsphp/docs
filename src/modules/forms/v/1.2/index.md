@@ -212,7 +212,7 @@ validateData works pretty much the same way as `validate` except that instead of
 ```php
 form()->validateData([
   "mychi.darko" => "validUsername",
-  "mickdd22@gmail.com" => "email"
+  "mychi@leafphp.dev" => "email"
 ]);
 ```
 
@@ -222,7 +222,7 @@ form()->validateData([
 ```php
 $form->validateData([
   "mychi.darko" => "validUsername",
-  "mickdd22@gmail.com" => "email"
+  "mychi@leafphp.dev" => "email"
 ]);
 ```
 

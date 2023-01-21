@@ -89,7 +89,7 @@ validateData works pretty much the same way as `validate` except that instead of
 ```php
 Form::validateData([
   "mychi.darko" => "validUsername",
-  "mickdd22@gmail.com" => "email"
+  "mychi@leafphp.dev" => "email"
 ]);
 ```
 

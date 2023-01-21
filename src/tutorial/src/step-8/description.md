@@ -80,7 +80,7 @@ This is the data we're passing into our app.
   "name": "Michael Darko",
   "country": "Ghana",
   "city": "Accra",
-  "email": "mychi.darko@gmail.com"
+  "email": "mychi@leafphp.dev"
 }
 ```
 

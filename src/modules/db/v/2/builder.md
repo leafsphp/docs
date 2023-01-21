@@ -346,7 +346,7 @@ db()
   ->insert("users")
   ->params([
     "username" => "mychi",
-    "email" => "mickdd22@gmail.com"
+    "email" => "mychi@leafphp.dev"
   ])
   ->execute();
 ```
@@ -359,7 +359,7 @@ $db
   ->insert("users")
   ->params([
     "username" => "mychi",
-    "email" => "mickdd22@gmail.com"
+    "email" => "mychi@leafphp.dev"
   ])
   ->execute();
 ```
@@ -375,7 +375,7 @@ db()
   ->insert("users")
    ->params([
      "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
+     "email" => "mychi@leafphp.dev",
      "password" => Leaf\Password::hash("test")
    ])
    ->execute();
@@ -389,7 +389,7 @@ $db
   ->insert("users")
    ->params([
      "username" => "mychi",
-     "email" => "mickdd22@gmail.com",
+     "email" => "mychi@leafphp.dev",
      "password" => Leaf\Password::hash("test")
    ])
    ->execute();
@@ -410,7 +410,7 @@ db()
   ->insert("users")
   ->params([
     "username" => "mychi",
-    "email" => "mickdd22@gmail.com",
+    "email" => "mychi@leafphp.dev",
     "password" => hash("test")
    ])
    ->unique("username", "email")
@@ -425,7 +425,7 @@ $db
   ->insert("users")
   ->params([
     "username" => "mychi",
-    "email" => "mickdd22@gmail.com",
+    "email" => "mychi@leafphp.dev",
     "password" => hash("test")
    ])
    ->unique("username", "email")

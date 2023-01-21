@@ -7,14 +7,17 @@ import ThemeContact from './ThemeContact.vue'
 <template>
   <div class="ThemePage">
     <ThemeHero>
-      <template #title>Themes</template>
-      <template #lead>Check out the themes, UI Kits, and plugins. you can see how a real world application is built with Vue by our partners.</template>
+      <template #title>Build anything with Leaf</template>
+      <template #lead>
+        Quickly get a project started with any of our examples ranging from using parts of the framework to modules and themes.
+      </template>
     </ThemeHero>
 
     <ThemeList />
 
     <ThemeContact>
-      Want to feature your themes here? <a class="link" href="mailto:evan@vuejs.org?subject=Theme+affiliation">Contact us!</a>
+      Want to feature your work here?
+      <a class="link" target="_blank" href="https://github.com/leafsphp/demos/issues/new?title=Add+To+Project+Showcase">Contact us!</a>
     </ThemeContact>
   </div>
 </template>

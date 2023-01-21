@@ -62,12 +62,22 @@ const nav = [
           },
           {
             text: 'Leaf CLI',
-            link: 'https://cli.leafphp.dev'
+            link: '/docs/cli/'
           },
           {
             text: 'Leaf UI',
             link: 'https://ui.leafphp.dev/'
           }
+        ]
+      },
+      {
+        text: 'Resources',
+        ariaLabel: 'Resources Menu',
+        items: [
+          {
+            text: 'Project Showcase',
+            link: '/ecosystem/showcase'
+          },
         ]
       }
     ]
