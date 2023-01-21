@@ -17,7 +17,7 @@ import ThemeContact from './ThemeContact.vue'
 
     <ThemeContact>
       Want to feature your work here?
-      <a class="link" target="_blank" href="https://github.com/leafsphp/demos/issues/new?title=Add+To+Project+Showcase">Contact us!</a>
+      <a class="link" target="_blank" href="https://github.com/leafsphp/demos/issues/new?assignees=&labels=addition&template=add_project.md&title=Add+To+Project+Showcase">Contact us!</a>
     </ThemeContact>
   </div>
 </template>
