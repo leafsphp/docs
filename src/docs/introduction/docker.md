@@ -1,6 +1,17 @@
 # Using Docker
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Docker allows developers to package their applications and dependencies into lightweight and portable containers, which can be easily deployed and run on any environment, making it easier to develop and deploy applications consistently. This means you don't have to worry about configuring or setting up complicated development tools such as web servers and databases on your local machine.
+
+<VideoDocs
+  title="New to Docker?"
+  subject="Docker Tutorial for Beginners"
+  description="This video by Mosh Hamedani will walk you through the basics of Docker."
+  link="https://www.youtube.com/embed/pTFZFxd4hOI"
+/>
 
 This guide will walk you through how to set up your Leaf application using Docker from scratch. To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop/). After this, you can either use the Leaf CLI or manually create your application.
 
