@@ -11,7 +11,7 @@ This is an interactive tutorial to help you get started with leaf, right from in
 ## Getting started
 
 ::: tip Leaf CLI
-We recommend using the [Leaf CLI](https://cli.leafphp.dev) for creating and managing your Leaf projects.
+We recommend using the [Leaf CLI](/docs/cli/) for creating and managing your Leaf projects.
 :::
 
 To get started, we will need to generate a leaf application. We can do this simply with Leaf CLI:

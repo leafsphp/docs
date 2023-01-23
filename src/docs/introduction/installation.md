@@ -6,15 +6,11 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-::: tip Leaf 3 release 🎊
-The official leaf 3 release candidate has been released.
-:::
-
 Leaf 3 is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements.
 
 There are four primary ways of adding Leaf PHP to a project:
 
-1. Use the [Leaf CLI](https://cli.leafphp.dev/) to scaffold a project [RECOMMENDED].
+1. Use the [Leaf CLI](/docs/cli//) to scaffold a project [RECOMMENDED].
 2. Download leaf through composer
 3. Use [Leaf skeleton](https://leafphp.netlify.app/#/skeleton/v/2.0/) to quickstart your project
 4. Download the leaf repo
@@ -32,7 +28,7 @@ Before creating your first Leaf application you must:
   Note that some specific modules require PHP 7.4, so to be safe, we recommend PHP 7.4 as your minimum PHP version.
   :::
 - [Install Composer](https://getcomposer.org/download/), which is used to install PHP packages.
-- Optionally, you can also install [Leaf CLI](https://cli.leafphp.dev). This provides all the tools you need to create and manage your Leaf application locally.
+- Optionally, you can also install [Leaf CLI](/docs/cli/). This provides all the tools you need to create and manage your Leaf application locally.
 
 Leaf 3 works as far back as PHP 7.2, however, some modules require PHP 7.4, so we advice using a minimum of PHP 7.4. There's also full support for PHP 8.
 
@@ -46,7 +42,7 @@ You'll also need some PHP extensions like json extension and the zip extension
   link="https://www.youtube.com/embed/PuOk5xqTIsA"
 />
 
-Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](https://cli.leafphp.dev) for more details.
+Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/docs/cli/) for more details.
 
 ```sh
 leaf create <project-name> --v3

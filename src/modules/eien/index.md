@@ -13,7 +13,7 @@ Eien runs on Swoole, so you need to have the swoole extension installed.
 
 ## Installation
 
-You can easily install Eien using the [Leaf CLI](https://cli.leafphp.dev):
+You can easily install Eien using the [Leaf CLI](/docs/cli/):
 
 ```sh
 leaf install eien
