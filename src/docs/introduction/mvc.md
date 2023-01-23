@@ -6,7 +6,7 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-Leaf is a simple PHP framework/set of libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern out of the box.
+Leaf is a simple PHP framework/set of libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
 
 ## What is MVC?
 
@@ -17,8 +17,9 @@ MVC stands for Model-View-Controller. It's a pattern that separates your applica
 - Controllers: These are the classes that are responsible for handling the user's request, and for returning the appropriate response.
 
 <VideoDocs
-  subject="Intro to MVC"
-  description="If you're new to the MVC pattern, you can take a look at this video that explains the MVC pattern, how it works and how it works in real-world applications."
+  title="New to MVC?"
+  subject="What is MVC? Simple Explanation"
+  description="If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications."
   link="https://www.youtube.com/embed/pCvZtjoRq1I"
 />
 
