@@ -178,6 +178,7 @@ const mainSidebar = [
       { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
       { text: 'Testing', link: '/docs/tooling/testing' },
+      { text: 'Leaf + MVC', link: '/docs/introduction/mvc' },
     ]
   },
   {
