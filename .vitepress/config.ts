@@ -156,7 +156,8 @@ const mainSidebar = [
     text: 'Essentials',
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
-      { text: 'Features', link: '/docs/introduction/features' }
+      { text: 'Features', link: '/docs/introduction/features' },
+      { text: 'Leaf + MVC', link: '/docs/introduction/mvc' },
     ]
   },
   {
@@ -178,7 +179,6 @@ const mainSidebar = [
       { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
       { text: 'Testing', link: '/docs/tooling/testing' },
-      { text: 'Leaf + MVC', link: '/docs/introduction/mvc' },
     ]
   },
   {

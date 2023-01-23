@@ -24,8 +24,32 @@ Version 3 of Leaf brings more to the table with a theme centring on developer ex
 
 The official guide assumes **basic** level knowledge of PHP.
 
-::: warning 😵‍💫 Don't know PHP?
-If you are not familiar with PHP, we recommend that you check out the [W3Schools PHP Tutorial](https://www.w3schools.com/php/default.asp) before continuing. This is because you will basically be writing PHP code when using Leaf (or any other framework).
+::: tip Down to the basics
+
+<details>
+<summary>😵‍💫 Don't know PHP?</summary>
+If you are not familiar with PHP, we recommend that you check out the <a href="https://www.w3schools.com/php/default.asp" target="_blank">W3Schools PHP Tutorial</a> before continuing or use the video below. This is because you will basically be writing PHP code when using Leaf (or any other framework).
+
+<VideoDocs
+  title="Introduction to PHP"
+  subject="Introduction to PHP"
+  description="You can follow along with the video by FreeCodeCamp to learn the basics of PHP."
+  link="https://www.youtube.com/embed/OK_JCtrrv-c"
+/>
+</details>
+
+<details>
+<summary>What's a PHP Framework?</summary>
+If you are not familiar with the concept of PHP frameworks, you can check out the video below by Kinsta.
+
+<VideoDocs
+  title="Introduction to PHP Frameworks"
+  subject="What Are PHP Frameworks?"
+  description="You can follow along with the video below to learn the basics of PHP frameworks."
+  link="https://www.youtube.com/embed/pW7Vyr2SW_s"
+/>
+</details>
+
 :::
 
 ### Installation
