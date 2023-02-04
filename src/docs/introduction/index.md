@@ -40,7 +40,7 @@ If you are not familiar with PHP, we recommend that you check out the <a href="h
 
 <details>
 <summary>What's a PHP Framework?</summary>
-If you are not familiar with the concept of PHP frameworks, you can check out the video below by Kinsta.
+If you are not familiar with the concept of PHP frameworks, you can check out the video below by [Kinsta](https://kinsta.com/).
 
 <VideoDocs
   title="Introduction to PHP Frameworks"
