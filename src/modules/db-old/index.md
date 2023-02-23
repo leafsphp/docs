@@ -11,13 +11,13 @@ This is Leaf's simple query builder created in Leaf v1 but still maintained till
 
 You can quickly install leaf db with composer or the leaf cli.
 
-```sh
+```bash
 composer require leafs/db-old
 ```
 
 or with leaf cli:
 
-```sh
+```bash
 leaf install db-old
 ```
 

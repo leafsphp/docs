@@ -6,13 +6,13 @@ Leaf Form contains methods to simply and quickly handle input from the user.
 
 You can quickly install leaf forms using the following composer or the leaf cli.
 
-```sh
+```bash
 composer require leafs/form
 ```
 
 or
 
-```sh
+```bash
 leaf install form
 ```
 

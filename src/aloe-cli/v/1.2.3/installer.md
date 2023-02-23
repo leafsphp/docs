@@ -22,7 +22,7 @@ Aloe\Installer::magicCopy("package/to/install");
 
 Consider the following directory structure:
 
-```sh
+```bash
 C:.
 └───Auth
     ├───Controllers

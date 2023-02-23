@@ -6,19 +6,19 @@ To get started, aloe CLI provides `g:command` which scaffolds a basic command fo
 
 The default directory for commands for Leaf API and Leaf MVC is `App\Console`, with skeleton, you're free to decide where to place your commands.
 
-```sh
+```bash
 php leaf g:command SendMail
 ```
 
 Aloe can also generate namespaced commands directly for you. You don't have to manually set namespaces as done with other CLI tools.
 
-```sh
+```bash
 php leaf g:command mail:send
 ```
 
 If you want to, you can even generate the command by it's name instead of it's class. Aloe is smart enough to differentiate them.
 
-```sh
+```bash
 php leaf g:command shutdown 
 ```
 

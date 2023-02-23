@@ -13,13 +13,13 @@ Date::now();
 
 You can install leaf date through composer:
 
-```sh
+```bash
 composer require leafs/date
 ```
 
 or with leaf cli:
 
-```sh
+```bash
 leaf install date
 ```
 

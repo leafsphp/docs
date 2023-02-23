@@ -13,13 +13,13 @@ Leaf FS allows you to read/write to file, create, rename, copy and paste files/d
 
 You can install leaf fs through composer:
 
-```sh
+```bash
 composer require leafs/fs
 ```
 
 or with leaf cli:
 
-```sh
+```bash
 leaf install fs
 ```
 

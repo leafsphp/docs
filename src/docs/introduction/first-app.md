@@ -16,11 +16,11 @@ We recommend using the [Leaf CLI](/docs/cli/) for creating and managing your Lea
 
 To get started, we will need to generate a leaf application. We can do this simply with Leaf CLI:
 
-```sh
+```bash
 leaf create <your-project-name> --basic --v3 --no-tests
 ```
 
-<!-- ```sh
+<!-- ```bash
 $ leaf init
 
 ✔ Project name: … <your-project-name>
@@ -36,7 +36,7 @@ Done.
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/leaf
 ```
 
@@ -142,13 +142,13 @@ As mentioned above, we will use the db module to access our database. Leaf DB ha
 
 To install the db module, we can use the Leaf CLI.
 
-```sh
+```bash
 leaf install db
 ```
 
 You can also use composer:
 
-```sh
+```bash
 composer require leafs/db
 ```
 

@@ -74,7 +74,7 @@ renderToString(app).then((html) => {
 
 Then run:
 
-```sh
+```bash
 > node example.js
 ```
 

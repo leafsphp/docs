@@ -15,7 +15,7 @@ Leaf veins is still being maintained and will continue to receive updates.
 
 To add veins to your project simply run the command:
 
-```sh
+```bash
 composer require leafs/veins
 ```
 

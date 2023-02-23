@@ -36,13 +36,13 @@ Leaf logger provides a log object that writes data to a specific output. The act
 
 To get started with logging, you need to first install the Leaf logger module. This will allow leaf log all errors and exception if the config is enabled. You can do this with leaf CLI:
 
-```sh
+```bash
 leaf install logger
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/logger
 ```
 

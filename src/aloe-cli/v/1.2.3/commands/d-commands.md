@@ -6,7 +6,7 @@ d technically stands for delete. Aloe CLI d commands technically delete some sor
 
 This command is used to delete and unregister a custom command
 
-```sh
+```bash
 Description:
   Delete a console command
 
@@ -19,7 +19,7 @@ Arguments:
 
 ## d:controller
 
-```sh
+```bash
 Description:
   Delete a controller
 
@@ -32,7 +32,7 @@ Arguments:
 
 ## d:factory
 
-```sh
+```bash
 Description:
   Delete a model factory
 
@@ -45,7 +45,7 @@ Arguments:
 
 ## d:migration
 
-```sh
+```bash
 Description:
   Delete a migration
 
@@ -58,7 +58,7 @@ Arguments:
 
 ## d:model
 
-```sh
+```bash
 Description:
   Delete a model
 
@@ -71,7 +71,7 @@ Arguments:
 
 ## d:seed
 
-```sh
+```bash
 Description:
   Delete a model seeder
 

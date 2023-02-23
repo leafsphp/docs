@@ -10,13 +10,13 @@ This is a new addition to Leaf's collection of packages. Unlike other packages, 
 
 You can quickly and simply install Leaf Redis through composer or the leaf cli.
 
-```sh
+```bash
 composer require leafs/redis
 ```
 
 or with the leaf cli:
 
-```sh
+```bash
 leaf install redis
 ```
 
@@ -40,7 +40,7 @@ $console->register(\Leaf\Redis::commands());
 
 From there you should have access to a bunch of new commands from Leaf redis. The available commands are:
 
-```sh
+```bash
 redis
   redis:install  Create leaf redis config and .env variables
   redis:server   Start redis server

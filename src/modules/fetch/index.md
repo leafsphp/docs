@@ -10,13 +10,13 @@ Clean, simple, developer friendly interface for making network requests with PHP
 
 You can install leaf fetch through composer or leaf cli
 
-```sh
+```bash
 composer require leafs/fetch
 ```
 
 or with leaf cli:
 
-```sh
+```bash
 leaf install fetch
 ```
 

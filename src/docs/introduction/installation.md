@@ -44,19 +44,19 @@ You'll also need some PHP extensions like json extension and the zip extension
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/docs/cli/) for more details.
 
-```sh
+```bash
 leaf create <project-name> --v3
 ```
 
 You can also install modules using the following syntax:
 
-```sh
+```bash
 leaf install cors
 ```
 
 You can then run your app using:
 
-```sh
+```bash
 leaf serve
 ```
 
@@ -70,7 +70,7 @@ leaf serve
 
 You can also set up a new leaf 3 project from scratch using composer:
 
-```sh
+```bash
 # latest stable (v3)
 $ composer require leafs/leaf
 
@@ -183,7 +183,7 @@ Leaf skeleton is an official leaf boilerplate that packs a default setup with op
 ::: warning NOTE
 Skeleton with Leaf 3 is also available on the leaf cli. You can quickly scaffold a skeleton 3 project with:
 
-```sh
+```bash
 leaf create <project-name> --skeleton --v3
 ```
 
@@ -191,6 +191,6 @@ leaf create <project-name> --skeleton --v3
 
 The main installtion for skeleton is through composer.
 
-```sh
+```bash
 composer create-project leafs/skeleton <project-name>
 ```

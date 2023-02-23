@@ -13,13 +13,13 @@ Leaf router is now separated from Leaf and is now available as an installable mo
 
 To use Leaf router outside of a leaf app, simply install the leaf router module:
 
-```sh
+```bash
 composer require leafs/router
 ```
 
 or
 
-```sh
+```bash
 leaf install router
 ```
 

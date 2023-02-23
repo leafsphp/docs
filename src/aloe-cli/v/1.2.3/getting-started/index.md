@@ -12,13 +12,13 @@ Aloe CLI is a smart CLI that takes care of a lot of a whole lot of time consumin
 
 For better support if you're not using Leaf MVC or Leaf API, you'll need to install Leaf MVC Core which contains all of Leaf's MVC utilities including a special autoloader and configuration...
 
-```sh
+```bash
 leaf install mvc-core
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/mvc-core
 ```
 
@@ -26,13 +26,13 @@ composer require leafs/mvc-core
 
 After installing MVC Core, you can install Aloe with leaf CLI.
 
-```sh
+```bash
 leaf install aloe
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/aloe
 ```
 

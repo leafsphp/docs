@@ -25,13 +25,13 @@ There is no need to manually add the anchor module if you're using Leaf 3 since 
 
 You can quickly and simply install Leaf anchor through composer or the leaf cli.
 
-```sh
+```bash
 composer require leafs/anchor
 ```
 
 or with the leaf cli:
 
-```sh
+```bash
 leaf install anchor
 ```
 

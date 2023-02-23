@@ -24,13 +24,13 @@ The available classes in the Http module are:
 
 You can install the http module with the [leaf cli](/docs/cli/):
 
-```sh
+```bash
 leaf install http
 ```
 
 or with composer:
 
-```sh
+```bash
 composer require leafs/http
 ```
 

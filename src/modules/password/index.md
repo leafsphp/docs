@@ -11,13 +11,13 @@ This module simply helps create and manage passwords, encrypt and verify without
 
 You can quickly install a password helper through composer or the leaf cli
 
-```sh
+```bash
 composer require leafs/password
 ```
 
 or
 
-```sh
+```bash
 leaf install password
 ```
 

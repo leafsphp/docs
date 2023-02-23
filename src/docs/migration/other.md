@@ -68,7 +68,7 @@ $app->run();
 
 All we have to do now is to install the leaf http module.
 
-```sh
+```bash
 composer require leafs/http
 ```
 
@@ -117,6 +117,6 @@ $app->run();
 
 In all aspects, this is still a slim 4 app, only using the Leaf request and response objects. Just as with the example above, you can use any Leaf module  or Leaf 3 itself with any framework or library. To test the app above, we can use the built in php server
 
-```sh
+```bash
 php -S localhost:5500
 ```

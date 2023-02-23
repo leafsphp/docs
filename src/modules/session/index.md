@@ -3,13 +3,13 @@
 
 Leaf offers simple session management to help you quickly build your apps and APIs. You can quickly install leaf session with composer or leaf cli.
 
-```sh
+```bash
 leaf install session
 ```
 
 or with composer:
 
-```sh
+```bash
 composer require leafs/session
 ```
 

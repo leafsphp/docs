@@ -20,13 +20,13 @@ This has already been done for you in the editor, so you can just go ahead and u
 
 To get started with this in your project, you'll need to install it with the leaf CLI or composer:
 
-```sh
+```bash
 leaf install cors
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/cors
 ```
 

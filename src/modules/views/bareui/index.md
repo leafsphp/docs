@@ -8,7 +8,7 @@ Most templating engines out there ship with a nice syntax, handy ways to use exp
 
 You can always install BareUI with composer:
 
-```sh
+```bash
 composer require leafs/bareui
 ```
 

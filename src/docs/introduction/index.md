@@ -306,13 +306,13 @@ To demonstrate this, we will expand the app above to output a template instead o
 
 For this demo, we will use BareUI. We can install BareUI with leaf CLI.
 
-```sh
+```bash
 leaf install bareui
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/bareui
 ```
 

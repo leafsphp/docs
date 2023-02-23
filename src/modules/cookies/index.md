@@ -3,13 +3,13 @@
 
 This is a module which helps you create, interact with and manage your cookies. You can quickly install leaf cookies with composer or leaf cli.
 
-```sh
+```bash
 leaf install cookies
 ```
 
 or with composer:
 
-```sh
+```bash
 composer require leafs/cookies
 ```
 

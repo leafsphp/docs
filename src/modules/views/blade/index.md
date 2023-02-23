@@ -5,7 +5,7 @@ This is Leaf's implementation of Laravel's blade templating engine.
 
 You can install leaf blade from composer:
 
-```sh
+```bash
 composer require leafs/blade
 ```
 
