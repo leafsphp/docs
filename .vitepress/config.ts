@@ -242,9 +242,6 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
-      { text: 'Leaf Auth v1', link: '/modules/auth/v/1/' },
-      { text: 'Leaf Auth v2', link: '/modules/auth/v/2/' },
-      { text: 'Leaf Auth v2.1', link: '/modules/auth/v/2.1/' },
       { text: 'Auth Config', link: '/modules/auth/v/2.1/config' },
       { text: 'Auth Methods', link: '/modules/auth/v/2.1/methods' },
       { text: 'Session Support', link: '/modules/auth/v/2.1/session' }

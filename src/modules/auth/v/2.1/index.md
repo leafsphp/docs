@@ -1,4 +1,4 @@
-# Auth v2.1
+# Leaf Auth
 <!-- markdownlint-disable no-inline-html -->
 
 ## Installation
