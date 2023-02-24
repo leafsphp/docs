@@ -156,7 +156,7 @@ const mainSidebar = [
     text: 'Essentials',
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
-      { text: 'Features', link: '/docs/introduction/features' },
+      { text: 'Why Leaf?', link: '/docs/introduction/why' },
       { text: 'Leaf + MVC', link: '/docs/introduction/mvc' },
     ]
   },

@@ -18,7 +18,7 @@ Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, si
 
 Version 3 of Leaf brings more to the table with a theme centring on developer experience and usability, but with all the goodies while ensuring users have the best experience as well.
 
-[→ Checkout Leaf 3's features](/docs/introduction/features)
+[→ Checkout Leaf 3's features](/docs/introduction/why)
 
 ## Getting Started
 
