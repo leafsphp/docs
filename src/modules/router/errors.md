@@ -1,17 +1,14 @@
----
-title: "Error Handling"
----
-
 # Error Handling
-<!-- markdownlint-disable no-inline-html -->
 
-In earlier versions, Leaf would always display default server error pages in case of errors like 404 and 500 errors, however, v2.5.0-beta introduced automatic displaying of error pages for both 404 and 500 errors. This simply means that by default, a pre-built error page will be shown in case of errors, however, you can also define your own error handlers.
+By default Leaf has error screens which are displayed for application exceptions, 404s and production server errors, however, Leaf also gives you full control and allows you to customize what is shown when an error or exception is encountered.
 
 ## Handling 404
 
-Leaf's core router has specially prepared for 404 errors, and is bent on giving users full control over displaying this error.
+Leaf displays a 404 screen for users, however, it may not always be appropriate, especially when you're building an API. You will probably want to return JSON instead of markup. For cases like this, Leaf has prepared a `set404` method on the Leaf instance.
 
-For this reason, we've prepared the set404() method. You can use `set404` to display your own custom 404 page.
+This method allows you to customize what a user sees when they visit a route that doesn't exist in your application. It takes in one parameter, a callable in the form of a function or an array.
+
+The example below displays a custom 404 page.
 
 ```php
 Router::set404(function () use($app) {

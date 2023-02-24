@@ -12,13 +12,15 @@ import VideoDocs from '/@theme/components/VideoDocs.vue'
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
 /> -->
 
-In earlier versions, Leaf would always display default server error pages in case of errors like 404 and 500 errors, however, v2.5.0-beta introduced automatic displaying of error pages for both 404 and 500 errors. This simply means that by default, a pre-built error page will be shown in case of errors, however, you can also define your own error handlers.
+By default Leaf has error screens which are displayed for application exceptions, 404s and production server errors, however, Leaf also gives you full control and allows you to customize what is shown when an error or exception is encountered.
 
 ## Handling 404
 
-Leaf's core router has specially prepared for 404 errors, and is bent on giving users full control over displaying this error.
+Leaf displays a 404 screen for users, however, it may not always be appropriate, especially when you're building an API. You will probably want to return JSON instead of markup. For cases like this, Leaf has prepared a `set404` method on the Leaf instance.
 
-For this reason, we've prepared the `set404()` method. You can use `set404` to display your own custom 404 page.
+This method allows you to customize what a user sees when they visit a route that doesn't exist in your application. It takes in one parameter, a callable in the form of a function or an array.
+
+The example below displays a custom 404 page.
 
 <div class="functional-mode">
 
@@ -41,26 +43,32 @@ $app->set404(function () use($app) {
 
 ## Handling 500
 
-By default, Leaf has 2 pre-built 500 error pages, the first is a general error page used in development. If you've ever run into an error during development, you've probably come across a nice looking page that gives you information about your error, line numbers and all that stuff, however, there's another error page used in production. You can switch to this by simply configuring Leaf's `debug` to `false`.
+Server errors are a bit more complicated because there are 2 states displayed to the user. The first is a general error state used in development. That screen gives you details on errors that occur during development. If you've ever run into an error during development, you've probably come across a nice looking page that gives you information about your error, line numbers and all that.
+
+The second screen is shown when debugging is turned off. This screen is intended to not give any details on the error, but rather log out issues in the background. To get a preview of this screen locally, you can configure Leaf's `debug` to `false`.
 
 <div class="functional-mode">
 
 ```php
-app()->config(['debug' => false]);
+app()->config('debug', false);
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$app = new Leaf\App(['debug' => false]);
+$app = new Leaf\App('debug', false);
 ```
 
 </div>
 
 You'll have an error page which doesn't give details on the error, however, if logs are enabled, all the errors are saved to a log file in the background.
 
-If you still wish to use a custom handler, you can set one with `setErrorHandler`.
+### Setting your own error screen
+
+Although Leaf handles both debug and production cases, you may want to display your own error/exception screens instead of going with the Leaf defaults. For cases like this, you should use the `setErrorHandler` method on the Leaf instance.
+
+This method takes in a callable in the form of a function or an array. You can take a look at the exaples below:
 
 <div class="functional-mode">
 

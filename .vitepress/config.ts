@@ -157,7 +157,7 @@ const mainSidebar = [
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
       { text: 'Why Leaf?', link: '/docs/introduction/why' },
-      { text: 'Leaf + MVC', link: '/docs/introduction/mvc' },
+      { text: 'Leaf + MVC', link: '/docs/introduction/mvc' }
     ]
   },
   {
@@ -165,7 +165,7 @@ const mainSidebar = [
     items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' },
+      { text: 'Migration Guide', link: '/docs/migration/introduction' }
     ]
   },
   {
@@ -178,7 +178,7 @@ const mainSidebar = [
       { text: 'Modules', link: '/modules/' },
       { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
-      { text: 'Testing', link: '/docs/tooling/testing' },
+      { text: 'Testing', link: '/docs/tooling/testing' }
     ]
   },
   {
@@ -204,6 +204,7 @@ const mainSidebar = [
       { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
       { text: 'Middleware', link: '/docs/routing/middleware' },
+      { text: 'Error Handling', link: '/docs/routing/errors' }
     ]
   },
   {
@@ -212,7 +213,6 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
-      { text: 'Error Handling', link: '/docs/routing/errors' },
       { text: 'Sub routing', link: '/docs/routing/sub-routing' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       {
