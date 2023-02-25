@@ -244,7 +244,8 @@ const mainSidebar = [
       { text: 'Introduction', link: '/modules/auth/' },
       { text: 'Auth Config', link: '/modules/auth/v/2.1/config' },
       { text: 'Auth Methods', link: '/modules/auth/v/2.1/methods' },
-      { text: 'Session Support', link: '/modules/auth/v/2.1/session' }
+      { text: 'Session Support', link: '/modules/auth/v/2.1/session' },
+      { text: 'Helper methods', link: '/modules/auth/v/2.1/helpers' }
     ]
   },
   {
