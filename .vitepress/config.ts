@@ -209,7 +209,7 @@ const mainSidebar = [
   },
   {
     text: 'Routing',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
@@ -225,20 +225,17 @@ const mainSidebar = [
   },
   {
     text: 'Database',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/db/' },
-      { text: 'Leaf DB v1', link: '/modules/db/v/1/' },
-      { text: 'New in v2', link: '/modules/db/v/2/new' },
-      { text: 'Leaf DB v2', link: '/modules/db/v/2/' },
       { text: 'Query Builder', link: '/modules/db/v/2/builder' },
       { text: 'Leaf Redis', link: '/modules/redis/' }
     ]
   },
   {
     text: 'Authentication',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
@@ -250,7 +247,7 @@ const mainSidebar = [
   },
   {
     text: 'Utilities',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
@@ -264,7 +261,7 @@ const mainSidebar = [
   },
   {
     text: 'Frontend',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/views/' },
@@ -276,6 +273,8 @@ const mainSidebar = [
   },
   {
     text: 'Digging Deeper',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Eien Server', link: '/modules/eien/' },
@@ -286,6 +285,8 @@ const mainSidebar = [
   },
   {
     text: 'MVC Tools',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'MVC Core', link: '/modules/mvc-core/' },
       { text: 'Models', link: '/modules/mvc-core/model' },
@@ -295,15 +296,15 @@ const mainSidebar = [
       { text: 'Aloe CLI', link: '/aloe-cli/' }
     ]
   },
-  {
-    text: 'Archive',
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: 'Leaf Http', link: '/modules/http/' },
-      { text: 'Leaf Http v1', link: '/modules/http/v/1/' }
-    ]
-  }
+  // {
+  //   text: 'Archive',
+  //   collapsible: false,
+  //   collapsed: true,
+  //   items: [
+  //     { text: 'Leaf Http', link: '/modules/http/' },
+  //     { text: 'Leaf Http v1', link: '/modules/http/v/1/' }
+  //   ]
+  // }
 ]
 
 const communitySidebar = [
