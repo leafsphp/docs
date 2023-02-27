@@ -1,14 +1,10 @@
----
-title: FAQ
----
-
 # Frequently Asked Questions
 
 ## Who maintains Leaf?
 
-Leaf is an independent, community-driven project. It was created by [Michael Darko (Mychi)](https://github.com/mychidarko) in 2019 as a personal side project. Today, Leaf is actively maintained by [a team of both full-time and volunteer members from all around the world](/community/team), where Mychi serves as the project lead. You can find Leaf's history [here](/community/history).
+Leaf is an independent, community-driven project. It was created by [Michael Darko](https://github.com/mychidarko) in 2019 as a personal side project. Today, Leaf is actively maintained by [a team of both full-time and volunteer members from all around the world](/community/team), where Michael serves as the project lead. You can find Leaf's history [here](/community/history).
 
-Leaf's development is primarily funded through sponsorships and personal contributions from Mychi and friends. If you or your business benefit from Leaf, consider [sponsoring us](/support/) to support Leaf's development!
+Leaf's development is primarily funded through sponsorships and personal contributions from Michael and friends. If you or your business benefit from Leaf, consider [sponsoring us](/support/) to support Leaf's development!
 
 ## What license does Leaf use?
 
