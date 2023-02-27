@@ -1,10 +1,33 @@
 # Leaf Redis
+<!-- markdownlint-disable no-inline-html -->
+
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
 <!-- [![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/stable)](https://packagist.org/packages/leafs/leaf)
 [![Total Downloads](https://poser.pugx.org/leafs/leaf/downloads)](https://packagist.org/packages/leafs/leaf)
 [![License](https://poser.pugx.org/leafs/leaf/license)](https://packagist.org/packages/leafs/leaf) -->
 
-This is a new addition to Leaf's collection of packages. Unlike other packages, this one doesn't come pre-packaged with Leaf by default and so needs to be installed separately.
+According to the [Redis docs](https://redis.io/), Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine. Redis provides data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes, and streams. Redis has built-in replication, Lua scripting, LRU eviction, transactions, and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
+
+In simpler terms, Redis is a fast, open source, in-memory key-value store that can be used as a database, cache, and message broker. As a database, Redis allows you to store and retrieve data quickly by keeping it in memory rather than on disk, which makes it ideal for applications that require high-speed access to data. As a cache, Redis can help speed up web applications by storing frequently accessed data in memory, reducing the number of times the application needs to access a slower database.
+
+Leaf includes a Redis module that allows you to easily integrate Redis into your Leaf application.
+
+<details>
+<summary>New to Redis?</summary>
+
+We've included some resources to help you get started with Redis.
+
+<VideoDocs
+  title="Redis intro by TechWorld with Nana"
+  subject="Redis Crash Course - the What, Why and How to use Redis ..."
+  description="Redis Tutorial - the What, Why and How to use Redis as a primary database."
+  link="https://www.youtube.com/embed/OqCK95AS-YE"
+/>
+
+</details>
 
 ## Installation
 
@@ -32,6 +55,12 @@ This will initialize a new redis connection, from there, you can call any functi
 
 ### Aloe CLI
 
+::: warning Note
+
+You only need to use this section if you're using Leaf MVC or Leaf API.
+
+:::
+
 Although Leaf Redis can be used outside the Leaf environment, there's more support for Leaf based frameworks. Leaf Redis comes with out of the box support for Aloe CLI which is used in Leaf MVC and Leaf API. To get started, head over to the `leaf` file in the root directory of your Leaf API/Leaf MVC app or wherever aloe CLI is registered and register a new command.
 
 ```php
@@ -45,6 +74,8 @@ redis
   redis:install  Create leaf redis config and .env variables
   redis:server   Start redis server
 ```
+
+From there, you can run `php leaf redis:install` to install the redis config and environment variables. You can then run `php leaf redis:server` to start the redis server.
 
 ## Config
 
