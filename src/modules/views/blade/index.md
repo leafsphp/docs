@@ -43,21 +43,17 @@ Since Blade is also bound directly to the Leaf object, you can directly do this
 <div class="functional-mode">
 
 ```php
-db()->create('dbname')->execute();
+app()->blade->configure("app/views", "app/views/cache");
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$db->create('dbname')->execute();
+$app->blade->configure("app/views", "app/views/cache");
 ```
 
 </div>
-
-```php
-$app->blade->configure("app/views", "app/views/cache");
-```
 
 Now that this is done, we can render our blade template. This is done with `make`.
 

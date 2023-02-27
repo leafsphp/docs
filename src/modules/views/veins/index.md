@@ -67,21 +67,6 @@ $user = (object) [
 
 In order to use this object in our view(template), we'd have to pass this object through `set()` and then render our view. `set()` is a special method that passes values directly into out template.
 
-<div class="functional-mode">
-
-```php
-db()->create('dbname')->execute();
-```
-
-</div>
-<div class="class-mode">
-
-```php
-$db->create('dbname')->execute();
-```
-
-</div>
-
 ```php
 // pass single value to template
 $app->veins->set("name", $user->name);
@@ -91,21 +76,6 @@ $app->veins->set(["name" => $user->name, "email" => $user->email]);
 ```
 
 Now that our data has been set, we'll need to render this our template which the data is getting passed into. But before that, we'll have to tell Veins where to look for our templates and what directory to keep the template cache in. We can do this with `configure`.
-
-<div class="functional-mode">
-
-```php
-db()->create('dbname')->execute();
-```
-
-</div>
-<div class="class-mode">
-
-```php
-$db->create('dbname')->execute();
-```
-
-</div>
 
 ```php
 $app->veins->configure([
@@ -132,21 +102,6 @@ There are many more configurations available. This is an array of Veins default 
 ```
 
 Now that we've set the template and cache directories, we can now render our template
-
-<div class="functional-mode">
-
-```php
-db()->create('dbname')->execute();
-```
-
-</div>
-<div class="class-mode">
-
-```php
-$db->create('dbname')->execute();
-```
-
-</div>
 
 ```php
 $app->veins->render("homepage"); // homepage.vein.php
@@ -238,21 +193,6 @@ Or
 ## AutoEscape
 
 This has a lot of uses...but the most common use case is for rendering HTML
-
-<div class="functional-mode">
-
-```php
-db()->create('dbname')->execute();
-```
-
-</div>
-<div class="class-mode">
-
-```php
-$db->create('dbname')->execute();
-```
-
-</div>
 
 ```php
 $app->veins->set([
