@@ -154,6 +154,8 @@ const nav = [
 const mainSidebar = [
   {
     text: 'Essentials',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
       { text: 'Why Leaf?', link: '/docs/introduction/why' },
@@ -162,6 +164,8 @@ const mainSidebar = [
   },
   {
     text: 'Quick Start',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
@@ -170,6 +174,8 @@ const mainSidebar = [
   },
   {
     text: 'Introduction',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Leaf tutorial', link: '/tutorial/' },
@@ -183,6 +189,8 @@ const mainSidebar = [
   },
   {
     text: 'Config',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'Overview', link: '/docs/config/' },
       { text: 'Instance and Mode', link: '/docs/config/nsm' },
@@ -295,7 +303,7 @@ const mainSidebar = [
       { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
       { text: 'Aloe CLI', link: '/aloe-cli/' }
     ]
-  },
+  }
   // {
   //   text: 'Archive',
   //   collapsible: false,
