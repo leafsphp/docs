@@ -407,14 +407,14 @@ Just as the name implies, `unique` helps prevent duplicates in your database, fu
 
 ```php
 db()
-  ->insert("users")
+  ->insert('users')
   ->params([
-    "username" => "mychi",
-    "email" => "mychi@leafphp.dev",
-    "password" => hash("test")
-   ])
-   ->unique("username", "email")
-   ->execute();
+    'username' => 'mychi',
+    'email' => 'mychi@leafphp.dev',
+    'password' => hash('test')
+  ])
+  ->unique('username', 'email')
+  ->execute();
 ```
 
 </div>
@@ -422,14 +422,14 @@ db()
 
 ```php
 $db
-  ->insert("users")
+  ->insert('users')
   ->params([
-    "username" => "mychi",
-    "email" => "mychi@leafphp.dev",
-    "password" => hash("test")
-   ])
-   ->unique("username", "email")
-   ->execute();
+    'username' => 'mychi',
+    'email' => 'mychi@leafphp.dev',
+    'password' => hash('test')
+  ])
+  ->unique('username', 'email')
+  ->execute();
 ```
 
 </div>
@@ -437,14 +437,35 @@ $db
 If you have a 100 unique values, don't feel shy, just line them all up.
 
 ```php
-->unique("username", "email", "what-not", ...)
+->unique('username', 'email', 'what-not', ...)
 ```
 
 Alternatively, you could just pack a truck load full of uniques in an array
 
 ```php
-->unique(["username", "email", "what-not", ...])
+->unique(['username', 'email', 'what-not', ...])
 ```
+
+### Getting the last inserted id
+
+You can get the last inserted id by calling `lastInsertId` on the db object after an insert query.
+
+<div class="functional-mode">
+
+```php
+db()->insert('users')->params(['username' => 'mychi'])->execute();
+$lastId = db()->lastInsertId();
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$db->insert('users')->params(['username' => 'mychi'])->execute();
+$lastId = $db->lastInsertId();
+```
+
+</div>
 
 ## update
 

@@ -1,13 +1,36 @@
 # Getting Started
 <!-- markdownlint-disable no-inline-html -->
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Interacting with a database is a common requirement for most modern web applications. Leaf Db simplifies this process by providing a unified API that supports multiple databases. Leaf Db currently offers first-party support for five databases:
 
-- MariaDB 10.3 or later
-- MySQL 5.7 or later
-- PostgreSQL 10.0 or later
-- SQLite 3.8.8 or later
-- SQL Server 2017 or later
+- MariaDB
+- MySQL
+- PostgreSQL
+- SQLite
+- SQL Server
+
+<details>
+<summary>Don't understand Databases?</summary>
+
+<VideoDocs
+  title="DB intro by Linux Academy"
+  subject="What is a database in under 4 minutes"
+  description="In this episode of the Linux Academy Weekly Update, we are covering Databases, what they are, and what are the different types of them."
+  link="https://www.youtube.com/embed/Tk1t3WKK-ZY"
+/>
+
+<VideoDocs
+  title="Danielle Thé explains SQL"
+  subject="What is SQL? [in 4 minutes for beginners]"
+  description="Structured Query Language - or SQL, is a language that communicates with databases. Learn what SQL is, and why it is an important language to learn in the era of big data."
+  link="https://www.youtube.com/embed/27axs9dO7AE"
+/>
+
+</details>
 
 ## Installing Leaf Db
 
