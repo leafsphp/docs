@@ -27,7 +27,7 @@ Leaf 2 was lightweight and fast enough to be considered one of the most lightwei
 
 ![image](https://user-images.githubusercontent.com/26604242/146754044-4c71c4ec-7b37-4c85-9c8b-56e8c2b54831.png)
 
-> a comparism with slim - slim (left) - leaf (right)
+> a comparison with slim - slim (left) - leaf (right)
 
 ### Enables high developer productivity
 
