@@ -6,7 +6,7 @@ These commands help you manage and interact with your database.
 
 Create the database in your .env variables if it doesn't already exist.
 
-```sh
+```bash
 Description:
   Create new database from .env variables
 
@@ -16,7 +16,7 @@ Usage:
 
 ## db:migrate
 
-```sh
+```bash
 Description:
   Run the database migrations
 
@@ -30,7 +30,7 @@ Options:
 
 ## db:rollback
 
-```sh
+```bash
 Description:
   Rollback database migrations
 
@@ -46,7 +46,7 @@ Dont use -f and -s together
 
 ## db:seed
 
-```sh
+```bash
 Description:
   Seed the database with records
 

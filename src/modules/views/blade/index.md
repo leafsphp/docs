@@ -5,7 +5,7 @@ This is Leaf's implementation of Laravel's blade templating engine.
 
 You can install leaf blade from composer:
 
-```sh
+```bash
 composer require leafs/blade
 ```
 
@@ -43,21 +43,17 @@ Since Blade is also bound directly to the Leaf object, you can directly do this
 <div class="functional-mode">
 
 ```php
-db()->create('dbname')->execute();
+app()->blade->configure("app/views", "app/views/cache");
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$db->create('dbname')->execute();
+$app->blade->configure("app/views", "app/views/cache");
 ```
 
 </div>
-
-```php
-$app->blade->configure("app/views", "app/views/cache");
-```
 
 Now that this is done, we can render our blade template. This is done with `make`.
 

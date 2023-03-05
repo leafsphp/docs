@@ -17,13 +17,13 @@ Leaf router is automatically installed and attached to your leaf apps, so you do
 
 You can install the leaf router with composer:
 
-```sh
+```bash
 composer require leafs/router
 ```
 
 or with leaf CLI:
 
-```sh
+```bash
 leaf install router
 ```
 

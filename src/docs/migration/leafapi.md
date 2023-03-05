@@ -22,8 +22,8 @@ Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path
 
 If you want to quickly try out Leaf 3 in a new project:
 
-```sh
-composer require leafs/leaf dev-v3.x-dev
+```bash
+composer require leafs/leaf v3.x-dev
 ```
 
 This will quickly setup leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
@@ -42,7 +42,7 @@ app()->run();
 
 You can run this with the built in php server
 
-```sh
+```bash
 php -S localhost:5500
 ```
 
@@ -56,8 +56,8 @@ Note that leaf 3 is still under active development. We don't recommend switching
 
 - Install leaf 3
 
-```sh
-composer require leafs/leaf dev-v3.x-dev
+```bash
+composer require leafs/leaf v3.x-dev
 ```
 
 > You can delete your vendor folder before running the command above to make sure that all the dependencies are accurately reinstalled.
@@ -65,7 +65,7 @@ composer require leafs/leaf dev-v3.x-dev
 - After this, it's just a matter of installing the modules required in your project.
 For example, if you use `Leaf\Auth`, you will need to install the auth module. This can be done with:
 
-```sh
+```bash
 composer require leafs/auth
 ```
 
@@ -89,7 +89,7 @@ To fix any problems with cors in your Leaf 2 app, follow these steps:
 
 - Install the cors module
 
-```sh
+```bash
 composer require leafs/cors
 ```
 

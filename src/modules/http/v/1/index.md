@@ -26,15 +26,15 @@ The available classes in the Http module are:
 
 ## Installation
 
-You can install the http module with the [leaf cli](https://cli.leafphp.dev):
+You can install the http module with the [leaf cli](/docs/cli/):
 
-```sh
+```bash
 leaf install http
 ```
 
 or with composer:
 
-```sh
+```bash
 composer require leafs/http
 ```
 

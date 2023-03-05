@@ -4,7 +4,7 @@
 
 This command allows you to run your Leaf app using PHP's built in server.
 
-```sh
+```bash
 Description:
   Start the leaf development server
 
@@ -26,7 +26,7 @@ Scaffolding is a feature that allows you to generate big blocks of code and full
 
 This will generate views, controllers, routes and models required for authentication and provide your app with working authentication in only one command.
 
-```sh
+```bash
 $ php leaf scaffold:auth
 
 Description:

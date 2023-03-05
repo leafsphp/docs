@@ -35,13 +35,13 @@ You could also find the composer's global installation path by running `composer
 
 Eg (Adding composer bin to path linux):
 
-```sh
+```bash
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
 ```
 
 Eg (Adding composer bin to path mac):
 
-```sh
+```bash
 export PATH=$PATH:$HOME/.composer/vendor/bin
 echo $PATH
 ```
@@ -51,14 +51,14 @@ To get leaf cli installed permanently, you will need to add your composer bin yo
 
 **zsh:**
 
-```sh
+```bash
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **bash:**
 
-```sh
+```bash
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 source ~/.bashrc
 ```
@@ -81,19 +81,19 @@ leaf create <project-name>
 
 with leaf 3:
 
-```sh
+```bash
 leaf create <project-name> --v3
 ```
 
 or with leaf 2:
 
-```sh
+```bash
 leaf create <project-name> --v2
 ```
 
 This will now prompt you to select a preset
 
-```sh
+```bash
 Creating a new Leaf app "<project-name>" in ./projects-directory.
 
 * Please pick a preset 
@@ -117,7 +117,7 @@ Selecting a number will generate a leaf app based on the associated preset. As y
 
 After picking a preset, if no version was specified, leaf will display an interactive version picker like the one above:
 
-```sh
+```bash
 * Select a version to use 
   [0] v3
   [1] v2
@@ -130,7 +130,7 @@ your project will be automatically generated and initialized. All you need to do
 
 From Leaf CLI v2.3, you will be asked if you want to add tests to your project. You can add tests by replying `y`.
 
-```sh
+```bash
 * Add testing with Leaf Alchemy? [y, n] y
 
  - Adding alchemy for tests
@@ -138,7 +138,7 @@ From Leaf CLI v2.3, you will be asked if you want to add tests to your project. 
 
 For a quicker method, you can use the `--phpunit` or `--pest` option to add tests to your project using PHPUnit or Pest respectively. You can also use the `--no-tests` option to completely skip adding tests.
 
-```sh
+```bash
 leaf create <project-name> --no-tests
 ```
 
@@ -156,7 +156,7 @@ If no version is specified, leaf displays the interactive installer to you, howe
 
 Leaf API 3 example:
 
-```sh
+```bash
 leaf create backend-api --api --v3
 ```
 
@@ -164,14 +164,14 @@ leaf create backend-api --api --v3
 
 After generating your leaf app, you can `cd` into the directory and spin up a local dev server using leaf cli's `serve` command.
 
-```sh
+```bash
 cd backend-api
 leaf serve
 ```
 
 You can also specify the port to run your leaf app on using the `--port` or `-p` options.
 
-```sh
+```bash
 leaf serve -p 3000
 ```
 
@@ -179,7 +179,7 @@ leaf serve -p 3000
 
 In v2.1, you can also start the leaf server with hot module watching. This reloads your application anytime a change is made to your application code. To get started, simply start the leaf server with the `--watch` flag.
 
-```sh
+```bash
 leaf serve --port 8000 --watch
 ```
 
@@ -201,13 +201,13 @@ Testing helps prevent bugs in your app which you may not catch until you publish
 
 Leaf CLI allows you to setup tests in your project with one command:
 
-```sh
+```bash
 leaf test:setup
 ```
 
 This command will generate Pest PHP tests for your application. If you however want to use PHPUnit, you'll need to pass the `--phpunit` option to the command.
 
-```sh
+```bash
 leaf test:setup --phpunit
 ```
 
@@ -215,7 +215,7 @@ leaf test:setup --phpunit
 
 To run tests you've setup or created, you can simply run the `test` command.
 
-```sh
+```bash
 leaf test
 ```
 
@@ -229,13 +229,13 @@ leaf install leafs/ui
 
 If you are installing a leaf module or package, you can leave out the `leafs/` part.
 
-```sh
+```bash
 leaf install ui
 ```
 
 You can also pass in a bunch of packages to install at once.
 
-```sh
+```bash
 leaf install ui db illuminate/support
 ```
 
@@ -243,7 +243,7 @@ leaf install ui db illuminate/support
 
 Leaf CLI also allows you to install a particular version of any package using `@`
 
-```sh
+```bash
 leaf install ui@1.0 illuminate/support@9.0.2
 ```
 
@@ -251,13 +251,13 @@ leaf install ui@1.0 illuminate/support@9.0.2
 
 You can now add a bunch of packages to install as done with composer, npm and other CLIs as well.
 
-```sh
+```bash
 leaf install db illuminate/support
 ```
 
 Using this method, you can even add specific versions of some packages like this:
 
-```sh
+```bash
 leaf install db illuminate/support@9.0.2 nesbot/carbon
 ```
 
@@ -291,13 +291,13 @@ Leaf CLI also now allows you run scripts defined in your `composer.json` file. F
 
 You can run the test script like this:
 
-```sh
+```bash
 leaf run test
 ```
 
 ## Usage Guide
 
-```sh
+```bash
  _              __    ___ _    ___ 
 | |   ___ __ _ / _|  / __| |  |_ v2.7.0
 | |__/ -_) _` |  _| | (__| |__ | | 

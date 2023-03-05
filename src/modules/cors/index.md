@@ -11,13 +11,13 @@ This is a module used to enable and configure [CORS](http://en.wikipedia.org/wik
 
 You can install CORS through the Leaf CLI.
 
-```sh
+```bash
 leaf install cors
 ```
 
 or with composer
 
-```sh
+```bash
 composer require leafs/cors
 ```
 

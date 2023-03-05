@@ -1,12 +1,12 @@
 # Production Deployment
 
 ::: tip
-Most of the tips below are enabled by default if you are using [Leaf CLI](https://cli.leafphp.dev). This section is only relevant if you are using a custom build setup.
+Most of the tips below are enabled by default if you are using [Leaf CLI](/docs/cli/). This section is only relevant if you are using a custom build setup.
 :::
 
 ## Turn on Production Mode
 
-During development, Leaf provides a lot of warnings to help you with common errors and pitfalls. However, these warning strings become useless in production and bloat your app's payload size. In addition, some of these warning checks have small runtime costs that can be avoided in [production mode](https://cli.leafphp.dev/docs/mode-and-env.html#modes).
+During development, Leaf provides a lot of warnings to help you with common errors and pitfalls. However, these warning strings become useless in production and bloat your app's payload size. In addition, some of these warning checks have small runtime costs that can be avoided in production mode.
 
 ### Without Build Tools
 

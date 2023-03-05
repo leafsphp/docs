@@ -13,9 +13,9 @@ Eien runs on Swoole, so you need to have the swoole extension installed.
 
 ## Installation
 
-You can easily install Eien using the [Leaf CLI](https://cli.leafphp.dev):
+You can easily install Eien using the [Leaf CLI](/docs/cli/):
 
-```sh
+```bash
 leaf install eien
 ```
 
@@ -58,7 +58,7 @@ You can start your application using the `php <filename>` command. This command 
 
 What we really need in this case is to watch your files and restart them when there's any update. For this, we tweaked the `leaf serve` command from the Leaf CLI a bit. You can use the Leaf serve command to start Eien and watch for any changes.
 
-```sh
+```bash
 leaf serve <filename>
 ```
 
@@ -77,7 +77,7 @@ Eien now allows you to create routes that use websockets with Leaf. Just as with
 ::: warning Note
 Since Eien's WebSocket functionality is still not fully production tested, it is only available through the beta channel. You'll need to install the beta versions of Leaf, Eien and Leaf Http to use websockets. You can do this by running the following commands:
 
-```sh
+```bash
 leaf install leaf@3.2.2-beta eien@dev-main http@dev-main
 ```
 

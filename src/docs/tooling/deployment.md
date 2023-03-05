@@ -25,7 +25,7 @@ $app->config('debug', false);
 
 When deploying to production, make sure that you are optimizing Composer's class autoloader map so Composer can quickly find the proper file to load for a given class:
 
-```sh
+```bash
 composer install --optimize-autoloader
 ```
 

@@ -287,7 +287,7 @@ When end-to-end (E2E) tests are run in continuous integration / deployment pipel
 
 In a Vite-based Vue project, run:
 
-```sh
+```bash
 > npm install -D vitest happy-dom @testing-library/vue
 ```
 
@@ -353,7 +353,7 @@ Finally, update `package.json` to add the test script and run it:
 }
 ```
 
-```sh
+```bash
 > npm test
 ```
 

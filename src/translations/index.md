@@ -8,14 +8,15 @@ The Leaf documentation currently only comes in English, but we wish to support o
 
 Translation efforts are managed in the [leafphp-translations](https://github.com/leafphp-translations/) GitHub organization. If you want to contribute, you can open an issue to express your interest.
 
-<!-- - [Simplified Chinese](https://github.com/leafphp-translations/docs-zh-cn)
-- [Japanese](https://github.com/leafphp-translations/docs-ja) -->
+<!-- - [Brazilian Portuguese Repo (WIP)](https://github.com/leafphp-translations/brazilian-portuguese)
+- [French Repo (WIP)](https://github.com/leafphp-translations/french) -->
 
 ## Translations
 
 There are currently the following translations underway. If you want to contribute, you can open an issue to express your interest.
 
 - [Brazilian Portuguese (WIP)](https://pt-br.leafphp.dev)
+- [French (WIP)](https://fr.leafphp.dev)
 
 ## Starting a new Translation
 

@@ -27,7 +27,7 @@ composer require leafs/csrf
 
 or with leaf CLI
 
-```sh
+```bash
 leaf install csrf
 ```
 

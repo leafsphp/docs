@@ -29,13 +29,13 @@ Modules are always published on composer and can be installed through composer C
 
 **Leaf CLI:**
 
-```sh
+```bash
 leaf install <module-name>
 ```
 
 **Composer:**
 
-```sh
+```bash
 composer require leafs/<module-name>
 ```
 

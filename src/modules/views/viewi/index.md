@@ -16,13 +16,13 @@ To start using Viewi in your Leaf apps, you simply need to install the Leaf View
 
 You can install the Viewi module with the Leaf CLI:
 
-```sh
+```bash
 leaf install viewi
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/viewi
 ```
 

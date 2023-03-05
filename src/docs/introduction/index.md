@@ -1,13 +1,6 @@
 <!-- markdownlint-disable no-inline-html -->
 # Introduction
 
-::: tip ⚡️ Official Release
-This is the documentation for Leaf v3.0.
-
-- [**Leaf 2 docs**](https://archive.leafphp.dev)
-- [**Leaf 1 docs**](https://v1.leafphp.dev)
-:::
-
 <script setup>
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
@@ -18,14 +11,38 @@ Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, si
 
 Version 3 of Leaf brings more to the table with a theme centring on developer experience and usability, but with all the goodies while ensuring users have the best experience as well.
 
-[→ Checkout Leaf 3's features](/docs/introduction/features)
+[→ Checkout Leaf 3's features](/docs/introduction/why)
 
 ## Getting Started
 
 The official guide assumes **basic** level knowledge of PHP.
 
-::: warning 😵‍💫 Don't know PHP?
-If you are not familiar with PHP, we recommend that you check out the [W3Schools PHP Tutorial](https://www.w3schools.com/php/default.asp) before continuing. This is because you will basically be writing PHP code when using Leaf (or any other framework).
+::: tip Down to the basics
+
+<details>
+<summary>😵‍💫 Don't know PHP?</summary>
+If you are not familiar with PHP, we recommend that you check out the <a href="https://www.w3schools.com/php/default.asp" target="_blank">W3Schools PHP Tutorial</a> before continuing or use the video below. This is because you will basically be writing PHP code when using Leaf (or any other framework).
+
+<VideoDocs
+  title="Introduction to PHP"
+  subject="Introduction to PHP"
+  description="You can follow along with the video by FreeCodeCamp to learn the basics of PHP."
+  link="https://www.youtube.com/embed/OK_JCtrrv-c"
+/>
+</details>
+
+<details>
+<summary>What's a PHP Framework?</summary>
+If you are not familiar with the concept of PHP frameworks, you can check out the video below by <a href="https://kinsta.com/" target="_blank">Kinsta</a>.
+
+<VideoDocs
+  title="Introduction to PHP Frameworks"
+  subject="What Are PHP Frameworks?"
+  description="You can follow along with the video below to learn the basics of PHP frameworks."
+  link="https://www.youtube.com/embed/pW7Vyr2SW_s"
+/>
+</details>
+
 :::
 
 ### Installation
@@ -282,13 +299,13 @@ To demonstrate this, we will expand the app above to output a template instead o
 
 For this demo, we will use BareUI. We can install BareUI with leaf CLI.
 
-```sh
+```bash
 leaf install bareui
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/bareui
 ```
 

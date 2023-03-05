@@ -32,7 +32,7 @@ Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path
 
 If you want to quickly try out Leaf 3 in a new project, create a folder and run:
 
-```sh
+```bash
 composer require leafs/leaf
 ```
 
@@ -77,19 +77,19 @@ $app->run();
 
 You can run this with the built in php server
 
-```sh
+```bash
 php -S localhost:5500
 ```
 
 Alternatively, you can use the Leaf CLI:
 
-```sh
+```bash
 leaf create <app-name> --v3
 ```
 
 And run the sample app with:
 
-```sh
+```bash
 leaf serve
 ```
 
@@ -99,13 +99,13 @@ As mentioned before, we've made leaf 3 as backwards compatible with Leaf 2.5+ as
 
 - Install leaf 3
 
-```sh
+```bash
 composer require leafs/leaf
 ```
 
 Or with leaf CLI
 
-```sh
+```bash
 leaf install leaf
 ```
 
@@ -116,13 +116,13 @@ You should probably delete your `vendor` folder and `package-lock.json` before r
 - After this, it's just a matter of installing the modules required in your project.
 For example, if you use `Leaf\Auth`, you will need to install the auth module. This can be done with:
 
-```sh
+```bash
 leaf install auth
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/auth
 ```
 
@@ -146,7 +146,7 @@ To fix any problems with cors in your Leaf 2 app, follow these steps:
 
 - Install the cors module
 
-```sh
+```bash
 composer require leafs/cors
 ```
 

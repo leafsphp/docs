@@ -8,7 +8,7 @@ Most templating engines out there ship with a nice syntax, handy ways to use exp
 
 You can always install BareUI with composer:
 
-```sh
+```bash
 composer require leafs/bareui
 ```
 
@@ -22,21 +22,17 @@ BareUI has deep integrations with Leaf core by default. This means that if you'r
 <div class="functional-mode">
 
 ```php
-db()->create('dbname')->execute();
+app()->template->config("path", "./views");
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$db->create('dbname')->execute();
+$app->template->config("path", "./views");
 ```
 
 </div>
-
-```php
-app()->template->config("path", "./views");
-```
 
 :::
 
@@ -62,19 +58,6 @@ There are currently only 2 options to configure.
 <div class="functional-mode">
 
 ```php
-db()->create('dbname')->execute();
-```
-
-</div>
-<div class="class-mode">
-
-```php
-$db->create('dbname')->execute();
-```
-
-</div>
-
-```php
 // app() will be available in all templates
 app()->template->config("params", ["app" => function () {
   // do something
@@ -82,22 +65,22 @@ app()->template->config("params", ["app" => function () {
 }]);
 ```
 
-`template.view.php`
-
-<div class="functional-mode">
-
-```php
-db()->create('dbname')->execute();
-```
-
 </div>
 <div class="class-mode">
 
 ```php
-$db->create('dbname')->execute();
+// app() will be available in all templates
+$app->template->config("params", ["app" => function () use ($app) {
+  // do something
+  return $app;
+}]);
 ```
 
 </div>
+
+`template.view.php`
+
+<div class="functional-mode">
 
 ```php
 <?php
@@ -107,6 +90,20 @@ if (!$something) {
   echo app()->template->render("error");
 }
 ```
+
+</div>
+<div class="class-mode">
+
+```php
+<?php
+
+if (!$something) {
+  // you can nest templates
+  echo $app->template->render("error");
+}
+```
+
+</div>
 
 ### render
 
@@ -140,17 +137,13 @@ We can render this from where we want the UI to show:
 <div class="functional-mode">
 
 ```php
-db()->create('dbname')->execute();
+echo app()->template->render("welcome", [
+    "var" => "Something",
+]);
 ```
 
 </div>
 <div class="class-mode">
-
-```php
-$db->create('dbname')->execute();
-```
-
-</div>
 
 ```php
 echo $app->template->render("welcome", [
@@ -158,28 +151,28 @@ echo $app->template->render("welcome", [
 ]);
 ```
 
+</div>
+
 Since bare UI templates are just raw PHP, you can do stuff like this:
 
 <div class="functional-mode">
 
 ```php
-db()->create('dbname')->execute();
+echo app()->template->render("app", [
+    "items" => ["i1", "i2"],
+]);
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$db->create('dbname')->execute();
-```
-
-</div>
-
-```php
 echo $app->template->render("app", [
     "items" => ["i1", "i2"],
 ]);
 ```
+
+</div>
 
 `app.view.php`
 

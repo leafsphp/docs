@@ -9,13 +9,13 @@ Leaf Db is a new lightweight but powerful query builder which allows you quickly
 
 You can install Leaf Db with Leaf CLI:
 
-```sh
+```bash
 leaf install db
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/db
 ```
 

@@ -7,13 +7,13 @@ Leaf mail is a cool feature added in Leaf v2 after the main beta test. Leaf Mail
 
 You can install leaf mail with composer or the leaf cli.
 
-```sh
+```bash
 composer require leafs/mail
 ```
 
 or
 
-```sh
+```bash
 leaf install mail
 ```
 

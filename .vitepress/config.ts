@@ -154,21 +154,28 @@ const nav = [
 const mainSidebar = [
   {
     text: 'Essentials',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
-      { text: 'Features', link: '/docs/introduction/features' }
+      { text: 'Why Leaf?', link: '/docs/introduction/why' },
+      { text: 'Leaf + MVC', link: '/docs/introduction/mvc' }
     ]
   },
   {
     text: 'Quick Start',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' },
+      { text: 'Migration Guide', link: '/docs/migration/introduction' }
     ]
   },
   {
     text: 'Introduction',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Leaf tutorial', link: '/tutorial/' },
@@ -177,15 +184,18 @@ const mainSidebar = [
       { text: 'Modules', link: '/modules/' },
       { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
-      { text: 'Testing', link: '/docs/tooling/testing' },
+      { text: 'Testing', link: '/docs/tooling/testing' }
     ]
   },
   {
     text: 'Config',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'Overview', link: '/docs/config/' },
       { text: 'Instance and Mode', link: '/docs/config/nsm' },
-      { text: 'App settings', link: '/docs/config/settings' }
+      { text: 'App settings', link: '/docs/config/settings' },
+      { text: 'Dependency Injection', link: '/docs/tooling/container' }
     ]
   },
   {
@@ -200,18 +210,17 @@ const mainSidebar = [
       { text: 'Session', link: '/modules/session/' },
       { text: 'Session Flash', link: '/modules/session/flash' },
       { text: 'Cookies', link: '/modules/cookies/' },
-      { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
       { text: 'Middleware', link: '/docs/routing/middleware' },
+      { text: 'Error Handling', link: '/docs/routing/errors' }
     ]
   },
   {
     text: 'Routing',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
-      { text: 'Error Handling', link: '/docs/routing/errors' },
       { text: 'Sub routing', link: '/docs/routing/sub-routing' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       {
@@ -224,34 +233,29 @@ const mainSidebar = [
   },
   {
     text: 'Database',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/db/' },
-      { text: 'Leaf DB v1', link: '/modules/db/v/1/' },
-      { text: 'New in v2', link: '/modules/db/v/2/new' },
-      { text: 'Leaf DB v2', link: '/modules/db/v/2/' },
       { text: 'Query Builder', link: '/modules/db/v/2/builder' },
       { text: 'Leaf Redis', link: '/modules/redis/' }
     ]
   },
   {
     text: 'Authentication',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
-      { text: 'Leaf Auth v1', link: '/modules/auth/v/1/' },
-      { text: 'Leaf Auth v2', link: '/modules/auth/v/2/' },
-      { text: 'Leaf Auth v2.1', link: '/modules/auth/v/2.1/' },
       { text: 'Auth Config', link: '/modules/auth/v/2.1/config' },
       { text: 'Auth Methods', link: '/modules/auth/v/2.1/methods' },
-      { text: 'Session Support', link: '/modules/auth/v/2.1/session' }
+      { text: 'Session Support', link: '/modules/auth/v/2.1/session' },
+      { text: 'Helper methods', link: '/modules/auth/v/2.1/helpers' }
     ]
   },
   {
     text: 'Utilities',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
@@ -265,7 +269,7 @@ const mainSidebar = [
   },
   {
     text: 'Frontend',
-    collapsible: true,
+    collapsible: false,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/views/' },
@@ -277,6 +281,8 @@ const mainSidebar = [
   },
   {
     text: 'Digging Deeper',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Eien Server', link: '/modules/eien/' },
@@ -287,6 +293,8 @@ const mainSidebar = [
   },
   {
     text: 'MVC Tools',
+    collapsible: false,
+    collapsed: true,
     items: [
       { text: 'MVC Core', link: '/modules/mvc-core/' },
       { text: 'Models', link: '/modules/mvc-core/model' },
@@ -295,16 +303,16 @@ const mainSidebar = [
       { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
       { text: 'Aloe CLI', link: '/aloe-cli/' }
     ]
-  },
-  {
-    text: 'Archive',
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: 'Leaf Http', link: '/modules/http/' },
-      { text: 'Leaf Http v1', link: '/modules/http/v/1/' }
-    ]
   }
+  // {
+  //   text: 'Archive',
+  //   collapsible: false,
+  //   collapsed: true,
+  //   items: [
+  //     { text: 'Leaf Http', link: '/modules/http/' },
+  //     { text: 'Leaf Http v1', link: '/modules/http/v/1/' }
+  //   ]
+  // }
 ]
 
 const communitySidebar = [

@@ -10,13 +10,13 @@ If you want a pre-built MVC setup, we recommend checking out Leaf MVC or Leaf AP
 
 You can quickly install MVC core using composer or leaf cli.
 
-```sh
+```bash
 composer require leafs/mvc-core
 ```
 
 Or with leaf CLI:
 
-```sh
+```bash
 leaf install mvc-core
 ```
 

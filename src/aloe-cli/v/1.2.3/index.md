@@ -12,7 +12,7 @@ Sunset Aloe is the first version of Aloe integrated out of the box with Leaf MVC
 
 Sunset also includes auth scaffolding which simply allows you to add basic session based auth (login, signup, update profile and guards) to your app by simply running one command.
 
-```sh
+```bash
 php leaf scaffold:auth
 ```
 
@@ -59,7 +59,7 @@ protected function handle()
 
 ## Aloe List
 
-```sh
+```bash
 Leaf MVC v2.0
 
 Usage:

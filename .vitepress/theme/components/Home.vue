@@ -70,7 +70,7 @@ import VueMasteryModal from './VueMasteryModal.vue';
     <h2>Sponsors</h2>
     <SponsorsGroup tier="sponsor" showLabel placement="landing" />
 
-    <h2>Code Contributors</h2>
+    <h2 id="contributors">Code Contributors</h2>
     <SponsorsGroup tier="code" showLabel placement="landing" />
   </section>
 

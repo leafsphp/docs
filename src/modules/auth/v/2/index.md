@@ -5,13 +5,13 @@
 
 You can install Leaf Db with Leaf CLI:
 
-```sh
+```bash
 leaf install auth@2.0
 ```
 
 Or with composer:
 
-```sh
+```bash
 composer require leafs/auth v2.0
 ```
 

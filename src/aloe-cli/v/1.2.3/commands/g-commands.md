@@ -4,7 +4,7 @@ These commands generate something.
 
 ## g:command
 
-```sh
+```bash
 Description:
   Create a new console command
 
@@ -17,7 +17,7 @@ Arguments:
 
 ## g:controller
 
-```sh
+```bash
 Description:
   Create a new controller class
 
@@ -39,7 +39,7 @@ Options:
 
 ## g:factory
 
-```sh
+```bash
 Description:
   Create a new model factory
 
@@ -52,7 +52,7 @@ Arguments:
 
 ## g:helper
 
-```sh
+```bash
 Description:
   Create a new helper class
 
@@ -65,7 +65,7 @@ Arguments:
 
 ## g:migration
 
-```sh
+```bash
 Description:
   Create a new migration file
 
@@ -78,7 +78,7 @@ Arguments:
 
 ## g:model
 
-```sh
+```bash
 Description:
   Create a new model class
 
@@ -94,7 +94,7 @@ Options:
 
 ## g:seed
 
-```sh
+```bash
 Description:
   Create a new seed file
 

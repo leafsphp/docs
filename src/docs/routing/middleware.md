@@ -11,17 +11,94 @@ import VideoDocs from '/@theme/components/VideoDocs.vue'
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
 /> -->
 
-Middleware are just methods that run before your code runs, be it a particular route or your whole application. Unlike many other frameworks and systems, Leaf gives you the opportunity to set global middleware that run before any and every route.
+## What is middleware?
 
-::: warning Using middleware outside Leaf
-All the examples below assume you are using leaf router in a leaf app, and so use leaf's instance of the router with `$app` or `app()`. If you're however using Leaf router outside leaf, you can replace `$app`/`app()` with `Leaf\Router`.
+In simple terms, middleware is a piece of code that runs before your application runs. It can be used to perform various tasks like authentication, error handling, logging, etc. It can also help to optimize the performance of an application by caching data, compressing responses, or distributing load across multiple servers, although those are more advanced use-cases. It's a great way to keep your code clean and organized.
+
+::: tip Note
+Leaf has modules that can be used to perform some of the tasks middleware can do. For example, Leaf has [Leaf Auth](/modules/auth/v/2.1/) which can be used to handle authentication, a [logger module](/docs/tooling/logging) and many more useful [modules](/modules/). This means you don't need to use middleware to perform these tasks. However, middleware can be used to perform tasks that Leaf modules don't cover.
 :::
+
+## How does middleware work?
+
+Middleware is a concept that is used in many frameworks, and they have different ways of implementing it. Leaf's implementation is based on the concept of middleware stacks. A middleware stack is a list of middleware that are executed in a specific order. The order is important because each middleware can perform a task and pass the request to the next middleware in the stack. This is how middleware works in Leaf.
+
+When a request is made to your application, Leaf will run through the middleware stack and execute each middleware. After the middleware stack is done, Leaf will then execute the route handling function. This is a rough overview of how middleware works in Leaf, however, for a more in-depth explanation, you can check out the video by [Codecourse](https://www.codecourse.com).
+
+<VideoDocs
+  title="How Middlware Works"
+  subject="How Middlware Works"
+  description="A low level overview of how middleware runs in your favourite framework. Starting with a simple app example, we'll build a middleware manager, add middleware to a stack, and run it."
+  link="https://www.youtube.com/embed/Hqk9yUJfRKg"
+/>
+
+## Middleware in Leaf
+
+Leaf provides 2 interfaces for middleware: application middleware and router hooks.
+
+- Router hooks basically hook into the runtime of the Leaf router and allow you to run code before a route/multiple routes are invoked.
+- Application middleware on the other hand is a more structured way to define and use middleware in your apps. It allows you to define middleware classes as done in other frameworks like Laravel. This fits right in if you intend to build MVC applications.
+
+## Application middleware
+
+As mentioned above, application middleware gives you a more structured way to define and use middleware in your apps. It allows you to define middleware as classes instead of using functions.
+
+### Defining application middleware
+
+Leaf provides a `Middleware` class that you can extend to define your application middleware. The `Middleware` class has a `call` method that you can override to define your middleware logic. In the `call` method, you can perform any task you want and then call `$this->next()` to pass the request to the next middleware in the stack or even return a response if you want to break the execution of your application. The example below checks if a request key is set, if it's not, the user is redirected to another route.
+
+```php
+class TestMiddleware extends Leaf\Middleware
+{
+    public function call()
+    {
+        if (!request()->get('key')) {
+            return Custom::redirect('/login');
+        }
+
+        return $this->next();
+    }
+}
+```
+
+One thing to note is you should always call `$this->next()`. The `$this->next()` method forwards the incoming request to the next middleware or your application if there's no other middleware.
+
+### Using your application middleware
+
+After defining the middleware, the next step is to tell Leaf to actually run your middleware. You can do this by calling the `use` method on the Leaf instance.
+
+<div class="class-mode">
+
+```php
+$app = new Leaf\App();
+
+$app->use(new TestMiddleware);
+
+// ... your routes here
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->use(new TestMiddleware);
+
+// ... your routes here
+```
+
+</div>
 
 ## Before Route Middlewares
 
-This type of middleware runs before a particular route is invoked. To get started, simply pass in the route you want to run the middleware before.
+This is a type of router hook that runs before a particular route is invoked. It is technically just a callable/function that holds whatever code you want to execute before the route is executed. To actually create and register the before route middleware, you need to pass the function into the `before` method of the Leaf instance.
 
-Like route handling functions, you hook a handling function to a combination of one or more HTTP request methods and a specific route pattern.
+The `before` method takes 3 arguments:
+
+- The HTTP method: This can be a single method or a pipe-separated list of methods.
+- The route pattern
+- The middleware function
+
+This example below shows how to create a before route middleware that checks if a user is logged in before allowing access to the admin dashboard. Note that we're using `/admin/.*` as the route pattern. This means that the middleware will be executed for all routes that start with `/admin/`.
 
 <div class="class-mode">
 
@@ -48,7 +125,8 @@ app()->before('GET|POST', '/admin/.*', function () {
 
 </div>
 
-::: tip Note
+### Matching multiple middleware
+
 Unlike route handling functions, more than one before route middleware is executed when more than one route match is found.
 
 <div class="class-mode">
@@ -89,8 +167,6 @@ app()->before('GET|POST', '/admin/.*', function () {
 ```
 
 </div>
-
-:::
 
 Using this same concept, you can run your middleware on every route. We call this before router middleware.
 
@@ -148,49 +224,6 @@ $app->get('/home', ['middleware' => $midfn, function () {
 app()->get('/home', ['middleware' => $midfn, function () {
   echo 'User Home';
 }]);
-```
-
-</div>
-
-## App middleware
-
-This type of middleware uses the `Leaf\Middleware` class under the hood. It provides a more structured way to define and use middleware in your apps. It allows you to define middleware classes as done in other frameworks like Laravel. This fits right in if you intend to build MVC applications.
-
-::: warning Usage outside Leaf
-Since `Leaf\Middleware` is part of Leaf's core, this type of middleware can't be used without Leaf. We suggest you use router hooks or before router middleware above if you're building without Leaf core.
-:::
-
-Using this method, you define your middleware class which should extend the `Leaf\Middleware` class. After that, your middleware code should be defined in the `call` method as done below:
-
-```php
-class TestMiddleware extends Leaf\Middleware
-{
-    public function call()
-    {
-        echo "my test middleware";
-
-        $this->next();
-    }
-}
-```
-
-One thing to note is your `call` method should always call `$this->next()`. This forwards the incoming request to the next middleware or your application if there's no other middleware.
-
-After defining the middleware, the next step is to tell Leaf to actually run your middleware. To do this, you can simply call the `use` method on the Leaf instance.
-
-<div class="class-mode">
-
-```php
-$app = new Leaf\App();
-
-$app->use(new TestMiddleware);
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-app()->use(new TestMiddleware);
 ```
 
 </div>

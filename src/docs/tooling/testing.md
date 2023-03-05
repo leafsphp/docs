@@ -18,13 +18,13 @@ Start testing early! We recommend you begin writing tests as soon as you can. Th
 
 From Leaf CLI v2.3, you will be asked if you wish to add tests to your application. From there, Alchemy and default tests are setup for you. You can update and run these tests using the Leaf CLI:
 
-```sh
+```bash
 leaf test
 ```
 
 Or directly from Alchemy:
 
-```sh
+```bash
 ./vendor/bin/alchemy run
 ```
 
@@ -32,13 +32,13 @@ Or directly from Alchemy:
 
 If you've already setup a Leaf project, you can add tests by simply installing the Alchemy module. You can do this with the Leaf CLI:
 
-```sh
+```bash
 leaf install alchemy
 ```
 
 Or with composer
 
-```sh
+```bash
 composer require leafs/alchemy
 ```
 
@@ -46,31 +46,31 @@ composer require leafs/alchemy
 
 After installing alchemy, you can quickly generate a sample test with a single command:
 
-```sh
+```bash
 ./vendor/bin/alchemy setup
 ```
 
 If you're using PHPUnit, you'll have to add a `--phpunit` option to the setup command:
 
-```sh
+```bash
 ./vendor/bin/alchemy setup --phpunit
 ```
 
 After this, you can add the specific tests you need in your app. You can then execute these tests using the Leaf CLI:
 
-```sh
+```bash
 leaf test
 ```
 
 Or directly from Alchemy:
 
-```sh
+```bash
 ./vendor/bin/alchemy run
 ```
 
 <!-- Or with the Leaf CLI:
 
-```sh
+```bash
 leaf test:run
 ``` -->
 
@@ -108,13 +108,13 @@ final class StackTest extends TestCase
 
 After this, you can run your tests with Alchemy like this:
 
-```sh
+```bash
 ./vendor/bin/alchemy run --phpunit
 ```
 
 Or with Leaf CLI
 
-```sh
+```bash
 leaf test:run --phpunit
 ``` 
 
@@ -128,13 +128,13 @@ You should get something like this: -->
 
 As mentioned before, Alchemy simply runs your tests for you. It allows you to run tests without having to do a ton of config first or even write a `phpunit.xml`. All config is handled by Alchemy itself. However, if you want to have control over the `phpunit.xml` file, you can export Alchemy's default config to create a `phpunit.xml` file. You can do this with:
 
-```sh
+```bash
 ./vendor/bin/alchemy config:export
 ```
 
 <!-- Or with Leaf CLI
 
-```sh
+```bash
 leaf test:configure
 ``` -->
 
@@ -142,7 +142,7 @@ After running the command listed above, you'll have access to a `phpunit.xml` fi
 
 If you want to totally switch from alchemy to pest or phpunit, you can eject your tests.
 
-```sh
+```bash
 ./vendor/bin/alchemy config:eject
 ```
 
