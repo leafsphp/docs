@@ -194,7 +194,8 @@ const mainSidebar = [
     items: [
       { text: 'Overview', link: '/docs/config/' },
       { text: 'Instance and Mode', link: '/docs/config/nsm' },
-      { text: 'App settings', link: '/docs/config/settings' }
+      { text: 'App settings', link: '/docs/config/settings' },
+      { text: 'Dependency Injection', link: '/docs/tooling/container' }
     ]
   },
   {
@@ -209,7 +210,6 @@ const mainSidebar = [
       { text: 'Session', link: '/modules/session/' },
       { text: 'Session Flash', link: '/modules/session/flash' },
       { text: 'Cookies', link: '/modules/cookies/' },
-      { text: 'Container', link: '/docs/tooling/container' },
       { text: 'Leaf View', link: '/docs/tooling/view' },
       { text: 'Middleware', link: '/docs/routing/middleware' },
       { text: 'Error Handling', link: '/docs/routing/errors' }
