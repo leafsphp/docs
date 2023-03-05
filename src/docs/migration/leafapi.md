@@ -23,7 +23,7 @@ Start learning Leaf 3 at [Leaf Mastery](https://www.Leafmastery.com/courses-path
 If you want to quickly try out Leaf 3 in a new project:
 
 ```bash
-composer require leafs/leaf dev-v3.x-dev
+composer require leafs/leaf v3.x-dev
 ```
 
 This will quickly setup leaf 3 with the default modules. From there, create your `index.php` file and add this quickstart.
@@ -57,7 +57,7 @@ Note that leaf 3 is still under active development. We don't recommend switching
 - Install leaf 3
 
 ```bash
-composer require leafs/leaf dev-v3.x-dev
+composer require leafs/leaf v3.x-dev
 ```
 
 > You can delete your vendor folder before running the command above to make sure that all the dependencies are accurately reinstalled.

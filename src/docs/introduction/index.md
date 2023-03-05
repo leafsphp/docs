@@ -1,13 +1,6 @@
 <!-- markdownlint-disable no-inline-html -->
 # Introduction
 
-::: tip ⚡️ Official Release
-This is the documentation for Leaf v3.0.
-
-- [**Leaf 2 docs**](https://archive.leafphp.dev)
-- [**Leaf 1 docs**](https://v1.leafphp.dev)
-:::
-
 <script setup>
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
