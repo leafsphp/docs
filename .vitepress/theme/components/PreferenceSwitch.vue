@@ -89,13 +89,6 @@ function useToggleFn(
         <a class="switch-link" title="About API preference" href="/docs/introduction/#class-mode-vs-functional-mode"
           @click="closeSideBar">?</a>
       </div>
-      <div class="switch-container" v-if="showSFC">
-        <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
-        <VTSwitch class="sfc-switch" aria-label="prefer single file component" :aria-checked="preferSFC"
-          @click="toggleSFC()" />
-        <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
-        <a class="switch-link" title="About SFC" href="/guide/scaling-up/sfc.html" @click="closeSideBar">?</a>
-      </div>
     </div>
   </div>
 </template>
@@ -190,8 +183,8 @@ html:not(.prefer-functional) .composition-label {
   height: 14px;
   line-height: 13px;
   text-align: center;
-  color: var(--vt-c-green);
-  border: 1px solid var(--vt-c-green);
+  color: #5e8f3c;
+  border: 1px solid #5e8f3c;
   border-radius: 50%;
 }
 
