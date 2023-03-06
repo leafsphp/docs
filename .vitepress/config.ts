@@ -292,19 +292,12 @@ const mainSidebar = [
       { text: 'Leaf API', link: '/docs/leafapi/' },
       { text: 'Skeleton', link: '/docs/skeleton/' },
       { text: 'MVC Config', link: '/docs/mvc/config' },
-    ]
-  },
-  {
-    text: 'MVC Tools',
-    collapsible: false,
-    collapsed: true,
-    items: [
-      { text: 'MVC Core', link: '/modules/mvc-core/' },
+      { text: 'Aloe CLI', link: '/aloe-cli/' },
+      { text: 'Controllers', link: '/modules/mvc-core/controller' },
+      { text: 'API Controllers', link: '/modules/mvc-core/api-controller' },
       { text: 'Models', link: '/modules/mvc-core/model' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
-      { text: 'Controller', link: '/modules/mvc-core/controller' },
-      { text: 'API Controller', link: '/modules/mvc-core/api-controller' },
-      { text: 'Aloe CLI', link: '/aloe-cli/' }
+      { text: 'MVC Core', link: '/modules/mvc-core/' },
     ]
   },
   {
