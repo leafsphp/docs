@@ -27,7 +27,7 @@ composer create-project leafs/mvc <project-name>
 ```
 
 This command will set up a Leaf MVC app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
-  
+
 ```bash
 cd <project-name>
 leaf serve
@@ -114,6 +114,14 @@ C:.
   The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
 
 <div class="vt-box-container next-steps">
+  <a class="vt-box" href="/docs/mvc/config">
+    <h3 class="next-steps-link">Leaf MVC Configuration</h3>
+    <small class="next-steps-caption">Learn how to configure Leaf and your app to work in different ways.</small>
+  </a>
+  <a class="vt-box" href="/docs/mvc/config">
+    <h3 class="next-steps-link">Leaf MVC Configuration</h3>
+    <small class="next-steps-caption">Learn how to configure Leaf and your app to work in different ways.</small>
+  </a>
   <a class="vt-box" href="/docs/mvc/config">
     <h3 class="next-steps-link">Leaf MVC Configuration</h3>
     <small class="next-steps-caption">Learn how to configure Leaf and your app to work in different ways.</small>
