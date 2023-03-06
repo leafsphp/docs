@@ -543,3 +543,185 @@ return [
 ```
 
 You can find more information on the configuration options on the [cors config docs](/modules/cors/#configuration-options).
+
+## Database config
+
+This config allows you to configure the database connection. The default config looks like this:
+
+```php
+return [
+
+  /*
+  |--------------------------------------------------------------------------
+  | Default Database Connection Name
+  |--------------------------------------------------------------------------
+  |
+  | Here you may specify which of the database connections below you wish
+  | to use as your default connection for all database work. Of course
+  | you may use many connections at once using the Database library.
+  |
+  */
+
+  'default' => _env('DB_CONNECTION', 'mysql'),
+
+  /*
+  |--------------------------------------------------------------------------
+  | Database Connections
+  |--------------------------------------------------------------------------
+  |
+  | Here are each of the database connections setup for your application.
+  | Of course, examples of configuring each database platform that is
+  | supported by eloquent is shown below to make development simple.
+  |
+  |
+  | All database work in eloquent is done through the PHP PDO facilities
+  | so make sure you have the driver for your particular database of
+  | choice installed on your machine before you begin development.
+  |
+  */
+
+  'connections' => [
+    'sqlite' => [
+      'driver' => 'sqlite',
+      'url' => _env('DATABASE_URL'),
+      'database' => _env('DB_DATABASE', DatabasePath('database.sqlite')),
+      'prefix' => '',
+      'foreign_key_constraints' => _env('DB_FOREIGN_KEYS', true),
+    ],
+
+    'mysql' => [
+      'driver' => 'mysql',
+      'url' => _env('DATABASE_URL'),
+      'host' => _env('DB_HOST', '127.0.0.1'),
+      'port' => _env('DB_PORT', '3306'),
+      'database' => _env('DB_DATABASE', 'forge'),
+      'username' => _env('DB_USERNAME', 'forge'),
+      'password' => _env('DB_PASSWORD', ''),
+      'unix_socket' => _env('DB_SOCKET', ''),
+      'charset' => _env('DB_CHARSET', 'utf8mb4'),
+      'collation' => _env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+      'prefix' => '',
+      'prefix_indexes' => true,
+      'strict' => true,
+      'engine' => null,
+      'options' => extension_loaded('pdo_mysql') ? array_filter([
+        PDO::MYSQL_ATTR_SSL_CA => _env('MYSQL_ATTR_SSL_CA'),
+      ]) : [],
+    ],
+
+    'pgsql' => [
+      'driver' => 'pgsql',
+      'url' => _env('DATABASE_URL'),
+      'host' => _env('DB_HOST', '127.0.0.1'),
+      'port' => _env('DB_PORT', '5432'),
+      'database' => _env('DB_DATABASE', 'forge'),
+      'username' => _env('DB_USERNAME', 'forge'),
+      'password' => _env('DB_PASSWORD', ''),
+      'charset' => _env('DB_CHARSET', 'utf8'),
+      'prefix' => '',
+      'prefix_indexes' => true,
+      'schema' => 'public',
+      'sslmode' => 'prefer',
+    ],
+
+    'sqlsrv' => [
+      'driver' => 'sqlsrv',
+      'url' => _env('DATABASE_URL'),
+      'host' => _env('DB_HOST', 'localhost'),
+      'port' => _env('DB_PORT', '1433'),
+      'database' => _env('DB_DATABASE', 'forge'),
+      'username' => _env('DB_USERNAME', 'forge'),
+      'password' => _env('DB_PASSWORD', ''),
+      'charset' => _env('DB_CHARSET', 'utf8'),
+      'prefix' => '',
+      'prefix_indexes' => true,
+    ],
+  ],
+];
+```
+
+This config has been modified to use the `_env` helper function. This helper function will check if the environment variable is set and if not, it will return the default value. This is useful for when you want to use the same config file for both development and production. Leaf will automatically use the connection details from the selected db type (`DB_CONNECTION`) in the `.env` file.
+
+The database config is used by your application models, Leaf DB and Leaf Auth to connect to the database.
+
+## Paths config
+
+The paths config allows you to configure the paths to your application's folders. The default config looks like this:
+
+```php
+return [
+  'controllersPath' => 'app/controllers',
+
+  'modelsPath' => 'app/models',
+
+  'migrationsPath' => 'app/database/migrations',
+
+  'seedsPath' => 'app/database/seeds',
+
+  'factoriesPath' => 'app/database/factories',
+
+  'helpersPath' => 'app/helpers',
+
+  'viewsPath' => 'app/views',
+
+  'configPath' => 'config',
+
+  'storagePath' => 'storage',
+
+  'commandsPath' => 'app/console',
+
+  'routesPath' => 'app/routes',
+
+  'libPath' => 'lib',
+
+  'publicPath' => 'public',
+
+  'databaseStoragePath' => 'storage/app/db'
+];
+```
+
+The paths config is used by Leaf to locate your application's folders. If you want to change the default paths, you can do so in the `config/paths.php` file.
+
+## View Config
+
+The view config allows you to configure the view engine and the view cache. The default config looks like this:
+
+```php
+use Leaf\View;
+
+return [
+  /*
+  |--------------------------------------------------------------------------
+  | Template Engine [EXPERIMENTAL]
+  |--------------------------------------------------------------------------
+  |
+  | Leaf MVC unlike other frameworks tries to give you as much control as
+  | you need. As such, you can decide which view engine to use.
+  |
+  */
+  'view_engine' => \Leaf\Blade::class,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Custom config method
+  |--------------------------------------------------------------------------
+  |
+  | Configuration for your templating engine.
+  |
+  */
+  'config' => function ($config) {
+      View::blade()->config($config['views_path'], $config['cache_path']);
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | Custom render method
+  |--------------------------------------------------------------------------
+  |
+  | This render method is triggered whenever render() is called
+  | in your app if you're using a custom view engine.
+  |
+  */
+  'render' => null,
+];
+```
