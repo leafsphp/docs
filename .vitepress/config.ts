@@ -290,7 +290,8 @@ const mainSidebar = [
     items: [
       { text: 'Leaf MVC', link: '/docs/leafmvc/' },
       { text: 'Leaf API', link: '/docs/leafapi/' },
-      { text: 'Skeleton', link: '/docs/skeleton/' }
+      { text: 'Skeleton', link: '/docs/skeleton/' },
+      { text: 'MVC Config', link: '/docs/mvc/config' },
     ]
   },
   {
