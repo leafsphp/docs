@@ -103,6 +103,10 @@ const nav = [
             link: 'https://blog.leafphp.dev'
           },
           {
+            text: 'Events',
+            link: '/events/'
+          },
+          {
             text: 'Team',
             link: '/community/team'
           },
