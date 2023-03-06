@@ -1,5 +1,7 @@
 # Leaf MVC
 
+<!-- markdownlint-disable no-inline-html -->
+
 Leaf MVC is a minimal but powerful PHP MVC framework. It's designed to be simple, fast and easy to use. Leaf by default doesn't give you a lot of structure, and that's where Leaf MVC comes in.
 
 Leaf MVC is a setup that gives you a good starting point for building applications using the MVC pattern. It's built on top of Leaf, and comes with additional tooling that make building with Leaf even faster.
@@ -110,3 +112,10 @@ C:.
 - ### The `vendor` directory
 
   The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box" href="/docs/mvc/config">
+    <h3 class="next-steps-link">Leaf MVC Configuration</h3>
+    <small class="next-steps-caption">Learn how to configure Leaf and your app to work in different ways.</small>
+  </a>
+</div>
