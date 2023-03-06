@@ -29,32 +29,32 @@ Leaf out of the box doesn't provide any structure, however, the Leaf team also p
 
 We provide three setups for you to choose from:
 
-- [Leaf MVC](https://mvc.leafphp.dev/)
-- [Leaf API](https://api.leafphp.dev/)
-- [Skeleton](https://skeleton.leafphp.dev/)
+- [Leaf MVC](/docs/leafmvc/)
+- [Leaf API](/docs/leafapi/)
+- [Skeleton](/docs/sleleton/)
 
 ### Leaf MVC vs Leaf API vs Skeleton
 
-| Engine                              |  Type       |  In-app console   |  Main use       | Extra Notes                    |
-| ----------------------------------- | :---------: | :---------------: | :-------------: | :----------------------------: |
-| [Leaf MVC](/modules/views/bareui/)  | Framework   |         ✅        | General purpose |                -               |
-| [Leaf API](/modules/views/veins/)   | Framework   |         ✅        | Building APIs   | View layer disabled by default |
-| [Skeleton](/modules/views/blade/)   | Boilerplate |         ❌        | General purpose |                -               |
+| Engine                      |    Type     | In-app console |    Main use     |          Extra Notes           |
+| --------------------------- | :---------: | :------------: | :-------------: | :----------------------------: |
+| [Leaf MVC](/docs/leafmvc/)  |  Framework  |       ✅       | General purpose |               -                |
+| [Leaf API](/docs/leafapi/)  |  Framework  |       ✅       |  Building APIs  | View layer disabled by default |
+| [Skeleton](/docs/sleleton/) | Boilerplate |       ❌       | General purpose |               -                |
 
 ## MVC Tools
 
 Besides to the MVC setups, Leaf also provides a few tools that can help you build your own MVC setup if you want to. You can check the "MVC Tools" section in the sidebar to learn more about these tools.
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box" href="/docs/introduction/installation">
+  <a class="vt-box" href="/docs/leafmvc/">
     <h3 class="next-steps-link">Leaf MVC</h3>
     <small class="next-steps-caption">Check out the documentation for Leaf MVC.</small>
   </a>
-  <a class="vt-box" href="/docs/introduction/first-app">
+  <a class="vt-box" href="/docs/leafapi/">
     <h3 class="next-steps-link">Leaf API</h3>
     <small class="next-steps-caption">Start building apps with Leaf API and modules</small>
   </a>
-  <a class="vt-box" href="https://codelabs.leafphp.dev" target="_blank">
+  <a class="vt-box" href="/docs/sleleton/" target="_blank">
     <h3 class="next-steps-link">Skeleton</h3>
     <small class="next-steps-caption">Get started building applications with Skeleton</small>
   </a>

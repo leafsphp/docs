@@ -81,11 +81,10 @@ function useToggleFn(
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
-        <label class="options-label w:_10" @click="toggleFunctionalMode(false)">Class Mode</label>
+        <label class="options-label w:_10" @click="toggleFunctionalMode(false)">X-Classes</label>
         <VTSwitch class="api-switch" aria-label="prefer functional mode" :aria-checked="preferFunctional"
           @click="toggleFunctionalMode()" />
-        <label class="composition-label" @click="toggleFunctionalMode(true)">{{ showFullText ? 'Functional' : 'Fn' }}
-          Mode</label>
+        <label class="composition-label" @click="toggleFunctionalMode(true)">Functions</label>
         <a class="switch-link" title="About API preference" href="/docs/introduction/#class-mode-vs-functional-mode"
           @click="closeSideBar">?</a>
       </div>
