@@ -22,13 +22,16 @@ function includes(a: string, b: string) {
 <template>
   <PartnerHero />
 
-  <div class="container">
+  <div class="container" v-if="events.length">
     <VTIconSearch class="icon" />
     <input
       placeholder="Search partners by name or location"
       v-model="query"
     />
-    <EventList :partners="events" :filter="filter" />
+    <EventList :events="events" :filter="filter" />
+  </div>
+  <div class="flex flex:center-all mb:_10" v-else>
+    There are no upcoming events
   </div>
   <Speak />
 </template>

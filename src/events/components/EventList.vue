@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import PartnerCard from './PartnerCard.vue'
-import { Partner } from './type'
+import { Event } from './type'
 
-const { filter, partners } = defineProps<{
-  filter?: (p: Partner) => boolean | undefined;
-  partners: Partner[];
+const { filter, events } = defineProps<{
+  filter?: (p: Event) => boolean | undefined;
+  events: Event[];
 }>()
 
 const filtered = computed(() =>
-  filter ? (partners as Partner[]).filter(filter) : (partners as Partner[])
+  filter ? (events as Event[]).filter(filter) : (events as Event[])
 )
 </script>
 
