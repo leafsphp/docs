@@ -44,3 +44,18 @@ We provide three setups for you to choose from:
 ## MVC Tools
 
 Besides to the MVC setups, Leaf also provides a few tools that can help you build your own MVC setup if you want to. You can check the "MVC Tools" section in the sidebar to learn more about these tools.
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box" href="/docs/introduction/installation">
+    <h3 class="next-steps-link">Leaf MVC</h3>
+    <small class="next-steps-caption">Check out the documentation for Leaf MVC.</small>
+  </a>
+  <a class="vt-box" href="/docs/introduction/first-app">
+    <h3 class="next-steps-link">Leaf API</h3>
+    <small class="next-steps-caption">Start building apps with Leaf API and modules</small>
+  </a>
+  <a class="vt-box" href="https://codelabs.leafphp.dev" target="_blank">
+    <h3 class="next-steps-link">Skeleton</h3>
+    <small class="next-steps-caption">Get started building applications with Skeleton</small>
+  </a>
+</div>
