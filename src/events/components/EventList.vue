@@ -15,7 +15,9 @@ const filtered = computed(() =>
 
 <template>
   <div class="event-list pb:_5">
-    <PartnerCard v-for="p in filtered" :key="p.name" :data="p" />
+    <div v-if="filtered?.length">
+      <PartnerCard v-for="p in filtered" :key="p.name" :data="p" />
+    </div>
   </div>
 </template>
 

@@ -3,8 +3,10 @@ page: true
 footer: false
 ---
 
-<script setup>
+<!-- <script setup>
 import Page from './components/PartnerPage.vue'
 </script>
 
-<Page partner="vehikl" />
+<Page partner="vehikl" /> -->
+
+Hello
