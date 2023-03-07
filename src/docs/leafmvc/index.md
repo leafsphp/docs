@@ -93,7 +93,7 @@ C:.
 
 - ### The `config` directory
 
-  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. You can find more information about the configuration files in the [Configuration](/docs/leafmvc/configuration) section.
+  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. You can find more information about the configuration files in the [Configuration](/docs/mvc/config) section.
 
 - ### The `public` directory
 

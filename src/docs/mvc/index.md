@@ -31,7 +31,7 @@ We provide three setups for you to choose from:
 
 - [Leaf MVC](/docs/leafmvc/)
 - [Leaf API](/docs/leafapi/)
-- [Skeleton](/docs/sleleton/)
+- [Skeleton](/docs/skeleton/)
 
 ### Leaf MVC vs Leaf API vs Skeleton
 
@@ -39,7 +39,7 @@ We provide three setups for you to choose from:
 | --------------------------- | :---------: | :------------: | :-------------: | :----------------------------: |
 | [Leaf MVC](/docs/leafmvc/)  |  Framework  |       ✅       | General purpose |               -                |
 | [Leaf API](/docs/leafapi/)  |  Framework  |       ✅       |  Building APIs  | View layer disabled by default |
-| [Skeleton](/docs/sleleton/) | Boilerplate |       ❌       | General purpose |               -                |
+| [Skeleton](/docs/skeleton/) | Boilerplate |       ❌       | General purpose |               -                |
 
 ## MVC Tools
 
@@ -54,7 +54,7 @@ Besides to the MVC setups, Leaf also provides a few tools that can help you buil
     <h3 class="next-steps-link">Leaf API</h3>
     <small class="next-steps-caption">Start building apps with Leaf API and modules</small>
   </a>
-  <a class="vt-box" href="/docs/sleleton/" target="_blank">
+  <a class="vt-box" href="/docs/skeleton/" target="_blank">
     <h3 class="next-steps-link">Skeleton</h3>
     <small class="next-steps-caption">Get started building applications with Skeleton</small>
   </a>
