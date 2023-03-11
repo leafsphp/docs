@@ -24,7 +24,7 @@ You can also setup a Leaf API app by using [Composer](https://getcomposer.org/):
 composer create-project leafs/api <project-name>
 ```
 
-This command will set up a Leaf MVC app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
+This command will set up a Leaf API app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
 
 ```bash
 cd <project-name>
