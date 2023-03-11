@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "name": "Build First Conference",
+    "flyer": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F454438609%2F197503707544%2F1%2Foriginal.20230225-065058?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C60%2C1080%2C540&s=10df2028ed3c297683803fa1fe678e23",
+    "intro": "Product/developer centric conference for tech enthusiasts, beginners and experts alike to network and harness modern ways and best practice.",
+    "date": "2023-03-25T09:30:00.000Z",
+    "description": [
+      "Product/developer centric conference for tech enthusiasts, beginners and experts alike to network and harness modern ways and best practice."
+    ],
+    "topics": ["React", "Leaf PHP", "NextJS", "Laravel"],
+    "region": ["Accra"],
+    "location": ["Accra Technical University"],
+    "website": {
+      "text": "Eventbrite",
+      "url": "https://www.eventbrite.com/e/build-first-conference-tickets-561581494367"
+    },
+    "contact": "dawoodiddris@gmail.com"
+  }
+]

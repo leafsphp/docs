@@ -31,7 +31,7 @@
 .title {
   line-height: 32px;
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 0.3em;
 }
 
