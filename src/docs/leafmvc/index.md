@@ -113,16 +113,20 @@ C:.
 
   The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
 
+## Next Steps
+
+Follow along with the next steps to learn more about Leaf MVC.
+
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/docs/mvc/config">
     <h3 class="next-steps-link">Leaf MVC Configuration</h3>
     <small class="next-steps-caption">Learn how to configure Leaf and your app to work in different ways.</small>
   </a>
-  <a class="vt-box" href="/docs/mvc/config">
+  <a class="vt-box" href="/docs/mvc/routing">
     <h3 class="next-steps-link">Routing</h3>
     <small class="next-steps-caption">Learn how routing works in your Leaf applications.</small>
   </a>
-  <a class="vt-box" href="/docs/mvc/config">
+  <a class="vt-box" href="/docs/mvc/controllers">
     <h3 class="next-steps-link">Controllers</h3>
     <small class="next-steps-caption">Learn how to use controllers in your Leaf applications.</small>
   </a>

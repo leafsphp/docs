@@ -1,5 +1,7 @@
 # MVC Configuration
 
+<!-- markdownlint-disable no-inline-html -->
+
 Leaf MVC, Leaf API and Skeleton all try to maintain a working out-of-the-box configuration as much as possible, so, for the most part, you don't have to configure anything. However, there are some things you may want to configure, and this page will show you how.
 
 ## Overview
@@ -725,3 +727,22 @@ return [
   'render' => null,
 ];
 ```
+
+## Next Steps
+
+Follow along with the next steps to learn more about Leaf MVC.
+
+<div class="vt-box-container next-steps">
+  <a class="vt-box" href="/docs/mvc/routing">
+    <h3 class="next-steps-link">Routing</h3>
+    <small class="next-steps-caption">Learn how routing works in your Leaf applications.</small>
+  </a>
+  <a class="vt-box" href="/docs/mvc/controllers">
+    <h3 class="next-steps-link">Controllers</h3>
+    <small class="next-steps-caption">Learn how to use controllers in your Leaf applications.</small>
+  </a>
+  <a class="vt-box" href="/docs/mvc/models">
+    <h3 class="next-steps-link">Models</h3>
+    <small class="next-steps-caption">Learn how to configure and use models in your Leaf apps.</small>
+  </a>
+</div>
