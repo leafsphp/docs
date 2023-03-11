@@ -8,6 +8,10 @@ Leaf MVC, Leaf API and Skeleton all rely on Leaf's powerful routing engine. The 
 If you're not familiar with Leaf's routing, you should read the [Leaf Routing](/docs/routing/) document first.
 :::
 
+## The Routes Folder
+
+Leaf MVC, Leaf API and Skeleton all have a `routes` folder in which all your application's routes are defined. The `routes` folder is located in the `app` directory in Leaf MVC and Leaf API but is located in the root directory in Skeleton. The `routes` folder contains a single file called `index.php` which is where all your application's routes are defined. This file is automatically loaded by Leaf when your application starts.
+
 ## Linking Controllers
 
 Controllers provide a way to organize your application's logic. They are a great way to keep your routes file clean and easy to read. Controllers are just classes that implement the `App\Controllers\Controller` protocol. You can find more information about controllers in the [Controllers](/docs/mvc/controllers) document. This document will focus on how to link controllers to routes.
