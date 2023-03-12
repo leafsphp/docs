@@ -81,20 +81,12 @@ function useToggleFn(
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
       <div class="switch-container">
-        <label class="options-label w:_10" @click="toggleFunctionalMode(false)">Class Mode</label>
+        <label class="options-label w:_10" @click="toggleFunctionalMode(false)">Classes</label>
         <VTSwitch class="api-switch" aria-label="prefer functional mode" :aria-checked="preferFunctional"
           @click="toggleFunctionalMode()" />
-        <label class="composition-label" @click="toggleFunctionalMode(true)">{{ showFullText ? 'Functional' : 'Fn' }}
-          Mode</label>
+        <label class="composition-label" @click="toggleFunctionalMode(true)">Functions</label>
         <a class="switch-link" title="About API preference" href="/docs/introduction/#class-mode-vs-functional-mode"
           @click="closeSideBar">?</a>
-      </div>
-      <div class="switch-container" v-if="showSFC">
-        <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
-        <VTSwitch class="sfc-switch" aria-label="prefer single file component" :aria-checked="preferSFC"
-          @click="toggleSFC()" />
-        <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
-        <a class="switch-link" title="About SFC" href="/guide/scaling-up/sfc.html" @click="closeSideBar">?</a>
       </div>
     </div>
   </div>
@@ -190,8 +182,8 @@ html:not(.prefer-functional) .composition-label {
   height: 14px;
   line-height: 13px;
   text-align: center;
-  color: var(--vt-c-green);
-  border: 1px solid var(--vt-c-green);
+  color: #5e8f3c;
+  border: 1px solid #5e8f3c;
   border-radius: 50%;
 }
 

@@ -1,6 +1,6 @@
 import path from 'path'
 import { createMarkdownRenderer } from 'vitepress'
-import { readExamples, ExampleData } from '../examples/examples.data'
+import { readExamples, ExampleData } from './examples.data'
 
 export declare const data: Record<string, ExampleData>
 

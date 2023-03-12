@@ -6,7 +6,7 @@ import { data } from './tutorial.data'
 import {
   resolveSFCExample,
   onHashChange
-} from '../examples/utils'
+} from './utils'
 import './Repl/style.css'
 import PreferenceSwitch from '/@theme/components/PreferenceSwitch.vue'
 import {

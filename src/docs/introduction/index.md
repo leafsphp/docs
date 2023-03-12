@@ -387,7 +387,7 @@ We've briefly introduced the most basic features of Leaf 3 - the rest of this gu
 
 ## Next Steps
 
-If you skipped the [Introduction](/guide/introduction), we strongly recommend reading it before moving on to the rest of the documentation.
+If you skipped the [Introduction](/docs/introduction/), we strongly recommend reading it before moving on to the rest of the documentation.
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/docs/introduction/installation">
