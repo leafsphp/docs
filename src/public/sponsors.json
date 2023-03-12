@@ -70,7 +70,8 @@
       "name": "温柔",
       "url": "https://github.com/Seevil",
       "img": "https://avatars.githubusercontent.com/u/7334510?v=4"
-    },{
+    },
+    {
       "name": "Diego",
       "url": "https://opencollective.com/guest-d6b48e41",
       "img": "https://images.opencollective.com/guest-d6b48e41/avatar.png"
@@ -256,6 +257,11 @@
       "name": "Dr. Tobias Quathamer",
       "url": "https://github.com/toddy15",
       "img": "https://avatars.githubusercontent.com/u/12176273?v=4"
+    },
+    {
+      "name": "Zhangmw",
+      "url": "https://github.com/codediy",
+      "img": "https://avatars.githubusercontent.com/u/20250924?v=4"
     }
   ]
 }
