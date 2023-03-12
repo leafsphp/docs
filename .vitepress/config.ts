@@ -299,7 +299,7 @@ const mainSidebar = [
       { text: 'Migrations', link: '/docs/mvc/migrations' },
       { text: 'Seeders', link: '/docs/mvc/seeds' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
-      { text: 'MVC Console Tool', link: '/docs/mvc/console' },
+      // { text: 'MVC Console Tool', link: '/docs/mvc/console' },
       { text: 'Aloe CLI', link: '/aloe-cli/' },
       { text: 'MVC Core', link: '/modules/mvc-core/' }
     ]
