@@ -1,4 +1,4 @@
-# MVC Configuration
+# Configuration
 
 <!-- markdownlint-disable no-inline-html -->
 
