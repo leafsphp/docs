@@ -14,10 +14,8 @@ const filtered = computed(() =>
 </script>
 
 <template>
-  <div class="event-list pb:_5">
-    <div v-if="filtered?.length">
-      <PartnerCard v-for="p in filtered" :key="p.name" :data="p" />
-    </div>
+  <div class="event-list pb:_5" v-if="filtered?.length">
+    <PartnerCard v-for="p in filtered" :key="p.name" :data="p" />
   </div>
 </template>
 
