@@ -20,7 +20,7 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    Join the Leaf team talk about <b><u>Leaf: the what, the why and the how</u></b> at the
+    Join the Leaf team talk about <b><i>Leaf: the what, the why and the how</i></b> at the
     <a href="/events/">Build First Conference</a>
     in Accra.
   </div>
