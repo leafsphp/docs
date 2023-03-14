@@ -10,14 +10,14 @@ import {
 import SponsorsAside from './components/SponsorsAside.vue'
 import VueSchoolLink from './components/VueSchoolLink.vue'
 // import VueJobs from './components/VueJobs.vue'
-// import Banner from './components/Banner.vue'
+import Banner from './components/Banner.vue'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
     return h(VPTheme.Layout, null, {
-      // banner: () => h('div', {}, [
-      //   h(Banner),
-      // ]),
+      banner: () => h('div', {}, [
+        h(Banner),
+      ]),
       'sidebar-top': () => h(PreferenceSwitch),
       'aside-mid': () => h(SponsorsAside),
       // 'aside-bottom': () => h(VueJobs)
