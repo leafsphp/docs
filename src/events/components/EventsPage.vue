@@ -25,7 +25,7 @@ function includes(a: string, b: string) {
   <div class="container" v-if="events.length">
     <VTIconSearch class="icon" />
     <input
-      placeholder="Search partners by name or location"
+      placeholder="Search events by name or location"
       v-model="query"
     />
     <EventList :events="events" :filter="filter" />
