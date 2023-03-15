@@ -20,15 +20,15 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    You’re browsing the documentation for v3.x.
-    <a href="https://archive.leafphp.dev" target="_blank" rel="noopener noreferrer">Click here</a>
-    for earlier leaf/mvc versions.
+    Join the Leaf team talk about <b><i>Leaf: the what, the why and the how</i></b> at the
+    <a href="/events/">Build First Conference</a>
+    in Accra.
   </div>
 </template>
 
 <style>
 html:not(.banner-dismissed) {
-  --vt-banner-height: 24px;
+  --vt-banner-height: 30px;
 }
 </style>
 
