@@ -46,7 +46,7 @@ The `sanitize` on leaf anchor handles all of this for you so you don't have to w
 ```php
 <?php
 
-require __DIR__ . "vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 
 $data = $_POST["data"];
 $data = Leaf\Anchor::sanitize($data);
@@ -59,7 +59,7 @@ This also works on arrays
 ```php
 <?php
 
-require __DIR__ . "vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 
 $data = Leaf\Anchor::sanitize($_POST);
 
