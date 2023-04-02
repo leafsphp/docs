@@ -142,10 +142,11 @@ After downloading repo, you need to create an autoloader.
 <?php
 spl_autoload_register(function ($class) {
   $file = str_replace('\\', '/', $class);
+  $file = __DIR__ . "/leaf/src/$file.php";
 
-  if (!file_exists("leaf/src/$file.php")) return;
-
-  require "leaf/src/$file.php";
+  if (is_file($file)) {
+    require $file;
+  }
 });
 ```
 
@@ -158,8 +159,8 @@ Now, all you have to do is create your index.php file, install leaf's dependenci
 ```php
 <?php
 
-require __DIR__ . "leaf/vendor/autoload.php";
-require __DIR__ . "autoloader.php";
+require __DIR__ . "/leaf/vendor/autoload.php";
+require __DIR__ . "/autoloader.php";
 ```
 
 ::: warning NOTE THAT
@@ -169,9 +170,9 @@ functional mode is not automatically available if you go down this route, you wi
 ```php{5}
 <?php
 
-require __DIR__ . "leaf/vendor/autoload.php";
-require __DIR__ . "autoloader.php";
-require __DIR__ . "leaf/src/functions.php";
+require __DIR__ . "/leaf/vendor/autoload.php";
+require __DIR__ . "/autoloader.php";
+require __DIR__ . "/leaf/src/functions.php";
 ```
 
 Although the setup for this method is a bit more complicated, it gives you full control over leaf and how it works since you will have access to the source code. You can directly edit leaf to behave the way you want it to. If you don't need this, we recommend that you install leaf with composer above or if you want a base setup, you can follow either of the methods below.
