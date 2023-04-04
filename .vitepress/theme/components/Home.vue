@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import NewsLetter from './NewsLetter.vue'
+import BlogSection from './BlogSection.vue'
 import Speak from './Speak.vue'
 import SponsorsGroup from './SponsorsGroup.vue';
 import Testimonials from './Testimonials.vue';
@@ -75,6 +76,7 @@ import VueMasteryModal from './VueMasteryModal.vue';
   </section>
 
   <Testimonials />
+  <BlogSection />
   <NewsLetter />
   <Speak />
 
@@ -92,7 +94,7 @@ import VueMasteryModal from './VueMasteryModal.vue';
         </div>
 
         <div class="w:100">
-          <h2 class="chakra-heading css-1c75i90">Connect with the community</h2>
+          <h2 class="css-1c75i90">Connect with the community</h2>
           <p class="discord-subtext">Ask questions, report issues, and meet new people.</p>
         </div>
       </div>
