@@ -38,7 +38,7 @@ const handleSubmit = () => window.open('https://tinyletter.com/leafphp', 'popupw
 
 <style scoped>
 .NewsLetter {
-  border-top: 1px solid transparent;
+  border-top: 1px solid var(--vt-c-divider-light);
   border-bottom: 1px solid var(--vt-c-divider-light);
   padding: 32px 24px;
   background: var(--vt-c-bg-soft);
