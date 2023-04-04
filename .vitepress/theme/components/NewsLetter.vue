@@ -1,43 +1,21 @@
 <script setup lang="ts">
-import { VTLink } from '@leafphp/docs-theme'
+import { VTLink } from '@leafphp/docs-theme';
+
+const handleSubmit = () => window.open('https://tinyletter.com/leafphp', 'popupwindow', 'scrollbars=yes,width=800,height=600');
 </script>
 
 <template>
   <section id="newsletter" class="NewsLetter">
     <div class="container">
-      <h2 class="title">Leaf PHP Social.</h2>
-      <!-- <h2 class="title">Subscribe to our weekly newsletter.</h2> -->
+      <h2 class="title">Subscribe to our newsletter.</h2>
 
-      <!-- <div class="form">
-        <form
-          class="box"
-          id="revue-form"
-          name="revue-form"
-          method="post"
-          action="https://www.getrevue.co/profile/vuenewsletter/add_subscriber"
-          rel="noopener"
-          target="_blank"
-        >
-          <input
-            class="input"
-            id="member_email"
-            name="member[email]"
-            type="email"
-            placeholder="Email address"
-            required
-          />
-
-          <div class="action">
-            <input
-              class="button"
-              id="member_submit"
-              name="member[subscribe]"
-              type="submit"
-              value="SUBSCRIBE"
-            />
-          </div>
-        </form>
-      </div> -->
+      <form action="https://tinyletter.com/leafphp" method="post" target="popupwindow" @submit="handleSubmit">
+        <div class="subscribe-form">
+          <input type="text" name="email" id="tlemail" />
+          <button type="submit">Subscribe</button>
+        </div>
+        <input type="hidden" value="1" name="embed" />
+      </form>
 
       <p class="help">
         You can read our blog posts at
@@ -90,6 +68,37 @@ import { VTLink } from '@leafphp/docs-theme'
   font-weight: 500;
   color: var(--vt-c-text-2);
   transition: color 0.5s;
+  margin-bottom: 8px;
+}
+
+.subscribe-form {
+  position: relative;
+  max-width: 550px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 80px 10px 20px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid var(--vt-c-divider-light);
+  font-size: 16px;
+}
+
+button {
+  position: absolute;
+  padding: 4px 20px;
+  margin: 0;
+  height: calc(100% - 8px);
+  right: 4px;
+  top: 4px;
+  cursor: pointer;
+  background-color: var(--vt-c-green);
+  width: 30%;
+  border-radius: 2em;
 }
 
 @media (min-width: 375px) {
