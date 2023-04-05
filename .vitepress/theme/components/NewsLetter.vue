@@ -11,7 +11,7 @@ const handleSubmit = () => window.open('https://tinyletter.com/leafphp', 'popupw
 
       <form action="https://tinyletter.com/leafphp" method="post" target="popupwindow" @submit="handleSubmit">
         <div class="subscribe-form">
-          <input type="text" name="email" id="tlemail" />
+          <input type="text" placeholder="email@example.com" name="email" id="tlemail" />
           <button type="submit">Subscribe</button>
         </div>
         <input type="hidden" value="1" name="embed" />
