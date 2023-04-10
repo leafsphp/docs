@@ -578,6 +578,24 @@ export default defineConfigWithTheme<ThemeConfig>({
     [
       'script',
       {
+        async: '',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-QGZVHHLK12'
+      }
+    ],
+    [
+      'script',
+      {},
+      `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QGZVHHLK12');
+      `
+    ],
+    [
+      'script',
+      {
         src: 'https://cdn.usefathom.com/script.js',
         'data-site': 'XNOLWPLB',
         'data-spa': 'auto',
@@ -590,18 +608,13 @@ export default defineConfigWithTheme<ThemeConfig>({
     nav,
     sidebar,
     algolia: {
-      indexName: 'leafphp',
       appId: 'Q38TT8XUN9',
-      apiKey: '91fc50bf651a76ce68220f14e75e38f4'
-      // searchParameters: {
-      //   facetFilters: ['version:v3'],
-      // },
+      indexName: 'leafphp',
+      apiKey: '87b4b8d90960f7a326dfd4c8781a5a74',
+      searchParameters: {
+        facetFilters: ['version:v3']
+      }
     },
-
-    // carbonAds: {
-    //   code: 'CEBDT27Y',
-    //   placement: 'vuejsorg'
-    // },
 
     socialLinks: [
       { icon: 'languages', link: '/translations/' },
@@ -622,7 +635,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     footer: {
       license: {
         text: 'MIT License',
-        link: 'https://opensource.org/licenses/MIT'
+        link: 'https://github.com/leafsphp/leaf/blob/v3.x/LICENSE'
       },
       copyright: `Copyright © 2019-${new Date().getFullYear()} Michael Darko-Duodu`
     }
