@@ -40,7 +40,8 @@ const handleSubmit = () => window.open('https://tinyletter.com/leafphp', 'popupw
 .NewsLetter {
   border-top: 1px solid var(--vt-c-divider-light);
   border-bottom: 1px solid var(--vt-c-divider-light);
-  padding: 32px 24px;
+  border: none !important;
+  padding: 72px 24px;
   background: var(--vt-c-bg-soft);
   transition: border-color 0.5s, background-color 0.5s;
 }
@@ -48,13 +49,6 @@ const handleSubmit = () => window.open('https://tinyletter.com/leafphp', 'popupw
 .dark .NewsLetter {
   border-top-color: var(--vt-c-divider-light);
   border-bottom-color: var(--vt-c-divider-light);
-  background: var(--vt-c-bg);
-}
-
-@media (min-width: 768px) {
-  .NewsLetter {
-    padding: 48px 32px;
-  }
 }
 
 .container {
