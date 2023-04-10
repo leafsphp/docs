@@ -228,7 +228,7 @@ tick()->set('hour', 5)->set('minute', 55)->set('second', 15);
 
 Once you have a Tick object, you may want to manipulate it in some way.
 
-Day.js supports method chaining like this:
+Tick supports method chaining like this:
 
 ```php
 tick('2019-01-25')->add(1, 'day')->subtract(1, 'year')->year(2009)->toString()
@@ -239,11 +239,11 @@ tick('2019-01-25')->add(1, 'day')->subtract(1, 'year')->year(2009)->toString()
 Returns a cloned Tick object with a specified amount of time added.
 
 ```php
-const a = tick()
-const b = a.add(7, 'day')
+$a = tick();
+$b = a->add(7, 'day')
 
-// a -> the original value and will not change
-// b -> the manipulation result
+// $a -> the original value and will not change
+// $b -> the manipulation result
 ```
 
 Units are case insensitive, short forms are case sensitive.
