@@ -110,7 +110,7 @@ In order to use this object in our view(template), we'd have to pass this object
 $app->veins->render("homepage", ['user' => $user]);
 ```
 
-Now in our `homepage.vein.php` file, we can access the name variable like this:
+Now in our `homepage.vein.html` file, we can access the name variable like this:
 
 ```html
 {$user->name}
