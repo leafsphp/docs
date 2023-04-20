@@ -89,8 +89,8 @@ To begin with, we'll need to tell Veins where to look for our templates and what
 
 ```php
 $app->veins->configure([
-  "veins_dir" => "views/",
-  "cache_dir" => "views/cache/"
+  "templateDir" => "views/",
+  "cacheDir" => "views/cache/"
 ]);
 ```
 
@@ -125,7 +125,7 @@ Now in our `homepage.vein.php` file, we can access the name variable like this:
 {$array['key']}
 ```
 
-## Connstants
+## Constants
 
 ```html
 {#constant#}
