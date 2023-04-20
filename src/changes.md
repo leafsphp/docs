@@ -663,7 +663,7 @@ Unlike previous versions, this version of Leaf is focusing on improving the use 
 - Renamed mkdir to createFolder
 - Renamed mkdirInBase to createFolderInBase
 - Renamed renameDir to renameFolder
-- Changed vein file extension from .vein to .vein.php
+- Changed vein file extension from .vein to .vein.html
 - Split Leaf\Config\Db between Leaf\Core\Db\Mysqli and Leaf\Core\Db\PDO
 - Changed `renderHtml` to `renderPage`
 - Changed all `getParam`s to `get`
