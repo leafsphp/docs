@@ -38,11 +38,11 @@ $app->mount('/movies', function () use($app) {
 
 </div>
 
-Nesting of subroutes is possible, just define a second `app()->mount()` in the callback function that's already contained within a preceding `app()->mount()`. Also, Note that nested subroutes currently don't support dynamic url patterns, so, you can only do something like this.
+Nesting of subroutes is possible, just define a second `mount` or `group` in the callback function that's already contained within a preceding `mount` or `group`.
 
 <div class="functional-mode">
 
-```php
+```php{1,10}
 app()->group('/user', function () {
   app()->get('/', function () {
     response()->markup('no user id');
