@@ -173,7 +173,8 @@ const mainSidebar = [
     items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' }
+      { text: 'Migration Guide', link: '/docs/migration/introduction' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
     ]
   },
   {
