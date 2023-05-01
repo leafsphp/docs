@@ -3,24 +3,24 @@ import { VTIconEdit, VTIconExternalLink } from '@leafphp/docs-theme';
 
 const articles = [
   {
+    title: "Build First Recap",
+    date: "April 18, 2023",
+    link: "https://blog.leafphp.dev/posts/buildfirst-recap.html"
+  },
+  {
     title: "2023 Docs Updates",
     date: "March 14, 2023",
     link: "https://blog.leafphp.dev/posts/docs-updates.html"
   },
   {
-    title: "Leaf: Getting Started",
+    title: "Getting Started with Leaf",
     date: "January 7, 2023",
     link: "https://blog.leafphp.dev/posts/getting-started.html"
   },
   {
-    title: "Eien Dec. 2022",
+    title: "Eien: December 2022",
     date: "December 27, 2022",
     link: "https://blog.leafphp.dev/posts/eien-december-22.html"
-  },
-  {
-    title: "2022 Wrapped",
-    date: "December 11, 2022",
-    link: "https://blog.leafphp.dev/posts/2022-wrapped.html"
   },
 ];
 </script>
@@ -82,6 +82,14 @@ const articles = [
   padding: 32px;
   transition: border-color 0.5s, background-color 0.5s;
   box-shadow: 0 0 0 1px var(--vt-c-bg-mute), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.blog-card:hover {
+  box-shadow: 0 0 0 1px var(--vt-c-bg-mute), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dark .blog-card:hover {
+  box-shadow: 0 0 0 1px var(--vt-c-bg-mute), 0 2px 10px 0 rgba(150, 150, 150, 0.1);
 }
 
 .blog-card h4 {
