@@ -57,10 +57,11 @@ The server module allows you to log out data which will be displayed in the dev 
 To get started, call the console method on `Leaf\DevTools`
 
 ```php
-\Leaf\DevTools::console('This data should be logged in the console', 'log');
-\Leaf\DevTools::console('This data should be logged in the console', 'info');
-\Leaf\DevTools::console('This data should be logged in the console', 'warn');
-\Leaf\DevTools::console('This data should be logged in the console', 'error');
+\Leaf\DevTools::console('This data should be logged in the console');
+\Leaf\DevTools::console('This is a warning', 'warn');
+\Leaf\DevTools::console('This is an error', 'error');
+\Leaf\DevTools::console('This is an info message', 'info');
+\Leaf\DevTools::console('This is a debug message', 'log');
 ```
 
 <img src="https://user-images.githubusercontent.com/26604242/235471133-5f438e47-4a2d-4f3e-8c31-45541c588161.png" style="border: 1px solid var(--vt-c-theme-soft); border-radius: 8px;">
