@@ -174,7 +174,7 @@ const mainSidebar = [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
-      // { text: 'Leaf Devtools', link: '/modules/devtools/' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
     ]
   },
   {
@@ -252,10 +252,13 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
-      { text: 'Auth Config', link: '/modules/auth/v/2.1/config' },
-      { text: 'Auth Methods', link: '/modules/auth/v/2.1/methods' },
-      { text: 'Session Support', link: '/modules/auth/v/2.1/session' },
-      { text: 'Helper methods', link: '/modules/auth/v/2.1/helpers' }
+      { text: 'Auth Config', link: '/modules/auth/config' },
+      { text: 'User Login', link: '/modules/auth/login' },
+      { text: 'User Sign Up', link: '/modules/auth/signup' },
+      { text: 'Authenticated State', link: '/modules/auth/logged-in-state' },
+      { text: 'Protecting your Routes', link: '/modules/auth/protecting-your-routes' },
+      { text: 'Session Support', link: '/modules/auth/session' },
+      { text: 'Helper methods', link: '/modules/auth/helpers' }
     ]
   },
   {
@@ -612,9 +615,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       appId: 'Q38TT8XUN9',
       indexName: 'leafphp',
       apiKey: '87b4b8d90960f7a326dfd4c8781a5a74',
-      searchParameters: {
-        facetFilters: ['version:v3']
-      }
     },
 
     socialLinks: [
