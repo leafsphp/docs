@@ -1,4 +1,4 @@
-# Leaf Headers
+# Headers
 <!-- markdownlint-disable no-inline-html -->
 
 This is a simple object which allows you to manage the way headers are used in your application. It contains methods to set and get headers in your app.
