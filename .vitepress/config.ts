@@ -158,7 +158,7 @@ const nav = [
 const mainSidebar = [
   {
     text: 'Essentials',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
@@ -168,17 +168,18 @@ const mainSidebar = [
   },
   {
     text: 'Quick Start',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' }
+      { text: 'Migration Guide', link: '/docs/migration/introduction' },
+      // { text: 'Leaf Devtools', link: '/modules/devtools/' },
     ]
   },
   {
     text: 'Introduction',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
@@ -193,7 +194,7 @@ const mainSidebar = [
   },
   {
     text: 'Config',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Overview', link: '/docs/config/' },
@@ -204,8 +205,8 @@ const mainSidebar = [
   },
   {
     text: 'The basics',
-    collapsible: false,
-    collapsed: false,
+    collapsible: true,
+    collapsed: true,
     items: [
       { text: 'Request', link: '/modules/http/v/2/request' },
       { text: 'Response', link: '/modules/http/v/2/response' },
@@ -221,7 +222,7 @@ const mainSidebar = [
   },
   {
     text: 'Routing',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
@@ -237,7 +238,7 @@ const mainSidebar = [
   },
   {
     text: 'Database',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/db/' },
@@ -247,19 +248,22 @@ const mainSidebar = [
   },
   {
     text: 'Authentication',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
-      { text: 'Auth Config', link: '/modules/auth/v/2.1/config' },
-      { text: 'Auth Methods', link: '/modules/auth/v/2.1/methods' },
-      { text: 'Session Support', link: '/modules/auth/v/2.1/session' },
-      { text: 'Helper methods', link: '/modules/auth/v/2.1/helpers' }
+      { text: 'Auth Config', link: '/modules/auth/config' },
+      { text: 'User Login', link: '/modules/auth/login' },
+      { text: 'User Sign Up', link: '/modules/auth/signup' },
+      { text: 'Protecting your Routes', link: '/modules/auth/protecting-your-routes' },
+      { text: 'Updating logged-in user', link: '/modules/auth/update' },
+      { text: 'Session Support', link: '/modules/auth/session' },
+      { text: 'Helper methods', link: '/modules/auth/helpers' },
     ]
   },
   {
     text: 'Utilities',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
@@ -273,7 +277,7 @@ const mainSidebar = [
   },
   {
     text: 'Frontend',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/views/' },
@@ -285,7 +289,7 @@ const mainSidebar = [
   },
   {
     text: 'MVC Integrations',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'Leaf MVC', link: '/docs/leafmvc/' },
@@ -306,7 +310,7 @@ const mainSidebar = [
   },
   {
     text: 'Digging Deeper',
-    collapsible: false,
+    collapsible: true,
     collapsed: true,
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
@@ -318,7 +322,7 @@ const mainSidebar = [
   }
   // {
   //   text: 'Archive',
-  //   collapsible: false,
+  //   collapsible: true,
   //   collapsed: true,
   //   items: [
   //     { text: 'Leaf Http', link: '/modules/http/' },
@@ -330,7 +334,7 @@ const mainSidebar = [
 const communitySidebar = [
   {
     text: 'Community',
-    collapsible: false,
+    collapsible: true,
     items: [
       { text: 'History', link: '/community/history' },
       { text: 'FAQ', link: '/community/faq' },
@@ -360,7 +364,7 @@ export const sidebar = {
   '/aloe-cli/': [
     {
       text: 'Aloe CLI',
-      collapsible: false,
+      collapsible: true,
       items: [
         { text: 'Home', link: '/aloe-cli/' },
         {
@@ -371,7 +375,7 @@ export const sidebar = {
     },
     {
       text: 'Default Commands',
-      collapsible: false,
+      collapsible: true,
       items: [
         {
           text: 'Misc Commands',
@@ -393,7 +397,7 @@ export const sidebar = {
     },
     {
       text: 'Aloe CLI',
-      collapsible: false,
+      collapsible: true,
       items: [
         {
           text: 'Custom Commands',
@@ -407,7 +411,7 @@ export const sidebar = {
     },
     {
       text: 'Aloe Misc',
-      collapsible: false,
+      collapsible: true,
       items: [
         { text: 'Aloe Libraries', link: '/aloe-cli/v/1.2.3/libraries' },
         { text: 'Aloe Installer', link: '/aloe-cli/v/1.2.3/installer' }
@@ -611,9 +615,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       appId: 'Q38TT8XUN9',
       indexName: 'leafphp',
       apiKey: '87b4b8d90960f7a326dfd4c8781a5a74',
-      searchParameters: {
-        facetFilters: ['version:v3']
-      }
     },
 
     socialLinks: [

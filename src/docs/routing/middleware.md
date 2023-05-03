@@ -228,6 +228,68 @@ app()->get('/home', ['middleware' => $midfn, function () {
 
 </div>
 
+## Named Middleware Route Options <sup class="vt-badge">New</sup>
+
+You can name your middleware and use it on multiple routes. This is useful when you have a lot of routes that use the same middleware. You can name your middleware like this:
+
+<div class="class-mode">
+
+```php
+$app->registerMiddleware('home', function () {
+  echo 'Home middleware';
+});
+
+$app->get('/home', ['middleware' => 'home', function () { ... }]);
+$app->get('/home/about', ['middleware' => 'home', function () { ... }]);
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+app()->registerMiddleware('home', function () {
+  echo 'Home middleware';
+});
+
+app()->get('/home', ['middleware' => 'home', function () { ... }]);
+app()->get('/home/about', ['middleware' => 'home', function () { ... }]);
+```
+
+</div>
+
+Named middleware can also be used with route groups:
+
+<div class="class-mode">
+
+```php
+$app->registerMiddleware('home', function () {
+  echo 'Home middleware';
+});
+
+$app->group('/group', ['middleware' => 'home', function () use ($app) {
+  $app->get('/home', function () { ... });
+  $app->get('/home/about', function () { ... });
+}]);
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+app()->registerMiddleware('home', function () {
+  echo 'Home middleware';
+});
+
+app()->group(['middleware' => 'home', function () {
+  app()->get('/home', function () { ... });
+  app()->get('/home/about', function () { ... });
+}]);
+```
+
+</div>
+
 ## Router Hooks
 
 Hooks basically allow you to hook into Leaf router and execute a callback at a given time. For instance, you can execute a function just before Leaf fires off routes. You can also execute a callback before the main middleware executes or even after Leaf has completely executed a route.

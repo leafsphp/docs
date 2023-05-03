@@ -47,7 +47,7 @@ $auth->config('ID_KEY', 'admin_id');
 <div class="functional-mode">
 
 ```php
-app()->config('ID_KEY', 'admin_id');
+auth()->config('ID_KEY', 'admin_id');
 ```
 
 </div>
@@ -70,7 +70,7 @@ $auth->config('DB_TABLE', 'admins');
 <div class="functional-mode">
 
 ```php
-app()->config('DB_TABLE', 'admins');
+auth()->config('DB_TABLE', 'admins');
 ```
 
 </div>
@@ -82,6 +82,8 @@ After installing leaf auth, you would need to connect to a database. Leaf auth w
 ### connect
 
 The connect method allows you to pass in your database connection parameters directly to leaf auth.
+
+<div class="class-mode">
 
 ```php
 $auth = new Leaf\Auth;
@@ -97,6 +99,25 @@ $auth->connect(
 // example
 $auth->connect('127.0.0.1', 'dbname', 'root', '');
 ```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+// syntax
+auth()->connect(
+  $host = '',
+  string $dbname = '',
+  string $user = '',
+  string $password = ''
+);
+
+// example
+auth()->connect('127.0.0.1', 'dbname', 'root', '');
+```
+
+</div>
 
 ### autoConnect
 
@@ -115,14 +136,41 @@ DB_PASSWORD=
 
 **App:**
 
+<div class="class-mode">
+
 ```php
 $auth = new Leaf\Auth;
 $auth->autoConnect();
 ```
 
+</div>
+
+<div class="functional-mode">
+
+```php
+auth()->autoConnect();
+```
+
+</div>
+
 ### PDO connection
 
 Leaf Auth also allows you to skip the entire connection process and share an existing PDO instance with leaf db. This allows you to gradually rewrite your existing apps with Leaf Auth without having multiple db connections and doing so at your own pace.
+
+<div class="class-mode">
+
+```php
+$db = new PDO('mysql:dbname=test;host=127.0.0.1', 'root', '');
+$auth = new Leaf\Auth;
+
+$auth->dbConnection($db);
+
+// you can use leaf auth the same way you always have
+```
+
+</div>
+
+<div class="functional-mode">
 
 ```php
 $db = new PDO('mysql:dbname=test;host=127.0.0.1', 'root', '');
@@ -132,10 +180,22 @@ auth()->dbConnection($db);
 // you can use leaf auth the same way you always have
 ```
 
+</div>
+
 Leaf Db has been rewritten based on PDO, this also means that you can pass your leaf db connection into leaf auth directly.
 
+<div class="class-mode">
+
 ```php
-$auth->dbConnection(db()->connection());
+$auth->dbConnection($db->connection());
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+auth()->dbConnection(db()->connection());
 ```
 
 ### Leaf db (auth v2 + leaf 3 only)
@@ -189,6 +249,8 @@ The guard method is a shortcut method for `Auth::guard()`. You can find the guar
 ### sessionUser
 
 This method returns the active session user or null if there's no session user.
+
+</div>
 
 ## Next Steps
 

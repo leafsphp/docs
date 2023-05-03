@@ -1,4 +1,4 @@
-# Leaf Response
+# Response
 <!-- markdownlint-disable no-inline-html -->
 
 The response object is an abstraction of your Leaf application’s HTTP response that is returned to the HTTP client.

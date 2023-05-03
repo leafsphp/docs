@@ -1,7 +1,3 @@
----
-title: "Introduction"
----
-
 # Leaf Http v2
 
 ::: warning
