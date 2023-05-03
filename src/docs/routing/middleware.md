@@ -267,7 +267,7 @@ $app->registerMiddleware('home', function () {
   echo 'Home middleware';
 });
 
-$app->group(['middleware' => 'home', function () use ($app) {
+$app->group('/group', ['middleware' => 'home', function () use ($app) {
   $app->get('/home', function () { ... });
   $app->get('/home/about', function () { ... });
 }]);
