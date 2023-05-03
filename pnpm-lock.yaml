@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   449.css: ^1.3.0
   '@codemirror/lang-php': ^6.0.0
-  '@leafphp/docs-theme': ^0.1.0
+  '@leafphp/docs-theme': ^0.1.2
   '@types/markdown-it': ^12.2.3
   '@types/node': ^16.9.1
   '@vue/repl': ^1.2.4
@@ -16,7 +16,7 @@ specifiers:
 dependencies:
   449.css: 1.3.0
   '@codemirror/lang-php': 6.0.0
-  '@leafphp/docs-theme': 0.1.0_vue@3.2.37
+  '@leafphp/docs-theme': 0.1.2_vue@3.2.37
   '@vue/repl': 1.2.4_vue@3.2.37
   axios: 0.27.2
   dynamics.js: 1.1.5
@@ -182,8 +182,12 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@codemirror/autocomplete/6.0.2:
+  /@codemirror/autocomplete/6.0.2_llnkpekosih6zzydzjyjmpxjfm:
     resolution: {integrity: sha512-9PDjnllmXan/7Uax87KGORbxerDJ/cu10SB+n4Jz0zXMEvIh3+TGgZxhIvDOtaQ4jDBQEM7kHYW4vLdQB0DGZQ==}
+    peerDependencies:
+      '@codemirror/language': ^6.0.0
+      '@codemirror/state': ^6.0.0
+      '@lezer/common': ^1.0.0
     dependencies:
       '@codemirror/language': 6.2.0
       '@codemirror/state': 6.1.0
@@ -191,20 +195,22 @@ packages:
       '@lezer/common': 1.0.0
     dev: false
 
-  /@codemirror/lang-css/6.0.0:
+  /@codemirror/lang-css/6.0.0_@lezer+common@1.0.0:
     resolution: {integrity: sha512-jBqc+BTuwhNOTlrimFghLlSrN6iFuE44HULKWoR4qKYObhOIl9Lci1iYj6zMIte1XTQmZguNvjXMyr43LUKwSw==}
     dependencies:
-      '@codemirror/autocomplete': 6.0.2
+      '@codemirror/autocomplete': 6.0.2_llnkpekosih6zzydzjyjmpxjfm
       '@codemirror/language': 6.2.0
       '@codemirror/state': 6.1.0
       '@lezer/css': 1.0.0
+    transitivePeerDependencies:
+      - '@lezer/common'
     dev: false
 
   /@codemirror/lang-html/6.1.0:
     resolution: {integrity: sha512-gA7NmJxqvnhwza05CvR7W/39Ap9r/4Vs9uiC0IeFYo1hSlJzc/8N6Evviz6vTW1x8SpHcRYyqKOf6rpl6LfWtg==}
     dependencies:
-      '@codemirror/autocomplete': 6.0.2
-      '@codemirror/lang-css': 6.0.0
+      '@codemirror/autocomplete': 6.0.2_llnkpekosih6zzydzjyjmpxjfm
+      '@codemirror/lang-css': 6.0.0_@lezer+common@1.0.0
       '@codemirror/lang-javascript': 6.0.1
       '@codemirror/language': 6.2.0
       '@codemirror/state': 6.1.0
@@ -215,7 +221,7 @@ packages:
   /@codemirror/lang-javascript/6.0.1:
     resolution: {integrity: sha512-kjGbBEosl+ozDU5ruDV48w4v3H6KECTFiDjqMLT0KhVwESPfv3wOvnDrTT0uaMOg3YRGnBWsyiIoKHl/tNWWDg==}
     dependencies:
-      '@codemirror/autocomplete': 6.0.2
+      '@codemirror/autocomplete': 6.0.2_llnkpekosih6zzydzjyjmpxjfm
       '@codemirror/language': 6.2.0
       '@codemirror/lint': 6.0.0
       '@codemirror/state': 6.1.0
@@ -340,8 +346,8 @@ packages:
       - '@algolia/client-search'
     dev: false
 
-  /@leafphp/docs-theme/0.1.0_vue@3.2.37:
-    resolution: {integrity: sha512-pwdkN5J27GxWByIp+FND7t2KKboZuNMqLD1se+HlE5+2sOuV+x2DsMtNvgu+X320rztPUWPr3UTTq5kRuEiQBA==}
+  /@leafphp/docs-theme/0.1.2_vue@3.2.37:
+    resolution: {integrity: sha512-0vw1X2R5o9NwYLoMGUP2ipvKVOAW4eqIBOk9BLDOdRb7Iq0lDJA2zvPcxq+lh5efJIYcgL7rJOxrI+XwUfm3hg==}
     dependencies:
       '@algolia/client-search': 4.10.5
       '@docsearch/css': 3.0.0
