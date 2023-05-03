@@ -256,8 +256,9 @@ const mainSidebar = [
       { text: 'User Login', link: '/modules/auth/login' },
       { text: 'User Sign Up', link: '/modules/auth/signup' },
       { text: 'Protecting your Routes', link: '/modules/auth/protecting-your-routes' },
+      { text: 'Updating logged-in user', link: '/modules/auth/update' },
       { text: 'Session Support', link: '/modules/auth/session' },
-      { text: 'Helper methods', link: '/modules/auth/helpers' }
+      { text: 'Helper methods', link: '/modules/auth/helpers' },
     ]
   },
   {
