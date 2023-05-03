@@ -312,7 +312,7 @@ For more information on session based authentication, check out the [session bas
 
 ## Password Encoding
 
-Leaf Auth uses the [Leaf Password Helper](/modules/password/) to encode passwords. It supports the most popular password encoding algorithms including `bcrypt`, `argon2i` and `md5`. You can still use your own password encoder by updating the [`PASSWORD_VERIFY`](modules/auth/config.html#password-verify) config.
+Leaf Auth uses the [Leaf Password Helper](/modules/password/) to encode passwords. It supports the most popular password encoding algorithms including `bcrypt`, `argon2i` and `md5`. You can still use your own password encoder by updating the [`PASSWORD_VERIFY`](/modules/auth/config.html#password-verify) config.
 
 ::: tip Custom Password Encoder
 In case you want to use your own password verification method, your method must return `true` if the password is correct and `false` if the password is incorrect.
