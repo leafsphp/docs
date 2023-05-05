@@ -1,9 +1,18 @@
-<!-- markdownlint-disable no-inline-html -->
 # Leaf Blade
+
+<!-- markdownlint-disable no-inline-html -->
 
 This is Leaf's implementation of Laravel's blade templating engine.
 
-You can install leaf blade from composer:
+## Installation
+
+You can install leaf blade with the Leaf CLI:
+
+```bash
+leaf install blade
+```
+
+Or with composer:
 
 ```bash
 composer require leafs/blade
