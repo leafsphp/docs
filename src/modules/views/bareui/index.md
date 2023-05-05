@@ -6,7 +6,13 @@ Most templating engines out there ship with a nice syntax, handy ways to use exp
 
 ## Installation
 
-You can always install BareUI with composer:
+You can always install BareUI with the Leaf CLI:
+
+```bash
+leaf install bareui
+```
+
+Or with composer:
 
 ```bash
 composer require leafs/bareui
