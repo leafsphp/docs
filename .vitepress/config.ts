@@ -174,7 +174,7 @@ const mainSidebar = [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
-      // { text: 'Leaf Devtools', link: '/modules/devtools/' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
     ]
   },
   {
