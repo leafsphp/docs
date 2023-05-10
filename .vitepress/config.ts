@@ -174,7 +174,7 @@ const mainSidebar = [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
-      // { text: 'Leaf Devtools', link: '/modules/devtools/' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
     ]
   },
   {
@@ -282,9 +282,10 @@ const mainSidebar = [
     items: [
       { text: 'Introduction', link: '/modules/views/' },
       { text: 'Bare UI', link: '/modules/views/bareui/' },
-      { text: 'Viewi PHP', link: '/modules/views/viewi/' },
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
-      { text: 'Leaf Veins', link: '/modules/views/veins/' }
+      { text: 'Leaf Veins', link: '/modules/views/veins/' },
+      { text: 'Viewi PHP', link: '/modules/views/viewi/' },
+      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' },
     ]
   },
   {

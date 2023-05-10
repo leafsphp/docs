@@ -1,7 +1,22 @@
 # Http Cache
+
 <!-- markdownlint-disable no-inline-html -->
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Http Cache is a new class added on the http module that allows you to perform some basic caching on leaf response handlers. After installing the http module, you can use all caching methods.
+
+<details>
+  <summary>New to http caching?</summary>
+  <VideoDocs
+    title="Lesson by @roadmapsh"
+    subject="Everything you need to know about HTTP Caching"
+    description="Web Cache or HTTP Cache allows you to store a copy of a resource and serve it back when requested. Serving the item from the cache, instead of re-downloading it from the origin server eases the load on the server, improves performance, and reduces the bandwidth usage on the server..."
+    link="https://www.youtube.com/embed/HiBDZgTNpXY"
+  />
+</details>
 
 ## Usage
 
