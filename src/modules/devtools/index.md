@@ -99,3 +99,29 @@ Installing the devtools module also gives you access to the `dump` function from
 ```php
 dump($data);
 ```
+
+## Deployment
+
+You should note that the devtools module is meant for use ONLY IN DEVELOPMENT. You should not use it in production as it can be a security risk. For now, the only way to disable the devtools is to remove the hook from your app or uninstall it completely.
+
+A small workaround is to add a condition to the hook so that it only runs in development mode. You can do this using the `script` method on the `Leaf\App` class.
+
+<div class="class-mode">
+
+```php
+$app->script('development', function () {
+    \Leaf\DevTools::install();
+});
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+app()->script('development', function () {
+    \Leaf\DevTools::install();
+});
+```
+
+</div>
