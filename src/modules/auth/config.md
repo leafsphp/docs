@@ -73,6 +73,11 @@ The `DB_TABLE` config allows you to set a particular table which leaf auth will 
 
 This determines whether Leaf should add the default `created_at` and `updated_at` timestamps on register and update. Default is `true`.
 
+### TIMESTAMP_FORMAT
+
+If you set `USE_TIMESTAMPS` to `true` you can then use this property to specify the format that you want your timestamps to be saved in.
+Be aware that `auth` uses the `leafs/date` module, so the accepted formats are listed here: https://leafphp.dev/modules/date/#display
+
 ### PASSWORD_ENCODE
 
 *This setting has gone through a lot of changes since v2.4 beta, and may not work exactly the same way*. This setting is run when leaf wants to encode a password. It now uses `PASSWORD_DEFAULT` by defaullt for encryption.
