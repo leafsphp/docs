@@ -1,283 +1,274 @@
-<!-- markdownlint-disable no-inline-html -->
-# Leaf Mail <sup class="vt-badge experimental" />
+# Leaf Mail
 
-Leaf mail is a cool feature added in Leaf v2 after the main beta test. Leaf Mail quickly let's you send emails both text and HTML, with attachments and a whole lot of various customizations quickly and efficiently. It is built on the [PHPMailer Library](https://github.com/PHPMailer/PHPMailer) as such, all it's methods also work in Leaf Mail. Leaf mail is now shipped as a leaf 3 module which can be installed in any project.
+<!-- markdownlint-disable no-inline-html -->
+
+Mailing in PHP apps has always been seen as a daunting task. Leaf Mail provides a simple, straightforward and efficient email API that is built on the widely used [PHPMailer Library](https://github.com/PHPMailer/PHPMailer) component.
+
+With Leaf Mail, you can easily send emails using various drivers and services such as SMTP, Mailgun, SendGrid, Amazon SES, and sendmail. This flexibility enables you to swiftly begin sending emails through a preferred local or cloud-based service.
 
 ## Installation
 
-You can install leaf mail with composer or the leaf cli.
-
-```bash
-composer require leafs/mail
-```
-
-or
+You can install leaf mail using the leaf cli:
 
 ```bash
 leaf install mail
 ```
 
-## Basic Usage
+or with composer:
 
-To get started, simply initialisation Leaf Mail.
-
-```php
-$mail = new Leaf\Mail();
+```bash
+composer require leafs/mail
 ```
 
-This will allow you to use all Leaf Mail methods on the `$mail` variable.
+## Setting Up
 
-If you plan to use `SMTP` for handling your mailing, you can pass in your connection values on initialisation:
+Leaf Mail provides a `Mailer` class that is responsible for validating and sending emails. This class handles the connection to your mail server, the configuration for how to send your emails and the actual sending of emails.
 
-```php
-$mail = new Leaf\Mail('smtp host', PORT: int);
+<div class="class-mode">
+
+It also provides a `Mail` class that is responsible for creating and formatting emails. Most of the time, you'll be using the `Mail` class to create and send emails.
+
+</div>
+<div class="functional-mode">
+
+It also provides a `mailer()` method that is responsible for creating and formatting emails. Most of the time, you'll be using the `mailer()` method to create and send emails.
+
+</div>
+
+***Note that you need to setup the connection to your mail server using the `Leaf\Mail\Mailer` class before sending your emails.***
+
+## Mail Server Connection
+
+The `Leaf\Mail\Mailer` class is responsible for connecting to your mail server and handling the sending emails. It provides a `connect()` method that you can use to connect to your mail server.
+
+The `connect()` method takes in an array of configuration options that you can use to configure your mail server connection. The configuration options are:
+
+| Param    | Use case                                     |
+| -------- | -------------------------------------------- |
+| host     | Hostname for your mail server                |
+| port     | Port for your mail server                    |
+| security | Any encryption supported by PHPMailer        |
+| auth     | Auth for your mail server                    |
+
+### Gmail connection example
+
+Gmail is one of the most popular mail servers. Unfortunately, a connection with your email and password is no longer supported, so you will need to use OAuth. You will need to add an OAuth provider like [league/oauth2-google](https://github.com/thephpleague/oauth2-google) to your project.
+
+```bash
+leaf install league/oauth2-google
+
+# or with composer
+
+composer require league/oauth2-google
 ```
 
-This initialises an smtp connection without authentication. To use authentication, you simply pass in an array of holding the smtp username and password
+From there you can create your connection like this:
 
 ```php
-$mail = new Leaf\Mail('smtp host', 0000, ['username' => 'user', 'password' => '***']);
+use Leaf\Mail\Mailer;
+use League\OAuth2\Client\Provider\Google;
+use PHPMailer\PHPMailer\OAuth;
+use PHPMailer\PHPMailer\PHPMailer;
+
+...
+
+Mailer::connect([
+  'host' => 'smtp.gmail.com',
+  'port' => 465,
+  'security' => PHPMailer::ENCRYPTION_SMTPS,
+  'auth' => new OAuth(
+    [
+      'userName' => 'mail@gmail.com',
+      'clientSecret' => 'CLIENT_SECRET',
+      'clientId' => 'CLIENT_ID',
+      'refreshToken' => 'GMAIL_REFRESH_TOKEN',
+      'provider' => new Google(
+        [
+          'clientId' => 'CLIENT_ID',
+          'clientSecret' => 'CLIENT_SECRET',
+        ]
+      ),
+    ]
+  )
+]);
 ```
 
-There's also a fourth parameter which accepts `boolean` values. It determines whether to run in debug mode. If this is set to `true`,  it allows you to run other types of debug modes on Leaf Mail eg: server debug mode.
+### SMTP connection example
+
+The example above uses OAuth, however, some mail servers also support using a username/password for connections. Here's an example of connecting to Mailtrap using SMTP:
 
 ```php
-$mail = new Leaf\Mail('smtp host', 0000, [...], true);
+use Leaf\Mail\Mailer;
+use PHPMailer\PHPMailer\PHPMailer;
+
+...
+
+Mailer::connect([
+  'host' => 'smtp.mailtrap.io',
+  'port' => 2525,
+  'security' => PHPMailer::ENCRYPTION_STARTTLS,
+  'auth' => [
+    'username' => 'MAILTRAP_USERNAME',
+    'password' => 'MAILTRAP_PASSWORD'
+  ]
+]);
 ```
 
-There's finally a fifth parameter which accepts `boolean` values. It determines whether to run in server debug mode. If this is set to `true`,  it shows logs from the SMTP host, making it easy to debug if the need arises.
+## Mailer config
+
+The `Mailer` class provides a `config()` method that you can use to configure your mail server connection. The configuration options are:
+
+| Param    | Use case                                                                                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| debug    | Enable or disable debug mode. Supported values are 'SERVER', `false` or any value supported by PHPMailer's `SMTPDebug` config                                       |
+| defaults | This config is used to set default values for the `recipientEmail`, `recipientName`, `senderEmail`, `senderName`, `replyToName`, and `replyToEmail` of your emails. |
+| keepAlive | This config is used to keep the connection to your mail server alive. This is useful if you are sending multiple emails. It takes in a boolean.                    |
 
 ```php
-$mail = new Leaf\Mail('smtp host', 0000, [...], true, true);
+Mailer::config([
+  'keepAlive' => true,
+  'debug' => 'SERVER',
+  'defaults' => [
+    'recipientEmail' => 'name@mail.com',
+    'recipientName' => 'First Last',
+    'senderName' => 'Leaf Mail',
+    'senderEmail' => 'mychi@leafphp.dev',
+  ],
+]);
 ```
 
-**Note**: You must set the 4th param to `true` in order to use this feature.
+*Setting your defaults allows you to send your mails without having to configure sender/receiver mails for every mail.*
 
-Although you can initialise your SMTP connection on initialisation, you may also not want to do so due to personal preference or maybe the use of a Dependency Injection Container. For such cases, a special `smtp_connect` method has been prepared.
+## Your first mail
 
-## smtp_connect
+Now that we've gotten all the annoying config out of the way, all that's left is the easy part: sending your mails.
 
-`smtp_connect` let's you quickly connect to your smtp server. It takes in 5 parameters
+<div class="class-mode">
 
-- The SMTP Host
-- SMTP Port Number (Int value)
-- Boolean: Whether to use authentication, the default is false (Optional)
-- Authentication Username (Required if authentication is true)
-- Authentication Password  (Required if authentication is true)
-- The type of SMTP security (encryption) to use - default is 'STARTTLS' (Optional)
+To send your first mail, you'll need to create a new instance of the `Leaf\Mail` class. It takes in an array used to create your email:
 
 ```php
-// no auth example
-$mail->smtp_connect('localhost', 25);
+$mail = new \Leaf\Mail([
+  'subject' => 'Leaf Mail Test',
+  'body' => 'This is a test mail from Leaf Mail using gmail',
+  
+  // next couple of lines can be skipped if you
+  // set defaults in the Mailer config
+  'recipientEmail' => 'name@mail.com',
+  'recipientName' => 'First Last',
+  'senderName' => 'Leaf Mail',
+  'senderEmail' => 'mychi@leafphp.dev',
+]);
 
-// example gmail connection
-$mail->smtp_connect('smtp.gmail.com', 587, true, 'user@gmail.com', 'password', 'STARTTLS');
-// or
-$mail->smtp_connect('smtp.gmail.com', 587, true, 'user@gmail.com', 'password');
-```
-
-After this, you can now use all Leaf Mail's features.
-
-## Leaf Mail Features
-
-We'll take a look at the features Leaf Mail brings to the table.
-
-### Basic Mail
-
-This allows you to quickly create a simple mail. It takes in 8 parameters:
-
-- the email subject
-- the email content
-- the recepient's email
-- the sender's name
-- the sender's email (optional)
-- carbon copy (optional)
-- blank carbon copy (optional)
-
-**SYNTAX:**
-
-```php
-$mail->basic($subject, $body, $recepient_email, $sender_name, $sender_email, $cc, $bcc);
-```
-
-**Example:**
-
-```php
-// Only required fields
-$email->basic("Subject", "Body", "user@mail.com", "sender name");
-```
-
-This will create the email, but in order to actually send the email, we must call the `send` method.
-
-```php
-$mail->basic(...);
+// Send your mail
 $mail->send();
 ```
 
-For simplicity's sake, we can also call the `send` method on the `basic` method:
+You can also use the `create()` method to create your mail:
 
 ```php
-$mail->basic(...)->send();
-```
-
-You can catch errors with `$mail->errors()`
-
-```php
-if (!$mail->basic(...)) {
-  $mail->errors();
-} else {
-  $mail->send();
-}
-```
-
-**Note**: if the `sender_email` isn't provided, the `connection username` is used.
-
-<hr>
-
-### Write
-
-Write is a more customisable way of creating emails. It has a more readable and understandable syntax as it's in key value form.
-
-Write takes in only one parameter which is an array containing key - value pairs of the email details
-
-Only specific values are accepted, any other values entered will be ignored. The supported values are:
-
-- subject (required)
-- body | template (optional)
-- recepient_email (required)
-- sender_name (required)
-- sender_email (optional)
-- attachment (optional)
-- cc (optional)
-- bcc (optional)
-
-```php
-$email->write([
-  "subject" => "This is a full Write Test",
-  "template" => "./template.html",
-  "recepient_email" => "mychi@leafphp.dev",
-  "sender_name" => "Leaf PHP Framework",
-  "attachment" => "./../attachment.txt"
-]);
-```
-
-Like before, don't forget to call `send`.
-
-```php
-$email->write([...])->send();
-// or
-$email->write([...]);
-$email->send();
-```
-
-<hr>
-
-### loadTemplate
-
-Load Template is a method that allows you to use a prepared template as the email body. It takes in 2 parameters:
-
-- The name and/or PATH of the template
-- Boolean: Whether or not to return the template as a string - default is false (optional)
-
-```php
-$mail->loadTemplate("./template.html");
-```
-
-```php
-$template = $mail->loadTemplate("./template.txt", true);
-```
-
-<hr>
-
-### attach
-
-This is a method that allows you to add attachments to the email
-
-```php
-$mail->attach('./attachment');
-```
-
-<hr>
-
-## Debugging
-
-As with any other script, something might go wrong, not with Leaf Mail per sey, maybe with your program or with the server, as such, debugging gives you information about what went wrong and how to solve the issue.
-
-### Mail::errors
-
-This method gives you a simple way to track errors caused by either the developer or the user. Let's look at this example.
-
-```php
-$email->write([
-  "subject" => "This is a full Write Test",
-  "template" => "./template.html",
-  "sender_name" => "Leaf PHP Framework",
-  "attachment" => "./../attachment.txt"
-]);
-```
-
-You notice that the `recepient_email` field is absent. Running this code will result in Leaf Mail catching the error and returning `false`. With this we can say that the request has failed, and to get back the error which was caught by Leaf Mail, we need to call the `errors()` method
-
-```php
-$email = $mail->write([
-  "subject" => "This is a full Write Test",
-  "template" => "./template.html",
-  "sender_name" => "Leaf PHP Framework",
-  "attachment" => "./../attachment.txt"
+$mail = \Leaf\Mail::create([
+  'subject' => 'Leaf Mail Test',
+  'body' => 'This is a test mail from Leaf Mail using gmail',
+  
+  // next couple of lines can be skipped if you
+  // set defaults in the Mailer config
+  'recipientEmail' => 'name@mail.com',
+  'recipientName' => 'First Last',
+  'senderName' => 'Leaf Mail',
+  'senderEmail' => 'mychi@leafphp.dev',
 ]);
 
-if (!$email) {
-  $app->response->exit($mail->errors());
-}
-
-$email->send();
-```
-
-### Server Debug Mode (SMTP)
-
-We saw `Server Debug Mode` at the begining of this document. This simply allows us to view logs from our smtp server. This allows us to catch relevant information like incorect authentication credentials, server restrictions...
-
-To get `SDM` working, you can set it on Leaf Mail initialisation like we saw before
-
-```php
-$mail = new Leaf\Mail('smtp host', PORT, [...], true, true);
-```
-
-But this is sometimes not the 'preffered' way of doing things, so we have the `smtp_debug` method which simply set's `SMTPDebug` to `SMTP::DEBUG_SERVER`(PHPMailer). This is the default configuration for this method, however, you can pass in your own configuration too
-
-```php
-$mail = new Leaf\Mail;
-$mail->smtp_debug();
-
-$email->basic("Learn Leaf PHP #2", "", "mychi@leafphp.dev", "Leaf PHP");
-$email->loadTemplate("./template.html");
-$email->attach("./docs.md");
-
-try {
-  $email->send();
-} catch (\Throwable $th) {
-  throw $email->errors();
-}
-```
-
-## Other Methods
-
-Since Leaf Mail is built on [PHPMailer](https://github.com/PHPMailer/PHPMailer), all PHPMailer methods and variables are also valid on the `Leaf\Mail` object.
-
-```php
-$mail = new Leaf\Mail;
-
-$mail->Subject = "...";
-$mail->Body = "...";
-$mail->addAttachment("...");
+// Send your mail
 $mail->send();
 ```
 
+</div>
+<div class="functional-mode">
+
+To send your first mail, you'll need to call the `create()` method returned from `mailer()`. It takes in an array used to create your email:
+
 ```php
-use Leaf\Mail\SMTP;
-use Leaf\Mail\Exception;
+mailer()
+  ->create([
+    'subject' => 'Leaf Mail Test',
+    'body' => 'This is a test mail from Leaf Mail using gmail',
+    
+    // next couple of lines can be skipped if you
+    // set defaults in the Mailer config
+    'recipientEmail' => 'name@mail.com',
+    'recipientName' => 'First Last',
+    'senderName' => 'Leaf Mail',
+    'senderEmail' => 'mychi@leafphp.dev',
+  ])
+  ->send();
 ```
 
-For all other methods, check out [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+</div>
 
-For more examples, check out [PHP Mailer's examples](https://github.com/leafsphp/leaf-mailer/tree/master/examples)
+This is a full list of the parameters you can use to create your mail:
+
+| Param           | Use case                                                                                      |
+| :-------------- | :--------------------------------------------------------------------------------------------- |
+| subject         | The subject of your email                                                                    |
+| body            | The body of your email                                                                       |
+| recipientEmail  | The email of the person you're sending the mail to                                           |
+| recipientName   | The name of the person you're sending the mail to                                            |
+| senderName      | The name of the person sending the mail                                                      |
+| senderEmail     | The email of the person sending the mail                                                     |
+| replyToName     | Add a name for your "Reply-To" address                                                       |
+| replyToEmail    | Add a "Reply-To" address                                                                      |
+| cc              | The email of the person you want to carbon copy                                               |
+| bcc             | The email of the person you want to blank carbon copy                                         |
+| isHTML          | A boolean value that determines if your mail is HTML or not                                   |
+| altBody         | This body can be read by mail clients that do not have HTML email capability such as mutt & Eudora. Clients that can read HTML will view the normal Body                       |
+
+## Adding Attachments
+
+You can add attachments to your mail using the `attach()` method. It takes in an array of attachment data or just a string containing a single attachment. The attachment data is an array containing the following keys:
+
+<div class="class-mode">
+
+```php
+$mail = new \Leaf\Mail([
+  'subject' => 'Leaf Mail Test',
+  'body' => 'This is a test mail from Leaf Mail using gmail',
+]);
+
+$mail->attach('./attachment.txt');
+$mail->attach([
+  './file1.txt',
+  './file2.txt'
+]);
+
+$mail->send();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+mailer()
+  ->create([
+    'subject' => 'Leaf Mail Test',
+    'body' => 'This is a test mail from Leaf Mail using gmail',
+  ])
+  ->attach('./attachment.txt')
+  ->attach([
+    './file1.txt',
+    './file2.txt'
+  ])
+  ->send();
+```
+
+</div>
+
+## Error handling
+
+In order not to flood your application with logs and errors, Leaf Mail gathers all errors thrown by the mail server, and saves them internally. You can return all errors with `$mail->errors()`
+
+```php
+if (!$mail->send(...)) {
+  return $mail->errors();
+}
+```
