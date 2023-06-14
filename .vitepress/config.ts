@@ -316,6 +316,7 @@ const mainSidebar = [
     items: [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Eien Server', link: '/modules/eien/' },
+      // { text: 'Queues/Jobs', link: '/modules/queues/' },
       { text: 'CSRF', link: '/modules/anchor/csrf/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
       { text: 'Leaf DB (Old)', link: '/modules/db-old/' }
