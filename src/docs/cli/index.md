@@ -6,7 +6,7 @@ import VideoDocs from '/@theme/components/VideoDocs.vue'
 
 <p class="flex flex:start-all">
   <img src="https://poser.pugx.org/leafs/cli/v/stable" class="m:0" alt="">
-  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0 ml:_2" alt="">
+  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0 ml:_1" alt="">
 </p>
 
 Leaf CLI is a simple command line tool for creating and interacting with your leaf projects. You can do stuff like installing packages, interacting with your app, previewing your app...
@@ -25,13 +25,23 @@ You can get this tool up and running on your system using composer:
 composer global require leafs/cli
 ```
 
-Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the leaf executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
+After that, you should have access to the `leaf` command from anywhere on your system.
+
+## command not found: leaf
+
+If you get a `command not found: leaf` error, it means your composer bin is not in your path.
+
+You need to make sure that Composer's system-wide vendor bin directory is in your system `$PATH` so the leaf executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
 
 - Windows: `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 - macOS: `$HOME/.composer/vendor/bin`
 - GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
 
 You could also find the composer's global installation path by running `composer global about` and looking up from the first line.
+
+## Adding composer bin to path
+
+Once you find your composer global installation path, you can add it to your path. **There are some examples below which you can copy and paste in your terminal.**
 
 Eg (Adding composer bin to path linux):
 
