@@ -174,7 +174,7 @@ const mainSidebar = [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
       { text: 'Migration Guide', link: '/docs/migration/introduction' },
-      { text: 'Leaf Devtools', link: '/modules/devtools/' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' }
     ]
   },
   {
@@ -255,10 +255,13 @@ const mainSidebar = [
       { text: 'Auth Config', link: '/modules/auth/config' },
       { text: 'User Login', link: '/modules/auth/login' },
       { text: 'User Sign Up', link: '/modules/auth/signup' },
-      { text: 'Protecting your Routes', link: '/modules/auth/protecting-your-routes' },
+      {
+        text: 'Protecting your Routes',
+        link: '/modules/auth/protecting-your-routes'
+      },
       { text: 'Updating logged-in user', link: '/modules/auth/update' },
       { text: 'Session Support', link: '/modules/auth/session' },
-      { text: 'Helper methods', link: '/modules/auth/helpers' },
+      { text: 'Helper methods', link: '/modules/auth/helpers' }
     ]
   },
   {
@@ -270,9 +273,21 @@ const mainSidebar = [
       { text: 'Leaf Password', link: '/modules/password/' },
       { text: 'Leaf Anchor', link: '/modules/anchor/' },
       { text: 'Leaf Date', link: '/modules/date/' },
-      { text: 'File System', link: '/modules/fs/' },
       { text: 'Leaf Fetch', link: '/modules/fetch/' },
       { text: 'Logging', link: '/docs/tooling/logging' }
+    ]
+  },
+  {
+    text: 'Digging Deeper',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'CSRF', link: '/modules/anchor/csrf/' },
+      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
+      { text: 'Eien Server', link: '/modules/eien/' },
+      { text: 'Leaf Mail', link: '/modules/mail/' },
+      { text: 'File System', link: '/modules/fs/' },
+      // { text: 'Queues/Jobs', link: '/modules/queues/' },
     ]
   },
   {
@@ -285,7 +300,7 @@ const mainSidebar = [
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
       { text: 'Leaf Veins', link: '/modules/views/veins/' },
       { text: 'Viewi PHP', link: '/modules/views/viewi/' },
-      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' },
+      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' }
     ]
   },
   {
@@ -307,19 +322,6 @@ const mainSidebar = [
       // { text: 'MVC Console Tool', link: '/docs/mvc/console' },
       { text: 'Aloe CLI', link: '/aloe-cli/' },
       { text: 'MVC Core', link: '/modules/mvc-core/' }
-    ]
-  },
-  {
-    text: 'Digging Deeper',
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
-      { text: 'Eien Server', link: '/modules/eien/' },
-      // { text: 'Queues/Jobs', link: '/modules/queues/' },
-      { text: 'CSRF', link: '/modules/anchor/csrf/' },
-      { text: 'Leaf Mail', link: '/modules/mail/' },
-      { text: 'Leaf DB (Old)', link: '/modules/db-old/' }
     ]
   }
   // {
