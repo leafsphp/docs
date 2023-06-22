@@ -24,6 +24,10 @@ const nav = [
       {
         text: 'Leaf 2 Docs',
         link: 'https://archive.leafphp.dev'
+      },
+      {
+        text: 'Changelog',
+        link: '/changes'
       }
     ]
   },
@@ -181,7 +185,7 @@ const mainSidebar = [
       { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
       { text: 'Testing', link: '/docs/tooling/testing' },
-      { text: 'Deployment', link: '/docs/tooling/deployment' },
+      { text: 'Deployment', link: '/docs/tooling/deployment' }
     ]
   },
   {
@@ -623,7 +627,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     algolia: {
       appId: 'Q38TT8XUN9',
       indexName: 'leafphp',
-      apiKey: '87b4b8d90960f7a326dfd4c8781a5a74',
+      apiKey: '87b4b8d90960f7a326dfd4c8781a5a74'
     },
 
     socialLinks: [

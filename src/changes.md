@@ -1,6 +1,212 @@
 <!-- markdownlint-disable no-duplicate-header -->
 # Changelog
 
+## v3.4.0 - 🥀 Hello Darkness - 19 May 2023
+
+### Added
+
+- Added support for library scripts
+- Added Eien config
+- Added support for named middleware
+
+### Changed
+
+- Moved ALL error handling responsibilities to `\Leaf\Exception`
+
+### Removed
+
+- Moved module initializers to scripts
+
+## v3.3.1 - 🌺 Midnight Wine '1' - 11 Mar 2023
+
+### Fixed
+
+- Patched up `app` config resetting after new values are added
+- Improved performance of application config setting on first instance
+
+## v3.3.0 - 🌺 Midnight Wine - 27 Feb 2023
+
+### Added
+
+- Added support for Eien websockets
+
+### Fixed
+
+- Hard set status on CSRF error
+- Fixed non-static methods error
+
+### Changed
+
+### Removed
+
+- Removed obsolete code
+
+
+
+## v3.2.2-beta - 🌺 Viola “Black Delight” [Eien Compat Build 2] - 25 Dec 2022
+
+### Added
+
+- Added support for Eien websockets
+
+### Fixed
+
+- Fixed non-static methods error
+- Fixed issue with CSRF error
+
+### Removed
+
+- Removed obsolete code
+
+## v3.2.0 - 🌺 Viola “Black Delight” - 3 Oct 2022
+
+### Added
+
+- Made leaf config reactive
+
+### Fixed
+
+- Fixed issue [`debug = false` not working as expected](https://github.com/leafsphp/leaf/issues/152)
+- Fixed issue with setRequestClass
+- Updated references to renamed methods
+
+### Changed
+
+- Updated leaf modules
+- Removed version constraints from modules
+- Updated tests
+
+### Removed
+
+- Removed obsolete methods
+
+## v3.1.1 - 🌷 Cantor Black '1' - 10 Sep 2022
+
+### Fixed
+
+- [Fix error: Cannot use Container as array](https://github.com/leafsphp/leaf/commit/9d51e6bfc8a246d688ad8848f17cdf7eddaaf8e5)
+
+### Changed
+
+- Updated Leaf Http
+
+## v3.1.0 - 🌷 Cantor Black - 11 Aug 2022
+
+### Added
+
+- Allow custom response object
+- Allow custom request object
+
+## v3.0 - 👸🏼 Queen Of The Night - 15 Apr, 2022
+
+### Added
+
+- Added support for global functions
+- Added unit tests
+- Added pestphp
+- Added more support for configuring with env variables.
+- Added `script` method on `app` to handle modes.
+- Added automatic loading for major modules.
+- Added CSRF handler.
+- Added autoloading for the CSRF module
+- Added CORS handler for `leafs/cors`
+- Updated error pages
+- Added `.env` precedence over local config
+- Added support for recursive config
+- Added support for nested config
+- Added support for custom setting groups
+- Switched to leaf exceptions
+
+### Fixed
+
+- Fixed PHP 7.3 unsupported types
+- Created a standard for functional mode
+- Revamped error pages
+- Fixed potential type errors
+- Fixed malformed JWT error on auth module
+- Added single state for container settings and leaf config
+- Fixed breaks in PHP 8+
+
+### Changed
+
+- You no longer need to initialize Leaf.
+- Moved `Leaf\Http` namespace to HTTP module
+- Moved base controller, model, database and to `mvc-core` module
+- Disabled logging by default
+- Moved bareui, fs, auth, form, cookies, session, db and date into modules
+- Moved `Leaf\Router` into installable modules.
+- Changed leaf router `add` to `use`
+- Tied leaf router directly to `Leaf\App`
+- Upgraded all dependencies
+- Added strict types
+
+### Removed
+
+- Removed unused dependencies
+- Removed experimental features
+- Removed unused initializers
+- Removed `evadeCors` method on leaf
+- Removed `Leaf\Router::getRequestMethod`
+- Removed unnecessary code to improve performance
+- Removed app instance on middleware
+- Removed unused helper functions
+- Removed leftover files from clean up
+
+## v3.0 (Release Candidate 2) - 👸🏼 Queen Of The Night (RC 2) - 27 Jan, 2022
+
+### Added
+
+- Added support for global functions
+- Added unit tests
+- Added pestphp
+- Added more support for configuring with env variables.
+- Added `script` method on app to handle modes.
+- Added automatic loading for major modules.
+- Added CSRF handler.
+- Added autoloading for CSRF module
+- Added CORS handler for `leafs/cors`
+- Updated error pages
+- Added `.env` precedence over local config
+- Added support for recursive config
+- Added support for nested config
+- Added support for custom setting groups
+- Switched to leaf exceptions
+
+### Fixed
+
+- Fixed PHP 7.3 unsupported types
+- Created a standard for functional mode
+- Revamped error pages
+- Fixed potential type errors
+- Fixed malformed JWT error on auth module
+- Added single state for container settings and leaf config
+- Fixed breaks in PHP 8+
+
+### Changed
+
+- You no longer need to initialize Leaf.
+- Moved `Leaf\Http` namespace to Http module
+- Moved base controller, model, database and to mvc-core module
+- Disabled logging by default
+- Moved bareui, fs, auth, form, cookies, session, db and date into modules
+- Moved `Leaf\Router` into installable module.
+- Changed leaf router `add` to `use`
+- Tied leaf router directly to `Leaf\App`
+- Upgraded all dependencies
+- Added strict types
+
+### Removed
+
+- Removed unused dependencies
+- Removed experimental features
+- Removed unused initializers
+- Removed `evadeCors` method on leaf
+- Removed `Leaf\Router::getRequestMethod`
+- Removed unnecessary code to improve performance
+- Removed app instance on middleware
+- Removed unused helper functions
+- Removed left over files from clean up
+
 ## v3.0 (Beta) - 27 November
 
 ### Added
