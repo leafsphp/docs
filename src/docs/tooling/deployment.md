@@ -35,4 +35,4 @@ In addition to optimizing the autoloader, you should always be sure to include a
 
 ## Walkthroughs
 
-We're adding some step-by-step walkthroughs to deploying on different providers on our codelabs platform. You can find every experiment related to deployment [here](https://codelabs.leafphp.dev/experiments/hosting/)
+We're adding some step-by-step walkthroughs to deploying on different providers on our codelabs platform. You can find every experiment related to deployment [here](/codelabs/experiments/deployment/)

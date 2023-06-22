@@ -6,4 +6,3 @@
 /resources/*                             /ecosystem/:splat
 
 /blog/                                   https://blog.leafphp.dev
-/codelabs/                               https://codelabs.leafphp.dev

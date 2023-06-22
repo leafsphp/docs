@@ -22,10 +22,6 @@ const nav = [
         link: '/docs/migration/introduction'
       },
       {
-        text: 'Codelabs',
-        link: 'https://codelabs.leafphp.dev'
-      },
-      {
         text: 'Leaf 2 Docs',
         link: 'https://archive.leafphp.dev'
       }
@@ -77,6 +73,10 @@ const nav = [
           {
             text: 'Project Showcase',
             link: '/ecosystem/showcase'
+          },
+          {
+            text: 'Codelabs',
+            link: '/codelabs/'
           }
         ]
       }
@@ -157,24 +157,15 @@ const nav = [
 
 const mainSidebar = [
   {
-    text: 'Essentials',
+    text: 'Quick Start',
     collapsible: true,
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/introduction/' },
       { text: 'Why Leaf?', link: '/docs/introduction/why' },
-      { text: 'Leaf + MVC', link: '/docs/mvc/' }
-    ]
-  },
-  {
-    text: 'Quick Start',
-    collapsible: true,
-    collapsed: true,
-    items: [
       { text: 'Installation', link: '/docs/introduction/installation' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' },
-      { text: 'Leaf Devtools', link: '/modules/devtools/' }
+      { text: 'Migration Guide', link: '/docs/migration/introduction' }
     ]
   },
   {
@@ -182,14 +173,15 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
-      { text: 'Leaf tutorial', link: '/tutorial/' },
-      { text: 'Your first app', link: '/docs/introduction/first-app' },
-      { text: 'Functional Mode', link: '/docs/tooling/functions' },
+      { text: 'Leaf + MVC', link: '/docs/mvc/' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
       { text: 'Modules', link: '/modules/' },
+      { text: 'Functional Mode', link: '/docs/tooling/functions' },
+      { text: 'Leaf tutorial', link: '/tutorial/' },
       { text: 'Leaf CLI', link: '/docs/cli/' },
+      { text: 'Your first app', link: '/docs/introduction/first-app' },
+      { text: 'Testing', link: '/docs/tooling/testing' },
       { text: 'Deployment', link: '/docs/tooling/deployment' },
-      { text: 'Testing', link: '/docs/tooling/testing' }
     ]
   },
   {
@@ -208,6 +200,7 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
+      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Request', link: '/modules/http/v/2/request' },
       { text: 'Response', link: '/modules/http/v/2/response' },
       { text: 'Headers', link: '/modules/http/v/2/headers' },
@@ -286,7 +279,7 @@ const mainSidebar = [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Eien Server', link: '/modules/eien/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
-      { text: 'File System', link: '/modules/fs/' },
+      { text: 'File System', link: '/modules/fs/' }
       // { text: 'Queues/Jobs', link: '/modules/queues/' },
     ]
   },
@@ -331,7 +324,7 @@ const mainSidebar = [
     items: [
       { text: 'Intro', link: '/codelabs/' },
       { text: 'Contributing', link: '/codelabs/contributing' },
-      { text: 'Deployment', link: '/codelabs/experiments/deployment/' },
+      { text: 'Deployment', link: '/codelabs/experiments/deployment/' }
       // { text: 'Authentication', link: '/codelabs/experiments/auth/' },
     ]
   }

@@ -55,7 +55,7 @@ To quickly get started with Leaf, check out our [installation guide](/docs/intro
 Already know Leaf 2 and just want to learn about what's new in Leaf 3? Check out the [Migration Guide](/docs/migration/introduction.html)!
 :::
 
-Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](https://codelabs.leafphp.dev) for real world examples and use-cases.
+Below is a hello world example which takes you through the core of Leaf. Other parts of the docs cover deeper examples. You can also refer to our [codelab experiments](/codelabs/) for real world examples and use-cases.
 
 ## Hello world example
 
@@ -394,7 +394,7 @@ If you skipped the [Introduction](/docs/introduction/), we strongly recommend re
     <h3 class="next-steps-link">Follow the Tutorial</h3>
     <small class="next-steps-caption">For those who prefer learning things hands-on. Let's build something real!</small>
   </a>
-  <a class="vt-box" href="https://codelabs.leafphp.dev" target="_blank">
+  <a class="vt-box" href="/codelabs/">
     <h3 class="next-steps-link">Check out CodeLabs</h3>
     <small class="next-steps-caption">Codelabs provides interactive tutorials with in-depth explanations.</small>
   </a>
