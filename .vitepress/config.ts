@@ -323,6 +323,17 @@ const mainSidebar = [
       { text: 'Aloe CLI', link: '/aloe-cli/' },
       { text: 'MVC Core', link: '/modules/mvc-core/' }
     ]
+  },
+  {
+    text: 'Codelabs',
+    collapsible: true,
+    collapsed: true,
+    items: [
+      { text: 'Intro', link: '/codelabs/' },
+      { text: 'Contributing', link: '/codelabs/contributing' },
+      { text: 'Deployment', link: '/codelabs/experiments/deployment/' },
+      // { text: 'Authentication', link: '/codelabs/experiments/auth/' },
+    ]
   }
   // {
   //   text: 'Archive',
@@ -365,6 +376,7 @@ const communitySidebar = [
 export const sidebar = {
   '/docs/': mainSidebar,
   '/modules/': mainSidebar,
+  '/codelabs/': mainSidebar,
   '/aloe-cli/': [
     {
       text: 'Aloe CLI',

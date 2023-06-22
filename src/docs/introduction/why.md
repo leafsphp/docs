@@ -6,12 +6,17 @@ When it comes to building web applications, there are numerous tools and framewo
 
 While PHP frameworks can make web development faster and more efficient, there are some potential challenges or drawbacks to using them, including:
 
-- Learning curve: Most PHP frameworks have a steep learning curve, especially for developers who are new to the language or the framework's conventions.
-- Performance overhead: Some PHP frameworks can add unnecessary performance overhead, due to the additional abstraction layers and features they provide.
-- Code maintenance: Most frameworks require adhering to specific coding standards and conventions, which can make maintenance and updates more challenging if you are not already familiar with those standards.
-- Limited flexibility: PHP frameworks can be more rigid than writing code from scratch, as they may require you to adhere to specific coding standards and conventions. This can limit your flexibility in terms of how you structure your code and handle specific use cases.
-- Compatibility with other systems: Most PHP frameworks are bound to a particular ecosystem and make it difficult to randomly pick and use packages which don't have support for the framework you are using.
-- Packing a ton of unused code/packages: Just about every PHP framework out there adds a ton of complexity to your applications in the form of unused code, classes and packages. This in turn leads to bloat and ultimately a drop in performance
+- ***Learning curve***: Most PHP frameworks have a steep learning curve, especially for developers who are new to the language or the framework's conventions.
+
+- ***Performance overhead***: Some PHP frameworks can add unnecessary performance overhead, due to the additional abstraction layers and features they provide.
+
+- ***Code maintenance***: Most frameworks require adhering to specific coding standards and conventions, which can make maintenance and updates more challenging if you are not already familiar with those standards.
+
+- ***Limited flexibility***: PHP frameworks can be more rigid than writing code from scratch, as they may require you to adhere to specific coding standards and conventions. This can limit your flexibility in terms of how you structure your code and handle specific use cases.
+
+- ***Compatibility with other systems***: Most PHP frameworks are bound to a particular ecosystem and make it difficult to randomly pick and use packages which don't have support for the framework you are using.
+
+- ***Packing a ton of unused code/packages***: Just about every PHP framework out there adds a ton of complexity to your applications in the form of unused code, classes and packages. This in turn leads to bloat and ultimately a drop in performance
 
 ## How Leaf tackles these
 

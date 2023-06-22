@@ -5,11 +5,7 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-## What is Leaf PHP?
-
-Leaf is a slim and lightweight PHP framework for quickly bootstrapping clean, simple, but powerful web apps and APIs quickly and easily. Over the years, we've been focusing on delivering much simpler and more performant code, which can be used in all your PHP apps.
-
-Version 3 of Leaf brings more to the table with a theme centering on developer experience and usability, but with all the goodies while ensuring users have the best experience as well.
+Leaf is a slim and lightweight PHP framework focused on developer experience, usability, and high-performance code. It is a modern PHP framework built to be simple and elegant, yet extremely powerful.
 
 [→ Checkout Leaf 3's features](/docs/introduction/why)
 
