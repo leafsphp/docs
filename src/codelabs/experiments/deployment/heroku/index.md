@@ -1,7 +1,7 @@
 # Deploying a Leaf Application to Heroku
 
 ::: warning Version support
-Version support. This tutorial assumes use of Leaf CLI >= 2.2.0.
+Version support. This tutorial assumes use of Leaf CLI >= 2.2.0 (🍊 Yomi Yomi no Mi).
 :::
 
 ## What Are We Building?
@@ -14,137 +14,48 @@ Heroku is a platform as a service (PaaS) that enables developers to build, run, 
 
 ## Prerequisites
 
-Before continuing, it is important to determine if you would like to purhcase or point a domain name
-to the VPS you are about to spin up. $DOMAIN will be shown several times throughout this experiment
-and should be replaced by either your domain name (example.com) or the Droplet's public IP address. You
-can grab the public IP address from the Digital Ocean control panel.
+This tutorial assumes you have the following:
 
-For instructions on how to setup a domain with Digital Ocean, [click here](https://docs.digitalocean.com/products/networking/dns/how-to/add-domains/).
+- A Leaf application
+- A Heroku account
+- The Heroku CLI installed
 
-## 1. Create a new droplet
+## 1. Create a new heroku app
 
-From the control panel, click the green "Create" button and select droplet. We will create a VPS with the
-following options selected:
+From the dashboard, select create new app. Give your app a name, and select a region. The region should be the closest to your location.
 
-* Ubuntu: 20.04 (LTS)
-* Plan: Basic
-* CPU Options: Premium AMD or Regular Intel
-* $6/mo package
+<img width="810" alt="image" src="https://github.com/leafsphp/leaf/assets/26604242/f189892d-9164-4c1a-b396-b3b50066f118" style="border-radius: 10px;">
 
-::: tip Scaling ⚡️
-Should your application grow in requirements or traffic, you can always come back and increase your package selection.
-:::
+**Note that per Heroku's new terms, you should have a payment method connected.**
 
-### Authentication
+Clicking on create app, should take you to an empty new app page. From here, you can select the deploy tab, and connect your Github repository.
 
-It is highly recommended that your utilize SSH-based authentication. Select an existing key, or [generate a new key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), then add it.
+<img width="1262" alt="image" src="https://github.com/leafsphp/leaf/assets/26604242/89356d46-0b46-46e6-9659-e77bc9f2f03d" style="border-radius: 10px;">
 
-## 2. Initial droplet setup
+## 2. Initializing your app
 
-After your droplet has been created, you will need to login, secure it, and install required software. The first task will
-be to create an admin user, then utilie that account for future SSH connections.
+For most use-cases, you would usually push your project to GitHub, then connect your repository to Heroku. However, for this experiment, we will be pushing your app to Heroku directly using the Leaf CLI.
 
-```
-ssh root@$DOMAIN
-adduser username
-usermod -aG sudo username
-rsync --archive --chown=username:username ~/.ssh /home/username
-```
-Test the admin account: ``su - username``. If the command executes, you can terminal the SSH session and log
-back in with your new user account (recommended).
+To get started, you will need to make sure you are logged in to Heroku. You can do this by running `heroku login`. You will be prompted to login in your browser. Once you have logged in, you can proceed.
 
-### Setup firewall
+Heroku uses git to deploy your application, so you will need to initialize git in your repository. You can do this by running `git init` in your project directory. After initializing git, you can add your files to the staging area by running `git add .`. Once you have added your files, you can commit them by running `git commit -m "commit message"`.
 
-Next we will setup UFW - Ubuntu Firewall. We will allow communication on ports: 22 (SSH), 80 (HTTP), and 443 (SSL).
+## 3. Deploying your app
 
-```
-sudo ufw allow 22
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw enable
+Now for the interesting part. We can deploy our application using Leaf CLI's `deploy` command.
+
+```bash
+leaf deploy --to heroku --project your-project-name
 ```
 
-After creating the firewall's rules and enabling UFW, you can view firewall status by ``sudo ufw status``.
+For this example, our command would look like this:
 
-### Install required software
-
-It is now time install all of the needed software to enable LeafPHP to run. First, we need to update all system software:
-
-```
-sudo apt update
-sudo apt upgrade
+```bash
+leaf deploy --to heroku --project leafcodelabs
 ```
 
-Be sure to respond **Y** when asked to continue. Now we can intall NGINX, PHP, MySQL, and curl.
-
-```
-sudo apt install nginx php-fpm php-mysql php-curl
-```
-
-Once complete, follow the
-[NGINX instructions](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04#step-3-%E2%80%93-installing-php-and-configuring-nginx-to-use-the-php-processor).
-Ensure that your directory is set as such: `` root /var/www/$DOMAIN/public;`` Below is an example sites-available file.
-
-```
-server {
-    server_name itsglint.com www.itsglint.com 147.182.136.153;
-    root /var/www/itsglint.com/public;
-
-    index index.html index.htm index.php;
-
-    location / {
-        try_files $uri /index.php?$query_string;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
-    }
-}
-```
-
-::: warning LeafRouter and .htaccess support
-It is important to mirror the location blocks as-in. Otherwise, LeafRouter will not work properly or at all.
-:::
-
-
-Next, we will install Mysql. Follow the [install instructions](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04#step-2-%E2%80%93-installing-mysql-to-manage-site-data).
-
-```
-sudo apt install mysql-server
-```
-
-### Install your Leaf🍁 application
-
-Next, we will download and install our application with all dependencies. Clone your repository from Github, 
-or any source, and place your Leaf project in ``/var/www/$DOMAIN``. Afterwards, install required dependencies
-and perform initial Leaf tasks:
-
-```
-composer install
-php leaf db:install
-php leaf db:migrate
-```
-
-You also may seed the database if required: ``php leaf db:seed``.
-
-Congratulations 🎉, you now have a fully working production server, and should be able to reach your application at $DOMAIN.
-
-::: details Recommended: Complete SSL Setup
-If your Leaf applications is more than a hobbyist adventure and serving actual clients or visitors, it is
-strongly recommended to complete the SSL setup. SSL encrypts traffic between a browser and server. Replace
-example.com with $DOMAIN.
-
-```
-sudo apt install certbot python3-certbot-nginx
-sudo systemctl reload nginx
-sudo certbot --nginx -d example.com -d www.example.com
-```
-
-When prompted for HTTPS redirction, select **Option 2**, forcing HTTPS traffic.
-
-:::
+This command will setup the Heroku remote, build your app and push it to your Heroku project. Once the command is complete, you should see your deploy in the `Deploys` tab on the heroku dashboard.
 
 <br>
 
-Experiment by **[Matthew Reichardt](https://github.com/matthewjamesr)**
+Experiment by **[Michael Darko](https://github.com/mychidarko)**
