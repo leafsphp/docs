@@ -340,10 +340,6 @@ $app->all('/post/{id}', function ($id) {
 
 </div>
 
-### View
-
-**`view` is no longer supported, as Leaf Blade is no longer default in Leaf. You'll have to manually show your views using `get`**
-
 ### Resource Routes
 
 This section assumes you've read [working with controllers](/docs/routing/controller). In an MVC application, controllers play a major role as they're the bridge between your view and your model.
@@ -404,7 +400,7 @@ $app->run();
 
 Resource routes are handled by a [resource controller](/docs/routing/controller?id=resource-controller).
 
-### Route "Hooking"
+## Route "Hooking"
 
 You can add a route that handles a couple of HTTP methods with the Leaf router's match() method. It accepts three arguments:
 
@@ -431,7 +427,7 @@ $app->match('GET|POST', '/people', function () {
 
 </div>
 
-### Running your routes
+## Running your routes
 
 After setting all the routes, you'll need to dispatch the routes. This is achieved through Leaf's run() method.
 
@@ -450,7 +446,7 @@ $app->run();
 
 </div>
 
-### Route options
+## Route options
 
 Route options simply allow you to configure the way groups and individual routes by passing in additional parameters. In actual sense, all new features were generated as a result of this single feature. Let's see how it works.
 
@@ -553,9 +549,9 @@ $app->group("/user", ["namespace" => "\\", function () {
 
 **This doesn't mean that you should always pass in an array, if you don't need the other options, you can pass in your function or controller directly as you've always done.**
 
-### Naming your routes
+## Naming your routes
 
-From v2.5.0 of Leaf, you can give route names which you can call them with instead of using the path (Inspired by vue-router).
+You can give names to your routes which allows you to use your route names for navigation instead of your route paths. This feature is heavily inspired by vue-router.
 
 <div class="functional-mode">
 
@@ -613,3 +609,50 @@ $app->push(["home"]);
 ```
 
 </div>
+
+## Getting the current route
+
+There are times when you need to get information about the current route from within one of your route handlers, views or controllers. For example, you may wish to generate a URL for the current route or redirect to the current route. You may also need to access the route's parameters. You may do all of this using the `Router::getRoute()` method:
+
+<div class="functional-mode">
+
+```php
+app()->get("/home", ["name" => "home", function () {
+  $route = app()->getRoute();
+  echo $route['name'];
+}]);
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$app->get("/home", ["name" => "home", function () use ($app) {
+  $route = $app->getRoute();
+  echo $route['name'];
+}]);
+```
+
+</div>
+
+The output of `getRoute()` looks something like this:
+
+```json
+{
+  "pattern": "/users/(.*?)",
+  "path": "/users/1",
+  "method": "GET",
+  "name": "mycontroller",
+  "handler": "MyNamespace\\Controller@index",
+  "params": [
+    "1"
+  ]
+}
+```
+
+- `pattern` is the route pattern
+- `path` is the current route path
+- `method` is the current route method
+- `name` is the current route name
+- `handler` is the current route handler (custom function or controller)
+- `params` is an array of the current route's parameters (dynamic values)
