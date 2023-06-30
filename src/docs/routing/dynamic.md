@@ -11,18 +11,25 @@ import VideoDocs from '/@theme/components/VideoDocs.vue'
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
 /> -->
 
-## Named Params
-
 *This guide assumes you have read [Simple Routing](/docs/routing/)*
 
-Basically, Dynamic Placeholder-based Route Patterns are just another way to use routes dynamically. This type of Route Patterns are the same as Dynamic PCRE-based Route Patterns, but with one difference: they don't use regexes to do the pattern matching but they use the more easy placeholders instead. Placeholders are strings surrounded by curly braces, e.g. {name}. You don't need to add parens around placeholders.
+Dynamic routing is the idea of creating routes that can be accessed dynamically. For example, you can create a route that accepts a user id and displays the user with that id. This is useful when you want to create routes that can be accessed using dynamic information like ids, usernames, etc.
+
+Leaf router provides two ways to create dynamic routes:
+
+- [Dynamic Placeholder-based Route Patterns](#named-params)
+- [PCRE-based Route Patterns](#pcre-based-params)
+
+## Named Params
+
+Dynamic Placeholder-based Route Patterns are the same as Dynamic PCRE-based Route Patterns, but with one difference: they use human readable placeholders instead of regular expressions. Placeholders are strings surrounded by curly braces, e.g. {name}. You don't need to add parens around placeholders.
 
 Examples
 
-- /movies/{id}
-- /profile/{username}
+- `/movies/{id}`
+- `/profile/{username}`
 
-Placeholders are easier to use than PRCEs, but offer you less control as they internally get translated to a PRCE that matches any character (.*).
+These placeholders are easier to use than PRCEs, but offer you less control as they internally get translated to a PRCE that matches any character (.*).
 
 <div class="functional-mode">
 
