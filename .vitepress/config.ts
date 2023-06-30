@@ -223,7 +223,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
-      { text: 'Sub routing', link: '/docs/routing/sub-routing' },
+      { text: 'Route Groups', link: '/docs/routing/sub-routing' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       {
         text: 'Optional Route sub-patterns',
