@@ -14,12 +14,13 @@ Below is a list of experiment topics.
 | :------------------------------------ | :----------------------------------------------------------------- |
 | [Hosting](/experiments/hosting/)      | Experiments related to web/API hosting                             |
 | [Auth](/experiments/auth/)            | Experiments related to web/API authentication                      |
-| [Form Validation](/experiments/form/) | Experiments related to form validation                             |
+
+<!-- | [Form Validation](/experiments/form/) | Experiments related to form validation                             |
 | [caching](/experiments/caching/)      | Experiments related to web/API caching                             |
 | [JS](/experiments/javascript/)        | Experiments related to javascript                                  |
 | [WS](/experiments/websocket/)         | Experiments related to websockets                                  |
-| [Mail](/experiments/mail/)            | Experiments related to mailing                                     |
+| [Mail](/experiments/mail/)            | Experiments related to mailing                                     | -->
 
 ## Contributing
 
-If you don't find your topic here, you can simply create a pull request with your experiment in the topic folder you need. Find the full contribution guide [here](/contributing/)
+If you don't find your topic here, you can simply create a pull request with your experiment in the topic folder you need. Find the full contribution guide [here](/codelabs/contributing)

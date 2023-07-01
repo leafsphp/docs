@@ -48,7 +48,7 @@ This is just a really simple sample
 
 Basically, we've created a view which takes in a `$title`, `$name` and `$position`. So, back to our main system, we have to fill these fields and save the whole view into our mail body. Let's see how that works.
 
-**Be sure to read [Leaf Blade docs](2.0/views/blade) and [Leaf Mail docs](2.0/core/mail)**
+**Be sure to read Leaf Blade docs and Leaf Mail docs.**
 
 ```php
 <?php
@@ -98,8 +98,7 @@ $mail->Body = $app->blade->render("mail", [
 $mail->send();
 ```
 
-
-Dont forget to check [Leaf Mail's documentation](2.0/core/mail)
+Dont forget to check Leaf Mail's documentation
 
 <br>
 
