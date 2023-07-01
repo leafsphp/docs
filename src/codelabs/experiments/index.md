@@ -12,8 +12,8 @@ Below is a list of experiment topics.
 
 | Topic                                 | Description                                                        |
 | :------------------------------------ | :----------------------------------------------------------------- |
-| [Hosting](/experiments/hosting/)      | Experiments related to web/API hosting                             |
-| [Auth](/experiments/auth/)            | Experiments related to web/API authentication                      |
+| [Hosting](/codelabs/experiments/deployment/)      | Experiments related to web/API hosting                             |
+| [Auth](/codelabs/experiments/auth/)            | Experiments related to web/API authentication                      |
 
 <!-- | [Form Validation](/experiments/form/) | Experiments related to form validation                             |
 | [caching](/experiments/caching/)      | Experiments related to web/API caching                             |
