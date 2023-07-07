@@ -67,6 +67,10 @@ class CreateUsers extends Database {
 }
 ```
 
+::: tip Note
+Instead of building your migrations from scratch, you can use Leaf's schema builder to generate migrations from JSON data. [Learn more](/docs/mvc/schema).
+:::
+
 ## Running migrations
 
 To run all of your outstanding migrations, execute the `db:migrate` command:

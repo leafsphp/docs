@@ -314,6 +314,7 @@ const mainSidebar = [
       { text: 'Views', link: '/docs/mvc/views' },
       { text: 'Models', link: '/docs/mvc/models' },
       { text: 'Migrations', link: '/docs/mvc/migrations' },
+      { text: 'Schema', link: '/docs/mvc/schema' },
       { text: 'Seeders', link: '/docs/mvc/seeds' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
       // { text: 'MVC Console Tool', link: '/docs/mvc/console' },
