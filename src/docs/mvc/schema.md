@@ -100,7 +100,7 @@ Leaf Schema supports all the types supported by Laravel's Schema Builder. You ca
 
 In the example above, the `username` field will be set to `$table->text` in the migration. This is the same as using `$table->text('username')` in your migration.
 
-<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:1rem;">
+<div class="vt-grid-list">
 <a href="https://laravel.com/docs/10.x/migrations#column-method-bigIncrements" target="_blank">bigIncrements </a>
 <a href="https://laravel.com/docs/10.x/migrations#column-method-bigInteger" target="_blank">bigInteger </a>
 <a href="https://laravel.com/docs/10.x/migrations#column-method-binary" target="_blank">binary</a>
