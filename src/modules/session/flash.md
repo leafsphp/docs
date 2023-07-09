@@ -1,27 +1,19 @@
 <!-- markdownlint-disable no-inline-html -->
 # Leaf Flash
 
-::: warning Watch out
-Leaf flash is a class available on the leaf session module. Check out the [session module docs](/modules/session/) for installation instructions.
-:::
+Session flash messages are temporary messages that are stored in the session and displayed to the user for a short duration, usually just until they are shown once. These messages are commonly used to provide feedback or notifications to the user after a specific action or event, such as successfully completing a form submission, encountering an error, or performing a specific operation.
 
-This is a simple helper for creating and managing PHP flash messages. It is highly customizable just like the rest of Leaf and fits right into any project no matter it's size or scope.
-
-To get started, simply call the method you want to use. Leaf Flash uses static methods, so there's no need for initializing.
-
-**Flash uses session to temporarily save variables.**
+Leaf session provides a simple interface for creating and managing flash messages. Flash messages are stored in the session and can be retrieved and displayed in the view.
 
 ## Config
 
-As mentioned above, Leaf Flash is super customizable. All this customization is done through Leaf Flash config.
+Leaf Flash comes with a default configuration that works out of the box. However, you can change the configuration to suit your needs. You can skip this section if you're using the default configuration.
 
-**You don't need to do any of this. Leaf Flash works perfectly out of the box.**
+Using the `config()` method, you can change where Leaf stores flash messages in session, the keys for messages and saved content. The available options are:
 
-Using the config method, you can change where Leaf stores flash messages in session, the keys for messages and saved content. The available options are:
-
-- key: The key to save flash array in session. Default: leaf.flash,
-- default: The key for default flash messages. Default: message,
-- saved: The key for saved flash messages. Default: leaf.flash.saved,
+- key: The key to save flash array in session. Default: `leaf.flash`,
+- default: The key for default flash messages. Default: `message`,
+- saved: The key for saved flash messages. Default: `leaf.flashSaved`,
 
 <div class="functional-mode">
 
@@ -56,133 +48,133 @@ Flash::set("This is my message");
 
 **Flash searches for an existing session and creates one if there's no active session.**
 
-## set
+## Adding a new flash
 
-Set as the name implies allows you to save a flash message.
+Leaf Flash provides a `set()` method for adding new flash messages to the session. The `set()` method accepts two arguments:
+
+- The item to flash
+- The key to save it under. The key is optional and defaults to `message`.
 
 <div class="functional-mode">
 
 ```php
-flash()->set("This is my message");
+flash()->set('This is my message');
+flash()->set('This is my message', 'info');
+
+// accepts different types of data
+flash()->set($userObject);
+flash()->set($userArray);
+flash()->set($userString);
+flash()->set($userInt);
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-Leaf\Flash::set("This is my message");
+Leaf\Flash::set('This is my message');
+Leaf\Flash::set('This is my message', 'info');
+
+// accepts different types of data
+Leaf\Flash::set($userObject);
+Leaf\Flash::set($userArray);
+Leaf\Flash::set($userString);
+Leaf\Flash::set($userInt);
 ```
 
 </div>
 
-This saves the message with the key `message`. If you want to use another key, you can pass it in as a second parameter.
+Leaf flash allows you to keep multiple flash messages at the same time. They won't be removed until you show them. To do this, you will need to set different keys for each flash message.
 
 <div class="functional-mode">
 
 ```php
-flash()->set("This is my message", "info");
+flash()->set('This is my message', 'info');
+flash()->set('This is my message', 'error');
+flash()->set('This is my message', 'success');
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-Leaf\Flash::set("This is my message", "info");
+Leaf\Flash::set('This is my message', 'info');
+Leaf\Flash::set('This is my message', 'error');
+Leaf\Flash::set('This is my message', 'success');
 ```
 
 </div>
 
-Using this functionality you can have multiple flash messages at the same time. In that case, they won't be unset until they are viewed.
+## Displaying a flash message
+
+Leaf Flash provides a `display()` method that you can use to retrieve your session flash. As soon as the flash message is retrieved, it is removed from the session which means it won't show on the next load.
 
 <div class="functional-mode">
 
 ```php
-flash()->set("This is my message", "info");
-flash()->set("This is my message", "error");
-flash()->set("This is my message", "success");
-```
-
-</div>
-<div class="class-mode">
-
-```php
-Leaf\Flash::set("This is my message", "info");
-Leaf\Flash::set("This is my message", "error");
-Leaf\Flash::set("This is my message", "success");
-```
-
-</div>
-
-## unset
-
-`unset` does the opposite: it removes a flash message. You won't be needing this method in most cases.
-
-<div class="functional-mode">
-
-```php
-flash()->unset("This is my message");
-flash()->unset("This is my message", "info");
-```
-
-</div>
-<div class="class-mode">
-
-```php
-Leaf\Flash::unset("This is my message");
-Leaf\Flash::unset("This is my message", "info");
-```
-
-</div>
-
-## display
-
-This method is used to get a flash message. As soon as the flash message is retrieved, it is removed from the session which means it won't show on the next load.
-
-<div class="functional-mode">
-
-```php
-flash()->set("message 1");
-flash()->set("message 2", "info");
+flash()->set('message 1');
+flash()->set('message 2', 'info');
 
 echo flash()->display(); // message 1
-echo flash()->display("info"); // message 2
+echo flash()->display('info'); // message 2
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-Leaf\Flash::set("message 1");
-Leaf\Flash::set("message 2", "info");
+Leaf\Flash::set('message 1');
+Leaf\Flash::set('message 2', 'info');
 
 echo Leaf\Flash::display(); // message 1
-echo Leaf\Flash::display("info"); // message 2
+echo Leaf\Flash::display('info'); // message 2
 ```
 
 </div>
 
-## save
+## Remove a flash message
 
-Flash also allows you to `save` a message in session. This message will stay in session till it is manually removed. Note that unlike regular flashes, there can be only one saved flash message.
+The `unset()` method allows you to remove a flash message. Note that flash messages are automatically removed when you display them, so you might never need to use this method.
 
 <div class="functional-mode">
 
 ```php
-flash()->save("This is my message");
+flash()->unset();
+flash()->unset('info'); // unset a specific flash message
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-Leaf\Flash::save("This is my message");
+Leaf\Flash::unset();
+Leaf\Flash::unset('info'); // unset a specific flash message
 ```
 
 </div>
 
-## clearSaved
+## Permanent flash messages
 
-This is `unset` for saved messages.
+Flash also allows you to create a message that stays in session till it is manually removed. You can add permanently stored flash data using the `save()` method. Note that unlike regular flashes, there can be only one saved flash message.
+
+<div class="functional-mode">
+
+```php
+flash()->save('This is my message');
+```
+
+</div>
+<div class="class-mode">
+
+```php
+Leaf\Flash::save('This is my message');
+```
+
+</div>
+
+## Removing saved flash messages
+
+You can use the `clearSaved()` method to remove saved flash messages.
 
 <div class="functional-mode">
 
@@ -199,9 +191,9 @@ Leaf\Flash::clearSaved();
 
 </div>
 
-## displaySaved
+## Displaying saved flash messages
 
-This is `display` for saved messages.
+You can use the `displaySaved()` method to display saved flash messages.
 
 <div class="functional-mode">
 
