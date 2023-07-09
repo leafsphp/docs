@@ -29,6 +29,29 @@ Leaf's session module smartly handles session initialization. It checks if a ses
 
 You also don't have to worry about messing up your sessions since Leaf session is 100% compatible with native PHP sessions.
 
+### Manually starting a session
+
+If you want to manually start a session, you can use the `start()` method.
+
+<div class="class-mode">
+
+```php
+$session = new Leaf\Http\Session;
+
+...
+
+$session->start();
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+session()->start();
+```
+
+</div>
+
 ## Retrieving session data
 
 Leaf session provides 3 ways to retrieve session data:
@@ -285,6 +308,62 @@ session()->unset('email');
 
 // remove multiple items
 session()->unset(['name', 'email']);
+```
+
+</div>
+
+We also added the `delete()` method as an alias for `unset()`. They both do the same thing.
+
+<div class="class-mode">
+
+```php
+$session = new Leaf\Http\Session;
+
+...
+
+// remove single item
+$session->delete('email');
+
+// remove multiple items
+$session->delete(['name', 'email']);
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+// remove single item
+session()->delete('email');
+
+// remove multiple items
+session()->delete(['name', 'email']);
+```
+
+</div>
+
+## Wiping session data
+
+Leaf Session allows you to wipe all session data with the `clear()` method. This method completely deletes all session information, but does not destroy the session itself.
+
+<div class="class-mode">
+
+```php
+$session = new Leaf\Http\Session;
+
+...
+
+$session->clear();
+
+echo json_encode($_SESSION); // {}
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+session()->clear();
+
+echo json_encode($_SESSION); // {}
 ```
 
 </div>

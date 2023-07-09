@@ -13,7 +13,7 @@ Using the `config()` method, you can change where Leaf stores flash messages in 
 
 - key: The key to save flash array in session. Default: `leaf.flash`,
 - default: The key for default flash messages. Default: `message`,
-- saved: The key for saved flash messages. Default: `leaf.flash.saved`,
+- saved: The key for saved flash messages. Default: `leaf.flashSaved`,
 
 <div class="functional-mode">
 
