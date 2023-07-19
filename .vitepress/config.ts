@@ -266,11 +266,11 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
+      { text: 'Validation', link: '/modules/forms/v/2/' },
       { text: 'Leaf Password', link: '/modules/password/' },
       { text: 'Leaf Anchor', link: '/modules/anchor/' },
-      { text: 'Leaf Date', link: '/modules/date/' },
-      { text: 'Leaf Fetch', link: '/modules/fetch/' },
+      { text: 'Date/Time', link: '/modules/date/' },
+      { text: 'Data Fetching', link: '/modules/fetch/' },
       { text: 'Logging', link: '/docs/tooling/logging' }
     ]
   },
