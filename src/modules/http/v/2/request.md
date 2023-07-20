@@ -407,6 +407,53 @@ request()->postData('description', 'No Description');
 
 </div>
 
+## Validating Request Data <sup class="vt-badge">new</sup>
+
+Leaf Request now comes with a built-in validator which allows you to validate request data directly on the request object. You don't need to install or configure anything. To get started, all you need to do is call `validate()` on the request object.
+
+<div class="class-mode">
+
+```php{8-12}
+<?php
+
+$app = new Leaf\App;
+
+...
+
+$app->post('/register', function() use($app) {
+  $success = $app->request()->validate([
+    'name' => 'text',
+    'email' => 'email',
+    'password' => 'min:8',
+  ]);
+
+  if (!$success) {
+    $errors = $app->request()->errors();
+  }
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php{4-8}
+<?php
+
+app()->post('/register', function() {
+  $success = request()->validate([
+    'name' => 'text',
+    'email' => 'email',
+    'password' => 'min:8',
+  ]);
+
+  if (!$success) {
+    $errors = request()->errors();
+  }
+});
+```
+
+</div>
+
 ## Request Headers and Cookies
 
 The request instance also contains methods which allow you retrieve headers and cookies from the incoming request.
