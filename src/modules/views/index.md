@@ -1,12 +1,12 @@
-# Introduction
+# Frontend
 
-Over the years, leaf has had suport for many in-built templating engines. Although none of them are shipped with leaf by default any more, leaf still supports all of them.
+As a backend inclined framework, leaf has always focused on tooling for building APIs and backend applications. However, as frontend frameworks and libraries have become more popular, leaf has also evolved to support some modern frontend tooling which can be used to build amazing full-stack applications.
 
-::: tip Note That
-You can use any templating engine you prefer with leaf, however, these templating engines are specifically created for leaf but can be used outside leaf apps as well.
-:::
+This section of the docs will cover all the frontend tooling leaf has to offer.
 
-## Engines
+## Templating Engines
+
+Over the years, leaf has had suport for many built-in templating engines. All of these templating engines have first class support in leaf and can be used to build amazing frontend applications. These engines are available as separate packages and can be installed using composer, which means you can use them outside leaf apps as well.
 
 Depending on your needs, you may want to go with a particular templating engine.
 
@@ -16,10 +16,23 @@ Depending on your needs, you may want to go with a particular templating engine.
 | [veins](/modules/views/veins/)   | Lightweight but powerful templating engine   |
 | [blade](/modules/views/blade/)   | Laravel blade templating engine for leaf     |
 
-## BareUI vs Veins vs Blade
+### BareUI vs Veins vs Blade
 
 | Engine                           |  Speed  |  Cool Magic  |  Lightweight  | Editor Support |
 | -------------------------------- | :-----: | :----------: | :-----------: | :------------: |
 | [bareui](/modules/views/bareui/) |    ⚡️   |       ❌      |      ⚡️       |       ⚡️       |
 | [veins](/modules/views/veins/)   |    🔥   |       🔥      |      🔥       |       🔥       |
 | [blade](/modules/views/blade/)   |    ❌   |       ⚡️      |      🔥       |       ⚡️       |
+
+### Third Party Templating Engines
+
+Although Leaf has some preferred templating engines, you can use any templating engine you want with leaf. Here are some of the most popular templating engines you can use with leaf:
+
+- [Twig](https://twig.symfony.com/)
+- [Smarty](https://www.smarty.net/)
+
+You can check out the [third party templating engines](/modules/views/third-party/) section of the docs to learn how to use any templating engine with leaf.
+
+## Asset Bundling
+
+[Vite](https://vitejs.dev/) is a modern build tool for frontend applications. It aims to provide a faster and leaner development experience for modern web projects. Leaf allows you to bundle your CSS and JS assets using vite, using the powerful [leaf-vite](/modules/views/vite/) module.

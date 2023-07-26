@@ -293,6 +293,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/views/' },
+      { text: 'Vite JS', link: '/modules/views/vite/' },
       { text: 'Bare UI', link: '/modules/views/bareui/' },
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
       { text: 'Leaf Veins', link: '/modules/views/veins/' },
