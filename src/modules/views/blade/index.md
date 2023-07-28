@@ -2,9 +2,32 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-This is Leaf's implementation of Laravel's blade templating engine.
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
-## Installation
+[Blade](https://laravel.com/docs/10.x/blade#introduction) is the simple, yet powerful templating engine that is included with Laravel. Unlike some PHP templating engines, Blade does not restrict you from using plain PHP code in your templates. In fact, all Blade templates are compiled into plain PHP code and cached until they are modified, meaning Blade adds essentially zero overhead to your application. Blade template files use the .blade.php file extension and are typically stored in the resources/views directory.
+
+Leaf Blade is a port of the [jenssegers/blade](https://github.com/jenssegers/blade) package that allows you to use blade templates in your Leaf PHP projects.
+
+<VideoDocs
+  title="New to Blade?"
+  subject="Laravel Tutorial for Beginners #5 - Blade Basics"
+  description="This video by The Net Ninja will help you get started with blade."
+  link="https://www.youtube.com/embed/pQ2vxa4_f2w"
+/>
+
+## Usage with Leaf MVC
+
+Leaf MVC and Leaf API come with blade support out of the box. You can use blade templates in your Leaf MVC and Leaf API projects without any extra configuration.
+
+All you need to do is create a new blade file in your `app/views` folder and you're good to go! You can also create sub-folders in your `app/views` folder to organize your blade files into multiple sections.
+
+You can skip the installation and setup sections if you're using Leaf MVC or Leaf API.
+
+## Usage with Leaf Core
+
+Since Leaf's core doesn't give you any structure, you'll have to set up blade yourself. Don't worry, it's pretty easy. All you need to do is install blade, configure it to match your project's setup and you're good to go.
 
 You can install leaf blade with the Leaf CLI:
 
@@ -21,63 +44,46 @@ composer require leafs/blade
 After this, you simply need to initialize blade:
 
 ```php
-// initialising the package
 $blade = new Leaf\Blade();
 ```
 
-## Usage
+### Usage
 
-To further understand blade, you can view the official documentation [http://laravel.com/docs/5.8/blade](http://laravel.com/docs/5.8/blade).
-
-Leaf Blade only supports directory configurations, which can be passed as params on initialisation.
+The Blade class takes two parameters on initialization. The first is the path to your view files, and the second is the path to your cached files.
 
 ```php
 use Leaf\Blade;
 
-// Blade("template dir", "cache dir");
-$blade = new Blade('app/views', 'app/views/cache');
+$blade = new Blade('views', 'storage/cache');
 ```
 
-Not to worry, you can configure blade at a later time after initialisation.
+If you want to initialize the package with the default settings, you can simply do:
 
 ```php
-$blade = new Leaf\Blade;
+$blade = new Leaf\Blade();
+```
 
-// somewhere, maybe in a different file
+And then configure it later using the `configure()` method:
+
+```php
 $blade->configure("app/views", "app/views/cache");
 ```
 
-Since Blade is also bound directly to the Leaf object, you can directly do this
+## Rendering a blade view
 
-<div class="functional-mode">
-
-```php
-app()->blade->configure("app/views", "app/views/cache");
-```
-
-</div>
-<div class="class-mode">
+Once you have pointed Blade to the location of your view files, you may easily render them using the `make` method. The `make` method accepts the name of the view file as its first argument, and an array of data as its second argument. The data array will be extracted into variables that may be used within the view file:
 
 ```php
-$app->blade->configure("app/views", "app/views/cache");
+echo $blade->make('index', ['name' => 'Michael Darko'])->render();
 ```
 
-</div>
-
-Now that this is done, we can render our blade template. This is done with `make`.
-
-```php
-// don't forget to chain the render method
-echo $blade->make('index', ['name' => 'Michael Darko'])->render(); // index.blade.php
-```
-
-Alternatively you can use the shorthand method render:
+Alternatively you can use the shorthand `render()` method:
 
 ```php
 echo $blade->render('index', ['name' => 'Michael Darko']);
 ```
 
-We can have this as our template index.blade.php
+The examples above will look for an `index.blade.php` file in the `views` directory. Within the view, you can access the `name` variable like so:
 
 ```html
 <!Doctype html>
@@ -91,7 +97,9 @@ We can have this as our template index.blade.php
 </html>
 ```
 
-You can also extend Blade using the `directive()` function:
+## Extending Blade
+
+Blade allows you to define custom directives using the `directive()` method. When the Blade compiler encounters the custom directive, it will call the provided callback with the expression that the directive contains. The callback is free to return the value of its contents however you like:
 
 ```php
 $blade->directive('datetime', function ($expression) {
@@ -105,4 +113,4 @@ Which allows you to use the following in your blade template:
 Current date: @datetime($date)
 ```
 
-The Blade instances passes all methods to the internal view factory. So methods such as exists, file, share, composer and creator are available as well. Check out the [original documentation](http://laravel.com/docs/5.8/blade) for more information.
+The Blade instance passes all methods to the internal view factory. So methods such as exists, file, share, composer and creator are available as well. Check out the [original documentation](http://laravel.com/docs/5.8/blade) for more information.

@@ -6,6 +6,7 @@ import {
   VTIconGitHub,
   VTIconGlobe,
   VTIconHeart,
+  VTIconInstagram,
   VTIconLink,
   VTIconLinkedIn,
   VTIconMapPin,
@@ -158,6 +159,15 @@ const avatarUrl = computed(() => {
               <VTIconLinkedIn class="social-icon" />
             </VTLink>
           </li>
+          <li v-if="member.socials.instagram" class="social-item">
+            <VTLink
+              class="social-link"
+              :href="`https://www.instagram.com/${member.socials.instagram}`"
+              :no-icon="true"
+            >
+              <VTIconInstagram class="social-icon" />
+            </VTLink>
+          </li>
           <li v-if="member.socials.codepen" class="social-item">
             <VTLink
               class="social-link"
@@ -247,12 +257,6 @@ const avatarUrl = computed(() => {
 
 .data {
   padding: 20px 32px 32px;
-}
-
-@media (min-width: 512px) {
-  .data {
-    padding: 40px 32px 32px 32px;
-  }
 }
 
 .name {

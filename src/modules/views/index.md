@@ -36,3 +36,11 @@ You can check out the [third party templating engines](/modules/views/third-part
 ## Asset Bundling
 
 [Vite](https://vitejs.dev/) is a modern build tool for frontend applications. It aims to provide a faster and leaner development experience for modern web projects. Leaf allows you to bundle your CSS and JS assets using vite, using the powerful [leaf-vite](/modules/views/vite/) module.
+
+[> Read the docs](/modules/views/vite/)
+
+<!-- ## Frontend Frameworks
+
+Leaf has support for some of the most popular frontend frameworks using [Inertia.js](https://inertiajs.com/). Inertia.js is a framework that allows you to create fully client-side rendered, single-page apps, without much of the complexity that comes with modern SPAs. It does this by leveraging Leaf's server-side rendering capabilities.
+
+[> Read the docs](/modules/views/inertia/) -->
