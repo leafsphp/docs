@@ -234,7 +234,7 @@ Options:
 Follow along with the next steps to learn more about Leaf MVC.
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box" href="/docs/mvc/routing">
+  <a class="vt-box" href="/docs/routing/mvc">
     <h3 class="next-steps-link">Routing</h3>
     <small class="next-steps-caption">Learn how routing works in your Leaf applications.</small>
   </a>

@@ -223,6 +223,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
+      { text: 'MVC Support', link: '/docs/routing/mvc' },
       { text: 'Route Groups', link: '/docs/routing/sub-routing' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       {
@@ -239,6 +240,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/db/' },
+      { text: 'MVC Support', link: '/modules/db/mvc' },
       { text: 'Query Builder', link: '/modules/db/v/2/builder' },
       { text: 'Leaf Redis', link: '/modules/redis/' }
     ]
@@ -249,6 +251,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
+      { text: 'MVC Support', link: '/modules/auth/mvc' },
       { text: 'Auth Config', link: '/modules/auth/config' },
       { text: 'User Login', link: '/modules/auth/login' },
       { text: 'User Sign Up', link: '/modules/auth/signup' },
@@ -298,7 +301,8 @@ const mainSidebar = [
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
       { text: 'Leaf Veins', link: '/modules/views/veins/' },
       { text: 'Viewi PHP', link: '/modules/views/viewi/' },
-      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' }
+      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' },
+      { text: 'Other Engines', link: '/modules/views/third-party/' }
     ]
   },
   {
@@ -310,7 +314,6 @@ const mainSidebar = [
       { text: 'Leaf API', link: '/docs/leafapi/' },
       { text: 'Skeleton', link: '/docs/skeleton/' },
       { text: 'MVC Config', link: '/docs/mvc/config' },
-      { text: 'MVC Routing', link: '/docs/mvc/routing' },
       { text: 'Controllers', link: '/docs/mvc/controllers' },
       { text: 'Views', link: '/docs/mvc/views' },
       { text: 'Models', link: '/docs/mvc/models' },
