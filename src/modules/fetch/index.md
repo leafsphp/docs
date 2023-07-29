@@ -1,23 +1,25 @@
 # Leaf Fetch
 
-<!-- [![Latest Stable Version](https://poser.pugx.org/leafs/leaf/v/stable)](https://packagist.org/packages/leafs/leaf)
-[![Total Downloads](https://poser.pugx.org/leafs/leaf/downloads)](https://packagist.org/packages/leafs/leaf)
-[![License](https://poser.pugx.org/leafs/leaf/license)](https://packagist.org/packages/leafs/leaf) -->
+<div class="flex mb:_3" style="gap: 5px;">
+  <a href="https://packagist.org/packages/leafs/fetch"><img src="https://poser.pugx.org/leafs/fetch/v/stable" alt="Latest Stable Version"></a>
+  <a href="https://packagist.org/packages/leafs/fetch"><img src="https://poser.pugx.org/leafs/fetch/downloads" alt="Total Downloads"></a>
+  <a href="https://packagist.org/packages/leafs/fetch"><img src="https://poser.pugx.org/leafs/fetch/license" alt="License"></a>
+</div>
 
-Clean, simple, developer friendly interface for making network requests with PHP. Fetch is based on curl and uses elements from Unirest PHP and an API that closely resembles Axios. All of these combined makes Fetch the best and simplest way to make PHP network requests.
+Fetch is a clean, simple, developer friendly interface for making network requests with PHP. It provides a modern API based on [axios](https://axios-http.com/docs/intro) and uses elements from [Unirest PHP](https://github.com/Kong/unirest-php).
 
 ## Installation
 
-You can install leaf fetch through composer or leaf cli
-
-```bash
-composer require leafs/fetch
-```
-
-or with leaf cli:
+You can install leaf fetch leaf cli:
 
 ```bash
 leaf install fetch
+```
+
+or with composer:
+
+```bash
+composer require leafs/fetch
 ```
 
 ## Usage

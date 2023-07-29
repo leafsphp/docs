@@ -1,7 +1,6 @@
-# Leaf CSRF
-<!-- <Badge text="EXPERIMENTAL" type="warning" /> -->
+# Leaf CSRF <sup class="vt-badge warning">Beta</sup>
 
-<div style="display:flex;">
+<div style="display:flex; gap:5px;">
 
 [![Latest Stable Version](https://poser.pugx.org/leafs/csrf/v/stable)](https://packagist.org/packages/leafs/csrf)
 
@@ -10,10 +9,6 @@
 [![License](https://poser.pugx.org/leafs/csrf/license)](https://packagist.org/packages/leafs/csrf)
 
 </div>
-
-::: danger NOTE
-This is an experimental module. Please open an issue if you notice any bugs or malfunctions.
-:::
 
 This package is leaf's implementation of CSRF default protection with leaf anchor. It comes separated from leaf anchor because it is not needed in every project you may build.
 

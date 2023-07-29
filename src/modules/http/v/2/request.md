@@ -18,22 +18,12 @@ There are different ways you can access an instance of the Leaf request object. 
 Request now hooks into leaf 3's functional mode and comes with global functions you can use anywhere in your app. Read the [functional mode docs](/docs/tooling/functions) for all the information on functional mode.
 
 ```php{2}
-app()->post("/items/add", function () {
-  echo request()->get("username");
+app()->post('/items/add', function () {
+  echo request()->get('username');
 });
 ```
 
 As you noticed above, we simply call the `request` method without doing anything. Everything is taken care of for us. Also, now, you can use this feature even when you are not using Leaf in your app.
-
-::: danger Watch Out
-In Leaf Http v2, you can NO LONGER pass an array or string to the `request` method to directly retrieve information from the request body.
-
-```php
-$name = request("name");
-```
-
-**THIS WILL NO LONGER WORK**
-:::
 
 </div>
 <div class="class-mode">
@@ -43,13 +33,13 @@ $name = request("name");
 The request class allows you to quickly access all the features of leaf request.
 
 ```php
-Leaf\Http\Request::get("name");
+Leaf\Http\Request::get('name');
 
 // or
 
 use Leaf\Http\Request;
 
-Request::get("name");
+Request::get('name');
 ```
 
 </div>
@@ -61,8 +51,8 @@ If you are using request in a leaf app, leaf automatically binds the request cla
 <div class="functional-mode">
 
 ```php{2}
-app()->post("/user/change-username", function () {
-  echo app()->request()->get("username");
+app()->post('/user/change-username', function () {
+  echo app()->request()->get('username');
 });
 ```
 
@@ -74,8 +64,8 @@ Although you can do this, there's no need to go with this method since you have 
 ```php{4}
 $app = new Leaf\App;
 
-$app->post("/user/change-username", function () use($app) {
-  echo $app->request()->get("username");
+$app->post('/user/change-username', function () use($app) {
+  echo $app->request()->get('username');
 });
 ```
 
@@ -119,14 +109,14 @@ In v2.4, `get` can also be used on files passed into the request.
 <div class="class-mode">
 
 ```php
-$picture = $app->request()->get("image");
+$picture = $app->request()->get('image');
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-$picture = request()->get("image");
+$picture = request()->get('image');
 ```
 
 </div>
@@ -138,18 +128,18 @@ In v2.4, you can retrieve a couple of fields you want, and not just one. You can
 <div class="class-mode">
 
 ```php
-$loginData = $app->request()->get(["username", "password"]);
+$loginData = $app->request()->get(['username', 'password']);
 // ... do something with username
-echo $loginData["username"];
+echo $loginData['username'];
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-$loginData = request()->get(["username", "password"]);
+$loginData = request()->get(['username', 'password']);
 // ... do something with username
-echo $loginData["username"];
+echo $loginData['username'];
 ```
 
 </div>
@@ -159,7 +149,7 @@ This allows you to set data you need dynamically.
 <div class="class-mode">
 
 ```php
-list($username, $password) = array_values($app->request()->get(["username", "password"]));
+list($username, $password) = array_values($app->request()->get(['username', 'password']));
 // ... do something with username
 echo $username;
 ```
@@ -168,7 +158,7 @@ echo $username;
 <div class="functional-mode">
 
 ```php
-list($username, $password) = array_values(request()->get(["username", "password"]));
+list($username, $password) = array_values(request()->get(['username', 'password']));
 // ... do something with username
 echo $username;
 ```
@@ -177,17 +167,17 @@ echo $username;
 
 #### Security Fixes
 
-`get()` has also received a bunch of security fixes which prevent maliscious scripts from being passed into your application. In v2.4, you can choose not to sanitize data coming into your application by passing in `false` as the second parameter.
+`get()` has also received a bunch of security fixes which prevent malicious scripts from being passed into your application. In v2.4, you can choose not to sanitize data coming into your application by passing in `false` as the second parameter.
 
 <div class="class-mode">
 
 ```php
 // data is sanitized
-$username = $app->request()->get("username");
+$username = $app->request()->get('username');
 // data is sanitized
-$title = $app->request()->get("title", true);
+$title = $app->request()->get('title', true);
 // data is not sanitized
-$blog = $app->request()->get("blogBody", false);
+$blog = $app->request()->get('blogBody', false);
 ```
 
 </div>
@@ -195,11 +185,11 @@ $blog = $app->request()->get("blogBody", false);
 
 ```php
 // data is sanitized
-$username = request()->get("username");
+$username = request()->get('username');
 // data is sanitized
-$title = request()->get("title", true);
+$title = request()->get('title', true);
 // data is not sanitized
-$blog = request()->get("blogBody", false);
+$blog = request()->get('blogBody', false);
 ```
 
 </div>
@@ -212,9 +202,9 @@ $blog = request()->get("blogBody", false);
 
 ```php
 // get request: linkToApp?name=mychi
-$data = $app->request()->try(["name", "email"]);
+$data = $app->request()->try(['name', 'email']);
 
-// $data -> ["name" => "mychi"];
+// $data -> ['name' => 'mychi'];
 ```
 
 </div>
@@ -222,9 +212,9 @@ $data = $app->request()->try(["name", "email"]);
 
 ```php
 // get request: linkToApp?name=mychi
-$data = request()->try(["name", "email"]);
+$data = request()->try(['name', 'email']);
 
-// $data -> ["name" => "mychi"];
+// $data -> ['name' => 'mychi'];
 ```
 
 </div>
@@ -328,7 +318,7 @@ $image = $app->request()->files("profile_pic");
 <div class="functional-mode">
 
 ```php
-$image = request()->files("profile_pic");
+$image = request()->files('profile_pic');
 ```
 
 </div>
@@ -338,14 +328,14 @@ You can also get multiple files
 <div class="class-mode">
 
 ```php
-list($profile, $avatar) = array_values($app->request()->files(["profile", "avatar"]));
+list($profile, $avatar) = array_values($app->request()->files(['profile', 'avatar']));
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-list($profile, $avatar) = array_values(request()->files(["profile", "avatar"]));
+list($profile, $avatar) = array_values(request()->files(['profile', 'avatar']));
 ```
 
 </div>
@@ -539,7 +529,7 @@ Leaf also provides a `cookies` method on the request object which allows you to 
 
 ```php
 // get specific cookie
-$app->request()->cookies("name");
+$app->request()->cookies('name');
 
 // get all cookies
 $app->request()->cookies();
@@ -550,7 +540,7 @@ $app->request()->cookies();
 
 ```php
 // get specific cookie
-request()->cookies("name");
+request()->cookies('name');
 
 // get all cookies
 request()->cookies();
@@ -569,22 +559,22 @@ This method allows you to check what method type a request uses.
 <div class="class-mode">
 
 ```php
-$isGetRequest = $app->request()->typeIs("GET");
-$isPostRequest = $app->request()->typeIs("post");
-$isDeleteRequest = $app->request()->typeIs("Delete");
+$isGetRequest = $app->request()->typeIs('GET');
+$isPostRequest = $app->request()->typeIs('post');
+$isDeleteRequest = $app->request()->typeIs('Delete');
 
-if ($isGetRequest) $app->response()->exit("GET method not allowed");
+if ($isGetRequest) $app->response()->exit('GET method not allowed');
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-$isGetRequest = request()->typeIs("GET");
-$isPostRequest = request()->typeIs("post");
-$isDeleteRequest = request()->typeIs("Delete");
+$isGetRequest = request()->typeIs('GET');
+$isPostRequest = request()->typeIs('post');
+$isDeleteRequest = request()->typeIs('Delete');
 
-if ($isGetRequest) response()->exit("GET method not allowed");
+if ($isGetRequest) response()->exit('GET method not allowed');
 ```
 
 </div>
