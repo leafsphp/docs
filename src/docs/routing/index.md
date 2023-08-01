@@ -572,6 +572,38 @@ $app->get("/home", ["name" => "home", function () {
 
 </div>
 
+### Getting a route by its name
+
+You can also get the route path by its name.
+
+<div class="functional-mode">
+
+```php
+app()->route("home"); // Would return: /home
+```
+
+Also, if you have routes with named parameters, you can do as follows:
+
+Route 1:
+```php
+app()->get("/movies/{movieId}", ["name" => "movies", function () {
+  echo "User Movies";
+}]);`
+
+app()->route("movies", "my-movie") // Would return: /movies/my-movie
+```
+Route 2:
+```php
+app()->get("/movies/{movieId}/photos/{photoId}", ["name" => "moviesAndPhotos", function () {
+  echo "User Movies and Photos";
+}]);`
+
+app()->route("moviesAndPhotos", ["movieId" => "my-movie", "photoId" => "my-photo"])
+
+// Would return: /movies/my-movie/photos/my-photo
+```
+</div>
+
 ### Pushing to a route
 
 This is simply redirecting to a route and can be done using `push`. `push` also allows you to reference the route by it's name instead of it's path.
