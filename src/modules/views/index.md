@@ -39,8 +39,8 @@ You can check out the [third party templating engines](/modules/views/third-part
 
 [> Read the docs](/modules/views/vite/)
 
-<!-- ## Frontend Frameworks
+## Frontend Frameworks
 
 Leaf has support for some of the most popular frontend frameworks using [Inertia.js](https://inertiajs.com/). Inertia.js is a framework that allows you to create fully client-side rendered, single-page apps, without much of the complexity that comes with modern SPAs. It does this by leveraging Leaf's server-side rendering capabilities.
 
-[> Read the docs](/modules/views/inertia/) -->
+[> Read the docs](/modules/views/inertia/)

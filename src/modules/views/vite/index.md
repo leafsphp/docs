@@ -153,7 +153,7 @@ export default defineConfig({
 });
 ```
 
-<!-- ## Vite + other frameworks
+## Vite + other frameworks
 
 Vite can be used with any framework. You can learn more about using vite with other frameworks [here](https://vitejs.dev/guide/#scaffolding-your-first-vite-project). We've included in-depth guides on using vite with some of the most popular frameworks:
 
@@ -162,4 +162,4 @@ Vite can be used with any framework. You can learn more about using vite with ot
     <h3 class="next-steps-link">Inertia JS</h3>
     <small class="next-steps-caption">Learn how to set up a React or Vue JS application to run with Leaf using Inertia and Vite.</small>
   </a>
-</div> -->
+</div>

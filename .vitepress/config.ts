@@ -296,13 +296,14 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/views/' },
-      { text: 'Vite JS', link: '/modules/views/vite/' },
       { text: 'Bare UI', link: '/modules/views/bareui/' },
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
       { text: 'Leaf Veins', link: '/modules/views/veins/' },
+      { text: 'Other Engines', link: '/modules/views/third-party/' },
+      { text: 'Vite JS', link: '/modules/views/vite/' },
+      { text: 'Inertia JS', link: '/modules/views/inertia/' },
       { text: 'Viewi PHP', link: '/modules/views/viewi/' },
       { text: 'Leaf UI', link: '/modules/views/leaf-ui/' },
-      { text: 'Other Engines', link: '/modules/views/third-party/' }
     ]
   },
   {
