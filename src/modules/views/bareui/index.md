@@ -37,12 +37,12 @@ composer require leafs/bareui
 
 ## Usage with Leaf MVC
 
-Leaf MVC and Leaf API come with [Leaf Blade](/modules/views/blade) out of the box, however, since Leaf is modular at it's core, Leaf MVC and Leaf API allow you easily swap out the blade engine for BareUI (or any other view engine). To do this, you need to swap out the blade engine in your `public/index.php` and `config/view.php` files:
+Leaf MVC and Leaf API come with [Leaf Blade](/modules/views/blade/) out of the box, however, since Leaf is modular at it's core, Leaf MVC and Leaf API allow you easily swap out the blade engine for BareUI (or any other view engine). To do this, you need to swap out the blade engine in your `public/index.php` and `config/view.php` files:
 
 ```php
 // public/index.php
-Leaf\View::attach(\Leaf\Blade::class); // [!code --]
-\Leaf\View::attach(\Leaf\BareUI::class);
+Leaf\View::attach(\Leaf\Blade::class); (remove this)
+\Leaf\View::attach(\Leaf\BareUI::class); (add this)
 ```
 
 ## Introduction

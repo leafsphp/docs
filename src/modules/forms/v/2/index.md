@@ -6,7 +6,7 @@ Leaf Form is a clean and simple interface that allows you to validate data. It's
 
 ## Installation
 
-You can quickly install Leaf Form using the [Leaf CLI](/cli/):
+You can quickly install Leaf Form using the [Leaf CLI](/docs/cli/):
 
 ```bash
 leaf install form
