@@ -2,7 +2,7 @@
 
 In the [previous section](/modules/views/), we talked about the template engines that Leaf supports as modules. However, you can use any template engine you want with the framework. In this section, we will show you how to use the [Smarty](https://www.smarty.net/) template engine with Leaf.
 
-## Installation
+## Install your engine
 
 To install Smarty, run the following command in your terminal:
 
@@ -17,7 +17,7 @@ Usage with Leaf's core is as straightforward as it gets. All you need to do is c
 ```php
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 $smarty = new Smarty();
 $smarty->setTemplateDir('/some/template/dir');
@@ -30,16 +30,16 @@ $smarty->assign('name', 'Ned');
 $smarty->display('index.tpl');
 ```
 
-## Attaching Smarty to Leaf
+## Attaching your engine to Leaf
 
 Leaf comes with a view manager, that makes Leaf aware of any template engine you want to use. To attach Smarty to Leaf, you need to call the `attach` method on the view manager. You can do this in your `index.php` file:
 
 ```php
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-\Leaf\View::attach(Smarty\Smarty::class);
+\Leaf\View::attach(Smarty::class);
 ```
 
 From here, you can use it from anywhere in your app on the View manager:
@@ -47,7 +47,7 @@ From here, you can use it from anywhere in your app on the View manager:
 ```php
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 \Leaf\View::attach(Smarty::class);
 
