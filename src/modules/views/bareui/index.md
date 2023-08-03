@@ -41,8 +41,8 @@ Leaf MVC and Leaf API come with [Leaf Blade](/modules/views/blade/) out of the b
 
 ```php
 // public/index.php
-Leaf\View::attach(\Leaf\Blade::class); (remove this)
-\Leaf\View::attach(\Leaf\BareUI::class); (add this)
+Leaf\View::attach(\Leaf\Blade::class); // remove this
+Leaf\View::attach(\Leaf\BareUI::class); // add this
 ```
 
 ## Introduction
