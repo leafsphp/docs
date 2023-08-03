@@ -6,7 +6,7 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-[Blade](https://laravel.com/docs/10.x/blade#introduction) is the simple, yet powerful templating engine that is included with Laravel. Unlike some PHP templating engines, Blade does not restrict you from using plain PHP code in your templates. In fact, all Blade templates are compiled into plain PHP code and cached until they are modified, meaning Blade adds essentially zero overhead to your application. Blade template files use the .blade.php file extension and are typically stored in the resources/views directory.
+[Blade](https://laravel.com/docs/10.x/blade#introduction) is the simple, yet powerful templating engine that is included with Laravel. Unlike some PHP templating engines, Blade does not restrict you from using plain PHP code in your templates. In fact, all Blade templates are compiled into plain PHP code and cached until they are modified, meaning Blade adds essentially zero overhead to your application. Blade template files use the `.blade.php` file extension.
 
 Leaf Blade is a port of the [jenssegers/blade](https://github.com/jenssegers/blade) package that allows you to use blade templates in your Leaf PHP projects.
 
@@ -47,7 +47,7 @@ After this, you simply need to initialize blade:
 $blade = new Leaf\Blade();
 ```
 
-### Usage
+## The Blade class
 
 The Blade class takes two parameters on initialization. The first is the path to your view files, and the second is the path to your cached files.
 
@@ -66,7 +66,7 @@ $blade = new Leaf\Blade();
 And then configure it later using the `configure()` method:
 
 ```php
-$blade->configure("app/views", "app/views/cache");
+$blade->configure('app/views', 'app/views/cache');
 ```
 
 ## Rendering a blade view
