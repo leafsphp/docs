@@ -19,3 +19,7 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1rem;
 }
+
+.dark .custom-block [class*='language-'] pre {
+  background-color: var(--vt-c-theme-plain);
+}
