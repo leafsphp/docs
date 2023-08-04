@@ -2,12 +2,27 @@
 
 Vite is a modern build tool for frontend applications. It aims to provide a faster and leaner development experience for modern web projects. Using the Vite module, you can seamlessly bundle your CSS and JS assets using vite.
 
+<details>
+  <summary>New to bundling?</summary>
+  <p>
+    Check out these articles from SitePoint and Next JS:
+    <ul>
+      <li>
+        <a href="https://www.sitepoint.com/javascript-modules-bundling-transpiling">JavaScript Modules: Bundling & Transpiling</a>
+      </li>
+      <li>
+        <a href="https://nextjs.org/learn/foundations/how-nextjs-works/bundling">How Next.js Works</a>
+      </li>
+    </ul>
+  </p>
+</details>
+
 ## Usage with Leaf MVC
 
-Leaf MVC and Leaf API come with built-in support for vite, this means you can use vite to bundle your assets without installing any extra packages. You can start your vite server by running:
+Leaf MVC and Leaf API come with built-in support for vite, this means you can use vite to bundle your assets without installing any extra packages. All you need to do is to start your vite server. You can do this by running:
 
 ```bash
-leaf vite:dev
+leaf view:dev
 ```
 
 Or with npm/pnpm/yarn:
@@ -30,11 +45,28 @@ You can also just use the path relative to your views directory since vite will 
 
 ```php
 <?php echo vite('assets/css/app.css'); ?>
-````
+```
 
 ## Usage with Leaf Core
 
-Since Leaf's core comes with no prior setup or configuration, you'll need to install and setup the vite module yourself. It's super easy to do this. First, install vite and the vite-leaf plugin:
+Since Leaf's core comes with no prior setup or configuration, you'll need to install and setup the vite module yourself. There are 2 ways to do this:
+
+- Using the Leaf CLI's `view:install` command
+- Manually installing and configuring vite
+
+### Using the Leaf CLI
+
+The Leaf CLI comes with a `view:install` command that can be used to install and configure vite. You can do this by running:
+
+```bash
+leaf view:install --vite
+```
+
+This will install vite and the vite-leaf plugin, and will also install the vite module which will be used to load your assets on the server side. It will also create a vite config file at the root of your project. This config file can be used to configure vite, add plugins and more. You can learn more about vite config files [here](#vite-config).
+
+### Manually installing vite
+
+First, install vite and the vite-leaf plugin:
 
 ```bash
 npm i -D vite @leafphp/vite-plugin
@@ -97,7 +129,7 @@ npm run dev
 Or with the Leaf CLI
 
 ```bash
-leaf vite:dev
+leaf view:dev
 ```
 
 ## Loading your assets
@@ -160,6 +192,6 @@ Vite can be used with any framework. You can learn more about using vite with ot
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/modules/views/inertia/">
     <h3 class="next-steps-link">Inertia JS</h3>
-    <small class="next-steps-caption">Learn how to set up a React or Vue JS application to run with Leaf using Inertia and Vite.</small>
+    <small class="next-steps-caption">Learn how to set up React or Vue JS to run with Leaf using Inertia and Vite.</small>
   </a>
 </div>
