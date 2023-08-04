@@ -1,15 +1,17 @@
 # Leaf CLI
 
+<!-- markdownlint-disable no-inline-html -->
+
 <script setup>
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-<p class="flex flex:start-all">
+<p class="flex flex:start-all" style="gap:10px;">
   <img src="https://poser.pugx.org/leafs/cli/v/stable" class="m:0" alt="">
-  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0 ml:_1" alt="">
+  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0" alt="">
 </p>
 
-Leaf CLI is a simple command line tool for creating and interacting with your leaf projects. You can do stuff like installing packages, interacting with your app, previewing your app...
+Leaf CLI is a simple command line tool for creating and interacting with your Leaf applications. It gives you the options to create projects, install dependencies, run scripts, scaffold items and much more.
 
 ## Installation
 
@@ -19,7 +21,13 @@ Leaf CLI is a simple command line tool for creating and interacting with your le
   link="https://www.youtube.com/embed/yb3LUYHtopQ"
 />
 
-You can get this tool up and running on your system using composer:
+You can install the leaf cli using composer. Composer is a dependency manager for PHP. You can follow the instructions on [getcomposer.org](https://getcomposer.org) to install composer on your system. From there, you should have access to the `composer` command from anywhere on your system.
+
+```bash
+composer --version
+```
+
+You should then be able to get the Leaf CLI up and and running on your system using composer:
 
 ```bash
 composer global require leafs/cli
@@ -27,9 +35,13 @@ composer global require leafs/cli
 
 After that, you should have access to the `leaf` command from anywhere on your system.
 
+```bash
+leaf --version
+```
+
 ## command not found: leaf
 
-If you get a `command not found: leaf` error, it means your composer bin is not in your path.
+If you get a `command not found: leaf` error, it means your composer bin is not in your system path.
 
 You need to make sure that Composer's system-wide vendor bin directory is in your system `$PATH` so the leaf executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
 
