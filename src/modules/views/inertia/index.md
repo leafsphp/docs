@@ -6,21 +6,30 @@
 
 Leaf MVC and Leaf API come with built-in support for Inertia.js. This means you can build amazing frontend applications using Inertia.js and Leaf right out of the box without any extra configuration.
 
-Leaf CLI comes with a utility command to help you get on your way as fast as possible. Since inertia provides support for a variety of frontend frameworks, this command will help you install and setup inertia for your preferred frontend framework.
+Leaf CLI comes with a `view:install` command to help you get on your way as fast as possible. Since inertia provides support for a variety of frontend frameworks, this command will help you install and setup inertia for your preferred frontend framework.
 
 To get started, run:
 
 ```bash
-php leaf inertia:install
+php leaf view:install
 ```
 
 Or with the Leaf CLI:
 
 ```bash
-leaf inertia:install
+leaf view:install
 ```
 
 This will prompt you to select your preferred frontend framework. You can choose from Vue, React, and Svelte. There is also support for styling with Tailwind/Bootstrap. After selecting your preferred framework, Leaf will automatically install and setup inertia for you, including examples for you to get started with.
+
+::: tip view:install
+If you know the specific frontend framework you want to use, you can pass the `--{framework}` flag to the `view:install` command. For example, to install inertia for Vue, you can run:
+
+```bash
+php leaf view:install --vue
+```
+
+:::
 
 To run your app, you should start the server for both your frontend and backend. To start the backend server, run:
 
@@ -39,17 +48,68 @@ npm run dev
 
 # or with the Leaf CLI
 
-php leaf inertia:dev
-leaf inertia:dev
+php leaf view:dev
+leaf view:dev
 ```
 
 ## Usage with Leaf Core
 
-Inertia has been fine-tuned to work with Leaf MVC and Leaf API. However, you can still use inertia with Leaf Core, however, you'll need to install and setup inertia yourself.
+Inertia has been fine-tuned to work with Leaf MVC and Leaf API. However, you can still use inertia with Leaf Core, however, you'll need to install and setup inertia yourself. There are 2 ways to do this:
+
+- [Using the Leaf CLI](#using-the-leaf-cli)
+- [Manually setting up inertia](#manually-setting-up-inertia)
 
 ::: tip This guide
 This guide also applies to using Inertia outside of Leaf applications. You can use this guide to setup inertia for any PHP application.
 :::
+
+### Using the Leaf CLI
+
+The Leaf CLI comes with a `view:install` command to help you get on your way as fast as possible. Since inertia provides support for a variety of frontend frameworks, this command will help you install and setup inertia for your preferred frontend framework.
+
+To get started, run:
+
+```bash
+leaf view:install
+```
+
+This will prompt you to select your preferred frontend framework. You can choose from Vue, React, and Svelte. There is also support for styling with Tailwind/Bootstrap. After selecting your preferred framework, Leaf will automatically install and setup inertia for you, including examples for you to get started with.
+
+::: tip view:install
+If you know the specific frontend framework you want to use, you can pass the `--{framework}` flag to the `view:install` command. For example, to install inertia for Vue, you can run:
+
+```bash
+leaf view:install --vue
+```
+
+:::
+
+Using this will install and setup Vite and inertia for you, however, depending on your own setup, you might need to make some changes to the setup. For example, you might need to change the entry-point for Vite. You can do this by changing the `input` option in your vite config file.
+
+```js
+leaf({
+  input: ['js/app.jsx'],
+  ...
+}),
+```
+
+Read more about setting up Vite [here](/modules/views/vite/#vite-config).
+
+To run your app, you should start the server for both your frontend and backend. To start the backend server, run:
+
+```bash
+leaf serve
+```
+
+To start the frontend server, run:
+
+```bash
+npm run dev
+```
+
+### Manually setting up inertia
+
+If you don't want to use the Leaf CLI, you can manually setup inertia. This guide will show you how to setup inertia with Vite and React. You can use this guide to setup inertia with any frontend framework.
 
 ### Setting up Vite
 
@@ -210,7 +270,7 @@ Since the Leaf Inertia PHP adapter is built using the [Bare UI engine](/modules/
 This might look pretty ugly, but you'll never have to touch this file again. You can also use the Leaf CLI to generate this file for you:
 
 ```bash
-leaf inertia:base
+leaf view:install --inertia
 ```
 
 ### Setting up your frontend framework
@@ -229,7 +289,7 @@ const Home = () => {
 export default Home;
 ```
 
-### Setting up your routes
+## Setting up your routes
 
 Your routing does not change when using Inertia. You can use the same routing you use for your backend. For example, if you're using Leaf, define your routes the same way:
 
@@ -243,7 +303,7 @@ The only difference is that you need to return an Inertia response instead of a 
 
 ```php
 app()->get('/', function () {
-  return Inertia::render('Home');
+  Inertia::render('Home');
 });
 ```
 
