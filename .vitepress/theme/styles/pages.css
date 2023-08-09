@@ -28,3 +28,7 @@
   background-color: var(--vt-c-theme-plain) !important;
   border-left: none !important;
 }
+
+.details.custom-block::before {
+  content: none !important;
+}
