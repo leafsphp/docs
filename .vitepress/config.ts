@@ -178,12 +178,12 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf Devtools', link: '/modules/devtools/' },
+      { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Modules', link: '/modules/' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
       { text: 'Leaf tutorial', link: '/tutorial/' },
-      { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
       { text: 'Testing', link: '/docs/tooling/testing' },
       { text: 'Deployment', link: '/docs/tooling/deployment' }
     ]
