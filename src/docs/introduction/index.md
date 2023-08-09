@@ -130,7 +130,7 @@ The docs are written in both functional and class mode. You can switch between t
 
 Modules are pieces of Leaf's functionality that are available as separate packages. These packages can be installed and used with Leaf to extend its functionality. Most modules are framework agnostic and can be used with other frameworks and libraries, but they are built to work best with Leaf.
 
-You can check out the [modules page](/docs/modules/) to see a list of all the modules available for Leaf.
+You can check out the [modules page](/modules/) to see a list of all the modules available for Leaf.
 
 ## Ready for More?
 
