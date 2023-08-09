@@ -23,3 +23,8 @@
 .dark .custom-block [class*='language-'] pre {
   background-color: var(--vt-c-theme-plain);
 }
+
+.dark .custom-block .custom-block {
+  background-color: var(--vt-c-theme-plain) !important;
+  border-left: none !important;
+}

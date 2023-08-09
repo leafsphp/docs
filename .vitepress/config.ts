@@ -168,8 +168,9 @@ const mainSidebar = [
       { text: 'Introduction', link: '/docs/introduction/' },
       { text: 'Why Leaf?', link: '/docs/introduction/why' },
       { text: 'Installation', link: '/docs/introduction/installation' },
+      { text: 'Leaf + MVC', link: '/docs/mvc/' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' }
+      { text: 'Migration Guide', link: '/docs/migration/other' },
     ]
   },
   {
@@ -177,7 +178,6 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf + MVC', link: '/docs/mvc/' },
       { text: 'Leaf Devtools', link: '/modules/devtools/' },
       { text: 'Modules', link: '/modules/' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
