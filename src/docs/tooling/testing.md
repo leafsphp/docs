@@ -80,53 +80,78 @@ You should see something like this:
 
 ![phpunit](https://user-images.githubusercontent.com/26604242/182213801-501067c4-d77c-4769-b18a-d83573047b84.png)
 
-<!-- ## Testing with [PHPUnit](https://phpunit.de/)
-
-PHPUnit is a programmer-oriented testing framework for PHP. By default, Alchemy assumes your tests are written with Pest, however, you can also write and run your tests with PHPUnit. If you want to go this route, instead of the above code in your `index.test.php`, you can place this:
-
-```php
-<?php
-
-use PHPUnit\Framework\TestCase;
-
-final class StackTest extends TestCase
-{
-  public function testPushAndPop(): void
-  {
-    $stack = [];
-    $this->assertSame(0, count($stack));
-
-    array_push($stack, 'foo');
-    $this->assertSame('foo', $stack[count($stack)-1]);
-    $this->assertSame(1, count($stack));
-
-    $this->assertSame('foo', array_pop($stack));
-    $this->assertSame(0, count($stack));
-  }
-}
-```
-
-After this, you can run your tests with Alchemy like this:
-
-```bash
-./vendor/bin/alchemy run --phpunit
-```
-
-Or with Leaf CLI
-
-```bash
-leaf test:run --phpunit
-``` 
-
-You should get something like this: -->
-
 - PHPUnit
 
 ![pest run](https://user-images.githubusercontent.com/26604242/182264487-6db016be-bee3-40d2-bb75-64d34d893e6a.png)
 
-## Config
+## Why Alchemy?
 
-As mentioned before, Alchemy simply runs your tests for you. It allows you to run tests without having to do a ton of config first or even write a `phpunit.xml`. All config is handled by Alchemy itself. However, if you want to have control over the `phpunit.xml` file, you can export Alchemy's default config to create a `phpunit.xml` file. You can do this with:
+Alchemy is a test runner that runs your tests for you. It allows you to run tests without having to do a ton of config first or even write a `phpunit.xml`. All config is handled by Alchemy itself. Alchemy also allows you to run tests with Pest or PHPUnit. You can switch between the two with a simple command.
+
+All of this is done without you having to write a single line of code. Alchemy is a test runner, not a test framework. It runs your tests for you, and that's it.
+
+## Configuring Alchemy
+
+Alchemy will automatically configure itself for you, however, if you want to change the way your tests are run, you can do so in the `alchemy.config.php` file in the root of your project.
+
+```php
+<?php
+
+return [
+  // alchemy options
+  'engine' => 'pest',
+
+  // php unit options
+  'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
+  'xsi:noNamespaceSchemaLocation' => './vendor/phpunit/phpunit/phpunit.xsd',
+  'bootstrap' => 'vendor/autoload.php',
+  'colors' => true,
+
+  // you can have multiple testsuites
+  'testsuites' => [
+    'directory' => './tests'
+  ],
+
+  // coverage options
+  'coverage' => [
+    'processUncoveredFiles' => true,
+    'include' => [
+      './app' => '.php',
+      './src' => '.php'
+    ]
+  ]
+];
+```
+
+This is the default config for Alchemy, you can change it to suit your needs. You can also change the engine from Pest to PHPUnit by changing the `engine` option to `phpunit`.
+
+```php
+'engine' => 'phpunit'
+```
+
+The `testsuites` option is an array of all the testsuites you want to run. You can have multiple testsuites, each with their own config. The default testsuite is `directory` which is the directory where your tests are located. You can change this to suit your needs.
+
+```php
+'testsuites' => [
+  'directory' => './tests'
+]
+```
+
+The `coverage` option is an array of all the coverage options you want to use. You can change this to suit your needs.
+
+```php
+'coverage' => [
+  'processUncoveredFiles' => true,
+  'include' => [
+    './app' => '.php',
+    './src' => '.php'
+  ]
+]
+```
+
+## Exporting your config
+
+We mentioned Alchemy handles all the config for how your tests are run, however, if you want to have full control over the way your tests are run, you simply need to export your config like this:
 
 ```bash
 ./vendor/bin/alchemy config:export
