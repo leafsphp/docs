@@ -20,6 +20,8 @@ $app->setDown(function () {
 });
 ```
 
+**You can read more about the down screen [here](/docs/routing/errors#application-down).**
+
 ## debug
 
 By default, Leaf will display all errors and warnings you encounter while developing your app. However, when you're ready to deploy your app, you should turn off debugging to prevent users from seeing errors. You can do this by setting the `debug` config to `false`.
