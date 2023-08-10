@@ -1,4 +1,5 @@
 # Authentication
+
 <!-- markdownlint-disable no-inline-html -->
 
 Numerous web applications offer their users a means to authenticate and access the application by "logging in." Adding this functionality to web applications can be a challenging and potentially dangerous task. For this reason, Leaf provides a lightweight but very powerful authentication system known as Leaf Auth.
@@ -240,7 +241,7 @@ Functional mode also makes the `guard`, `hasAuth` and `sessionUser` globals avai
 
 ### guard
 
-The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/v/2.1/session.html#guard).
+The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/session.html#guard).
 
 ### hasAuth
 
@@ -255,15 +256,15 @@ This method returns the active session user or null if there's no session user.
 ## Next Steps
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/config">
+  <a class="vt-box w-lg-up:33" href="/modules/auth/config">
     <h3 class="next-steps-link mb:_1">Auth Config</h3>
     <small class="next-steps-caption">Configure leaf auth to meet your needs.</small>
   </a>
-  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/methods">
+  <a class="vt-box w-lg-up:33" href="/modules/auth/methods">
     <h3 class="next-steps-link">Auth Methods</h3>
     <small class="next-steps-caption">Docs on all the methods provided in Leaf Auth</small>
   </a>
-  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/session">
+  <a class="vt-box w-lg-up:33" href="/modules/auth/session">
     <h3 class="next-steps-link">Auth Sessions</h3>
     <small class="next-steps-caption">Session support with Leaf Auth.</small>
   </a>
