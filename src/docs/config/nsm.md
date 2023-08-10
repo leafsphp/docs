@@ -1,90 +1,99 @@
+# Application Environment
+
 <!-- markdownlint-disable no-inline-html -->
 
-# Instance and Mode
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
 
-## Config app instance
+When building an application, it is helpful to distinguish between what is "running locally" versus what is "running in production". For example, you may have a different database running locally than you do on your production server.
 
-Once leaf is initialized, a config named app is populated with the app instance and container. You can use these from anywhere in your app.
+To make this a breeze, Leaf provides robust support for environment based configuration, allowing you to conveniently handle configuration values for different environments.
+
+## Environment variables
+
+In a sense of your applications, environment variables are dynamic values that affect the way your applications behave. They are part of the environment in which a process runs. For example, your app can use the value of the TEMP environment variable to discover a suitable location to store temporary files. Environment variables are easy to change between environments, such as development, staging, and production.
+
+<VideoDocs
+  title="New to environment variables?"
+  subject="Watch this video by Beachcasts"
+  description="Adam Culp of Beachcasts php programming videos shares how to use phpdotenv to store environment variables with PHP, and then how to retrieve them from $_ENV for usage in a PHP app."
+  link="https://www.youtube.com/embed/oTrJfgUF1SI"
+/>
+
+## Loading env variables
+
+Leaf doesn't come with an env loader out of the box, but you can add one yourself. Env loaders allow you to load environment variables from a `.env` file into PHP's `$_ENV` and `$_SERVER` globals. You can then access these variables using the `_env()` helper function that Leaf provides. Here's a list of some of the most popular env loaders:
+
+- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)
+- [symfony/dotenv](https://github.com/symfony/dotenv)
+
+## Using env variables
+
+After loading your env variables, you can access them using the `_env()` helper function. The `_env()` function takes in a key and a default value. If the key is found, the value is returned, otherwise the default value is returned.
 
 ```php
-<?php
-
-// ...
-$app = Leaf\Config::get("app")["instance"];
-
-$app->set404(Custom404::build());
+$serverEnvironment = _env('APP_ENV', 'development');
 ```
 
-## Modes
+## Application Modes
 
-It is common practice to run web applications in a specific mode depending on the current state of the project. If you are developing the application, you will run the application in “development” mode; if you are testing the application, you will run the application in “test” mode; if you launch the application, you will run the application in “production” mode.
+Using the concept of environments like `development`, `testing`, and `production` is a common way to prepare an application to behave correctly in each environment. Leaf takes this concept one step further and introduces the concept of application modes. Application modes allow you to configure your application for a specific purpose.
 
-Leaf supports the concept of modes in that you may define your own modes and prompt Leaf to prepare itself appropriately for the current mode. For example, you may want to enable debugging in “development” mode but not in “production” mode. The examples below demonstrate how to configure Leaf differently for a given mode.
+For example, you may want to enable debugging in “development” mode but not in “production” mode. The examples below demonstrate how to configure Leaf differently for a given mode.
 
-### What is a mode?
+### Setting your application mode
 
-Technically, an application mode is merely a string of text - like `development` or `production` - that has an associated callback function used to prepare the Leaf application appropriately. The application mode may be anything you like: `testing`, `production`, `development`, or even `foo`.
+Leaf will automatically set the application mode based on the value of the `APP_ENV` environment variable. If the `APP_ENV` environment variable is not set, Leaf will set the application mode to `development`. This is because Leaf assumes you are developing your application locally when no environment is set.
 
-### How do I set the app mode?
+You can also set the application mode manually using the `mode` setting in your application settings.
 
-#### Use leaf config
-
-You can directly set the mode using Leaf Config.
+<div class="class-mode">
 
 ```php
-Leaf\Config::set("mode", "production");
-```
-
-#### Use application setting
-
-If an environment variable is not found, Leaf will next look for the mode in the application settings.
-
-```php
-$app = new \Leaf\App([
-    'mode' => 'production'
+$app->config([
+  'mode' => 'production'
 ]);
 ```
 
-#### Use .env
-
-You can also use the `APP_ENV` environment variable to set the application mode. Leaf will automatically search for this environment variable and set the application mode from it.
-
-::: warning NOTE
-If you want to go down this route, leaf expects you to load your environment variables correctly and will not be responsible for doing so. If however, you use Leaf API, Leaf MVC or Skeleton, this is already taken care of for you.
-:::
-
-#### Default mode
-
-If no mode setting is found, Leaf will set the application mode to `development`.
-
-### How do I use an app mode?
-
-After you instantiate a Leaf application, you may configure the Leaf application for a specific mode with the Leaf application’s `script` method. This method accepts two arguments: the name of the target mode and a callable function to be immediately invoked if the first argument matches the current application mode.
-
-Assume the current application mode is `production`. Only the callable associated with the `production` mode will be invoked. The callable associated with the `development` mode will be ignored until the application mode is changed to `development`.
+</div>
+<div class="functional-mode">
 
 ```php
-<?php
-// Set the current mode
 app()->config([
-    'mode' => 'production'
+  'mode' => 'production'
 ]);
 ```
 
-```php
-// Only invoked if mode is "production"
-app()->script('production', function () use ($app) {
-    app()->config([
-        'log.enable' => true,
-        'debug' => false
-    ]);
-});
+</div>
 
-// Only invoked if mode is "development"
-app()->script('development', function () use ($app) {
-    app()->config([
-        'log.enable' => false,
-        'debug' => true
-    ]);
+### Using your application mode
+
+The Leaf instance provides a `script()` method that allows you to register a callable that will be invoked when the application mode matches the given mode. The `script()` method accepts two arguments: the mode and a callable.
+
+<div class="class-mode">
+
+```php
+$app->script('production', function () use ($app) {
+  $app->config([
+    'log.enable' => true,
+    'debug' => false
+  ]);
 });
 ```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->script('production', function () {
+  app()->config([
+    'log.enable' => true,
+    'debug' => false
+  ]);
+});
+```
+
+</div>
+
+The above example will enable logging and disable debugging when the application mode is set to `production`.

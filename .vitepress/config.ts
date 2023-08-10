@@ -194,9 +194,10 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Overview', link: '/docs/config/' },
-      { text: 'Instance and Mode', link: '/docs/config/nsm' },
       { text: 'App settings', link: '/docs/config/settings' },
-      { text: 'Dependency Injection', link: '/docs/tooling/container' }
+      { text: 'Application Env', link: '/docs/config/nsm' },
+      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
+      { text: 'Dependency Injection', link: '/docs/tooling/container' },
     ]
   },
   {
@@ -204,7 +205,6 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Request', link: '/modules/http/v/2/request' },
       { text: 'Response', link: '/modules/http/v/2/response' },
       { text: 'Headers', link: '/modules/http/v/2/headers' },
