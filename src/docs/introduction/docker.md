@@ -17,28 +17,23 @@ This guide will walk you through how to set up your Leaf application using Docke
 
 ## Using the Leaf CLI
 
-The Leaf CLI provides a simple way to create a new Leaf application using Docker. To create a new Leaf application using the Leaf CLI, run the following command:
+The Leaf CLI provides a simple way to get started with Docker in your Leaf applications. To create a new Dockerized Leaf app using the Leaf CLI, you need to add the `--docker` option to the `leaf create` command:
 
 ```bash
-leaf create my-app --v3 --docker
+leaf create my-app --docker
 ```
 
-This will setup a new Leaf application with Docker support. You can then run the following command to start your application:
+This will setup a new Leaf application with Docker support. Although your app is dockerized, Leaf CLI still allows you to use the `serve` command to start your application. This command will automatically start your application using Docker instead of the built-in server.
 
 ```bash
 leaf serve
 ```
 
-As you can see, following this process is not any different from creating a new Leaf application without Docker. The only difference is that the Leaf CLI will create a Dockerfile and docker-compose.yml file for you. You can always customize these files to suit your specific needs. Also, running the `leaf serve` command will smartly start your application using Docker instead of the built-in server.
+### Docker Files
 
-::: warning Known Issues
-In some cases stopping the dev server doesn't stop your Docker containers. If this happens, you can stop the containers from the Docker Desktop application.
-:::
-
-Using this method will scaffold your application with the following files:
+You will notice a bunch of docker related files in your project. These are added by the Leaf CLI since you used the `--docker` option. You can always customize these files to suit your specific needs.
 
 ```bash
-.
 ├── docker
 │   ├── 000-default.conf
 │   ├── Dockerfile
@@ -51,17 +46,9 @@ Using this method will scaffold your application with the following files:
 - `php.ini` is the PHP configuration file that will be used by the Docker container.
 - `docker-compose.yml` is the Docker Compose file that will be used to start the Docker container.
 
-Leaf CLI only scaffolds them for you. You can always customize them to suit your specific needs.
+## Adding to existing projects
 
-## Creating your Leaf application
-
-First, create a new Leaf application using the Leaf CLI or any of the methods on the [installation](/docs/introduction/installation) page.
-
-```bash
-leaf create my-app --v3 --basic --no-tests
-```
-
-From there, we can manually add our Docker files into the project. For this, you can choose any method that you prefer. We have provided a sample Dockerfile and docker-compose.yml file below that you can use as a starting point.
+If you already have an existing Leaf application and you want to add Docker support to it, you will need to do so manually. We have provided a sample below that you can use as a reference.
 
 **Dockerfile:**
 
@@ -128,4 +115,16 @@ services:
         Require all granted
     </Directory>
 </VirtualHost>
+```
+
+After adding these files, you can start your application using Docker by running the following command:
+
+```bash
+leaf serve
+```
+
+Or with the docker compose command:
+
+```bash
+docker compose up
 ```
