@@ -83,8 +83,8 @@ Available commands:
  aloe
   aloe:config    Install aloe config
  app
-  app:down       Place app in maintainance mode
-  app:up         Remove app from maintainance mode
+  app:down       Place app in maintenance mode
+  app:up         Remove app from maintenance mode
  d
   d:command      Delete a console command
   d:controller   Delete a controller

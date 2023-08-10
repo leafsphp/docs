@@ -99,7 +99,7 @@ app()->setErrorHandler(function () {
 
 ## Application Down
 
-Leaf is also able to dynamically handle placing your application in maintainance mode using leaf config. We have a `down` config which you can set to `true` to place your application in maintainance mode.
+Leaf is also able to dynamically handle placing your application in maintenance mode using leaf config. We have a `down` config which you can set to `true` to place your application in maintenance mode.
 
 <div class="functional-mode">
 
@@ -116,7 +116,7 @@ $app->config('app.down', true);
 
 </div>
 
-Alternatively, you could also place your application in maintainance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set. If you decide to use the env variable, you will have to manually load your `.env` file. Check out the [env docs](/docs/config/nsm) for more info.
+Alternatively, you could also place your application in maintenance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set. If you decide to use the env variable, you will have to manually load your `.env` file. Check out the [env docs](/docs/config/nsm) for more info.
 
 ::: tip Loading your env
 Your environment variables are automatically loaded into your application if you are using Leaf MVC, Leaf API or Skeleton.
@@ -124,13 +124,13 @@ Your environment variables are automatically loaded into your application if you
 
 ### Custom Down Handler
 
-Leaf comes with a beautiful application down handler which you can use in production. However, it might not match your theme, or you might have a maintainance screen designed by someone which needs to match that design. Leaf gives you the flexibility to display a custom maintainance error page using the `setDown` method.
+Leaf comes with a beautiful application down handler which you can use in production. However, it might not match your theme, or you might have a maintenance screen designed by someone which needs to match that design. Leaf gives you the flexibility to display a custom maintenance error page using the `setDown` method.
 
 <div class="functional-mode">
 
 ```php
 app()->setDown(function () {
-  echo "Down for maintainance";
+  echo "Down for maintenance";
 });
 ```
 
@@ -139,7 +139,7 @@ app()->setDown(function () {
 
 ```php
 $app->setDown(function () {
-  echo "Down for maintainance";
+  echo "Down for maintenance";
 });
 ```
 

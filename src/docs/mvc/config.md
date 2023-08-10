@@ -51,11 +51,11 @@ This configuration basically controls how Leaf works with your application. This
 return [
     /*
     |--------------------------------------------------------------------------
-    | Place app in maintainance mode
+    | Place app in maintenance mode
     |--------------------------------------------------------------------------
     |
     | Replacement for earlier mode=down. You can set this to true to place
-    | your app in a maintainance like state. It will display Leaf's default
+    | your app in a maintenance like state. It will display Leaf's default
     | app down page if a custom handler is not set.
     |
     | See: https://leafphp.dev/docs/config/settings.html#app-down

@@ -6,13 +6,13 @@ Leaf has lots of configurations which can be used to determine the way Leaf beha
 
 ## app.down
 
-This configuration tells Leaf whether to place your app in a maintainance like state. By default, this is set to `false`, but you can set it to `true` to place your app in a maintainance like state.
+This configuration tells Leaf whether to place your app in a maintenance like state. By default, this is set to `false`, but you can set it to `true` to place your app in a maintenance like state.
 
 ```php
 'app.down' => true
 ```
 
-When your app is in a maintainance like state, Leaf will automatically load the `down` screen. You can customize this screen using Leaf's `setDown` method.
+When your app is in a maintenance like state, Leaf will automatically load the `down` screen. You can customize this screen using Leaf's `setDown` method.
 
 ```php
 $app->setDown(function () {
