@@ -2,11 +2,11 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-Leaf MVC, Leaf API and Skeleton all try to maintain a working out-of-the-box configuration as much as possible, so, for the most part, you don't have to configure anything. However, there are some things you may want to configure, and this page will show you how.
+Both Leaf MVC and Leaf API try to maintain a working out-of-the-box configuration as much as possible, so, for the most part, you don't have to configure anything. However, there are some things you may want to customize to match your application's style, and this page will show you how.
 
 ## Overview
 
-You can find your application in the `config` directory. This directory contains the configuration files for Leaf MVC, Leaf API and Skeleton. You only need to configure the files that you need to configure. If you don't need to configure a file, you can just leave it as is. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+You can find your application in the `config` directory. This directory contains all the configuration files for you need for different features. You only need to configure the files that you need to configure. If you don't need to configure a file, you can just leave it as is. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
 
 These configuration files allow you to configure things like your database connection information, your mail server information, as well as various other core configuration values such as your application timezone and encryption key.
 
@@ -25,6 +25,8 @@ In a new Leaf installation, the root folder of your application will include an 
 If you add new environment variables to a team project, be sure to add the keys to the `.env.example` file so that other developers will know what environment variables are available.
 
 :::
+
+*If you want more info on how Leaf handles your application's environment, you can check out the [environment docs](/docs/config/nsm).*
 
 ## Application Config
 

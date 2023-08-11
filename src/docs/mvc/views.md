@@ -14,27 +14,19 @@ Leaf comes with support for 3 view engines designed by the team at Leaf:
 | [veins](/modules/views/veins/)   | Lightweight but powerful templating engine   |
 | [blade](/modules/views/blade/)   | Laravel blade templating engine for leaf     |
 
-Leaf MVC and Leaf API come with Blade already installed and configured, but Skeleton comes with BareUI instead. Of course, you can use any templating engine you prefer with Leaf, but these templating engines are specifically created for Leaf but can be used outside Leaf apps as well.
+Leaf MVC and Leaf API come with Blade already installed and configured, but of course, you can use any templating engine you prefer. These have first party support, and work amazingly well out of the box.
 
 ***You can find more information on the [Views Docs Page](/modules/views/)***
 
 ## Defining Views
 
-Views are defined in the `app/views` directory if you're using Leaf API/Leaf MVC or `pages` if you're using Skeleton. You can create subdirectories to organize your views.
+Views are defined in the `app/views` directory in  Leaf API and Leaf MVC. You can create subdirectories to organize your views based on your preference. For example, you might create a `layouts` directory to store your layout files. To quickly create a view, you can use the `php leaf g:template` command from the root of your project.
 
-- ### Leaf MVC and Leaf API
+```bash
+php leaf g:template home
+```
 
-  Leaf MVC and Leaf API come with a console tool that allows you to quickly create views. You can use the `php leaf g:template` command to create a view. This command will create a view file in the `app/views` directory.
-
-  ```bash
-  php leaf g:template home
-  ```
-
-  This will create a file called `home.blade.php` in the `app/views` directory.
-
-- ### Skeleton
-
-  Skeleton comes with a `pages` directory that contains all of your views. To create a new view, simply create a new file in the `pages` directory. For example, if you wanted to create a view called `home`, you would create a file called `home.view.php` in the `pages` directory.
+This will create a file called `home.blade.php` in the `app/views` directory.
 
 ## Rendering Views
 
@@ -48,6 +40,26 @@ echo view('home', ['name' => 'John Doe']);
 ```
 
 Notice that we pass the name of the view without the file extension. This is because Leaf will automatically append the correct file extension based on the view engine you're using.
+
+### The `render()` method
+
+To make things even easier for you, Leaf also ships with a `render()` method. This method accepts the same parameters as the `view()` method but automatically outputs the views with the correct headers in place.
+
+```php
+render('home', ['name' => 'John Doe']);
+```
+
+## Asset Bundling
+
+[Vite](https://vitejs.dev/) is a modern build tool for frontend applications. It aims to provide a faster and leaner development experience for modern web projects. Leaf allows you to bundle your CSS and JS assets using vite, using the powerful [leaf-vite](/modules/views/vite/) module.
+
+[> Read the docs](/modules/views/vite/)
+
+## Frontend Frameworks
+
+Leaf has support for some of the most popular frontend frameworks using [Inertia.js](https://inertiajs.com/). Inertia.js is a framework that allows you to create fully client-side rendered, single-page apps, without much of the complexity that comes with modern SPAs. It does this by leveraging Leaf's server-side rendering capabilities.
+
+[> Read the docs](/modules/views/inertia/)
 
 ## Next Steps
 

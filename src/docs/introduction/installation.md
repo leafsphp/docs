@@ -44,7 +44,7 @@ Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly cre
 Using the CLI, you can quickly scaffold a new Leaf 3 project with:
 
 ```bash
-leaf create <project-name> --v3
+leaf create <project-name>
 ```
 
 Besides the core of the framework, Leaf also ships with a ton of installable functionality. We call these independent libraries modules. You can install modules using the `install` command:
@@ -56,7 +56,7 @@ leaf install <module-name>
 The CLI also allows you to completely customize the installation you wish to create. You can choose different features like database, authentication, etc. This is done using the `--custom` flag:
 
 ```bash
-leaf create <project-name> --v3 --custom
+leaf create <project-name> --custom
 ```
 
 You can then run your app using the `serve` command:

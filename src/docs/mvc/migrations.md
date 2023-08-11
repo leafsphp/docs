@@ -2,10 +2,6 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-::: warning Note
-Migrations are only available in Leaf MVC and Leaf API.
-:::
-
 Database migrations are a technique used in software development to manage changes to a database schema over time. A database schema is the structure of a database that defines the tables, columns, relationships, and constraints that make up the data model.
 
 When changes are made to the database schema, such as adding a new table or column, modifying an existing column's data type, or changing a relationship between tables, database migrations allow developers to update the schema and propagate those changes to all instances of the database.

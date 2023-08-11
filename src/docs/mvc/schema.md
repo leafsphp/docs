@@ -4,8 +4,6 @@
 
 Schema is a simple, yet powerful tool for generating database migrations from JSON data. Instead of dealing with the stress of writing your database migrations from scratch and thinking about all the types of your data, you can simply create a JSON file with sample data and let Leaf do the rest.
 
-**DB Schema is only available in Leaf MVC and Leaf API.**
-
 ## Writing your schema
 
 Schema can be found in the `app/database/schema` folder. To get started, create a new JSON file in the the schemas directory. You can name it anything you want, but it's best to name it after the table you're creating as that is what Leaf will expect unless you specify otherwise.

@@ -12,25 +12,17 @@ Leaf Models are built on top of [Laravel's Eloquent ORM](https://laravel.com/doc
 
 ## Defining Models
 
-Your models can be found in the `app/models` directory in Leaf MVC and Leaf API, and in the `models` directory in Skeleton. Leaf MVC and Leaf API models can be created using the `php leaf g:model` command, while Skeleton models need to be added manually.
+Your models can be found in the `app/models` directory in Leaf MVC and Leaf API. Your models can be created using the `php leaf g:model` command from the root of your project.
 
-- ### Leaf MVC and Leaf API
+```bash
+php leaf g:model User
+```
 
-  To create a model, run the following command:
-
-  ```bash
-  php leaf g:model User
-  ```
-
-  This will create a `User.php` file in the `app/models` directory.
-
-- ### Skeleton
-
-  To create a model, create a new file in the `models` directory. The name of the file should be the name of the model, with the first letter capitalized. For example, if you want to create a `User` model, create a `User.php` file in the `models` directory.
+This will create a `User.php` file in the `app/models` directory.
 
 ## Model Structure
 
-Leaf MVC, Leaf API and Skeleton come with a base model class. This is to give you a place to configure all your models seamlessly without having access to the `Leaf\Model` file.
+Leaf MVC and Leaf API come with a base model class. This is to give you a place to configure all your models seamlessly without having access to the `Leaf\Model` file. It also allows you to add logic that you want to be available to all your models.
 
 ```php
 class Flight extends Model

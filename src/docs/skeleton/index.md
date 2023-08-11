@@ -1,46 +1,22 @@
-# Skeleton
-
 <!-- markdownlint-disable no-inline-html -->
 
-Skeleton is a minimal but powerful MVC boilerplate built on top of Leaf. It's designed to be simple, fast and easy to use. It is meant to bring structure to your Leaf workflow without forcing you to stick to any framework. It is a good starting point for building lightweight applications using the MVC pattern.
+# Skeleton <sup class="vt-badge bg:red" data-text="Deprecated"></sup>
 
-::: tip Leaf MVC vs Leaf API vs Skeleton
+Skeleton was designed to be a simple starting point for your application, and came with just the bare minimum to get you started. However, we have decided to deprecate Skeleton in favor of the Leaf CLI. The Leaf CLI is a command-line tool for generating Leaf projects, installing modules, and more.
 
-Leaf offers three setups for you to choose from. You can find more information about these setups in the [MVC](/docs/mvc/#mvc-in-leaf) section.
+## Discontinuing Skeleton
 
-:::
+We recently released an update to the Leaf CLI that allows you to select specific features you want to include and generate a project with everything you need. This functionality is similar to what Skeleton provided but is more flexible and allows you to create projects with only the features that you need, which is why we've decided to deprecate Leaf Skeleton.
 
-## Installation
+Skeleton will still be available for download, but we won't be updating it anymore. We recommend that you generate a project with the CLI or use Leaf MVC or Leaf API instead.
 
-The easiest way to setup Skeleton is to use the [Leaf CLI](/docs/cli/):
+## Updating from Skeleton
 
-```bash
-leaf create <project-name> --skeleton --v3
-```
+The beauty of this update is that you don't have to change anything in your existing Skeleton project. This is because Skeleton, unlike Leaf MVC and Leaf API is not a framework. It's just a starting point for your project. So, you can continue to use your Skeleton project and update specific features using the Leaf CLI or Composer.
 
-You can also setup a Skeleton app by using [Composer](https://getcomposer.org/):
+If you are starting a fresh project however, we recommend that you use the Leaf CLI to generate your project. If you want to use Composer, you can install Leaf MVC or Leaf API instead.
 
-```bash
-composer create-project leafs/skeleton <project-name>
-```
-
-This command will set up a Skeleton app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
-
-```bash
-cd <project-name>
-leaf serve
-```
-
-Or the [built-in PHP server](https://www.php.net/manual/en/features.commandline.webserver.php):
-
-```bash
-cd <project-name>
-php -S localhost:8000
-```
-
-You should then see the welcome page in your browser.
-
-![Skeleton Welcome Page](https://user-images.githubusercontent.com/26604242/224507748-87396f4d-7b1e-4d61-ada1-b37e732c739b.png)
+**The Skeleton docs will still be available here, but we won't be updating it anymore.**
 
 ## Directory Structure
 
