@@ -1,4 +1,5 @@
 # Getting Started
+
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
@@ -146,10 +147,32 @@ $db = new Leaf\Db([
 
 </div>
 
-### connect
+### Manual database connection
 
-Connect takes in 4 params<span class="class-mode"> just like the method above</span>
+Leaf DB ships with a `connect()` method which allows you to connect to your database by passing in the required parameters.
 
+<div class="class-mode">
+
+```php
+$db = new Leaf\Db;
+
+// syntax
+$db->connect(
+  $host = '',
+  string $dbname = '',
+  string $user = '',
+  string $password = '',
+  string $dbtype = 'mysql',
+  array $pdoOptions = []
+);
+
+// example
+$db->connect('127.0.0.1', 'dbname', 'root', '');
+```
+
+Connect works the same way as the constructor, except that it accepts one more parameter: `$pdoOptions` which is a bunch of configuration specific to the PHP `PDO` class.
+
+</div>
 <div class="functional-mode">
 
 ```php
@@ -175,28 +198,6 @@ Leaf db takes in 5 optional parameters:
 - The database password
 - The PDO database driver eg: mysql, pgsql, ...
 - Configuration specific to the PHP `PDO` class
-
-</div>
-<div class="class-mode">
-
-```php
-$db = new Leaf\Db;
-
-// syntax
-$db->connect(
-  $host = '',
-  string $dbname = '',
-  string $user = '',
-  string $password = '',
-  string $dbtype = 'mysql',
-  array $pdoOptions = []
-);
-
-// example
-$db->connect('127.0.0.1', 'dbname', 'root', '');
-```
-
-Connect works the same way as the constructor, except that it accepts one more parameter: `$pdoOptions` which is a bunch of configuration specific to the PHP `PDO` class.
 
 </div>
 
@@ -285,9 +286,9 @@ $db->connect([
 
 :::
 
-### autoConnect
+### Auto Connect
 
-This method allows you to connect to your database from parameters in a `.env` file. Most MVC frameworks and other libraries rely on a `.env` for a lot of configurations including the database. With `autoConnect`, you can directly pick up these configs.
+Leaf DB also allows you to connect to your database using the database credentials set in your environment variables. This is much easier than having to pass in the credentials every time you want to connect to your database. You can do this using the `autoConnect()` method.
 
 **example env:**
 
@@ -300,7 +301,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-**App:**
+Using the `autoConnect()` method, you can connect to your database like this:
 
 <div class="functional-mode">
 
