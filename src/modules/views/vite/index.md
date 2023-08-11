@@ -1,5 +1,7 @@
 # Asset Bundling
 
+<!-- markdownlint-disable no-inline-html -->
+
 Vite is a modern build tool for frontend applications. It aims to provide a faster and leaner development experience for modern web projects. Using the Vite module, you can seamlessly bundle your CSS and JS assets using vite.
 
 <details>
@@ -19,7 +21,7 @@ Vite is a modern build tool for frontend applications. It aims to provide a fast
 
 ## Usage with Leaf MVC
 
-Leaf MVC and Leaf API come with built-in support for vite, this means you can use vite to bundle your assets without installing any extra packages. All you need to do is to start your vite server. You can do this by running:
+Leaf MVC comes with built-in support for Vite, this means you can use Vite to bundle your assets without installing any extra packages. All you need to do is to start your Vite server. You can do this by running:
 
 ```bash
 leaf view:dev
@@ -28,11 +30,11 @@ leaf view:dev
 Or with npm/pnpm/yarn:
 
 ```bash
-npm run dev
+npm i && npm run dev
 ...
-pnpm run dev
+pnpm i && pnpm run dev
 ...
-yarn dev
+yarn && yarn dev
 ```
 
 From inside your views, you can use the `vite()` helper to load your assets. For example, to load a CSS file, you can do:
@@ -41,7 +43,7 @@ From inside your views, you can use the `vite()` helper to load your assets. For
 <?php echo vite('app/views/assets/css/app.css'); ?>
 ```
 
-You can also just use the path relative to your views directory since vite will automatically look for files in your views directory. For example, if you have a file at `app/views/assets/css/app.css`, you can do:
+You can also use the path relative to your views directory since vite will automatically look for files in your views directory. For example, if you have a file at `app/views/assets/css/app.css`, you can do:
 
 ```php
 <?php echo vite('assets/css/app.css'); ?>
@@ -63,6 +65,12 @@ leaf view:install --vite
 ```
 
 This will install vite and the vite-leaf plugin, and will also install the vite module which will be used to load your assets on the server side. It will also create a vite config file at the root of your project. This config file can be used to configure vite, add plugins and more. You can learn more about vite config files [here](#vite-config).
+
+From there, you can start your vite server by running:
+
+```bash
+leaf view:dev
+```
 
 ### Manually installing vite
 
@@ -109,7 +117,13 @@ export default defineConfig({
 
 ## Running Vite
 
-After the vite plugin has been installed and configured, you need to add a script to your `package.json` file to run vite. You can do this by adding the following to your `package.json` file:
+If you're using a Leaf MVC app or you installed Vite using the `view:install` command, you can start your vite server without any extra configuration. You can do this by running:
+
+```bash
+leaf view:dev
+```
+
+If you installed vite manually, you'll need to add a script to your `package.json` file to run vite. You can do this by adding the following to your `package.json` file:
 
 ```json
 {
@@ -120,17 +134,7 @@ After the vite plugin has been installed and configured, you need to add a scrip
 }
 ```
 
-Now, you can start your vite server by running:
-
-```bash
-npm run dev
-```
-
-Or with the Leaf CLI
-
-```bash
-leaf view:dev
-```
+You can then start your vite server using the `view:dev` command above.
 
 ## Loading your assets
 
