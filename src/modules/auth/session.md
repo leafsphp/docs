@@ -1,8 +1,10 @@
 # Session support
 
+<!-- markdownlint-disable no-inline-html -->
+
 We've covered session support and it's use in various techniques like login, register, etc. But there are still a bunch of session auth methods that we haven't covered yet. Let's get into them.
 
-## Enabling session support
+## Enabling sessions
 
 To get started with session support, just set the `USE_SESSION` config to true.
 
