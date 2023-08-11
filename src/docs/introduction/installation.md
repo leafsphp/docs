@@ -18,7 +18,7 @@ There are four primary ways of adding Leaf PHP to a project:
 
 Before creating your first Leaf application you must:
 
-- Install PHP 7.2 or higher and these PHP extensions (which are installed and enabled by default in most PHP installations): json, zip;
+- Install PHP 7.4 or higher and these PHP extensions (which are installed and enabled by default in most PHP installations): json, zip;
 - [Install Composer](https://getcomposer.org/download/), which is used to install PHP packages.
 - Optionally, you can also install [Leaf CLI](/docs/cli/). This provides all the tools you need to create and manage your Leaf application locally. This is optional but highly recommended.
 
@@ -30,8 +30,6 @@ Before creating your first Leaf application you must:
 - On Windows and Mac, you can use [Xampp](https://www.apachefriends.org/), which is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
 
 </details>
-
-*Leaf 3 works as far back as PHP 7.2, however, some modules require PHP 7.4, so we advice using a minimum of PHP 7.4. There's also full support for PHP 8.*
 
 ## Leaf CLI
 

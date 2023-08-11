@@ -16,7 +16,7 @@ When your app is in a maintenance like state, Leaf will automatically load the `
 
 ```php
 $app->setDown(function () {
-  echo "Custom Down Handler!";
+  echo 'Custom Down Handler!';
 });
 ```
 

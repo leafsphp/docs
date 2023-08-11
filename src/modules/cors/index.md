@@ -116,7 +116,7 @@ app()->cors();
 
 app()->get('/products/{id}', function () {
   response()->json([
-    "message" => "This is CORS-enabled for all origins!"
+    'message' => 'This is CORS-enabled for all origins!'
   ]);
 });
 

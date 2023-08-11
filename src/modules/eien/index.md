@@ -92,7 +92,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 app()->ws('/ws-route', function () {
   response()->json([
-    "message" => "Hello from websocket"
+    'message' => 'Hello from websocket'
   ]);
 });
 
@@ -109,7 +109,7 @@ The handler function for the websocket route is a callback function that will be
 require __DIR__ . '/vendor/autoload.php';
 
 app()->ws('/ws-route', function ($server, $frame) {
-  $server->push($frame->fd, "Hello from websocket");
+  $server->push($frame->fd, 'Hello from websocket');
 });
 
 app()->run();
@@ -124,7 +124,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 app()->ws('/ws-route', function () {
   response()->json([
-    "message" => "Hello from websocket"
+    'message' => 'Hello from websocket'
   ]);
 });
 
