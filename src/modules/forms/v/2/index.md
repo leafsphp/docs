@@ -2,7 +2,7 @@
 
 During development, you often come accross data that should meet some expectations. For example, a user's email address should be a valid email address. Or a user's password should be at least 8 characters long. Unfortunately, you can't always trust the data you deal with, especially when it comes from the user. That's why you need to validate it.
 
-Leaf Form is a clean and simple interface that allows you to validate data. It's not a form builder, it's not a form renderer, it's just a simple data validation library.
+Leaf provides a clean and simple interface to validate and use incoming data. We call this Leaf Form. It's not a form builder, it's not a form renderer, it's just a simple data validation library.
 
 ## Installation
 
@@ -25,6 +25,8 @@ Leaf Form comes with a very handy `validate()` method that allows you to validat
 - An array of the data to validate
 - The rules to validate the data against
 
+If the validation fails, the `validate()` method will return `false`. Otherwise, it will return the validated data.
+
 <div class="class-mode">
 
 ```php{11-15}
@@ -38,14 +40,15 @@ $data = [
   'password' => 'password',
 ];
 
-$success = Form::validate($data, [
+$validated = Form::validate($data, [
   'name' => 'text',
   'email' => 'email',
   'password' => 'min:8',
 ]);
 
-if ($success) {
+if ($validated) {
   // data is valid
+  $email = $validated['email'];
 } else {
   // data is invalid
 }
@@ -63,14 +66,16 @@ $data = [
   'password' => 'password',
 ];
 
-$success = form()->validate($data, [
+$validated = form()->validate($data, [
   'name' => 'text',
   'email' => 'email',
   'password' => 'min:8',
 ]);
 
-if ($success) {
+
+if ($validated) {
   // data is valid
+  $email = $validated['email'];
 } else {
   // data is invalid
 }
@@ -78,7 +83,7 @@ if ($success) {
 
 </div>
 
-`validate()` returns a boolean value indicating whether the data is valid or not. If the data is invalid, you can get the errors using the `errors()` method.
+If the data is invalid, you can return the reason why the validation failed using the `errors()` method.
 
 <div class="class-mode">
 
@@ -89,13 +94,13 @@ use Leaf\Form;
 
 ...
 
-$success = Form::validate($data, [
+$validated = Form::validate($data, [
   'name' => 'text',
   'email' => 'email',
   'password' => 'min:8',
 ]);
 
-if ($success) {
+if ($validated) {
   // data is valid
 } else {
   $errors = Form::errors();
@@ -109,13 +114,13 @@ if ($success) {
 ```php{12}
 <?php
 
-$success = form()->validate($data, [
+$validated = form()->validate($data, [
   'name' => 'text',
   'email' => 'email',
   'password' => 'min:8',
 ]);
 
-if ($success) {
+if ($validated) {
   // data is valid
 } else {
   $errors = form()->errors();
@@ -139,13 +144,13 @@ $app = new Leaf\App;
 ...
 
 $app->post('/register', function() use($app) {
-  $success = $app->request()->validate([
+  $validatedData = $app->request()->validate([
     'name' => 'text',
     'email' => 'email',
     'password' => 'min:8',
   ]);
 
-  if (!$success) {
+  if (!$validatedData) {
     $errors = $app->request()->errors();
   }
 });
@@ -158,13 +163,13 @@ $app->post('/register', function() use($app) {
 <?php
 
 app()->post('/register', function() {
-  $success = request()->validate([
+  $validatedData = request()->validate([
     'name' => 'text',
     'email' => 'email',
     'password' => 'min:8',
   ]);
 
-  if (!$success) {
+  if (!$validatedData) {
     $errors = request()->errors();
   }
 });
