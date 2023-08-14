@@ -6,7 +6,7 @@ Leaf MVC and Leaf API both come with built-in support for Leaf DB. This means yo
 \Leaf\Database::initDb();
 ```
 
-This will allow Leaf DB to use your database connection set up in your `.env` file. If you don't have a database connection set up, you can set one up by following the [Leaf MVC Database docs](/docs/leafmvc/).
+This will allow Leaf DB to use your database connection set up in your `.env` file. If you don't have a database connection set up, you can set one up by following the [Leaf MVC Database docs](/docs/leafmvc/). Although you can use Leaf DB in Leaf MVC and Leaf API, they follow the MVC pattern, so we recommend using Models to interact with your database instead of writing queries with Leaf DB. Of course, you should still initialize Leaf DB if you want to use [Leaf Auth](/modules/auth/).
 
 ## Models
 
