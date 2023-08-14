@@ -322,9 +322,10 @@ const mainSidebar = [
       { text: 'Schema', link: '/docs/mvc/schema' },
       { text: 'Seeders', link: '/docs/mvc/seeds' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
-      // { text: 'MVC Console Tool', link: '/docs/mvc/console' },
-      { text: 'Aloe CLI', link: '/aloe-cli/' },
-      { text: 'MVC Core', link: '/modules/mvc-core/' }
+      { text: 'Writing Commands', link: '/docs/mvc/commands' },
+      { text: 'Mailing', link: '/docs/mvc/mail' },
+      { text: 'MVC Helpers', link: '/docs/mvc/globals' },
+      { text: 'MVC Console Tool', link: '/docs/mvc/console' },
     ]
   },
   {
