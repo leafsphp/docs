@@ -377,3 +377,51 @@ form()->validate($data, [
 </div>
 
 The error message will be `name is required`. You can also use `{Field}` instead of `{field}` to get the field name with the first letter capitalized. You can also use `{value}` to get the value of the field.
+
+## Special validators
+
+Besides the built-in rules, Leaf Form also comes with some special validators that you can use to validate data. These validators provide a convenient way to use validation rules in a more complex way.
+
+### `array()`
+
+The `array()` validator allows you to validate an array of data. This checks if the data is an array and if it contains the specified rules.
+
+<div class="class-mode">
+
+```php{2}
+Form::validate($data, [
+  'users' => 'array()',
+]);
+```
+
+</div>
+<div class="functional-mode">
+
+```php{2}
+form()->validate($data, [
+  'users' => 'array()',
+]);
+```
+
+</div>
+
+The example above will check if the `users` field is an array. Let's say you want to check if the array contains only numeric values. You can do that by passing in the rules to the `array()` validator.
+
+<div class="class-mode">
+
+```php{2}
+Form::validate($data, [
+  'users' => 'array(number)',
+]);
+```
+
+</div>
+<div class="functional-mode">
+
+```php{2}
+form()->validate($data, [
+  'users' => 'array(number)',
+]);
+```
+
+</div>
