@@ -336,6 +336,26 @@ auth()->config('SESSION_LIFETIME', 3600);
 
 </div>
 
+If you set the session lifetime to `0`, the session will never expire.
+
+<div class="class-mode">
+
+```php
+$auth = new Leaf\Auth;
+
+$auth->config('SESSION_LIFETIME', 0);
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+auth()->config('SESSION_LIFETIME', 0);
+```
+
+</div>
+
 ## Token lifetime
 
 Token lifetime is the amount of time a token is valid for. This is usually set to a few minutes or hours. Leaf Auth allows you to set the token lifetime using the `TOKEN_LIFETIME` config.
