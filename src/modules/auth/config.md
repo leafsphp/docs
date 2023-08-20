@@ -318,7 +318,7 @@ Home page route. Default is `/home`.
 
 ### SESSION_LIFETIME
 
-This option allows you to set the lifetime of the session. After this time, the session will expire and the user will have to login again. Default is `1 day`.
+This option allows you to set the lifetime of the session. After this time, the session will expire and the user will have to login again. Default is `1 day`. You can also set `SESSION_LIFETIME` to `0` to disable session expiration.
 
 ### SESSION_COOKIE_PARAMS
 
@@ -342,7 +342,7 @@ These configuration options control how Leaf Auth handles tokens. You can change
 
 ### TOKEN_LIFETIME
 
-How long the token can be used before it expires. Default is 1 day. You can also set `TOKEN_LIFETIME` to `0` to disable token expiration.
+How long the token can be used before it expires. Default is 1 day.
 
 ### TOKEN_SECRET
 
