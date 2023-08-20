@@ -342,7 +342,7 @@ These configuration options control how Leaf Auth handles tokens. You can change
 
 ### TOKEN_LIFETIME
 
-How long the token can be used before it expires. Default is 1 day.
+How long the token can be used before it expires. Default is 1 day. You can also set `TOKEN_LIFETIME` to `0` to disable token expiration.
 
 ### TOKEN_SECRET
 
