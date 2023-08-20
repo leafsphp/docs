@@ -14,6 +14,8 @@ Leaf Auth provides two authentication systems:
 - Token based authentication
 - Session based authentication
 
+These two systems are very similar, the only difference is that token based authentication uses tokens to authenticate users while session based authentication uses sessions to authenticate users. *Token based auth is used by default, but you can switch to session based authentication using the [Auth Config](/modules/auth/config#use-session).*
+
 ### Token based authentication
 
 Token based authentication is a system where a user is given a token upon login. This token is then used to authenticate the user on every request. This is the most common authentication system for APIs.
@@ -39,10 +41,6 @@ Session based authentication is a system where a user is given a session upon lo
     link="https://www.youtube.com/embed/gKkBEOq_shs"
   />
 </details>
-
-::: tip Defaults
-Token based auth is used by default, but you can switch to session based authentication using the [Auth Config](/modules/auth/config#use-session).
-:::
 
 ## The login method
 
@@ -78,12 +76,12 @@ If the user is authenticated, a session or token is created for them and the use
 
 ```php
 $auth = new Leaf\Auth;
-$user = $auth->login([
+$data = $auth->login([
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -95,12 +93,12 @@ if ($user) {
 <div class="functional-mode">
 
 ```php
-$user = auth()->login([
+$data = auth()->login([
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -115,12 +113,12 @@ To get the reason why the user is not authenticated, you can use the `errors()` 
 
 ```php{11}
 $auth = new Leaf\Auth;
-$user = $auth->login([
+$data = $auth->login([
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -133,12 +131,12 @@ if ($user) {
 <div class="functional-mode">
 
 ```php{10}
-$user = auth()->login([
+$data = auth()->login([
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -152,16 +150,17 @@ If the authentication was successful, the user is returned. You can use this to 
 
 <div class="class-mode">
 
-```php{9}
+```php{9,10}
 $auth = new Leaf\Auth;
-$user = $auth->login([
+$data = $auth->login([
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
-  $userToken = $user['token'];
+  $token = $data['token'];
+  $user = $data['user'];
 } else {
   // user is not authenticated
   $errors = $auth->errors();
@@ -172,15 +171,16 @@ if ($user) {
 
 <div class="functional-mode">
 
-```php{8}
-$user = auth()->login([
+```php{8,9}
+$data = auth()->login([
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
-  $userToken = $user['token'];
+  $token = $data['token'];
+  $user = $data['user'];
 } else {
   // user is not authenticated
   $errors = auth()->errors();
@@ -256,7 +256,7 @@ auth()->useSession();
 
 </div>
 
-Just like with token based authentication, you can use the `login()` method to authenticate users. The only difference is that the `login()` method redirects you to a route defined as `GUARD_HOME` in your auth config.
+Just like with token based authentication, you can use the `login()` method to authenticate users. The only difference is that the `login()` method creates a session for your user instead of just returning the user info and a token. It also automatically redirects you to a route defined as `GUARD_HOME` if you have the `SESSION_REDIRECT_ON_LOGIN` config set to `true`.
 
 <div class="class-mode">
 
@@ -267,16 +267,16 @@ $auth->useSession();
 $auth->config('GUARD_HOME', '/home');
 
 // will automatically redirect to /home if successful
-$user = $auth->login([
-  'email' => 'm@example.com',
-  'password' => 'password'
+$data = $auth->login([
+  'email' => $email,
+  'password' => $password,
 ]);
 
-if (!$user) {
+if (!$data) {
   // you can pass the auth errors into a view
   return $template->render('pages.auth.login', [
     'errors' => auth()->errors(),
-    'username' => $username,
+    'email' => $email,
     'password' => $password,
   ]);
 }
@@ -309,6 +309,54 @@ if (!$user) {
 </div>
 
 For more information on session based authentication, check out the [session based authentication](/modules/auth/session) page.
+
+## Session lifetime
+
+Session lifetime is the amount of time a session is valid for. This is usually set to a few minutes or hours. Leaf Auth allows you to set the session lifetime using the `SESSION_LIFETIME` config. This config is set to `1 day` by default.
+
+You can set the session lifetime using seconds or a string that can be parsed by the [PHP `strtotime()`](https://www.php.net/manual/en/function.strtotime.php) function.
+
+<div class="class-mode">
+
+```php
+$auth = new Leaf\Auth;
+
+$auth->config('SESSION_LIFETIME', '1 hour');
+$auth->config('SESSION_LIFETIME', 3600);
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+auth()->config('SESSION_LIFETIME', '1 hour');
+auth()->config('SESSION_LIFETIME', 3600);
+```
+
+</div>
+
+## Token lifetime
+
+Token lifetime is the amount of time a token is valid for. This is usually set to a few minutes or hours. Leaf Auth allows you to set the token lifetime using the `TOKEN_LIFETIME` config.
+
+<div class="class-mode">
+
+```php
+$auth = new Leaf\Auth;
+
+$auth->config('TOKEN_LIFETIME', 3600);
+```
+
+</div>
+
+<div class="functional-mode">
+
+```php
+auth()->config('TOKEN_LIFETIME', 3600);
+```
+
+</div>
 
 ## Password Encoding
 

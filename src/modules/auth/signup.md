@@ -14,6 +14,8 @@ Leaf Auth provides two authentication systems:
 - Token based authentication
 - Session based authentication
 
+These two systems are very similar, the only difference is that token based authentication uses tokens to authenticate users while session based authentication uses sessions to authenticate users. *Token based auth is used by default, but you can switch to session based authentication using the [Auth Config](/modules/auth/config#use-session).*
+
 ### Token based authentication
 
 Token based authentication is a system where a user is given a token upon login. This token is then used to authenticate the user on every request. This is the most common authentication system for APIs.
@@ -78,13 +80,13 @@ This example creates a new user with the username `example`, email `m@example.co
 
 ```php
 $auth = new Leaf\Auth;
-$user = $auth->register([
+$data = $auth->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -96,13 +98,13 @@ if ($user) {
 <div class="functional-mode">
 
 ```php
-$user = auth()->register([
+$data = auth()->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -117,13 +119,13 @@ To get the reason why the user is not authenticated, you can use the `errors()` 
 
 ```php{12}
 $auth = new Leaf\Auth;
-$user = $auth->register([
+$data = $auth->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -136,13 +138,13 @@ if ($user) {
 <div class="functional-mode">
 
 ```php{11}
-$user = auth()->register([
+$data = auth()->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -156,17 +158,18 @@ If the authentication was successful, the user is returned. You can use this to 
 
 <div class="class-mode">
 
-```php{10}
+```php{10,11}
 $auth = new Leaf\Auth;
-$user = $auth->register([
+$data = $auth->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
-  $userToken = $user['token'];
+  $token = $data['token'];
+  $user = $data['user'];
 } else {
   // user is not authenticated
   $errors = $auth->errors();
@@ -177,16 +180,17 @@ if ($user) {
 
 <div class="functional-mode">
 
-```php{9}
-$user = auth()->register([
+```php{9,10}
+$data = auth()->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ]);
 
-if ($user) {
+if ($data) {
   // user is authenticated
-  $userToken = $user['token'];
+  $token = $data['token'];
+  $user = $data['user'];
 } else {
   // user is not authenticated
   $errors = auth()->errors();
@@ -203,13 +207,13 @@ The `register()` method takes in a list of items that should be unique to users.
 
 ```php{12}
 $auth = new Leaf\Auth;
-$user = $auth->register([
+$data = $auth->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ], ['username', 'email']);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -222,13 +226,13 @@ if ($user) {
 <div class="functional-mode">
 
 ```php{11}
-$user = auth()->register([
+$data = auth()->register([
   'username' => 'example',
   'email' => 'm@example.com',
   'password' => 'password'
 ], ['username', 'email']);
 
-if ($user) {
+if ($data) {
   // user is authenticated
 } else {
   // user is not authenticated
@@ -315,7 +319,7 @@ auth()->useSession();
 
 </div>
 
-Just like with token based authentication, you can use the `register()` method to authenticate users. The only difference is that the `register()` method redirects you to a route defined as `GUARD_HOME` in your auth config.
+Just like with token based authentication, you can use the `register()` method to authenticate users. The only difference is that the `register()` method redirects you to a route defined as `GUARD_HOME` with a new session or redirects to `GUARD_LOGIN` if you have the `SESSION_ON_REGISTER` config set to `false`.
 
 <div class="class-mode">
 

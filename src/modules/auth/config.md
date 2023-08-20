@@ -231,7 +231,7 @@ This is a boolean which determines whether to hide the id in the user object ret
 
 ### AUTH_NO_PASS
 
-This allows you to *manually* tell leaf auth that no password is required for authentication. When this is set to true, leaf auth will assume there is no password and act accordingly. If there is no password field set in the credentials passed into the `login` or `register` methods, leaf auth will automatically set this to `true`.
+This allows you to _manually_ tell leaf auth that no password is required for authentication. When this is set to true, leaf auth will assume there is no password and act accordingly. If there is no password field set in the credentials passed into the `login` or `register` methods, leaf auth will automatically set this to `true`.
 
 ### HIDE_PASSWORD
 
@@ -294,7 +294,11 @@ Use session based authentication instead of the default JWT based auth. Without 
 
 ### SESSION_ON_REGISTER
 
-If true, a session will be created on a successful registration, else you it'll be created on login rather. Default is `false`.
+If set to `true`, a session will be created on a successful registration. If set to `false`, sessions will only be created when a user successfully logs into their account. The default value for this config is `false`.
+
+### SESSION_REDIRECT_ON_LOGIN
+
+This configuration option determins whether to redirect to a page after login. When set to `true`, the options set in `GUARD_LOGIN`, `GUARD_REGISTER` and `GUARD_HOME` will be used to redirect the user to the right page based on their state. Default is `true`.
 
 ### GUARD_LOGIN
 
@@ -311,6 +315,22 @@ Logout route handler. Default is `/auth/logout`.
 ### GUARD_HOME
 
 Home page route. Default is `/home`.
+
+### SESSION_LIFETIME
+
+This option allows you to set the lifetime of the session. After this time, the session will expire and the user will have to login again. Default is `1 day`.
+
+### SESSION_COOKIE_PARAMS
+
+This option allows you to set the cookie params for the session. These are the defaults set for you:
+
+```php
+[
+  'secure' => true,
+  'httponly' => true,
+  'samesite' => 'lax'
+]
+```
 
 ### SAVE_SESSION_JWT
 
