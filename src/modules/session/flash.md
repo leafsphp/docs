@@ -19,13 +19,13 @@ Using the `config()` method, you can change where Leaf stores flash messages in 
 
 ```php
 flash()->config([
-  "key" => "my_flash_items"
+  'key' => 'my_flash_items'
 ]);
 
-flash()->set("This is my message");
+flash()->set('This is my message');
 
 // logging $_SESSION
-=> ["my_flash_items" => ["message" => "This is my message"]]
+=> ['my_flash_items' => ['message' => 'This is my message']]
 ```
 
 </div>
@@ -35,13 +35,13 @@ flash()->set("This is my message");
 use Leaf\Flash;
 
 Flash::config([
-  "key" => "my_flash_items"
+  'key' => 'my_flash_items'
 ]);
 
-Flash::set("This is my message");
+Flash::set('This is my message');
 
 // logging $_SESSION
-=> ["my_flash_items" => ["message" => "This is my message"]]
+=> ['my_flash_items' => ['message' => 'This is my message']]
 ```
 
 </div>

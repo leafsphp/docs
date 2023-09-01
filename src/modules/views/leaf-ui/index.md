@@ -1,6 +1,6 @@
-# Leaf UI
-
 <!-- markdownlint-disable no-inline-html -->
+
+# Leaf UI <sup class="vt-badge warning">Beta</sup>
 
 Leaf UI is a PHP library that allows you to build modern web apps and scaffold dynamic and interactive UIs using the same PHP you already know and love. It's fast, easy, and fun. Leaf UI follows the component-based UI paradigm, which makes it simple to build reusable components that sync with the DOM automatically.
 
@@ -58,11 +58,11 @@ use Leaf\UI\Component;
 class HelloWorld extends Component
 {
     public $key = 'HelloWorld';
-    public $greeting = "Hello World!";
+    public $greeting = 'Hello World!';
 
     public function sayHello()
     {
-        $this->greeting = "Hi World!";
+        $this->greeting = 'Hi World!';
     }
 
     public function render()
@@ -88,12 +88,12 @@ Now that we have our component, we can use it in our Leaf app. Let's create a ne
 
 use Leaf\UI;
 
-require __DIR__ . "/vendor/autoload.php";
-require __DIR__ . "/HelloWorld.php"; // our component
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/HelloWorld.php'; // our component
 
 $app = new Leaf\App;
 
-$app->get("/", function() {
+$app->get('/', function() {
     UI::render(new HelloWorld());
 });
 
@@ -109,10 +109,10 @@ $app->run();
 
 use Leaf\UI;
 
-require __DIR__ . "/vendor/autoload.php";
-require __DIR__ . "/HelloWorld.php"; // our component
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/HelloWorld.php'; // our component
 
-app()->get("/", function() {
+app()->get('/', function() {
     UI::render(new HelloWorld());
 });
 

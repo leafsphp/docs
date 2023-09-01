@@ -42,7 +42,7 @@ If for some reason, you're not able to set the status using `status`, you can al
 ```php
 // ...
 Leaf\Http\Headers::resetStatus(200);
-echo "Something here";
+echo 'Something here';
 ```
 
 <hr>

@@ -21,6 +21,8 @@ Watch this video by Dave Hollingworth as an introduction to template engines.
 />
 </details>
 
+## Installation
+
 To add veins to your project simply run the command:
 
 ```bash
@@ -33,26 +35,6 @@ Or with composer:
 composer require leafs/veins
 ```
 
-## Sample Vein File
-
-```php
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{$title}</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</head>
-<body>
-  <h2>{$title}</h2>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
-</html>
-```
-
 ## Usage with Leaf
 
 To use veins in a Leaf app, you need to attach veins to the Leaf view handler. This is done by adding the following code to your `app.php` file.
@@ -61,10 +43,10 @@ To use veins in a Leaf app, you need to attach veins to the Leaf view handler. T
 Leaf\View::attach(Leaf\Veins::class);
 ```
 
-From there, you can use the `view` property on the `app` object to render your veins files.
+From there, you can use the `veins` property on the `app` object to render your veins files.
 
 ```php
-app()->view->render("home");
+app()->veins->render('home');
 ```
 
 ## Usage without Leaf
@@ -78,45 +60,64 @@ $veins = new Leaf\Veins();
 You can then call any of the methods on the `Leaf\Veins` class to render your veins files.
 
 ```php
-$veins->render("home");
+$veins->render('home');
 ```
 
-## Quick Walk-through
+## Configuration
 
-This is a simple "tutorial" to get you up and going with Leaf Veins. The whole idea is to be able to pass items into our view(template).
+Veins has a few configuration options that you can set. You can set these options using the `configure` method. The options are:
 
-To begin with, we'll need to tell Veins where to look for our templates and what directory to keep the template cache in. We can do this with `configure`.
+- `charset` - The character set for your templates, default: `UTF-8`
+- `debug` - Show debug errors, default: `false`
+- `templateDir` - Directory to look for Vein templates, default: `views/`
+- `cacheDir` - Directory to hold compiled templates, default: `cache/`
+- `phpEnabled` - Whether to allow raw PHP in templates, default: `false`
+- `autoEscape` - Whether to sanitize variables or not, default: `true`
+- `removeComments` - Whether to html comments or not, default: `false`
 
 ```php
 $app->veins->configure([
-  "templateDir" => "views/",
-  "cacheDir" => "views/cache/"
+  'templateDir' => 'views/',
+  'cacheDir' => 'views/cache/'
 ]);
 ```
 
-Once we've done that, we can now set our data. Let's say we have a user object like this:
+## Creating your views
 
-```php
-$user = (object) [
-  'name' => 'Michael Darko',
-  'email' => 'mychi@leafphp.dev',
-  'verified' => true
-];
-```
+In the config above, we set the `templateDir` to `views/`. This means that Veins will look for all your views in the `views/` directory. So if we want to create a view called `homepage`, we'd create a file called `homepage.vein.html` in the `views/` directory.
 
-In order to use this object in our view(template), we'd have to pass this object into our view. We can do that by passing it as the second parameter to the `render` method.
-
-```php
-$app->veins->render("homepage", ['user' => $user]);
-```
-
-Now in our `homepage.vein.html` file, we can access the name variable like this:
+Note that Veins uses a `.vein.html` file extension for it's views.
 
 ```html
-{$user->name}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Veins</title>
+</head>
+<body>
+  <h1>Hello, {$name}!</h1>
+</body>
+</html>
 ```
 
-## Variables
+**Note the `{$name}` variable in the view.** We'll get to that in a bit.
+
+## Rendering your views
+
+To render your views, you can use the `render` method. The `render` method takes in the name of the view to render and an optional array of variables to pass to the view.
+
+```php
+$app->veins->render('homepage', ['name' => 'Leaf User']);
+```
+
+This will render the view and pass the `name` variable to the view. The `name` variable can then be used in the view. So basically, you can pass variables to your views using the `render` method.
+
+## Vein Template Syntax
+
+Veins uses a simple syntax for it's views. The syntax is similar to that of Smarty. Let's look at some of the syntaxes.
+
+### Variables
 
 ```html
 {$variable}
@@ -125,25 +126,25 @@ Now in our `homepage.vein.html` file, we can access the name variable like this:
 {$array['key']}
 ```
 
-## Constants
+### Constants
 
 ```html
 {#constant#}
 ```
 
-## Function
+### Function
 
 ```html
 {function="function"}
 ```
 
-## Include
+### Include
 
 ```html
 {include="templateName"}
 ```
 
-## No parse
+### No parse
 
 Commenting in Vein
 
@@ -153,7 +154,7 @@ Commenting in Vein
 {/noparse}
 ```
 
-## Loops
+### Loops
 
 ```html
 {loop="$items" as $item}
@@ -175,7 +176,7 @@ Or
 {/loop}
 ```
 
-## If
+### If
 
 ```html
 {if="count($posts) > 0"}
@@ -183,7 +184,7 @@ Or
 {/if}
 ```
 
-## If else
+### If else
 
 ```html
 {if="count($posts) > 0"}
@@ -193,9 +194,9 @@ Or
 {/if}
 ```
 
-## AutoEscape
+### AutoEscape
 
-This has a lot of uses...but the most common use case is for rendering HTML
+This has a lot of uses, but the most common use case is for rendering raw HTML
 
 ```php
 $app->veins->set([

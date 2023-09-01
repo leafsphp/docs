@@ -32,7 +32,7 @@ The router class is the interface you interact with to perform any routing actio
 ```php
 use Leaf\Router;
 
-Router::get("/", "PagesController@index");
+Router::get('/', 'PagesController@index');
 
 Router::run();
 ```
@@ -49,10 +49,10 @@ To make things simpler, we tied leaf router directly to the leaf instance, so on
 ```php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
-app()->get("/", function () {
-  response()->json(["name" => "Leaf"]);
+app()->get('/', function () {
+  response()->json(['name' => 'Leaf']);
 });
 
 app()->run();
@@ -68,8 +68,8 @@ require __DIR__ . "/vendor/autoload.php";
 
 $app = new \Leaf\App();
 
-$app->get("/", function () use($app) {
-  $app->response()->json(["name" => "Leaf"]);
+$app->get('/', function () use($app) {
+  $app->response()->json(['name' => 'Leaf']);
 });
 
 $app->run();
@@ -101,9 +101,9 @@ composer require imaginary/router
 // initialise imaginary router
 $imr = new Imaginary\Router();
 
-$imr->get("/", function () {
+$imr->get('/', function () {
   // you can still use leaf modules
-  response()->json(["title" => "hello"]);
+  response()->json(['title' => 'hello']);
 });
 ```
 
@@ -115,9 +115,9 @@ $imr->get("/", function () {
 $imr = new Imaginary\Router();
 $response = new Leaf\Http\Response();
 
-$imr->get("/", function () use($response) {
+$imr->get('/', function () use($response) {
   // you can still use leaf modules
-  $response->json(["title" => "hello"]);
+  $response->json(['title' => 'hello']);
 });
 ```
 
@@ -349,7 +349,7 @@ A resource route simply creates all the routes needed to successfully handle a p
 <div class="functional-mode">
 
 ```php
-app()->resource("/posts", "PostsController");
+app()->resource('/posts', 'PostsController');
 
 app()->run();
 ```
@@ -358,7 +358,7 @@ app()->run();
 <div class="class-mode">
 
 ```php
-$app->resource("/posts", "PostsController");
+$app->resource('/posts', 'PostsController');
 
 $app->run();
 ```
@@ -370,13 +370,13 @@ The code above is equivalent to this:
 <div class="functional-mode">
 
 ```php
-app()->match("GET|HEAD", "/posts", "$controller@index");
-app()->post("/posts", "$controller@store");
-app()->match("GET|HEAD", "/posts/create", "$controller@create");
-app()->match("POST|DELETE", "/posts/{id}/delete", "$controller@destroy");
-app()->match("POST|PUT|PATCH", "/posts/{id}/edit", "$controller@update");
-app()->match("GET|HEAD", "/posts/{id}/edit", "$controller@edit");
-app()->match("GET|HEAD", "/posts/{id}", "$controller@show");
+app()->match('GET|HEAD', '/posts', "$controller@index");
+app()->post('/posts', "$controller@store");
+app()->match('GET|HEAD', '/posts/create', "$controller@create");
+app()->match('POST|DELETE', '/posts/{id}/delete', "$controller@destroy");
+app()->match('POST|PUT|PATCH', '/posts/{id}/edit', "$controller@update");
+app()->match('GET|HEAD', '/posts/{id}/edit', "$controller@edit");
+app()->match('GET|HEAD', '/posts/{id}', "$controller@show");
 
 app()->run();
 ```
@@ -385,13 +385,13 @@ app()->run();
 <div class="class-mode">
 
 ```php
-$app->match("GET|HEAD", "/posts", "$controller@index");
-$app->post("/posts", "$controller@store");
-$app->match("GET|HEAD", "/posts/create", "$controller@create");
-$app->match("POST|DELETE", "/posts/{id}/delete", "$controller@destroy");
-$app->match("POST|PUT|PATCH", "/posts/{id}/edit", "$controller@update");
-$app->match("GET|HEAD", "/posts/{id}/edit", "$controller@edit");
-$app->match("GET|HEAD", "/posts/{id}", "$controller@show");
+$app->match('GET|HEAD', '/posts', "$controller@index");
+$app->post('/posts', "$controller@store");
+$app->match('GET|HEAD', '/posts/create', "$controller@create");
+$app->match('POST|DELETE', '/posts/{id}/delete', "$controller@destroy");
+$app->match('POST|PUT|PATCH', '/posts/{id}/edit', "$controller@update");
+$app->match('GET|HEAD', '/posts/{id}/edit', "$controller@edit");
+$app->match('GET|HEAD', '/posts/{id}', "$controller@show");
 
 $app->run();
 ```
@@ -404,7 +404,7 @@ Resource routes are handled by a [resource controller](/docs/routing/controller?
 
 You can add a route that handles a couple of HTTP methods with the Leaf router's match() method. It accepts three arguments:
 
-- The HTTP method(s) seperated by |
+- The HTTP method(s) seperated by `|`
 - The route pattern (with optional named placeholders or PCRE based patterns)
 - The route callback
 
@@ -456,7 +456,7 @@ Leaf route handlers are usually callable functions like this:
 
 ```php
 app()->get("/home", function () {
-  echo "User Home";
+  echo 'User Home';
 });
 ```
 
@@ -465,7 +465,7 @@ app()->get("/home", function () {
 
 ```php
 $app->get("/home", function () {
-  echo "User Home";
+  echo 'User Home';
 });
 ```
 
@@ -476,14 +476,14 @@ Or sometimes controllers, like this:
 <div class="functional-mode">
 
 ```php
-app()->get("/home", "HomeController@index");
+app()->get('/home', 'HomeController@index');
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$app->get("/home", "HomeController@index");
+$app->get('/home', 'HomeController@index');
 ```
 
 </div>
@@ -493,8 +493,8 @@ This means there was no space to chain additional items to the route, this is so
 <div class="functional-mode">
 
 ```php
-app()->get("/home", ["name" => "home", function () {
-  echo "User Home";
+app()->get('/home', ['name' => 'home', function () {
+  echo 'User Home';
 }]);
 ```
 
@@ -502,8 +502,8 @@ app()->get("/home", ["name" => "home", function () {
 <div class="class-mode">
 
 ```php
-$app->get("/home", ["name" => "home", function () {
-  echo "User Home";
+$app->get('/home', ['name' => 'home', function () {
+  echo 'User Home';
 }]);
 ```
 
@@ -514,14 +514,14 @@ When an array is passed into a leaf route as the handler, leaf will take all `ke
 <div class="functional-mode">
 
 ```php
-app()->get("/form", ["name" => "userForm", "FormsController@index"]);
+app()->get('/form', ['name' => 'userForm', 'FormsController@index']);
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$app->get("/form", ["name" => "userForm", "FormsController@index"]);
+$app->get('/form', ['name' => 'userForm', 'FormsController@index']);
 ```
 
 </div>
@@ -531,7 +531,7 @@ As mentioned before, this feature is also available on groups:
 <div class="functional-mode">
 
 ```php
-app()->group("/user", ["namespace" => "\\", function () {
+app()->group('/user', ['namespace' => '\\', function () {
     // ...
 }]);
 ```
@@ -540,7 +540,7 @@ app()->group("/user", ["namespace" => "\\", function () {
 <div class="class-mode">
 
 ```php
-$app->group("/user", ["namespace" => "\\", function () {
+$app->group('/user', ['namespace' => '\\', function () {
     // ...
 }]);
 ```
@@ -556,8 +556,8 @@ You can give names to your routes which allows you to use your route names for n
 <div class="functional-mode">
 
 ```php
-app()->get("/home", ["name" => "home", function () {
-  echo "User Home";
+app()->get('/home', ['name' => 'home', function () {
+  echo 'User Home';
 }]);
 ```
 
@@ -565,9 +565,84 @@ app()->get("/home", ["name" => "home", function () {
 <div class="class-mode">
 
 ```php
-$app->get("/home", ["name" => "home", function () {
-  echo "User Home";
+$app->get('/home', ['name' => 'home', function () {
+  echo 'User Home';
 }]);
+```
+
+</div>
+
+### Getting a route by its name
+
+You can also get the route path by its name.
+
+<div class="functional-mode">
+
+```php
+app()->route('home'); // Would return: /home
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$app->route('home'); // Would return: /home
+```
+
+</div>
+
+Also, if you have routes with named parameters, you can do as follows:
+
+Route 1:
+
+<div class="functional-mode">
+
+```php
+app()->get('/movies/{movieId}', ['name' => 'movies', function () {
+  echo 'User Movies';
+}]);
+
+app()->route('movies', 'my-movie') // Would return: /movies/my-movie
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$app->get('/movies/{movieId}', ['name' => 'movies', function () {
+  echo 'User Movies';
+}]);
+
+$app->route('movies', 'my-movie') // Would return: /movies/my-movie
+```
+
+</div>
+
+Route 2:
+
+<div class="functional-mode">
+
+```php
+app()->get('/movies/{movieId}/photos/{photoId}', ['name' => 'moviesAndPhotos', function () {
+  echo 'User Movies and Photos';
+}]);
+
+app()->route('moviesAndPhotos', ['movieId' => 'my-movie', 'photoId' => 'my-photo']);
+
+// Would return: /movies/my-movie/photos/my-photo
+```
+
+</div>
+<div class="class-mode">
+
+```php
+$app->get('/movies/{movieId}/photos/{photoId}', ['name' => 'moviesAndPhotos', function () {
+  echo 'User Movies and Photos';
+}]);
+
+$app->route('moviesAndPhotos', ['movieId' => 'my-movie', 'photoId' => 'my-photo']);
+
+// Would return: /movies/my-movie/photos/my-photo
 ```
 
 </div>
@@ -579,14 +654,14 @@ This is simply redirecting to a route and can be done using `push`. `push` also 
 <div class="functional-mode">
 
 ```php
-app()->push("/home");
+app()->push('/home');
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$app->push("/home");
+$app->push('/home');
 ```
 
 </div>
@@ -597,7 +672,7 @@ When an array is passed into push, Leaf will search for a route name matching th
 
 ```php
 // home was defined above
-app()->push(["home"]);
+app()->push(['home']);
 ```
 
 </div>
@@ -605,7 +680,7 @@ app()->push(["home"]);
 
 ```php
 // home was defined above
-$app->push(["home"]);
+$app->push(['home']);
 ```
 
 </div>
@@ -617,7 +692,7 @@ There are times when you need to get information about the current route from wi
 <div class="functional-mode">
 
 ```php
-app()->get("/home", ["name" => "home", function () {
+app()->get('/home', ['name' => 'home', function () {
   $route = app()->getRoute();
   echo $route['name'];
 }]);
@@ -627,7 +702,7 @@ app()->get("/home", ["name" => "home", function () {
 <div class="class-mode">
 
 ```php
-$app->get("/home", ["name" => "home", function () use ($app) {
+$app->get('/home', ['name' => 'home', function () use ($app) {
   $route = $app->getRoute();
   echo $route['name'];
 }]);

@@ -1,10 +1,6 @@
 # MVC Core
 
-MVC core is a module that contains components for transforming leaf into a full-blown MVC framework. MVC Core is used in Leaf MVC, Leaf API and skeleton. It comes with features like controllers, models, eloquent from laravel, factories and more.
-
-::: tip Building with MVC
-If you want a pre-built MVC setup, we recommend checking out Leaf MVC or Leaf API which come with a ton of features in addition to those offered by Leaf and MVC core. You can checkout Skeleton if you want a basic MVC setup without any weird additions.
-:::
+MVC core is a module that contains components for transforming leaf into a full-blown MVC framework. MVC Core is used in Leaf MVC and Leaf API. It comes with features like controllers, models, eloquent from laravel, factories and more.
 
 ## Installation
 
@@ -22,9 +18,7 @@ leaf install mvc-core
 
 ## Config
 
-::: warning Note that
-Leaf MVC, Leaf API and skeleton are already configured out of the box. If you are using any of these setups, you can skip to the documentation for the component you need.
-:::
+Leaf MVC and Leaf API are already configured out of the box. If you are using any of these setups, you can skip to the documentation for the component you need.
 
 ## Autoloader
 
@@ -36,7 +30,7 @@ Leaf MVC Core comes in with two (2) controller classes. `Leaf\Controller` for cr
 
 ## Models
 
-Leaf MVC Core comes with a base model from which all models in your leaf API, leaf MVC and skeleton apps are created. This model is directly built unto [laravel's eloquent](https://laravel.com/docs/10.x/eloquent) and so we'll recommend checking out laravel models for detailed documentation. Models in your app will look something like this:
+Leaf MVC Core comes with a base model from which all models in your leaf API and leaf MVC apps are created. This model is directly built unto [laravel's eloquent](https://laravel.com/docs/10.x/eloquent) and so we'll recommend checking out laravel models for detailed documentation. Models in your app will look something like this:
 
 ```php
 <?php
@@ -48,14 +42,10 @@ class ClassName extends Model {
 ```
 
 ::: tip NOTE
-We're extending `Model` instead of `Leaf\Model` because Leaf MVC, Leaf API and Skeleton all have a base Model file which extends `Leaf\Model`. This is to give you a place to configure all your models seamlessly without having access to the `Leaf\Model` file.
+We're extending `Model` instead of `Leaf\Model` because Leaf MVC and Leaf API all have a base Model file which extends `Leaf\Model`. This is to give you a place to configure all your models seamlessly without having access to the `Leaf\Model` file.
 :::
 
 ## Factories
-
-::: warning NOTE THAT
-Factories aren't compatible with Skeleton by default since it doesn't come with aloe cli.
-:::
 
 Factories provide a quickl way to populate your database with test information. All the functionality for doing this has been implemented in the `Leaf\Factory` class. To create a factory, you simply need to extend this class.
 
@@ -139,11 +129,6 @@ $randomUsers = (new UserFactory)->create(3)->get();
 ```
 
 ## Schema
-<!-- <Badge text="New" /> -->
-
-::: warning NOTE THAT
-Schema isn't compatible with Skeleton by default since it doesn't come with aloe cli.
-:::
 
 Schema is a new way to create database migrations. Typing code for migrations the regular way is quite annoying: thinking of the types of data, setting default values and other items. `Schema` allows you to create migration schemas based on example JSON output.
 
@@ -207,22 +192,12 @@ class CreateUsers extends Database {
    * @return void
    */
   public function up()  {
-    Schema::build(static::$capsule, "/Schema/users.json");
+    Schema::build("users");
   }
   ...
 ```
 
-In this case leaf will generate a migration to the users table since our filename is `users.json`. Note that leaf schema will always use the filename as the table name. You can go a different route by directly pasting your json into the build method. In that case, you will need to specify a table name.
-
-```php
-public function up()  {
-  Schema::build(static::$capsule, "users", json_encode([
-    ...
-  ]));
-}
-```
-
-You don't need to do anything after building your schema. Leaf will do the rest.
+In this case leaf will generate a migration to the users table since our filename is `users.json`. Note that leaf schema will always use the filename as the table name.
 
 ## Globals
 
@@ -234,7 +209,7 @@ Leaf MVC core comes with the most global functions in all of leaf. This includes
 $paths = AppPaths();
 ```
 
-- **ConfigPath**: This global returns the path to your configuration folder in Leaf MVC, Leaf API or skeleton.
+- **ConfigPath**: This global returns the path to your configuration folder in Leaf MVC and Leaf API.
 
 ```php
 $dbConfigFile = ConfigPath("db.php");

@@ -12,7 +12,7 @@ Below is an example of a basic controller class. Note that the controller extend
 <?php
 
 // this is a model, view the model docx for more info
-require "User.php";
+require 'User.php';
 
 use Leaf\Controller;
 
@@ -56,18 +56,18 @@ class NameController extends Controller {
   // configure as soon as controller is invoked
   public function __construct() {
     $this->veins->configure([
-      "veins_dir" => "app/views/",
-      "cache_dir" => "app/views/build/"
+      'veins_dir' => 'app/views/',
+      'cache_dir' => 'app/views/build/'
     ]);
   }
 
   public function index() {
     // set template data
     $this->set([
-      "name" => "Mychi"
+      'name' => 'Mychi'
     ]);
     // render your template
-    $this->render("index"); // refers to index.vein in the veins_dir
+    $this->render('index'); // refers to index.vein in the veins_dir
   }
 }
 ```
@@ -86,7 +86,7 @@ use Leaf\Controller;
 class NameController extends Controller {
   public function index() {
     $this->respond([
-      "message" => "hello"
+      'message' => 'hello'
     ]);
   }
 }
@@ -103,11 +103,11 @@ use Leaf\Controller;
 
 class NameController extends Controller {
   public function index() {
-    $profilePic = $_FILES["profile_pic"];
+    $profilePic = $_FILES['profile_pic'];
     // file upload
-    $this->file_upload("./images/", $profilePic);
+    $this->file_upload('./images/', $profilePic);
     // file upload with file type
-    $this->file_upload("./images/", $profilePic, "image");
+    $this->file_upload('./images/', $profilePic, 'image');
   }
 }
 ```
@@ -118,10 +118,10 @@ The base controller also gives you a simple way to handle form data
 
 ```php
 public function index() {
-  $name = $this->form->get("name");
+  $name = $this->form->get('name');
 
   $this->validate([
-    "name" => "text"
+    'name' => 'text'
   ]);
 }
 ```

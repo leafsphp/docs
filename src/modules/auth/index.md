@@ -1,13 +1,12 @@
 # Authentication
+
 <!-- markdownlint-disable no-inline-html -->
 
 Numerous web applications offer their users a means to authenticate and access the application by "logging in." Adding this functionality to web applications can be a challenging and potentially dangerous task. For this reason, Leaf provides a lightweight but very powerful authentication system known as Leaf Auth.
 
-Leaf Auth gives you clean and simple functions to handle complex authentication flows in a few lines of code. Leaf auth is customizable to the core and allows for a bunch of configuration options that determine how it handles authentication in general.
+Leaf Auth gives you clean and simple functions to handle complex authentication flows in a few lines of code. It is customizable to the core and allows for a bunch of configuration options that determine how it handles authentication in general.
 
-::: tip Note that
-You can still handle authentication without using Leaf Auth. The idea behind Leaf Auth is to make authentication simpler.
-:::
+You can still handle authentication without using Leaf Auth, however, Leaf Auth is a more secure and reliable way to handle authentication in your apps.
 
 ## Installing Leaf Auth
 
@@ -79,14 +78,14 @@ auth()->config('DB_TABLE', 'admins');
 
 After installing leaf auth, you would need to connect to a database. Leaf auth will search for users and add/update users in this database when a login/register or update operation is called. There are a couple of ways to connect to a database with leaf auth.
 
-### connect
+### Manual Connection
 
-The connect method allows you to pass in your database connection parameters directly to leaf auth.
+Leaf Auth provides a `connect()` method that allows you to connect to your database by passing in your database connection parameters. This is the most basic and straightforward way to connect to your database.
 
 <div class="class-mode">
 
 ```php
-$auth = new Leaf\Auth;
+$auth = new \Leaf\Auth;
 
 // syntax
 $auth->connect(
@@ -119,9 +118,9 @@ auth()->connect('127.0.0.1', 'dbname', 'root', '');
 
 </div>
 
-### autoConnect
+### Auto Connect
 
-This method allows you to connect to your database from parameters in a `.env` file. Most MVC frameworks and other libraries rely on a `.env` for a lot of configurations including the database. With `autoConnect`, you can directly pick up these configs.
+Leaf Auth comes with an `autoConnect()` method that allows you to connect to your database using your environment variables. Most MVC frameworks and other libraries rely on a `.env` file for a lot of configuration including the database. With `autoConnect`, you can directly pick up these configs and create a connection from them.
 
 **example env:**
 
@@ -134,7 +133,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-**App:**
+Based on the example above, you can connect to your database using:
 
 <div class="class-mode">
 
@@ -202,10 +201,6 @@ auth()->dbConnection(db()->connection());
 
 If you are using leaf auth in a leaf 3 app, you will have access to the auth global as shown in some of the above connections. Along with this, if you already have a leaf db connection, you no longer need to explicitly connect to your database. Leaf auth searches for a leaf db instance and connects to it automatically.
 
-::: warning Note
-This only works in a leaf 3 app and only if you already have a leaf db connection.
-:::
-
 ```php
 <?php
 
@@ -240,7 +235,7 @@ Functional mode also makes the `guard`, `hasAuth` and `sessionUser` globals avai
 
 ### guard
 
-The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/v/2.1/session.html#guard).
+The guard method is a shortcut method for `Auth::guard()`. You can find the guards documentation [here](/modules/auth/session.html#guard).
 
 ### hasAuth
 
@@ -255,15 +250,15 @@ This method returns the active session user or null if there's no session user.
 ## Next Steps
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/config">
+  <a class="vt-box w-lg-up:33" href="/modules/auth/config">
     <h3 class="next-steps-link mb:_1">Auth Config</h3>
     <small class="next-steps-caption">Configure leaf auth to meet your needs.</small>
   </a>
-  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/methods">
+  <a class="vt-box w-lg-up:33" href="/modules/auth/methods">
     <h3 class="next-steps-link">Auth Methods</h3>
     <small class="next-steps-caption">Docs on all the methods provided in Leaf Auth</small>
   </a>
-  <a class="vt-box w-lg-up:33" href="/modules/auth/v/2.1/session">
+  <a class="vt-box w-lg-up:33" href="/modules/auth/session">
     <h3 class="next-steps-link">Auth Sessions</h3>
     <small class="next-steps-caption">Session support with Leaf Auth.</small>
   </a>

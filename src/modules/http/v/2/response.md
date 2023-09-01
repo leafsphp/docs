@@ -25,8 +25,8 @@ $app->get("/text", function () use($app) {
 <div class="functional-mode">
 
 ```php{2}
-app()->get("/text", function () {
-  app()->response()->markup("This is text");
+app()->get('/text', function () {
+  app()->response()->markup('This is text');
 });
 ```
 
@@ -44,9 +44,9 @@ With this method, you manually initialise the Response object, and then pass it 
 $app = new Leaf\App;
 $response = new Leaf\Http\Response;
 
-$app->post("/login", function () use($response) {
+$app->post('/login', function () use($response) {
   // ...
-  $response->json(["username" => $user]);
+  $response->json(['username' => $user]);
 });
 ```
 
@@ -59,23 +59,10 @@ Response also takes advantage of Leaf 3's functional mode with the `response` gl
 
 ```php
 response()->json([
-  "status" => "success",
-  "data" => "Hello",
+  'status' => 'success',
+  'data' => 'Hello',
 ]);
 ```
-
-::: danger Note
-In Http v2, you can no longer pass data directly to the response global.
-
-```php
-response([
-  "status" => "success",
-  "data" => "Hello",
-]);
-```
-
-**THIS WILL NO LONGER WORK!!**
-:::
 
 </div>
 
@@ -87,31 +74,9 @@ An HTTP response has three primary properties:
 
 The response object provides helper methods, described next, that help you interact with these HTTP response properties.
 
-## Removed in v2
+## Method Chaining
 
-- ***`throwErr`***
-
-This is a method which has existed since v1 of Leaf. `throwErr` was an attempt at error handling, but had a few issues: the biggest being that it only supports JSON data. To fix this, we came up with a more general solution [**(exit)**](#exit) which still simply outputs some data and breaks your app after that, making sure no other code runs after the output.
-
-- ***Static Accessors***
-
-Due to a certain number of new features added, most methods are no longer static. Not to worry, you can still use functional mode which means there's still no need to initialize the entire response object.
-
-- ***Headers Object***
-
-In version 2, the headers object has been removed. To set headers, you can use the `withHeader` method.
-
-- ***Cookies Object***
-
-Just like the headers object, we also got rid of the cookies object. You can use the `withCookie` method instead.
-
-## New in v2
-
-We completely rethought the original implementation of the response object. Although similar to the original implementation, v2 provides a simpler and much easier to use API, taking advantage of things like method chaining and auto detecting of response types.
-
-### Method Chaining
-
-This is the biggest addition to Leaf Http in version 2. Method chaining allows you to be more expressive with your code and basically fit everything better. There's just a single rule you need to follow here: ***the method you want to output should be the last thing you call.***
+Method chaining allows you to be more expressive with your code and basically fit everything better. There's just a single rule you need to follow here: ***the method you want to output should be the last thing you call.***
 
 If you want to output some JSON with a header `something`, you should always set the header before calling the JSON method.
 
@@ -152,14 +117,14 @@ This method allows you to output plain text as your response. It takes in 2 para
 <div class="class-mode">
 
 ```php
-$app->response()->plain("hello");
+$app->response()->plain('hello');
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-response()->plain("hello");
+response()->plain('hello');
 ```
 
 </div>
@@ -203,14 +168,14 @@ It takes in 3 parameters:
 <div class="class-mode">
 
 ```php
-$app->response()->json("Output", 200);
+$app->response()->json('Output', 200);
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-response()->json("Output", 200);
+response()->json('Output', 200);
 ```
 
 </div>
@@ -226,14 +191,14 @@ Showing the code in body:
 <div class="class-mode">
 
 ```php
-$app->response()->json("Output", 200, true);
+$app->response()->json('Output', 200, true);
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-response()->json("Output", 200, true);
+response()->json('Output', 200, true);
 ```
 
 </div>
@@ -286,14 +251,14 @@ It takes in a status code as the second parameter.
 <div class="class-mode">
 
 ```php
-$app->response()->page("404.html", 404);
+$app->response()->page('404.html', 404);
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-response()->page("404.html", 404);
+response()->page('404.html', 404);
 ```
 
 </div>
@@ -306,7 +271,7 @@ This method outputs some HTML/PHP:
 
 ```php
 $app->get('/homepage', function () use($app) {
-  $app->response()->markup("<h2>Hello</h2>");
+  $app->response()->markup('<h2>Hello</h2>');
 });
 ```
 
@@ -315,7 +280,7 @@ $app->get('/homepage', function () use($app) {
 
 ```php
 app()->get('/homepage', function () {
-  response()->markup("<h2>Hello</h2>");
+  response()->markup('<h2>Hello</h2>');
 });
 ```
 
@@ -324,7 +289,7 @@ app()->get('/homepage', function () {
 You might be wondering why we don't just use
 
 ```php
-echo "<h1>hello</h1>";
+echo '<h1>hello</h1>';
 ```
 
 The reason is, Leaf has default headers which set the content type to JSON, in order to correctly output HTML, you need to change this.... Leaf has taken care of this with a bunch of other things, all within `markup` and `page`.
@@ -334,14 +299,14 @@ You can also specify a status code:
 <div class="class-mode">
 
 ```php
-$app->response()->markup("<h2>Hello</h2>", 201);
+$app->response()->markup('<h2>Hello</h2>', 201);
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-response()->markup("<h2>Hello</h2>", 201);
+response()->markup('<h2>Hello</h2>', 201);
 ```
 
 </div>
@@ -519,11 +484,9 @@ response()->exit(['data' => 'This will be output as JSON'], 500);
 
 ## Headers
 
-::: danger Watch Out
-Version 1 of Leaf Http came with an attached instance of the header object. This has been removed in version 2 and replaced with the `withHeader` method.
-:::
+Headers are a way for your server to send additional information along with your request. This information can be anything from the type of content you're sending back, to the status code of your response, to the type of server you're using.
 
-This method gives you a quick and simple way to set headers for your response. It takes in 4 parameters:
+Leaf allows you to set headers for your response directly from the response object using the `withHeader()` method. It takes in 4 parameters:
 
 - The header name or an array of headers (key-value pairs)
 - The header value if header key is a string
@@ -554,11 +517,9 @@ response()
 
 ## Cookies
 
-::: danger Watch Out
-Version 1 of Leaf Http came with an attached instance of the cookie object. This has been removed in version 2 and replaced with the `withCookie` method.
-:::
+Cookies are small pieces of data that are stored on the client's computer by the web browser while browsing a website. Cookies were designed to be a reliable mechanism for websites to remember stateful information or to record the user's browsing activity.
 
-This method gives you a quick and simple way to set cookies for your response. It takes in 3 parameters:
+Leaf allows you to set cookies for your response using the `withCookie()` method. It takes in 3 parameters:
 
 - The name of the cookie
 - The value of cookie
@@ -574,12 +535,14 @@ $app->response()->withCookie("name", "Michael", "1 day")->json('...');
 <div class="functional-mode">
 
 ```php
-response()->withCookie("name", "Michael", "1 day")->json('...');
+response()
+  ->withCookie("name", "Michael", "1 day")
+  ->json('...');
 ```
 
 </div>
 
-### withoutCookie
+### `withoutCookie()`
 
 This method allows you to remove existing cookies from your response. So you're basically returning a response without selected cookies.
 
@@ -604,9 +567,14 @@ response()->withoutCookie(["name", "something"])->json('...');
 
 </div>
 
-## withFlash Method
+## Flash messaging
 
-This is a new method which allows you add some flash messages to a response. It is usually used with redirects like this:
+Flash messages are a way to keep a message around for a single request. They're helpful for displaying status messages like "Item deleted successfully" or "Your changes have been saved."
+
+Leaf allows you to set flash messages for your response using the `withFlash()` method. It takes in 2 parameters:
+
+- The name of the flash message
+- The value of the flash message
 
 <div class="class-mode">
 

@@ -17,7 +17,7 @@ We recommend using the [Leaf CLI](/docs/cli/) for creating and managing your Lea
 To get started, we will need to generate a leaf application. We can do this simply with Leaf CLI:
 
 ```bash
-leaf create <your-project-name> --basic --v3 --no-tests
+leaf create <your-project-name> --basic
 ```
 
 <!-- ```bash

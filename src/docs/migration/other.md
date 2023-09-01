@@ -8,10 +8,6 @@ aside: none
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-::: tip
-New to Leaf PHP? Check out our [Essentials Guide](/docs/introduction/) to get started.
-:::
-.
 This page is for developers who have a working application in another framework and want to port over to Leaf. As far-fetched as this sounds, Leaf 3 makes it super easy to sprinkle pieces of Leaf into any existing application, gradually rewriting it without breaking any code. Leaf has always allowed users to integrate other libraries seamlessly into their leaf apps with no conflicts or complexities, now Leaf 3 allows you to go the other way: **integrating Leaf seamlessly into any application no matter which libraries or frameworks it was built with.**
 
 <!-- <VideoDocs
@@ -45,7 +41,7 @@ $app->get('/', function (Request $request, Response $response, $args) {
 $app->run();
 ```
 
-For instance, we decide to use the Leaf request and response objects since they are simpler, this means that we'll be replacing only lines 11-13 with Leaf.
+We can start off by swapping out the Slim request and response objects with Leaf's. We can achieve this by replacing only lines 11-13 with Leaf.
 
 ```php{2-3,11-13}
 <?php

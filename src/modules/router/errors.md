@@ -18,7 +18,7 @@ Router::set404(function () use($app) {
 
 ## Application Down
 
-Leaf router is also able to dynamically handle placing your application in maintainance mode using the `configure` method.
+Leaf router is also able to dynamically handle placing your application in maintenance mode using the `configure` method.
 
 ```php
 Router::configure([
@@ -26,16 +26,16 @@ Router::configure([
 ]);
 ```
 
-Alternatively, you could also place your application in maintainance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set.
+Alternatively, you could also place your application in maintenance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set.
 
 ::: warning Note that
 Leaf router expects you to manually load your `.env` file and will not be responsible for this. You can use [vlucas/phpdotenv](https://packagist.org/packages/vlucas/phpdotenv) to do this. After loading your `.env` variables into your app, leaf router will automatically pick them up.
 :::
 
-Along with this, we have prepared a simple method to display a custom maintainance error page: `setDown`.
+Along with this, we have prepared a simple method to display a custom maintenance error page: `setDown`.
 
 ```php
 Router::setDown(function () {
-  echo "Down for maintainance";
+  echo "Down for maintenance";
 });
 ```

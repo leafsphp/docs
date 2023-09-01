@@ -22,4 +22,6 @@ export interface Socials {
   github: string
   twitter?: string
   codepen?: string
+  instagram?: string
+  linkedin?: string
 }

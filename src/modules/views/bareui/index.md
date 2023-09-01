@@ -2,7 +2,24 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
+<script setup>
+import VideoDocs from '/@theme/components/VideoDocs.vue'
+</script>
+
 Most templating engines out there ship with a nice syntax, handy ways to use expressions, layouts and code blocks, however, there's one problem: speed! Bare UI is here to solve that. Bare UI is a barebones templating engine focused on speed, speed and more speed! It lacks all the syntactic sugar added in other engines like blade, but it also requires no compiling, no caching, just speed!
+
+<details>
+<summary>New to template engines?</summary>
+
+Watch this video by Dave Hollingworth as an introduction to template engines.
+
+<VideoDocs
+  title="Templating engines in PHP"
+  subject="Templating engines in PHP: what they are and how they can improve your code"
+  description="Learn how using a template engine can improve your view files with simpler syntax, autoescaping of variables and template inheritance."
+  link="https://www.youtube.com/embed/OK_JCtrrv-c"
+/>
+</details>
 
 ## Installation
 
@@ -16,6 +33,16 @@ Or with composer:
 
 ```bash
 composer require leafs/bareui
+```
+
+## Usage with Leaf MVC
+
+Leaf MVC and Leaf API come with [Leaf Blade](/modules/views/blade/) out of the box, however, since Leaf is modular at it's core, Leaf MVC and Leaf API allow you easily swap out the blade engine for BareUI (or any other view engine). To do this, you need to swap out the blade engine in your `public/index.php` and `config/view.php` files:
+
+```php
+// public/index.php
+Leaf\View::attach(\Leaf\Blade::class); // remove this
+Leaf\View::attach(\Leaf\BareUI::class); // add this
 ```
 
 ## Introduction

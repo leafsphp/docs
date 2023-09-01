@@ -1,21 +1,23 @@
 # Introduction
-<!-- <Badge text="New" /> -->
+
+<!-- markdownlint-disable no-inline-html -->
 
 <script setup>
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-Modules are a new feature added in Leaf 3 which basically takes parts of Leaf and separates them into installable chunks which can be used both inside and outside of Leaf.
+Modules are the pieces of Leaf's functionality that are individually available as packages. They can be used in a wide variety of projects, and are one of the primary ways that Leaf is extended with additional functionality.
 
-Modules are framework/library agnostic, which means that they'll work just about everywhere with zero config just as with Leaf itself.
-
-Modules can be quickly installed through composer or the leaf CLI with a single command.
+Most modules are framework/library agnostic, which means that they'll work just about everywhere with zero config just as with Leaf itself. You can easily install them with composer or the leaf cli.
 
 ## Why modules?
 
-The biggest question people ask with Leaf 3 is why we decided to switch to modules, stripping leaf of almost all it's code.
+We have a ton of reasons for switching to modules that we covered in [this blog post](https://blog.leafphp.dev/posts/leaf3.html). However, here are a few of the main reasons:
 
-[@mychidarko](https://github.com/mychidarko) put an article together on why we decided to switch to modules instead of maintaining the whole code together. We also have a [GitHub discussion](https://github.com/leafsphp/leaf/discussions/70) introducing leaf 3 and everything you need to know about it, we explain modules further here.
+- Modules are easier to update and maintain
+- Modules allow you to use only the parts of Leaf you need
+- Modules allow you to incrementally upgrade your Leaf apps
+- Modules allow you to use Leaf with other frameworks
 
 ## Installing modules
 
@@ -25,15 +27,13 @@ The biggest question people ask with Leaf 3 is why we decided to switch to modul
   link="https://www.youtube.com/embed/BTcUgeOZLyM"
 /> -->
 
-Modules are always published on composer and can be installed through composer CLI or the leaf CLI.
-
-**Leaf CLI:**
+You can quickly install any module with the Leaf CLI:
 
 ```bash
 leaf install <module-name>
 ```
 
-**Composer:**
+Or with composer:
 
 ```bash
 composer require leafs/<module-name>
@@ -41,7 +41,7 @@ composer require leafs/<module-name>
 
 ## List of available modules
 
-*This list is still being updated, you can keep checking for updates.*
+*We update this list whenever we add new modules, you can keep checking for updates.*
 
 | Project                | Status                                                                                                                                                                                                                                                         | Description                                                       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -60,11 +60,11 @@ composer require leafs/<module-name>
 | [devtools](/modules/devtools/)               | [![Latest Stable Version](https://poser.pugx.org/leafs/devtools/v/stable)](https://packagist.org/packages/leafs/devtools) [![Total Downloads](https://poser.pugx.org/leafs/devtools/downloads)](https://packagist.org/packages/leafs/devtools)                         | Developer tools for Leaf PHP                                |
 | [eien](/modules/eien/)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/eien/v/stable)](https://packagist.org/packages/leafs/eien) [![Total Downloads](https://poser.pugx.org/leafs/eien/downloads)](https://packagist.org/packages/leafs/eien)    | High-speed, high-performance server for leaf                           |
 | [exception](https://github.com/leafsphp/exceptions)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/exception/v/stable)](https://packagist.org/packages/leafs/exception) [![Total Downloads](https://poser.pugx.org/leafs/exception/downloads)](https://packagist.org/packages/leafs/exception)    | Leaf's exception wrapper (fork of whoops)                           |
-| [experiments](/modules/experiments/) | [![Latest Stable Version](https://poser.pugx.org/leafs/experimental/v/stable)](https://packagist.org/packages/leafs/experimental) [![Total Downloads](https://poser.pugx.org/leafs/experimental/downloads)](https://packagist.org/packages/leafs/experimental) | collection of experimental modules                                |
 | [fetch](/modules/fetch/)                | [![Latest Stable Version](https://poser.pugx.org/leafs/fetch/v/stable)](https://packagist.org/packages/leafs/fetch) [![Total Downloads](https://poser.pugx.org/leafs/fetch/downloads)](https://packagist.org/packages/leafs/fetch)                             | HTTP requests made simple                                         |
 | [form](/modules/forms/)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/form/v/stable)](https://packagist.org/packages/leafs/form) [![Total Downloads](https://poser.pugx.org/leafs/form/downloads)](https://packagist.org/packages/leafs/form)                                 | Form processes and validation                                     |
 | [fs](/modules/fs/)                   | [![Latest Stable Version](https://poser.pugx.org/leafs/fs/v/stable)](https://packagist.org/packages/leafs/fs) [![Total Downloads](https://poser.pugx.org/leafs/fs/downloads)](https://packagist.org/packages/leafs/fs)                                         | Awesome filesystem operations + file uploads                      |
 | [http](/modules/http/)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/http/v/stable)](https://packagist.org/packages/leafs/http) [![Total Downloads](https://poser.pugx.org/leafs/http/downloads)](https://packagist.org/packages/leafs/http)                                 | Http operations made simple (request, response, ...)              |
+| [inertia](/modules/views/inertia/)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/inertia/v/stable)](https://packagist.org/packages/leafs/inertia) [![Total Downloads](https://poser.pugx.org/leafs/inertia/downloads)](https://packagist.org/packages/leafs/inertia)                                 | Leaf adapter for inertia JS              |
 | [logger](/modules/logger/)                   | [![Latest Stable Version](https://poser.pugx.org/leafs/logger/v/stable)](https://packagist.org/packages/leafs/logger) [![Total Downloads](https://poser.pugx.org/leafs/logger/downloads)](https://packagist.org/packages/leafs/logger)                                         | leaf logger module                     |
 | [mail](/modules/mail/)                 | [![Latest Stable Version](https://poser.pugx.org/leafs/mail/v/stable)](https://packagist.org/packages/leafs/mail) [![Total Downloads](https://poser.pugx.org/leafs/mail/downloads)](https://packagist.org/packages/leafs/mail)                                 | Mailing made easy with leaf                                       |
 | [mvc-core](/modules/mvc-core/)             | [![Latest Stable Version](https://poser.pugx.org/leafs/mvc-core/v/stable)](https://packagist.org/packages/leafs/mvc-core) [![Total Downloads](https://poser.pugx.org/leafs/mvc-core/downloads)](https://packagist.org/packages/leafs/mvc-core)                 | Core MVC tools powering our MVC wrappers                          |
@@ -75,3 +75,6 @@ composer require leafs/<module-name>
 | [tilly (WIP)](https://archive.leafphp.dev/#/tilly/)              | [![Latest Stable Version](https://poser.pugx.org/leafs/tilly/v/stable)](https://packagist.org/packages/leafs/tilly) [![Total Downloads](https://poser.pugx.org/leafs/tilly/downloads)](https://packagist.org/packages/leafs/tilly)                     | Simple utility 'toolkit' for PHP applications                                          |
 | [veins](/modules/views/veins/)                | [![Latest Stable Version](https://poser.pugx.org/leafs/veins/v/stable)](https://packagist.org/packages/leafs/veins) [![Total Downloads](https://poser.pugx.org/leafs/veins/downloads)](https://packagist.org/packages/leafs/veins)                             | Leaf veins templating engine                                      |
 | [viewi](/modules/views/viewi/)                | [![Latest Stable Version](https://poser.pugx.org/leafs/viewi/v/stable)](https://packagist.org/packages/leafs/viewi) [![Total Downloads](https://poser.pugx.org/leafs/viewi/downloads)](https://packagist.org/packages/leafs/viewi)                             | Leaf integration with Viewi PHP                                                      |
+| [vite](/modules/views/vite/)                | [![Latest Stable Version](https://poser.pugx.org/leafs/vite/v/stable)](https://packagist.org/packages/leafs/vite) [![Total Downloads](https://poser.pugx.org/leafs/vite/downloads)](https://packagist.org/packages/leafs/vite)                             | Leaf server component for Vite                                                      |
+
+<!-- | [queue](/modules/queues/)                | [![Latest Stable Version](https://poser.pugx.org/leafs/queue/v/stable)](https://packagist.org/packages/leafs/queue) [![Total Downloads](https://poser.pugx.org/leafs/queue/downloads)](https://packagist.org/packages/leafs/queue)                             | Queue/Worker implementation for Leaf                                       | -->

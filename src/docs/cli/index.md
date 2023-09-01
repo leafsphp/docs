@@ -1,15 +1,17 @@
 # Leaf CLI
 
+<!-- markdownlint-disable no-inline-html -->
+
 <script setup>
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-<p class="flex flex:start-all">
+<p class="flex flex:start-all" style="gap:10px;">
   <img src="https://poser.pugx.org/leafs/cli/v/stable" class="m:0" alt="">
-  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0 ml:_1" alt="">
+  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0" alt="">
 </p>
 
-Leaf CLI is a simple command line tool for creating and interacting with your leaf projects. You can do stuff like installing packages, interacting with your app, previewing your app...
+Leaf CLI is a simple command line tool for creating and interacting with your Leaf applications. It gives you the options to create projects, install dependencies, run scripts, scaffold items and much more.
 
 ## Installation
 
@@ -19,7 +21,13 @@ Leaf CLI is a simple command line tool for creating and interacting with your le
   link="https://www.youtube.com/embed/yb3LUYHtopQ"
 />
 
-You can get this tool up and running on your system using composer:
+You can install the leaf cli using composer. Composer is a dependency manager for PHP. You can follow the instructions on [getcomposer.org](https://getcomposer.org) to install composer on your system. From there, you should have access to the `composer` command from anywhere on your system.
+
+```bash
+composer --version
+```
+
+You should then be able to get the Leaf CLI up and and running on your system using composer:
 
 ```bash
 composer global require leafs/cli
@@ -27,9 +35,13 @@ composer global require leafs/cli
 
 After that, you should have access to the `leaf` command from anywhere on your system.
 
+```bash
+leaf --version
+```
+
 ## command not found: leaf
 
-If you get a `command not found: leaf` error, it means your composer bin is not in your path.
+If you get a `command not found: leaf` error, it means your composer bin is not in your system path.
 
 You need to make sure that Composer's system-wide vendor bin directory is in your system `$PATH` so the leaf executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
 
@@ -83,92 +95,128 @@ source ~/.bashrc
   link="https://www.youtube.com/embed/PuOk5xqTIsA"
 />
 
-To start a new project, simply open up your console or terminal and move into the directory you want to generate your project. From there, you can use the `create` command:
+To start a new project, open up your terminal and move into a directory you want to generate your projects in. From there, you can use the `leaf create` command to set up a new Leaf app in that directory:
 
 ```bash
 leaf create <project-name>
 ```
 
-with leaf 3:
+This will prompt you to select a preset. Presets are quick ways to get your project up and running as quickly as possible. You can select a preset from the list of presets displayed to you:
 
 ```bash
-leaf create <project-name> --v3
-```
-
-or with leaf 2:
-
-```bash
-leaf create <project-name> --v2
-```
-
-This will now prompt you to select a preset
-
-```bash
-Creating a new Leaf app "<project-name>" in ./projects-directory.
-
-* Please pick a preset 
+? What kind of app do you want to create? [leaf]
   [0] leaf
   [1] leaf mvc
   [2] leaf api
-  [3] skeleton
  > 
 ```
 
-::: tip
-Note that you are to select a number, not type the name of the preset.
-:::
+*You can select a number or type in the preset you prefer.*
 
-Selecting a number will generate a leaf app based on the associated preset. As you can see, there are 4 presets:
+A leaf app will be generated based on the associated preset. As you can see, there are 3 presets:
 
-- **Leaf**: a bare leaf project
-- **Leaf MVC**: a leaf MVC project with leaf 2
-- **Leaf API**: a leaf API project with leaf 2
-- **Skeleton**: a leaf skeleton project
+- **Leaf**: a bare Leaf project
+- **Leaf MVC**: a Leaf project with leaf mvc
+- **Leaf API**: a Leaf project with leaf api
 
-After picking a preset, if no version was specified, leaf will display an interactive version picker like the one above:
+The Leaf CLI will automatically install the dependencies for the preset you selected and set up your project using Leaf 3. From there, you can `cd` into your project and start building.
 
 ```bash
-* Select a version to use 
-  [0] v3
-  [1] v2
+cd <project-name>
+leaf serve
+```
+
+### Custom installation <sup class="vt-badge success">New</sup>
+
+The Leaf CLI also comes with a custom installation option. This allows you to customize your project to your liking. You can select the features you want to add to your project and the Leaf CLI will set it up for you.
+
+```bash
+leaf create <project-name> --custom
+```
+
+This will prompt you to select the features you want to add to your project. You can select the features you want to add to your project from the list of features displayed to you:
+
+```bash
+? What modules would you like to add? [none] eg: 1,2,7
+  [0] None
+  [1] Database
+  [2] Authentication
+  [3] Session support
+  [4] Cookie support
+  [5] CSRF protection
+  [6] CORS support
+  [7] Leaf Date
+  [8] Leaf Fetch
+ > 
+```
+
+For Leaf MVC, you can also select things like the View engine you prefer to use:
+
+```bash
+? What view engine would you like to use? [Blade]
+  [0] Blade
+  [1] Bare UI
+  [2] React/Vue
+ > 
+```
+
+Whether to add a bundler for your frontend assets:
+
+```bash
+? Do you want to add Vite to bundle your assets? [Yes]
+```
+
+And whether to add a testing framework:
+
+```bash
+? What testing framework would you like to use? [none]
+  [0] none
+  [1] pest
+  [2] phpunit
  >
-```
-
-your project will be automatically generated and initialized. All you need to do is open it up and start coding 🚀
-
-### Adding Tests
-
-From Leaf CLI v2.3, you will be asked if you want to add tests to your project. You can add tests by replying `y`.
-
-```bash
-* Add testing with Leaf Alchemy? [y, n] y
-
- - Adding alchemy for tests
-```
-
-For a quicker method, you can use the `--phpunit` or `--pest` option to add tests to your project using PHPUnit or Pest respectively. You can also use the `--no-tests` option to completely skip adding tests.
-
-```bash
-leaf create <project-name> --no-tests
 ```
 
 ### Quick presets
 
-Leaf CLI also provides a quicker way to initialize your project without having to go through the interactive installer. You can use the `--mvc`, `--api`, `--basic` and `--skeleton` options to generate your project based on a specific presets. `--basic` generates a raw leaf project.
+Leaf CLI also provides a quicker way to initialize your project without having to go through the interactive installer. You can use the `--mvc`, `--api`, and `--basic` options to generate your project based on a specific presets. These generate the following:
 
-eg: `leaf create backend-api --api`
-
-This will create a leaf api project named `backend-api`.
-
-### Versioning
-
-If no version is specified, leaf displays the interactive installer to you, however, to quickly install a particular version, you can use the `--v2` or `--v3` options. These can be coupled with presets as well.
-
-Leaf API 3 example:
+- `--basic`: a bare Leaf project
+- `--mvc`: a Leaf project with leaf mvc
+- `--api`: a Leaf project with leaf api
 
 ```bash
-leaf create backend-api --api --v3
+leaf create <project-name> --mvc
 ```
+
+### Adding Tests
+
+The Leaf CLI by default will generate your project without any testing framework. However, you will be prompted to add a testing framework if you select the `--custom` option.
+
+```bash
+leaf create <project-name> --custom
+```
+
+You can still add a testing framework without using the `--custom` option by using either the `--pest` for Pest PHP tests:
+
+```bash
+leaf create <project-name> --pest
+```
+
+Or the `--phpunit` option for PHPUnit tests:
+
+```bash
+leaf create <project-name> --phpunit
+```
+
+### Using docker
+
+Leaf CLI also provides a way to generate your project with docker. You can use the `--docker` option to add all the necessary files to your project to run it with docker.
+
+```bash
+leaf create <project-name> --docker
+```
+
+If you are using the `--custom` option, you will be asked if you want to add docker to your project. For the full docker guide, you can check out the [docker guide](/docs/introduction/docker).
 
 ## Running your leaf apps
 
@@ -195,7 +243,7 @@ leaf serve --port 8000 --watch
 
 ### Dependency Management
 
-The serve command also now installs dependencies when there is no `vendor` folder present in the current working directory.
+The serve command will also try to install dependencies for your project if it doesn't detect a `vendor` folder present in the current working directory.
 
 <VideoDocs
   subject="Working with packages on the Leaf CLI"
@@ -209,21 +257,21 @@ Testing helps prevent bugs in your app which you may not catch until you publish
 
 ### Setting up tests
 
-Leaf CLI allows you to setup tests in your project with one command:
+If you already have a project and want to setup tests, you can use the `test:setup`. It will automatically detect the testing framework you are using and setup tests for you. It also supports Pest PHP and PHPUnit, so you can use either of them using the `--phpunit` or `--pest` options.
 
 ```bash
-leaf test:setup
-```
+# pest
+leaf test:setup --pest
 
-This command will generate Pest PHP tests for your application. If you however want to use PHPUnit, you'll need to pass the `--phpunit` option to the command.
-
-```bash
+# phpunit
 leaf test:setup --phpunit
 ```
 
+This will create a `tests` folder in your project and add example tests to it based on the testing framework you are using.
+
 ### Running tests
 
-To run tests you've setup or created, you can simply run the `test` command.
+To run tests you've setup or created, you can use the `test` command.
 
 ```bash
 leaf test
@@ -257,20 +305,6 @@ Leaf CLI also allows you to install a particular version of any package using `@
 leaf install ui@1.0 illuminate/support@9.0.2
 ```
 
-***Package Chaining***
-
-You can now add a bunch of packages to install as done with composer, npm and other CLIs as well.
-
-```bash
-leaf install db illuminate/support
-```
-
-Using this method, you can even add specific versions of some packages like this:
-
-```bash
-leaf install db illuminate/support@9.0.2 nesbot/carbon
-```
-
 ## Interactive Shell
 
 You can also use the interactive shell to interact with your app.
@@ -287,10 +321,47 @@ $ leaf interact
 
 ## Updating leaf cli
 
-v2 contains an easy way to quickly update leaf cli to the latest version.
+Leaf CLI keeps getting better with every release, and by default, it checks for updates every time you run a command. However, you can also manually update your leaf cli using the `update` command.
 
 ```bash
 leaf update
+```
+
+If this doesn't work, or you want to hard reset the Leaf CLI to clear cache, you can re-install it via composer:
+
+```bash
+composer global remove leafs/cli
+composer global require leafs/cli
+```
+
+## View commands <sup class="vt-badge success">New</sup>
+
+Leaf CLI also allows you to create and interact with frontend setups using the `view` commands. You can scaffold frontend setups like React, Vue, templating engines, build tools, and more.
+
+### Scaffolding views
+
+Leaf CLI ships with a `view:install` command that allows you to setup React, Vue, and templating engines like Blade and BareUI. You can use the `--react`, `--vue`, `--blade`, and `--bareui` options to scaffold your frontend setup.
+
+```bash
+leaf view:install --react
+```
+
+You can also use the `--vite` and `--tailwind` options to scaffold Vite and Tailwind respectively.
+
+### Running frontend setups
+
+Since Leaf CLI is a backend tool, it doesn't come with a frontend server. However, you can use the `view:dev` command to run your frontend setup which may include in a dev server for your frontend.
+
+```bash
+leaf view:dev
+```
+
+### Building frontend setups
+
+You can also use the `view:build` command to build your frontend setup for production.
+
+```bash
+leaf view:build
 ```
 
 ## Running Scripts
@@ -309,7 +380,7 @@ leaf run test
 
 ```bash
  _              __    ___ _    ___ 
-| |   ___ __ _ / _|  / __| |  |_ v2.7.0
+| |   ___ __ _ / _|  / __| |  |_ v2.8.3
 | |__/ -_) _` |  _| | (__| |__ | | 
 |____\___\__,_|_|    \___|____|___|                       
 
@@ -326,20 +397,24 @@ Options:
   -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 
 Available commands:
-  completion  Dump the shell completion script
-  create      [init] Create a new Leaf PHP project
-  deploy      [publish] Deploy your leaf project
-  help        Display help for a command
-  install     Add a new package to your leaf app
-  interact    Interact with your application
-  list        List commands
-  run         Run a script in your composer.json
-  serve       Run your Leaf app
-  test        Test your leaf application through leaf alchemy
-  uninstall   Uninstall a  package
-  update      Update leaf cli to the latest version
+  completion    Dump the shell completion script
+  create        [init|new] Create a new Leaf PHP project
+  deploy        [publish] Deploy your leaf project
+  help          Display help for a command
+  install       Add a new package to your leaf app
+  interact      Interact with your application
+  list          List commands
+  run           Run a script in your composer.json
+  serve         Run your Leaf app
+  test          Test your leaf application through leaf alchemy
+  uninstall     Uninstall a  package
+  update        Update leaf cli to the latest version
  test
-  test:setup  Add tests to your application
+  test:setup    Add tests to your application
+ view
+  view:build    Run your frontend dev server
+  view:dev      Run your frontend dev server
+  view:install  Run a script in your composer.json
 ```
 
 This is the full list of commands available with Leaf CLI 2. A new update command has been added to allow you seamlessly update leaf CLI without having to run a bunch of commands. You don't even need to run this manually since leaf cli will automatically check for updates and upgrade to the latest stable release.

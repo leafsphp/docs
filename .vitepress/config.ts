@@ -168,8 +168,9 @@ const mainSidebar = [
       { text: 'Introduction', link: '/docs/introduction/' },
       { text: 'Why Leaf?', link: '/docs/introduction/why' },
       { text: 'Installation', link: '/docs/introduction/installation' },
+      { text: 'Leaf + MVC', link: '/docs/mvc/' },
       { text: 'Using Docker', link: '/docs/introduction/docker' },
-      { text: 'Migration Guide', link: '/docs/migration/introduction' }
+      { text: 'Migration Guide', link: '/docs/migration/other' },
     ]
   },
   {
@@ -177,13 +178,12 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf + MVC', link: '/docs/mvc/' },
-      { text: 'Leaf Devtools', link: '/modules/devtools/' },
+      { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Modules', link: '/modules/' },
       { text: 'Functional Mode', link: '/docs/tooling/functions' },
       { text: 'Leaf tutorial', link: '/tutorial/' },
-      { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Your first app', link: '/docs/introduction/first-app' },
+      { text: 'Leaf Devtools', link: '/modules/devtools/' },
       { text: 'Testing', link: '/docs/tooling/testing' },
       { text: 'Deployment', link: '/docs/tooling/deployment' }
     ]
@@ -194,9 +194,10 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Overview', link: '/docs/config/' },
-      { text: 'Instance and Mode', link: '/docs/config/nsm' },
       { text: 'App settings', link: '/docs/config/settings' },
-      { text: 'Dependency Injection', link: '/docs/tooling/container' }
+      { text: 'Application Env', link: '/docs/config/nsm' },
+      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
+      { text: 'Dependency Injection', link: '/docs/tooling/container' },
     ]
   },
   {
@@ -204,7 +205,6 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'URL Rewriting', link: '/docs/introduction/url-rewriting' },
       { text: 'Request', link: '/modules/http/v/2/request' },
       { text: 'Response', link: '/modules/http/v/2/response' },
       { text: 'Headers', link: '/modules/http/v/2/headers' },
@@ -223,6 +223,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
+      { text: 'MVC Support', link: '/docs/routing/mvc' },
       { text: 'Route Groups', link: '/docs/routing/sub-routing' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       {
@@ -239,6 +240,7 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/db/' },
+      { text: 'MVC Support', link: '/modules/db/mvc' },
       { text: 'Query Builder', link: '/modules/db/v/2/builder' },
       { text: 'Leaf Redis', link: '/modules/redis/' }
     ]
@@ -249,15 +251,16 @@ const mainSidebar = [
     collapsed: true,
     items: [
       { text: 'Introduction', link: '/modules/auth/' },
+      { text: 'MVC Support', link: '/modules/auth/mvc' },
       { text: 'Auth Config', link: '/modules/auth/config' },
       { text: 'User Login', link: '/modules/auth/login' },
       { text: 'User Sign Up', link: '/modules/auth/signup' },
+      { text: 'Auth Session', link: '/modules/auth/session' },
       {
         text: 'Protecting your Routes',
         link: '/modules/auth/protecting-your-routes'
       },
       { text: 'Updating logged-in user', link: '/modules/auth/update' },
-      { text: 'Session Support', link: '/modules/auth/session' },
       { text: 'Helper methods', link: '/modules/auth/helpers' }
     ]
   },
@@ -266,11 +269,11 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf Forms', link: '/modules/forms/v/1.2/' },
+      { text: 'Validation', link: '/modules/forms/v/2/' },
       { text: 'Leaf Password', link: '/modules/password/' },
       { text: 'Leaf Anchor', link: '/modules/anchor/' },
-      { text: 'Leaf Date', link: '/modules/date/' },
-      { text: 'Leaf Fetch', link: '/modules/fetch/' },
+      { text: 'Date/Time', link: '/modules/date/' },
+      { text: 'Data Fetching', link: '/modules/fetch/' },
       { text: 'Logging', link: '/docs/tooling/logging' }
     ]
   },
@@ -296,8 +299,11 @@ const mainSidebar = [
       { text: 'Bare UI', link: '/modules/views/bareui/' },
       { text: 'Leaf Blade', link: '/modules/views/blade/' },
       { text: 'Leaf Veins', link: '/modules/views/veins/' },
+      { text: 'Other Engines', link: '/modules/views/third-party/' },
+      { text: 'Vite JS', link: '/modules/views/vite/' },
+      { text: 'Inertia JS', link: '/modules/views/inertia/' },
       { text: 'Viewi PHP', link: '/modules/views/viewi/' },
-      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' }
+      { text: 'Leaf UI', link: '/modules/views/leaf-ui/' },
     ]
   },
   {
@@ -309,7 +315,6 @@ const mainSidebar = [
       { text: 'Leaf API', link: '/docs/leafapi/' },
       { text: 'Skeleton', link: '/docs/skeleton/' },
       { text: 'MVC Config', link: '/docs/mvc/config' },
-      { text: 'MVC Routing', link: '/docs/mvc/routing' },
       { text: 'Controllers', link: '/docs/mvc/controllers' },
       { text: 'Views', link: '/docs/mvc/views' },
       { text: 'Models', link: '/docs/mvc/models' },
@@ -317,9 +322,10 @@ const mainSidebar = [
       { text: 'Schema', link: '/docs/mvc/schema' },
       { text: 'Seeders', link: '/docs/mvc/seeds' },
       { text: 'Factories', link: '/modules/mvc-core/factories' },
-      // { text: 'MVC Console Tool', link: '/docs/mvc/console' },
-      { text: 'Aloe CLI', link: '/aloe-cli/' },
-      { text: 'MVC Core', link: '/modules/mvc-core/' }
+      { text: 'Writing Commands', link: '/docs/mvc/commands' },
+      { text: 'Mailing', link: '/docs/mvc/mail' },
+      { text: 'MVC Helpers', link: '/docs/mvc/globals' },
+      { text: 'MVC Console Tool', link: '/docs/mvc/console' },
     ]
   },
   {

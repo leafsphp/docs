@@ -6,18 +6,12 @@ Leaf MVC is a minimal but powerful PHP MVC framework. It's designed to be simple
 
 Leaf MVC is a setup that gives you a good starting point for building applications using the MVC pattern. It's built on top of Leaf, and comes with additional tooling that make building with Leaf even faster.
 
-::: tip Leaf MVC vs Leaf API vs Skeleton
-
-Leaf offers three setups for you to choose from. You can find more information about these setups in the [MVC](/docs/mvc/#mvc-in-leaf) section.
-
-:::
-
 ## Installation
 
 The easiest way to setup Leaf MVC is to use the [Leaf CLI](/docs/cli/):
 
 ```bash
-leaf create <project-name> --mvc --v3
+leaf create <project-name> --mvc
 ```
 
 You can also setup a Leaf MVC app by using [Composer](https://getcomposer.org/):
@@ -122,7 +116,7 @@ Follow along with the next steps to learn more about Leaf MVC.
     <h3 class="next-steps-link">Leaf MVC Configuration</h3>
     <small class="next-steps-caption">Learn how to configure Leaf and your app to work in different ways.</small>
   </a>
-  <a class="vt-box" href="/docs/mvc/routing">
+  <a class="vt-box" href="/docs/routing/mvc">
     <h3 class="next-steps-link">Routing</h3>
     <small class="next-steps-caption">Learn how routing works in your Leaf applications.</small>
   </a>

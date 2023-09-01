@@ -26,7 +26,7 @@ The example below displays a custom 404 page.
 
 ```php
 app()->set404(function () {
-  response()->page("./pages/404.html");
+  response()->page('./pages/404.html');
 });
 ```
 
@@ -35,7 +35,7 @@ app()->set404(function () {
 
 ```php
 $app->set404(function () use($app) {
-  $app->response()->page("./pages/404.html");
+  $app->response()->page('./pages/404.html');
 });
 ```
 
@@ -57,7 +57,7 @@ app()->config('debug', false);
 <div class="class-mode">
 
 ```php
-$app = new Leaf\App('debug', false);
+$app = new \Leaf\App('debug', false);
 ```
 
 </div>
@@ -70,19 +70,6 @@ Although Leaf handles both debug and production cases, you may want to display y
 
 This method takes in a callable in the form of a function or an array. You can take a look at the exaples below:
 
-<div class="functional-mode">
-
-```php
-// use an error handler from a package
-app()->setErrorHandler(['\Leaf\Exception\General', 'defaultError']);
-
-// use a custom function
-app()->setErrorHandler(function () {
-  response()->page("./pages/500.html");
-});
-```
-
-</div>
 <div class="class-mode">
 
 ```php
@@ -91,7 +78,20 @@ $app->setErrorHandler(['\Leaf\Exception\General', 'defaultError']);
 
 // use a custom function
 $app->setErrorHandler(function () use($app) {
-  $app->response()->page("./pages/500.html");
+  $app->response()->page('./pages/500.html');
+});
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+// use an error handler from a package
+app()->setErrorHandler(['\Leaf\Exception\General', 'defaultError']);
+
+// use a custom function
+app()->setErrorHandler(function () {
+  response()->page('./pages/500.html');
 });
 ```
 
@@ -99,28 +99,24 @@ $app->setErrorHandler(function () use($app) {
 
 ## Application Down
 
-Leaf is also able to dynamically handle placing your application in maintainance mode using leaf config.
+Leaf is also able to dynamically handle placing your application in maintenance mode using leaf config. We have a `down` config which you can set to `true` to place your application in maintenance mode.
 
 <div class="functional-mode">
 
 ```php
-app()->config("app.down", true);
+app()->config('app.down', true);
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$app->config("app.down", true);
+$app->config('app.down', true);
 ```
 
 </div>
 
-Alternatively, you could also place your application in maintainance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set.
-
-::: warning Loading your env
-Leaf expects you to manually load your `.env` file and will not be responsible for this. You can use [vlucas/phpdotenv](https://packagist.org/packages/vlucas/phpdotenv) to do this. After loading your `.env` variables into your app, leaf router will automatically pick them up.
-:::
+Alternatively, you could also place your application in maintenance mode by setting the `APP_DOWN` environment variable to true. Since `.env` variables are given more priority than router config, the router config will be ignored as long as the env is set. If you decide to use the env variable, you will have to manually load your `.env` file. Check out the [env docs](/docs/config/nsm) for more info.
 
 ::: tip Loading your env
 Your environment variables are automatically loaded into your application if you are using Leaf MVC, Leaf API or Skeleton.
@@ -128,13 +124,13 @@ Your environment variables are automatically loaded into your application if you
 
 ### Custom Down Handler
 
-Leaf comes with a beautiful application down handler which you can use in production. However, it might not match your theme, or you might have a maintainance screen designed by someone which needs to match that design. Leaf gives you the flexibility to display a custom maintainance error page using the `setDown` method.
+Leaf comes with a beautiful application down handler which you can use in production. However, it might not match your theme, or you might have a maintenance screen designed by someone which needs to match that design. Leaf gives you the flexibility to display a custom maintenance error page using the `setDown` method.
 
 <div class="functional-mode">
 
 ```php
 app()->setDown(function () {
-  echo "Down for maintainance";
+  echo "Down for maintenance";
 });
 ```
 
@@ -143,7 +139,7 @@ app()->setDown(function () {
 
 ```php
 $app->setDown(function () {
-  echo "Down for maintainance";
+  echo "Down for maintenance";
 });
 ```
 

@@ -7,8 +7,6 @@ Instead of defining 100 dummy rows in your database 1 by 1, you can quickly popu
 
 This version of Leaf comes with a nice integration with your models that allows you to create all the data you need in just a few lines of code.
 
-**Note that factories are used with models, and come default with Leaf API and Leaf MVC.**
-
 ## Working with factories
 
 Just like with other Leaf modules, we try to make working with factories as simple as possible. A regular factory file looks something like this:

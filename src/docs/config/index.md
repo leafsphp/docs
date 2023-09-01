@@ -1,120 +1,148 @@
-<!-- markdownlint-disable no-inline-html -->
 # Overview
+
+<!-- markdownlint-disable no-inline-html -->
 
 <script setup>
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-::: tip
-Leaf aims for zero configurations out of the box, as such, none of these configurations are required. But for those who want other options with Leaf, this is the place for you.
-:::
+Unlike other frameworks, Leaf requires no configuration out of the box. However, Leaf provides options for those who want to customize the framework to their needs.
 
 ## Applying Config
 
-There are three ways to apply settings to the Leaf application. First during Leaf application instantiation, second with the leaf config class and finally, after instantiation. All settings can be applied at instantiation time by passing Leaf’s constructor an associative array. All settings can be retrieved and modified after instantiation, however some of them can not be done simply by using the config application instance method but will be demonstrated as necessary below. Before I list the available settings, I want to quickly explain how you may define and inspect settings with your Leaf application.
+There are <span class="class-mode">3</span><span class="functional-mode">2</span> main ways to apply config to your Leaf application. Although they achieve the same result, each method has its own advantages and disadvantages. Let's take a look:
 
-<VideoDocs
-  subject="Watch the leaf 3 installation walkthrough"
-  description="Watch the config guide on youtube."
-  link="https://www.youtube.com/embed/BTcUgeOZLyM"
-/>
+<div class="class-mode">
 
-### During Instantiation
+- **Passing config during instantiation**
 
-To define settings upon instantiation, pass an associative array into the Leaf constructor.
+  To define settings upon instantiation, pass an associative array into the Leaf constructor. The array keys are the setting names and the array values are the setting values. This is the most performant way to define settings for Leaf, and we'll recommend this if you're using class mode.
 
-```php
-$app = new Leaf\App([
+  ```php
+  $app = new Leaf\App([
     'debug' => true
-]);
-```
+  ]);
+  ```
 
-### Leaf Config
+- **Using the `config()` method**
 
-Leaf config allows you to quickly configure your leaf application from anywhere in your app.
+  This method is the most common way to apply config to your Leaf application. It's also the most flexible way to apply config. You can apply config at any point in your application, and you can apply multiple config at once. *Note that the config will only be applied to code that comes after the config method.*
 
-```php
-Leaf\Config::set([
-    "views.path" => "views",
-    "views.cachePath" => "views/cache"
-]);
-```
-
-The best part of this is that you don't need to pass these configurations to any file or methods. Leaf automatically picks up all the configurations made in this file whether the configuration is done before of after initializing leaf.
-
-You can also get configuration values using `get`
-
-```php
-$appConfig = Leaf\Config::get("views.path");
-```
-
-You can also get all the settings your app is using by leaving the parameter on Leaf Config empty
-
-```php
-$appConfig = Leaf\Config::get();
-```
-
-### After Instantiation
-
-To define settings after instantiation, the majority can use the config application instance method; the first argument is the setting name and the second argument is the setting value.
-
-```php
-$app = new Leaf\App;
-$app->config('debug', false);
-```
-
-You may also define multiple settings at once using an associative array:
-
-```php
-$app->config([
+  ```php
+  $app = new Leaf\App;
+  $app->config([
     'debug' => true,
     'views.path' => '../views'
-]);
-```
+  ]);
+  ```
 
-To retrieve the value of a setting, you also use the config application instance method; however, you only pass one argument - the name of the setting you wish to inspect. If the setting you request does not exist, null is returned.
+</div>
+<div class="functional-mode">
 
-```php
-$settingValue = $app->config('views.path'); // returns "../views"
-```
+- **Using the `config()` method**
+
+  The `config()` method is the recommended way to apply config to your Leaf application. It allows you to set and get config values at any point in your application, and you can apply multiple config at once. *Note that the config will only be applied to code that comes after the config method.*
+
+  ```php
+  app()->config([
+    'debug' => true,
+    'views.path' => '../views'
+  ]);
+  ```
+
+</div>
+
+- **Using the `Leaf\Config` class**
+
+  The Config class is the central point for all of Leaf's config. It allows you to set and get config from anywhere in your app. However, it is best to set config before initializing Leaf.
+
+  ```php
+  Leaf\Config::set([
+    'views.path' => 'views',
+    'views.cachePath' => 'views/cache'
+  ]);
+
+  // your leaf app after this
+  ```
 
 ## Nested Config
 
-From v3 of leaf, config works a little bit differently under the hood. Leaf now allows you to set and get config under groups in an array form. Before, all config was saved in one flat array, and you namespacing commands eg: `app.down` would add a new entry in the flat array just as defined.
+Leaf allows you to nest config into groups. This means that you can group config into arrays. This is especially useful when you're scoping features based on some configuration.
 
-Leaf Config in v3 now creates a sub array which allows you to group all the config related to an item in an array.
+For example, you can group all your server config into a `server` array:
 
-::: tip Note
-This in no way affects the way Leaf config works, it simply creates new possibilities for use, especially externally with modules and functional mode.
-:::
-
-Instead of your config looking like this:
+<div class="class-mode">
 
 ```php
-['app.down' => false, ..., 'log.enabled' => false, 'log.file' => '1.txt', ...]
+$app = new Leaf\App([
+  'server' => [
+    'host' => 'localhost',
+    'port' => 8080
+  ]
+]);
 ```
-You'll have this:
+
+</div>
+<div class="functional-mode">
 
 ```php
-['app' => ['down' => false, ...], 'log' => ['enabled' => false, ...], ...]
+app()->config([
+  'server' => [
+    'host' => 'localhost',
+    'port' => 8080
+  ]
+]);
 ```
 
-This means that you can simply grab a single group if you want to:
+</div>
+
+You can then access the config using the `config()` method:
+
+<div class="class-mode">
 
 ```php
-$appConfig = app()->config('app');
-$loggerConfig = app()->config('log');
+$app->config('server.host'); // localhost
 ```
 
-You can also create your own group and config:
+</div>
+<div class="functional-mode">
 
 ```php
-app()->config(['home.key' => '2']);
-
-$homeConfig = app()->config('home');
-$homeKey = $homeConfig['key'];
-
-// or
-
-$homeKey = app()->config('home.key');
+app()->config('server.host'); // localhost
 ```
+
+</div>
+
+You can also retrieve the entire config group by passing the group name:
+
+<div class="class-mode">
+
+```php
+$app->config('server'); // ['host' => 'localhost', 'port' => 8080]
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->config('server'); // ['host' => 'localhost', 'port' => 8080]
+```
+
+</div>
+
+This isn't limited to only retrieving config. You can also set config using the same method:
+
+<div class="class-mode">
+
+```php
+$app->config('server.host', '127.0.0.1');
+```
+
+</div>
+<div class="functional-mode">
+
+```php
+app()->config('server.host', '127.0.0.1');
+```
+
+</div>

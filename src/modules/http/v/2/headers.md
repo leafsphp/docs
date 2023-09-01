@@ -16,7 +16,7 @@ This method sets or returns the base HTTP status of a response. Response methods
 ```php
 // ...
 Leaf\Http\Headers::status(404);
-echo "Page not found";
+echo 'Page not found';
 ```
 
 You can also return the currently set status code.
@@ -32,7 +32,7 @@ If for some reason, you're not able to set the status using `status`, you can al
 ```php
 // ...
 Leaf\Http\Headers::resetStatus(200);
-echo "Something here";
+echo 'Something here';
 ```
 
 ## `all`
@@ -55,19 +55,19 @@ Leaf\Http\Headers::all(true);
 This method as the name implies returns a particular header.
 
 ```php
-$content = Leaf\Http\Headers::get("Content-Type");
+$content = Leaf\Http\Headers::get('Content-Type');
 ```
 
 You can also get multiple headers at the same time.
 
 ```php
-$headerGroup = Leaf\Http\Headers::get(["Content-Type", "Authorization"]);
+$headerGroup = Leaf\Http\Headers::get(['Content-Type', 'Authorization']);
 ```
 
 Just like `all`, you can also sanitize the information from `get`.
 
 ```php
-$data = Leaf\Http\Headers::get("header", true);
+$data = Leaf\Http\Headers::get('header', true);
 ```
 
 ## `set`
@@ -80,21 +80,21 @@ $data = Leaf\Http\Headers::get("header", true);
 - An http status code
 
 ```php
-Leaf\Http\Headers::set("location", "/home", true, 302);
+Leaf\Http\Headers::set('location', '/home', true, 302);
 ```
 
 You can also set multiple values at once.
 
 ```php
-Leaf\Http\Headers::set(["location" => "/home", "something" => "here"]);
+Leaf\Http\Headers::set(['location' => '/home', 'something' => 'here']);
 ```
 
 If you want multiple headers with the same name, you can set replace to `false`. This will force multiple headers of the same type.
 
 ```php
 Leaf\Http\Headers::set([
-  "WWW-Authenticate" => "Negotiate",
-  "WWW-Authenticate" => "NTLM"
+  'WWW-Authenticate' => 'Negotiate',
+  'WWW-Authenticate' => 'NTLM'
 ], null, false);
 ```
 
@@ -104,10 +104,10 @@ This method removes previously set headers.
 
 ```php
 // single value
-Leaf\Http\Headers::remove("WWW-Authenticate");
+Leaf\Http\Headers::remove('WWW-Authenticate');
 
 // multiple value
-Leaf\Http\Headers::remove(["Content-Type", "WWW-Authenticate"]);
+Leaf\Http\Headers::remove(['Content-Type', 'WWW-Authenticate']);
 ```
 
 ## `has`
@@ -131,7 +131,7 @@ This method set's the content type of the response to `text/plain`, it also take
 
 ```php
 Leaf\Http\Headers::contentPlain(200);
-echo "plain text here";
+echo 'plain text here';
 ```
 
 ### contentHtml
@@ -140,7 +140,7 @@ This method set's the content type of the response to `text/html`, it also takes
 
 ```php
 Leaf\Http\Headers::contentHtml(200);
-echo "html here";
+echo 'html here';
 ```
 
 ### contentXml
@@ -149,7 +149,7 @@ This method set's the content type of the response to `application/xml`, it also
 
 ```php
 Leaf\Http\Headers::contentXml(200);
-echo "Xml here";
+echo 'Xml here';
 ```
 
 ### contentJSON
@@ -158,7 +158,7 @@ This method set's the content type of the response to `application/json`, it als
 
 ```php
 Leaf\Http\Headers::contentJSON(200);
-echo "json here";
+echo 'json here';
 ```
 
 ### accessControl
@@ -170,11 +170,11 @@ This method allows you to quickly set `Access-Control` headers in your app. It t
 - A status code (optional)
 
 ```php
-Leaf\Http\Headers::accessControl("Allow-Origin", "https://example.com", 200);
+Leaf\Http\Headers::accessControl('Allow-Origin', 'https://example.com', 200);
 ```
 
 You can set mutiple access control headers at once:
 
 ```php
-Leaf\Http\Headers::accessControl(["Allow-Origin" => "*", "Allow-Headers" => "*"]);
+Leaf\Http\Headers::accessControl(['Allow-Origin' => '*', 'Allow-Headers' => '*']);
 ```

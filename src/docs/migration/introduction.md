@@ -84,7 +84,7 @@ php -S localhost:5500
 Alternatively, you can use the Leaf CLI:
 
 ```bash
-leaf create <app-name> --v3
+leaf create <app-name>
 ```
 
 And run the sample app with:

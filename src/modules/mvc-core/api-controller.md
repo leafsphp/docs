@@ -12,7 +12,7 @@ Below is an example of a basic API controller class. Note that the controller ex
 <?php
 
 // this is a model, view the model docx for more info
-require "User.php";
+require 'User.php';
 
 use Leaf\ApiController;
 
@@ -57,7 +57,7 @@ use Leaf\Controller;
 class NameController extends Controller {
    public function index() {
       $this->respond([
-         "message" => "hello"
+         'message' => 'hello'
       ]);
    }
 }
@@ -74,11 +74,11 @@ use Leaf\Controller;
 
 class NameController extends Controller {
   public function index() {
-    $profilePic = $_FILES["profile_pic"];
+    $profilePic = $_FILES['profile_pic'];
     // file upload
-    $this->file_upload("./images/", $profilePic);
+    $this->file_upload('./images/', $profilePic);
     // file upload with file type
-    $this->file_upload("./images/", $profilePic, "image");
+    $this->file_upload('./images/', $profilePic, 'image');
   }
 }
 ```
@@ -89,10 +89,10 @@ The base controller also gives you a simple way to handle form data
 
 ```php
 public function index() {
-  $name = $this->form->get("name");
+  $name = $this->form->get('name');
 
   $this->validate([
-    "name" => "text"
+    'name' => 'text'
   ]);
 }
 ```

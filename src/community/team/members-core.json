@@ -18,6 +18,24 @@
     "sponsor": false
   },
   {
+    "name": "André Rosa",
+    "title": "Developer",
+    "company": "Leaf PHP",
+    "projects": [
+      {
+        "label": "leafsphp/*",
+        "url": "https://www.github.com/leafsphp"
+      }
+    ],
+    "location": "Portugal",
+    "languages": ["Portuguese", "English"],
+    "socials": {
+      "github": "crosa7",
+      "twitter": "andre_crosa"
+    },
+    "sponsor": false
+  },
+  {
     "name": "Ashley Nyanteh",
     "title": "Community Manager",
     "avatarPic": "https://user-images.githubusercontent.com/26604242/221550910-1a711f42-9589-4981-96e0-d0de19778e7a.png",

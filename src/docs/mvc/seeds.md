@@ -2,10 +2,6 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-::: warning Note
-Seeds are only available in Leaf MVC and Leaf API.
-:::
-
 Database seeds are a way to populate a database with initial data. This initial data can be used to set up default values or pre-populate a database with test data. Database seeds typically contain small amounts of data, such as default settings, test data, or sample records.
 
 Seeds are often used in conjunction with database migrations. After the database schema has been updated or modified, seeds can be used to populate the new or modified tables with initial data. This can be especially useful for testing and development, as it allows developers to work with a pre-populated database without having to manually enter test data.
