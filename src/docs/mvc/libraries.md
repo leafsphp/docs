@@ -4,6 +4,16 @@ Sometimes you might want to write some application logic that doesn't fit into a
 
 Custom libraries are not stored in the `app` folder because they are not part of the application's core functionality. They are more like helpers, however, unlike helpers they can be full classes, functions or just data structures and also require no structured namespace.
 
+## Autoloading Libraries
+
+Leaf MVC and Leaf API will only automatically load your libraries for you if you tell it to do so. You can do this by **uncommenting** the following line in your `public/index.php` file:
+
+```php
+//  \Leaf\Core::loadLibs();
+```
+
+Once you do so, you can start creating your own libraries.
+
 ## Creating a Library
 
 To create a library, simply create a new file in the `lib` folder. For example, let's create a library called `Math.php`:
@@ -38,10 +48,6 @@ class HomeController extends Controller {
   }
 }
 ```
-
-## Autoloading Libraries
-
-Leaf MVC and Leaf API automatically load all libraries in the `lib` folder. You can then use them anywhere in your application.
 
 ## Library Structure
 
