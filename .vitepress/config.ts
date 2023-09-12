@@ -286,8 +286,8 @@ const mainSidebar = [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Eien Server', link: '/modules/eien/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
-      { text: 'File System', link: '/modules/fs/' }
-      // { text: 'Queues/Jobs', link: '/modules/queues/' },
+      { text: 'File System', link: '/modules/fs/' },
+      { text: 'Queues/Jobs', link: '/modules/queues/' },
     ]
   },
   {
