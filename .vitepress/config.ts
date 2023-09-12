@@ -325,6 +325,7 @@ const mainSidebar = [
       { text: 'Writing Commands', link: '/docs/mvc/commands' },
       { text: 'Mailing', link: '/docs/mvc/mail' },
       { text: 'MVC Helpers', link: '/docs/mvc/globals' },
+      { text: 'Custom Libraries', link: '/docs/mvc/libraries' },
       { text: 'MVC Console Tool', link: '/docs/mvc/console' },
     ]
   },
