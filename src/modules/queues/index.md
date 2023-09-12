@@ -39,6 +39,20 @@ Or you can install it via composer:
 composer require leafs/queue
 ```
 
+After installing the package, you need to register the Leaf Queue commands in Aloe CLI. You can do this by adding the following line to your `leaf` file in the root of your Leaf MVC or Leaf API application:
+
+```php
+$console->register(\Leaf\Queue::commands());
+```
+
+This should give you access to the following commands:
+
+- `php leaf g:job` - Generate a job class.
+- `php leaf d:job` - Delete a job class.
+- `php leaf queue:config` - Generate a queue configuration file.
+- `php leaf queue:install` - Generate and run a migration file for the queue table.
+- `php leaf queue:run` - Start the queue worker.
+
 ## Configuration
 
 After installing the leaf queue package, you need to setup your queue configuration. Leaf provides a unified API for using queues across a variety of different backends, such Redis or your database, with plans to add support for Amazon SQS, BeanStalk, and others in the future. In your Leaf MVC and Leaf API applications, the queue configuration file is located at `config/queue.php`. This file allows you to configure all of your queue connections. By default, this file is not present in your application, so you need to create it using the following command:
