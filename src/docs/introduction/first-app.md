@@ -77,7 +77,7 @@ $app->run();
 
 <div class="functional-mode">
 
-We would normally need to initialize leaf, however, with with the introduction of functional mode, we don't need to do this. We can go straight to building our app.
+We would normally need to initialize leaf, however, with the introduction of functional mode, we don't need to do this. We can go straight to building our app.
 
 Let's define a dummy route.
 
