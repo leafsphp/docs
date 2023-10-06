@@ -11,13 +11,13 @@ The cookie module helps you create, interact with and manage your cookies.
 You can quickly install leaf cookies with composer or leaf cli.
 
 ```bash
-leaf install cookies
+leaf install cookie
 ```
 
 or with composer:
 
 ```bash
-composer require leafs/cookies
+composer require leafs/cookie
 ```
 
 ## Usage
