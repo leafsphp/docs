@@ -286,8 +286,8 @@ const mainSidebar = [
       { text: 'HTTP Cache', link: '/modules/http/v/2/cache' },
       { text: 'Eien Server', link: '/modules/eien/' },
       { text: 'Leaf Mail', link: '/modules/mail/' },
-      { text: 'File System', link: '/modules/fs/' }
-      // { text: 'Queues/Jobs', link: '/modules/queues/' },
+      { text: 'File System', link: '/modules/fs/' },
+      { text: 'Queues/Jobs', link: '/modules/queues/' },
     ]
   },
   {
@@ -325,6 +325,7 @@ const mainSidebar = [
       { text: 'Writing Commands', link: '/docs/mvc/commands' },
       { text: 'Mailing', link: '/docs/mvc/mail' },
       { text: 'MVC Helpers', link: '/docs/mvc/globals' },
+      { text: 'Custom Libraries', link: '/docs/mvc/libraries' },
       { text: 'MVC Console Tool', link: '/docs/mvc/console' },
     ]
   },

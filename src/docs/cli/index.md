@@ -176,6 +176,18 @@ And whether to add a testing framework:
  >
 ```
 
+### GUI <sup class="vt-badge success">New</sup>
+
+These new options are quite a lot to take in, so we've also added a GUI to help you select the features you want to add to your project. The GUI allows you to select different structures and features you want to add to your project. The GUI can also install and setup frontend systems like React, Vue, Tailwind and more.
+
+You can get started with the following command:
+
+```bash
+leaf ui
+```
+
+<img src="https://github.com/leafsphp/csrf/assets/26604242/937f930c-1053-4393-9e6f-fc4faa9cdfe1" style="border: 1px solid var(--vt-c-theme-soft); border-radius: 8px;" />
+
 ### Quick presets
 
 Leaf CLI also provides a quicker way to initialize your project without having to go through the interactive installer. You can use the `--mvc`, `--api`, and `--basic` options to generate your project based on a specific presets. These generate the following:
