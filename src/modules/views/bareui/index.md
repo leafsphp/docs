@@ -37,13 +37,61 @@ composer require leafs/bareui
 
 ## Usage with Leaf MVC
 
-Leaf MVC and Leaf API come with [Leaf Blade](/modules/views/blade/) out of the box, however, since Leaf is modular at it's core, Leaf MVC and Leaf API allow you easily swap out the blade engine for BareUI (or any other view engine). To do this, you need to swap out the blade engine in your `public/index.php` and `config/view.php` files:
+Leaf MVC and Leaf API come with [Leaf Blade](/modules/views/blade/) out of the box, however, since Leaf is modular at it's core, Leaf MVC and Leaf API allow you easily swap out the blade engine for BareUI (or any other view engine). To do this, you need to swap out the blade engine in your `public/index.php`:
 
 ```php
 // public/index.php
 Leaf\View::attach(\Leaf\Blade::class); // remove this
 Leaf\View::attach(\Leaf\BareUI::class); // add this
 ```
+
+After this, you will also need to change the config in `config/view.php`:
+
+```php
+<?php
+
+use Leaf\View;
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Template Engine [EXPERIMENTAL]
+    |--------------------------------------------------------------------------
+    |
+    | Leaf MVC unlike other frameworks tries to give you as much control as
+    | you need. As such, you can decide which view engine to use.
+    |
+    */
+    'viewEngine' => \Leaf\BareUI::class,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom config method
+    |--------------------------------------------------------------------------
+    |
+    | Configuration for your templating engine.
+    |
+    */
+    'config' => function ($config) {
+        View::bareui()->config($config['views']);
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom render method
+    |--------------------------------------------------------------------------
+    |
+    | This render method is triggered whenever render() is called
+    | in your app if you're using a custom view engine.
+    |
+    */
+    'render' => function ($view, $data = []) {
+        return View::bareui()->render($view, $data);
+    },
+];
+```
+
+This will tell Leaf how to work with BareUI.
 
 ## Introduction
 
