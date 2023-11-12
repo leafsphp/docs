@@ -1,6 +1,6 @@
 # Leaf Form
 
-During development, you often come accross data that should meet some expectations. For example, a user's email address should be a valid email address. Or a user's password should be at least 8 characters long. Unfortunately, you can't always trust the data you deal with, especially when it comes from the user. That's why you need to validate it.
+During development, you often come across data that should meet some expectations. For example, a user's email address should be a valid email address. Or a user's password should be at least 8 characters long. Unfortunately, you can't always trust the data you deal with, especially when it comes from the user; that's why you need to validate it.
 
 Leaf provides a clean and simple interface to validate and use incoming data. We call this Leaf Form. It's not a form builder, it's not a form renderer, it's just a simple data validation library.
 
@@ -179,6 +179,29 @@ app()->post('/register', function() {
 
 Note that you don't need to pass in the data to validate. The request object will automatically get the data from the request.
 
+## Optional Fields
+
+By default, all fields are required. If you want to make a field optional, you can add the `optional` rule to the field. Once a field is optional, it will only be validated if it is present in the data and not null.
+
+<div class="class-mode">
+
+```php{2}
+Form::validate($data, [
+  'bio' => 'optional|text',
+]);
+```
+
+</div>
+<div class="functional-mode">
+
+```php{2}
+form()->validate($data, [
+  'bio' => 'optional|text',
+]);
+```
+
+</div>
+
 ## Available Rules
 
 Leaf Form comes with a number of built-in rules that you can use to validate data. Here's a list of all the available rules:
@@ -253,6 +276,92 @@ Form::validate($data, [
 ```php{2}
 form()->validate($data, [
   'bio' => 'between:[18,30]',
+]);
+```
+
+</div>
+
+## Array Validation
+
+Leaf provides easy ways to validate arrays of data. You can validate an array of data using the `array()` validator. You can also validate the items in an array using the dot notation.
+
+### `array()`
+
+The `array()` validator allows you to validate an array of data. This checks if the data is an array and if it contains the specified rules.
+
+<div class="class-mode">
+
+```php{2}
+Form::validate($data, [
+  'users' => 'array()',
+]);
+```
+
+</div>
+<div class="functional-mode">
+
+```php{2}
+form()->validate($data, [
+  'id_numbers' => 'array()',
+]);
+```
+
+</div>
+
+The example above will check if the `users` field is an array. Let's say you want to check if the array contains only numeric values. You can do that by passing in the rules to the `array()` validator.
+
+<div class="class-mode">
+
+```php{2}
+Form::validate($data, [
+  'id_numbers' => 'array(number)',
+]);
+```
+
+</div>
+<div class="functional-mode">
+
+```php{2}
+form()->validate($data, [
+  'id_numbers' => 'array(number)',
+]);
+```
+
+</div>
+
+**The `array(<rule>)` method should not be used on arrays with key => value pairs.**
+
+### Dot Notation
+
+You can also validate the items in an array using the dot notation. This allows you to validate arrays with key => value pairs. For example, let's say you have an array holding a user with a name and an email address:
+
+```php
+$data = [
+  'user' => [
+    'name' => 'John Doe',
+    'email' => 'john@example.com',
+  ],
+];
+```
+
+You can validate the user's name and email address like this:
+
+<div class="class-mode">
+
+```php{2,3}
+Form::validate($data, [
+  'user.name' => 'text',
+  'user.email' => 'email',
+]);
+```
+
+</div>
+<div class="functional-mode">
+
+```php{2,3}
+form()->validate($data, [
+  'user.name' => 'text',
+  'user.email' => 'email',
 ]);
 ```
 
@@ -377,51 +486,3 @@ form()->validate($data, [
 </div>
 
 The error message will be `name is required`. You can also use `{Field}` instead of `{field}` to get the field name with the first letter capitalized. You can also use `{value}` to get the value of the field.
-
-## Special validators
-
-Besides the built-in rules, Leaf Form also comes with some special validators that you can use to validate data. These validators provide a convenient way to use validation rules in a more complex way.
-
-### `array()`
-
-The `array()` validator allows you to validate an array of data. This checks if the data is an array and if it contains the specified rules.
-
-<div class="class-mode">
-
-```php{2}
-Form::validate($data, [
-  'users' => 'array()',
-]);
-```
-
-</div>
-<div class="functional-mode">
-
-```php{2}
-form()->validate($data, [
-  'users' => 'array()',
-]);
-```
-
-</div>
-
-The example above will check if the `users` field is an array. Let's say you want to check if the array contains only numeric values. You can do that by passing in the rules to the `array()` validator.
-
-<div class="class-mode">
-
-```php{2}
-Form::validate($data, [
-  'users' => 'array(number)',
-]);
-```
-
-</div>
-<div class="functional-mode">
-
-```php{2}
-form()->validate($data, [
-  'users' => 'array(number)',
-]);
-```
-
-</div>
