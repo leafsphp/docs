@@ -103,14 +103,14 @@ BareUI has deep integrations with Leaf core by default. This means that if you'r
 <div class="functional-mode">
 
 ```php
-app()->template->config("path", "./views");
+app()->template->config('path', './views');
 ```
 
 </div>
 <div class="class-mode">
 
 ```php
-$app->template->config("path", "./views");
+$app->template->config('path', './views');
 ```
 
 </div>
@@ -122,11 +122,11 @@ $app->template->config("path", "./views");
 This method allows you to configure bare ui.
 
 ```php
-Leaf\BareUI::config("path", "./templates");
+Leaf\BareUI::config('path', './templates');
 
 // or
 
-Leaf\BareUI::config(["path" => "./templates", ...]);
+Leaf\BareUI::config(['path' => './templates', ...]);
 ```
 
 #### Available options
@@ -140,7 +140,7 @@ There are currently only 2 options to configure.
 
 ```php
 // app() will be available in all templates
-app()->template->config("params", ["app" => function () {
+app()->template->config('params', ['app' => function () {
   // do something
   return app();
 }]);
@@ -151,7 +151,7 @@ app()->template->config("params", ["app" => function () {
 
 ```php
 // app() will be available in all templates
-$app->template->config("params", ["app" => function () use ($app) {
+$app->template->config('params', ['app' => function () use ($app) {
   // do something
   return $app;
 }]);
@@ -168,7 +168,7 @@ $app->template->config("params", ["app" => function () use ($app) {
 
 if (!$something) {
   // you can nest templates
-  echo app()->template->render("error");
+  echo app()->template->render('error');
 }
 ```
 
@@ -180,7 +180,7 @@ if (!$something) {
 
 if (!$something) {
   // you can nest templates
-  echo $app->template->render("error");
+  echo $app->template->render('error');
 }
 ```
 
@@ -227,8 +227,8 @@ echo app()->template->render("welcome", [
 <div class="class-mode">
 
 ```php
-echo $app->template->render("welcome", [
-    "var" => "Something",
+echo $app->template->render('welcome', [
+    'var' => 'Something',
 ]);
 ```
 
@@ -239,8 +239,8 @@ Since bare UI templates are just raw PHP, you can do stuff like this:
 <div class="functional-mode">
 
 ```php
-echo app()->template->render("app", [
-    "items" => ["i1", "i2"],
+echo app()->template->render('app', [
+    'items' => ['i1', 'i2'],
 ]);
 ```
 
@@ -248,8 +248,8 @@ echo app()->template->render("app", [
 <div class="class-mode">
 
 ```php
-echo $app->template->render("app", [
-    "items" => ["i1", "i2"],
+echo $app->template->render('app', [
+    'items' => ['i1', 'i2'],
 ]);
 ```
 
@@ -278,38 +278,4 @@ echo $app->template->render("app", [
     <?php endif; ?>
 </body>
 </html>
-```
-
-You can also easily combine Bare UI with Leaf UI, so your templates look something like this:
-
-```php
-<?php
-use \Leaf\UI\WynterCSS\Template as UI;
-
-echo UI::Scaffold([
-    "title" => $appName,
-    "body" => [
-        "appBar" => UI::AppBar([
-            "title" => $appName,
-            "links" => [
-                "Home" => "/home",
-                "About" => "/about",
-            ],
-        ]),
-        "children" => [
-            form("POST", "/app/login", [
-                h2("Login To $appName"),
-                UI::FormGroup([
-                    input("text", "loginCode", [
-                        "placeholder" => "Enter your login code",
-                        "label" => "Login Code"
-                    ]),
-                ]),
-                button("Login", [
-                    "type" => "submit"
-                ]),
-            ]),
-        ],
-    ],
-]);
 ```
