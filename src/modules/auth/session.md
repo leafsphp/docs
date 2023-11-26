@@ -69,7 +69,7 @@ if ($newAccountAdded) {
   Leaf\Auth::refresh();
 } else {
   // will keep session data
-  auth()->refresh(false);s
+  auth()->refresh(false);
 }
 ```
 
