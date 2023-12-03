@@ -97,7 +97,7 @@ To roll back the latest migration operation, you may use the `db:rollback` comma
 php leaf db:rollback
 ```
 
-You may roll back a limited number of migrations by providing the `step` option to the `rollback` command. For example, the following command will roll back the last five migrations:
+You may roll back a limited number of migrations by providing the `step` option to the `rollback` command. For example, the following command will roll back the last two migrations:
 
 ```bash
 php leaf db:rollback -s 2
