@@ -115,7 +115,7 @@ You can find the Leaf PHP devtools documentation [here](/modules/devtools/).
 The `view:install` command is used to install and setup the frontend of your Leaf MVC/Leaf API application. It can be used to install any frontend framework of your choice, vite, tailwind or a template engine like bare ui. You can use the `--react`, `--vue`, `--blade`, and `--bareui` options to scaffold your frontend setup.
 
 ```bash
-leaf view:install --react
+php leaf view:install --react
 ```
 
 You can also use the `--vite` and `--tailwind` options to scaffold Vite and Tailwind respectively.
