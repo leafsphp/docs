@@ -109,11 +109,12 @@ auth()->connect(
   $host = '',
   string $dbname = '',
   string $user = '',
-  string $password = ''
+  string $password = '',
+  string $dbtype = ''
 );
 
 // example
-auth()->connect('127.0.0.1', 'dbname', 'root', '');
+auth()->connect('127.0.0.1', 'dbname', 'root', '', 'mysql');
 ```
 
 </div>
