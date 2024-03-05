@@ -36224,9 +36224,9 @@ async function compileFile(store, { filename, code, compiled }) {
     return;
   }
   if (filename.endsWith(".js") || filename.endsWith(".ts")) {
-    if (shouldTransformRef(code)) {
-      code = transformRef(code, { filename }).code;
-    }
+    // if (shouldTransformRef(code)) {
+    //   code = transformRef(code, { filename }).code;
+    // }
     if (filename.endsWith(".ts")) {
       code = await transformTS(code);
     }
