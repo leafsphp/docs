@@ -41,7 +41,7 @@ const run = async (files: Record<string, any>) => {
     rawFiles[filename] = files[filename].code;
   });
 
-  let { data: folder } = await axios.post('https://leaf-sandbox-server.herokuapp.com/compile', form);
+  let { data: folder } = await axios.post('https://leafphp-sandbox-server.fly.dev/compile', form);
 
   if (!folder) {
     return store.state.errors.push('Internal system error, please try again' as never);
@@ -56,7 +56,7 @@ const run = async (files: Record<string, any>) => {
     config = config?.path ? config : null;
 
     let { data: res, headers } = await axios({
-      url: `https://leaf-sandbox-server.herokuapp.com${folder.folder}${config?.path ?? '/'}`,
+      url: `https://leafphp-sandbox-server.fly.dev${folder.folder}${config?.path ?? '/'}`,
       method: config?.method ?? 'GET',
       headers: config?.headers ?? {},
       data: config?.data ?? {},
