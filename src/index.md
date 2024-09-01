@@ -1,10 +1,10 @@
 ---
-page: true
-title: Leaf PHP - Simple and elegant PHP
+layout: home
+title: Simple and elegant PHP
 ---
 
 <script setup>
-import Home from '/@theme/components/Home.vue'
+import Home from '@theme/components/Home/Home.vue'
 </script>
 
 <Home />

@@ -1,5 +1,6 @@
 ---
-outline: deep
+layout: page
+sidebar: false
 ---
 
 <script setup>
