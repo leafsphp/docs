@@ -1,23 +1,32 @@
 ---
 sidebar: false
+# aside: false
 ads: false
 editLink: false
-layout: home
+prev: false
+next: false
+lastUpdated: false
 ---
 
-<!-- <script setup>
-import SponsorsGroup from '/@theme/components/SponsorsGroup.vue'
-</script> -->
+<script setup>
+import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
+</script>
 
 # Support Leaf's Development
 
-Leaf PHP is an MIT licensed open source project and completely free to use. We are not officially backed by any company or budget, we are just a bunch of random people working towards a goal: to make software development a beautiful experience for developers. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing.
+Leaf was created as a little project to make writing APIs super easy, but it’s grown since 2019 and today, Leaf is housing a couple of open-source tools covering different software engineering regimes. The tools we maintain here are:
 
-For this reason, we encourage you to help us reach our goal and continue making software development easier.
+- Leaf PHP framework and modules
+- Hanabira & libs
+- Naytive & libs
+
+Of course, we are committed to keeping all this open-source and free for everyone to use. However, maintaining and developing new features for Leaf takes up a lot of time and resources. Most of Leaf's costs have been covered by the team members, but the project has grown and so have the expenses. We've reached a point where sustaining and growing Leaf requires more than just part-time efforts from our team. To truly take Leaf to the next level, we need to support maintainers who can dedicate themselves to working on Leaf full-time, and we need your help to make this happen.
+
+By becoming a sponsor, you directly contribute to the growth of the Leaf ecosystem, enabling us to deliver more features, better support, and ongoing updates. Your sponsorship makes a real difference, helping us keep Leaf accessible and free for everyone. Join us in shaping the future of Leaf — every contribution counts!
 
 ## How to Sponsor
 
-Sponsorships can be done via [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [OpenCollective](https://opencollective.com/leaf). All your contributions go into a fund with transparent expense models for supporting community efforts, events and core activities regarding Leaf. Both monthly-recurring sponsorships and one-time donations are accepted. Recurring sponsorships are entitled to logo placements as specified in Sponsorship Tiers.
+You can support Leaf through [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [OpenCollective](https://opencollective.com/leaf), where your contributions go into a transparent fund supporting community initiatives, events, and core Leaf activities. Both recurring monthly sponsorships and one-time donations are welcome. Recurring sponsors also enjoy benefits like logo placements, as outlined in our Sponsorship Tiers. Your support directly fuels the growth and sustainability of Leaf and its community.
 
 ## Sponsoring Leaf as a Business
 
@@ -29,25 +38,10 @@ If you are building a product where your target customers are developers, you wi
 
 ## Current Sponsors
 
-### Open Collective Sponsors
+We are grateful to all our sponsors for their generous support. Check out our current sponsors below:
 
-<!-- <SponsorsGroup tier="sponsor" placement="page" /> -->
+<SponsorGroup group="sponsor" class="w-full" />
 
-<!-- 
+## Financial Reports
 
-## Recurring Pledges
-
-Recurring pledges come with exclusive perks, e.g. having your name listed in the Leaf GitHub repository, or have your company logo placed on this website.
-
-- [Become a backer or sponsor via OpenCollective](https://opencollective.com/leaf) (goes into a fund with transparent expense models supporting community efforts and events)
-
-<iframe src="https://github.com/sponsors/leafsphp/card" title="Sponsor leafsphp" height="180" width="100%" style="border: 0; border-radius: 10px;"></iframe>
-
-## Current Premium Sponsors
-
-<support-OpenCollectiveSponsors />
-
-If you run a business and are using Leaf in a revenue-generating product, it makes business sense to sponsor Leaf development: **it ensures the project that your product relies on stays healthy and actively maintained.** It can also help your exposure in the Leaf community and makes it easier to attract Leaf developers.
-
-If you are an individual user and have enjoyed the productivity of using Leaf, consider donating as a sign of appreciation - like buying me coffee once in a while.
--->
+We are committed to transparency and accountability in our financial management. We publish yearly financial reports to keep our sponsors informed about how their contributions are being used. The reports are always available and contain information up to the current month. They include a breakdown of expenses, revenue, and other financial details. You can find the latest financial reports on [finance.leafphp.dev](https://finance.leafphp.dev).

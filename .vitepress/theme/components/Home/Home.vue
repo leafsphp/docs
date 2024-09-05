@@ -21,9 +21,9 @@ import Community from './Community.vue';
 <style>
 .VPContent.is-home {
   background-image: url(/images/hero-stripe.png);
-  background-position: center -450px;
+  background-position: center -50px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 145vw;
 }
 
 .VPContent.is-home .vp-doc.container {

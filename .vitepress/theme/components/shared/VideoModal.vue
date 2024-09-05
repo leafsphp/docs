@@ -7,6 +7,8 @@ import {
   DialogPanel,
 } from '@headlessui/vue';
 
+import Button from './Button.vue';
+
 const isOpen = ref(false);
 
 function closeModal() {
@@ -37,9 +39,9 @@ const {
 </script>
 
 <template>
-  <button type="button" @click="openModal"
-    class="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-    <svg v-if="showIcon" class="icon-play" aria-labelledby="simpleicons-play-icon" role="img" viewBox="0 0 100 125"
+  <Button type="button" @click="openModal"
+    class="px-4 py-2 text-sm text-white">
+    <svg v-if="showIcon" class="icon-play w-[25px] h-[25px]" aria-labelledby="simpleicons-play-icon" role="img" viewBox="0 0 100 100"
       fill="#FFFFFF">
       <title id="simpleicons-play-icon" lang="en">Play icon</title>
       <path
@@ -48,7 +50,7 @@ const {
     </svg>
 
     {{ buttonText }}
-  </button>
+  </Button>
 
   <TransitionRoot appear :show="isOpen" as="template">
     <Dialog as="div" @close="closeModal" class="relative z-[9999999]">
@@ -65,8 +67,9 @@ const {
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
             <DialogPanel
-              class="w-[70vw] p-2 h-[90vh] transform overflow-hidden rounded-2xl bg-[var(--vp-c-bg)] text-left align-middle shadow-xl transition-all">
-              <iframe :src="videoUrl" class="w-full h-full rounded-xl" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
+              class="w-[90vw] max-w-[1280px] p-2 h-[90vh] transform overflow-hidden rounded-2xl bg-[var(--vp-c-bg)] text-left align-middle shadow-xl transition-all">
+              <iframe :src="videoUrl" class="w-full h-full rounded-xl" frameborder="0" webkitallowfullscreen
+                mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
             </DialogPanel>
           </TransitionChild>
         </div>

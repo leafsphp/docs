@@ -1,5 +1,6 @@
 <script setup>
-import VideoModal from '../VideoModal.vue';
+import VideoModal from '../shared/VideoModal.vue';
+import Button from '../shared/Button.vue';
 </script>
 
 <template>
@@ -12,15 +13,15 @@ import VideoModal from '../VideoModal.vue';
       Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a
       zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.
     </p>
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center mt-6 gap-4">
       <VideoModal videoUrl="https://www.youtube.com/embed/KfClnH-fQz8" buttonText="Intro to Leaf" />
 
-      <a class="btn" href="/docs/introduction">
+      <Button as="a" href="/docs/" variant="ghost">
         <span>Get Started</span>
         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
           <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
         </svg>
-      </a>
+      </Button>
     </div>
   </div>
 </template>

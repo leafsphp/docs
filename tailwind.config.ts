@@ -5,7 +5,7 @@ export default {
   darkMode: ['class'],
   safelist: ['dark'],
 
-  content: ['.vitepress/**/*.js', '.vitepress/**/*.vue', '.vitepress/**/*.ts'],
+  content: ['.vitepress/**/*.js', '.vitepress/**/*.vue', '.vitepress/**/*.ts', 'src/**/*.vue', 'src/**/*.md'],
 
   theme: {
     container: {
@@ -50,12 +50,6 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-      },
-      borderRadius: {
-        xl: 'calc(var(--radius) + 4px)',
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         'accordion-down': {

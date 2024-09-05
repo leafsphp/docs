@@ -1,9 +1,14 @@
 const sidebar = [
   {
-    text: 'Examples',
+    text: 'Quick Start',
+    collapsible: true,
+    collapsed: true,
     items: [
-      { text: 'Markdown Examples', link: '/markdown-examples' },
-      { text: 'Runtime API Examples', link: '/api-examples' },
+      { text: 'Introduction', link: '/docs/' },
+      { text: 'Why Leaf?', link: '/docs/why' },
+      { text: 'Installation', link: '/docs/installation' },
+      { text: 'Using Docker', link: '/docs/docker' },
+      { text: 'Migration Guide', link: '/docs/migrating' },
     ],
   },
 ];

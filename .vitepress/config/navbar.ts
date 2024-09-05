@@ -3,22 +3,41 @@ import { DefaultTheme } from 'vitepress';
 const nav: DefaultTheme.NavItem[] = [
   {
     text: 'Docs',
-    activeMatch: `^/(docs|style-guide|examples|tutorial)/`,
+    activeMatch: `^/(docs|examples)/`,
     items: [
       { text: 'Guide', link: '/docs/' },
       {
         text: 'Leaf + MVC',
         link: '/docs/mvc/',
       },
-      { text: 'Tutorial', link: '/tutorial/' },
-      { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
       {
-        text: 'Leaf Modules',
-        link: '/modules/',
+        text: 'Leaf CLI',
+        link: '/docs/cli/',
       },
       {
-        text: 'Changelog',
-        link: '/community/releases/',
+        text: 'MVC Console',
+        link: '/docs/mvc/console/',
+      },
+      {
+        text: 'Help',
+        items: [
+          // {
+          //   text: 'Leaf Forum',
+          //   link: 'https://github.com/leafsphp/leaf/discussions/37',
+          // },
+          {
+            text: 'YouTube',
+            link: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw',
+          },
+          {
+            text: 'Discord',
+            link: 'https://discord.gg/Pkrm9NJPE3',
+          },
+          {
+            text: 'GitHub',
+            link: 'https://github.com/leafsphp/leaf',
+          },
+        ],
       },
     ],
   },
@@ -28,32 +47,21 @@ const nav: DefaultTheme.NavItem[] = [
     activeMatch: `^/ecosystem/`,
     items: [
       {
-        text: 'Tooling',
+        text: 'Resources',
         items: [
+          { text: 'Tutorial', link: '/tutorial/' },
+          { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
+          // {
+          //   text: 'Leaf Modules',
+          //   link: '/docs/modules',
+          // },
           {
-            text: 'Leaf CLI',
-            link: '/docs/cli/',
-          },
-          {
-            text: 'MVC Console',
-            link: '/docs/mvc/console/',
+            text: 'Codelabs',
+            link: '/codelabs/',
           },
           {
             text: 'Leaf UI',
             link: 'https://ui.leafphp.dev/',
-          },
-        ],
-      },
-      {
-        text: 'Resources',
-        items: [
-          {
-            text: 'Project Showcase',
-            link: '/ecosystem/showcase',
-          },
-          {
-            text: 'Codelabs',
-            link: '/codelabs/',
           },
         ],
       },
@@ -86,19 +94,23 @@ const nav: DefaultTheme.NavItem[] = [
           },
           {
             text: 'Contribute to Leaf',
-            link: '/community/contributing/',
+            link: '/community/contribute',
           },
           {
             text: 'Contribute to docs',
-            link: '/community/contributing/writing-guide',
+            link: '/community/docs-writing-guide',
+          },
+          {
+            text: 'Changelog',
+            link: '/community/releases',
+          },
+          {
+            text: 'Project Showcase',
+            link: '/community/showcase',
           },
           {
             text: 'Blog',
             link: 'https://blog.leafphp.dev',
-          },
-          {
-            text: 'Events',
-            link: '/events/',
           },
           {
             text: 'Team',
@@ -107,27 +119,6 @@ const nav: DefaultTheme.NavItem[] = [
           {
             text: 'FAQ',
             link: '/community/faq',
-          }
-        ],
-      },
-      {
-        text: 'Help',
-        items: [
-          {
-            text: 'Leaf Forum',
-            link: 'https://github.com/leafsphp/leaf/discussions/37',
-          },
-          {
-            text: 'YouTube',
-            link: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw',
-          },
-          {
-            text: 'Discord',
-            link: 'https://discord.gg/Pkrm9NJPE3',
-          },
-          {
-            text: 'GitHub',
-            link: 'https://github.com/leafsphp/leaf',
           },
         ],
       },

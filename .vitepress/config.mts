@@ -67,4 +67,8 @@ export default defineConfig({
       copyright: `Copyright © 2019-${new Date().getFullYear()} Michael Darko-Duodu`,
     },
   },
+
+  markdown: {
+    lineNumbers: true,
+  },
 });

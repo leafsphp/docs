@@ -12,9 +12,12 @@
   );
   --vp-home-hero-name-background: #3eaf7c;
   --vp-c-brand-1: #3eaf7c;
+  --vp-c-brand-2: #07c16b;
   --vp-button-brand-bg: #3eaf7c;
   --vp-button-brand-hover-bg: #b07b29;
   --vp-code-color: #3077c6;
+  --vp-button-brand-alt-bg: #919191;
+  --vp-c-ghost: #476582;
 
   /* --vp-local-search-bg: var(--vp-c-bg);
   --vp-local-search-result-bg: var(--vp-c-bg);
@@ -29,4 +32,50 @@ html.dark {
   --vp-code-color: #3eaf7c;
   --vp-c-bg: #001e26;
   --vp-c-bg-alt: #001318;
+  --vp-button-brand-alt-bg: #f1f1f1;
+  --vp-c-ghost: #87a5b2;
+  --vp-c-bg-soft: #002f3b;
+  --vp-c-divider: #2b4a52;
+  --vp-c-bg-elv: var(--vp-c-bg);
+}
+
+
+/* .is-typed {
+  font-family: 'Monaco';
+} */
+
+/* .is-typed span.typed {
+  color: black;
+} */
+
+.is-typed span.cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: black;
+  animation: blink 1s infinite;
+}
+
+.is-typed span.underscore {
+  display: inline-flex;
+  width: 10px;
+  height: 1px;
+  align-items: flex-end;
+  background-color: black;
+  animation: blink 1s infinite;
+}
+
+.is-typed span.cursor.typing {
+  animation: none;
+}
+
+@keyframes blink {
+  49% {
+    background-color: black;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
 }

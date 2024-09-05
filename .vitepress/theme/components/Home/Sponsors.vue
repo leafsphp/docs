@@ -1,14 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-
-import SponsorCard from '../SponsorCard.vue';
-
-const sponsors = ref([]);
-
-onMounted(async () => {
-  const data = await (await fetch(`${window.location.origin}/sponsors.json`)).json();
-  sponsors.value = data.sponsor;
-});
+import SponsorGroup from '../shared/SponsorGroup.vue';
 </script>
 
 <template>
@@ -22,9 +13,7 @@ onMounted(async () => {
         </p>
       </div>
 
-      <div class="grid grid-cols-4 gap-1 w-2/3">
-        <SponsorCard v-for="sponsor in sponsors" :key="sponsor.name" v-bind="sponsor" />
-      </div>
+      <SponsorGroup class="w-2/3" />
     </section>
   </div>
 </template>

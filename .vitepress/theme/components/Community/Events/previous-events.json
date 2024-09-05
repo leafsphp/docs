@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Building Scalable APIs: Exploring the Power of Leaf PHP Framework",
+    "flyer": "https://pbs.twimg.com/media/F2haAZpWUAI5hb1?format=png&name=900x900",
+    "intro": "Join us for a Twitter space hosted by @DevCongress \"Building Scalable APIs with LeafPHP's Framework - Unleash Scalability and Efficiency.\" Don't miss this opportunity to accelerate your development journey!",
+    "date": "2023-08-14T19:00:00.000Z",
+    "description": [
+      "Join us for a Twitter space hosted by @DevCongress \"Building Scalable APIs with LeafPHP's Framework - Unleash Scalability and Efficiency.\" Don't miss this opportunity to accelerate your development journey!"
+    ],
+    "topics": ["Leaf PHP", "PHP", "Twitter"],
+    "region": ["Twitter"],
+    "location": ["Online"],
+    "website": {
+      "text": "Twitter",
+      "url": "https://twitter.com/i/spaces/1rmxPkMeOyZJN?s=20"
+    },
+    "contact": "ashley@leafphp.dev"
+  },
+  {
+    "name": "Build First Conference",
+    "flyer": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F468748639%2F197503707544%2F1%2Foriginal.20230314-170300?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=796bdd67b113076902ad39c1a5a4894b",
+    "intro": "Product/developer centric conference for tech enthusiasts, beginners and experts alike to network and harness modern ways and best practice.",
+    "date": "2023-03-25T09:30:00.000Z",
+    "description": [
+      "Product/developer centric conference for tech enthusiasts, beginners and experts alike to network and harness modern ways and best practice."
+    ],
+    "topics": ["React", "Leaf PHP", "NextJS", "Laravel"],
+    "region": ["Accra"],
+    "location": ["Accra Technical University"],
+    "website": {
+      "text": "Eventbrite",
+      "url": "https://www.eventbrite.com/e/build-first-conference-tickets-561581494367"
+    },
+    "contact": "dawoodiddris@gmail.com"
+  }
+]

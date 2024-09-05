@@ -1,5 +1,5 @@
 <script setup>
-import DataCard from '../DataCard.vue';
+import DataCard from '../shared/DataCard.vue';
 
 const tooling = [
   {
@@ -28,7 +28,7 @@ const tooling = [
   {
     title: 'Useful App Utils 📲',
     description: 'From data fetching to dates, validation, caching, mailing, logging, everyday functions and all those goodies, Leaf has got you covered.',
-    link: '/docs/modules/',
+    link: '/docs/modules',
   },
   {
     title: 'Graceful Erroring ✋',
@@ -43,7 +43,7 @@ const tooling = [
   {
     title: 'Friendly system utilities 💻',
     description: 'Access and modify system information securely without having to deal with the complex functions taken directly from C.',
-    link: '/docs/modules/',
+    link: '/docs/modules',
   },
   {
     title: '30+ modules',
