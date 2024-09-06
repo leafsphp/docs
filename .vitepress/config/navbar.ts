@@ -6,6 +6,7 @@ const nav: DefaultTheme.NavItem[] = [
     activeMatch: `^/(docs|examples)/`,
     items: [
       { text: 'Guide', link: '/docs/' },
+      { text: 'Tutorial', link: '/tutorial/' },
       {
         text: 'Leaf + MVC',
         link: '/docs/mvc/',
@@ -17,6 +18,44 @@ const nav: DefaultTheme.NavItem[] = [
       {
         text: 'MVC Console',
         link: '/docs/mvc/console/',
+      },
+    ],
+  },
+
+  {
+    text: 'Ecosystem',
+    activeMatch: `^/ecosystem/`,
+    items: [
+      {
+        text: 'Resources',
+        items: [
+          { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
+          // {
+          //   text: 'Leaf Modules',
+          //   link: '/docs/modules',
+          // },
+          {
+            text: 'Codelabs',
+            link: '/codelabs/',
+          },
+          // {
+          //   text: 'Leaf UI',
+          //   link: 'https://ui.leafphp.dev/',
+          // },
+        ],
+      },
+      {
+        text: 'Other',
+        items: [
+          {
+            text: 'Hana JS',
+            link: 'https://hanajs.dev',
+          },
+          {
+            text: 'Naytive',
+            link: 'https://naytive.netlify.app',
+          },
+        ],
       },
       {
         text: 'Help',
@@ -36,45 +75,6 @@ const nav: DefaultTheme.NavItem[] = [
           {
             text: 'GitHub',
             link: 'https://github.com/leafsphp/leaf',
-          },
-        ],
-      },
-    ],
-  },
-
-  {
-    text: 'Ecosystem',
-    activeMatch: `^/ecosystem/`,
-    items: [
-      {
-        text: 'Resources',
-        items: [
-          { text: 'Tutorial', link: '/tutorial/' },
-          { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
-          // {
-          //   text: 'Leaf Modules',
-          //   link: '/docs/modules',
-          // },
-          {
-            text: 'Codelabs',
-            link: '/codelabs/',
-          },
-          {
-            text: 'Leaf UI',
-            link: 'https://ui.leafphp.dev/',
-          },
-        ],
-      },
-      {
-        text: 'Other',
-        items: [
-          {
-            text: 'Hana JS',
-            link: 'https://hanajs.dev',
-          },
-          {
-            text: 'Naytive',
-            link: 'https://naytive.netlify.app',
           },
         ],
       },
