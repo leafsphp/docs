@@ -150,7 +150,7 @@ The final piece of the puzzle is the server configuration file. You can use the 
 
 ::: code-group
 
-```apacheconf [Apache - 000-default.conf]
+```apache [Apache - 000-default.conf]
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www

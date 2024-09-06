@@ -14,7 +14,7 @@ Hi there! We're thrilled that you'd like to contribute to the community. Your he
 - [Code style guide](#code-style-guide)
 - [Code of Conduct](#code-of-conduct)
 - [Pull Request Guidelines](#pull-request-guidelines)
-- [Writing guide for documentation](/community/writing-guide)
+- [Writing guide for documentation](/community/docs-writing-guide)
 
 ## Leaf and Modules
 

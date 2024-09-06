@@ -102,7 +102,7 @@ $app->run();
 
 :::
 
-When hosting your application on a webserver, all requests coming into your app must be routed through Leaf. It is really simple to do, and all needed instructions can be found @ [URL rewriting](/docs/introduction/url-rewriting.html).
+When hosting your application on a webserver, all requests coming into your app must be routed through Leaf. It is really simple to do, and all needed instructions can be found @ [URL rewriting](/docs/routing/url-rewriting).
 
 ## MVC Setup
 

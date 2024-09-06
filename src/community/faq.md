@@ -16,7 +16,7 @@ Leaf is designed to be minimalistic and flexible, offering only the tools you ne
 
 Leaf is an independent, community-driven project. It was created by [Michael Darko](https://github.com/mychidarko) in 2019 as a personal side project. Today, Leaf is actively maintained by [a little team](/community/team) and contributors all over the world, where Michael serves as the project lead.
 
-Leaf's development is primarily funded through sponsorships and personal contributions from Michael and friends. If you or your business benefit from Leaf, consider [sponsoring us](/support/) to support Leaf's development!
+Leaf's development is primarily funded through sponsorships and personal contributions from Michael and friends. If you or your business benefit from Leaf, consider [sponsoring us](/support) to support Leaf's development!
 
 ## What license does Leaf use?
 
