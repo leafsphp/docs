@@ -4,23 +4,6 @@ At the core of Leaf is a carefully crafted router which allows you declaratively
 
 Defining a route is pretty straight forward: tell leaf the methods which should be allowed to access the route you're defining. This can be done with **`match`**. This method takes in the [HTTP methods](https://restfulapi.net/http-methods/) which should be able to access that route, the [route path](https://www.toolsqa.com/rest-assured/rest-routes/) and the handler for that route. The handler is a function which you define yourself. Let's look at an example:
 
-<div class="class-mode">
-
-```php{7-9}
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->match('GET', '/', function () {
-  echo "Something nice";
-});
-```
-
-</div>
-<div class="functional-mode">
-
 ```php{5-7}
 <?php
 
@@ -31,28 +14,7 @@ app()->match('GET', '/', function () {
 });
 ```
 
-</div>
-
 One thing to note is that after defining all your routes, you need to call the **`run`** method. This method dispatches all the routes and makes them available to run.
-
-<div class="class-mode">
-
-```php{7-9}
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->match('GET', '/', function () {
-  echo "Something nice";
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
 
 ```php{5-7}
 <?php
@@ -65,8 +27,6 @@ app()->match('GET', '/', function () {
 
 app()->run();
 ```
-
-</div>
 
 On the right, you have a structure which has an empty slot for your routes. Try to create a route for the `/` path using the `match` method. **Replace `// 1. match route here` with your `match` route**
 

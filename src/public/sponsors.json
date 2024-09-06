@@ -7,9 +7,9 @@
       "img": "https://user-images.githubusercontent.com/26604242/186772985-b21c2850-3cc3-41c6-9299-fe9cc5bac46a.png"
     },
     {
-      "name": "JetBrains",
-      "url": "https://www.jetbrains.com/",
-      "img": "https://avatars.githubusercontent.com/u/878437?s=200&v=4"
+      "name": "Algolia",
+      "url": "https://www.algolia.com/",
+      "img": "https://avatars.githubusercontent.com/u/2034458?s=200&v=4"
     },
     {
       "name": "Digital Ocean",
@@ -17,9 +17,9 @@
       "img": "https://avatars.githubusercontent.com/u/4650108?s=200&v=4"
     },
     {
-      "name": "Casprine Asempah",
-      "url": "https://github.com/casprine",
-      "img": "https://images.opencollective.com/guest-c72a498e/avatar.png"
+      "name": "JetBrains",
+      "url": "https://www.jetbrains.com/",
+      "img": "https://avatars.githubusercontent.com/u/878437?s=200&v=4"
     },
     {
       "name": "Vano",
@@ -27,7 +27,12 @@
       "img": "https://images.opencollective.com/guest-32634fda/avatar.png"
     },
     {
-      "name": "Terry",
+      "name": "Casprine Asempah",
+      "url": "https://github.com/casprine",
+      "img": "https://images.opencollective.com/guest-c72a498e/avatar.png"
+    },
+    {
+      "name": "Terry B",
       "url": "https://github.com/terrybr",
       "img": "https://avatars.githubusercontent.com/u/378788?v=4"
     },
@@ -147,6 +152,11 @@
       "name": "Sergey Romanenko",
       "url": "https://github.com/Awilum",
       "img": "https://avatars.githubusercontent.com/u/477114?v=4"
+    },
+    {
+      "name": "Torben Buck",
+      "url": "https://github.com/Rasalas",
+      "img": "https://avatars.githubusercontent.com/u/7483565?v=4"
     },
     {
       "name": "Master Sofua Desmond",

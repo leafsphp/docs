@@ -95,7 +95,7 @@ db()->query('CREATE DATABASE dbname')->execute();
 
 </div>
 
-For queries that actually return values, you can use `all`, `get`, `fetchObj` and `fetchAssoc` to get the results. You can read more on them [here](/modules/db/v/2/#running-queries).
+For queries that actually return values, you can use `all`, `get`, `fetchObj` and `fetchAssoc` to get the results. You can read more on them [here](/docs/database/#running-queries).
 
 ::: tip
 You can configure the route and method you want to run in the `request.json` file.

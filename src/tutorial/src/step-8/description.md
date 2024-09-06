@@ -209,4 +209,4 @@ After this, we can use our rule just like any other:
 'username' => 'contains:Leaf',
 ```
 
-This section only brushed through creating your custom rules, you can [read the docs](/modules/forms/v/1.2/#create-your-own-rules) for more info.
+This section only brushed through creating your custom rules, you can [read the docs](/docs/forms/validation) for more info.

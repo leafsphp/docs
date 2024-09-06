@@ -2,7 +2,7 @@
 
 Most modern APIs use a lot of patterns including routing patterns. When you look at a webapp like twitter, you'll notice that every user has his/her own url, like `twitter.com/leafphp` or `twitter.com/mychidarko`. You might wonder how twitter has a page for every single user. Do they build every single page or is there some trick to it? Well, the answer is dynamic routing.
 
-Instead of having a static url like `leafphp.dev/modules/`, we can have a part of the url which behaves like a variable. This means that any value can be passed in there, and we'll load some data based on that. Although this sounds super complex, leaf makes it really easy to do this.
+Instead of having a static url like `leafphp.dev/docs/`, we can have a part of the url which behaves like a variable. This means that any value can be passed in there, and we'll load some data based on that. Although this sounds super complex, leaf makes it really easy to do this.
 
 In your route definition, simply add a value in curly braces. That's it! Let's look at an example:
 

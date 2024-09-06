@@ -1,21 +1,27 @@
 ---
-page: true
-title: Tutorial
 sidebar: false
-aside: false
 footer: false
+# aside: false
+title: Tutorial
+ads: false
+editLink: false
+prev: false
+next: false
+lastUpdated: false
 returnToTop: false
+layout: page
 ---
 
 <script>
-import { defineAsyncComponent } from 'vue'
-import ReplLoading from '/@theme/components/ReplLoading.vue'
+import { defineAsyncComponent, h } from 'vue';
 
 export default {
   components: {
     TutorialRepl: defineAsyncComponent({
-      loader: () => import('./TutorialRepl.vue'),
-      loadingComponent: ReplLoading
+      loader: () => import('@theme/components/Repl/TutorialRepl.vue'),
+      loadingComponent: h('div', { class: 'loading' }, [
+        h('span', { class: 'loading-text' }, 'Loading...'),
+      ]),
     })
   }
 }

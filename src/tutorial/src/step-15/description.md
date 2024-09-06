@@ -6,7 +6,7 @@ At this point, you should have a good idea of what it's like to work with Leaf. 
 
 - Set up a real Leaf project on your machine by following the [installation docs](/docs/introduction/installation.html) or using the [leaf cli](/docs/cli/).
 
-- Every feature you need is available as a module, so be sure to checkout the [available modules](/modules/).
+- Every feature you need is available as a module, so be sure to checkout the [available modules](/docs/modules).
 
 - Check out our practical videos on [YouTube](https://youtube.com/)
 
