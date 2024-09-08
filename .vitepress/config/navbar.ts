@@ -97,6 +97,10 @@ const nav: DefaultTheme.NavItem[] = [
             link: '/community/contribute',
           },
           {
+            text: 'Community Guides',
+            link: '/community/guide',
+          },
+          {
             text: 'Contribute to docs',
             link: '/community/docs-writing-guide',
           },
@@ -104,10 +108,10 @@ const nav: DefaultTheme.NavItem[] = [
             text: 'Changelog',
             link: '/community/releases',
           },
-          {
-            text: 'Project Showcase',
-            link: '/community/showcase',
-          },
+          // {
+          //   text: 'Project Showcase',
+          //   link: '/community/showcase',
+          // },
           {
             text: 'Blog',
             link: 'https://blog.leafphp.dev',

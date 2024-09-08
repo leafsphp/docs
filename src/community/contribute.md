@@ -6,36 +6,36 @@ next: false
 lastUpdated: false
 ---
 
-# Contribution Guide
+# How can I contribute to Leaf?
 
-Hi there! We're thrilled that you'd like to contribute to the community. Your help is essential, and we're grateful for it. Before you get started, please take a moment to read through the following guidelines:
+Leaf is an open-source project, and we welcome contributions from the community. Your help is essential, and we're grateful for it. There are many ways to contribute to Leaf, from writing code to improving the documentation.
 
-- [Leaf & Modules](#leaf-and-modules)
-- [Code style guide](#code-style-guide)
-- [Code of Conduct](#code-of-conduct)
-- [Pull Request Guidelines](#pull-request-guidelines)
-- [Writing guide for documentation](/community/docs-writing-guide)
+## Reporting issues
 
-## Leaf and Modules
+If you find a bug in Leaf, please report it on our [GitHub](https://github.com/leafsphp/) organization. We appreciate detailed bug reports, including steps to reproduce the issue and any relevant information about your environment. Also, please check if the issue has already been reported before creating a new one.
 
-Leaf is built to be modular, so you can use only what you need. This also means that you can contribute to Leaf by creating modules that extend its functionality or simply adding new features to an existing module. Modules can be anything from simple helper functions to a full-blown set of new functionality for Leaf.
+Another thing we appreciate is reporting issues on the right repository. For instance, if you find a bug in `Leaf\Auth`, please report it on the leafsphp/auth repository. We have a lot of modules, so it's important to report issues on the right repository to ensure they get the attention they need.
 
-The core of Leaf is a simple wrapper around Leaf's router and http modules that adds things like dependency injection, synced configuration, and a few other features. Everything else is built as modules.
+## Join our Discord server
 
-Leaf MVC takes this a step further by constructing a simple MVC structure around Leaf. MVC Core is a module that links the said MVC structure to Leaf's core, and the rest of the modules are built around this. We do it this way so that you can use Leaf's core and other modules without having to use the MVC structure. So, if you're contributing to Leaf's core or any of the modules, try not to make it dependent on the MVC structure.
+We have a [Discord server](https://discord.gg/Pkrm9NJPE3) where you can ask questions, share your projects, and get help from the community. We're always happy to help you with any questions you have about Leaf. You can also help others in the community by answering their questions.
 
-With that said, you're ready to start contributing to Leaf. If you're contributing to Leaf's core, you can find the source code [here](https://github.com/leafsphp/leaf). If you're contributing to a module, you can find the source code somewhere in our [GitHub organization](https://github.com/leafsphp). If you're contributing to the documentation, you can find the source code [here](https://github.com/leafsphp/docs).
+## Helping out with issues
 
-## Code style guide
+If you're a developer, you can help out by contributing fixes to issues on our GitHub repositories. We have a lot of issues that need attention, and we appreciate any help you can provide. You can also help by reviewing pull requests and providing feedback to other contributors. To get started, check out our [contribution guide](/community/guide).
 
-When contributing to Leaf, please make sure to follow the [PSR-12](https://www.php-fig.org/psr/psr-12/) coding standard. This is a set of rules that dictates how PHP code should be written. It's a good idea to familiarize yourself with these rules before contributing to Leaf (They're pretty simple standards, mostly about indentation and naming conventions. Most of us use them without even knowing it).
+## Creating modules
 
-We have a more compact guide [here](https://rebel-tibia-7d7.notion.site/2-Code-Quality-and-Reviews-183c0344a6cc43e7b3693880b0fb35a6) that you can follow. It's a really short guide, but the most important thing you should take away from it is that the top priority is to make anything you build developer-friendly. This means that your code should be easy to read, easy to understand, and easy to use.
+If you have an idea for a new module that you think would be useful to the Leaf community, you can create it and submit it to get featured on our documentation. People have vastly different needs, and your module could be the missing piece for someone's project. Reach out to us on Discord if you need help with your module. To get started, check out our [contribution guide](/community/guide).
 
-## Code of Conduct
+## Improving the documentation
 
-Our [Code of Conduct](/community/code-of-conduct) governs how we behave in public or in private whenever Leaf or its community is involved. We expect it to be honored by everyone who represents the Leaf community officially or informally, claims affiliation with the project, or participates directly. It applies to all of our spaces, including GitHub, Twitter, and other social media platforms.
+The documentation is an essential part of any project, and we're always looking for ways to improve it. If you find any errors or have suggestions for how we can make the documentation better, please let us know. You can also contribute to the documentation by submitting pull requests to the [Leaf documentation repository](https://github.com/leafsphp/docs). To get started, check out the [documentation guide](/community/docs-writing-guide).
 
-## Pull Request Guidelines
+## Let us know how you're using Leaf
 
-Before you submit a pull request, check that it meets these guidelines:
+We love hearing about how people are using Leaf in their projects. If you're using Leaf, we'd love to hear about it. You can share your projects on our Discord server or reach out to us on Twitter. We're always happy to see what people are building with Leaf.
+
+## Spread the word
+
+If you love Leaf and want to help us grow the community, you can spread the word by sharing Leaf with your friends and colleagues. You can also write blog posts or create videos about Leaf to help others learn about it. We appreciate any help you can provide in spreading the word about Leaf.

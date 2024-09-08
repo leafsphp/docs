@@ -37,7 +37,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
     <li><a href="/docs/installation">Installation</a></li>
     <li><a href="/docs/docker">Using Docker</a></li>
     <li><a href="/docs/leaf-cli">Leaf CLI</a></li>
-    <li><a href="/docs/migrating-from-other-frameworks">Migrating from other frameworks</a></li>
+    <li><a href="/docs/migrating">Migrating from other frameworks</a></li>
   </ul>
   </Card>
 
@@ -46,10 +46,9 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Learn the core concepts of Leaf</p>
 
   <ul>
-    <li><a href="/docs/routing">Routing</a></li>
+    <li><a href="/docs/routing/">Routing</a></li>
     <li><a href="/docs/http/request">Request</a></li>
     <li><a href="/docs/http/response">Response</a></li>
-    <li><a href="/docs/build-your-first-app">Your first app</a></li>
   </ul>
   </Card>
 
@@ -86,8 +85,8 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Deploying your Leaf app</p>
 
   <ul>
-    <li><a href="/docs/deployment/">Deployment</a></li>
-    <li><a href="/docs/config/logging">Logging</a></li>
+    <li><a href="/docs/config/deployment">Deployment</a></li>
+    <li><a href="/docs/utils/logging">Logging</a></li>
     <li><a href="/docs/routing/url-rewriting">Url rewriting</a></li>
   </ul>
   </Card>
@@ -112,9 +111,9 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Play around with data</p>
 
   <ul>
-    <li><a href="/docs/http/sessions">Sessions</a></li>
+    <li><a href="/docs/http/session">Sessions</a></li>
     <li><a href="/docs/http/cookies">Cookies</a></li>
-    <li><a href="/docs/authentication/">Authentication</a></li>
+    <li><a href="/docs/auth/">Authentication</a></li>
   </ul>
   </Card>
 
@@ -138,7 +137,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
 
   <ul>
     <li><a href="/docs/frontend/">Frontend</a></li>
-    <li><a href="/docs/frontend/templating">Templating</a></li>
+    <li><a href="/docs/frontend/bareui">Bare UI</a></li>
     <li><a href="/docs/http/caching">Http Caching</a></li>
   </ul>
   </Card>

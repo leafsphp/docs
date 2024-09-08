@@ -14,15 +14,11 @@ import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
 
 # Support Leaf's Development
 
-Leaf was created as a little project to make writing APIs super easy, but it’s grown since 2019 and today, Leaf is housing a couple of open-source tools covering different software engineering regimes. The tools we maintain here are:
+Leaf began in 2019 as a project to simplify API development but has since expanded to include a suite of open-source tools like the Leaf PHP framework, [Hanabira](https://hanajs.dev), and [Naytive](https://naytive.netlify.app).
 
-- Leaf PHP framework and modules
-- Hanabira & libs
-- Naytive & libs
+We are committed to keeping all this open-source and free, but maintaining and developing new features now requires significant time and resources. As the project has grown, so have the costs, which have been mostly covered by the team. To sustain and grow Leaf, we need your help to support full-time maintainers.
 
-Of course, we are committed to keeping all this open-source and free for everyone to use. However, maintaining and developing new features for Leaf takes up a lot of time and resources. Most of Leaf's costs have been covered by the team members, but the project has grown and so have the expenses. We've reached a point where sustaining and growing Leaf requires more than just part-time efforts from our team. To truly take Leaf to the next level, we need to support maintainers who can dedicate themselves to working on Leaf full-time, and we need your help to make this happen.
-
-By becoming a sponsor, you directly contribute to the growth of the Leaf ecosystem, enabling us to deliver more features, better support, and ongoing updates. Your sponsorship makes a real difference, helping us keep Leaf accessible and free for everyone. Join us in shaping the future of Leaf — every contribution counts!
+Become a sponsor and help us grow the Leaf ecosystem with more features, better support, and ongoing updates while keeping it free and accessible for everyone.
 
 ## How to Sponsor
 
@@ -34,7 +30,13 @@ Sponsoring Leaf gives you great exposure to all Leaf developers around the world
 
 If you are using Leaf to build a revenue-generating product, it makes business sense to sponsor Leaf's development: **it ensures the project that your product relies on stays healthy and actively maintained.** The exposure and positive brand image in the Leaf community also makes it easier to attract and recruit developers.
 
-If you are building a product where your target customers are developers, you will gain high quality traffic through the sponsorship exposure, since all our visitors are developers. The sponsorship also builds brand recognition and improves conversion.
+You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/contribute/premium-sponsor-79271) tier which give you the following perks:
+
+- Your logo on our README on GitHub and our website
+- A personalized shoutout on our social media channels & newsletters
+- Mention in our monthly progress reports
+- Mention in every release annoucement
+- Dedicated first priority support from the Leaf team.
 
 ## Current Sponsors
 

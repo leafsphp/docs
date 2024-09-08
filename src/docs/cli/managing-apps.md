@@ -53,11 +53,17 @@ leaf run my-command
 
 Leaf CLI also has commands built on top of Composer to help you manage your app's dependencies. Leaf has a whole ecosystem of packages that are treated as first-class citizens in the Leaf ecosystem, and are given special treatment by the CLI. This makes working with Leaf packages a breeze, but also allows you to work with any Composer package.
 
+::: details Are you a visual learner?
+
+This video will help you understand how to work with packages on the Leaf CLI.
+
 <VideoModal
   subject="Working with packages on the Leaf CLI"
   description="Working with packages and the leaf cli"
   videoUrl="https://www.youtube.com/embed/K9jSl_xpr48"
 />
+
+:::
 
 ### Installing packages
 
