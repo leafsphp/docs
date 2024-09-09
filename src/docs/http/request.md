@@ -148,6 +148,33 @@ In Case of files, you can use the `files()` method to get the file data.
 $file = request()->files('file');
 ```
 
+## Request Headers
+
+Headers are a very important part of HTTP requests. They contain information about the request that can be used to make decisions in your application. You can use the `headers()` method to get a specific header from the request.
+
+```php
+$allHeaders = request()->headers();
+```
+
+You can also use the `header()` method to get a specific header from the request.
+
+```php
+$contentType = request()->header('Content-Type');
+```
+
+One thing to note is that all headers are sanitized automatically by Leaf. If you want to disable this behavior, you can pass `false` as a parameter to the `headers()` or `header()` method.
+
+```php
+$allHeaders = request()->headers(
+  safeHeaders: false
+);
+
+$contentType = request()->header(
+  'Content-Type',
+  false
+);
+```
+
 ## Validating Request Data
 
 When building user-facing applications, there's no guarantee that users will always send the correct data to your application. In most cases, users will send incorrect data, either by mistake or on purpose. This can lead to errors in your application and can even expose your application to security vulnerabilities. To prevent this, you can use Leaf's built-in validation library to validate the data coming into your application. Let's see how it works:
@@ -170,7 +197,7 @@ In the example above, we're validating the data coming into our application. We'
 
 ## Request Object Methods
 
-The request object comes with other methods for doing things like interacting with the request headers, cookies, checking request types, and even user data. Here are some of the most common methods you'll use:
+The request object comes with other methods for doing things like interacting with the request headers, cookies, checking request types, and even user data. Here are some of the most common functionality you'll use:
 
 ### `typeIs`
 
