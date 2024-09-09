@@ -1,8 +1,18 @@
 # Requests
 
-Whenever a user accesses your application, a request is made from the user's browser to your application. This request contains information about the user, the user's browser, and what the user is trying to access. This information is sent to your application in the form of an HTTP request. Leaf provides a request object that you can use to access and manipulate this information coming into your app.
+Whenever a user accesses your application, a request is made from the user's machine to your application. This request contains information about the user, the user's system, and what the user is trying to access.
 
-There are different kinds of HTTP requests, such as `GET`, `POST`, `PUT`, `DELETE`, and more. Leaf tries to provide a unified interface to access information from all these different types of requests. This section covers the methods you'll most likely use in your everyday applications.
+A request looks something like this:
+
+```http:no-line-numbers
+GET /route?name=John&age=25 HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+```
+
+PHP provides a couple of superglobals and methods that you can use to access this information, but they're a bit all over the place and can be hard to use. Leaf provides a unified interface to access this information in a more structured way no matter the type of request you're working with.
+
+This section covers the methods you'll most likely use in your everyday applications.
 
 ## Getting request data
 
