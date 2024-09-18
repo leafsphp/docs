@@ -1,59 +1,62 @@
-# Inserting data into a database
+# Reading items in a database
 
-In the previous section, we looked at how to use raw queries using the `query` method. Although the `query` method is powerful, it is not the most convenient way to make simple queries. In this section, we will look at Leaf's query builder and how to use it to insert data into a database.
+We have looked at how to write raw SQL, and we've also looked at how to insert data into a database using Leaf's query builder. In this section, we will look at how to read data from a database using Leaf's query builder.
 
-## INSERTING DATA
+## The select method
 
-To insert data, we'll need to start out with Leaf Db's `insert` method. This method takes a table name as its first argument and returns a query builder. The query builder has a number of methods that we can use to build our query. The first method we'll look at is `params`. This method takes a dictionary of column names and values to insert. Let's look at an example:
+In SQL, the `SELECT` statement is used to read data from a database. Leaf DB provides a `select()` method that allows you to build a `SELECT` statement with all its intricacies.
 
-<div class="class-mode">
+`select()` takes in 2 parameters:
 
-```php
-$db->insert("users")->params(["username" => "mychi"]);
-```
+- The name of the table you want to read from
+- The columns you want to read (optional)
 
-</div>
-<div class="functional-mode">
+Let's look at a few examples:
 
 ```php
-db()->insert("users")->params(["username" => "mychi"]);
+db()->select('users')->all();
+
+// SELECT * FROM users
 ```
 
-</div>
-
-This will create the query we need, now all we need to do is execute it. We can do this by calling the `execute` method on the query builder. Let's look at an example:
-
-<div class="class-mode">
+This query returns everything in our users table. We can also specify the columns we want to select:
 
 ```php
-$db
-  ->insert("users")
-  ->params(["username" => "mychi"])
-  ->execute();
+db()->select('users', 'name, created_at')->all();
+
+// SELECT name, created_at FROM users
 ```
 
-</div>
-<div class="functional-mode">
+We added `all()` to the end of our query to execute it. This method returns all the rows in the table. We can also use `fetchObj()` to return the result as an object just as we saw in the previous section.
+
+## Conditional queries
+
+There are many cases where we need to read data based on certain conditions. Leaf DB provides a `where()` method to help us with this.
+
+It takes a column name, an operator and a value as its arguments. You can also pass in an array of column names and values. Let's look at an example:
 
 ```php
 db()
-  ->insert("users")
-  ->params(["username" => "mychi"])
-  ->execute();
+  ->select('users')
+  ->where('name', 'John Doe')
+  ->fetchObj();
+
+# or
+
+db()
+  ->select('users')
+  ->where(['name' => 'John Doe'])
+  ->fetchObj();
 ```
 
 </div>
 
-One beautiful thing is that although you pass a dictionary to the `params` method, Leaf would automatically use parameter binding on your values. This is very important because it prevents SQL injection attacks.
-
 ## YOUR TASK
 
-We've carried over the solution from the last section. Your task this time is to replace the raw `INSERT` statement with Leaf's query builder. The raw SQL looks like this:
+We've carried over the solution from the last section. Your task this time is to replace the raw `SELECT` statement with Leaf's query builder. The raw SQL looks like this:
 
 ```sql
-INSERT INTO users (name, email)
-VALUES
-  ('John Doe', 'johndoe@test.com')
+SELECT * FROM users WHERE age = 20
 ```
 
-Using the `insert` method, build the query and execute it. You can use the `execute` method to execute the query as done in the example above. This solution should be done at the section with `// 1. New insert query here`.
+Using the `select()` method, build the query and execute it. This solution should be done at the section with `// 1. New select query here`.

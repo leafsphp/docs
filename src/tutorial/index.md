@@ -12,6 +12,8 @@ returnToTop: false
 layout: page
 ---
 
+<!-- markdownlint-disable no-inline-html -->
+
 <script>
 import { defineAsyncComponent, h } from 'vue';
 
@@ -19,8 +21,8 @@ export default {
   components: {
     TutorialRepl: defineAsyncComponent({
       loader: () => import('@theme/components/Repl/TutorialRepl.vue'),
-      loadingComponent: h('div', { class: 'loading' }, [
-        h('span', { class: 'loading-text' }, 'Loading...'),
+      loadingComponent: h('div', { class: 'loading container flex justify-center items-center h-[calc(100vh-200px)]' }, [
+        h('span', { class: 'loading-text text-2xl' }, 'Loading...'),
       ]),
     })
   }

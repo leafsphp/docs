@@ -1,90 +1,51 @@
-# Reading items in a database
+# Updating items in a database
 
-In the previous section, we looked at how to insert data into a database using the Leaf Db query builder. In this section, we will look at how to read data from a database.
+If you've been following along, you should have a good understanding of how to insert and read data from a database using Leaf's query builder. In this section, we will look at how to update data in a database using Leaf's query builder.
 
-In [section 10](/tutorial/#step-10), we looked at how to use raw queries to read data from a database. Although the `query` method is powerful, it is not exactly the most convenient way to make simple queries. In this section, we will look at Leaf's query builder and how to use it to read data from a database.
+## Basic updates
 
-## THE SELECT METHOD
-
-To read data from a database, we'll need to start out with Leaf Db's `select` method. This method takes a table name as its first argument and the columns to select as its second argument and then returns a query builder. The query builder has a number of methods that we can use to build our query. Let's look at an example:
-
-<div class="class-mode">
-
-```php
-$db->select('users')->all();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-$db->select('users')->all();
-```
-
-</div>
-
-The query above returns everything in our users table. We can also specify the columns we want to select:
-
-<div class="class-mode">
-
-```php
-$db->select('users', 'name, created_at')->all();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-$db->select('users', 'name, created_at')->all();
-```
-
-</div>
-
-## WHERE CLAUSES
-
-The `where` method is used to add a `WHERE` clause to our query. It takes a column name, an operator and a value as its arguments. You can also pass in an array of column names and values. Let's look at an example:
-
-<div class="class-mode">
-
-```php
-$db
-  ->select('users')
-  ->where('name', 'John Doe')
-  ->fetchObj();
-
-# or
-
-$db
-  ->select('users')
-  ->where(['name' => 'John Doe'])
-  ->fetchObj();
-```
-
-</div>
-<div class="functional-mode">
+Let's say we have a users table which has a couple of columns like `name`, `email`, and `age`. To update a record in this table, we use Leaf DB's `update()` method. It takes in the name of the table that's holding the data we want to update. From there, we have to tell Leaf which columns we want to update and what we want to update them to. We can do this using the `params()` method we saw in [part 10](/tutorial/#step-10). Here's an example:
 
 ```php
 db()
-  ->select('users')
-  ->where('name', 'John Doe')
-  ->fetchObj();
-
-# or
-
-db()
-  ->select('users')
-  ->where(['name' => 'John Doe'])
-  ->fetchObj();
+  ->update('users')
+  ->params(['name' => 'Jane Doe'])
+  ->execute();
 ```
 
-</div>
+This is equivalent to the following SQL query:
+
+```sql
+UPDATE users SET name = 'Jane Doe'
+```
+
+This query updates all records in the users table with the name `Jane Doe`, which is not what we want. To update a specific record, we need to add a `WHERE` clause to our query.
+
+## Where clauses
+
+We saw how to use the `where()` method in [part 11](/tutorial/#step-11) to read data based on certain conditions. Where clauses allow us to filter data based on certain conditions, which is what we want to do to our example above. Let's say we only want to update the record with the name `Jaen Doe` because she made a typo in her name. We can do this by adding a `WHERE` clause to our query. Here's how:
+
+```php{4}
+db()
+  ->update('users')
+  ->params(['name' => 'Jane Doe'])
+  ->where('name', 'Jaen Doe')
+  ->execute();
+```
+
+This will find the record with the name `Jaen Doe` and update it to `Jane Doe`. This is equivalent to the following SQL query:
+
+```sql
+UPDATE users SET name = 'Jane Doe' WHERE name = 'Jaen Doe'
+```
 
 ## YOUR TASK
 
-We've carried over the solution from the last section. Your task this time is to replace the raw `SELECT` statement with Leaf's query builder. The raw SQL looks like this:
+We've prepared this SQL query for you to replace with Leaf's query builder. The raw SQL looks like this:
 
 ```sql
-SELECT * FROM users
+UPDATE users SET name = 'Jane Doe' WHERE name = 'Jaen Doe' AND email = 'jane@example.com'
 ```
 
-Using the `select` method, build the query and execute it. This solution should be done at the section with `// 1. New select query here`.
+Using the `update()` and `where()` methods, build the equivalent of this SQL query and execute it.
+This solution should be done at the section with `// 1. New update query here`.

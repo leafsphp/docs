@@ -2,7 +2,10 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// 1. put route here
-// 2. custom url path here
+// 1. db connection here
+
+app()->get('/', function () {
+  echo 'Hello World';
+});
 
 app()->run();

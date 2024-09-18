@@ -27,7 +27,7 @@ app()->get('/', function () {
     ->params(['name' => 'John Doe', 'email' => 'johndoe@test.com'])
     ->execute();
 
-  $users = db()->query('SELECT * FROM users')->get();
+  $users = db()->select('users')->get();
 
   response()->json([
     'users' => $users,

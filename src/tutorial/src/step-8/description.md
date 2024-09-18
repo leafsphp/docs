@@ -1,52 +1,10 @@
 # Validating request data
 
-Different apps require different kinds of information, for instance, your app may require a phone number and password to sign in, but another may require an email and password to sign in. In some cases, users may be able to pass in whatever data they think of directly into your apps. This is even more true in case your leaf app is an API. For this reason, you should always validate or verify the data that is passed into your app.
+A golden rule in web development is to never trust user input. Users will always find a way to break your app if you give them the chance and validating data is one way to keep your app safe. Leaf comes with built-in validation rules to help you validate your data. In this exercise, we'll look at how to validate data in Leaf.
 
-Leaf once again makes this process simple. We will use the leaf form module to write validation rules for our data. To get started with leaf form, <span class="class-mode">you can use the `Leaf\Form` class.</span><span class="functional-mode">you can simply call the `form` function from anywhere in your app</span>
+## Built-in validation rules
 
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $rules = Leaf\Form::supportedRules();
-  $app->response()->json($rules);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-app()->get('/', function () {
-  $rules = form()->supportedRules();
-  response()->json($rules);
-});
-
-app()->run();
-```
-
-</div>
-
-For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app. We'll also be using different validation rules against this data.
-
-## VALIDATION RULES
-
-Leaf comes with some default validation rules, if you run the code above, then you'd already know some of these rules. If you haven't already done so, the code above returns all the supported validations rules leaf has by default. Throughout this exercise, we'll be using different validation rules to validate our data.
-
-<details>
-<summary>Validation rule list</summary>
+These are the rules Leaf provides out-of-the-box for validating data:
 
 | Validation rule     |  Purpose                                     |
 |:--------------------|:---------------------------------------------|
@@ -66,11 +24,9 @@ Leaf comes with some default validation rules, if you run the code above, then y
 These rules are **NOT** case-sensitive, so you can type them anyway you prefer, as long as the spelling is the same.
 :::
 
-</details>
+## Validating data
 
-## VALIDATING OUR DATA
-
-We've looked at all the default validation rules, but you might be asking how we can actually use these to validate our data. We can do this by calling the `validate` method on leaf form.
+Leaf provides a request object that allows you to get data passed into your app. This same object also has a `validate()` method that allows you to validate data passed into your app. The `validate()` method takes an array of data to validate and returns a boolean value. If the data is valid, it returns `true`, otherwise, it returns `false`.
 
 ::: tip request.json
 This is the data we're passing into our app.
@@ -86,45 +42,19 @@ This is the data we're passing into our app.
 
 :::
 
-<div class="class-mode">
-
-```php{8-11}
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $isValid = Leaf\Form::validate([
-    'email' => 'email',
-    'name' => 'text',
-  ]);
-
-  $app->response()->json(
-    $isValid ? 'success' : Leaf\Form::errors()
-  );
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
-
 ```php{6-9}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  $isValid = form()->validate([
+  $isValid = request()->validate([
     'email' => 'email',
     'name' => 'text',
   ]);
 
   response()->json(
-    $isValid ? 'success' : form()->errors()
+    $isValid ? 'success' : request()->errors()
   );
 });
 
@@ -133,11 +63,11 @@ app()->run();
 
 </div>
 
-We passed an array into the `validate` function above. The array tells the `validate` function what rule to run against what data. The `email` rule is run against the email field we passed to make sure it's a valid email. In the same way, we're running the `text` method against the name field to make sure that it only contains text and spaces. You can try this out in the editor.
+The array tells the `validate()` function what rule(s) to run against what data. The `email` rule is run against the email field we passed to make sure it's a valid email. In the same way, we're running the `text` method against the name field to make sure that it only contains text and spaces. You can try this out in the editor.
 
-If you want the validation to fail, you can edit the `data` in the `request.json` file with invalid data.
+If you want the validation to fail, you can edit the `data` in the `request.json` file with invalid data. Try passing a number into the email field and see what happens.
 
-## MULTIPLE VALIDATION RULES
+## Multiple validation rules
 
 So far, we've only looked at validating data against a single rule. But what if we want to validate data against multiple rules? We can do this by passing an array of rules into the `validate` function. For example, we can validate the email field against the `email` and `required` rules.
 
@@ -145,68 +75,21 @@ So far, we've only looked at validating data against a single rule. But what if 
 'email' => ['required', 'email'],
 ```
 
-You can add as many rules as you want to the array, however, the order of the rules matter. If you want to validate a field against the `required` rule first, then you should put the `required` rule first in the array. You should also be sure not to use conflicting rules. For example, you can't use the `textOnly` rule and the `number` rule together.
+You can add as many rules as you want to the array, in the order you want to validate the data. The only rule here is to make sure your validation rules don't fight each other. For example, if you use the `textOnly` rule and the `number` rule together, the validation will always fail because the `textOnly` rule will always fail the `number` rule.
 
-## VALIDATION RULE ARGUMENTS
+## Getting validation errors
 
-Some rules require some form of argument to work. For example, the `max` rule requires an argument to work. The argument tells the `max` rule how long the string should be. For example, if we want to validate the name field against the `max` rule, we can do this by passing the `max` rule an argument of `10`.
-
-```php
-'username' => 'max:10',
-```
-
-To pass a rule an argument, you simply add a `:` after the rule name and then add the argument. This also applies to the `min` rule.
-
-## YOUR TASK
-
-Your task is to write validation rules for the data below.
-
-- **name** - Should be text with spaces only
-- **country** - Should be required,
-- **city** - Should be required,
-- **email** - Should be a valid email
-
-Sample data has already been provided in the `request.json` file. You can edit this to get different data in your app.
-
-## BONUS: CREATE YOUR OWN RULE
-
-Leaf Form has rules for the most used kinds of validation, however, you may need your validation rules to work in ways not specified by Leaf. For this reason, we've added functionality to create your own validation rules.
-
-To create your own rule, you can use the `rule` method on the <span class="class-mode">`Leaf\Form` class</span><span class="class-mode">`form` method</span>. `rule` takes two arguments, the first is the name of the rule and the second is a callback function.
-
-Let's create a rule that checks if a string contains a word passed in.
-
-<div class="class-mode">
+When validation fails, Leaf automatically stores the errors in the request object and returns `false`. You can get these errors by calling the `errors()` method on the request object. This method returns an array of errors. You can output these errors to the user or use them in any way you want.
 
 ```php
-Leaf\Form::rule("contains", function ($field, $value, string $params) {
-  if (strpos($value, $params) === false) {
-    Leaf\Form::addError($field, "$field must contain $params");
-    return false;
-  }
-});
+$isValid = request()->validate([
+  'email' => ['required', 'email'],
+  'name' => ['required', 'text'],
+]);
+
+response()->json(
+  $isValid ? 'success' : request()->errors()
+);
 ```
 
-</div>
-<div class="functional-mode">
-
-```php
-form()->rule("contains", function ($field, $value, string $params) {
-  if (strpos($value, $params) === false) {
-    form()->addError($field, "$field must contain $params");
-    return false;
-  }
-});
-```
-
-</div>
-
-You might have also noticed the `addError` method in the code above. This method is used to add an error to the error list. It takes two arguments, the first is the field name and the second is the error message. You can use this method to add your own custom error messages.
-
-After this, we can use our rule just like any other:
-
-```php
-'username' => 'contains:Leaf',
-```
-
-This section only brushed through creating your custom rules, you can [read the docs](/docs/forms/validation) for more info.
+In the example above, we're validating the email and name fields. If the validation fails, we're outputting the errors to the user. You can try this out in the editor.

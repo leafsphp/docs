@@ -30,7 +30,7 @@ $app->get('/', function () use ($app, $db) {
     ->params(['name' => 'John Doe', 'email' => 'johndoe@test.com'])
     ->execute();
 
-  $users = $db->query('SELECT * FROM users')->get();
+  $users = $db->select('users')->get();
 
   $app->response()->json([
     'users' => $users,

@@ -1,29 +1,8 @@
 # Leaf request
 
-In the previous exercise, we looked at Leaf response. In this one, we'll look at the leaf request object. This is an object which helps us retrieve the information coming into our app. Leaf makes this pretty simple by giving you straightforward methods which you can use pretty easily.
+In the last exercise, we explored Leaf response. Now, let’s look at the Leaf request object, which helps you get information coming into your app.
 
-To get started with the request object, <span class="class-mode">you can call the `request` method on the leaf instance or use the `Leaf\Http\Request` class.</span><span class="functional-mode">you can simply call the `request` function from anywhere in your app</span>
-
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $data = $app->request()->get('name');
-  $app->response()->json($data);
-});
-
-// don't forget to call run
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
+Leaf makes this easy with straightforward methods. To use the request object, just call the `request()` function anywhere in your app.
 
 ```php
 <?php
@@ -36,39 +15,16 @@ app()->get('/', function () {
   response()->json($data);
 });
 
-// don't forget to call run
 app()->run();
 ```
 
-</div>
+For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit it to get different data in your app.
 
-For this exercise, we've populated some data which will be passed into your app in the `request.json` file. You can edit this to get different data in your app.
+## Returning all data passed in your app
 
-## RETURNING ALL DATA PASSED IN YOUR APP
+Whenever a user interacts with your app, they pass in data. This data can be in the form of a get request, post request, url encoded data, files, etc.
 
-Leaf allows you to get every bit of data passed into your app all at once. This includes get request data, post request data, url encoded data, files and all of those.
-
-To get all this data, you simply need to call the `body` method. As the name implies, this method returns the entire body of a request.
-
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $data = $app->request()->body();
-  $app->response()->json($data);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
+Leaf allows you to get every bit of data passed into your app all at once using the `body()` method.
 
 ```php
 <?php
@@ -83,33 +39,11 @@ app()->get('/', function () {
 app()->run();
 ```
 
-</div>
-
 You can try this out in the editor.
 
-### GETTING A PARTICULAR ITEM FROM THE REQUEST
+## Getting a particular item from the request
 
-Although we have an entire pool of data being passed in, sometimes you need to grab one item, maybe for validation. You can do this simply using the `get` method.
-
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $data = $app->request()->get('name');
-  $app->response()->json($data);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
+Although we have an entire pool of data being passed in, sometimes you need to grab one item from the request. Leaf allows you to do this using the `get()` method.
 
 ```php
 <?php
@@ -124,33 +58,18 @@ app()->get('/', function () {
 app()->run();
 ```
 
-</div>
+In the editor, try getting the `country` field from the request.
 
-Your task is to get the `country` passed into the request.
+- Create a route which gets the `country` field from the request
+- **Replace `// 1. your app here` with your code**
+- Get the `country` field from the request
+- Output the `country` field using the `json` method
 
-### MULTIPLE SPECIFIC ITEMS FROM REQUEST
+## Getting multiple items from the request
 
-You can retrieve items from the request one by one, but sometimes, you might need particular items from the request for a specific task. Leaf allows you to retrieve all these items using the same `get` method. But instead of passing in a string, you pass an array of items you want to get.
+You can retrieve items from the request one by one, but sometimes you might need a couple of items from the request for a specific task.
 
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () use($app) {
-  $data = $app->request()->get(['name', 'country']);
-  $app->response()->json($data);
-});
-
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
+Leaf allows you to retrieve all these items using the same `get()` method. But instead of passing in a string, you pass an array of items you want to get.
 
 ```php
 <?php
@@ -165,6 +84,9 @@ app()->get('/', function () {
 app()->run();
 ```
 
-</div>
-
 In the editor, try retrieving the `country` and `city` fields.
+
+- Create a route which gets the `country` and `city` fields from the request
+- **Replace `// 1. your app here` with your code**
+- Get the `country` and `city` fields from the request
+- Output the `country` and `city` fields using the `json` method
