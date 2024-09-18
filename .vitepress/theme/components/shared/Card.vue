@@ -12,7 +12,7 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <component :is="as" style="transition: ease all .6s;"
-    class="cursor-pointer border border-[#0b2a32] hover:border-[#2b4a52] rounded-xl bg-[var(--vp-c-bg-alt)]">
+    class="cursor-pointer border border-[var(--vp-c-border-alt)] hover:border-[var(--vp-c-border-alt-hovered)] rounded-xl bg-[var(--vp-c-bg-alt)]">
     <slot></slot>
   </component>
 </template>

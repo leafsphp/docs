@@ -6,7 +6,7 @@ import { readExamples, ExampleData } from './examples.data';
 export declare const data: Record<string, ExampleData>;
 
 export default {
-  watch: '../../../src/tutorial/src/**',
+  watch: '../../../../src/tutorial/src/**',
   async load() {
     const createMarkdownRenderer = await import('vitepress').then(
       (s) => s.createMarkdownRenderer
@@ -15,6 +15,7 @@ export default {
     const md = await createMarkdownRenderer(
       process.cwd(),
       {
+        lineNumbers: true,
         // @ts-ignore
         // highlight: await createHighlighter()
       },

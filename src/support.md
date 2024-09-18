@@ -30,7 +30,7 @@ Sponsoring Leaf gives you great exposure to all Leaf developers around the world
 
 If you are using Leaf to build a revenue-generating product, it makes business sense to sponsor Leaf's development: **it ensures the project that your product relies on stays healthy and actively maintained.** The exposure and positive brand image in the Leaf community also makes it easier to attract and recruit developers.
 
-You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/contribute/premium-sponsor-79271) tier which give you the following perks:
+You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/contribute/premium-sponsor-79271) tier which gives you the following perks:
 
 - Your logo on our README on GitHub and our website
 - A personalized shoutout on our social media channels & newsletters

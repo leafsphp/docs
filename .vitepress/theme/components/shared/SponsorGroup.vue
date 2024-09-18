@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-1">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
     <SponsorCard v-for="sponsor in sponsors" :key="sponsor.name" v-bind="sponsor" />
   </div>
 </template>

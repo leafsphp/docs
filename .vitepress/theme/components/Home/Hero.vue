@@ -5,7 +5,7 @@ import Button from '../shared/Button.vue';
 
 <template>
   <div class="flex flex-col min-h-[90vh] justify-center items-center">
-    <h1 class="text-center !font-bold !text-7xl">
+    <h1 class="text-center !font-bold !text-4xl md:!text-7xl">
       Elegant PHP <br>
       <span>for Modern Developers</span>
     </h1>

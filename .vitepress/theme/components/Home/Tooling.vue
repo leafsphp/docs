@@ -73,7 +73,7 @@ const tooling = [
         the need to reinvent the wheel 🚀</p>
     </div>
 
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <DataCard v-for="item in tooling" :key="item.title" v-bind="item" />
     </div>
   </section>

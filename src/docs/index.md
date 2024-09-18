@@ -28,20 +28,19 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
 
 ## Getting Started
 
-<div class="grid grid-cols-3 gap-2">
-  <Card class="p-6 docs-section-card">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Hello Leaf 🍃</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Let's get you up and running</p>
 
   <ul>
     <li><a href="/docs/installation">Installation</a></li>
-    <li><a href="/docs/docker">Using Docker</a></li>
-    <li><a href="/docs/leaf-cli">Leaf CLI</a></li>
+    <li><a href="/docs/cli">Leaf CLI</a></li>
     <li><a href="/docs/migrating">Migrating from other frameworks</a></li>
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Learning to walk 🚶</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Learn the core concepts of Leaf</p>
 
@@ -52,7 +51,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Pro walking now 🏃‍♂️</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Beginner concepts that make you feel like pro</p>
 
@@ -66,21 +65,20 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
 
 ## Config & Deployment
 
-<div class="grid grid-cols-3 gap-2">
-  <Card class="p-6 docs-section-card">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Configuring Leaf ⚙️</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Setting up Leaf</p>
 
   <ul>
     <li><a href="/docs/config/">Configuring Leaf</a></li>
-    <li><a href="/docs/config/environment">Environment Variables</a></li>
-    <li><a href="/docs/config/container">Dependency Injection</a></li>
+    <li><a href="/docs/config/environment">Env Variables</a></li>
     <li><a href="/docs/routing/error-handling">Error Handling</a></li>
     <li><a href="/docs/config/debugging">Debugging</a></li>
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Deployment 🚀</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Deploying your Leaf app</p>
 
@@ -94,10 +92,10 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
 
 ## Data Handling
 
-<div class="grid grid-cols-3 gap-2">
-  <Card class="p-6 docs-section-card">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Databases 🔐</h3>
-  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Store/Retrieve data on the fly</p>
+  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Store and Retrieve data on the fly</p>
 
   <ul>
     <li><a href="/docs/database/">Database</a></li>
@@ -106,9 +104,9 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Using Data 🗄️</h3>
-  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Play around with data</p>
+  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Play around with data in your app</p>
 
   <ul>
     <li><a href="/docs/http/session">Sessions</a></li>
@@ -117,32 +115,34 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Validation 🛡️</h3>
-  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Make sure data is what you expect</p>
+  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Make sure your data isn't exploitable</p>
 
   <ul>
     <li><a href="/docs/data/validation">Validation</a></li>
     <li><a href="/docs/data/encryption">Encryption</a></li>
+    <li><a href="/docs/security/anchor">Leaf Anchor</a></li>
   </ul>
   </Card>
 </div>
 
 ## Digging Deeper
 
-<div class="grid grid-cols-3 gap-2">
-  <Card class="p-6 docs-section-card">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Frontend 🎨</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Frontend development with Leaf</p>
 
   <ul>
     <li><a href="/docs/frontend/">Frontend</a></li>
     <li><a href="/docs/frontend/bareui">Bare UI</a></li>
-    <li><a href="/docs/http/caching">Http Caching</a></li>
+    <li><a href="/docs/frontend/vite">Vite</a></li>
+    <li><a href="/docs/http/tailwind">Tailwind CSS</a></li>
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Utilities 🧹</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Everyday necessities for your apps</p>
 
@@ -153,21 +153,12 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
     <li><a href="/docs/utils/date">Date & Time</a></li>
   </ul>
   </Card>
-
-  <Card class="p-6 docs-section-card">
-  <h3 class="!text-lg">Vulnerability Protection 🛡️</h3>
-  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Protect your app from vulnerabilities</p>
-
-  <ul>
-    <li><a href="/docs/security/anchor">Leaf Anchor</a></li>
-  </ul>
-  </Card>
 </div>
 
 ## MVC
 
-<div class="grid grid-cols-3 gap-2">
-  <Card class="p-6 docs-section-card">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Leaf MVC 🌿</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Building apps with Leaf MVC</p>
 
@@ -176,11 +167,10 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
     <li><a href="/docs/mvc/controllers">Controllers</a></li>
     <li><a href="/docs/mvc/models">Models</a></li>
     <li><a href="/docs/mvc/views">Views</a></li>
-    <li><a href="/docs/mvc/config">Leaf MVC config</a></li>
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Database 🗄️</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Database operations in Leaf MVC</p>
 
@@ -192,16 +182,15 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   </ul>
   </Card>
 
-  <Card class="p-6 docs-section-card">
-  <h3 class="!text-lg">Console 🖥️</h3>
-  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Building apps with Leaf</p>
+  <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
+  <h3 class="!text-lg">Other Helpers 🖥️</h3>
+  <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Make building MVC apps even easier</p>
 
   <ul>
-    <li><a href="/docs/mvc/mailing">Mailing</a></li>
-    <li><a href="/docs/mvc/helpers">MVC Helpers</a></li>
-    <li><a href="/docs/mvc/custom-libraries">Custom Libraries</a></li>
-    <li><a href="/docs/mvc/console-tool">MVC Console Tool</a></li>
-    <li><a href="/docs/mvc/commands">Writing Commands</a></li>
+    <li><a href="/docs/utils/mail/mvc">Mailing</a></li>
+    <li><a href="/docs/mvc/globals">MVC Helpers</a></li>
+    <li><a href="/docs/mvc/libraries">Custom Libraries</a></li>
+    <li><a href="/docs/mvc/console">MVC Console Tool</a></li>
   </ul>
   </Card>
 </div>

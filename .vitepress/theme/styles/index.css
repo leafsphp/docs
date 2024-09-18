@@ -26,6 +26,12 @@
   --vp-local-search-result-selected-border: var(--vp-c-brand-1);
   --vp-local-search-highlight-bg: var(--vp-c-brand-1);
   --vp-local-search-highlight-text: var(--vp-c-neutral-inverse); */
+
+  --vp-c-border-alt: #eaeaea;
+  --vp-c-border-alt-hovered: #8a8a8a;
+
+  --vp-c-card-bg: #fefefe;
+  --vp-c-card-text-2: #333333;
 }
 
 html.dark {
@@ -37,8 +43,13 @@ html.dark {
   --vp-c-bg-soft: #002f3b;
   --vp-c-divider: #2b4a52;
   --vp-c-bg-elv: var(--vp-c-bg);
-}
 
+  --vp-c-border-alt: #0b2a32;
+  --vp-c-border-alt-hovered: #2b4a52;
+
+  --vp-c-card-bg: #0b2a32;
+  --vp-c-card-text-2: #bebebe;
+}
 
 /* .is-typed {
   font-family: 'Monaco';
@@ -66,6 +77,36 @@ html.dark {
 
 .is-typed span.cursor.typing {
   animation: none;
+}
+
+.docs-section-card {
+  @apply !cursor-auto !bg-[var(--vp-c-card-bg)];
+}
+
+.docs-section-card h3 {
+  margin-top: 0 !important;
+}
+
+.docs-section-card ul {
+  @apply rounded-lg list-none pl-0;
+}
+
+.docs-section-card ul li {
+  @apply flex items-start;
+}
+
+.docs-section-card ul li::before {
+  content: url('/images/icons/tiny-arrow.svg');
+  /* fill: var(--vp-c-card-text-2) !important; */
+}
+
+.docs-section-card ul li::before svg {
+  fill: var(--vp-c-card-text-2) !important;
+}
+
+.docs-section-card ul li a {
+  @apply !text-[var(--vp-c-card-text-2)];
+  text-decoration: none;
 }
 
 @keyframes blink {

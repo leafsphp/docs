@@ -1,4 +1,5 @@
 const animate = require('tailwindcss-animate');
+const headlessui = require('@headlessui/tailwindcss');
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -78,5 +79,5 @@ export default {
     },
   },
 
-  plugins: [animate],
+  plugins: [animate, headlessui],
 };

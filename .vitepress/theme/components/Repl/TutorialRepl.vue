@@ -1,31 +1,37 @@
 <script setup lang="ts">
+import axios from 'axios';
 import { watch, version, ref, computed, nextTick, onBeforeUnmount, onMounted } from 'vue';
-import axios from 'axios'
 
-import { Repl, ReplStore } from './vue-repl'
-import { data } from './tutorial.data'
+import Button from '../shared/Button.vue';
+import { ArrowLeft, ArrowRight } from 'lucide-vue-next';
+import { Repl, ReplStore } from './repl';
+import { data } from './tutorial.data';
 import {
   resolveSFCExample,
   onHashChange
-} from './utils'
-import './style.css'
+} from './utils';
 
-const output = ref('<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;"><img src="https://user-images.githubusercontent.com/26604242/178155909-362f06e6-9da9-473b-b47f-1219b4e65ae2.png"><div style="margin-top:10px;">🚀 Click the run button to compile your code</div></div>')
+import './style.css';
+import Select from '../shared/Select.vue';
+
+const output = ref(
+  '<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;"><img src="https://user-images.githubusercontent.com/26604242/178155909-362f06e6-9da9-473b-b47f-1219b4e65ae2.png"><div style="margin-top:10px;">🚀 Click the run button to compile your code</div></div>'
+);
 
 const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
-})
+});
 
 onMounted(() => {
-  document.body.classList.add('-is-tutorial')
-})
+  document.body.classList.add('-is-tutorial');
+});
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('-is-tutorial')
-})
+  document.body.classList.remove('-is-tutorial');
+});
 
 const run = async (files: Record<string, any>) => {
-  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🚀 Compiling your code...</div>'
+  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🚀 Compiling your code...</div>';
 
   const form = new FormData();
   const rawFiles: any = {};
@@ -43,10 +49,11 @@ const run = async (files: Record<string, any>) => {
     store.state.errors = [];
   }
 
-  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🏃‍♂️ Running your code...</div>'
+  output.value = '<div style="display:flex;justify-content:center;align-items:center;height:100%;">🏃‍♂️ Running your code...</div>';
 
   try {
     let config = JSON.parse(files['request.json'].code || '');
+
     config = config?.path ? config : null;
 
     let { data: res, headers } = await axios({
@@ -68,7 +75,7 @@ const run = async (files: Record<string, any>) => {
 
     output.value = `<iframe srcdoc='${res}'></iframe>`;
   } catch (error: any) {
-    console.log(error, 'error')
+    console.log(error, 'error');
 
     if (error?.response?.data) {
       output.value = `<iframe srcdoc='${error.response.data.replace(/'/g, '"')}'></iframe>`;
@@ -80,69 +87,67 @@ const run = async (files: Record<string, any>) => {
   }
 }
 
-const instruction = ref<HTMLElement>()
-
-const preferFunctional = true;
-const preferSFC = false;
-
 const currentStep = ref('');
+const instruction = ref<HTMLElement>();
 
 const keys = Object.keys(data).sort((a, b) => {
-  return Number(a.replace(/^step-/, '')) - Number(b.replace(/^step-/, ''))
+  return Number(a.replace(/^step-/, '')) - Number(b.replace(/^step-/, ''));
 });
 
 const totalSteps = keys.length;
 
-const titleRE = /<h1.*?>(.+?)<a class="header-anchor/
+const titleRE = /<h1.*?>(.+?)<a class="header-anchor/;
 const allSteps = keys.map((key, i) => {
-  const desc = data[key]['description.md'] as string
+  const desc = data[key]['description.md'] as string;
 
   return {
-    text: `${i + 1}. ${desc.match(titleRE)?.[1]}`,
+    text: `${desc.match(titleRE)?.[1]}`,
     link: `#${key}`
-  }
-})
+  };
+});
 
 const currentDescription = computed(() => {
-  return data[currentStep.value]?.['description.md']
-})
+  return data[currentStep.value]?.['description.md'];
+});
 
 const currentStepIndex = computed(() => {
-  return keys.indexOf(currentStep.value) + 1
-})
+  return keys.indexOf(currentStep.value) + 1;
+});
 
 const prevStep = computed(() => {
-  const match = currentStep.value.match(/\d+/)
-  const prev = match && `step-${+match[0] - 1}`
+  const match = currentStep.value.match(/\d+/);
+  const prev = match && `step-${+match[0] - 1}`;
+
   if (prev && data.hasOwnProperty(prev)) {
     return prev
   }
-})
+});
 
 const nextStep = computed(() => {
-  const match = currentStep.value.match(/\d+/)
-  const next = match && `step-${+match[0] + 1}`
+  const match = currentStep.value.match(/\d+/);
+  const next = match && `step-${+match[0] + 1}`;
+
   if (next && data.hasOwnProperty(next)) {
     return next
   }
-})
+});
 
-const showingHint = ref(false)
+const showingHint = ref(false);
 
 function updateExample(scroll = false) {
-  let hash = location.hash.slice(1)
+  let hash = location.hash.slice(1);
 
   if (!data.hasOwnProperty(hash)) {
-    hash = 'step-1'
-    location.replace(`/tutorial/#${hash}`)
+    hash = 'step-1';
+    location.replace(`/tutorial/#${hash}`);
   }
 
-  currentStep.value = hash
+  currentStep.value = hash;
 
-  const content = showingHint.value ? data[hash]._hint! : data[hash]
+  const content = showingHint.value ? data[hash]._hint! : data[hash];
 
   store.setFiles(
-    resolveSFCExample(content, preferFunctional),
+    resolveSFCExample(content, true),
     'index.php'
   );
 
@@ -154,43 +159,44 @@ function updateExample(scroll = false) {
 }
 
 function toggleResult() {
-  showingHint.value = !showingHint.value
-  updateExample()
+  showingHint.value = !showingHint.value;
+  updateExample();
 }
 
-watch([preferFunctional, preferSFC], () => updateExample())
+watch([], () => updateExample());
 
 onHashChange(() => {
-  showingHint.value = false
-  updateExample(true)
+  showingHint.value = false;
+  updateExample(true);
 })
 
-updateExample()
+updateExample();
 </script>
 
 <template>
   <section class="container tutorial">
-    <article class="instruction overflow-y-scroll" ref="instruction">
-      <div :button="`${currentStepIndex} / ${totalSteps}`">
-        <a v-for="(step, i) of allSteps" class="vt-menu-link" :class="{ active: i + 1 === currentStepIndex }"
-          :href="step.link">{{ step.text }}</a>
-      </div>
-      <div class="vt-doc" v-html="currentDescription"></div>
-      <div class="hint" v-if="data[currentStep]?._hint">
-        <button @click="toggleResult">
-          {{ showingHint ? 'Reset' : 'Show me!' }}
-        </button>
+    <article class="instruction py-8" ref="instruction">
+      <div class="sticky flex items-center gap-2 mt-4 top-0 bg-[var(--vp-c-bg)] py-4 z-10">
+        <Select :items="allSteps" :currentStepIndex="currentStepIndex" :totalSteps="totalSteps" />
+        <div class="flex items-center gap-1">
+          <Button as="a" class="!h-[50px] rounded-xl" v-if="prevStep" :href="`#${prevStep}`">
+            <ArrowLeft :size="16" />
+            <!-- <span>Prev</span> -->
+          </Button>
+          <Button as="a" class="!h-[50px] rounded-xl" v-if="nextStep" :href="`#${nextStep}`">
+            <!-- <span>Next</span> -->
+            <ArrowRight :size="16" />
+          </Button>
+        </div>
       </div>
 
-      <footer>
-        <a v-if="prevStep" :href="`#${prevStep}`">
-          <VTIconChevronLeft class="vt-link-icon" style="margin: 0" />
-          Prev
-        </a>
-        <a class="next-step" v-if="nextStep" :href="`#${nextStep}`">Next
-          <VTIconChevronRight class="vt-link-icon" />
-        </a>
-      </footer>
+      <div class="mt-5 vp-doc" v-html="currentDescription"></div>
+
+      <div class="hint">
+        <Button @click="toggleResult" v-if="data[currentStep]?._hint">
+          {{ showingHint ? 'Reset' : 'Reveal Answer!' }}
+        </Button>
+      </div>
     </article>
 
     <Repl layout="vertical" :store="store" :showCompileOutput="false" :clearConsole="false" :showImportMap="false"
@@ -217,12 +223,8 @@ updateExample()
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
 }
 
-.tutorial h2 {
-  margin-top: 3.5rem !important;
-}
-
-.tutorial h3 {
-  margin-top: 1.5rem !important;
+.tutorial h1 {
+  display: none;
 }
 </style>
 
