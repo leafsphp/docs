@@ -13,6 +13,7 @@ import Button from '../shared/Button.vue';
       Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a
       zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.
     </p>
+    <div class="gradient"></div>
     <div class="flex justify-center items-center mt-6 gap-4">
       <VideoModal videoUrl="https://www.youtube.com/embed/KfClnH-fQz8" buttonText="Intro to Leaf" />
 
@@ -34,16 +35,15 @@ h1 span {
   -webkit-text-fill-color: transparent;
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  margin-left: 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--vp-c-text-code);
-  color: #fff;
-  text-decoration: none;
-  transition: background-color 0.2s;
+.gradient {
+  left: 0;
+  top: 25vh;
+  width: 100%;
+  opacity: .4;
+  z-index: -1;
+  height: 30vh;
+  position: absolute;
+  filter: blur(180px);
+  background: radial-gradient(50% 50% at 50% 50%, #42d392 50%, var(--vp-c-brand-2) 0, #000c2000);
 }
 </style>

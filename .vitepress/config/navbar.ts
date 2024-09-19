@@ -12,6 +12,10 @@ const nav: DefaultTheme.NavItem[] = [
         link: '/docs/mvc/',
       },
       {
+        text: 'Leaf Modules',
+        link: '/docs/modules',
+      },
+      {
         text: 'Leaf CLI',
         link: '/docs/cli/',
       },
@@ -30,10 +34,6 @@ const nav: DefaultTheme.NavItem[] = [
         text: 'Resources',
         items: [
           { text: 'Online Playground', link: 'https://sandbox.leafphp.dev/' },
-          // {
-          //   text: 'Leaf Modules',
-          //   link: '/docs/modules',
-          // },
           {
             text: 'Codelabs',
             link: '/codelabs/',
