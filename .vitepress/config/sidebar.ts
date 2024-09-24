@@ -9,6 +9,9 @@ const sidebar = [
       { text: 'Installation', link: '/docs/installation' },
       { text: 'Using Docker', link: '/docs/docker' },
       { text: 'Migration Guide', link: '/docs/migrating' },
+      { text: 'Functional Mode', link: '/docs/config/functional-mode' },
+      { text: 'Leaf + MVC', link: '/docs/mvc/' },
+      { text: 'Modules', link: '/docs/modules' },
     ],
   },
   {
@@ -22,20 +25,41 @@ const sidebar = [
     ],
   },
   {
-    text: 'The basics',
+    text: 'Request/Response',
     // collapsible: true,
     // collapsed: true,
     items: [
-      { text: 'Modules', link: '/docs/modules' },
       { text: 'Request', link: '/docs/http/request' },
       { text: 'Response', link: '/docs/http/response' },
       { text: 'Headers', link: '/docs/http/headers' },
       { text: 'CORS', link: '/docs/http/cors' },
-      { text: 'Session', link: '/docs/http/session' },
+    ],
+  },
+  {
+    text: 'Sessions',
+    // collapsible: true,
+    // collapsed: true,
+    items: [
+      { text: 'Using Sessions', link: '/docs/http/session' },
       { text: 'Session Flash', link: '/docs/http/flash' },
       { text: 'Cookies', link: '/docs/http/cookies' },
-      { text: 'Functional Mode', link: '/docs/config/functional-mode' },
-      { text: 'Testing', link: '/docs/utils/testing' },
+    ],
+  },
+  {
+    text: 'Routing',
+    // collapsible: true,
+    // collapsed: true,
+    items: [
+      { text: 'Basic Routing', link: '/docs/routing/' },
+      { text: 'Routing in Leaf MVC', link: '/docs/routing/mvc' },
+      { text: 'Route Groups', link: '/docs/routing/route-groups' },
+      { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
+      { text: 'Middleware', link: '/docs/routing/middleware/' },
+      { text: 'Middleware in Leaf MVC', link: '/docs/routing/middleware/mvc' },
+      {
+        text: 'Optional Route sub-patterns',
+        link: '/docs/routing/sub-patterns',
+      },
     ],
   },
   {
@@ -43,8 +67,8 @@ const sidebar = [
     // collapsible: true,
     // collapsed: true,
     items: [
-      { text: 'Overview', link: '/docs/config/' },
-      { text: 'App settings', link: '/docs/config/settings' },
+      // { text: 'Overview', link: '/docs/config/' },
+      // { text: 'App settings', link: '/docs/config/settings' },
       { text: 'Application Env', link: '/docs/config/environment' },
       { text: 'URL Rewriting', link: '/docs/routing/url-rewriting' },
       { text: 'Error Handling', link: '/docs/routing/error-handling' },
@@ -54,24 +78,7 @@ const sidebar = [
       { text: 'Debugging', link: '/docs/config/debugging' },
       { text: 'Leaf Devtools', link: '/docs/utils/devtools' },
       { text: 'Deployment', link: '/docs/config/deployment' },
-    ],
-  },
-  {
-    text: 'Routing',
-    // collapsible: true,
-    // collapsed: true,
-    items: [
-      { text: 'Basic Routing', link: '/docs/routing/' },
-      { text: 'MVC Support', link: '/docs/routing/mvc' },
-      { text: 'Route Groups', link: '/docs/routing/route-groups' },
-      { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
-      { text: 'Middleware', link: '/docs/routing/middleware' },
-      {
-        text: 'Optional Route sub-patterns',
-        link: '/docs/routing/sub-patterns',
-      },
-      { text: 'Subfolder support', link: '/docs/routing/subfolder-support' },
-      // { text: 'Using controllers', link: '/docs/routing/controller' },
+      { text: 'Testing', link: '/docs/utils/testing' },
     ],
   },
   {
@@ -143,7 +150,6 @@ const sidebar = [
     // collapsible: true,
     // collapsed: true,
     items: [
-      { text: 'Introduction', link: '/docs/mvc/' },
       { text: 'MVC Config', link: '/docs/config/mvc' },
       { text: 'Controllers', link: '/docs/routing/controllers' },
       { text: 'Views', link: '/docs/frontend/mvc' },

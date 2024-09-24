@@ -20,7 +20,7 @@ While PHP frameworks can accelerate and streamline web development, they come wi
 
 ## How Leaf Addresses These Challenges
 
-Leaf 3 offers a range of features specifically designed to overcome these common issues found in many PHP frameworks.
+Leaf offers a range of features specifically designed to overcome these common issues found in many PHP frameworks.
 
 ### Low Barrier to Entry
 
@@ -28,23 +28,27 @@ Leaf is incredibly easy to learn, with PHP beginners building powerful Leaf appl
 
 ### Lightweight and Fast
 
-Leaf 2 was already considered one of the most lightweight and powerful frameworks available, but Leaf 3 takes this even further. Leaf 3 is an incredibly lightweight PHP framework, with a source code base of about 30KB, allowing you to build full applications and APIs that are under 20MB, even with user dependencies. This is a stark contrast to other frameworks that require dependencies and numerous files, often exceeding 100MB.
+Leaf 4 is an incredibly lightweight PHP framework, coming with only a router and an HTTP abstraction out the box. However, it also has a ton of modules that allow you to build full applications and APIs with ease. Leaf is designed to be fast and efficient, with minimal overhead and a small memory footprint. It's also highly performant, outperforming many other PHP frameworks in benchmarks while keeping memory and CPU usage low.
+
+[![image](https://github.com/myaaghubi/PHP-Frameworks-Bench/raw/main/screenshots/php-frameworks-bench-exectime.png)](https://github.com/myaaghubi/PHP-Frameworks-Bench)
+
+> Lower is better
+
+### High Developer Productivity
+
+Extensive research and testing has gone into developing features that enable developers to focus solely on what matters: their applications. Leaf introduces a range of strategies to create the best developer experience in PHP, such as eliminating class initializers and providing global functions that allow you to call classes from anywhere in your application, along with other innovative features.
 
 ![image](https://user-images.githubusercontent.com/26604242/146754044-4c71c4ec-7b37-4c85-9c8b-56e8c2b54831.png)
 
 > a comparison with slim - slim (left) - leaf (right)
 
-### High Developer Productivity
-
-Extensive research and testing have gone into developing features that enable developers to focus solely on what matters: their applications. Leaf 3 introduces a range of strategies to create the best developer experience in PHP, such as eliminating class initializers and providing global functions that allow you to call classes from anywhere in your application, along with other innovative features.
-
 ### Powered by Modules
 
-Leaf 3 and its ecosystem are heavily driven by [modules](/docs/modules)—individual pieces of Leaf's functionality packaged into independently installable libraries. Modules make Leaf even more lightweight by allowing developers to include only the features they need in their applications. This means you only install what you require.
+Leaf 4 is driven by [modules](/docs/modules). These are individual pieces of Leaf's functionality packaged into independently installable libraries. Modules make Leaf even more lightweight by allowing developers to include only the features they need in their applications. This means you only install what you require and nothing more, reducing bloat and improving performance.
 
 ### Intuitive and Easy-to-Use Features
 
-As part of the effort to enhance the developer experience, Leaf 3's existing features have been made more performant and user-friendly. We adopted strategies like modeling some features after popular libraries in other languages and frameworks. For example, the API for Leaf's CORS functionality closely resembles the Express.js CORS middleware.
+As part of the effort to enhance the developer experience, Leaf's existing features have been made more performant and user-friendly. We adopted strategies like modeling some features after popular libraries in other languages and frameworks. For example, the API for Leaf's CORS functionality closely resembles the Express.js CORS middleware.
 
 ### Compatibility with Libraries and Frameworks
 

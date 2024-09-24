@@ -21,9 +21,9 @@ Cross-Origin Resource Sharing or CORS is a mechanism that allows browsers to req
 
 Since CORS is a common pain point for web developers, Leaf provides a simple way to deal with most CORS issues. Of course, you can always handle CORS manually, but this module just offers a more convenient and flexible way to do so. It is heavily inspired by the ExpressJS [CORS package](https://github.com/expressjs/cors).
 
-## Installation
+## Setting Up
 
-You can install CORS through the Leaf CLI or with composer.
+You can install the CORS module through the Leaf CLI or with composer.
 
 ::: code-group
 
@@ -58,7 +58,7 @@ $app->cors();
 
 :::
 
-You can also pass in an array of options to the `cors()` method:
+This will allow all users from any website to access your app, even if they are on a website you didn't explicitly allow. If you want to restrict access to your app, you can pass in an array of options to the `cors()` method.
 
 ```php
 app()->cors([
@@ -66,6 +66,8 @@ app()->cors([
   'methods' => ['GET', 'POST'],
 ]);
 ```
+
+This will only allow users from `http://example.com` and `http://example.org` to access your app using the `GET` and `POST` methods. You can find a list of all available options below.
 
 ## Configuration Options
 

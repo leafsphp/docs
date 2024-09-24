@@ -2,6 +2,10 @@
 
 This page contains a guide for developers who have a working application in another framework and want to port over to Leaf. Since Leaf is modular, you can pick different pieces and incrementally add them to your existing application. This way, you can gradually rewrite your application without breaking any code.
 
+Before you go on, we just want to say
+
+![image](https://github.com/user-attachments/assets/e324cb25-2fa6-4c03-b490-499173992f99)
+
 ## Why Migrate to Leaf?
 
 Depending on the framework you're coming from, you might have different reasons for migrating to Leaf. Leaf is lightweight, modular, and has a simple API. It offers better performance and flexibility compared to many other frameworks. Leaf also allows you to integrate other libraries seamlessly into your Leaf apps with no conflicts or complexities.
@@ -10,7 +14,7 @@ We are still in the process of creating migration guides for different framework
 
 ## Quickstart
 
-Since you can pick and choose different modules in Leaf, you can start by finding the feature you want to use and installing it. Below is an example of a Slim PHP 4 application that we want to use Leaf 3 in:
+Since you can pick and choose different modules in Leaf, you can start by finding the feature you want to use and installing it. Below is an example of a Slim PHP 4 application that we want to use Leaf in:
 
 ```php
 <?php

@@ -73,3 +73,117 @@ $exists = session()->has('nullableItem', false);
 
 echo $exists; // true
 ```
+
+## Getting session data
+
+To get session data, you can use the `get()` method. This method takes three parameters:
+
+- the key to get the data from
+- a default value to return if the key doesn't exist
+- a boolean to determine if the data should be sanitized (default is `true`)
+
+```php
+$firstName = session()->get('firstName');
+$firstName = session()->get('firstName', 'John');
+$firstName = session()->get('firstName', 'John', false);
+
+// PHP 8+
+$firstName = session()->get(param: 'firstName', sanitize: false);
+```
+
+You can also select multiple items by passing an array of keys to the `get()` method.
+
+```php
+$names = session()->get(['firstName', 'lastName']);
+
+$fistName = $names['firstName'];
+$lastName = $names['lastName'];
+```
+
+## Getting session data once
+
+There are situations where you want to get session data only once. You can use the `retrieve()` method to get session data once. After the data is retrieved, it is removed from the session so it returns `null` if you try to get it again.
+
+```php
+$firstName = session()->retrieve('firstName');
+
+// $firstName is 'John'
+
+$firstName = session()->retrieve('firstName');
+
+// $firstName is null
+```
+
+You can also pass a default value to the `retrieve()` method.
+
+```php
+$firstName = session()->retrieve('firstName', 'John');
+```
+
+::: tip Flash messages
+`retrieve()` is useful for basic implementations of flash messages, but for more advanced flash messages, you should use the `flash()` method. You can find more information about flash messages in the [Flash Messages](/docs/http/flash) section.
+:::
+
+## Getting all session data
+
+To get all session data, you can use the `all()` method. This method returns all session data as an array.
+
+```php
+$sessionData = session()->all();
+```
+
+## Deleting session data
+
+When you're done with session data, you can delete it using the `delete()` method. This method takes the key to delete as a parameter.
+
+```php
+session()->delete('firstName');
+```
+
+You can also delete multiple items by passing an array of keys to the `delete()` method.
+
+```php
+session()->delete(['firstName', 'lastName']);
+```
+
+## Clearing all session data
+
+There are situations where you want to delete all session data without stopping the session. In those cases, you can use the `clear()` method.
+
+```php
+session()->clear();
+```
+
+## Working with arrays
+
+The Session module has one last trick up its sleeve. It provides a cleaner way of working with arrays in the session without having to deal with multiple `get()` and `set()` calls.
+
+Let's say you have an array in the session like this:
+
+```php
+session()->set('user', [
+  'name' => 'John Doe',
+  'email' => 'john@example.com',
+]);
+```
+
+You can easily add a new item to the array using the same `set()` method:
+
+```php
+session()->set('user.location', 'Everywhere');
+```
+
+This will add a location key to the user array in the session. This saves you from having to get the user array, adding the location key, and setting it back to the session.
+
+It also works for the other methods like `get()`, `has()` and `delete()`.
+
+```php
+if (session()->has('user.username')) {
+  // do something
+}
+
+$location = session()->get('user.location');
+$email = session()->retrieve('user.email');
+
+session()->delete('user.location');
+```

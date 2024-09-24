@@ -6,7 +6,7 @@
 import VideoModal from '@theme/components/shared/VideoModal.vue'
 </script>
 
-Leaf 3 is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements. You can use Leaf on its own which is generally recommended for small/medium sized projects, or you can use it with an additional structure like [Leaf MVC](/docs/mvc/) for more complex applications.
+Leaf 4 is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements. You can use Leaf on its own which is generally recommended for small/medium sized projects, or you can use it with an additional structure like [Leaf MVC](/docs/mvc/) for more complex applications.
 
 1. [Use the Leaf CLI to scaffold a project [RECOMMENDED]](#leaf-cli).
 2. [Download leaf through composer](#composer)
@@ -32,13 +32,13 @@ Before you create your first Leaf application, you need to make sure you meet th
 ## Leaf CLI
 
 <VideoModal
-  subject="Watch the leaf 3 installation walkthrough"
+  subject="Watch the leaf installation walkthrough"
   videoUrl="https://www.youtube.com/embed/PuOk5xqTIsA"
 />
 
 Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/docs/cli/) for more details.
 
-Using the CLI, you can quickly scaffold a new Leaf 3 project with:
+Using the CLI, you can quickly scaffold a new Leaf project with:
 
 ```bash:no-line-numbers
 leaf create <project-name>

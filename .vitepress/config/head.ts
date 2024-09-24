@@ -1,8 +1,39 @@
 import { HeadConfig } from 'vitepress';
 
 const head: HeadConfig[] = [
+  [
+    'meta',
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+  ],
+  [
+    'meta',
+    {
+      name: 'description',
+      content:
+        'Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.',
+    },
+  ],
   ['meta', { name: 'twitter:site', content: '@leafphp' }],
-  ['meta', { name: 'twitter:card', content: 'summary' }],
+  ['meta', { name: 'twitter:url', content: 'https://leafphp.dev' }],
+  ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+  [
+    'meta',
+    {
+      name: 'twitter:title',
+      content: 'Leaf PHP - Elegant PHP for Modern Development',
+    },
+  ],
+  [
+    'meta',
+    {
+      name: 'twitter:description',
+      content:
+        'Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.',
+    },
+  ],
   [
     'meta',
     {
@@ -14,41 +45,40 @@ const head: HeadConfig[] = [
   [
     'meta',
     {
+      name: 'og:title',
+      content: 'Leaf PHP - Elegant PHP for Modern Development',
+    },
+  ],
+  [
+    'meta',
+    {
+      name: 'og:type',
+      content: 'website',
+    },
+  ],
+  [
+    'meta',
+    {
+      name: 'og:url',
+      content: 'https://leafphp.dev',
+    },
+  ],
+  [
+    'meta',
+    {
       name: 'og:image',
       content:
         'https://repository-images.githubusercontent.com/214705101/0ff19323-d2c5-46f5-a582-0b1f3a6eabcc',
     },
   ],
-  // [
-  //   'link',
-  //   {
-  //     rel: 'preload',
-  //     as: 'style',
-  //     href: '/global.css',
-  //   },
-  // ],
-  // [
-  //   'link',
-  //   {
-  //     rel: 'stylesheet',
-  //     href: '/global.css',
-  //   },
-  // ],
-  // [
-  //   'link',
-  //   {
-  //     rel: 'preload',
-  //     as: 'style',
-  //     href: '/449.css',
-  //   },
-  // ],
-  // [
-  //   'link',
-  //   {
-  //     rel: 'stylesheet',
-  //     href: '/449.css',
-  //   },
-  // ],
+  [
+    'meta',
+    {
+      name: 'og:description',
+      content:
+        'Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.',
+    },
+  ],
   [
     'link',
     {
@@ -95,13 +125,6 @@ const head: HeadConfig[] = [
     },
   ],
   ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-  // [
-  //   'link',
-  //   {
-  //     href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-  //     rel: 'stylesheet',
-  //   },
-  // ],
   [
     'link',
     {
@@ -117,33 +140,24 @@ const head: HeadConfig[] = [
   //     'utf-8'
   //   ),
   // ],
-  [
-    'script',
-    {
-      async: '',
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-QGZVHHLK12',
-    },
-  ],
-  [
-    'script',
-    {},
-    `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+  // [
+  //   'script',
+  //   {
+  //     async: '',
+  //     src: 'https://www.googletagmanager.com/gtag/js?id=G-QGZVHHLK12',
+  //   },
+  // ],
+  // [
+  //   'script',
+  //   {},
+  //   `
+  //       window.dataLayer = window.dataLayer || [];
+  //       function gtag(){dataLayer.push(arguments);}
+  //       gtag('js', new Date());
 
-        gtag('config', 'G-QGZVHHLK12');
-      `,
-  ],
-  [
-    'script',
-    {
-      src: 'https://cdn.usefathom.com/script.js',
-      'data-site': 'XNOLWPLB',
-      'data-spa': 'auto',
-      defer: '',
-    },
-  ],
+  //       gtag('config', 'G-QGZVHHLK12');
+  //     `,
+  // ],
 ];
 
 export default head;

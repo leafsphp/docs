@@ -34,17 +34,17 @@ Leaf is used by individuals for large and personal projects, as well as by compa
 
 ## Is Leaf fast?
 
-Leaf 3 is one of the most performant and lightweight PHP frameworks today. It is also 100% compatible with standard PHP libraries and servers, which means there's almost no need for configuration and manual optimizations.
+Leaf is one of the most performant and lightest PHP frameworks today. It is 100% compatible with standard PHP libraries and servers, which means there's almost no need for configuration and manual optimizations.
 
-In sample benchmarks, Leaf even out-performs frameworks like Slim PHP which was considered the most lightweight PHP micro-framework with blazing speed.
+In sample benchmarks, Leaf even out-performs frameworks like Slim PHP, while using way less memory and CPU.
 
-## What PHP versions does Leaf support?
+## What PHP versions does Leaf 4 support?
 
-Leaf supports PHP 7.4 and above, ensuring compatibility with modern PHP features and standards.
+Leaf supports PHP 7.4 and above, ensuring compatibility with modern PHP features and standards, but will completely switch to PHP 8.2 and above in the future.
 
 ## Is Leaf lightweight?
 
-As mentioned above, Leaf 3 is one of the most lightweight PHP frameworks with a source of about 30kb. With Leaf 3's functional mode, a hello world application can be prepared in just 10 lines of code, including spaces and PHP initializers.
+Leaf 4 is super lightweight, coming with only a router and a lightweight http abstraction out of the box. With Leaf 4's functional mode, a hello world application can be prepared in just 10 lines of code, including spaces and PHP initializers.
 
 ## Does Leaf scale?
 

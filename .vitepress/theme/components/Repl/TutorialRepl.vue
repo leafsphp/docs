@@ -41,7 +41,7 @@ const run = async (files: Record<string, any>) => {
     rawFiles[filename] = files[filename].code;
   });
 
-  let { data: folder } = await axios.post('https://leafphp-sandbox-server.fly.dev/compile', form);
+  let { data: folder } = await axios.post('http://leafphp-sandbox-server.fly.dev/compile', form);
 
   if (!folder) {
     return store.state.errors.push('Internal system error, please try again' as never);
@@ -57,7 +57,7 @@ const run = async (files: Record<string, any>) => {
     config = config?.path ? config : null;
 
     let { data: res, headers } = await axios({
-      url: `https://leafphp-sandbox-server.fly.dev${folder.folder}${config?.path ?? '/'}`,
+      url: `http://leafphp-sandbox-server.fly.dev${folder.folder}${config?.path ?? '/'}`,
       method: config?.method ?? 'GET',
       headers: config?.headers ?? {},
       data: config?.data ?? {},
@@ -221,6 +221,37 @@ updateExample();
   --cursor: #fff;
   --selected-bg: rgba(255, 255, 255, 0.1);
   --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
+}
+
+.dark .vue-repl[data-v-760f3496] {
+  --bg: #001318 !important;
+  --bg-soft: #002028 !important;
+  --border: #383838;
+  --text-light: #aaa;
+  --color-branding: #42d392;
+  --color-branding-dark: #89ddff;
+}
+
+.dark .CodeMirror {
+  color: var(--symbols);
+  --symbols: #89ddff;
+  --base: #a6accd;
+  --comment: #6d6d6d;
+  --keyword: #e879f9 !important;
+  --string: #bef264 !important;
+  --variable: #22d3ee !important;
+  --number: #f78c6c;
+  --tags: #f07178;
+  --brackets: #9299a6 !important;
+  --property: #f07178;
+  --attribute: #c792ea;
+  --cursor: #fff;
+  --selected-bg: rgba(255, 255, 255, 0.1);
+  --selected-bg-non-focus: rgba(255, 255, 255, 0.15);
+}
+
+.-is-tutorial .VPNavBar {
+  border-bottom: 1px solid var(--vt-c-divider-light) !important;
 }
 
 .tutorial h1 {

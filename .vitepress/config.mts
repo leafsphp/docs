@@ -19,7 +19,7 @@ export default defineConfig({
     sidebar,
 
     logo: '/logo-circle.png',
-    siteTitle: 'Leaf 3',
+    siteTitle: 'Leaf PHP',
 
     search: {
       provider: 'local',
