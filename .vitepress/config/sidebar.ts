@@ -151,7 +151,7 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'MVC Config', link: '/docs/config/mvc' },
-      { text: 'Controllers', link: '/docs/routing/controllers' },
+      { text: 'Controllers', link: '/docs/mvc/controllers' },
       { text: 'Views', link: '/docs/frontend/mvc' },
       { text: 'Models', link: '/docs/database/models' },
       { text: 'Migrations', link: '/docs/database/migrations' },

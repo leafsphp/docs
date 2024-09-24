@@ -1,6 +1,6 @@
 # Routing in Leaf MVC
 
-Leaf MVC uses the Leaf router to handle routing, but adds a few extra features to make routing easier and more powerful. If you are not familiar with the Leaf router, you can check out the [Leaf router documentation](/docs/routing). It will take about a minute to familiarize yourself with the router.
+Leaf MVC uses the Leaf router to handle routing, but adds a few extra features to make routing easier and more powerful. If you are not familiar with the Leaf router, you can check out the [Leaf router documentation](/docs/routing/). It will take about a minute to familiarize yourself with the router.
 
 ## Adding Routes
 
