@@ -38,13 +38,13 @@ Leaf is one of the most performant and lightest PHP frameworks today. It is 100%
 
 In sample benchmarks, Leaf even out-performs frameworks like Slim PHP, while using way less memory and CPU.
 
-## What PHP versions does Leaf 4 support?
+## What PHP versions does Leaf support?
 
 Leaf supports PHP 7.4 and above, ensuring compatibility with modern PHP features and standards, but will completely switch to PHP 8.2 and above in the future.
 
 ## Is Leaf lightweight?
 
-Leaf 4 is super lightweight, coming with only a router and a lightweight http abstraction out of the box. With Leaf 4's functional mode, a hello world application can be prepared in just 10 lines of code, including spaces and PHP initializers.
+Leaf is super lightweight, coming with only a router and a lightweight http abstraction out of the box. With Leaf's functional mode, a hello world application can be prepared in just 10 lines of code, including spaces and PHP initializers.
 
 ## Does Leaf scale?
 

@@ -141,7 +141,7 @@ const sidebar = [
       { text: 'Vite JS', link: '/docs/frontend/vite' },
       { text: 'Tailwind CSS', link: '/docs/frontend/tailwind' },
       { text: 'Inertia JS', link: '/docs/frontend/inertia' },
-      { text: 'Viewi PHP', link: '/docs/frontend/viewi' },
+      // { text: 'Viewi PHP', link: '/docs/frontend/viewi' },
       // { text: 'Leaf UI', link: '/docs/frontend/leaf-ui' },
     ],
   },
@@ -165,17 +165,17 @@ const sidebar = [
       { text: 'MVC Console Tool', link: '/docs/mvc/console' },
     ],
   },
-  {
-    text: 'Codelabs',
-    // collapsible: true,
-    // collapsed: true,
-    items: [
-      { text: 'Intro', link: '/codelabs/' },
-      { text: 'Contributing', link: '/codelabs/contributing' },
-      // { text: 'Deployment', link: '/codelabs/experiments/deployment/' },
-      // { text: 'Authentication', link: '/codelabs/experiments/auth/' },
-    ],
-  },
+  // {
+  //   text: 'Codelabs',
+  //   // collapsible: true,
+  //   // collapsed: true,
+  //   items: [
+  //     { text: 'Intro', link: '/codelabs/' },
+  //     { text: 'Contributing', link: '/codelabs/contributing' },
+  //     // { text: 'Deployment', link: '/codelabs/experiments/deployment/' },
+  //     // { text: 'Authentication', link: '/codelabs/experiments/auth/' },
+  //   ],
+  // },
 ];
 
 export default sidebar;

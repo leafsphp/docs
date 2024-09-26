@@ -28,7 +28,7 @@ Leaf is incredibly easy to learn, with PHP beginners building powerful Leaf appl
 
 ### Lightweight and Fast
 
-Leaf 4 is an incredibly lightweight PHP framework, coming with only a router and an HTTP abstraction out the box. However, it also has a ton of modules that allow you to build full applications and APIs with ease. Leaf is designed to be fast and efficient, with minimal overhead and a small memory footprint. It's also highly performant, outperforming many other PHP frameworks in benchmarks while keeping memory and CPU usage low.
+Leaf is an incredibly lightweight PHP framework, coming with only a router and an HTTP abstraction out the box. However, it also has a ton of modules that allow you to build full applications and APIs with ease. Leaf is designed to be fast and efficient, with minimal overhead and a small memory footprint. It's also highly performant, outperforming many other PHP frameworks in benchmarks while keeping memory and CPU usage low.
 
 [![image](https://github.com/myaaghubi/PHP-Frameworks-Bench/raw/main/screenshots/php-frameworks-bench-exectime.png)](https://github.com/myaaghubi/PHP-Frameworks-Bench)
 
@@ -44,7 +44,7 @@ Extensive research and testing has gone into developing features that enable dev
 
 ### Powered by Modules
 
-Leaf 4 is driven by [modules](/docs/modules). These are individual pieces of Leaf's functionality packaged into independently installable libraries. Modules make Leaf even more lightweight by allowing developers to include only the features they need in their applications. This means you only install what you require and nothing more, reducing bloat and improving performance.
+Leaf is driven by [modules](/docs/modules). These are individual pieces of Leaf's functionality packaged into independently installable libraries. Modules make Leaf even more lightweight by allowing developers to include only the features they need in their applications. This means you only install what you require and nothing more, reducing bloat and improving performance.
 
 ### Intuitive and Easy-to-Use Features
 

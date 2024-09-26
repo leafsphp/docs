@@ -6,7 +6,7 @@
 import VideoModal from '@theme/components/shared/VideoModal.vue'
 </script>
 
-Leaf 4 is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements. You can use Leaf on its own which is generally recommended for small/medium sized projects, or you can use it with an additional structure like [Leaf MVC](/docs/mvc/) for more complex applications.
+Leaf is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements. You can use Leaf on its own which is generally recommended for small/medium sized projects, or you can use it with an additional structure like [Leaf MVC](/docs/mvc/) for more complex applications.
 
 1. [Use the Leaf CLI to scaffold a project [RECOMMENDED]](#leaf-cli).
 2. [Download leaf through composer](#composer)
