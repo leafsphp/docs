@@ -115,6 +115,14 @@ export default defineConfig({
 });
 ```
 
+One more thing to note is that Vite is configured to work with Leaf MVC by default. If you're using Vite with just Leaf Core, you'll need to change the directory where Vite looks for your assets. You can do this by updating these options in your Leaf app:
+
+```php
+\Leaf\Vite::config('assets', '/path/to/new/assets/dir');
+\Leaf\Vite::config('build', '/path/to/new/build/dir');
+\Leaf\Vite::config('hotFile', '/path/to/new/hot');
+```
+
 ## Running Vite
 
 If you're using a Leaf MVC app or you installed Vite using the `view:install` command, you can start your vite server without any extra configuration. You can do this by running:

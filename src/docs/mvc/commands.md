@@ -71,35 +71,39 @@ Aloe is built on top of Symfony Console. This means you can use all of the featu
 
 By default, aloe cli registers all generated commands, however, if you create a command manually, you'll have to register it manually. There are also situations where a package might need you to register a command, it can also be done using same method.
 
-To add your commands, open up the `leaf` file in the root directory of your project. You'll find a commented section talking about custom commands.
+To add your commands, open up the `app/console/Commands.php` file and return whatever commands you want to register.
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| Add custom command
-|--------------------------------------------------------------------------
-|
-| If you have a new command to add to Leaf
-|
-*/
-$console->register(\App\Console\ExampleCommand::class);
+<?php 
+
+namespace App\Console;
+
+class Commands
+{
+    /**
+     * Register commands
+     * 
+     * @param $console
+     * @return void
+     * 
+     */
+    public static function register($console): void
+    {
+        $console->register([
+            ExampleCommand::class,
+        ]);
+    }
+}
 ```
 
-An example command has already been registered, so you can follow this example. You can call the `register` method on the `$console` variable. The `register` method takes in the command class as a parameter.
-
-```php
-$console->register(\App\Console\YourCommand::class);
-```
-
-You can also pass in an array of commands to register, as such, a custom package with a couple of commands to register can simply return an array of all those commands.
+An example command has already been registered, so you can follow this example. You can add as many commands as you want to register.
 
 ```php
 $console->register([
   \App\Console\AppCommand::class,
   \App\Console\AppCommand2::class,
+  CustomPackage::commands()
 ]);
-
-$console->register(CustomPackage::commands());
 ```
 
 ## Command Arguments

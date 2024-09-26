@@ -107,7 +107,7 @@ This will prompt you to select a preset. Presets are quick ways to get your proj
 ? What kind of app do you want to create? [leaf]
   [0] leaf
   [1] leaf mvc
-  [2] leaf api
+  [2] leaf mvc for apis
  > 
 ```
 
@@ -116,8 +116,8 @@ This will prompt you to select a preset. Presets are quick ways to get your proj
 A leaf app will be generated based on the associated preset. As you can see, there are 3 presets:
 
 - **Leaf**: a bare Leaf project
-- **Leaf MVC**: a Leaf project with leaf mvc
-- **Leaf API**: a Leaf project with leaf api
+- **Leaf MVC**: a Leaf project with an MVC wrappper
+- **Leaf MVC for APIs**: a Leaf MVC project fine-tuned for building APIs
 
 The Leaf CLI will automatically install the dependencies for the preset you selected and set up your project using Leaf 3. From there, you can `cd` into your project and start building.
 
@@ -392,7 +392,7 @@ leaf run test
 
 ```bash
  _              __    ___ _    ___ 
-| |   ___ __ _ / _|  / __| |  |_ v2.8.3
+| |   ___ __ _ / _|  / __| |  |_ v2.13.0
 | |__/ -_) _` |  _| | (__| |__ | | 
 |____\___\__,_|_|    \___|____|___|                       
 
@@ -419,13 +419,14 @@ Available commands:
   run           Run a script in your composer.json
   serve         Run your Leaf app
   test          Test your leaf application through leaf alchemy
+  ui            [gui] Start the Leaf CLI GUI process
   uninstall     Uninstall a  package
   update        Update leaf cli to the latest version
  test
   test:setup    Add tests to your application
  view
   view:build    Run your frontend dev server
-  view:dev      Run your frontend dev server
+  view:dev      [view:serve] Run your frontend dev server
   view:install  Run a script in your composer.json
 ```
 

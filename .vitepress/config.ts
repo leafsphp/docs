@@ -40,16 +40,16 @@ const nav = [
         items: [
           {
             text: 'Leaf MVC',
-            link: 'https://mvc.leafphp.dev/'
+            link: '/docs/mvc/'
           },
-          {
-            text: 'Leaf API',
-            link: 'https://api.leafphp.dev/'
-          },
-          {
-            text: 'Leaf Skeleton',
-            link: 'https://skeleton.leafphp.dev/'
-          }
+          // {
+          //   text: 'Leaf API',
+          //   link: 'https://api.leafphp.dev/'
+          // },
+          // {
+          //   text: 'Leaf Skeleton',
+          //   link: 'https://skeleton.leafphp.dev/'
+          // }
         ]
       },
       {
@@ -212,7 +212,7 @@ const mainSidebar = [
       { text: 'Session', link: '/modules/session/' },
       { text: 'Session Flash', link: '/modules/session/flash' },
       { text: 'Cookies', link: '/modules/cookies/' },
-      { text: 'Leaf View', link: '/docs/tooling/view' },
+      // { text: 'Leaf View', link: '/docs/tooling/view' },
       { text: 'Middleware', link: '/docs/routing/middleware' },
       { text: 'Error Handling', link: '/docs/routing/errors' }
     ]
@@ -311,9 +311,9 @@ const mainSidebar = [
     collapsible: true,
     collapsed: true,
     items: [
-      { text: 'Leaf MVC', link: '/docs/leafmvc/' },
-      { text: 'Leaf API', link: '/docs/leafapi/' },
-      { text: 'Skeleton', link: '/docs/skeleton/' },
+      // { text: 'Leaf MVC', link: '/docs/leafmvc/' },
+      // { text: 'Leaf API', link: '/docs/leafapi/' },
+      // { text: 'Skeleton', link: '/docs/skeleton/' },
       { text: 'MVC Config', link: '/docs/mvc/config' },
       { text: 'Controllers', link: '/docs/mvc/controllers' },
       { text: 'Views', link: '/docs/mvc/views' },

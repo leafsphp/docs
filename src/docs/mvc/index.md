@@ -6,7 +6,7 @@
 import VideoDocs from '/@theme/components/VideoDocs.vue'
 </script>
 
-Leaf is a simple PHP framework/set of libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
+Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
 
 ## What is MVC?
 
@@ -25,47 +25,102 @@ MVC stands for Model-View-Controller. It is a pattern that separates your applic
 
 ## MVC in Leaf
 
-Leaf out of the box doesn't provide any structure, however, the Leaf team also provides a few setups that you can use to get started with Leaf and MVC. These setups are designed to give you a good starting point for your application, and come with additional tooling that make building with Leaf even faster.
+Leaf provides a minimal but powerful setup for building applications using the MVC pattern. It's built on top of Leaf, and comes with additional tooling that makes building with Leaf even faster. It is a good starting point for building applications using the MVC pattern.
 
-We provide two setups for you to choose from:
+## Installation
 
-- [Leaf MVC](/docs/leafmvc/)
-- [Leaf API](/docs/leafapi/)
+You can set up a new MVC application using the [Leaf CLI](/docs/cli/) or using [Composer](https://getcomposer.org/). They both work, but using the Leaf CLI gives you the option to choose between a regular MVC app and an MVC app that is fine-tuned for creating APIs, plus a few other options.
 
-### Leaf MVC vs Leaf API
+```bash
+# Using the Leaf CLI
+leaf create myapp
 
-| Engine                      |    Main use     |          Extra Notes           |
-| --------------------------- | :-------------: | :----------------------------: |
-| [Leaf MVC](/docs/leafmvc/)    | General purpose |               -                |
-| [Leaf API](/docs/leafapi/)    |  Building APIs  | View layer disabled by default |
+# Using Composer
+composer create-project leafs/mvc myapp
+```
 
-Leaf MVC and Leaf API pretty much support the same tooling, but Leaf API is designed to be used for building APIs. It comes with the view layer disabled by default, and comes with a few extra tools that make building APIs with Leaf even easier.
+This command will set up a new MVC app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
 
-## Leaf Skeleton <sup class="vt-badge bg:red" data-text="Deprecated"></sup>
+```bash:no-line-numbers
+cd <project-name>
+leaf serve # or php leaf serve
+```
 
-Skeleton was designed to be a simple starting point for your application, and came with just the bare minimum to get you started. However, we have decided to deprecate Skeleton in favor of the Leaf CLI. The Leaf CLI is a command-line tool for generating Leaf projects, installing modules, and more.
+You should then see the welcome page in your browser.
 
-We recently released an update to the Leaf CLI that allows you to select specific features you want to include and generate a project with everything you need. This functionality is similar to what Skeleton provided but is more flexible and allows you to create projects with only the features that you need, which is why we've decided to deprecate Leaf Skeleton.
+![Leaf MVC Welcome Page](https://user-images.githubusercontent.com/26604242/223189921-d5da1555-bc29-4f99-a3ec-d6cbfdc5350b.png)
 
-Skeleton will still be available for download, but we won't be updating it anymore. We recommend that you generate a project with the CLI or use Leaf MVC or Leaf API instead.
+## Directory Structure
 
-[> Leaf CLI Docs](/docs/cli/)
+The Leaf MVC directory structure is inspired by [Ruby on Rails](https://rubyonrails.org/) and [Laravel](https://laravel.com/). It takes a lot of inspiration from these frameworks, but it's not a clone of either of them. It is meant to be a starting point for building your own applications, and is fully customizable. You can completely change the directory structure to suit your needs, just be sure to update the paths in the `config/paths.php` file.
 
-## MVC Tools
+For a fresh MVC app, the directory structure looks like this:
 
-Besides the MVC setups, Leaf also provides a few tools that can help you build your own MVC setup if you want to. You can check the "MVC Tools" section in the sidebar to learn more about these tools.
+```bash:no-line-numbers
+.
+├───app
+│   ├── console
+│   ├── controllers
+│   ├── database
+│   │   ├── factories
+│   │   ├── migrations
+│   │   ├── schema
+│   │   └── seeds
+│   ├── helpers
+│   ├── models
+│   ├── routes
+│   └── views
+│       └── errors
+├───config
+├───public
+│   └───assets
+│       ├── css
+│       └── img
+├───storage
+│   ├───app
+│   │   └───public
+│   ├───framework
+│   │   └───views
+│   └───logs
+└───vendor
+```
 
-<div class="vt-box-container next-steps">
-  <a class="vt-box" href="/docs/leafmvc/">
-    <h3 class="next-steps-link">Leaf MVC</h3>
-    <small class="next-steps-caption">Check out the documentation for Leaf MVC.</small>
-  </a>
-  <a class="vt-box" href="/docs/leafapi/">
-    <h3 class="next-steps-link">Leaf API</h3>
-    <small class="next-steps-caption">Start building apps with Leaf API and modules</small>
-  </a>
-  <a class="vt-box" href="/docs/cli/" target="_blank">
-    <h3 class="next-steps-link">Leaf CLI</h3>
-    <small class="next-steps-caption">Generate your first Leaf project with the Leaf CLI</small>
-  </a>
-</div>
+- ### The `app` directory
+
+  The `app` directory contains the core code of your application. It's divided into a few sub-directories:
+
+  - `console` - Contains the console commands for your application. These are used to perform tasks on the command line.
+  - `controllers` - Contains the controllers for your application. These are used to handle HTTP requests.
+  - `database` - Contains the database related code for your application. This includes migrations, seeds, factories and schema.
+  - `helpers` - Contains the helper functions for your application.
+  - `models` - Contains the models for your application. These are used to interact with the database.
+  - `routes` - Contains the routes for your application. These are used to map HTTP requests to controllers.
+  - `views` - Contains the views for your application. These are used to render HTML responses.
+
+- ### The `config` directory
+
+  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. You can find more information about the configuration files in the [Configuration](/docs/mvc/config) section.
+
+- ### The `public` directory
+
+  The `public` directory contains the entry point for your application, and it's also used to serve static assets. The `index.php` file is the entry point for your application. All requests are routed through this file by the web server. This file doesn't contain any application logic, but it does load the Composer autoloader, the application config and all your routes.
+
+  There is also an `assets` directory found in the `public` directory. It contains the static assets for your application. These are served by the web server and are accessible to users.
+
+- ### The `storage` directory
+
+  The `storage` directory contains the compiled views, logs and other files generated by your application. It's divided into a few sub-directories:
+
+  - `app` - Contains the files generated by your application. This includes the compiled views and the files uploaded by users.
+  - `framework` - Contains the framework generated files for your application.
+  - `logs` - Contains the log files generated by your application.
+
+- ### The `vendor` directory
+
+  The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
+
+## Leaf API
+
+We used to provide Leaf API as a separate package for quickly getting building your APIs. However, we've now integrated it into the Leaf MVC package. If you set up your project using the Leaf CLI, you can select the API option to set up your project as an API. This will install Leaf MVC and automatically disable the view layer, vite and other unnecessary dependencies.
+
+We did this to achieve more uniformity across all Leaf projects. This way, you can enjoy all the benefits of Leaf MVC while building your APIs without the distraction of the view layer.

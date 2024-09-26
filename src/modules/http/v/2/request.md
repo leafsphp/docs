@@ -227,21 +227,21 @@ The available parameters are:
 - bool - Sanitize output? Default `true`
 - bool - Remove empty strings from return data? Default `false`
 
-### `params`
+### `getOrDefault()`
 
-Params is another method which works just like the `get` method above, however, unlike `get` and `try` above, it allows you to specify defaults for items in case they are not found. It also does NOT support multiple select.
+This is exactly like `get` above, however, it allows you to specify a default value in case the item is not found in the request. It also does NOT support multiple select.
 
 <div class="class-mode">
 
 ```php
-$app->request()->params('description', 'No Description');
+$app->request()->getOrDefault('description', 'No Description');
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-request()->params('description', 'No Description');
+request()->getOrDefault('description', 'No Description');
 ```
 
 </div>
@@ -443,6 +443,37 @@ app()->post('/register', function() {
 ```
 
 </div>
+
+## Saving files from the request
+
+When a user sends a file over to your application, for instance updating a profile picture, you can save the file to a directory on your server. Leaf provides a simple way to do this using the `upload()` method. It takes in 3 parameters:
+
+- The name of the file in the request
+- The directory to save the file to
+- Options to save the file with
+
+```php
+$uploadInfo = request()->upload('profile_pic', './uploads');
+```
+
+This requires the Leaf FS module. If you are not using Leaf MVC, you will have to install it manually:
+
+```bash
+leaf install fs
+
+# or
+
+composer require leafs/fs
+```
+
+If you want to save the file using a different name, you can pass in the name as the third parameter:
+
+```php
+$uploadInfo = request()->upload('profile_pic', './uploads', [
+  'name' => 'new_name',
+  'rename' => true
+]);
+```
 
 ## Request Headers and Cookies
 

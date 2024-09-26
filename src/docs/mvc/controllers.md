@@ -84,10 +84,10 @@ php leaf g:controller Photos --resource
 This command will generate a controller at `app/controllers/PhotosController.php`. The controller will contain a method for each of the available resource operations. Next, you may register a resource route that points to the controller:
 
 ```php
-app()->resource('/user/(\d+)', 'UsersController');
+app()->resource('/photos', 'PhotosController');
 ```
 
-The `resource` method accepts a URI and a controller name. The URI may contain route parameters, which will be passed to the controller methods. The controller name should be the fully-qualified class name of the controller. In this example, the `UsersController` class should be defined in the `app/controllers` directory.
+The `resource()` method accepts a URI and a controller name. The URI may contain route parameters, which will be passed to the controller methods. The controller name should be the fully-qualified class name of the controller. In this example, the `UsersController` class should be defined in the `app/controllers` directory.
 
 This single route declaration creates multiple routes to handle a variety of actions on the resource. The generated controller will already have methods stubbed for each of these actions:
 
@@ -95,7 +95,7 @@ This single route declaration creates multiple routes to handle a variety of act
 <?php
 namespace App\Controllers;
 
-class ClassName extends Controller {
+class PhotosController extends Controller {
     /**
      * Display a listing of the resource.
      */
