@@ -25,7 +25,7 @@ $debug = app()->config('debug');
 
 ## Logging
 
-Leaf has a built-in logger that can be used to log errors and other messages. You can check the [logging page](/docs/utils/logging) for more information on how to use Leaf's logger. This page will show you all the configs available for Leaf's logger.
+Leaf has a built-in logger that can be used to log errors and other messages. You can check the [debug page](/docs/config/debugging#logging) for more information on how to use Leaf's logger. This page will show you all the configs available for Leaf's logger.
 
 To get started, make sure you have the logger module installed. Once installed, you should have access to a `logger()` method on the Leaf instance. You can use this method to access Leaf's logger if you want to manually log messages.
 
