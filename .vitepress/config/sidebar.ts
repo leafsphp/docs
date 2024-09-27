@@ -87,7 +87,7 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/database/' },
-      { text: 'MVC Support', link: '/docs/database/mvc' },
+      // { text: 'MVC Support', link: '/docs/database/mvc' },
       { text: 'Query Builder', link: '/docs/database/builder' },
       { text: 'Leaf Redis', link: '/docs/database/redis' },
       { text: 'Other DB Engines', link: '/docs/database/other' },
