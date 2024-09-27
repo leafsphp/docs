@@ -10,11 +10,11 @@ You can install Leaf's cookie module using composer or the Leaf CLI.
 
 ::: code-group
 
-```bash [Leaf CLI]
+```bash:no-line-numbers [Leaf CLI]
 leaf install cookie
 ```
 
-```bash [Composer]
+```bash:no-line-numbers [Composer]
 composer require leafs/cookie
 ```
 

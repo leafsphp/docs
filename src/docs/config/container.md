@@ -26,6 +26,10 @@ Once we have registered a dependency in Leaf's container, we can access it direc
 ```php
 $something = app()->something;
 $something->doSomething();
+
+// or
+
+app()->something->doSomething();
 ```
 
 In the example above, we access the `something` dependency by calling it as a property on the Leaf instance. We then call the `doSomething()` method on the `something` dependency.

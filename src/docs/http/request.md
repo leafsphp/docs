@@ -148,6 +148,41 @@ In Case of files, you can use the `files()` method to get the file data.
 $file = request()->files('file');
 ```
 
+## Saving files from the request
+
+When a user uploads a file to your application, like a profile picture, you can save the file to your server for later use. In Leaf, there's an `upload()` on Leaf's request object that helps you easily manage file uploads. This method lets you move the file to the correct folder on your server, ensuring it's stored properly. It takes in 3 parameters:
+
+- The name of the file in the request
+- The directory to save the file to
+- Options to save the file with (optional)
+
+```php
+$uploadInfo = request()->upload('profile_pic', './uploads');
+```
+
+This requires the Leaf FS module. If you are not using Leaf MVC, you will have to install it manually:
+
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf install fs
+```
+
+```bash:no-line-numbers [Composer]
+composer require leafs/fs
+```
+
+:::
+
+If you want to save the file using a different name, you can pass in the name as the third parameter:
+
+```php
+$uploadInfo = request()->upload('profile_pic', './uploads', [
+  'name' => 'new_name',
+  'rename' => true
+]);
+```
+
 ## Request Headers
 
 Headers are a very important part of HTTP requests. They contain information about the request that can be used to make decisions in your application. You can use the `headers()` method to get a specific header from the request.

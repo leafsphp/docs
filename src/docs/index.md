@@ -74,7 +74,6 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
     <li><a href="/docs/config/">Configuring Leaf</a></li>
     <li><a href="/docs/config/environment">Env Variables</a></li>
     <li><a href="/docs/routing/error-handling">Error Handling</a></li>
-    <li><a href="/docs/config/debugging">Debugging</a></li>
   </ul>
   </Card>
 
@@ -83,8 +82,9 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Deploying your Leaf app</p>
 
   <ul>
-    <li><a href="/docs/config/deployment">Deployment</a></li>
-    <li><a href="/docs/utils/logging">Logging</a></li>
+    <!-- <li><a href="/docs/config/deployment">Deployment</a></li>
+    <li><a href="/docs/utils/logging">Logging</a></li> -->
+    <li><a href="/docs/config/debugging">Debugging</a></li>
     <li><a href="/docs/routing/url-rewriting">Url rewriting</a></li>
   </ul>
   </Card>
@@ -165,8 +165,8 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <ul>
     <li><a href="/docs/mvc/">Leaf MVC</a></li>
     <li><a href="/docs/mvc/controllers">Controllers</a></li>
-    <li><a href="/docs/mvc/models">Models</a></li>
-    <li><a href="/docs/mvc/views">Views</a></li>
+    <li><a href="/docs/database/models">Models</a></li>
+    <li><a href="/docs/frontend/mvc">Views</a></li>
   </ul>
   </Card>
 
@@ -175,10 +175,10 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Database operations in Leaf MVC</p>
 
   <ul>
-    <li><a href="/docs/mvc/migrations">Migrations</a></li>
-    <li><a href="/docs/mvc/schema">Schema</a></li>
-    <li><a href="/docs/mvc/seeders">Seeders</a></li>
-    <li><a href="/docs/mvc/factories">Factories</a></li>
+    <li><a href="/docs/database/migrations">Migrations</a></li>
+    <li><a href="/docs/database/schema">Schema</a></li>
+    <li><a href="/docs/database/seeders">Seeders</a></li>
+    <li><a href="/docs/database/factories">Factories</a></li>
   </ul>
   </Card>
 

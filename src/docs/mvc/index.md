@@ -13,7 +13,7 @@ Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that
 MVC stands for Model-View-Controller. It is a pattern that separates your application into three distinct parts:
 
 - Models: These are the classes that represent your data. They are responsible for interacting with your database, and for validating your data.
-- Views: These are the files that are responsible for displaying your data to the user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](https://leafphp.dev/docs/views/bareui/) or [Blade](https://leafphp.dev/docs/views/blade/) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
+- Views: These are the files that are responsible for displaying your data to your user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](https://leafphp.dev/docs/views/bareui/) or [Blade](https://leafphp.dev/docs/views/blade/) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
 - Controllers: These are the classes that are responsible for handling the user's request, and for returning the appropriate response.
 
 ::: details New to MVC?
