@@ -13,11 +13,9 @@ import VideoDocs from '/@theme/components/VideoDocs.vue'
 
 ## What is middleware?
 
-In simple terms, middleware is a piece of code that runs before your application runs. It can be used to perform various tasks like authentication, error handling, logging, etc. It can also help to optimize the performance of an application by caching data, compressing responses, or distributing load across multiple servers, although those are more advanced use-cases. It's a great way to keep your code clean and organized.
+Middleware is a piece of code that runs before or after your application processes a request. It helps control the flow of requests and responses. For example, when a user visits a page on your app, you can use middleware can check if the user is logged in and if everything is okay, the request moves on to the next step; if not, the middleware can redirect the user.
 
-::: tip Note
-Leaf has modules that can be used to perform some of the tasks middleware can do. For example, Leaf has [Leaf Auth](/modules/auth/v/2.1/) which can be used to handle authentication, a [logger module](/docs/tooling/logging) and many more useful [modules](/modules/). This means you don't need to use middleware to perform these tasks. However, middleware can be used to perform tasks that Leaf modules don't cover.
-:::
+Note that Leaf has modules that offer most of these functionalities out of the box, so you might not need to write your own middleware for them.
 
 ## How does middleware work?
 
@@ -32,263 +30,130 @@ When a request is made to your application, Leaf will run through the middleware
   link="https://www.youtube.com/embed/Hqk9yUJfRKg"
 />
 
-## Middleware in Leaf
+## Creating Middleware
 
-Leaf provides 2 interfaces for middleware: application middleware and router hooks.
-
-- Router hooks basically hook into the runtime of the Leaf router and allow you to run code before a route/multiple routes are invoked.
-- Application middleware on the other hand is a more structured way to define and use middleware in your apps. It allows you to define middleware classes as done in other frameworks like Laravel. This fits right in if you intend to build MVC applications.
-
-## Application middleware
-
-As mentioned above, application middleware gives you a more structured way to define and use middleware in your apps. It allows you to define middleware as classes instead of using functions.
-
-### Defining application middleware
-
-Leaf provides a `Middleware` class that you can extend to define your application middleware. The `Middleware` class has a `call` method that you can override to define your middleware logic. In the `call` method, you can perform any task you want and then call `$this->next()` to pass the request to the next middleware in the stack or even return a response if you want to break the execution of your application. The example below checks if a request key is set, if it's not, the user is redirected to another route.
+In Leaf, middleware are just functions that are loaded into Leaf. Here's an example of a simple middleware that logs the request method and URI:
 
 ```php
-class TestMiddleware extends Leaf\Middleware
-{
-    public function call()
-    {
-        if (!request()->get('key')) {
-            return Custom::redirect('/login');
-        }
+$logRequest = function () {
+  $method = request()->method();
+  $uri = request()->uri();
 
-        return $this->next();
-    }
+  echo "[$method] $uri\n";
 }
 ```
 
-One thing to note is you should always call `$this->next()`. The `$this->next()` method forwards the incoming request to the next middleware or your application if there's no other middleware.
-
-### Using your application middleware
-
-After defining the middleware, the next step is to tell Leaf to actually run your middleware. You can do this by calling the `use` method on the Leaf instance.
-
-<div class="class-mode">
+To use this middleware, you can pass it to the use() method on the Leaf instance:
 
 ```php
-$app = new Leaf\App();
-
-$app->use(new TestMiddleware);
-
-// ... your routes here
+app()->use($logRequest);
 ```
 
-</div>
-<div class="functional-mode">
+Or you can write this together:
 
 ```php
-app()->use(new TestMiddleware);
+app()->use(function () {
+  $method = request()->method();
+  $uri = request()->uri();
 
-// ... your routes here
-```
-
-</div>
-
-## Before Route Middlewares
-
-This is a type of router hook that runs before a particular route is invoked. It is technically just a callable/function that holds whatever code you want to execute before the route is executed. To actually create and register the before route middleware, you need to pass the function into the `before` method of the Leaf instance.
-
-The `before` method takes 3 arguments:
-
-- The HTTP method: This can be a single method or a pipe-separated list of methods.
-- The route pattern
-- The middleware function
-
-This example below shows how to create a before route middleware that checks if a user is logged in before allowing access to the admin dashboard. Note that we're using `/admin/.*` as the route pattern. This means that the middleware will be executed for all routes that start with `/admin/`.
-
-<div class="class-mode">
-
-```php
-$app->before('GET|POST', '/admin/.*', function () {
-  if (!isset($_SESSION['user'])) {
-    header('location: /auth/login');
-    exit();
-  }
+  echo "[$method] $uri\n";
 });
 ```
 
-</div>
-<div class="functional-mode">
+Using middleware this way will run the middleware for every request. If you only want to run the middleware for specific routes, you can pass the middleware as a route option.
+
+## Middleware as a route option
+
+Passing middleware as a route option will run the middleware only for that route or group of routes. You can pass a single middleware or an array of middleware to the middleware option.
 
 ```php
-app()->before('GET|POST', '/admin/.*', function () {
-  if (!isset($_SESSION['user'])) {
-    header('location: /auth/login');
-    exit();
-  }
-});
-```
+$middleware = function () {
+  $method = request()->method();
+  $uri = request()->uri();
 
-</div>
-
-### Matching multiple middleware
-
-Unlike route handling functions, more than one before route middleware is executed when more than one route match is found.
-
-<div class="class-mode">
-
-```php
-$app->before('GET|POST', '/admin/.*', function () {
-  if (!isset($_SESSION['user'])) {
-    header('location: /auth/login');
-    exit();
-  }
-});
-
-$app->before('GET|POST', '/admin/.*', function () {
-  if (!isset($_SESSION['user_secret'])) {
-    header('location: /auth/login');
-    exit();
-  }
-});
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-app()->before('GET|POST', '/admin/.*', function () {
-  if (!isset($_SESSION['user'])) {
-    header('location: /auth/login');
-    exit();
-  }
-});
-
-app()->before('GET|POST', '/admin/.*', function () {
-  if (!isset($_SESSION['user_secret'])) {
-    header('location: /auth/login');
-    exit();
-  }
-});
-```
-
-</div>
-
-Using this same concept, you can run your middleware on every route. We call this before router middleware.
-
-## Before Router Middlewares
-
-Before route middlewares are route specific. Using a general route pattern (viz. all URLs), they can become Before Router Middlewares (in other projects sometimes referred to as before app middlewares) which are always executed, no matter what the requested URL is.
-
-<div class="class-mode">
-
-```php
-$app->before('GET', '/.*', function () {
-  // ... this will always be executed
-});
-```
-
-</div>
-<div class="functional-mode">
-
-```php
-app()->before('GET', '/.*', function () {
-  // ... this will always be executed
-});
-```
-
-</div>
-
-As you can see, the only difference between before route and before router middleware is the route pattern.
-
-## Middleware route option
-
-This is a new way to quickly setup middleware for a particular route. Leaf has the before method which allows you to set a route specific middleware, but that means defining the same route twice, not to mention, you may mistake the middleware for the main route as they have the same syntax. This problem is solved by the middleware option. **If your prefer using `before`, you can always do so.**
-
-Let's take this function which we're using as our middleware:
-
-```php
-$midfn = function () {
-  echo 'Home middleware';
+  echo "[$method] $uri\n";
 };
+
+app()->get('/home', ['middleware' => $middleware, function () {
+  echo 'Home page';
+}]);
+
+app()->group('/admin', ['middleware' => $middleware, function () {
+  app()->get('/', function () {
+    echo 'admin dashboard';
+  });
+
+  app()->get('/users', function () {
+    echo 'admin users';
+  });
+});
 ```
 
-We can use this middleware directly on our route like this:
+This will run the $middleware function before the route handler for the /home route and all routes in the /admin group. This way, you won't have to run middleware for routes you don't need it for.
 
-<div class="class-mode">
+## Registering Middleware
+
+It's a bit bulky to write your middleware inline every time you need it. Leaf allows you to register middleware globally so you can use it anywhere in your app.
 
 ```php
-$app->get('/home', ['middleware' => $midfn, function () {
-  echo 'User Home';
+app()->registerMiddleware('logRequest', function () {
+  $method = request()->method();
+  $uri = request()->uri();
+
+  echo "[$method] $uri\n";
+});
+```
+
+We can now use this middleware in our routes:
+
+```php
+// using middleware for all routes
+app()->use('logRequest');
+
+// using middleware for a specific route
+app()->get('/home', ['middleware' => 'logRequest', function () {
+  echo 'Home page';
+}]);
+
+// using middleware for a group of routes
+app()->group('/admin', ['middleware' => 'logRequest', function () {
+  app()->get('/', function () {
+    echo 'admin dashboard';
+  });
+
+  app()->get('/users', function () {
+    echo 'admin users';
+  });
+});
+```
+
+Notice how we passed the middleware name as a string instead of the actual function. This is because we registered the middleware with a name. This makes it easier to manage middleware in your app.
+
+## Passing data from middleware
+
+It is necessary in some cases to pass data from middleware to the route handler. Leaf allows you to pass data from middleware to the route handler using the `response()->next()` method.
+
+```php
+app()->registerMiddleware('logRequest', function ($next) {
+  $method = request()->method();
+  $uri = request()->uri();
+
+  echo "[$method] $uri\n";
+
+  // pass data to the next handler
+  response()->next('You can pass any value here');
+});
+```
+
+The data passed to the $next function will be available in the route handler:
+
+```php
+app()->get('/home', ['middleware' => 'logRequest', function () {
+  $middlewareData = request()->next();
+
+  echo $middlewareData; // "You can pass any value here"
 }]);
 ```
-
-</div>
-<div class="functional-mode">
-
-```php
-app()->get('/home', ['middleware' => $midfn, function () {
-  echo 'User Home';
-}]);
-```
-
-</div>
-
-## Named Middleware Route Options <sup class="vt-badge">New</sup>
-
-You can name your middleware and use it on multiple routes. This is useful when you have a lot of routes that use the same middleware. You can name your middleware like this:
-
-<div class="class-mode">
-
-```php
-$app->registerMiddleware('home', function () {
-  echo 'Home middleware';
-});
-
-$app->get('/home', ['middleware' => 'home', function () { ... }]);
-$app->get('/home/about', ['middleware' => 'home', function () { ... }]);
-```
-
-</div>
-
-<div class="functional-mode">
-
-```php
-app()->registerMiddleware('home', function () {
-  echo 'Home middleware';
-});
-
-app()->get('/home', ['middleware' => 'home', function () { ... }]);
-app()->get('/home/about', ['middleware' => 'home', function () { ... }]);
-```
-
-</div>
-
-Named middleware can also be used with route groups:
-
-<div class="class-mode">
-
-```php
-$app->registerMiddleware('home', function () {
-  echo 'Home middleware';
-});
-
-$app->group('/group', ['middleware' => 'home', function () use ($app) {
-  $app->get('/home', function () { ... });
-  $app->get('/home/about', function () { ... });
-}]);
-```
-
-</div>
-
-<div class="functional-mode">
-
-```php
-app()->registerMiddleware('home', function () {
-  echo 'Home middleware';
-});
-
-app()->group('/group', ['middleware' => 'home', function () {
-  app()->get('/home', function () { ... });
-  app()->get('/home/about', function () { ... });
-}]);
-```
-
-</div>
 
 ## Router Hooks
 
