@@ -10,7 +10,7 @@
 
 </div>
 
-This package is leaf's implementation of CSRF default protection with leaf anchor. It comes separated from leaf anchor because it is not needed in every project you may build.
+A CSRF (Cross-Site Request Forgery) attack tricks a user into performing unwanted actions on your website without their knowledge. This can be done by sending a request to your website from another website the user is logged into. To prevent this, Leaf provides a powerful CSRF protection module that handles all the funny business for you.
 
 ## Installation
 
@@ -28,7 +28,13 @@ leaf install csrf
 
 ## Basic Usage
 
-After installing leaf CSRF, leaf automatically loads the CSRF package for you, so you don't need to do anything unless you want to configure the CSRF module to match your application requirements.
+Once installed, you can enable CSRF protection in your app by passing CSRF config to your app instance. Since CSRF is a Leaf module, it comes with first-class support for Leaf apps.
+
+```php
+app()->csrf();
+
+// ... your app
+```
 
 ### Using CSRF outside of leaf
 
@@ -46,20 +52,20 @@ Just like every other leaf module, this module also allows you to customize it t
 
 **Available config:**
 
-- **SECRET_KEY** - This is the key with which the token is saved and used in your leaf app. If this is not specified, leaf uses the name `_token` as done in other frameworks like Laravel.
+- **secretKey** - This is the key with which the token is saved and used in your leaf app. If this is not specified, leaf uses the name `_token` as done in other frameworks like Laravel.
 
-- **SECRET** - This is the secret key used to encrypt the token. Leaf also has a default secret key set for you. Note that the secret key is attached to a set of unique numbers that not even leaf knows.
+- **secret** - This is the secret key used to encrypt the token. Leaf also has a default secret key set for you. Note that the secret key is attached to a set of unique numbers that not even leaf knows.
 
-- **EXCEPT** - This is an array of routes that you want to exclude from the CSRF protection.
+- **except** - This is an array of routes that you want to exclude from the CSRF protection.
 
-- **METHODS** - This is an array of HTTP methods to apply CSRF protection to. By default, leaf uses `["POST", "PUT", "PATCH", "DELETE"]`
+- **methods** - This is an array of HTTP methods to apply CSRF protection to. By default, leaf uses `["POST", "PUT", "PATCH", "DELETE"]`
 
 ```php
 use Leaf\Anchor\CSRF;
 
 CSRF::config([
-  "METHODS" => ["GET"],
-  "EXCEPT" => ["/"],
+  'methods' => ['GET'],
+  'except' => ['/'],
 ]);
 ```
 
@@ -70,13 +76,7 @@ A token is generated under the hood for your application, you can get this token
 ```php
 $csrfToken = Leaf\Anchor\CSRF::token();
 
->> ["_token" => "TOKEN VALUE"]
-```
-
-To make things a bit easier, `token` returns associative array holding the token key name and the token itself. This is an example JSON represenation.
-
-```json
-{"_token": "TOKEN VALUE"}
+>> "TOKEN VALUE"
 ```
 
 ## Form
@@ -90,27 +90,29 @@ You would usually want to append a hidden input field holding the token to a for
 </form>
 ```
 
-## Functional Mode
+## Error Handling
 
-Just as with other modules, leaf csrf also ships with global functions that make development a lot easier.
-
-### _token
-
-This method returns the CSRF token just as done with the `token` method above.
+By default, Leaf will output a built-in error page when a CSRF token is invalid. You can customize the messages shown on this page by updating your `config` object.
 
 ```php
-$csrfToken = _token();
-
->> ["_token" => "TOKEN VALUE"]
+app()->csrf([
+  'messages.tokenNotFound' => 'Token not found',
+  'messages.tokenInvalid' => 'Invalid token.',
+]);
 ```
 
-### _csrfField
-
-This directly renders the form field for the CSRF token generated.
+This will update the messages shown when a token is not found or invalid. If you want to handle the error yourself, you can pass an error handler to the `csrf` method.
 
 ```php
-<form ...>
-  <?php _csrfField(); ?>
-  ...
-</form>
+app()->csrf([
+  'onError' => function($error) {
+    if ($error === "tokenNotFound") {
+      // handle token not found error
+    } else {
+      // handle invalid token error
+    }
+  }
+]);
 ```
+
+You can use this to handle the error in any way you want.
