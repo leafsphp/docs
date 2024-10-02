@@ -36,6 +36,25 @@
     "sponsor": false
   },
   {
+    "name": "Abdulbasit Rubeya",
+    "title": "Developer/Maintainer",
+    "avatarPic": "https://avatars.githubusercontent.com/u/28471267?v=4",
+    "company": "Leaf PHP",
+    "projects": [
+      {
+        "label": "leafsphp",
+        "url": "https://www.github.com/leafsphp"
+      }
+    ],
+    "location": "Tanzania",
+    "languages": ["English", "Swahili", "Arabic"],
+    "socials": {
+      "github": "ibnsultan",
+      "linkedin": "abdulbasit-rubeiyya"
+    },
+    "sponsor": false
+  },
+  {
     "name": "Ashley Nyanteh",
     "title": "Community Manager",
     "avatarPic": "https://user-images.githubusercontent.com/26604242/221550910-1a711f42-9589-4981-96e0-d0de19778e7a.png",
