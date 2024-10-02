@@ -19,7 +19,7 @@ Cross-Origin Resource Sharing or CORS is a mechanism that allows browsers to req
 
 :::
 
-Since CORS is a common pain point for web developers, Leaf provides a simple way to deal with most CORS issues. Of course, you can always handle CORS manually, but this module just offers a more convenient and flexible way to do so. It is heavily inspired by the ExpressJS [CORS package](https://github.com/expressjs/cors).
+Since CORS is a common pain point for web developers, Leaf provides a first-party integration that takes care of all the heavy lifting for you.
 
 ## Setting Up
 
@@ -68,6 +68,16 @@ app()->cors([
 ```
 
 This will only allow users from `http://example.com` and `http://example.org` to access your app using the `GET` and `POST` methods. You can find a list of all available options below.
+
+If you want to allow access to all subdomains of a domain, you can use just the website domain as the origin without the `http://` or `https://`.
+
+```php
+app()->cors([
+  'origin' => 'example.com',
+]);
+```
+
+This will allow `http://example.com`, `https://example.com`, `http://www.example.com`, and `https://some-subdomain.example.com` to access your app. Of course, you can also use a regular expression to match multiple domains. You can find a full list of options below.
 
 ## Configuration Options
 

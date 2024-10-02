@@ -113,16 +113,23 @@ const sidebar = [
     ],
   },
   {
-    text: 'Utilities',
+    text: 'Security',
     // collapsible: true,
     // collapsed: true,
     items: [
       { text: 'Validation', link: '/docs/data/validation' },
+      { text: 'CSRF Protection', link: '/docs/security/csrf' },
       { text: 'Leaf Password', link: '/docs/data/encryption' },
       { text: 'Leaf Anchor', link: '/docs/security/anchor' },
+    ],
+  },
+  {
+    text: 'Utilities',
+    // collapsible: true,
+    // collapsed: true,
+    items: [
       { text: 'Date/Time', link: '/docs/utils/date' },
       { text: 'Data Fetching', link: '/docs/utils/fetch' },
-      { text: 'CSRF', link: '/docs/security/csrf' },
       { text: 'HTTP Cache', link: '/docs/http/caching' },
       { text: 'Leaf Mail', link: '/docs/utils/mail/' },
       { text: 'File System', link: '/docs/utils/fs' },

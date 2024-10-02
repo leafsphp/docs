@@ -72,17 +72,17 @@ These will output different colored messages in the console:
 
 ## Disabling Debugging
 
-All Leaf applications run in a development environment by default. This means you can see detailed error messages and stack traces and are even able use devtools with much leaner security. However, when you're ready to deploy your app to production, you should disable debugging to prevent sensitive information from leaking. You can do this by setting the `app.debug` configuration option to `false`:
+All Leaf applications run in a development environment by default. This means you can see detailed error messages and stack traces and are even able use devtools with much leaner security. However, when you're ready to deploy your app to production, you should disable debugging to prevent sensitive information from leaking. You can do this by setting the `debug` configuration option to `false`:
 
 ```php
 app()->config([
-  'app.debug' => false
+  'debug' => false
 ]);
 ```
 
 We know that it's really easy to forget to disable debugging when deploying your app, so Leaf will automatically disable debugging when you set the `APP_ENV` environment variable to `production`. This is usually done automatically by your hosting provider, but if you're deploying your app manually on a VPS or Cloud, you can set the `APP_ENV` environment variable in your `.env` file.
 
-We understand that you might want to enable debugging in production for some reason, however, we strongly advise against it. Debugging in production can expose sensitive information about your app, which can be used by attackers to exploit your app. If you truly need to debug in production, you should turn to logging instead. Logging works in both development and production environments and is a safer way to debug your app.
+We understand that you might want to enable debugging in production for some reason, however, Leaf will not allow you to debug in production. Debugging in production can expose sensitive information about your app, which can be used by attackers to exploit your app. If you truly need to debug in production, you should turn to logging instead. Logging works in both development and production environments and is a safer way to debug your app.
 
 ## Logging
 
