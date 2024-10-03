@@ -141,7 +141,7 @@ app()->csrf([
 ]);
 ```
 
-It is not required to change the secret key, but it is recommended to do so if you want to add an extra layer of security to your app. 
+It is not required to change the secret key, but it is recommended to do so if you want to add an extra layer of security to your app.
 
 If you have an environment file, you can set the secret key there.
 
@@ -149,4 +149,31 @@ If you have an environment file, you can set the secret key there.
 X_CSRF_SECRET=my-new-secret-key
 ```
 
-Leaf will automatically pick up the secret key from your environment file and use it to encrypt the CSRF token, so you don't have to pass the secret key to the `csrf()` method every time.
+<!-- Leaf will automatically pick up the secret key from your environment file and use it to encrypt the CSRF token, so you don't have to pass the secret key to the `csrf()` method every time. -->
+
+## Error Handling
+
+By default, Leaf will output a built-in error page when a CSRF token is invalid. You can customize the messages shown on this page by updating your `config` object.
+
+```php
+app()->csrf([
+  'messages.tokenNotFound' => 'Token not found',
+  'messages.tokenInvalid' => 'Invalid token.',
+]);
+```
+
+This will update the messages shown when a token is not found or invalid. If you want to handle the error yourself, you can pass an error handler to the `csrf` method.
+
+```php
+app()->csrf([
+  'onError' => function($error) {
+    if ($error === "tokenNotFound") {
+      // handle token not found error
+    } else {
+      // handle invalid token error
+    }
+  }
+]);
+```
+
+You can use this to handle the error in any way you want.
