@@ -71,9 +71,9 @@ This will run the `LogRequestMiddleware` middleware only for the `/my-route` rou
 
 ## Passing data from middleware
 
-You can pass data from middleware to your route handler in order to use it in your controller. All Leaf middleware  accept a `$next` parameter which is a closure that runs the next middleware in the stack. You can pass data to the next middleware by passing it as an argument to the `$next` closure.
+You can pass data from middleware to your route handler in order to use it in your controller or another middleware. You can do this using the `response()->next()` method.
 
-```php
+```php{16}
 <?php
 
 namespace App\Middleware;
@@ -89,15 +89,14 @@ class LogRequestMiddleware extends Middleware
 
         echo "[$method] $uri\n";
 
-        // pass data to the next handler
-        $next('You can pass any value here');
+        response()->next('You can pass any value here');
     }
 }
 ```
 
-You can then access this data in your controller like this:
+This uses Leaf's Response object to output data from the middleware that can only be accessed by your next handler (hence the name `next`). You can access that data in your route handler using the `request()->next()` method.
 
-```php
+```php{9}
 <?php
 
 namespace App\Controllers;
@@ -112,3 +111,5 @@ class MyController extends Controller
     }
 }
 ```
+
+Once the data is read using `request()->next()`, it is removed from the request object and cannot be accessed again during the request lifecycle.

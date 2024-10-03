@@ -109,7 +109,7 @@ Notice how we passed the middleware name as a string instead of the actual funct
 
 ## Passing data from middleware
 
-It is necessary in some cases to pass data from middleware to the route handler. All Leaf middleware functions accept a single argument, which is a function referencing the next middleware or route handler. Passing data to this function will make it available in the route handler.
+It is necessary in some cases to pass data from middleware to the route handler. You can do this using the `response()->next()` method.
 
 ```php{8}
 app()->registerMiddleware('logRequest', function ($next) {
@@ -119,11 +119,11 @@ app()->registerMiddleware('logRequest', function ($next) {
   echo "[$method] $uri\n";
 
   // pass data to the next handler
-  $next('You can pass any value here');
+  response()->next('You can pass any value here');
 });
 ```
 
-The data passed to the `$next` function will be available in the route handler:
+This uses Leaf's Response object to output data from the middleware that can only be accessed by your next handler (hence the name `next`). You can access that data in your route handler using the `request()->next()` method.
 
 ```php{2}
 app()->get('/home', ['middleware' => 'logRequest', function () {
@@ -132,3 +132,5 @@ app()->get('/home', ['middleware' => 'logRequest', function () {
   echo $middlewareData; // "You can pass any value here"
 }]);
 ```
+
+Once the data is read using `request()->next()`, it is removed from the request object and cannot be accessed again during the request lifecycle.

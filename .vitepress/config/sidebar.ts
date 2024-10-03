@@ -56,10 +56,6 @@ const sidebar = [
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       { text: 'Middleware', link: '/docs/routing/middleware/' },
       { text: 'Middleware in Leaf MVC', link: '/docs/routing/middleware/mvc' },
-      {
-        text: 'Optional Route sub-patterns',
-        link: '/docs/routing/sub-patterns',
-      },
     ],
   },
   {
