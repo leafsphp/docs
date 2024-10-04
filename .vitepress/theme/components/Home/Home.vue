@@ -6,6 +6,7 @@ import TryIt from './TryIt.vue';
 import Sponsors from './Sponsors.vue';
 import Testimonials from './Testimonials.vue';
 import Community from './Community.vue';
+import Footer from './Footer.vue';
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import Community from './Community.vue';
   <Sponsors />
   <Testimonials />
   <Community />
+  <Footer />
 </template>
 
 <style>
@@ -37,6 +39,10 @@ import Community from './Community.vue';
   width: 100%;
   max-width: 1280px;
   padding: 0 24px;
+}
+
+.VPHome {
+  margin-bottom: 0 !important;
 }
 
 @media (min-width: 640px) {

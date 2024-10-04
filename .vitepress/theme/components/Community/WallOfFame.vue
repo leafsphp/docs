@@ -4,7 +4,7 @@ import SponsorGroup from '../shared/SponsorGroup.vue';
 
 <template>
   <div class="flex justify-center item-center py-48">
-    <section class="flex flex-col justify-center items-center">
+    <section class="flex flex-col justify-center items-center max-w-[1280px]">
       <div class="text-center mb-10">
         <h1 class="!text-5xl font-bold mb-8">Wall of Fame</h1>
         <p class="px-[22%]">
@@ -12,7 +12,7 @@ import SponsorGroup from '../shared/SponsorGroup.vue';
         </p>
       </div>
 
-      <SponsorGroup group="code" class="w-full grid-cols-5" />
+      <SponsorGroup group="code" class="w-full sm:!grid-cols-4 md:!grid-cols-6 lg:!grid-cols-8 xl:!grid-cols-10" />
     </section>
   </div>
 </template>

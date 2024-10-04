@@ -109,6 +109,14 @@ html.dark {
   text-decoration: none;
 }
 
+.VPDocAsideOutline > div {
+  @apply !border-none;
+}
+
+.outline-marker {
+  @apply !rounded !w-1 !left-0;
+}
+
 @keyframes blink {
   49% {
     background-color: black;
@@ -119,4 +127,8 @@ html.dark {
   99% {
     background-color: transparent;
   }
+}
+
+.VPContent.is-home + .VPFooter {
+  background-color: var(--vp-c-bg-alt);
 }
