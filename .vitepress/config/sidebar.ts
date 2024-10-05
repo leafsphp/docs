@@ -162,7 +162,7 @@ const sidebar = [
       { text: 'Seeders', link: '/docs/database/seeders' },
       { text: 'Factories', link: '/docs/database/factories' },
       { text: 'Writing Commands', link: '/docs/mvc/commands' },
-      { text: 'Mailing', link: '/docs/utils/mail/mvc' },
+      // { text: 'Mailing', link: '/docs/utils/mail/mvc' },
       { text: 'MVC Helpers', link: '/docs/mvc/globals' },
       { text: 'Custom Libraries', link: '/docs/mvc/libraries' },
       { text: 'MVC Console Tool', link: '/docs/mvc/console' },
