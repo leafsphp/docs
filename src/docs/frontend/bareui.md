@@ -1,7 +1,3 @@
----
-aside: 'true'
----
-
 # BareUI
 
 <!-- markdownlint-disable no-inline-html -->
@@ -33,11 +29,11 @@ You can install BareUI through the Leaf CLI:
 
 ::: code-group
 
-```bash [Leaf CLI]
+```bash:no-line-numbers [Leaf CLI]
 leaf install bareui
 ```
 
-```bash [Composer]
+```bash:no-line-numbers [Composer]
 composer require leafs/bareui
 ```
 
