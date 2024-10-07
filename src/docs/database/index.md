@@ -77,7 +77,7 @@ db()->connect([
 
 If you have a environment file, you can use it to store your database connection details. Here's an example of how you can connect to a MySQL database using an environment file:
 
-```env
+```txt
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -154,7 +154,7 @@ Leaf MVC comes with a more structured way to work with databases. You can use mo
 
 To get started, you need to set up your database connection in your environment file.
 
-```env
+```txt
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306

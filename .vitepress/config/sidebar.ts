@@ -95,17 +95,17 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/auth/' },
-      { text: 'MVC Support', link: '/docs/auth/mvc' },
-      { text: 'Auth Config', link: '/docs/auth/config' },
+      // { text: 'MVC Support', link: '/docs/auth/mvc' },
+      // { text: 'Auth Config', link: '/docs/auth/config' },
       { text: 'User Login', link: '/docs/auth/login' },
       { text: 'User Sign Up', link: '/docs/auth/signup' },
-      { text: 'Auth Session', link: '/docs/auth/session' },
+      // { text: 'Auth Session', link: '/docs/auth/session' },
       {
-        text: 'Protected Routes',
+        text: 'Protecting your routes',
         link: '/docs/auth/protected-routes',
       },
       { text: 'Updating logged-in user', link: '/docs/auth/update' },
-      { text: 'Helper methods', link: '/docs/auth/helpers' },
+      { text: 'Build your own auth library', link: '/docs/auth/helpers' },
     ],
   },
   {
