@@ -37,22 +37,24 @@ This will generate a `LogRequestMiddleware.php` file in the `app/middleware` fol
 
 ## Loading Middleware for all routes
 
-All middleware generated using the Console will be automatically registered in the `app/middleware/Middleware.php` file. This file is automatically loaded by Leaf MVC, so any middleware you add to it will be loaded for every route in your application. If you don't want a middleware to be automatically loaded, you can remove it from the `app/middleware/Middleware.php` file.
+All middleware generated using the Console will be automatically registered in the `app/routes/index.php` file. This file is automatically loaded by Leaf MVC, so any middleware you add to it will be loaded for every route in your application. If you don't want a middleware to be automatically loaded, you can remove it from the `app/routes/index.php` file.
 
 ```php
-<?php
+use App\Middleware\LogRequestMiddleware;
 
-namespace App\Middleware;
+...
 
-class Middleware
-{
-    public function register()
-    {
-        return [
-            LogRequestMiddleware::class
-        ];
-    }
-}
+/*
+|--------------------------------------------------------------------------
+| Set middleware for all routes
+|--------------------------------------------------------------------------
+|
+| You can use app()->use() to load middleware for all
+| routes in your application.
+|
+*/
+app()->use(LogRequestMiddleware::class);
+app()->use(AnotherMiddleware::class);
 ```
 
 ## Loading Middleware for specific routes

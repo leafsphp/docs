@@ -145,7 +145,7 @@ It is not required to change the secret key, but it is recommended to do so if y
 
 If you have an environment file, you can set the secret key there.
 
-```env
+```txt
 X_CSRF_SECRET=my-new-secret-key
 ```
 
