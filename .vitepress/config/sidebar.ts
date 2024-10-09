@@ -10,7 +10,6 @@ const sidebar = [
       { text: 'Using Docker', link: '/docs/docker' },
       { text: 'Migration Guide', link: '/docs/migrating' },
       { text: 'Functional Mode', link: '/docs/config/functional-mode' },
-      { text: 'Leaf + MVC', link: '/docs/mvc/' },
       { text: 'Modules', link: '/docs/modules' },
     ],
   },
@@ -74,7 +73,7 @@ const sidebar = [
       { text: 'Debugging', link: '/docs/config/debugging' },
       // { text: 'Leaf Devtools', link: '/docs/utils/devtools' },
       // { text: 'Deployment', link: '/docs/config/deployment' },
-      { text: 'Testing', link: '/docs/utils/testing' },
+      { text: 'Testing/Linting', link: '/docs/utils/testing' },
     ],
   },
   {
@@ -116,7 +115,7 @@ const sidebar = [
       { text: 'Validation', link: '/docs/data/validation' },
       { text: 'CSRF Protection', link: '/docs/security/csrf' },
       { text: 'Leaf Password', link: '/docs/data/encryption' },
-      { text: 'Leaf Anchor', link: '/docs/security/anchor' },
+      { text: 'General Security', link: '/docs/security/anchor' },
     ],
   },
   {
@@ -153,6 +152,7 @@ const sidebar = [
     // collapsible: true,
     // collapsed: true,
     items: [
+      { text: 'Leaf + MVC', link: '/docs/mvc/' },
       { text: 'MVC Config', link: '/docs/config/mvc' },
       { text: 'Controllers', link: '/docs/mvc/controllers' },
       { text: 'Views', link: '/docs/frontend/mvc' },
