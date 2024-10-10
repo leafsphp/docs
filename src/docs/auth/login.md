@@ -194,6 +194,38 @@ auth()->config('session.lifetime', 0); // never expire
 
 :::
 
+## Updating a logged-in user
+
+Updating user information means allowing users to change their details (like username, email, or password) in your application. It is a very common feature in most applications.
+
+Leaf provides an `update()` method that allows you to update a user's information.
+
+```php
+$user = auth()->update($data);
+```
+
+### Unique values
+
+Leaf Auth allows you to set unique fields which should not be repeated for different users. For example, you wouldn't want two users to have the same email address. You can configure Leaf Auth to check for unique fields when a user is being updated:
+
+```php:no-line-numbers
+auth()->config('unique', ['email', 'username']);
+```
+
+Now if a user tries to update their profile with an email or username that already exists in the database, Leaf Auth will return an error. You can get the error message using the `errors()` method.
+
+```php
+$data = auth()->update([
+  'username' => 'example',
+  'email' => 'example@example.com'
+]);
+
+if(!$data) {
+  $error = auth()->errors();
+  // ['email' => 'The email already exists']
+}
+```
+
 ## Signing a user out
 
 When a user chooses to end their session, or their session expires, you can sign them out using the `logout()` method. This method will end the user's session or delete their token.
