@@ -42,38 +42,40 @@ tests:
     processUncoveredFiles: true
 
 lint:
-  preset: 'PSR12'
-  ignore_dot_files: true
+  preset: PSR12
   rules:
-    array_syntax:
-      syntax: 'short'
     no_unused_imports: true
+    not_operator_with_successor_space: false
     single_quote: true
-    ordered_imports:
-      imports_order: null
-      case_sensitive: false
-      sort_algorithm: 'alpha'
 
 actions:
   run:
-    - 'lint'
-    - 'test'
+    - lint
+    - tests
   php:
     extensions: json, zip
     versions:
       - '8.3'
   event:
-    - 'push'
-    - 'pull_request'
+    - push
+    - pull_request
 ```
 
 You can make edits to this file to suit your needs. The `app` key is an array of directories to look for your app files in. The `tests` key is an array of configurations for your tests. The `lint` key is an array of configurations for your code styling checks. Once you're done setting up your `alchemy.yml` file, you can run the setup script.
 
-```bash
-leaf run alchemy # or composer run alchemy
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf run alchemy
 ```
 
-This will install your test engine, PHP CS Fixer and any other dependencies you might need, and then generate dummy tests using the test engine you chose. It will then lint your code, run your tests and generate a coverage report (if you selected that option). It will also add a `test` and `lint` command to your `composer.json` file which you can use to run your tests and lint your code respectively. Finally, it will generate a `.github/workflows` directory with a `test.yml` file and a `lint.yml` file which you can use to run your tests and linting on github actions.
+```bash:no-line-numbers [Composer]
+composer run alchemy
+```
+
+:::
+
+This will install your test engine, PHP CS Fixer and any other dependencies you might need, and then generate dummy tests using the test engine you chose. It will then lint your code, run your tests and also add `test` and `lint` commands to your `composer.json` file which you can use to run your tests and lint your code respectively. Finally, Alchemy will generate a `.github/workflows` directory with a `tests.yml` file and a `lint.yml` file which you can use to run your tests and linting on github actions.
 
 ## Configuring Tests
 
@@ -97,7 +99,7 @@ tests:
     processUncoveredFiles: true
 ```
 
-- `app`: This is a list of directories that contain your application code. Alchemy will use these directories to lint your code and also in code coverage reports.
+- `app`: This is a list of directories that contain your application code. Alchemy will use these directories to lint your code and also in code coverage reports. If you want to use the root directory, you can just remove the entire `app` section.
 
 - `tests.engine`: The testing engine to use. Only Pest and PHPUnit are supported engine at the moment, but we plan to add support for other engines in the future.
 
@@ -125,17 +127,18 @@ app:
 ...
 
 lint:
-  preset: 'PSR12'
+  preset: PSR12
   ignore_dot_files: true
   rules:
     array_syntax:
-      syntax: 'short'
+      syntax: short
     no_unused_imports: true
     single_quote: true
     ordered_imports:
       imports_order: null
       case_sensitive: false
-      sort_algorithm: 'alpha'
+      sort_algorithm: alpha
+    ...
 ```
 
 As you see, you can set up your code styling rules in the `lint` section of the `alchemy.yml` file. All of [PHP-CS-Fixer Configurator](https://mlocati.github.io/php-cs-fixer-configurator/) rules are supported.
@@ -146,6 +149,10 @@ As you see, you can set up your code styling rules in the `lint` section of the 
 
 - `lint.ignore_dot_files`: Whether to ignore dot files when linting.
 
+- `lint.ignore_vc_files`: Whether to ignore version control files when linting.
+
+- `lint.parallel`: Whether to run linting in parallel. This can speed up your linting significantly.
+
 - `lint.rules`: An array of rules to use for code styling checks. These rules are the same as the rules available in PHP CS Fixer.
 
 ## Configuring GitHub Actions
@@ -155,26 +162,30 @@ Alchemy can also set up GitHub Actions for you. You can configure what it should
 ```yaml
 actions:
   run:
-    - 'lint'
-    - 'test'
+    - lint
+    - tests
   php:
     extensions: json, zip
     versions:
       - '8.3'
-  event:
-    - 'push'
-    - 'pull_request'
+  events:
+    - push
+    - pull_request
 ```
 
 - `actions`: Configuration for GitHub Actions. You can remove this entire section if you don't want to generate GitHub Actions.
 
-- `actions.run`: An array of commands to generate GitHub Actions for. The default is `lint` and `test`, but you can remove any command you don't want to generate.
+- `actions.run`: An array of commands to generate GitHub Actions for. The default is `lint` and `tests`, but you can remove any command you don't want to generate.
+
+- `actions.fail-fast`: Whether to stop the workflow as soon as one of the jobs fails.
+
+- `actions.os`: The operating system to run the GitHub Actions on. The default is `ubuntu-latest`, but you can set `windows-latest` or `macos-latest` or all of them.
 
 - `actions.php`: Configuration for PHP in GitHub Actions. You can set the PHP extensions to install and the PHP versions to test against.
 
-- `actions.event`: An array of events to generate GitHub Actions for. The default is `push` and `pull_request`, but you can remove any event you don't want to generate.
+- `actions.events`: An array of events to generate GitHub Actions for. The default is `push` and `pull_request`, but you can remove any event you don't want to generate.
 
-## Overriding Alchemy Configuration
+<!-- ## Overriding Alchemy Configuration
 
 Alchemy is designed to be a tool that sets up your tests and code styling checks with minimal configuration. Once you have written all the tests you need for your app and have your code styling checks, there's no longer the need for Alchemy's training wheels. At that point, you can remove Alchemy from your project and use PHPUnit or Pest directly with PHP CS Fixer.
 
@@ -194,4 +205,4 @@ composer run alchemy:eject
 
 This command will export all of Alchemy's configuration to `phpunit.xml` and `.php_cs.dist` files in your project root. It will also update the `test` and `lint` commands in your `composer.json` file to use your selected engine and PHP CS Fixer directly. One more fresh install will be made automatically to ensure that your project is up to date, and then Alchemy will be removed from your project automatically.
 
-<!-- If you find that you need to override Alchemy's configuration, you can do so by creating a `phpunit.xml` file in your project root. Once you have this file, Alchemy will use it and automatically delete the `alchemy.yml` file. -->
+If you find that you need to override Alchemy's configuration, you can do so by creating a `phpunit.xml` file in your project root. Once you have this file, Alchemy will use it and automatically delete the `alchemy.yml` file. -->
