@@ -187,7 +187,6 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Make building MVC apps even easier</p>
 
   <ul>
-    <li><a href="/docs/utils/mail/mvc">Mailing</a></li>
     <li><a href="/docs/mvc/globals">MVC Helpers</a></li>
     <li><a href="/docs/mvc/libraries">Custom Libraries</a></li>
     <li><a href="/docs/mvc/console">MVC Console Tool</a></li>
