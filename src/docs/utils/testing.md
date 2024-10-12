@@ -26,7 +26,7 @@ Once installed, Alchemy will automatically set up an `alchemy.yml` file in your 
 
 The `alchemy.yml` file should look something like this:
 
-```yaml
+```yaml [alchemy.yml]
 app:
   - app
   - src
@@ -83,7 +83,7 @@ If you don't want to use Pest, Alchemy also supports PHPUnit. You can change the
 
 By default Pest expects a `phpunit.xml` file in your project root, but as it's quite annoying to read, Leaf provides a `alchemy.yml` file in your project root. This file is used to configure Pest and is much easier to read and understand. The `alchemy.yml` file is used to configure Pest and can be used to set up your test environment.
 
-```yaml
+```yaml [alchemy.yml]
 app:
   - app
   - src
@@ -119,7 +119,7 @@ If you don't want code coverage reports, you can just remove the entire `coverag
 
 Alchemy allows you to define code styling rules in your `alchemy.yml` file. Alchemy linting uses PHP CS Fixer which is a powerful tool that fixes your code to follow standards; whether you want to follow PHP coding standards as defined in the PSR-1, PSR-2, etc. Of course, all of this is abstracted into the beautiful `alchemy.yml` file.
 
-```yaml
+```yaml [alchemy.yml]
 app:
   - app
   - src

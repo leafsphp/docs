@@ -1,4 +1,8 @@
 import { defineConfig } from 'vitepress';
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from 'vitepress-plugin-group-icons';
 
 import head from './config/head';
 import nav from './config/navbar';
@@ -70,5 +74,12 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
+    config(md) {
+      md.use(groupIconMdPlugin);
+    },
+  },
+
+  vite: {
+    plugins: [groupIconVitePlugin()],
   },
 });
