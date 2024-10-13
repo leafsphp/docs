@@ -4,6 +4,22 @@ Tailwind is a utility-first CSS framework that provides a set of utility classes
 
 ## Using the CLI
 
+You can set up Tailwind CSS in your Leaf project using the Leaf CLI. To do this, run the following command:
+
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf view:install --tailwind
+```
+
+```bash:no-line-numbers [Leaf MVC CLI]
+php leaf view:install --tailwind
+```
+
+:::
+
+This command will install Tailwind CSS and its dependencies, create a Tailwind configuration file, and set up your CSS file to import Tailwind CSS. It will also add your CSS file to Vite as an entry point.
+
 ## Manual Installation
 
 Leaf MVC comes with Vite out of the box, which is a modern build tool that supports Tailwind CSS out of the box. To get started, you need to install Tailwind CSS and its dependencies:

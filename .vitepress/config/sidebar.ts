@@ -153,7 +153,7 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'Leaf + MVC', link: '/docs/mvc/' },
-      { text: 'MVC Config', link: '/docs/config/mvc' },
+      { text: 'MVC Config', link: '/docs/mvc/config' },
       { text: 'Controllers', link: '/docs/mvc/controllers' },
       { text: 'Views', link: '/docs/frontend/mvc' },
       { text: 'Models', link: '/docs/database/models' },
