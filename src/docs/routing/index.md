@@ -151,3 +151,49 @@ If your route has a name, you can navigate to it by passing the route name in an
 ```php:no-line-numbers
 app()->push(['home']);
 ```
+
+## Routing in Leaf MVC
+
+Leaf MVC comes with an `app/routes` folder that organizes all your route files. The `app/routes/index.php` file is the entry point for all your routes and contains the setup for 404s, maintenance mode and other global route settings.
+
+To create a new route, add a file that starts with `_` to the `app/routes` folder. For example, you can create a file called `app/routes/_auth.php` and add all your authentication routes to it. This file will be automatically loaded by Leaf MVC, and all the routes in it will be available in your app.
+
+If you don't want a file in the `app/routes` folder to be automatically loaded, create a file that doesn't start with `_`. For example, you can create a file called `app/routes/custom.php` and add all your routes to it. This file will **NOT** be automatically loaded by Leaf MVC, and you'll have to load it manually.
+
+### Controllers
+
+Beyond that, Leaf MVC uses controllers to handle routes instead of closures. This means you can create a controller for each route and handle the route logic in the controller. You can learn more about controllers in the [Controller section.](/docs/mvc/controllers)
+
+### Updating Error Screens
+
+If you need to set up custom error responses, you can do so in the `app/routes/index.php` file. We have loaded examples for 404 and 500 error pages. You can customize these to your liking.
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Set up 404 handler
+|--------------------------------------------------------------------------
+|
+| Leaf provides a default 404 page, but you can also create your
+| own 404 handler by calling app()->set404(). Whatever function
+| you set will be called when a 404 error is encountered
+|
+*/
+app()->set404(function () {
+  response()->json('Resource not found', 404, true);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Set up 500 handler
+|--------------------------------------------------------------------------
+|
+| Leaf provides a default 500 page, but you can create your own error
+| 500 handler by calling the setErrorHandler() method. The function
+| you set will be called when a 500 error is encountered
+|
+*/
+app()->setErrorHandler(function () {
+  response()->json('An error occured, our team has been notified', 500, true);
+});
+```

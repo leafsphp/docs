@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/tailwindcss": "^0.2.1",
     "@headlessui/vue": "^1.7.22",
+    "@vueuse/core": "^11.1.0",
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

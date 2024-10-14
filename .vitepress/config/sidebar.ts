@@ -50,7 +50,6 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
-      { text: 'Routing in Leaf MVC', link: '/docs/routing/mvc' },
       { text: 'Route Groups', link: '/docs/routing/route-groups' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       { text: 'Middleware', link: '/docs/routing/middleware/' },
@@ -148,14 +147,13 @@ const sidebar = [
     ],
   },
   {
-    text: 'Leaf MVC',
+    text: 'Building to scale',
     // collapsible: true,
     // collapsed: true,
     items: [
       { text: 'Leaf + MVC', link: '/docs/mvc/' },
-      { text: 'MVC Config', link: '/docs/mvc/config' },
       { text: 'Controllers', link: '/docs/mvc/controllers' },
-      { text: 'Views', link: '/docs/frontend/mvc' },
+      // { text: 'Views', link: '/docs/frontend/mvc' },
       { text: 'Models', link: '/docs/database/models' },
       { text: 'Migrations', link: '/docs/database/migrations' },
       { text: 'Schema', link: '/docs/database/schema' },

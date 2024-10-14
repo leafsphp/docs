@@ -166,7 +166,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
     <li><a href="/docs/mvc/">Leaf MVC</a></li>
     <li><a href="/docs/mvc/controllers">Controllers</a></li>
     <li><a href="/docs/database/models">Models</a></li>
-    <li><a href="/docs/frontend/mvc">Views</a></li>
+    <li><a href="/docs/frontend/">Views</a></li>
   </ul>
   </Card>
 

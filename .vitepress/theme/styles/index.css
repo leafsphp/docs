@@ -10,6 +10,7 @@
     #3077c6,
     #3eaf7c
   );
+  --vp-c-banner: var(--vp-c-brand-1);
   --vp-home-hero-name-background: #3eaf7c;
   --vp-c-brand-1: #3eaf7c;
   --vp-c-brand-2: #07c16b;
@@ -35,6 +36,7 @@
 }
 
 html.dark {
+  --vp-c-banner: var(--vp-c-bg-soft);
   --vp-code-color: #3eaf7c;
   --vp-c-bg: #001e26;
   --vp-c-bg-alt: #001318;
@@ -131,4 +133,16 @@ html.dark {
 
 .VPContent.is-home + .VPFooter {
   background-color: var(--vp-c-bg-alt);
+}
+
+.VPSidebar .group, .VPNavBarTitle.has-sidebar a {
+  @apply !border-none;
+}
+
+.VPNavBarTitle.has-sidebar a {
+  @apply !text-lg;
+}
+
+.VPNavBarTitle.has-sidebar img {
+  @apply !w-8 !h-8;
 }
