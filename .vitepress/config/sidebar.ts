@@ -24,6 +24,18 @@ const sidebar = [
     ],
   },
   {
+    text: 'Routing',
+    // collapsible: true,
+    // collapsed: true,
+    items: [
+      { text: 'Basic Routing', link: '/docs/routing/' },
+      { text: 'Route Groups', link: '/docs/routing/route-groups' },
+      { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
+      { text: 'Middleware', link: '/docs/routing/middleware/' },
+      { text: 'Middleware in Leaf MVC', link: '/docs/routing/middleware/mvc' },
+    ],
+  },
+  {
     text: 'Request/Response',
     // collapsible: true,
     // collapsed: true,
@@ -42,18 +54,6 @@ const sidebar = [
       { text: 'Using Sessions', link: '/docs/http/session' },
       { text: 'Session Flash', link: '/docs/http/flash' },
       { text: 'Cookies', link: '/docs/http/cookies' },
-    ],
-  },
-  {
-    text: 'Routing',
-    // collapsible: true,
-    // collapsed: true,
-    items: [
-      { text: 'Basic Routing', link: '/docs/routing/' },
-      { text: 'Route Groups', link: '/docs/routing/route-groups' },
-      { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
-      { text: 'Middleware', link: '/docs/routing/middleware/' },
-      { text: 'Middleware in Leaf MVC', link: '/docs/routing/middleware/mvc' },
     ],
   },
   {
