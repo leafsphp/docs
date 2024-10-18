@@ -57,7 +57,7 @@ If this command does not work, you can try these common locations:
 - macOS: `$HOME/.composer/vendor/bin`
 - GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
 
-### Adding to PATH
+## Adding to PATH
 
 Once you have the location, you can add it to your PATH. On Mac and Linux, you can do this by running these in your terminal:
 

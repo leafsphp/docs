@@ -20,6 +20,19 @@ php leaf view:install --tailwind
 
 This command will install Tailwind CSS and its dependencies, create a Tailwind configuration file, and set up your CSS file to import Tailwind CSS. It will also add your CSS file to Vite as an entry point.
 
+## Using Tailwind
+
+Once setup, Leaf will include all the Tailwind imports which means you can jump into your UI and start writing your components with Tailwind. It also includes the tailwind config in the root of your application. This allows you to define all the configuration for your project if it does not match what Leaf has generated for you.
+
+You can then go ahead to test out that your Tailwind install works fine:
+
+```html
+<body>
+  <h1 class="text-4xl text-blue-600">Welcome to Tailwind</h1>
+  <p class="text-center">Leaf is amazing!</p>
+</body>
+```
+
 ## Manual Installation
 
 Leaf MVC comes with Vite out of the box, which is a modern build tool that supports Tailwind CSS out of the box. To get started, you need to install Tailwind CSS and its dependencies:

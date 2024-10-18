@@ -64,15 +64,15 @@ if (session()->has('firstName')) {
 }
 ```
 
-By default, the `has()` method will only return `true` if the key exists and is not `null`. If you want to check if a key exists even if it's `null`, you can pass `false` as the second parameter.
+<!-- By default, the `has()` method will only return `true` if the key exists and is not `null`. If you want to check if a key exists even if it's `null`, you can pass `true` as the second parameter.
 
 ```php
 // nullableItem is null
 
-$exists = session()->has('nullableItem', false);
+$exists = session()->has('nullableItem', true);
 
 echo $exists; // true
-```
+``` -->
 
 ## Getting session data
 

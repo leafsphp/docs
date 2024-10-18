@@ -106,3 +106,9 @@ cookie()->delete('name');
 ```
 
 :::
+
+You may also choose to delete all your cookies, for instance if you detect an authentication or authorization breech in your application. You can do this using the `deleteAll()` method on Leaf cookies.
+
+```php
+cookie()->deteleAll();
+```
