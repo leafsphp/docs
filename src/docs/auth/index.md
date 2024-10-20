@@ -84,7 +84,7 @@ That's all you need to do. Leaf Auth will automatically connect to your database
 
 Leaf Auth doesn't give you any structure for your database, with that, you can structure your database in any way you prefer. However, there are some things you should note:
 
-1. By default, Leaf Auth assumes that your database primary key is `id`. If you have a database where you are using another field, say `admin_id` as the primary key, you will need to tell Leaf the name of your primary key. You can do this using the `ID_KEY` config:
+1. By default, Leaf Auth assumes that your database primary key is `id`. If you have a database where you are using another field, say `admin_id` as the primary key, you will need to tell Leaf the name of your primary key. You can do this using the `id.key` config:
 
     ```php:no-line-numbers
     auth()->config('id.key', 'admin_id');

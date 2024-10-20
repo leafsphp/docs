@@ -80,7 +80,7 @@ $data = auth()->register([
   'password' => 'password'
 ]);
 
-if($data) {
+if ($data) {
   // User is authenticated
   $token = $data->token;
   $user = $data->user;
@@ -107,7 +107,7 @@ $data = auth()->register([
   'password' => 'password'
 ]);
 
-if(!$data) {
+if (!$data) {
   $error = auth()->errors();
   // ['email' => 'The email already exists']
 }
@@ -158,16 +158,26 @@ Leaf uses token based authentication by default which uses a JWT to authenticate
 auth()->config('session', true);
 ```
 
-This however won't automatically log in a user after registration meaning no session will be created after a user signs up. If you want to automatically log in a user after registration, you can configure Leaf Auth to do that:
+Switching to session auth does not change the default behaviour of the `register()` method. It won't create a session or do anything fancy by default. If you want to create a session immediately after signing a user up, you can pass true to the `session.register` config:
 
 ```php:no-line-numbers
 auth()->config('session.register', true);
-```
 
-You can also set the URL where your app should redirect users to after registration:
+...
 
-```php:no-line-numbers
-auth()->config('session.registerRedirect', '/dashboard');
+// will create a session
+$data = auth()->register([
+  'username' => 'example',
+  'email' => 'example@example.com',
+  'password' => 'password'
+]);
+
+if ($data) {
+  response()->redirect('/dashboard');
+} else {
+  $error = auth()->errors();
+  // ['email' => 'The email already exists']
+}
 ```
 
 You can also control things like the cookie settings and more:
@@ -178,10 +188,4 @@ auth()->config('session.cookie', [
   'httponly' => true,
   'samesite' => 'lax'
 ]);
-```
-
-You can also generate JWT tokens for your sessions if you want to:
-
-```php:no-line-numbers
-auth()->config('session.jwt', true);
 ```

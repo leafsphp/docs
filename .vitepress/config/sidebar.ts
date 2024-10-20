@@ -47,16 +47,6 @@ const sidebar = [
     ],
   },
   {
-    text: 'Sessions',
-    // collapsible: true,
-    // collapsed: true,
-    items: [
-      { text: 'Using Sessions', link: '/docs/http/session' },
-      { text: 'Session Flash', link: '/docs/http/flash' },
-      { text: 'Cookies', link: '/docs/http/cookies' },
-    ],
-  },
-  {
     text: 'Config & Deployment',
     // collapsible: true,
     // collapsed: true,
@@ -104,6 +94,16 @@ const sidebar = [
       },
       // { text: 'Updating logged-in user', link: '/docs/auth/update' },
       { text: 'Build your own auth library', link: '/docs/auth/helpers' },
+    ],
+  },
+  {
+    text: 'Sessions',
+    // collapsible: true,
+    // collapsed: true,
+    items: [
+      { text: 'Using Sessions', link: '/docs/http/session' },
+      { text: 'Session Flash', link: '/docs/http/flash' },
+      { text: 'Cookies', link: '/docs/http/cookies' },
     ],
   },
   {

@@ -47,8 +47,8 @@ app()->get('/protected', function () {
   } else {
     // user is not logged in
     response()->json([
-      "error" => "Unauthorized",
-      "data" => auth()->errors(),
+      'error' => 'Unauthorized',
+      'data' => auth()->errors(),
     ], 401);
   }
 });

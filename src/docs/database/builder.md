@@ -224,6 +224,41 @@ db()
 
 This will delete the row in the users table with the `id` of 1.
 
+## Database Transactions
+
+Database transactions are a way to ...
+Leaf DB allows you to create database transactions using the `transaction()` method. It takes in a callable which is every query you want to perform as part of your transaction.
+
+```php
+db()->transaction(function ($db) {
+  $db->insert('purchases')->params(...)->execute();
+  $db->update('balances')->params(...)->where(...)->execute();
+
+  // you can even do external stuff here
+  $res = fetch()->post(...)
+
+  $doSomething = $res->data;
+
+  ...
+});
+```
+
+If anything in the function fails, Leaf will automatically rollback every change that has been made in the database till that point and return `false`. You can get the associated error using the `errors()` method.
+
+```php
+$success = db()->transaction(function () {
+  ...
+});
+
+if ($success) {
+  // do something
+} else {
+  $errors = db()->errors();
+}
+```
+
+This is useful especially when you have a set of queries that rely on third party influence.
+
 ## Hiding columns from results
 
 Sometimes you might want to hide certain columns from the results of a query. For instance, you might want to hide the password column from the results of a query on the users table. Leaf DB provides a `hide()` method that allows you to do this.

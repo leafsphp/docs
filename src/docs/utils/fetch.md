@@ -77,38 +77,48 @@ It gets even simpler when you're making a GET or POST request. Fetch provides so
 GET requests are the most common type of request you'll make when fetching data from an API. Fetch makes it easy to make GET requests using the global `fetch()` function. Here's an example of how you can make a GET request using Fetch:
 
 ```php
-$res = fetch("https://jsonplaceholder.typicode.com/todos/");
+$res = fetch()->get('https://jsonplaceholder.typicode.com/todos/');
 
 // data returned is saved in the $data property just like axios
 response()->json($res->data);
 ```
 
-Every request made using Fetch returns a `FetchResponse` object. This object contains the response data, status code, headers, and more. You can access the response data using the `data` property.
-
-## Making POST Requests
-
-POST requests are used to send data to a server to create or update a resource. You can make POST requests using Fetch by passing an array of data as the second argument to the `fetch()` function. Here's an example:
+Or you pass the url directly to the `fetch()` function.
 
 ```php
-$res = fetch("https://jsonplaceholder.typicode.com/posts", [
-  "title" => "foo",
-  "body" => "bar",
-  "userId" => 1
-]);
+$res = fetch('https://jsonplaceholder.typicode.com/todos/');
 
+// data returned is saved in the $data property just like axios
 response()->json($res->data);
 ```
 
-Once `fetch()` detects that you're passing an array as the second argument, it automatically converts the request to a POST request.
+## Making Other Requests
+
+Fetch works just like the Leaf router, in a sense that every request type has a shortcut method. You can call `get()`, `post()`, `put()`, `patch()`, `delete()` and `options()` to make any kind of request you want.
+
+```php
+$res = fetch()->post('https://jsonplaceholder.typicode.com/posts', [
+  'title' => 'foo',
+  'body' => 'bar',
+  'userId' => 1
+]);
+
+fetch()->put(...);
+fetch()->patch(...);
+fetch()->delete(...);
+fetch()->options(...);
+
+response()->json($res->data);
+```
 
 ## Setting Base URLs
 
 Base URLs are useful when you're making requests to the same server or API. One popular use case for base URLs is when you're working with a REST API as it allows you to ignore typing lengthy URLs for every request.
 
-You can set a base URL for all your requests using the `baseUrl()` method on the `Fetch` class.
+You can set a base URL for all your requests using the `baseUrl()` method on the `fetch` function.
 
 ```php
-Leaf\Fetch::baseUrl('https://jsonplaceholder.typicode.com');
+fetch()->baseUrl('https://jsonplaceholder.typicode.com');
 ```
 
 Now you can make requests without specifying the full URL.
@@ -118,7 +128,7 @@ Now you can make requests without specifying the full URL.
 $response = fetch('/todos');
 
 // https://jsonplaceholder.typicode.com/posts
-$response = fetch('/posts', [
+$response = fetch()->post('/posts', [
   'title' => 'foo',
   'body' => 'bar',
   'userId' => 1,

@@ -36,7 +36,7 @@
 }
 
 html.dark {
-  --vp-c-banner: var(--vp-c-bg-soft);
+  --vp-c-banner: #0e5f3c;
   --vp-code-color: #3eaf7c;
   --vp-c-bg: #001e26;
   --vp-c-bg-alt: #001318;

@@ -50,7 +50,7 @@ $data = auth()->login([
   'password' => 'password'
 ]);
 
-if($data) {
+if ($data) {
   // User is authenticated
   $token = $data->token;
   $user = $data->user;
@@ -70,13 +70,33 @@ Leaf uses token based authentication by default which uses a JWT to authenticate
 auth()->config('session', true);
 ```
 
-With this, a new login will create a session for the user. If your app requires users to be redirected to a different page after login, you can configure Leaf Auth to do just that:
+With the addition of session auth, `login()` will automatically start a session, but will leave redirects and every other thing to you:
 
-```php:no-line-numbers
-auth()->config('session.loginRedirect', '/dashboard');
+```php
+auth()->config('session', true);
+
+...
+
+// session is automatically started
+$data = auth()->login([
+  'email' => 'user@example.com',
+  'password' => 'password'
+]);
+
+if ($data) {
+  // User is authenticated
+  $user = $data->user;
+
+  response()->redirect('/dashboard');
+} else {
+  // User is not authenticated
+  $error = auth()->errors();
+}
 ```
 
-You can also control things like the cookie settings and more:
+This lets you handle complex control flows...or the simple redirect ones in a manner you prefer.
+
+If you need finer control over how PHP creates your session, you can add your own config to the `session.cookie` config:
 
 ```php
 auth()->config('session.cookie', [
@@ -84,12 +104,6 @@ auth()->config('session.cookie', [
   'httponly' => true,
   'samesite' => 'lax'
 ]);
-```
-
-You can also generate JWT tokens for your sessions if you want to:
-
-```php:no-line-numbers
-auth()->config('session.jwt', true);
 ```
 
 ## Auth with no password
@@ -220,7 +234,7 @@ $data = auth()->update([
   'email' => 'example@example.com'
 ]);
 
-if(!$data) {
+if (!$data) {
   $error = auth()->errors();
   // ['email' => 'The email already exists']
 }
@@ -235,12 +249,17 @@ auth()->logout();
 
 // or redirect the user after logout
 auth()->logout('/login');
+
+// or redirect to a named route
+auth()->logout(['homepage']);
 ```
 
-By default, the logout method will just end the user's session. If you want to perform a custom operation when a user logs out, you can set a handler for the logout operation:
+If you want to perform a custom operation when a user logs out, you can set a handler for the logout operation:
 
 ```php
 auth()->config('session.logout', function () {
   // your logout handler
 });
 ```
+
+This will ignore whatever route is passed into the `logout()` method and rely solely on the function passed into the session.logout config.

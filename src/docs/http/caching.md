@@ -32,10 +32,10 @@ An ETag is a unique identifier for a resource URI. After setting the Etag header
 Setting an ETag with Leaf is very simple. Invoke Leaf’s etag method in your route callback, passing it a unique ID as the first and only argument.
 
 ```php
-use \Leaf\Http\Headers;
+use Leaf\Http\Cache;
 
 app()->get('/', function () {
-  Headers::etag('unique-tag');
+  Cache::etag('unique-tag');
 
   echo 'This will be cached after the initial request!';
 });
@@ -50,11 +50,11 @@ Used in conjunction with the Leaf application’s etag or lastModified methods, 
 The expires method accepts one argument: an integer UNIX timestamp, or a string to be parsed with `strtotime()`.
 
 ```php
-use \Leaf\Http\Headers;
+use Leaf\Http\Cache;
 
 app()->get('/', function () {
-  Headers::etag('unique-tag');
-  Headers::expires('+1 week');
+  Cache::etag('unique-tag');
+  Cache::expires('+1 week');
 
   echo 'This will be cached client-side for one week';
 });
@@ -67,10 +67,10 @@ A Leaf provides built-in support for HTTP caching using the resource’s last mo
 Setting a last modified date with Leaf is very simple. You only need to invoke the Leaf’s lastModified() method in your route callback passing in a UNIX timestamp of the last modification date for the given resource. Be sure the lastModified() method’s timestamp updates along with the resource’s last modification date; otherwise, the browser client will continue serving its outdated cache.
 
 ```php
-use \Leaf\Http\Headers;
+use Leaf\Http\Cache;
 
 app()->get('/', function () {
-  Headers::lastModified(1617383991);
+  Cache::lastModified(1617383991);
 
   echo 'This will be cached after the initial request!';
 });
@@ -81,7 +81,7 @@ app()->get('/', function () {
 There are other cache-related headers that Leaf doesn't provide direct methods for. You can set these headers directly using Leaf's Headers::set() method.
 
 ```php
-use \Leaf\Http\Headers;
+use Leaf\Http\Headers;
 
 app()->get('/', function () {
   Headers::set('Cache-Control', 'public, max-age=3600');
