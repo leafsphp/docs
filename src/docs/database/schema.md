@@ -57,7 +57,7 @@ In the example above, the `users` schema will be used to generate the migration.
 php leaf db:migrate
 ```
 
-Read more about [migrations](/docs/mvc/migrations).
+Read more about [migrations](/docs/database/migrations).
 
 ## Data Types
 

@@ -280,7 +280,7 @@ You should create a base PHP file that will be used to render your app. By defau
 Inertia::setRoot('myfiles/_base');
 ```
 
-Since the Leaf Inertia PHP adapter is built using the [Bare UI engine](/modules/views/bareui/), your base file needs to maintain the `.view.php` extension. For example, if you're using React, your base PHP file should look like this:
+Since the Leaf Inertia PHP adapter is built using the [Bare UI engine](/docs/frontend/bareui), your base file needs to maintain the `.view.php` extension. For example, if you're using React, your base PHP file should look like this:
 
 ```php
 <!DOCTYPE html>

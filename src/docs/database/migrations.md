@@ -63,7 +63,7 @@ class CreateUsers extends Database {
 ```
 
 ::: tip Note
-Instead of building your migrations from scratch, you can use Leaf's schema builder to generate migrations from JSON data. [Learn more](/docs/mvc/schema).
+Instead of building your migrations from scratch, you can use Leaf's schema builder to generate migrations from JSON data. [Learn more](/docs/database/schema).
 :::
 
 ## Running migrations

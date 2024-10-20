@@ -105,7 +105,7 @@ For a fresh MVC app, the directory structure looks like this:
 
 - ### The `config` directory
 
-  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. You can find more information about the configuration files in the [Configuration](/docs/mvc/config) section.
+  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. Each file controls a different feature of your application, e.g. the `app.php` file is used to configure the application, the `database.php` file is used to configure the database connection, etc.
 
 - ### The `public` directory
 
