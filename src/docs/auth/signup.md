@@ -51,11 +51,16 @@ Most databases use `id` as the primary key. If you are using a different field a
 auth()->config('id.key', 'admin_id');
 ```
 
-If you are using UUIDs as your primary key, you can configure Leaf Auth to use them:
+If you are using UUIDs as your primary key, you just need to pass in your primary key instead of leaving it up to Leaf to generate it:
 
-```php:no-line-numbers
-auth()->config('id.uuid', UUID::v4());
+```php{2}
+auth()->register([
+  'id' => 'your-uuid',
+  ...
+]);
 ```
+
+Once Leaf detects a field with the same name as your primary key, it will use that field as the primary key.
 
 ## Signing a user up
 
