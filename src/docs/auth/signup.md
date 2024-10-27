@@ -76,19 +76,22 @@ auth()->register([
 ]);
 ```
 
-If the user is successfully saved in the database, a session or token is created for them and the user is returned. If Leaf Auth fails to save the user, the method returns `null`. You can then use the `errors()` method to get the error message.
+If the user is successfully saved in the database, a session or token is created for them and the user is returned. If Leaf Auth fails to save the user, the method returns `false`. You can then use the `errors()` method to get the error message.
 
 ```php
-$data = auth()->register([
+$success = auth()->register([
   'username' => 'example',
   'email' => 'user@example.com',
   'password' => 'password'
 ]);
 
-if ($data) {
+if ($success) {
   // User is authenticated
-  $token = $data->token;
-  $user = $data->user;
+  $token = auth()->data();
+  // ['user' => [...], 'accessToken' => '...', 'refreshToken' => '...']
+
+
+  $username = auth()->user()->username;
 } else {
   // User is not authenticated
   $error = auth()->errors();
@@ -134,6 +137,25 @@ auth()->config('timestamps.format', 'YYYY-MM-DD HH:MM:SS');
 
 You can find the date format documentation [here](/docs/utils/date#formatting-dates).
 
+## Password hashing
+
+Leaf allows you to customize how user passwords should be encoded before they are stored in your database. By default, Leaf uses the `Leaf\Helpers\Password::hash` method which has support for `bcrypt` and `argon2`. If you however want to use a different method or turn off password encoding, you can do that directly in the config:
+
+```php
+auth()->config('password.encode', false); // turn off encoding
+
+auth()->config('password.encode', function ($password) {
+  // return the encoded password
+  return Password::hash($password);
+});
+```
+
+These are the available options you can pass to `password.encode`:
+
+- `false` - This turns off password encoding
+- `null`/`true` - This uses the default encoding method (Leaf\Helpers\Password::hash)
+- `function` - This uses a custom method. The method should accept a password and return the encoded password.
+
 ## Hiding sensitive information
 
 The output of Leaf's authentication methods is an object with the user's data and the token or session. By default, the password field is hidden from the user data. This is a security measure to prevent the password from being exposed.
@@ -163,21 +185,21 @@ Leaf uses token based authentication by default which uses a JWT to authenticate
 auth()->config('session', true);
 ```
 
-Switching to session auth does not change the default behaviour of the `register()` method. It won't create a session or do anything fancy by default. If you want to create a session immediately after signing a user up, you can pass true to the `session.register` config:
+Switching to session auth does not change the default behaviour of the `register()` method. It does everything the same way it would if you were using token based authentication except that it creates a new session when a user is registered.
 
 ```php:no-line-numbers
-auth()->config('session.register', true);
+auth()->config('session', true);
 
 ...
 
 // will create a session
-$data = auth()->register([
+$success = auth()->register([
   'username' => 'example',
   'email' => 'example@example.com',
   'password' => 'password'
 ]);
 
-if ($data) {
+if ($success) {
   response()->redirect('/dashboard');
 } else {
   $error = auth()->errors();

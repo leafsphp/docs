@@ -93,7 +93,7 @@ const sidebar = [
         link: '/docs/auth/protected-routes',
       },
       // { text: 'Updating logged-in user', link: '/docs/auth/update' },
-      { text: 'Build your own auth library', link: '/docs/auth/helpers' },
+      // { text: 'Build your own auth library', link: '/docs/auth/helpers' },
     ],
   },
   {
@@ -127,7 +127,7 @@ const sidebar = [
       { text: 'HTTP Cache', link: '/docs/http/caching' },
       { text: 'Leaf Mail', link: '/docs/utils/mail/' },
       { text: 'File System', link: '/docs/utils/fs' },
-      { text: 'Queues/Jobs', link: '/docs/utils/queues' },
+      // { text: 'Queues/Jobs', link: '/docs/utils/queues' },
     ],
   },
   {

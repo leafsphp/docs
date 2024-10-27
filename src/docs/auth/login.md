@@ -42,25 +42,70 @@ auth()->login([
 ]);
 ```
 
-If the user is successfully authenticated, a session or token is created for them and the user is returned. If the user is not found or the password is incorrect, the method returns `null`. You can then use the `errors()` method to get the error message.
+The `login()` method returns `true` if the user is successfully authenticated and `false` if the user is not authenticated. You can then use the `errors()` method to get the error message.
 
 ```php
-$data = auth()->login([
+$success = auth()->login([
   'email' => 'user@example.com',
   'password' => 'password'
 ]);
 
-if ($data) {
+if ($success) {
   // User is authenticated
-  $token = $data->token;
-  $user = $data->user;
 } else {
   // User is not authenticated
   $error = auth()->errors();
 }
 ```
 
-The output of the `login()` method is an object with the user's data and the token or session. You can then use this data to manage the user's session or token.
+You can get the data and tokens needed for authentication using the `data()` method:
+
+```php
+$data = auth()->data();
+// ['user' => [...], 'accessToken' => '...', 'refreshToken' => '...']
+```
+
+If you want to use a couple of fields from the user within your application, you can use the user method:
+
+## The user object
+
+The `user()` method gives you access to an object configured to the user's data. This object is a simple way to access the user's data without having to go through the data array. There are many things you can do with the user object:
+
+- Getting user information (including hidden fields)
+- Token/Session management
+- Fetching related data from your database
+
+```php
+// return all user data without hidden fields
+$user = auth()->user()->get();
+
+// pick specific fields
+$username = auth()->user()->username;
+$email = auth()->user()->email;
+
+// get the user's data + tokens
+$data = auth()->user()->getAuthInfo();
+```
+
+If your user has one to many relationships with other models, you can fetch related data using the user object:
+
+```php
+$posts = auth()->user()->posts();
+// will return a Leaf DB instance with posts by the current user
+// SELECT * FROM posts WHERE user_id = $current_user_id
+```
+
+You can further filter the data by using any of the Leaf DB methods:
+
+```php:no-line-numbers
+$posts = auth()->user()->posts()->where('title', 'like', '%leaf%')->get();
+```
+
+Note that the method name should be the same as the table name in your database.
+
+```php:no-line-numbers
+$posts = auth()->user()->transactions()->where('amount', '>', 1000)->get();
+```
 
 ## Switching to session auth
 
@@ -70,7 +115,7 @@ Leaf uses token based authentication by default which uses a JWT to authenticate
 auth()->config('session', true);
 ```
 
-With the addition of session auth, `login()` will automatically start a session, but will leave redirects and every other thing to you:
+With the addition of session auth, `login()` will automatically start a session, but will behave in the same way, which means redirects and any other functionality you need will be left up to you to handle:
 
 ```php
 auth()->config('session', true);
@@ -78,14 +123,14 @@ auth()->config('session', true);
 ...
 
 // session is automatically started
-$data = auth()->login([
+$success = auth()->login([
   'email' => 'user@example.com',
   'password' => 'password'
 ]);
 
-if ($data) {
+if ($success) {
   // User is authenticated
-  $user = $data->user;
+  $user = auth()->user();
 
   response()->redirect('/dashboard');
 } else {
@@ -117,28 +162,10 @@ auth()->config('password.key', 'pass');
 Better still, you can turn off password authentication completely. This is useful in multi-step authentication systems, where you might authenticate a set of parameters before authenticating the password. To turn off password authentication, you can configure Leaf Auth like this:
 
 ```php:no-line-numbers
-auth()->config('password', false);
+auth()->config('password.key', false);
 ```
 
 Once this is done, Leaf will no longer expect a password field to authenticate users and will also turn off password hashing and verification.
-
-## Password hashing
-
-Leaf allows you to customize how Leaf should encode passwords. By default, Leaf uses the `Leaf\Helpers\Password::hash` method which has support for `bcrypt` and `argon2`. If you however want to use a different method or turn off password encoding, you can do that directly in the config:
-
-```php
-auth()->config('password.encode', false); // turn off encoding
-
-auth()->config('password.encode', function ($password) {
-  return Password::hash($password);
-});
-```
-
-These are the available options you can pass to `password.encode`:
-
-- `false` - This turns off password encoding
-- `null`/`true` - This uses the default encoding method (Leaf\Helpers\Password::hash)
-- `function` - This uses a custom method. The method should accept a password and return the encoded password.
 
 ## Password verification
 
@@ -171,15 +198,17 @@ auth()->config('messages.loginPasswordError', 'Password is incorrect!');
 
 The output of Leaf's authentication methods is an object with the user's data and the token or session. By default, the password field is hidden from the user data. This is a security measure to prevent the password from being exposed.
 
-```php
-[
-  'user' => [
-    'username' => 'mychidarko',
-    'email' => 'user@example.com',
-    'created_at' => '2019-09-20 13:47:48'
-  ],
-  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzYxMzUzMjgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTU3NjEzNjIyOCwidXNlcklkIjoxfQ.7FODXGGJKioGQVX4ic0DJLoMIQTVUlsd4zFAJA4DAkg'
-]
+```json
+{
+  "user": {
+    "username": "mychidd22",
+    "email": "mychidd22@gmail.com",
+    "created_at": "2024-10-26 19:29:37.000000",
+    "updated_at": "2024-10-26 19:29:37.000000"
+  },
+  "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyLmlkIjo5MjQsImlhdCI6MTczMDAyOTAwNywiZXhwIjo4NjQwMCwiaXNzIjoibG9jYWxob3N0OjU1MDAifQ.yLldIhOkUxn54-3RWLD7PJONoWwqpZ5mmP8fEZ4nNfs",
+  "refreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyLmlkIjo5MjQsImlhdCI6MTczMDAyOTAwNywiZXhwIjozNDU2MDAsImlzcyI6ImxvY2FsaG9zdDo1NTAwIn0.tqfp5Co4vLtq3_J0r5Fp-XwuDSB1i6uC4AcogQ3vnc8"
+}
 ```
 
 If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
@@ -229,14 +258,14 @@ auth()->config('unique', ['email', 'username']);
 Now if a user tries to update their profile with an email or username that already exists in the database, Leaf Auth will return an error. You can get the error message using the `errors()` method.
 
 ```php
-$data = auth()->update([
+$success = auth()->update([
   'username' => 'example',
   'email' => 'example@example.com'
 ]);
 
-if (!$data) {
+if (!$success) {
   $error = auth()->errors();
-  // ['email' => 'The email already exists']
+  // ['email' => 'email already exists']
 }
 ```
 
