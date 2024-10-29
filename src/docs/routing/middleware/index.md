@@ -4,9 +4,15 @@ Middleware is a piece of code that runs before or after your application process
 
 Middleware can be used for a variety of tasks, such as authentication, authorization, logging, error handling, session management, and more.
 
-Note that Leaf has modules that offer most of these functionalities out of the box, so you might not need to write your own middleware for them.
+## Middleware in Leaf
 
-This page only covers how to use middleware in Leaf Core, if you are using Leaf MVC, you can check the [Leaf MVC Middleware](/docs/routing/middleware/mvc) page.
+Leaf is a modular framework, so we don't throw everything into the core. However, some common middleware are built into respective modules like the Auth module which has middleware for authentication, the CORS module, and the CSRF module which come with their own implementation.
+
+We recommend that you always check the module documentation to see if it offers the functionality you need before attempting to write your own middleware. You'll find just what you need in a module about 90% of the time.
+
+Also, this page only covers how to use middleware in Leaf Core, if you are using Leaf MVC, you can check the [Leaf MVC Middleware](/docs/routing/middleware/mvc) page.
+
+With that out of the way, let's see how to use middleware in Leaf.
 
 ## Creating Middleware
 
