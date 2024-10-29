@@ -151,7 +151,7 @@ $validatedData = request()->validate([
 Some rules like `min`, `max`, `between`, `match`, `contains`, `in` and `regex` require additional parameters. You can pass these parameters to the rules by separating them with a colon (`:`).
 
 ```php{2}
-form()->validate($data, [
+request()->validate([
   'bio' => 'min:10',
 ]);
 ```
@@ -159,7 +159,7 @@ form()->validate($data, [
 Some rules like `between` and `in` require multiple parameters. You can pass these parameters by using an array.
 
 ```php{2}
-form()->validate($data, [
+request()->validate([
   'bio' => 'between:[18,30]',
 ]);
 ```
@@ -175,7 +175,7 @@ You can create your own rules using the `addRule()` method or it's alias `rule()
 ::: code-group
 
 ```php [Regular Expression]
-request()->form()->rule('isEven', '/^\d*[02468]$/', '{field} must be even.');
+request()->validator()->rule('isEven', '/^\d*[02468]$/', '{field} must be even.');
 
 ...
 
@@ -185,9 +185,9 @@ $validatedData = request()->validate([
 ```
 
 ```php [Validator Function]
-request()->form()->rule('superTest', function ($value) {
+request()->validator()->rule('superTest', function ($value) {
   // in functions, you can also add the error messages like this
-  request()->form()->message('superTest', '{field} should be superTest!');
+  request()->validator()->message('superTest', '{field} should be superTest!');
 
   return $value === 'superTest';
 });
@@ -248,4 +248,24 @@ Things get a bit funny here because a user may pass a string with the key `user.
 $validatedData = request()->validate([
   'user\.name' => 'string',
 ]);
+```
+
+## Validating Data from other sources
+
+Sometimes, you may want to validate data that does not come from the request object. You can do this by accessing the `Leaf\Form` class directly. We have a `form()` shortcut that returns the validator instance.
+
+```php
+$dataToValidate = [
+  'name' => 'John Doe',
+  'age' => 25
+];
+
+$validatedData = form()->validate($dataToValidate, [
+  'name' => 'string',
+  'age' => 'number'
+]);
+
+if (!$validatedData) {
+  $errors = form()->errors();
+}
 ```
