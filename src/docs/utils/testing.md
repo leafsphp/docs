@@ -15,12 +15,18 @@ leaf install alchemy
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/alchemy
+composer require leafs/alchemy --dev
 ```
 
 :::
 
-Once installed, Alchemy will automatically set up an `alchemy.yml` file in your project's root which you can use to configure your tests, linting and github actions.
+Once installed, you need to run the setup command to configure Alchemy for your project.
+
+```bash:no-line-numbers
+./vendor/bin/alchemy install
+```
+
+This will automatically set up an `alchemy.yml` file in your project's root which you can use to configure your tests, linting and github actions. It also sets up commands for testing and linting in your `composer.json` file.
 
 ## Configuring Alchemy
 
@@ -39,7 +45,8 @@ tests:
   files:
     - '*.test.php'
   coverage:
-    processUncoveredFiles: true
+    local: false
+    actions: true
 
 lint:
   preset: PSR12
@@ -52,30 +59,36 @@ actions:
   run:
     - lint
     - tests
+  os:
+    - ubuntu-latest
   php:
-    extensions: json, zip
+    extensions: json, zip, dom, curl, libxml, mbstring
     versions:
       - '8.3'
-  event:
+  events:
     - push
     - pull_request
 ```
 
-You can make edits to this file to suit your needs. The `app` key is an array of directories to look for your app files in. The `tests` key is an array of configurations for your tests. The `lint` key is an array of configurations for your code styling checks. Once you're done setting up your `alchemy.yml` file, you can run the setup script.
+You can make edits to this file to suit your needs. The `app` key is an array of directories to look for your app files in. The `tests` key is an array of configurations for your tests. The `lint` key is an array of configurations for your code styling checks. Once you're done setting up your `alchemy.yml` file, you can run your test command, lint command, GitHub actions command or the alchemy command to do all of that at once.
 
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf run alchemy
+leaf run test # Generate/Run tests
+leaf run lint # Generate/Run code styling checks
+leaf run actions # Generate GitHub Actions
+leaf run alchemy # Run all of the above
 ```
 
 ```bash:no-line-numbers [Composer]
-composer run alchemy
+composer run test # Generate/Run tests
+composer run lint # Generate/Run code styling checks
+composer run actions # Generate GitHub Actions
+composer run alchemy # Run all of the above
 ```
 
 :::
-
-This will install your test engine, PHP CS Fixer and any other dependencies you might need, and then generate dummy tests using the test engine you chose. It will then lint your code, run your tests and also add `test` and `lint` commands to your `composer.json` file which you can use to run your tests and lint your code respectively. Finally, Alchemy will generate a `.github/workflows` directory with a `tests.yml` file and a `lint.yml` file which you can use to run your tests and linting on github actions.
 
 ## Configuring Tests
 
@@ -96,7 +109,8 @@ tests:
   files:
     - '*.test.php'
   coverage:
-    processUncoveredFiles: true
+    local: false
+    actions: true
 ```
 
 - `app`: This is a list of directories that contain your application code. Alchemy will use these directories to lint your code and also in code coverage reports. If you want to use the root directory, you can just remove the entire `app` section.
@@ -110,7 +124,7 @@ tests:
 - `tests.files`: The files to look for tests in.
 
 - `tests.coverage`: Configuration for code coverage.
-  - You can set `processUncoveredFiles` to `true` to process files that are not covered by tests.
+  - You can configure `local` to generate code coverage reports locally. By default, Alchemy will generate code coverage reports only on GitHub Actions.
   - You can also set `include` to include specific directories in your code coverage report. By default Alchemy will just use the directories defined in the `app` configuration.
 
 If you don't want code coverage reports, you can just remove the entire `coverage` section.
@@ -164,6 +178,10 @@ actions:
   run:
     - lint
     - tests
+  os:
+    - ubuntu-latest
+    - windows-latest
+    - macos-latest
   php:
     extensions: json, zip
     versions:
