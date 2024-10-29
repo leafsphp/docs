@@ -9,7 +9,7 @@ const sidebar = [
       { text: 'Installation', link: '/docs/installation' },
       { text: 'Using Docker', link: '/docs/docker' },
       { text: 'Migration Guide', link: '/docs/migrating' },
-      { text: 'Functional Mode', link: '/docs/config/functional-mode' },
+      // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
       { text: 'Modules', link: '/docs/modules' },
     ],
   },
