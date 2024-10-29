@@ -2,29 +2,6 @@
 // old component. will refactor later
 import { ExternalLink } from 'lucide-vue-next';
 import Button from '../shared/Button.vue';
-
-const articles = [
-  {
-    title: "Roadmap for Final Third...",
-    date: "August 28, 2024",
-    link: "https://blog.leafphp.dev/posts/2024-t3-roadmap.html"
-  },
-  {
-    title: "Build First Recap",
-    date: "April 18, 2023",
-    link: "https://blog.leafphp.dev/posts/buildfirst-recap.html"
-  },
-  {
-    title: "2023 Docs Updates",
-    date: "March 14, 2023",
-    link: "https://blog.leafphp.dev/posts/docs-updates.html"
-  },
-  {
-    title: "Getting Started with Leaf",
-    date: "January 7, 2023",
-    link: "https://blog.leafphp.dev/posts/getting-started.html"
-  },
-];
 </script>
 
 <template>
@@ -36,8 +13,9 @@ const articles = [
           Our main goal and pride at Leaf is to make PHP development as simple and elegant as possible.
         </p>
         <p class="mb-6">
-          Our team is always looking to improve your experience using the Leaf framework and it's ecosystem of tools. You
-          can follow along as our team discusses it's insights from the past year and what's to come in 2023.
+          Our team is always looking to improve your experience using the Leaf framework and it's ecosystem of tools.
+          You
+          can follow along as our team discusses it's insights from the past year and what's to come in 2025.
         </p>
         <Button as="a" href="https://blog.leafphp.dev" target="_blank">
           <span>Read the Blog</span>
@@ -45,20 +23,7 @@ const articles = [
         </Button>
       </div>
 
-      <div>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-          <div class="blog-card" v-for="article in articles">
-            <a :href="article.link" target="_blank">
-              <div>
-                <h4>{{ article.title }}</h4>
-                <div>
-                  <span style="font-size: 12px;">{{ article.date }}</span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
+      <div class="elfsight-app-6190fe7f-f619-4dda-9952-9324f84ba50c" data-elfsight-app-lazy></div>
     </div>
   </section>
 </template>

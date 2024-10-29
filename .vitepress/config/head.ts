@@ -132,6 +132,13 @@ const head: HeadConfig[] = [
       rel: 'stylesheet',
     },
   ],
+  [
+    'script',
+    {
+      async: '',
+      src: 'https://static.elfsight.com/platform/platform.js',
+    },
+  ],
   // [
   //   'script',
   //   {},
