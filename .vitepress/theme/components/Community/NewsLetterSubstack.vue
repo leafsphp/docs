@@ -5,7 +5,7 @@
 <template>
   <section id="newsletter" class="NewsLetter">
     <div class="container">
-      <iframe src="https://leafphp.substack.com/embed" style="display: #041D24;" width="480" height="320" frameborder="0" scrolling="no"></iframe>
+      <iframe src="https://leafphp.substack.com/embed" style="display: #041D24;" width="100%" height="320" frameborder="0" scrolling="no"></iframe>
 
       <p class="help">
         You can read our blog posts at

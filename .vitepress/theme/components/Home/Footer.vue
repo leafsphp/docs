@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col justify-center !py-24">
+  <section class="hidden md:flex flex-col justify-center !py-24">
     <img src="/logo-circle.png" class="w-14 h-14" alt="">
     <div class="mt-6 grid grid-cols-5 md:gap-x-8 gap-y-12">
       <div class="lg:col-span-2">

@@ -8,22 +8,14 @@ import Card from '../shared/Card.vue';
   <section class="flex flex-col justify-center items-center container py-40">
     <div class="text-center mb-12">
       <h1 class="flex justify-center text-center text-4xl font-bold mb-4">
-        <vue-writer :array="['Hello, ', 'Hola, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Olá, ']" /><span>welcome 👋</span>
+        Keep in touch 💃
       </h1>
-      <p class="max-w-[700px] mb-4">
-        The community is the heart of Leaf. Unlike other frameworks, we let the community drive the development of Leaf.
-        This includes RFCs, feature requests, bug reports, and code contributions. We welcome all contributions, no
-        matter how
-        small. We believe that the community is the backbone of any successful project. We are grateful for your support
-        and contributions. Together, we can build a better framework for everyone. 🌱
-      </p>
       <p>Join us on GitHub, Discord, Twitter or YouTube</p>
     </div>
 
-    <div class="grid grid-cols-4 gap-2 max-w-[850px]">
-      <Card class="p-4 row-span-2 relative">
-        <img src="/images/community/discord.png" class="rounded" alt="">
-        <svg width="16" height="16" class="h-6 w-6 absolute right-6 top-6" viewBox="0 0 40 40" fill="none"
+    <div class="grid sm:grid-cols-3 lg:grid-cols-5 lg:max-w-[1000px] gap-2">
+      <Card class="p-4 relative">
+        <svg width="16" height="16" class="h-6 w-6" viewBox="0 0 40 40" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <rect width="40" height="40" rx="10" fill="#5865F2"></rect>
           <mask id="mask0_4221_8593" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="8" y="8" width="24"
@@ -37,7 +29,7 @@ import Card from '../shared/Card.vue';
           </g>
         </svg>
 
-        <h3 class="font-bold mt-4">Leaf World 🍁 on Discord</h3>
+        <h3 class="font-bold mt-4">Leaf on Discord</h3>
         <p class="text-sm">Join our Discord server to connect with the team and other users.</p>
       </Card>
       <Card class="p-4">
@@ -98,14 +90,14 @@ import Card from '../shared/Card.vue';
         <h3 class="font-bold mt-2">@leafphp on YouTube</h3>
         <p class="text-sm">Subscribe to our YouTube channel.</p>
       </Card>
-      <Card class="p-4 col-span-2">
+      <!-- <Card class="p-4 col-span-2">
         <img src="/logo-circle.png" alt="LeafPHP Logo" class="w-6 h-6 rounded-full">
 
         <p class="text-sm mt-2">
           Contribute to Leaf, Hana or Naytive. We welcome all contributions, no matter how small. Your code can help
           make Leaf better for everyone.
         </p>
-      </Card>
+      </Card> -->
     </div>
   </section>
 </template>

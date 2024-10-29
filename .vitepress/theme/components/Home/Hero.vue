@@ -9,7 +9,7 @@ import Button from '../shared/Button.vue';
       Elegant PHP <br>
       <span>for Modern Developers</span>
     </h1>
-    <p class="text-center max-w-[600px]">
+    <p class="text-center max-w-[600px] p-2 md:p-0 text-sm md:text-base">
       Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a
       zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.
     </p>

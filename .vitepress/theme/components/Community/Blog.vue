@@ -28,7 +28,7 @@ const articles = [
 </script>
 
 <template>
-  <section id="blog" class="testimonials flex justify-center items-center h-[70vh] d-sm-down:none">
+  <section id="blog" class="testimonials hidden md:flex justify-center items-center h-[70vh]">
     <div class="flex:center-between py:_10" style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 4rem;">
       <div class="text-sm">
         <h2 class="title mb-4" style="text-align: left;">Latest writings from the Leaf team</h2>

@@ -3,13 +3,14 @@
 
 <template>
   <div class="flex flex-col min-h-[500px] justify-center items-center bg-[var(--vp-c-bg-alt)]">
-    <h1 class="text-center !font-bold !text-7xl">
-      <span>#Leaf</span> #Community
+    <h1 class="text-center !font-bold !text-5xl md:!text-7xl">
+      <span>#Leaf</span> <vue-writer
+        :array="['#Community', '#Comunidad', '#Communauté', '#コミュニティ', '#社区', '#Comunidade']" />
     </h1>
-    <p class="text-center max-w-[600px] mt-4">
-      Join our community of developers, contributors, and users to help us build a better framework for everyone.
-      We
-      welcome all contributions, from bug reports to feature requests, and code contributions.
+    <p class="text-center max-w-[600px] mt-4 text-sm md:text-base p-2 sm:p-0">
+      Our community is the heart of Leaf. Our community drives what we build, how we build it, and why we build it.
+      Whether you are new to programming or a seasoned developer, you can join the community to hang out with other
+      like-minded developers. 🌱
     </p>
   </div>
 </template>
@@ -20,5 +21,9 @@ h1 span {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+h1 * {
+  display: inline !important;
 }
 </style>
