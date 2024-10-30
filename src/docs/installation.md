@@ -3,14 +3,10 @@
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue';
 </script>
 
 Leaf is built by design to be incrementally adoptable. This means that it can be integrated into a project multiple ways depending on the requirements. You can use Leaf on its own which is generally recommended for small/medium sized projects, or you can use it with an additional structure like [Leaf MVC](/docs/mvc/) for more complex applications.
-
-1. [Use the Leaf CLI to scaffold a project [RECOMMENDED]](#leaf-cli).
-2. [Download leaf through composer](#composer)
-3. [Scaffold a Leaf MVC project](#mvc-setup)
 
 ## Technical Requirements
 
@@ -23,40 +19,39 @@ Before you create your first Leaf application, you need to make sure you meet th
 
 ::: details Not sure where to start?
 
-- Laravel released an amazing tool called [Laravel Herd](https://herd.laravel.com/) that provides a quick and easy way to set up a local PHP development environment for Mac. It's a great way to get started with PHP and Leaf.
+- Beyond Code released an amazing tool called [Laravel Herd](https://herd.laravel.com/) that provides a quick and easy way to set up a local PHP development environment for Mac and Windows. It's a great way to get started with PHP if you don't have it installed yet.
 
-- On Windows, Linux and Mac, you can use [Xampp](https://www.apachefriends.org/), which is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
+- Another way to install PHP and Composer without any hassle is to use [php.new](https://php.new/) which was created by Beyond Code. It's a quick way to get started on Windows, Linux and Mac with just one command.
+
+- A more traditional way on Windows, Linux and Mac, you can use [Xampp](https://www.apachefriends.org/), which is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
+
+Once you have PHP and Composer installed, you can proceed with the installation of Leaf CLI.
 
 :::
 
-## Leaf CLI
+## Automatic Installation
 
-<VideoModal
-  subject="Watch the leaf installation walkthrough"
-  videoUrl="https://www.youtube.com/embed/PuOk5xqTIsA"
-/>
-
-Leaf provides an [official CLI](https://github.com/leafsphp/cli) for quickly creating and managing your Leaf applications. It takes just a few seconds to get up and running with your leaf app. See [the Leaf CLI docs](/docs/cli/) for more details.
-
-Using the CLI, you can quickly scaffold a new Leaf project with:
+We recommend starting a new Leaf app using the Leaf CLI, which sets up everything automatically for you. To create a project, run:
 
 ```bash:no-line-numbers
 leaf create <project-name>
 ```
 
-The CLI also allows you to completely customize the installation you wish to create. You can choose different features like database, authentication, etc. This is done using the `--custom` flag:
+This command will walk you through a quick setup process where you can choose the features you want in your app. There are more options available in the CLI, which you can find in the [CLI documentation](/docs/cli/).
 
-```bash:no-line-numbers
-leaf create <project-name> --custom
-```
-
-You can then run your app using the `serve` command:
+Once your project is generated, you can run it using the `serve` command:
 
 ```bash:no-line-numbers
 leaf serve
 ```
 
-## Composer
+<VideoModal
+  buttonText="Setup a project via CLI"
+  subject="Watch the leaf installation walkthrough"
+  videoUrl="https://www.youtube.com/embed/PuOk5xqTIsA"
+/>
+
+## Manual Installation
 
 <!-- <VideoModal
   subject="Watch the composer setup on youtube"
@@ -64,13 +59,13 @@ leaf serve
   link="https://www.youtube.com/watch?v=t-pNURSTOKw"
 /> -->
 
-Leaf also allows a more traditional approach to installation. You can install leaf through composer. You can use this method if you don't want to use the leaf cli or if you want to use leaf as a dependency in your project. The disadvantage of this method is that you don't get a quick-start setup like you do with the leaf cli.
+Leaf also allows a more traditional approach to installation through [composer](https://getcomposer.org/). We recommend using the Leaf CLI since it provides a more streamlined setup process, but of course, you can use composer if you prefer. The disadvantage of this method is that you don't get a quick-start setup like you do with the leaf cli.
 
 ```bash:no-line-numbers
 composer require leafs/leaf
 ```
 
-After insalling Leaf, you need to create your index.php file which will be the entry point to your application.
+After installing Leaf, you need to create your index.php file which will be the entry point to your application.
 
 ::: code-group
 
@@ -103,7 +98,3 @@ $app->run();
 :::
 
 When hosting your application on a webserver, all requests coming into your app must be routed through Leaf. It is really simple to do, and all needed instructions can be found @ [URL rewriting](/docs/routing/url-rewriting).
-
-## MVC Setup
-
-Leaf is built to be modular, so you can use only what you need. Unfortunately, this means that a simple Leaf app does not give you any structure to work with. You can structure your app however you want, but if you're building a complex application, you might want to consider using Leaf MVC. Leaf MVC is a full but ridiculously light-weight MVC framework that creates an MVC skeleton for you to work with. It is still Leaf, but with a more structured approach. To get started, you can check out the [MVC docs](/docs/mvc/).

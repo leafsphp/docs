@@ -5,9 +5,7 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/' },
-      { text: 'Why Leaf?', link: '/docs/why' },
       { text: 'Installation', link: '/docs/installation' },
-      { text: 'Using Docker', link: '/docs/docker' },
       { text: 'Migration Guide', link: '/docs/migrating' },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
       { text: 'Modules', link: '/docs/modules' },
@@ -59,6 +57,7 @@ const sidebar = [
       { text: 'Dependency Injection', link: '/docs/config/container' },
       // { text: 'Logging', link: '/docs/utils/logging' },
       { text: 'Using Swoole', link: '/docs/swoole' },
+      { text: 'Using Docker', link: '/docs/docker' },
       { text: 'Debugging', link: '/docs/config/debugging' },
       // { text: 'Leaf Devtools', link: '/docs/utils/devtools' },
       // { text: 'Deployment', link: '/docs/config/deployment' },

@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-Leaf comes with a powerful router that allows you to define routes for your application. The router is responsible for determining which route should be called and rendering the appropriate view or response. You can take it as one fancy traffic officer that directs traffic to the right place.
+Routing is the foundation of every web application. It's the process of defining the URL structure of your application and how it responds to requests. Leaf comes with a powerful router that simplifies the way you define routes in your application. You can take routing as one fancy traffic officer that directs traffic to the right place.
 
 ## Create a route
 

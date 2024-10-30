@@ -92,7 +92,9 @@ composer run alchemy # Run all of the above
 
 ## Configuring Tests
 
-If you don't want to use Pest, Alchemy also supports PHPUnit. You can change the testing framework by editing the `alchemy.yml` file in your project root, add your tests to the `tests` directory, and run the test command again. You don't need to worry about setting up PHPUnit or Pest as Alchemy will handle that for you.
+Alchemy uses Pest for testing by default. Pest is a delightful PHP Testing Framework with a focus on simplicity which matches Leaf's philosophy. We are working on adding support for PHPUnit as well.
+
+<!-- If you don't want to use Pest, Alchemy also supports PHPUnit. You can change the testing framework by editing the `alchemy.yml` file in your project root, add your tests to the `tests` directory, and run the test command again. You don't need to worry about setting up PHPUnit or Pest as Alchemy will handle that for you. -->
 
 By default Pest expects a `phpunit.xml` file in your project root, but as it's quite annoying to read, Leaf provides a `alchemy.yml` file in your project root. This file is used to configure Pest and is much easier to read and understand. The `alchemy.yml` file is used to configure Pest and can be used to set up your test environment.
 
@@ -115,7 +117,7 @@ tests:
 
 - `app`: This is a list of directories that contain your application code. Alchemy will use these directories to lint your code and also in code coverage reports. If you want to use the root directory, you can just remove the entire `app` section.
 
-- `tests.engine`: The testing engine to use. Only Pest and PHPUnit are supported engine at the moment, but we plan to add support for other engines in the future.
+- `tests.engine`: The testing engine to use. Only Pest is supported engine at the moment, but we plan to add support for other engines in the future.
 
 - `tests.parallel`: Whether to run tests in parallel. This can speed up your test suite significantly.
 
