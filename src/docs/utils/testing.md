@@ -11,7 +11,7 @@ Leaf CLI will always ask if you want to add Alchemy to your project when you cre
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install alchemy
+leaf install alchemy --dev
 ```
 
 ```bash:no-line-numbers [Composer]
