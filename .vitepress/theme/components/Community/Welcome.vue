@@ -94,7 +94,7 @@ import Card from '../shared/Card.vue';
         <img src="/logo-circle.png" alt="LeafPHP Logo" class="w-6 h-6 rounded-full">
 
         <p class="text-sm mt-2">
-          Contribute to Leaf, Hana or Naytive. We welcome all contributions, no matter how small. Your code can help
+          Contribute to Leaf or Hana. We welcome all contributions, no matter how small. Your code can help
           make Leaf better for everyone.
         </p>
       </Card> -->

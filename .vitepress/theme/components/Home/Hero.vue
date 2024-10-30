@@ -1,10 +1,13 @@
 <script setup>
 import VideoModal from '../shared/VideoModal.vue';
 import Button from '../shared/Button.vue';
+import Particles from './Particles.vue';
 </script>
 
 <template>
   <div class="flex flex-col min-h-[90vh] justify-center items-center">
+    <Particles :accelerate="false" class="absolute top-0" />
+
     <h1 class="text-center !font-bold !text-4xl md:!text-7xl">
       Elegant PHP <br>
       <span>for Modern Developers</span>

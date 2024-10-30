@@ -14,7 +14,7 @@ import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
 
 # Support Leaf's Development
 
-Leaf began in 2019 as a project to simplify API development but has since expanded to include a suite of open-source tools like the Leaf PHP framework, [Hanabira](https://hanajs.dev), and [Naytive](https://naytive.netlify.app).
+Leaf began in 2019 as a project to simplify API development but has since expanded to include a suite of open-source tools like the Leaf PHP framework and [Hanabira](https://hanajs.dev).
 
 We are committed to keeping all this open-source and free, but maintaining and developing new features now requires significant time and resources. As the project has grown, so have the costs, which have been mostly covered by the team. To sustain and grow Leaf, we need your help to support full-time maintainers.
 
@@ -38,7 +38,7 @@ You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/cont
 - Mention in every release annoucement
 - Dedicated first priority support from the Leaf team.
 
-## Current Sponsors
+## Past/Present Sponsors
 
 We are grateful to all our sponsors for their generous support. Check out our current sponsors below:
 

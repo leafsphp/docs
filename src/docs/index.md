@@ -100,7 +100,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <ul>
     <li><a href="/docs/database/">Database</a></li>
     <li><a href="/docs/database/redis">Redis</a></li>
-    <li><a href="/docs/database/others">Other DB Engines</a></li>
+    <!-- <li><a href="/docs/database/others">Other DB Engines</a></li> -->
   </ul>
   </Card>
 

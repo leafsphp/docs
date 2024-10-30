@@ -34,7 +34,7 @@ The Vite + Leaf stack unlocks a lot of possibilities for building modern web app
 
 Modern web apps are built on the backs of powerful UI libraries like React, Vue, and Svelte. Leaf provides an easy way to integrate these libraries into your Leaf applications using [Inertia.js](https://inertiajs.com/).
 
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/26604242/373087967-31f1973b-6a7b-489a-9c75-b87d9d604c88.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241003%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241003T021640Z&X-Amz-Expires=300&X-Amz-Signature=53574aff7bbdb518f534d1a3a35b02a9b963d698364f9e64d239bcb7b4a7d630&X-Amz-SignedHeaders=host" alt="" width="100%" class="border border-gray-500 rounded-lg">
+<img src="https://github.com/user-attachments/assets/442ca249-e7d4-4099-aa9b-f8ddfaaa7d2f" alt="" width="100%" class="border border-gray-500 rounded-lg">
 
 Inertia acts as a bridge between your Leaf backend and your frontend UI library that allows them to communicate seamlessly. This allows you to build modern web applications with Leaf and your favorite frontend library without much of the complexity that comes with modern SPAs.
 

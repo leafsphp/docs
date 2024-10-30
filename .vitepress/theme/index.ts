@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme';
 import { VueWriter } from 'vue-writer';
+import { MotionPlugin } from '@vueuse/motion';
 
 import 'virtual:group-icons.css';
 import './styles/index.css';
@@ -9,6 +10,7 @@ import { defineAsyncComponent, h } from 'vue';
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }: any) {
+    app.use(MotionPlugin);
     app.component('vue-writer', VueWriter);
   },
   Layout() {

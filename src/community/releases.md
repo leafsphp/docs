@@ -34,32 +34,20 @@ Security releases will be released as needed. We will always provide a security 
 
 ## Latest Leaf Release
 
-The latest stable release of Leaf can be found on the Leaf GitHub releases page
+You can find the latest stable release of Leaf on our [GitHub page](https://github.com/leafsphp/leaf/releases/latest)
 
-```markdown
-## v2.6 - 25 August 2024
-
-### Fixed
-
-- Removed resource intense code
-
-### Changed
-
-- Updated to Leaf's new config API
-- Switched from nested config to flat config
-- Move Leaf DI into Leaf config
-- Move Leaf View into Leaf config
-
-### Removed
-
-- Removed `App::setResponseClass()`
-- Removed `App::setRequestClass()`
-- Deprecated Leaf\View (Use Leaf\Config::attachView())
-
-### New contributors
-
-- @brutalhost
+```markdown:no-line-numbers
 ```
+
+<script>
+  fetch("https://api.github.com/repos/leafsphp/leaf/releases/latest")
+    .then(res => res.json())
+    .then(data => {
+      // get item with class language-md
+      document.querySelector(".language-markdown").childNodes.item(2).innerHTML = `<code># ${data.name}</code>\n<code>${data.body}</code>`;
+      // innerHTML = ` - ${new Date(data.published_at).toLocaleDateString()} ${data.body}`;
+    });
+</script>
 
 ## Latest Leaf MVC Release
 
