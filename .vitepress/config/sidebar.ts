@@ -86,7 +86,7 @@ const sidebar = [
       // { text: 'Auth Config', link: '/docs/auth/config' },
       { text: 'User Login', link: '/docs/auth/login' },
       { text: 'User Sign Up', link: '/docs/auth/signup' },
-      // { text: 'Auth Session', link: '/docs/auth/session' },
+      { text: 'Auth User', link: '/docs/auth/user' },
       {
         text: 'Protecting your routes',
         link: '/docs/auth/protected-routes',

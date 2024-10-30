@@ -65,47 +65,7 @@ $data = auth()->data();
 // ['user' => [...], 'accessToken' => '...', 'refreshToken' => '...']
 ```
 
-If you want to use a couple of fields from the user within your application, you can use the user method:
-
-## The user object
-
-The `user()` method gives you access to an object configured to the user's data. This object is a simple way to access the user's data without having to go through the data array. There are many things you can do with the user object:
-
-- Getting user information (including hidden fields)
-- Token/Session management
-- Fetching related data from your database
-
-```php
-// return all user data without hidden fields
-$user = auth()->user()->get();
-
-// pick specific fields
-$username = auth()->user()->username;
-$email = auth()->user()->email;
-
-// get the user's data + tokens
-$data = auth()->user()->getAuthInfo();
-```
-
-If your user has one to many relationships with other models, you can fetch related data using the user object:
-
-```php
-$posts = auth()->user()->posts();
-// will return a Leaf DB instance with posts by the current user
-// SELECT * FROM posts WHERE user_id = $current_user_id
-```
-
-You can further filter the data by using any of the Leaf DB methods:
-
-```php:no-line-numbers
-$posts = auth()->user()->posts()->where('title', 'like', '%leaf%')->get();
-```
-
-Note that the method name should be the same as the table name in your database.
-
-```php:no-line-numbers
-$posts = auth()->user()->transactions()->where('amount', '>', 1000)->get();
-```
+If you want to use a couple of fields from the user within your application, you can use the user method. You can find the documentation for the Auth user method [here](/docs/auth/user).
 
 ## Switching to session auth
 
@@ -236,59 +196,3 @@ auth()->config('session.lifetime', 0); // never expire
 ```
 
 :::
-
-## Updating a logged-in user
-
-Updating user information means allowing users to change their details (like username, email, or password) in your application. It is a very common feature in most applications.
-
-Leaf provides an `update()` method that allows you to update a user's information.
-
-```php
-$user = auth()->update($data);
-```
-
-### Unique values
-
-Leaf Auth allows you to set unique fields which should not be repeated for different users. For example, you wouldn't want two users to have the same email address. You can configure Leaf Auth to check for unique fields when a user is being updated:
-
-```php:no-line-numbers
-auth()->config('unique', ['email', 'username']);
-```
-
-Now if a user tries to update their profile with an email or username that already exists in the database, Leaf Auth will return an error. You can get the error message using the `errors()` method.
-
-```php
-$success = auth()->update([
-  'username' => 'example',
-  'email' => 'example@example.com'
-]);
-
-if (!$success) {
-  $error = auth()->errors();
-  // ['email' => 'email already exists']
-}
-```
-
-## Signing a user out
-
-When a user chooses to end their session, or their session expires, you can sign them out using the `logout()` method. This method will end the user's session or delete their token.
-
-```php
-auth()->logout();
-
-// or redirect the user after logout
-auth()->logout('/login');
-
-// or redirect to a named route
-auth()->logout(['homepage']);
-```
-
-If you want to perform a custom operation when a user logs out, you can set a handler for the logout operation:
-
-```php
-auth()->config('session.logout', function () {
-  // your logout handler
-});
-```
-
-This will ignore whatever route is passed into the `logout()` method and rely solely on the function passed into the session.logout config.
