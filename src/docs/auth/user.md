@@ -133,12 +133,10 @@ auth()->logout('/login');
 auth()->logout(['homepage']);
 ```
 
-If you want to perform a custom operation when a user logs out, you can set a handler for the logout operation:
+If you want to perform a custom operation when a user logs out, you can pass a function to the `logout()` method:
 
 ```php
-auth()->config('session.logout', function () {
+auth()->logout(function () {
   // your logout handler
 });
 ```
-
-This will ignore whatever route is passed into the `logout()` method and rely solely on the function passed into the session.logout config.
