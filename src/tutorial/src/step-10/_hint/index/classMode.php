@@ -12,8 +12,8 @@ $db->connect(
   'cc589b17'
 );
 
-$app->get('/', function () use($app, $db) {
-  $result = $db
+$app->get('/', function () use ($app, $db) {
+  $db
     ->query('
       DROP TABLE IF EXISTS users;
       CREATE TABLE users (
@@ -25,21 +25,11 @@ $app->get('/', function () use($app, $db) {
     ')
     ->execute();
 
-  $app->response()->json($result);
-});
-
-$app->get('/insert', function () use($app, $db) {
-  $result = $db
-    ->query("
-      INSERT INTO users (name, email)
-      VALUES ('John Doe', 'johndoe@test.com')
-    ")
+  $db
+    ->insert('users')
+    ->params(['name' => 'John Doe', 'email' => 'johndoe@test.com'])
     ->execute();
 
-  $app->response()->json($result);
-});
-
-$app->get('/users', function () use($app, $db) {
   $users = $db->query('SELECT * FROM users')->get();
 
   $app->response()->json([

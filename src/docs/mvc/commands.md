@@ -1,34 +1,18 @@
 # Writing Commands
 
-Leaf MVC and Leaf API come with a [built-in command line](/docs/mvc/console) interface named Aloe. This CLI is used to run commands and perform tasks like creating controllers, models, migrations, seeds, etc.
+Commands offer a way to encapsulate a piece of functionality that can be executed by yourself or other developers. They are a great way to automate repetitive tasks, such as setting up a new project, running tests, or deploying your app.
 
-In addition to the built-in commands, you can also create your own commands. This is useful if you want to create a command that performs a specific task in your application.
+Leaf MVC comes with a powerful command line interface and a bunch of helpful commands to get you started, however, you can also create your own commands to automate your own tasks.
 
-## Generating a command
+## Creating a command
 
-The easiest way to create a command is to use the `g:command` command. This command will create a new command class in your `app/console` directory.
+You can create a new command using the `g:command` command. This command will create a new command class in your `app/console` directory.
 
-```bash
-php leaf g:command CachePurge
-```
-
-This will create a `CachePurgeCommand` in the `app/console` directory. Instead of using the class name, you can also create commands using the command you want to run in your console like this:
-
-```bash
+```bash:no-line-numbers
 php leaf g:command cache:purge
 ```
 
-This will create a `CachePurgeCommand` in the `app/console` directory.
-
-Using the `g:command` command also registers the commands in Aloe. This means you can run the command immediately after creating it.
-
-## Manually writing a command
-
-If you don't use the `g:command` command, you can create a command manually. To do this, create a new class in your `app/console` directory and extend the `Aloe\Command` class. The class should also have `$defaultName` and `$description` properties.
-
-The `$defaultName` property is the name of the command that will be used to run the command in the console. The `$description` property is a short description of what the command does.
-
-The class should have a `handle()`. This method is called when the command is run in the console. The `handle` method should return `0` if the command was successful and `1` if it failed.
+This will create a `CachePurgeCommand.php` file in your `app/console` directory. The file will contain a class that extends the `Command` class and implements the `handle()` method.
 
 ```php
 <?php
@@ -37,11 +21,11 @@ namespace App\Console;
 
 use Aloe\Command;
 
-class ExampleCommand extends Command
+class CachePurgeCommand extends Command
 {
-  protected static $defaultName = 'example';
-  public $description = 'example command\'s description';
-  public $help = 'example command\'s help';
+  protected static $defaultName = 'cache:purge';
+  public $description = 'cache:purge command\'s description';
+  public $help = 'cache:purge command\'s help';
 
   protected function config()
   {
@@ -53,7 +37,7 @@ class ExampleCommand extends Command
   protected function handle()
   {
     $this->comment(
-      "example command's output {$this->argument('argument')} {$this->option('option')}"
+      "cache:purge command's output {$this->argument('argument')} {$this->option('option')}"
     );
 
     return 0;
@@ -61,20 +45,47 @@ class ExampleCommand extends Command
 }
 ```
 
-Both Leaf MVC and Leaf API ship with an example command. You can find it in the `app/console` directory.
+Leaf MVC's aloe command line tool is built on top of Symfony's console component, so you can use the same methods and properties you would use in a Symfony command. You can read more about Symfony Console [here](https://symfony.com/doc/current/components/console.html).
 
-::: tip Symfony Console
-Aloe is built on top of Symfony Console. This means you can use all of the features of Symfony Console in your commands. You can read more about Symfony Console [here](https://symfony.com/doc/current/components/console.html).
-:::
+## Manually creating a command
 
-## Registering Commands
-
-By default, aloe cli registers all generated commands, however, if you create a command manually, you'll have to register it manually. There are also situations where a package might need you to register a command, it can also be done using same method.
-
-To add your commands, open up the `app/console/Commands.php` file and return whatever commands you want to register.
+All commands created through the `g:command` command are stored in the `app/console` directory and are automatically loaded by Leaf MVC. However, you can also create a command manually by creating a new class that extends the `Command` class and implementing the `handle()` method just like the example above.
 
 ```php
-<?php 
+<?php
+
+namespace App\Console;
+
+use Aloe\Command;
+
+class CachePurgeCommand extends Command
+{
+  protected static $defaultName = 'cache:purge';
+  public $description = 'cache:purge command\'s description';
+  public $help = 'cache:purge command\'s help';
+
+  protected function config()
+  {
+    $this
+      ->setArgument('argument', 'optional', 'argument description')
+      ->setOption('option', 'o', 'required', 'option description');
+  }
+
+  protected function handle()
+  {
+    $this->comment(
+      "cache:purge command's output {$this->argument('argument')} {$this->option('option')}"
+    );
+
+    return 0;
+  }
+}
+```
+
+You can register this component by heading over to the `app/console/commands.php` file and adding the command to the `register()` method.
+
+```php
+<?php
 
 namespace App\Console;
 
@@ -82,28 +93,19 @@ class Commands
 {
     /**
      * Register commands
-     * 
+     *
      * @param $console
      * @return void
-     * 
+     *
      */
     public static function register($console): void
     {
         $console->register([
             ExampleCommand::class,
+            CachePurgeCommand::class
         ]);
     }
 }
-```
-
-An example command has already been registered, so you can follow this example. You can add as many commands as you want to register.
-
-```php
-$console->register([
-  \App\Console\AppCommand::class,
-  \App\Console\AppCommand2::class,
-  CustomPackage::commands()
-]);
 ```
 
 ## Command Arguments
@@ -372,33 +374,3 @@ This method asks a question but hides the keystrokes. It takes in 2 parameters:
 ```php
 $password = $this->secret('Confirm your password');
 ```
-
-## Aloe Installer
-
-Aloe installer allows you to quickly install files and routes from your library into your Leaf MVC or Leaf API project's working directory.
-
-### Magic Copy
-
-This method allows you to auto-magically copy all files and folders from a specified folder into Leaf workspace.
-
-```php
-Aloe\Installer::magicCopy("package/to/install");
-```
-
-Consider the following directory structure:
-
-```bash
-C:.
-└───Auth
-    ├───controllers
-    ├───routes
-    └───views
-```
-
-To copy our controllers, routes and views, we simply need to point `magicCopy` to the auth directory.
-
-```php
-\Aloe\Installer::magicCopy('package/Auth');
-```
-
-This will copy the sub directories in Auth to the `app` folder in the working directory. This is especially useful in team projects where you want to share resources with your team. You can simply create a package with the resources you want to share and then use `magicCopy` to copy them into the working directory.

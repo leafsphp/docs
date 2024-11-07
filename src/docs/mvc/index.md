@@ -1,9 +1,9 @@
-<!-- markdownlint-disable no-inline-html -->
-
 # Leaf + MVC
 
+<!-- markdownlint-disable no-inline-html -->
+
 <script setup>
-import VideoDocs from '/@theme/components/VideoDocs.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue'
 </script>
 
 Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
@@ -13,15 +13,17 @@ Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that
 MVC stands for Model-View-Controller. It is a pattern that separates your application into three distinct parts:
 
 - Models: These are the classes that represent your data. They are responsible for interacting with your database, and for validating your data.
-- Views: These are the files that are responsible for displaying your data to the user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](https://leafphp.dev/modules/views/bareui/) or [Blade](https://leafphp.dev/modules/views/blade/) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
+- Views: These are the files that are responsible for displaying your data to your user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](https://leafphp.dev/docs/views/bareui/) or [Blade](https://leafphp.dev/docs/views/blade/) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
 - Controllers: These are the classes that are responsible for handling the user's request, and for returning the appropriate response.
 
-<VideoDocs
-  title="New to MVC?"
-  subject="What is MVC? Simple Explanation"
+::: details New to MVC?
+If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications.
+
+<VideoModal
   description="If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications."
-  link="https://www.youtube.com/embed/pCvZtjoRq1I"
+  videoUrl="https://www.youtube.com/embed/pCvZtjoRq1I"
 />
+:::
 
 ## MVC in Leaf
 
@@ -31,13 +33,17 @@ Leaf provides a minimal but powerful setup for building applications using the M
 
 You can set up a new MVC application using the [Leaf CLI](/docs/cli/) or using [Composer](https://getcomposer.org/). They both work, but using the Leaf CLI gives you the option to choose between a regular MVC app and an MVC app that is fine-tuned for creating APIs, plus a few other options.
 
-```bash
-# Using the Leaf CLI
-leaf create myapp
+::: code-group
 
-# Using Composer
-composer create-project leafs/mvc myapp
+```bash:no-line-numbers [Leaf CLI]
+leaf create <project-name>
 ```
+
+```bash:no-line-numbers [Composer]
+composer create-project leafs/mvc <project-name>
+```
+
+:::
 
 This command will set up a new MVC app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
 
@@ -99,7 +105,7 @@ For a fresh MVC app, the directory structure looks like this:
 
 - ### The `config` directory
 
-  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. You can find more information about the configuration files in the [Configuration](/docs/mvc/config) section.
+  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. Each file controls a different feature of your application, e.g. the `app.php` file is used to configure the application, the `database.php` file is used to configure the database connection, etc.
 
 - ### The `public` directory
 
@@ -119,8 +125,27 @@ For a fresh MVC app, the directory structure looks like this:
 
   The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
 
-## Leaf API
+## Configuring Leaf MVC
 
-We used to provide Leaf API as a separate package for quickly getting building your APIs. However, we've now integrated it into the Leaf MVC package. If you set up your project using the Leaf CLI, you can select the API option to set up your project as an API. This will install Leaf MVC and automatically disable the view layer, vite and other unnecessary dependencies.
+Leaf MVC tries to maintain a clean and easy-to-understand structure that works out-of-the-box for most applications. However, there are times when you need to customize some features to fit your specific use-cases.
 
-We did this to achieve more uniformity across all Leaf projects. This way, you can enjoy all the benefits of Leaf MVC while building your APIs without the distraction of the view layer.
+You can find all the configuration options used by Leaf MVC in the `config` directory of your Leaf MVC project. Each feature has its own configuration file, and you can customize these files to fit your needs, e.g. the database configuration file is `config/database.php`.
+
+You only need to change only the specific values you want to customize so you can leave the rest of the configuration as it is. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+
+For the final bit, we hooked up most of the configuration files to your `.env` file so you can easily change your configuration values without having to touch the configuration files directly. This is especially useful when you want to deploy your application to different environments.
+
+## Application Environment
+
+A fresh Leaf MVC installation comes with a `.env.example` file which is automatically duplicated to a `.env` file on installation. This file is used to store your application's environment variables, and you can put sensitive information like your database credentials or mail server credentials in this file. This allows you to have different configurations for different environments like development, testing, and production.
+
+Any value in your `.env` file is automatically loaded into your application's environment variables, and you can access these values using the `_env()` helper function. This function takes in the key of the environment variable you want to access and an optional default value if the environment variable is not set.
+
+Here's an example of how you can use the `_env()` helper function:
+
+```php
+$database = _env('DB_DATABASE');
+$databaseWithDefault = _env('DB_DATABASE', 'leaf');
+```
+
+Be careful not to commit your `.env` file to your version control system as it contains sensitive information. We have already added the `.env` file to your `.gitignore` file so you don't have to worry about this.

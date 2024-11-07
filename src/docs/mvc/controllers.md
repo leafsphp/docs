@@ -1,20 +1,28 @@
 # Controllers
 
-<!-- markdownlint-disable no-inline-html -->
+When building a web app with Leaf, you need to define routes—these are the paths that users visit in your app. For example, `/login` or `/signup`. Normally, you can just tell Leaf what to do when someone visits a route by passing it a function (a piece of code that runs when someone visits the route). This works fine if your app is small. Here's an example:
 
-Instead of using Closures in route files to define all your request handling logic, you can use controllers to organize this behavior. Controllers can group related request handling logic into a single class. For instance, you may want to group all logic that handles user account details into an `AccountsController` class: actions such as displaying, creating, updating, and deleting users.
+```php
+app()->get('/login', function () {
+  echo 'This is the login page';
+});
+```
 
-Controllers can also be shared among different route files, giving you a single location to define a controller that can be used in different contexts throughout your application. Leaf MVC and Leaf API controllers are stored in the `app/controllers`. Any new controller you create will be saved in this location.
+This is okay for simple apps, but as your app grows, it can get messy. You don’t want all your route logic (what happens when users visit routes) and your route definitions (what the routes are) in one place. This is where controllers come in.
 
-## Generating Controllers
+## What are controllers?
 
-Leaf MVC and Leaf API come with a console helper that can generate a new controller for you. To create a new controller, use the `g:controller` command:
+Controllers are classes that contain methods (functions) that handle requests to your app. When a request comes into your app, Leaf calls the method in the controller that matches the route. This keeps your route definitions clean, and let's you neatly organize your logic so you don't mix your application logic with any other code. Leaf MVC includes a really handy command that you can use to create controllers:
 
 ```bash
+php leaf g:controller <controller-name>
+
+# example 👇
+
 php leaf g:controller users
 ```
 
-This will create a new `UsersController` class in the `app/controllers` directory. The controller will contain a single method, `index`, that returns a simple string:
+Leaf will automatically format the controller name to match the Leaf naming convention, so in the example above, Leaf will create a controller named `UsersController` in the `app/controllers` directory. The generated controller will look like this:
 
 ```php
 <?php
@@ -32,207 +40,158 @@ class UsersController extends Controller
 }
 ```
 
-You can see that the controller extends the `App\Controllers\Controller` class. This is the base controller class provided by Leaf MVC and Leaf API. It is the parent class for all your application's controllers and serves as a place to put shared logic.
+We can break down the controller above into the following parts:
 
-## Defining Controllers
+- `namespace App\Controllers;` - This is the namespace of the controller. Namespaces tell Leaf MVC where to locate things like classes and functions. In this case, the controller is in the `App\Controllers` namespace which corresponds to the `app/controllers` directory.
 
-The above section looked at generating a new controller using the console helper in Leaf MVC and Leaf API. If you are using Leaf Core, you can manually create a controller in any way you prefer. Controllers are basically classes that have callable actions and return responses. To add some extra functionality to your controllers, you can extend  the `Leaf\Controller` class.
+- `class UsersController extends Controller` - This is the class definition. The class name is `UsersController` and it extends the `Controller` class. The `Controller` class is a base class that all your controllers should extend. It provides some useful methods that you can use in your controllers and also allows you define code that should run in all your controllers.
 
-For example, let's create a new controller that returns a simple string:
+- `public function index()` - This is a method in the controller. This method responds with some JSON, nothing fancy going on here.
+
+You can have as many methods as you want in your controller. Each method should correspond to a route in your app and should have functionality that is related to that route. For example, if you have a route `/login`, you can have a method in your controller that handles the login logic.
+
+## Using controllers in routes
+
+After defining a controller with the methods that you will use to handle your routes, you need to tell Leaf when to load a controller and which method to call. You can do this by defining a route in your `app/routes/` directory, and then calling the method in the controller that should handle the route. Here's an example:
 
 ```php
-<?php
+app()->get('/users', 'UsersController@index');
+```
 
-namespace Controllers;
+Notice that we didn't pass a function to the route definition. Instead, we passed a string that tells Leaf to load the `UsersController` and call the `index` method. This is how Leaf knows which controller to load and which method to call. The syntax is always `ControllerName@methodName`.
 
-use Leaf\Controller;
+## Why Use Controllers?
 
-class HomeController extends Controller
+- Organization: Keeps your route definitions and logic separate, making your code easier to understand.
+- Scalability: As your app grows, you won’t have one big file with all your logic—it will be split up into small, manageable pieces.
+- Reusability: You can reuse controller methods for multiple routes if needed.
+
+## Outputting Views
+
+In fullstack applications, you'll need to render views (HTML pages) to the user. You can do this by returning a view from your controller method. Leaf has `view()` and `render()` methods that you can use to render views. Here's an example:
+
+```php
+public function index()
 {
-  public function index()
-  {
-    response()->json('Hello World!');
-  }
+    render('users');
 }
 ```
 
-You can define a route to this controller action like so:
+You can find the views documentation [here](/docs/frontend/)
 
-<div class="class-mode">
+## Route Parameters
 
-```php
-$app->get('/', 'HomeController@index');
-```
-
-</div>
-<div class="functional-mode">
+When you're building web apps, sometimes you need extra functionality when someone visits a route. For example, maybe only logged-in users should be able to see certain pages. To manage this, Leaf lets you add route parameters like middleware to your routes. This feature also works for controllers and uses the same syntax as function route handlers. Here's an example:
 
 ```php
-app()->get('/', 'HomeController@index');
+app()->get('/users', ['middleware' => 'auth', 'UsersController@index']);
 ```
 
-</div>
+In the example above, we passed in a middleware called `auth` to the route as a route parameter. Leaf will run the middleware before calling the `index` method in the `UsersController`.
 
 ## Resource Controllers
 
-Leaf resource routing assigns the typical create, read, update, and delete ("CRUD") routes to a controller with a single line of code. To get started, we can use the `g:controller` command's `--resource` option to quickly create a controller to handle these actions:
+Leaf makes it super easy to set up routes for common actions like creating, reading, updating, and deleting data (also known as CRUD operations). Instead of manually setting up each route, you can use resource controllers to do it all in one line of code!
 
-```sh
-php leaf g:controller Photos --resource
+To get started, you can generate a resource controller using the Aloe CLI:
+
+```bash
+php leaf g:controller photos --resource
 ```
 
-This command will generate a controller at `app/controllers/PhotosController.php`. The controller will contain a method for each of the available resource operations. Next, you may register a resource route that points to the controller:
-
-```php
-app()->resource('/photos', 'PhotosController');
-```
-
-The `resource()` method accepts a URI and a controller name. The URI may contain route parameters, which will be passed to the controller methods. The controller name should be the fully-qualified class name of the controller. In this example, the `UsersController` class should be defined in the `app/controllers` directory.
-
-This single route declaration creates multiple routes to handle a variety of actions on the resource. The generated controller will already have methods stubbed for each of these actions:
-
+This command will generate a controller at `app/controllers/PhotosController.php` which has a bunch of methods pre-defined for you like this:
+  
 ```php
 <?php
+
 namespace App\Controllers;
 
 class PhotosController extends Controller {
     /**
      * Display a listing of the resource.
      */
-    public function index() {
-        //
-    }
+    public function index() {...}
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
-        //
-    }
+    public function create() {...}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store() {
-        //
-    }
+    public function store() {...}
 
     /**
      * Display the specified resource.
      */
-    public function show($id) {
-        //
-    }
+    public function show($id) {...}
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id) {
-        //
-    }
+    public function edit($id) {...}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update($id) {
-        //
-    }
+    public function update($id) {...}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id) {
-        //
-    }
+    public function destroy($id) {...}
 }
 ```
 
-Also routes are mapped to these methods:
+You can then define your routes like this:
 
-| Verb           |   URI                   | Action  |
-|----------------|-------------------------|---------|
-| GET            |  /photos                | index   |
-| GET            |  /photos/create         | create  |
-| POST           |  /photos                | store   |
-| GET            |  /photos/{photo}        | show    |
-| GET            |  /photos/{photo}/edit   | edit    |
-| POST/PUT/PATCH |  /photos/{photo}        | update  |
-| DELETE         |  /photos/{photo}        | destroy |
+```php
+app()->resource('/photos', 'PhotosController');
+```
 
-::: tip Leaf API Resource Controllers
-Leaf API resource controllers don't have a `create` or `edit` method. This is because Leaf API does not have a view layer like Leaf MVC does. Since you will typically be building an API that is consumed by another application, the `create` and `edit` methods will not be needed.
+This will automatically set up all the routes you need for CRUD operations on the `/photos` route. Here's a list of the routes that will be set up:
 
-| Verb           |   URI                   | Action  |
-|----------------|-------------------------|---------|
-| GET            |  /photos                | index   |
-| POST           |  /photos                | store   |
-| GET            |  /photos/{photo}        | show    |
-| POST/PUT/PATCH |  /photos/{photo}        | update  |
-| DELETE         |  /photos/{photo}        | destroy |
+- `GET /photos` - Index
+- `GET /photos/create` - Create
+- `POST /photos` - Store
+- `GET /photos/{id}` - Show
+- `GET /photos/{id}/edit` - Edit
+- `PUT /photos/{id}` - Update
+- `DELETE /photos/{id}` - Destroy
 
-:::
+## API Resource Controllers
 
-## Leaf Console Helper
+API resource controllers are similar to resource controllers, but they return JSON responses instead of HTML which means that the `create` and `edit` methods are not included. You can generate an API resource controller using the Aloe CLI:
 
-You can also generate a model together with your controller.
+```bash
+php leaf g:controller photos --api
+```
+
+You can load the controller in your routes like this:
+
+```php
+app()->apiResource('/photos', 'PhotosController');
+```
+
+## Aloe Console Helper
+
+Allow has a few more shortcuts you can incorporate into your controller generation:
 
 ```bash
 php leaf g:controller <ControllerName> -m
 ```
 
-Create a template for your controller
+This command will generate your controller together with a model that corresponds to the controller name. The model will be generated in the `app/models` directory.
 
 ```bash
 php leaf g:controller <ControllerName> -t
 ```
 
-Create a model and migration for your  controller
+The `-t` flag will generate a controller with a frontend template that corresponds to the controller name. The template will be generated in the `app/views` directory.
 
 ```bash
 php leaf g:controller <ControllerName> -a
 ```
 
-### Controller Help
-
-```bash
-Description:
-  Create a new controller class
-
-Usage:
-  g:controller [options] [--] <controller>
-
-Arguments:
-  controller            controller name
-
-Options:
-  -a, --all             Create a model and migration for controller
-  -m, --model           Create a model for controller
-  -r, --resource        Create a resource controller
-  -w, --web             Create a web(ordinary) controller
-  -h, --help            Display this help message
-  -q, --quiet           Do not output any message
-  -V, --version         Display this application version
-      --ansi            Force ANSI output
-      --no-ansi         Disable ANSI output
-  -n, --no-interaction  Do not ask any interactive question
-  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debu
-```
-
-## Next Steps
-
-Follow along with the next steps to learn more about Leaf MVC.
-
-<div class="vt-box-container next-steps">
-  <a class="vt-box" href="/docs/routing/mvc">
-    <h3 class="next-steps-link">Routing</h3>
-    <small class="next-steps-caption">Learn how routing works in your Leaf applications.</small>
-  </a>
-  <a class="vt-box" href="/docs/mvc/views">
-    <h3 class="next-steps-link">Views</h3>
-    <small class="next-steps-caption">Learn how to use views in your Leaf applications.</small>
-  </a>
-  <a class="vt-box" href="/docs/mvc/models">
-    <h3 class="next-steps-link">Models</h3>
-    <small class="next-steps-caption">Learn how to configure and use models in your Leaf apps.</small>
-  </a>
-</div>
+This command will generate your controller together with a model and a migration that corresponds to the controller name. The model and migration will be generated in the `app/models` and `app/database/migrations` directories respectively.

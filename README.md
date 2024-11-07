@@ -1,20 +1,13 @@
-# Leaf 3
+# Leaf PHP Documentation
+
+Welcome to the official documentation for Leaf PHP, a PHP framework that helps you build simple yet powerful web applications and APIs. You can find the online version of this documentation at [leafphp.dev](https://beta.leafphp.dev).
 
 ## Contributing
 
-This site is built with [VitePress](https://github.com/vuejs/vitepress) and depends on [@leafphp/docs-theme](https://github.com/leafsphp/leaf-docs-theme). Site content is written in Markdown format located in `src`. For simple edits, you can directly edit the file on GitHub and generate a Pull Request.
+If you find any issues with the documentation or have any suggestions, feel free to open an issue or a pull request here. This documentation is built using [VitePress](https://vitepress.dev/), a Vue-powered static site generator. The actual documentation content is written in Markdown and can be found in the `src/` directory.
 
-For local development, [pnpm](https://pnpm.io/) is preferred as package manager:
+Be sure to read our [contribution guidelines](https://leafphp.dev/community/contributing/writing-guide.html) before contributing.
 
-```bash
-pnpm i
-pnpm run dev
-```
+## Sponsoring Leaf
 
-This project requires Node.js to be `v14.0.0` or higher, because we use new JavaScript features in our code, such as optional chaining.
-
-## Working on the content
-
-- See VitePress docs on supported [Markdown Extensions](https://vitepress.vuejs.org/guide/markdown.html) and the ability to [use Vue syntax inside markdown](https://vitepress.vuejs.org/guide/using-vue.html).
-
-- See the [Writing Guide](http://localhost:3000/community/contributing/writing-guide.html) for our rules and recommendations on writing and maintaining documentation content.
+If you find Leaf useful, consider sponsoring the project on GitHub or [Open Collective](https://opencollective.com/leaf). Your sponsorship helps keep the project alive and maintained and goes a long way in supporting the development of the framework.

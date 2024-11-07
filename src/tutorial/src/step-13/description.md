@@ -60,14 +60,14 @@ After creating your table, pass it into Leaf Auth like this:
 <div class="class-mode">
 
 ```php
-db()->config('DB_TABLE', 'tableName');
+db()->config('db.table', 'tableName');
 ```
 
 </div>
 <div class="functional-mode">
 
 ```php
-db()->config('DB_TABLE', 'table');
+db()->config('db.table', 'table');
 ```
 
 </div>

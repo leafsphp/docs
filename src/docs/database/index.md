@@ -1,0 +1,168 @@
+# Leaf DB
+
+<!-- markdownlint-disable no-inline-html -->
+
+<script setup>
+import VideoModal from '@theme/components/shared/VideoModal.vue'
+</script>
+
+A database is an organized storage system for managing data like your users' profiles or product details. Leaf offers a lightweight module that simplifies database interaction and supports five major database systems.
+
+- MariaDB
+- MySQL
+- PostgreSQL
+- SQLite
+- SQL Server
+
+You can install the Leaf database module using the following command:
+
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf install db
+```
+
+```bash:no-line-numbers [Composer]
+composer require leafs/database
+```
+
+:::
+
+::: details New to databases?
+
+Databases are essential for most applications, as they help you store and retrieve data efficiently. Check out this video from Linux Academy to learn more about databases and the different types available:
+
+<VideoModal
+  buttonText="DB intro by Linux Academy"
+  subject="What is a database in under 4 minutes"
+  description="In this episode of the Linux Academy Weekly Update, we are covering Databases, what they are, and what are the different types of them."
+  videoUrl="https://www.youtube.com/embed/Tk1t3WKK-ZY"
+/>
+
+<!-- <VideoModal
+  button="Structured Query Language - or SQL, is a language that communicates with databases. Learn what SQL is, and why it is an important language to learn in the era of big data."
+  title="Danielle Thé explains SQL"
+  subject="What is SQL? [in 4 minutes for beginners]"
+  description="Structured Query Language - or SQL, is a language that communicates with databases. Learn what SQL is, and why it is an important language to learn in the era of big data."
+  link="https://www.youtube.com/embed/27axs9dO7AE"
+/> -->
+
+:::
+
+## Connecting to a database
+
+The first step to using a database is to create a connection. It's like opening a door to the database, allowing you to interact with it. Here's how you can connect to a database using Leaf:
+
+```php
+db()->connect([
+  'dbtype' => '...',
+  'charset' => '...',
+  'port' => '...',
+  'unixSocket' => '...',
+  'host' => '...',
+  'username' => '...',
+  'password' => '...',
+  'dbname' => '...',
+]);
+```
+
+The `connect()` method takes an array of connection details for your database as its argument. Depending on the database system you're using, you'll need to provide different connection details. For example, here's how you can connect to a SQLite database:
+
+```php
+db()->connect([
+  'dbtype' => 'sqlite',
+  'dbname' => 'db.sqlite',
+]);
+```
+
+If you have a environment file, you can use it to store your database connection details. Here's an example of how you can connect to a MySQL database using an environment file:
+
+```txt
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=LeafMVC
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Using the environment file, you can connect to the database like this:
+
+```php
+db()->autoConnect();
+```
+
+## Writing simple queries
+
+Once you've connected to a database, you can start writing queries to interact with it. Queries are the commands you run on your database to get, insert, update or delete data. Leaf DB provides a simple way to run queries using the query builder, but also allows you to run raw SQL queries.
+
+We can run queries using the `query()` method. This method takes in a query string and returns a query builder instance. This means that you can run queries like this:
+
+```php
+$users = db()->query('SELECT * FROM users')->all();
+```
+
+The `query()` method takes an SQL query that you want to execute as its argument. You can then use the query builder methods to modify your query. For example, you can bind values to your query using the `bind()` method:
+
+```php
+db()
+  ->query('SELECT * FROM users WHERE id = ?')
+  ->bind('1')
+  ->fetchObj();
+```
+
+This provides a more secure and dynamic way to write SQL if you need to.
+
+## Running queries
+
+There are different kinds of database commands: some give you results (like data) and some don’t. Leaf Db makes it easy to handle both types without any hassle.
+
+You can use `execute()` to run queries that don't return values. This method returns `true` if the query was successful and `false` if it wasn't. You can run a query like this:
+
+```php
+db()->query('CREATE DATABASE dbname')->execute();
+```
+
+If you want to run a query that returns data, you can use the `all()` method to get all the results. For example, you can run a query like this:
+
+```php
+$users = db()->query('SELECT * FROM users')->all();
+```
+
+This will return an array of all the users in the database that match the query.
+
+If you only want to get one result, you can use the `fetchObj()` or `fetchAssoc()` method. For example, you can run a query like this:
+
+```php
+$user = db()
+  ->query('SELECT * FROM users WHERE id = ?')
+  ->bind('1')
+  ->fetchObj();
+```
+
+This will return the matched user as an object.
+
+There may be times when you want to get a single value from a query that returns multiple rows. In such cases, you can use the `first()` method. For example, you can run a query like this:
+
+```php
+$user = db()->query('SELECT * FROM users')->first();
+```
+
+## Leaf DB + MVC
+
+Leaf MVC comes with a more structured way to work with databases. You can use models to interact with your database. This makes it easier to manage your database operations and keep your code clean. However, you can still use the query builder to run raw queries if you need to.
+
+To get started, you need to set up your database connection in your environment file.
+
+```txt
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=LeafMVC
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+From there, you just need to head over to `public/index.php` and uncomment the line that says `\Leaf\Database::initDb();`. This will automatically connect to your database using the details in your environment file.
+
+If you have multiple databases, Leaf DB will connect to your database which has been labelled as your default database. Leaf DB does not yet support multiple database connections, but of course, you can manually create multiple instances of Leaf DB.

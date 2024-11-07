@@ -1,10 +1,10 @@
-# MVC Helpers
+# MVC Globals
 
-Just as Leaf has a couple of built-in helpers, Leaf MVC also ships with a bunch of helpers to make your life easier. These helpers are available throughout your application and help you with common tasks like finding files and loading paths.
+Leaf MVC comes with a couple of global functions that you can use to access your app's configuration, paths and more. These functions are available globally and can be used anywhere in your app.
 
 ## Loading app paths
 
-Since Leaf MVC and Leaf API come with a robust structure out of the box, they also come with quick ways to reference files in these structures. For example, if you want to reference a file in your `public` folder, you can use the `PublicPath()` helper.
+Since Leaf MVC comes with a robust structure out of the box, it also comes with quick ways to reference files in these structures. For example, if you want to reference a file in your `public` folder, you can use the `PublicPath()` helper.
 
 ### AppPaths()
 

@@ -1,6 +1,16 @@
+---
+sidebar: false
+editLink: false
+prev: false
+next: false
+lastUpdated: false
+---
+
 <!-- markdownlint-disable no-inline-html -->
 
-# Contributing
+# Contributing to Codelabs
+
+We are glad to have you
 
 ## What we are looking for
 
