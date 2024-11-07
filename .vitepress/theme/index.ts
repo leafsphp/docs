@@ -15,8 +15,8 @@ export default {
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'layout-top': () =>
-        h(defineAsyncComponent(() => import('./components/shared/Banner.vue'))),
+      // 'layout-top': () =>
+      //   h(defineAsyncComponent(() => import('./components/shared/Banner.vue'))),
     });
   },
 };
