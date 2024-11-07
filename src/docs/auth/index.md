@@ -6,6 +6,10 @@ Numerous web applications offer their users a means to authenticate and access t
 
 Leaf provides a lightweight but very powerful authentication system to handle all the complexities of authentication in a few lines of code. We understand that authentication is a critical part of your application, so we've made it as simple and secure as possible.
 
+::: warning Docs version
+This documentation covers Auth v3 and above. If you're using an older version, you can check the documentation [hosted here](https://v3.leafphp.dev/modules/auth/).
+:::
+
 ## Setting up
 
 You can install Leaf Auth using the Leaf CLI:
