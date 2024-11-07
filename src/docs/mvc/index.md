@@ -1,71 +1,151 @@
-<!-- markdownlint-disable no-inline-html -->
-
 # Leaf + MVC
 
+<!-- markdownlint-disable no-inline-html -->
+
 <script setup>
-import VideoDocs from '/@theme/components/VideoDocs.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue'
 </script>
 
-Leaf is a simple PHP framework/set of libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
+Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
 
 ## What is MVC?
 
 MVC stands for Model-View-Controller. It is a pattern that separates your application into three distinct parts:
 
 - Models: These are the classes that represent your data. They are responsible for interacting with your database, and for validating your data.
-- Views: These are the files that are responsible for displaying your data to the user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](https://leafphp.dev/modules/views/bareui/) or [Blade](https://leafphp.dev/modules/views/blade/) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
+- Views: These are the files that are responsible for displaying your data to your user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](https://leafphp.dev/docs/views/bareui/) or [Blade](https://leafphp.dev/docs/views/blade/) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
 - Controllers: These are the classes that are responsible for handling the user's request, and for returning the appropriate response.
 
-<VideoDocs
-  title="New to MVC?"
-  subject="What is MVC? Simple Explanation"
+::: details New to MVC?
+If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications.
+
+<VideoModal
   description="If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications."
-  link="https://www.youtube.com/embed/pCvZtjoRq1I"
+  videoUrl="https://www.youtube.com/embed/pCvZtjoRq1I"
 />
+:::
 
 ## MVC in Leaf
 
-Leaf out of the box doesn't provide any structure, however, the Leaf team also provides a few setups that you can use to get started with Leaf and MVC. These setups are designed to give you a good starting point for your application, and come with additional tooling that make building with Leaf even faster.
+Leaf provides a minimal but powerful setup for building applications using the MVC pattern. It's built on top of Leaf, and comes with additional tooling that makes building with Leaf even faster. It is a good starting point for building applications using the MVC pattern.
 
-We provide two setups for you to choose from:
+## Installation
 
-- [Leaf MVC](/docs/leafmvc/)
-- [Leaf API](/docs/leafapi/)
+You can set up a new MVC application using the [Leaf CLI](/docs/cli/) or using [Composer](https://getcomposer.org/). They both work, but using the Leaf CLI gives you the option to choose between a regular MVC app and an MVC app that is fine-tuned for creating APIs, plus a few other options.
 
-### Leaf MVC vs Leaf API
+::: code-group
 
-| Engine                      |    Main use     |          Extra Notes           |
-| --------------------------- | :-------------: | :----------------------------: |
-| [Leaf MVC](/docs/leafmvc/)    | General purpose |               -                |
-| [Leaf API](/docs/leafapi/)    |  Building APIs  | View layer disabled by default |
+```bash:no-line-numbers [Leaf CLI]
+leaf create <project-name>
+```
 
-Leaf MVC and Leaf API pretty much support the same tooling, but Leaf API is designed to be used for building APIs. It comes with the view layer disabled by default, and comes with a few extra tools that make building APIs with Leaf even easier.
+```bash:no-line-numbers [Composer]
+composer create-project leafs/mvc <project-name>
+```
 
-## Leaf Skeleton <sup class="vt-badge bg:red" data-text="Deprecated"></sup>
+:::
 
-Skeleton was designed to be a simple starting point for your application, and came with just the bare minimum to get you started. However, we have decided to deprecate Skeleton in favor of the Leaf CLI. The Leaf CLI is a command-line tool for generating Leaf projects, installing modules, and more.
+This command will set up a new MVC app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
 
-We recently released an update to the Leaf CLI that allows you to select specific features you want to include and generate a project with everything you need. This functionality is similar to what Skeleton provided but is more flexible and allows you to create projects with only the features that you need, which is why we've decided to deprecate Leaf Skeleton.
+```bash:no-line-numbers
+cd <project-name>
+leaf serve # or php leaf serve
+```
 
-Skeleton will still be available for download, but we won't be updating it anymore. We recommend that you generate a project with the CLI or use Leaf MVC or Leaf API instead.
+You should then see the welcome page in your browser.
 
-[> Leaf CLI Docs](/docs/cli/)
+![Leaf MVC Welcome Page](https://user-images.githubusercontent.com/26604242/223189921-d5da1555-bc29-4f99-a3ec-d6cbfdc5350b.png)
 
-## MVC Tools
+## Directory Structure
 
-Besides the MVC setups, Leaf also provides a few tools that can help you build your own MVC setup if you want to. You can check the "MVC Tools" section in the sidebar to learn more about these tools.
+The Leaf MVC directory structure is inspired by [Ruby on Rails](https://rubyonrails.org/) and [Laravel](https://laravel.com/). It takes a lot of inspiration from these frameworks, but it's not a clone of either of them. It is meant to be a starting point for building your own applications, and is fully customizable. You can completely change the directory structure to suit your needs, just be sure to update the paths in the `config/paths.php` file.
 
-<div class="vt-box-container next-steps">
-  <a class="vt-box" href="/docs/leafmvc/">
-    <h3 class="next-steps-link">Leaf MVC</h3>
-    <small class="next-steps-caption">Check out the documentation for Leaf MVC.</small>
-  </a>
-  <a class="vt-box" href="/docs/leafapi/">
-    <h3 class="next-steps-link">Leaf API</h3>
-    <small class="next-steps-caption">Start building apps with Leaf API and modules</small>
-  </a>
-  <a class="vt-box" href="/docs/cli/" target="_blank">
-    <h3 class="next-steps-link">Leaf CLI</h3>
-    <small class="next-steps-caption">Generate your first Leaf project with the Leaf CLI</small>
-  </a>
-</div>
+For a fresh MVC app, the directory structure looks like this:
+
+```bash:no-line-numbers
+.
+├───app
+│   ├── console
+│   ├── controllers
+│   ├── database
+│   │   ├── factories
+│   │   ├── migrations
+│   │   ├── schema
+│   │   └── seeds
+│   ├── helpers
+│   ├── models
+│   ├── routes
+│   └── views
+│       └── errors
+├───config
+├───public
+│   └───assets
+│       ├── css
+│       └── img
+├───storage
+│   ├───app
+│   │   └───public
+│   ├───framework
+│   │   └───views
+│   └───logs
+└───vendor
+```
+
+- ### The `app` directory
+
+  The `app` directory contains the core code of your application. It's divided into a few sub-directories:
+
+  - `console` - Contains the console commands for your application. These are used to perform tasks on the command line.
+  - `controllers` - Contains the controllers for your application. These are used to handle HTTP requests.
+  - `database` - Contains the database related code for your application. This includes migrations, seeds, factories and schema.
+  - `helpers` - Contains the helper functions for your application.
+  - `models` - Contains the models for your application. These are used to interact with the database.
+  - `routes` - Contains the routes for your application. These are used to map HTTP requests to controllers.
+  - `views` - Contains the views for your application. These are used to render HTML responses.
+
+- ### The `config` directory
+
+  The `config` directory contains the configuration files for your application. These are used to configure how Leaf and it's modules interact with your application. Each file controls a different feature of your application, e.g. the `app.php` file is used to configure the application, the `database.php` file is used to configure the database connection, etc.
+
+- ### The `public` directory
+
+  The `public` directory contains the entry point for your application, and it's also used to serve static assets. The `index.php` file is the entry point for your application. All requests are routed through this file by the web server. This file doesn't contain any application logic, but it does load the Composer autoloader, the application config and all your routes.
+
+  There is also an `assets` directory found in the `public` directory. It contains the static assets for your application. These are served by the web server and are accessible to users.
+
+- ### The `storage` directory
+
+  The `storage` directory contains the compiled views, logs and other files generated by your application. It's divided into a few sub-directories:
+
+  - `app` - Contains the files generated by your application. This includes the compiled views and the files uploaded by users.
+  - `framework` - Contains the framework generated files for your application.
+  - `logs` - Contains the log files generated by your application.
+
+- ### The `vendor` directory
+
+  The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
+
+## Configuring Leaf MVC
+
+Leaf MVC tries to maintain a clean and easy-to-understand structure that works out-of-the-box for most applications. However, there are times when you need to customize some features to fit your specific use-cases.
+
+You can find all the configuration options used by Leaf MVC in the `config` directory of your Leaf MVC project. Each feature has its own configuration file, and you can customize these files to fit your needs, e.g. the database configuration file is `config/database.php`.
+
+You only need to change only the specific values you want to customize so you can leave the rest of the configuration as it is. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+
+For the final bit, we hooked up most of the configuration files to your `.env` file so you can easily change your configuration values without having to touch the configuration files directly. This is especially useful when you want to deploy your application to different environments.
+
+## Application Environment
+
+A fresh Leaf MVC installation comes with a `.env.example` file which is automatically duplicated to a `.env` file on installation. This file is used to store your application's environment variables, and you can put sensitive information like your database credentials or mail server credentials in this file. This allows you to have different configurations for different environments like development, testing, and production.
+
+Any value in your `.env` file is automatically loaded into your application's environment variables, and you can access these values using the `_env()` helper function. This function takes in the key of the environment variable you want to access and an optional default value if the environment variable is not set.
+
+Here's an example of how you can use the `_env()` helper function:
+
+```php
+$database = _env('DB_DATABASE');
+$databaseWithDefault = _env('DB_DATABASE', 'leaf');
+```
+
+Be careful not to commit your `.env` file to your version control system as it contains sensitive information. We have already added the `.env` file to your `.gitignore` file so you don't have to worry about this.

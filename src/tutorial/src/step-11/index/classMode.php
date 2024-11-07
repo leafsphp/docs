@@ -25,9 +25,12 @@ $app->get('/', function () use ($app, $db) {
     ')
     ->execute();
 
-  // 1. New insert query here
+  $db
+    ->insert('users')
+    ->params(['name' => 'John Doe', 'email' => 'johndoe@test.com'])
+    ->execute();
 
-  $users = $db->query('SELECT * FROM users')->get();
+  $users = // 1. New select query here
 
   $app->response()->json([
     'users' => $users,

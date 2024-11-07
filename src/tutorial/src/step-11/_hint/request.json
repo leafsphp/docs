@@ -2,5 +2,9 @@
   "method": "GET",
   "path": "/",
   "headers": {},
-  "data": {}
+  "data": {
+    "name": "Michael Darko",
+    "country": "Ghana",
+    "city": "Accra"
+  }
 }

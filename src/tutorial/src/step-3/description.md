@@ -1,30 +1,10 @@
-# Creating routes using shortcuts
+# Creating routes with shortcuts
 
-We saw in the previous tutorial how to create routes on the base level with leaf, however, it get annoying typing `GET` or `POST` in front of every route over and over again. To get rid of this pain, leaf has shortcut methods which provide a crisp and simple way to create and use routes.
+In the last tutorial, we created routes using GET or POST, but typing that for every route can get repetitive. To make things easier, Leaf offers shortcut methods for a quicker, simpler way to define routes.
 
-This method allows you to call an [HTTP method](https://restfulapi.net/http-methods/) directly on the leaf/leaf router instance. Let's look at an example:
+You can directly call an [HTTP method](https://restfulapi.net/http-methods/) on the leaf instance. Let's look at an example:
 
-<div class="class-mode">
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new Leaf\App;
-
-$app->get('/', function () {
-  echo "Something nice";
-});
-
-// don't forget to call run
-$app->run();
-```
-
-</div>
-<div class="functional-mode">
-
-```php
+```php{6,11}
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -43,14 +23,20 @@ app()->post('/', function () {
 app()->run();
 ```
 
-</div>
+This works for all the HTTP methods you can think of. You can call `get()`, `post()`, `put()`, `patch()`, `delete()`, `options()`, ...
 
-Just like in the last exercise, we have empty slots for your routes. Create a route for the `/` path which uses the PUT HTTP method. **Replace `// 1. put route here` with your route**
+Your task this time is to create a PUT request using the shortcut method.
 
-## THE ROUTE PATH
+- Create a route which uses the PUT HTTP method
+- The route should have the path `/`
+- **Replace `// 1. put route here` with your route**
+- Update the `method` option in the `request.json` file to `PUT` to test your route
 
-Just as we did in the last exercise, you can pass in a custom route into these shortcut methods. Your task this time is to create a PATCH request using a custom path.
+## Custom route paths
 
-::: tip Watch out
-When you're running a route other than the `/` route, you'll need to tell the editor which path you want to run. You can do this by editing the `path` option in the `request.json` file in the editor. This is not part of Leaf but is required to tell the editor what to do.
-:::
+Just as we did in the last exercise, you can create routes with custom paths. This can be anything you want, like `/login`, `/auth/login`, or `/user/login`. After running your first route, try changing the path to something of your choice.
+
+- Create a route with a custom path
+- **Replace `// 2. custom path route here` with your route**
+- Update the `path` option in the `request.json` file to the path you want to run
+- Update the `method` option in the `request.json` file to the method you want to test your route with

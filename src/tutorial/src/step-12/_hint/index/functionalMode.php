@@ -24,13 +24,17 @@ app()->get('/', function () {
 
   db()
     ->insert('users')
-    ->params(['name' => 'John Doe', 'email' => 'johndoe@test.com'])
+    ->params(['name' => 'Jaen Doe', 'email' => 'jane@example.com'])
     ->execute();
 
-  $users = db()->select('users')->get();
+  db()
+    ->update('users')
+    ->params(['name' => 'Jane Doe'])
+    ->where(['name' => 'Jaen Doe', 'email' => 'jane@example.com'])
+    ->execute();
 
   response()->json([
-    'users' => $users,
+    'status' => 'success',
   ]);
 });
 

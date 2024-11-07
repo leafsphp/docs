@@ -1,3 +1,11 @@
+---
+sidebar: false
+editLink: false
+prev: false
+next: false
+lastUpdated: false
+---
+
 # Deploying a LeafMVC Application to Digital Ocean
 
 ::: warning Version support

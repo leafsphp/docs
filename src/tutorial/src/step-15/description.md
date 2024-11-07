@@ -1,20 +1,17 @@
 # You Did It!
 
-You've completed the tutorial!
+You've learnt how to create routes, handle requests, and responses, and even how to use some of Leaf's modules to make your app more powerful.
 
-At this point, you should have a good idea of what it's like to work with Leaf. However, we covered a lot of things really fast and glossed over the details, so you should definitely keep learning and read the docs! As a next step, you can:
+As a next step, you can:
 
-- Set up a real Leaf project on your machine by following the [installation docs](/docs/introduction/installation.html) or using the [leaf cli](/docs/cli/).
+- Set up a real project on your system by following the [installation docs](/docs/installation).
 
-- Every feature you need is available as a module, so be sure to checkout the [available modules](/modules/).
+- Every feature you need is available as a module, so be sure to checkout the [modules documentation](/docs/modules).
 
-- Check out our practical videos on [YouTube](https://youtube.com/)
+- Join the [Leaf Discord server](https://discord.gg/SpmNs4S) to ask questions, share what you're building, and get help from the community.
 
-We can't wait to see what you build next!
+- Follow Leaf on [Twitter](https://twitter.com/leafphp) to stay up-to-date with the news and updates.
 
-<div class="vt-box-container">
-  <a class="vt-box" href="/docs/introduction/first-app" style="flex: 0 50%;">
-    <h3 class="next-steps-link">Continue the Guide</h3>
-    <small class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</small>
-  </a>
-</div>
+We can't wait to see what you build next! 🚀
+
+<img src="https://github.com/user-attachments/assets/838c6cba-40f3-469a-852b-66b24aea20e3" alt="Leaf Logo" class="w-full" />
