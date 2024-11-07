@@ -173,12 +173,13 @@ One amazing thing about the `upload()` method is that it can detect the file typ
 ```php
 $uploaded = storage()->upload('fileToUpload', 'path/to/uploads', [
   'maxSize' => 1024 * 1024, // 1MB
-  'allowedTypes' => 'image',
+  'allowedTypes' => ['image'],
   'allowedExtensions' => ['jpg', 'png', 'gif'],
-  'rename' => true,
-  'force' => true,
-  'overwrite' => false,
   'validate' => true,
+  'mode' => 0777,
+  'rename' => false,
+  'recursive' => false,
+  'overwrite' => false,
 ]);
 ```
 
@@ -186,7 +187,7 @@ This is a list of config options for the `upload()` method:
 
 | Config Name  | Description                                                  |                                                                       Possible Values |
 | :----------- | :----------------------------------------------------------- | ------------------------------------------------------------------------------------: |
-| force        | If `true`, Leaf will create the folder if it doesn't exist   |                                                                       `true`, `false` |
+| mode        | Permissions to create your destination folder if it doesn't exist   | Any permissions accepted by mkdir() |
 | overwrite    | If `true`, Leaf will overwrite the file if it already exists |                                                                       `true`, `false` |
 | rename       | If `true`, Leaf will rename the file if it already exists    |                                                                       `true`, `false` |
 | validate     | If `true`, Leaf will validate the file before uploading      |                                                                       `true`, `false` |
