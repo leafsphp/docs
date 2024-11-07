@@ -28,7 +28,7 @@ Absolutely, Leaf can be easily integrated into existing projects or used to buil
 
 ## Is Leaf reliable?
 
-After going through 2 major versions over the past 4 years, Leaf is now a battle-tested framework suitable for just about any PHP project. It is also one of the most popular lightweight PHP micro-frameworks and even has it's variant - Leaf API being a very popular framework.
+After going through 2 major versions over the past 5 years, Leaf is now a battle-tested framework suitable for just about any PHP project. It is also one of the most popular lightweight PHP micro-frameworks and even has it's variant - Leaf MVC being a very popular framework.
 
 Leaf is used by individuals for large and personal projects, as well as by companies all over the world.
 

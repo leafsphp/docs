@@ -6,7 +6,7 @@ Version support. This tutorial assumes use of Leaf CLI >= 2.2.0 (🍊 Yomi Yomi 
 
 ## What Are We Building?
 
-This experiment will guide you deploying your first Leaf application to Heroku. The same steps apply to Leaf MVC, Leaf API and Skeleton.
+This experiment will guide you deploying your first Leaf application to Heroku. The same steps apply to Leaf MVC.
 
 ::: details (New to Heroku?)
 Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud. Create an account, tether a credit card, and prepare to build.
