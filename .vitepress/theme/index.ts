@@ -1,10 +1,10 @@
+import { h } from 'vue';
 import DefaultTheme from 'vitepress/theme';
 import { VueWriter } from 'vue-writer';
 import { MotionPlugin } from '@vueuse/motion';
 
 import 'virtual:group-icons.css';
 import './styles/index.css';
-import { defineAsyncComponent, h } from 'vue';
 
 /** @type {import('vitepress').Theme} */
 export default {
