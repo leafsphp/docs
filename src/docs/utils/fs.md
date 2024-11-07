@@ -1,9 +1,13 @@
-# Filesystem / Cloud Storage
-
 <!-- markdownlint-disable no-inline-html -->
-<!-- # File Storage System -->
+<!-- # Filesystem / Cloud Storage -->
+
+# File Storage System
 
 A file storage system is a system used to store and manage files. It's a crucial part of most applications, as it helps you create, read, update, store and delete files effectively. Leaf provides a simple and easy-to-use file storage system that allows you to work with files on your server or in the cloud.
+
+::: warning Docs version
+This documentation covers FS v2 and above. If you're using an older version, you can check the documentation [hosted here](https://v3.leafphp.dev/modules/fs/).
+:::
 
 ## Installation
 
