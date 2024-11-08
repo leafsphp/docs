@@ -481,6 +481,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   scrollOffset: 'header',
 
   head: [
+    ['meta', { name: 'robots', content: 'noIndex' }],
     ['meta', { name: 'twitter:site', content: '@leafphp' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     [
