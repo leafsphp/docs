@@ -37,7 +37,7 @@ export default defineConfig({
 
     socialLinks: [
       // { icon: 'languages', link: '/translations/' },
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://github.com/leafsphp/leaf' },
       { icon: 'twitter', link: 'https://x.com/leafphp' },
       { icon: 'discord', link: 'https://discord.gg/Pkrm9NJPE3' },
       // {
