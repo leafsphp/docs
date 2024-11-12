@@ -15,3 +15,5 @@
 /modules/cors/                      /docs/http/cors
 /modules/views/bareui/              /docs/frontend/bareui
 /modules/router/                    /docs/routing/
+/community/join                     /community/
+/modules/views/*                    /docs/frontend/:splat
