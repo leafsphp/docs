@@ -39,8 +39,8 @@ You can find the latest stable release of Leaf on our [GitHub page](https://gith
 ```markdown:no-line-numbers
 ```
 
-<script>
-  if (typeof fetch !== "undefined") {
+<script setup>
+  if (typeof window !== "undefined") {
     fetch("https://api.github.com/repos/leafsphp/leaf/releases/latest")
     .then(res => res.json())
     .then(data => {
