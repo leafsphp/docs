@@ -40,13 +40,15 @@ You can find the latest stable release of Leaf on our [GitHub page](https://gith
 ```
 
 <script>
-  fetch("https://api.github.com/repos/leafsphp/leaf/releases/latest")
+  if (typeof fetch !== "undefined") {
+    fetch("https://api.github.com/repos/leafsphp/leaf/releases/latest")
     .then(res => res.json())
     .then(data => {
       // get item with class language-md
       document.querySelector(".language-markdown").childNodes.item(2).innerHTML = `<code># ${data.name}</code>\n<code>${data.body}</code>`;
       // innerHTML = ` - ${new Date(data.published_at).toLocaleDateString()} ${data.body}`;
     });
+  }
 </script>
 
 ## Latest Leaf MVC Release
