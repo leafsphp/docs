@@ -21,11 +21,11 @@ To get started with Tick, you need to install it using the Leaf CLI:
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install tick
+leaf install date
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/tick
+composer require leafs/date
 ```
 
 :::
