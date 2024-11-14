@@ -109,10 +109,10 @@ if ($created) {
 
 ### Reading Files
 
-Reading files means getting the content of a file. You can read files using the `readFile()` method. It takes in the file path and returns the file content.
+Reading files means getting the content of a file. You can read files using the `read()` method. It takes in the file path and returns the file content.
 
 ```php
-$content = storage()->readFile('path/to/file.txt');
+$content = storage()->read('path/to/file.txt');
 
 echo $content;
 ```
@@ -148,10 +148,10 @@ $info = storage()->fileInfo('path/to/file.txt');
 Or by using more specific methods:
 
 ```php
-$size = storage()->fileSize('path/to/file.txt'); // in bytes
-$type = storage()->fileType('path/to/file.txt'); // file type
-$lastModified = storage()->fileLastModified('path/to/file.txt'); // last modified time
-$extension = storage()->extname('path/to/file.txt'); // txt
+$size = storage()->size('path/to/file.txt'); // in bytes
+$type = storage()->type('path/to/file.txt'); // file type
+$lastModified = storage()->lastModified('path/to/file.txt'); // last modified time
+$extension = storage()->extension('path/to/file.txt'); // txt
 $basename = storage()->basename('path/to/file.txt'); // file.txt
 $dirname = storage()->dirname('path/to/file.txt'); // path/to
 ```
@@ -189,27 +189,27 @@ $uploaded = storage()->upload('fileToUpload', 'path/to/uploads', [
 
 This is a list of config options for the `upload()` method:
 
-| Config Name  | Description                                                  |                                                                       Possible Values |
-| :----------- | :----------------------------------------------------------- | ------------------------------------------------------------------------------------: |
-| mode        | Permissions to create your destination folder if it doesn't exist   | Any permissions accepted by mkdir() |
-| overwrite    | If `true`, Leaf will overwrite the file if it already exists |                                                                       `true`, `false` |
-| rename       | If `true`, Leaf will rename the file if it already exists    |                                                                       `true`, `false` |
-| validate     | If `true`, Leaf will validate the file before uploading      |                                                                       `true`, `false` |
-| maxSize      | The maximum file size allowed in bytes                       |                                                                                 `int` |
-| allowedTypes | The allowed file types                                       | `image`, `video`, `audio`, `presentation`, `compressed`, `spreadsheet`, `application`, `custom` |
+| Config Name  | Description                                                       |                                                                                 Possible Values |
+| :----------- | :---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------: |
+| mode         | Permissions to create your destination folder if it doesn't exist |                                                             Any permissions accepted by mkdir() |
+| overwrite    | If `true`, Leaf will overwrite the file if it already exists      |                                                                                 `true`, `false` |
+| rename       | If `true`, Leaf will rename the file if it already exists         |                                                                                 `true`, `false` |
+| validate     | If `true`, Leaf will validate the file before uploading           |                                                                                 `true`, `false` |
+| maxSize      | The maximum file size allowed in bytes                            |                                                                                           `int` |
+| allowedTypes | The allowed file types                                            | `image`, `video`, `audio`, `presentation`, `compressed`, `spreadsheet`, `application`, `custom` |
 
 This is a list of values Leaf uses to check for file types:
 
-| File Type         | Common Extensions                                    |
-| :--------------  | :----------------------------------------------  |
-|  image            | 'jpg', 'jpeg', 'png', 'gif', 'webp', 'apng', 'tif', 'tiff', 'svg', 'pjpeg', 'pjp', 'jfif', 'cur', 'ico' |
-|  video             | 'mp4', 'webm', 'swf', 'flv'                              |
-|  audio             |'wav', 'mp3', 'ogg', 'm4a'                              |
-|  text                |'txt', 'log', 'xml', 'doc', 'docx', 'odt', 'wpd', 'rtf', 'tex', 'pdf' |
-|  presentation |'ppsx', 'pptx', 'ppt', 'pps', 'ppsm', 'key', 'odp' |
-|  compressed  |'zip', 'rar', 'bz', 'gz', 'iso', 'tar.gz', 'tgz', 'zipx', '7z', 'dmg'|
-|  spreadsheet  |'ods', 'xls', 'xlsx', 'xlsm'                                  |
-|  application    |'apk', 'bat', 'cgi', 'pl', 'com', 'exe', 'gadget', 'jar', 'msi', 'py', 'wsf' |
+| File Type    | Common Extensions                                                                                       |
+| :----------- | :------------------------------------------------------------------------------------------------------ |
+| image        | 'jpg', 'jpeg', 'png', 'gif', 'webp', 'apng', 'tif', 'tiff', 'svg', 'pjpeg', 'pjp', 'jfif', 'cur', 'ico' |
+| video        | 'mp4', 'webm', 'swf', 'flv'                                                                             |
+| audio        | 'wav', 'mp3', 'ogg', 'm4a'                                                                              |
+| text         | 'txt', 'log', 'xml', 'doc', 'docx', 'odt', 'wpd', 'rtf', 'tex', 'pdf'                                   |
+| presentation | 'ppsx', 'pptx', 'ppt', 'pps', 'ppsm', 'key', 'odp'                                                      |
+| compressed   | 'zip', 'rar', 'bz', 'gz', 'iso', 'tar.gz', 'tgz', 'zipx', '7z', 'dmg'                                   |
+| spreadsheet  | 'ods', 'xls', 'xlsx', 'xlsm'                                                                            |
+| application  | 'apk', 'bat', 'cgi', 'pl', 'com', 'exe', 'gadget', 'jar', 'msi', 'py', 'wsf'                            |
 
 ## Working with Folders
 
@@ -254,23 +254,52 @@ You can check if a folder is empty using the `isEmpty()` method. It takes in the
 $isEmpty = storage()->isEmpty('path/to/folder');
 ```
 
-You can also get the contents of a folder using the `listDir()` method. It takes in the folder path and a key to sort the contents by. It returns an array of the folder contents.
+You can also get the contents of a folder using the `list()` method. It takes in the folder path and a key to sort the contents by. It returns an array of the folder contents.
 
 ```php
-$contents = storage()->listDir('path/to/folder');
-$phpFiles = storage()->listDir('path/to/folder', '*.php');
+$contents = storage()->list('path/to/folder');
+$phpFiles = storage()->list('path/to/folder', '*.php');
 ```
 
-If you need to do more complex filtering, you can pass a function as the second parameter to the `listDir()` method.
+If you need to do more complex filtering, you can pass a function as the second parameter to the `list()` method.
 
 ```php
-$contents = storage()->listDir('path/to/folder', function ($file) {
+$contents = storage()->list('path/to/folder', function ($file) {
   // if true, the file will be included in the results
-  return $file->isFile() && $file->extname() === 'php';
+  return storage()->isFile($file) && storage()->extension($file) === 'php';
 });
 ```
 
 <!-- ## Working with Cloud Storage -->
+
+### File/Folder permissions
+
+You can set file/folder permissions using the `chmod()` method. It takes in the file/folder path and the permissions to set.
+
+```php
+storage()->chmod('path/to/file.txt', 0777);
+```
+
+If you are not sure of the current permissions of a file/folder, you can get them using the same method.
+
+```php
+$permissions = storage()->chmod('path/to/file.txt');
+```
+
+### Checking if a file exists
+
+You can check if a file or folder exists using the `exists()` method. It takes in the file path and returns a boolean indicating whether the file exists.
+
+```php
+$exists = storage()->exists('path/to/file.txt');
+```
+
+This will return true if the path matches an existing folder or file, but if you want to get more specific, you can use the `isFile()` and `isFolder()` methods to check if a path is a file or folder.
+
+```php
+$isFile = storage()->isFile('path/to/file.txt');
+$isFolder = storage()->isFolder('path/to/folder');
+```
 
 ## Renaming Files and Folders
 
@@ -358,6 +387,28 @@ if ($moved) {
   echo 'File moved successfully';
 } else {
   $errors = storage()->errors();
+}
+```
+
+## Symlinks/Shortcuts
+
+Symlinks are shortcuts to files or folders. They allow you to access a file or folder from a different location. Leaf provides a simple way to create symlinks using the `symlink()` method. It takes in 2 parameters:
+
+- the target file/folder path
+- the symlink path
+
+```php
+storage()->link('path/to/file.txt', 'path/to/symlink.txt');
+storage()->link('path/to/folder', 'path/to/symlink');
+```
+
+It returns a boolean indicating whether the symlink was created successfully.
+
+```php
+$linked = storage()->link('path/to/file.txt', 'path/to/symlink.txt');
+
+if ($linked) {
+  echo 'Symlink created successfully';
 }
 ```
 
