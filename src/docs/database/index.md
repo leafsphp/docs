@@ -23,7 +23,7 @@ leaf install db
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/database
+composer require leafs/db
 ```
 
 :::
