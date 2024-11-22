@@ -86,45 +86,32 @@ const nav: DefaultTheme.NavItem[] = [
     activeMatch: `^/(about|community)/`,
     items: [
       {
-        text: 'Community',
-        items: [
-          {
-            text: 'Leaf Community',
-            link: '/community/',
-          },
-          {
-            text: 'Contribute to Leaf',
-            link: '/community/contribute',
-          },
-          {
-            text: 'Community Guides',
-            link: '/community/guide',
-          },
-          {
-            text: 'Contribute to docs',
-            link: '/community/docs-writing-guide',
-          },
-          {
-            text: 'Changelog',
-            link: '/community/releases',
-          },
-          // {
-          //   text: 'Project Showcase',
-          //   link: '/community/showcase',
-          // },
-          {
-            text: 'Blog',
-            link: 'https://blog.leafphp.dev',
-          },
-          {
-            text: 'Team',
-            link: '/community/team',
-          },
-          {
-            text: 'FAQ',
-            link: '/community/faq',
-          },
-        ],
+        text: 'Leaf Community',
+        link: '/community/',
+      },
+      {
+        text: 'Contribute to Leaf',
+        link: '/community/guide',
+      },
+      {
+        text: 'Changelog',
+        link: '/community/releases',
+      },
+      // {
+      //   text: 'Project Showcase',
+      //   link: '/community/showcase',
+      // },
+      {
+        text: 'Blog',
+        link: 'https://blog.leafphp.dev',
+      },
+      {
+        text: 'Team',
+        link: '/community/team',
+      },
+      {
+        text: 'FAQ',
+        link: '/community/faq',
       },
     ],
   },

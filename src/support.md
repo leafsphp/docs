@@ -12,11 +12,13 @@ lastUpdated: false
 import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
 </script>
 
-# Support Leaf's Development
+# We need your help
 
-Leaf began in 2019 as a project to simplify API development but has since expanded to include a suite of open-source tools like the Leaf PHP framework and [Hanabira](https://hanajs.dev).
+![image](https://github.com/user-attachments/assets/0e08dd91-db25-407a-9c17-aec25a01e241)
 
-We are committed to keeping all this open-source and free, but maintaining and developing new features now requires significant time and resources. As the project has grown, so have the costs, which have been mostly covered by the team. To sustain and grow Leaf, we need your help to support full-time maintainers.
+Leaf began in 2019 as a simple boilerplate to simplify API development but has since expanded to include a suite of open-source tools like the Leaf PHP framework and [Hanabira](https://hanajs.dev).
+
+We're committed to keeping Leaf open-source and free, but as the project grows, so do the costs. Maintaining and building new features now takes significant time and resources, mostly covered by our team. To keep Leaf thriving, we need your support for our maintainers 💚
 
 Become a sponsor and help us grow the Leaf ecosystem with more features, better support, and ongoing updates while keeping it free and accessible for everyone.
 

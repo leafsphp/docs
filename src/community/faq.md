@@ -52,4 +52,4 @@ Yes. Despite a common misconception that Leaf is only suitable for simple use ca
 
 ## How do I contribute to Leaf?
 
-We appreciate your interest! Please check out our [Contribution Guide](/community/contribute).
+We appreciate your interest! Please check out our [Contribution Guide](/community/guide).
