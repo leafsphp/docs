@@ -19,3 +19,4 @@
 /modules/views/*                    /docs/frontend/:splat
 /community/docs-writing-guide       /community/guide
 /community/contribute               /community/guide
+docs/mvc/schema.html                /docs/database/schema
