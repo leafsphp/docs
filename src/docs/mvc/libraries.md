@@ -1,18 +1,27 @@
 # Custom Libraries
 
-Sometimes you might want to write some application logic that doesn't fit into a controller, model, or helpers. It makes sense to create a custom library for this functionality. For example, you might want to create a library that calculates the distance between two points on a map. You could then use this library in any controller, helper, or view. Leaf MVC and Leaf API both come with a `lib` folder where you can store your custom libraries.
+We usually recommend abstracting repetitive code into helpers, but sometimes you might want to write some application logic that doesn't fit into a controller, model, or helpers. It makes sense to create a custom library for this functionality. For example, you might want to create a library that calculates the distance between two points on a map. You could then use this library in any controller, helper, or view.
 
-Custom libraries are not stored in the `app` folder because they are not part of the application's core functionality. They are more like helpers, however, unlike helpers they can be full classes, functions or just data structures and also require no structured namespace.
+Custom libraries are not stored in the `app` folder because they are not autoloaded by Leaf MVC. Instead, you can store them in the `lib` folder which Leaf will then pick up. Things are done this way because you may not always have a library that follows an autoloadable structure and may need to be `require`d manually.
 
 ## Autoloading Libraries
 
-Leaf MVC and Leaf API will only automatically load your libraries for you if you tell it to do so. You can do this by **uncommenting** the following line in your `public/index.php` file:
+Leaf MVC only loads items in the `app` folder by default. To add any external library to your project, you need to set Leaf MVC up for it using the console. You can do this by running the following command:
 
-```php
-//  \Leaf\Core::loadLibs();
+```bash:no-line-numbers
+php leaf config:lib
 ```
 
-Once you do so, you can start creating your own libraries.
+That's it! A `lib` folder will be created in your application root and Leaf will now autoload any library you place in this folder.
+
+::: info Older Leaf MVC versions
+If you are using an older version of Leaf MVC where you don't have the `config:lib` command, you simply need to head over to your `public/index.php` file and uncomment the following line:
+
+```php
+// \Leaf\Core::loadLibs();
+```
+
+:::
 
 ## Creating a Library
 
@@ -79,3 +88,36 @@ class HomeController extends Controller {
     }
 }
 ```
+
+## Using a non-autoloadable library
+
+Some older libraries may not follow the autoloadable structure but are linked together using `require` statements. You can still use these libraries in your Leaf MVC application. To use such a library, you need to add it's index file to the `lib` folder and require any other files it needs in the index file. For example, let's say you have a library called `MyLibrary` that has the following structure:
+
+```bash:no-line-numbers
+MyLibrary/
+  index.php
+  file1.php
+  file2.php
+```
+
+You can add this library to your Leaf MVC application by moving the `MyLibrary` folder to the `lib` folder and creating an `index.php` file in the `MyLibrary` folder that requires the other files:
+
+```bash:no-line-numbers
+app/
+lib/
+  mylibrary.php
+  MyLibrary/
+    index.php
+    file1.php
+    file2.php
+```
+
+And in `lib/mylibrary.php`:
+
+```php
+<?php
+
+require __DIR__ . '/MyLibrary/index.php';
+```
+
+From here, you can use `MyLibrary` and all it's functions in your Leaf MVC application.
