@@ -6,7 +6,7 @@ Although you can write raw queries using the `query()` method, there's no fun in
 
 This is something you would usually want to do outside of your application, but there are a few rare cases where you might want to create a database from within your application. Leaf DB provides a `create()` method that allows you to do just that.
 
-```php
+```php:no-line-numbers
 db()->create('dbname')->execute();
 ```
 
@@ -26,7 +26,7 @@ db()
 
 Dropping a database is the opposite of creating one. It deletes the database and all its contents. Leaf DB provides a `drop()` method that allows you to do this.
 
-```php
+```php:no-line-numbers
 db()->drop('dbname')->execute();
 ```
 
@@ -40,13 +40,13 @@ This method needs the name of the table you want to add data to, like "users", a
 
 Here's an example:
 
-```php
+```php:no-line-numbers
 db()->insert('users')->params(['username' => 'mychi']);
 ```
 
 This is equivalent to the following SQL query:
 
-```sql
+```sql:no-line-numbers
 INSERT INTO users (username) VALUES ('mychi')
 ```
 
@@ -89,17 +89,19 @@ db()->insert('users')->params(['username' => 'mychi'])->execute();
 $lastId = db()->lastInsertId();
 ```
 
+Note that this may not work correctly if your database uses non-auto-incrementing IDs like UUIDs or ULIDs.
+
 ## Reading data from a database
 
 Reading from a database means retrieving data stored in a table. Leaf DB provides a `select()` method that allows you to build a query to retrieve data from a table. The `select()` method takes the name of the table you want to read from as its argument.
 
-```php
+```php:no-line-numbers
 db()->select('users')->all();
 ```
 
 This will return all the rows in the users table. You can also specify the columns you want to return by passing them as the second argument to the `select()` method.
 
-```php
+```php:no-line-numbers
 db()->select('users', 'name, created_at')->all();
 ```
 
@@ -172,7 +174,7 @@ db()
 
 Almost every database table has an `id` column that uniquely identifies each row. Leaf DB provides a `find()` method that allows you to retrieve a row by its `id`.
 
-```php
+```php:no-line-numbers
 db()->select('users')->find(1);
 ```
 
@@ -209,7 +211,7 @@ Deleting data from a database works by finding the data you want to delete and t
 
 Here's an example:
 
-```php
+```php:no-line-numbers
 db()->delete('users')->execute(); // careful now 🙂
 ```
 
@@ -258,6 +260,10 @@ if ($success) {
 ```
 
 This is useful especially when you have a set of queries that rely on third party influence.
+
+::: warning Rollback not working
+Transactions will only work correctly if your queries use Leaf DB. This is because your queries need to use the same database connection to be able to be rolled back. This means you can't use transactions with your Leaf MVC models at the moment, but this may change in the future.
+:::
 
 ## Hiding columns from results
 
