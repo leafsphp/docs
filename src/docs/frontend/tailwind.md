@@ -103,6 +103,22 @@ That's it! You now have Tailwind CSS set up in your Leaf project. You can start 
 
 Be sure to start your vite server by running:
 
-```bash:no-line-numbers
-npm run dev
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf view:dev
 ```
+
+```bash:no-line-numbers [npm]
+npm i && npm run dev
+```
+
+```bash:no-line-numbers [pnpm]
+pnpm i && pnpm run dev
+```
+
+```bash:no-line-numbers [yarn]
+yarn && yarn dev
+```
+
+:::

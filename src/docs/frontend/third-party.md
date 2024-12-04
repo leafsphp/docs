@@ -20,7 +20,7 @@ composer require smarty/smarty
 
 Once installed, you need to tell Leaf about your engine. Leaf will try to cache your engine for future use. You can do this using the `attachView()` method on the app instance:
 
-```php
+```php:no-line-numbers
 app()->attachView(Smarty::class);
 ```
 
@@ -48,7 +48,7 @@ Unlike Leaf Core, Leaf MVC comes with a view manager that makes Leaf aware of an
 
 The first step is to head over to your `public/index.php` file and attach Smarty to Leaf:
 
-```php
+```php:no-line-numbers
 app()->attachView(Smarty::class);
 ```
 

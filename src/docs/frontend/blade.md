@@ -25,9 +25,13 @@ This video by The Net Ninja will help you get started with blade.
 
 ## Setting Up
 
-Blade comes with Leaf MVC out of the box, fully configured and ready to use. However, if you're using Leaf Core, you'll need to set up Blade yourself. Don't worry, it's pretty easy. All you need to do is install Blade, configure it to match your project's setup, and you're good to go.
+::: info Blade + Leaf MVC
 
-You can install Leaf Blade with the Leaf CLI:
+Blade comes with Leaf MVC out of the box, fully configured and ready to use. However, if you're using Leaf Core, you'll need to set up Blade yourself.
+
+:::
+
+You can install Leaf Blade using the Leaf CLI:
 
 ::: code-group
 
@@ -43,7 +47,7 @@ composer require leafs/blade
 
 After this, you just need to inform Leaf of Blade's existence:
 
-```php
+```php:no-line-numbers
 app()->attachView(Leaf\Blade::class);
 ```
 
@@ -87,7 +91,7 @@ This should look pretty familiar if you know HTML (of course you do). The only d
 
 Remember we set up Blade earlier? Now we can use it to render our Blade views. Here's how you can render the `hello.blade.php` view we created earlier:
 
-```php
+```php:no-line-numbers
 echo app()->blade()->render('hello', ['name' => 'Michael']);
 ```
 
@@ -105,7 +109,7 @@ app()->blade()->directive('datetime', function ($expression) {
 
 Which allows you to use the following in your blade template:
 
-```html
+```blade:no-line-numbers
 Current date: @datetime($date)
 ```
 

@@ -73,15 +73,31 @@ Once you've installed Vite, you can start loading your assets using the the `vit
 
 Here's an example of how you can load a CSS file:
 
-```php
+::: code-group
+
+```blade:no-line-numbers [Blade]
+{{ vite('css/app.css') }}
+```
+
+```php:no-line-numbers [BareUI]
 <?php echo vite('css/app.css'); ?>
 ```
 
+:::
+
 You can also load multiple assets at once by passing in an array of assets:
 
-```php
+::: code-group
+
+```blade:no-line-numbers [Blade]
+{{ vite(['app.css', 'app.js']) }}
+```
+
+```php:no-line-numbers [BareUI]
 <?php echo vite(['app.css', 'app.js']); ?>
 ```
+
+:::
 
 The `vite()` helper function will automatically load the correct assets depending on the environment. In development, it will load the assets from the vite server with Hot Module Replacement, while in production, it will load the assets from the build folder.
 
@@ -108,7 +124,7 @@ export default defineConfig({
 
 The Leaf Vite plugin requires an array of entry points for your application. These may be JavaScript or CSS files, and include preprocessed languages such as TypeScript, JSX, and Sass. You don't need to pass all your assets here, just the entry points.
 
-Besides the Vite config file, you can also configure the server component for Vite. With this, you can set a couple of defaults for your assets.
+Besides the Vite config file, you can also configure the server component to set a few defaults for Vite. This is is only necessary if you are NOT using Leaf MVC. You can configure the server component by calling the `config` method on the `Vite` class:
 
 ```php
 \Leaf\Vite::config([
@@ -119,11 +135,9 @@ Besides the Vite config file, you can also configure the server component for Vi
 
 Unlike the `vite.config.js` file, this configuration is done in PHP and is completely optional.
 
-Once again if you're using Leaf MVC or if you installed Vite using the `view:install` command, this is done for you automatically.
-
 ## Running Vite
 
-Vite comes with a development server that you can use to serve your assets. This is true for the Leaf Vite integration as well. This is a bit different from the traditional way of serving assets with PHP because you need to run a separate server for your assets. You can start your Vite server by running:
+Vite comes with a development server that you can use to serve your frontend assets. This is a bit different from the traditional way of serving assets with PHP because you need to run a separate server for your assets. You can start your Vite server by running:
 
 ::: code-group
 
@@ -146,6 +160,8 @@ yarn && yarn dev
 :::
 
 This will install the necessary dependencies and start your Vite server. You don't need to do anything with the Vite server, just keep it running in the background and Leaf will take care of the rest.
+
+**You need to keep the Vite server running in a separate terminal window while you work on your project.**
 
 ## Adding Aliases
 
