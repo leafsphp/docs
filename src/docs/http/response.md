@@ -185,13 +185,19 @@ These responses are used to redirect the user to another URL. You can create a r
 
 ::: code-group
 
-```php [Functional Mode]
-response()->redirect('https://example.com');
+```php:no-line-numbers [Functional Mode]
+response()->redirect('/example'); // path within the app
+response()->redirect(['example']); // redirect with route name
+response()->redirect('https://example.com'); // redirect to external URL
 ```
 
-```php [Leaf Instance]
-$app->response()->redirect('https://example.com');
+```php:no-line-numbers [Leaf Instance]
+$app->response()->redirect('/example'); // path within the app
+$app->response()->redirect(['example']); // redirect with route name
+$app->response()->redirect('https://example.com'); // redirect to external URL
 ```
+
+:::
 
 ### File download responses
 
@@ -203,13 +209,13 @@ It's not so unusual to want to send a file to the user for download. You can cre
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 response()->download('path/to/file.pdf');
 
 response()->download('path/to/file.pdf', 'new-filename.pdf', 200);
 ```
 
-```php [Leaf Instance]
+```php:no-line-numbers [Leaf Instance]
 $app->response()->download('path/to/file.pdf');
 
 $app->response()->download('path/to/file.pdf', 'new-filename.pdf', 200);
@@ -223,11 +229,11 @@ These responses are used when you don't want to return any content to the user. 
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 response()->noContent();
 ```
 
-```php [Leaf Instance]
+```php:no-line-numbers [Leaf Instance]
 $app->response()->noContent();
 ```
 
@@ -242,11 +248,11 @@ XML responses can be created using the `xml()` method. This method accepts 2 par
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 response()->xml('<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0.0" />');
 ```
 
-```php [Leaf Instance]
+```php:no-line-numbers [Leaf Instance]
 $app->response()->xml('<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0.0" />');
 ```
 
@@ -265,7 +271,7 @@ Leaf allows you to set headers for your response directly from the response obje
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 response()->withHeader('Content-Type', 'application/json');
 response()->withHeader([
   'Content-Type' => 'application/json',
@@ -273,7 +279,7 @@ response()->withHeader([
 ]);
 ```
 
-```php [Leaf Instance]
+```php:no-line-numbers [Leaf Instance]
 $app->response()->withHeader('Content-Type', 'application/json');
 $app->response()->withHeader([
   'Content-Type' => 'application/json',
