@@ -116,7 +116,7 @@ You can then redirect to this route using the route name by passing an array wit
 response()->redirect(['home']);
 ```
 
-If you want to get details about a route, you can use the `getRoute()` method.
+If you want to get details about a route using its name, you can use the `route()` method.
 
 ```php:no-line-numbers
 $route = app()->route($routeName);

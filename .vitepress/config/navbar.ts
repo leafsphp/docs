@@ -49,7 +49,7 @@ const nav: DefaultTheme.NavItem[] = [
         items: [
           {
             text: 'Hana JS',
-            link: 'https://hanajs.dev',
+            link: 'https://hana.leafphp.dev',
           },
           {
             text: 'Naytive',
