@@ -14,23 +14,21 @@ import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
 
 # We need your help
 
-![image](https://github.com/user-attachments/assets/0e08dd91-db25-407a-9c17-aec25a01e241)
+<!-- ![image](https://github.com/user-attachments/assets/0e08dd91-db25-407a-9c17-aec25a01e241) -->
 
-Leaf began in 2019 as a simple boilerplate to simplify API development but has since expanded to include a suite of open-source tools like the Leaf PHP framework and [Hanabira](https://hanajs.dev).
+Leaf began in 2019 as a boilerplate to supercharge API development but has since expanded into a full framework with libraries like [Hanabira](https://hana.leafphp.dev).
 
-We're committed to keeping Leaf open-source and free, but as the project grows, so do the costs. Maintaining and building new features now takes significant time and resources, mostly covered by our team. To keep Leaf thriving, we need your support for our maintainers 💚
-
-Become a sponsor and help us grow the Leaf ecosystem with more features, better support, and ongoing updates while keeping it free and accessible for everyone.
+We're committed to keeping Leaf free, but as the project grows, so do the costs. Maintaining and building new features now takes significant time and resources, mostly covered by our team. To keep Leaf thriving, we need your support for our maintainers 💚
 
 ## How to Sponsor
 
 You can support Leaf through [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [OpenCollective](https://opencollective.com/leaf), where your contributions go into a transparent fund supporting community initiatives, events, and core Leaf activities. Both recurring monthly sponsorships and one-time donations are welcome. Recurring sponsors also enjoy benefits like logo placements, as outlined in our Sponsorship Tiers. Your support directly fuels the growth and sustainability of Leaf and its community.
 
+You can also send in USDT through `TK6d2w4EqSDsf2xB2SLcEkfUt3vxADtFmp` using TRC20.
+
 ## Sponsoring Leaf as a Business
 
-Sponsoring Leaf gives you great exposure to all Leaf developers around the world through our website and GitHub project READMEs. In addition, supporting OSS improves the reputation of your brand, which is an important asset for any company that interacts with developers.
-
-If you are using Leaf to build a revenue-generating product, it makes business sense to sponsor Leaf's development: **it ensures the project that your product relies on stays healthy and actively maintained.** The exposure and positive brand image in the Leaf community also makes it easier to attract and recruit developers.
+Sponsoring Leaf gives you great exposure to all PHP developers around the world through our website and GitHub project READMEs. In addition, supporting OSS improves the reputation of your brand, and also ensures that Leaf stays healthy and actively maintained.
 
 You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/contribute/premium-sponsor-79271) tier which gives you the following perks:
 
@@ -42,7 +40,7 @@ You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/cont
 
 ## Past/Present Sponsors
 
-We are grateful to all our sponsors for their generous support. Check out our current sponsors below:
+We are grateful to all our sponsors, both past and present for their generous support 💚
 
 <SponsorGroup group="sponsor" class="w-full" />
 

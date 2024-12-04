@@ -1,51 +1,57 @@
 # Session Flash
 
-Session flash allows you to store data in the session for a single request. This is useful for scenarios like displaying a message after a form submission. Leaf provides a straightforward way to work with flash messages.
+Session flash allows you to store data in the session for a single request. This is useful for scenarios like displaying a message after a form submission or passing data from one request to another.
 
 ## Adding a new flash
 
-You can set a new flash item using the `set()` method. It method accepts two arguments:
+You can add a new flash message to a response using the `withFlash()` method. This method accepts two arguments:
 
-- The item to flash
-- The key to save it under. The key is optional and defaults to `message`.
+- The name of the flash message
+- The value of the flash message
+
+```php:no-line-numbers
+response()->withFlash('message', 'something');
+```
+
+You can chain the `withFlash()` method with your main response methods to return a response with a flash message.
 
 ```php
-flash()->set('This is my message');
-flash()->set('This is my message', 'info');
+response()
+  ->withFlash('message', 'something')
+  ->json('...');
 ```
 
 You are not limited to strings. You can flash different types of data:
 
 ```php
-flash()->set($userObject);
-flash()->set($userArray);
-flash()->set($userString);
-flash()->set($userInt);
+response()->withFlash('object', $userObject)->json('...');
+response()->withFlash('array', $userArray)->json('...');
+response()->withFlash('string', $userString)->json('...');
+response()->withFlash('int', $userInt)->json('...');
 ```
 
 ## Display a flash item
 
 To display a flash item, you can use the `display()` method. This method accepts the key of the item to get. If the key is not provided, it defaults to `message`.
 
-```php
-echo flash()->display();
+```php:no-line-numbers
+$message = flash()->display();
 ```
 
-If you set a flash item with a key, you can pass the key to the `display()` method to get the item.
+If you set a flash item with a different key, you can pass the key to the `display()` method to get the item.
 
 ```php
-flash()->set('This is my message', 'info');
-...
-
-echo flash()->display('info');
+$message = flash()->display('info');
+$object = flash()->display('object');
+$array = flash()->display('array');
 ```
 
 The item will be removed from the session after it has been displayed.
 
 ## Manually removing a flash item
 
-You may choose to remove a flash item manually using the `remove()` method. This method accepts the key of the item to remove.
+You may choose to remove a flash item manually without displaying it first. You can do this by calling the `remove()` method with the key of the item to remove.
 
-```php
+```php:no-line-numbers
 flash()->remove('info');
 ```

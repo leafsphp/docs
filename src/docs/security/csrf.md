@@ -62,11 +62,29 @@ This will automatically generate a CSRF token using a default secret key and a r
 
 If the CSRF token is missing or invalid, the CSRF module will throw an exception, which you can catch and handle as you see fit.
 
+::: info Leaf MVC + CSRF
+
+Once you install the CSRF module, Leaf will automatically pick up the `config/csrf.php` file and use it to set up CSRF protection for your app, so you don't need to manually call `app()->csrf()` or worry about passing any configuration to the CSRF module.
+
+:::
+
 ## Protecting your forms
 
 To protect your forms from CSRF attacks, you can add the CSRF token to your forms. The CSRF module provides a beautiful `form()` method that generates a hidden input field with the CSRF token.
 
-```blade
+::: code-group
+
+```blade{2} [Leaf Blade]
+<form action="/submit" method="POST">
+    {{ csrf()->form() }}
+
+    <!-- your form information -->
+    <input type="text" name="name">
+    <button type="submit">Submit</button>
+</form>
+```
+
+```blade{2} [BareUI]
 <form action="/submit" method="POST">
     <?php csrf()->form(); ?>
 
@@ -75,6 +93,8 @@ To protect your forms from CSRF attacks, you can add the CSRF token to your form
     <button type="submit">Submit</button>
 </form>
 ```
+
+:::
 
 Once this form is submitted, the CSRF module will verify the token and allow the request to go through if the token is valid. Note that you don't need to do anything else to verify the token; the CSRF module handles everything for you.
 
@@ -99,7 +119,7 @@ This will send a POST request to `/submit` with the CSRF token in the `X-CSRF-To
 
 The CSRF module also provides a `token()` method that returns the CSRF token. You can use this method to display the token in your views or to send the token to your frontend. Be careful not to expose the token to the public, as it can be used to bypass CSRF protection.
 
-```php
+```php:no-line-numbers
 $csrfToken = csrf()->token();
 ```
 
@@ -145,13 +165,13 @@ It is not required to change the secret key, but it is recommended to do so if y
 
 If you have an environment file, you can set the secret key there.
 
-```txt
+```txt:no-line-numbers
 X_CSRF_SECRET=my-new-secret-key
 ```
 
 <!-- Leaf will automatically pick up the secret key from your environment file and use it to encrypt the CSRF token, so you don't have to pass the secret key to the `csrf()` method every time. -->
 
-## Error Handling
+## Handling CSRF Failures
 
 By default, Leaf will output a built-in error page when a CSRF token is invalid. You can customize the messages shown on this page by updating your `config` object.
 
@@ -176,4 +196,12 @@ app()->csrf([
 ]);
 ```
 
-You can use this to handle the error in any way you want.
+You can use this to handle the error in any way you want, including redirecting the user to a custom error page or logging the error.
+
+## I keep getting a `Token not found` error
+
+If you keep getting a `Token not found` error or any error you set in `messages.tokenNotFound`, it means the CSRF token is not being received by the CSRF module. This can happen if you're using a form that doesn't have the CSRF token or if the CSRF token is being removed by a middleware or some other part of your app.
+
+If you are submitting a form, make sure the form has the CSRF token. You can find an example [here](#protecting-your-forms).
+
+If you are sending a request via JavaScript, make sure the `X-CSRF-Token` header is being sent with the request. You can find an example [here](#x-csrf-token-header).

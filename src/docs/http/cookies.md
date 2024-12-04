@@ -24,7 +24,7 @@ composer require leafs/cookie
 
 Since cookies are sent to the client's browser as part of the response, Leaf provides a direct way to set cookies on your response. You can directly call `withCookie()` on your response object to set a cookie.
 
-```php
+```php:no-line-numbers
 response()->withCookie('name', 'Fullname');
 ```
 
@@ -70,7 +70,7 @@ The `set()` method allows you to set cookies with more advanced options like exp
 
 When you send cookies to the client, they are stored in your users' browser and automatically sent back to your app on every request. You can read these cookies using the `get()` method.
 
-```php
+```php:no-line-numbers
 $name = cookie()->get('name');
 ```
 
@@ -78,7 +78,7 @@ This method takes in the cookie name and returns the cookie value. If the cookie
 
 You can also get all cookies at once using the `all()` method.
 
-```php
+```php:no-line-numbers
 $cookies = cookie()->all();
 ```
 
@@ -109,6 +109,6 @@ cookie()->delete('name');
 
 You may also choose to delete all your cookies, for instance if you detect an authentication or authorization breech in your application. You can do this using the `deleteAll()` method on Leaf cookies.
 
-```php
+```php:no-line-numbers
 cookie()->deteleAll();
 ```

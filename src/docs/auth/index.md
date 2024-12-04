@@ -32,9 +32,11 @@ The next step is to link your database and start signing users in.
 
 To do any kind of authentication, you need to connect to some kind of database which will store your users' data. If you are already using Leaf DB or Leaf MVC, then your database connection will automatically be used by Leaf Auth, so you don't need to connect to your database again.
 
-If you are not using Leaf DB or Leaf MVC, you can connect to your database manually:
+If you are **NOT** using Leaf DB or Leaf MVC, you can connect to your database manually:
 
-```php
+::: code-group
+
+```php [Auth connect]
 auth()->connect([
   'dbtype' => '...',
   'charset' => '...',
@@ -46,15 +48,15 @@ auth()->connect([
 ]);
 ```
 
-If you have an existing PDO connection, you can pass it to Leaf Auth:
-
-```php
+```php [Existing PDO instance]
 $db = new PDO('mysql:dbname=test;host=127.0.0.1', 'root', '');
 
 auth()->dbConnection($db);
 
 // you can use leaf auth the same way you always have
 ```
+
+:::
 
 ## Auth + Leaf MVC
 
@@ -90,12 +92,26 @@ Leaf Auth doesn't give you any structure for your database, with that, you can s
 
 1. By default, Leaf Auth assumes that your database primary key is `id`. If you have a database where you are using another field, say `admin_id` as the primary key, you will need to tell Leaf the name of your primary key. You can do this using the `id.key` config:
 
-    ```php:no-line-numbers
+    ::: code-group
+
+    ```php:no-line-numbers [Leaf]
     auth()->config('id.key', 'admin_id');
+    ```
+
+    ```php:no-line-numbers [Leaf MVC - config/auth.php]
+    'id.key' => 'admin_id'
     ```
 
 2. Leaf Auth assumes that you will save your users in a database table named `users`, this might however not be the case for your application. If you want to use a different table, you can configure Leaf Auth using `db.table`:
 
-    ```php:no-line-numbers
+    ::: code-group
+
+    ```php:no-line-numbers [Leaf]
     auth()->config('db.table', 'admins');
     ```
+
+    ```php:no-line-numbers [Leaf MVC - config/auth.php]
+    'db.table' => 'admins'
+    ```
+
+    :::

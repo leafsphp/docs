@@ -1,5 +1,9 @@
 # DB Factories
 
+<!-- ::: warning Schema v1 released 💚
+We just released a new version of Leaf Schema which replaces migrations, seeds and factories. This documentation will remain here for legacy purposes. Check out the [new schema system](/docs/database/files) for more info.
+::: -->
+
 Factories are a way to conveniently generate large amounts of database records. Instead of manually specifying the attributes for each model seed, you can use factories to define the attributes for each model. This way, you can easily generate a large number of records with random data.
 
 ## Creating a Factory

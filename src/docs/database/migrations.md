@@ -1,6 +1,10 @@
 # Migrations
 
-Laravel database migrations are like version control for your database. They allow you to easily create, modify, or delete tables and columns in your database in a structured way, without having to manually write SQL queries.
+<!-- ::: warning Schema v1 released 💚
+We just released a new version of Leaf Schema which replaces migrations, seeds and factories. This documentation will remain here for legacy purposes. Check out the [new schema system](/docs/database/files) for more info.
+::: -->
+
+Database migrations are like version control for your database. They allow you to easily create, modify, or delete tables and columns in your database in a structured way, without having to manually write SQL queries.
 
 When you make changes to your database like adding a new table or column, modifying an existing column's data type, or changing a relationship between tables, database migrations allow you to propagate those changes to all instances of your database.
 

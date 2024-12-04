@@ -66,18 +66,45 @@ db()->connect([
 ]);
 ```
 
-The `connect()` method takes an array of connection details for your database as its argument. Depending on the database system you're using, you'll need to provide different connection details. For example, here's how you can connect to a SQLite database:
+The `connect()` method takes an array of connection details for your database as its argument. Depending on the database system you're using, you'll need to provide different connection details.
+Here are some examples of how you can connect to different databases:
 
-```php
+::: code-group
+
+```php [MySQL]
+db()->connect([
+  'host' => '127.0.0.1',
+  'username' => 'root',
+  'password' => '',
+  'dbname' => 'Leaf',
+]);
+```
+
+```php [PostgreSQL]
+db()->connect([
+  'dbtype' => 'pgsql',
+  'host' => '127.0.0.1',
+  'username' => 'root',
+  'password' => '',
+  'dbname' => 'Leaf',
+  'port' => '5432',
+]);
+```
+
+```php [SQLite]
 db()->connect([
   'dbtype' => 'sqlite',
   'dbname' => 'db.sqlite',
 ]);
 ```
 
-If you have a environment file, you can use it to store your database connection details. Here's an example of how you can connect to a MySQL database using an environment file:
+:::
 
-```txt
+If you are using Leaf MVC, we have already set up everything for you. All you need to do is to head over to your `.env` file and set up your database connection details.
+
+::: code-group
+
+```txt [MySQL]
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -86,11 +113,23 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Using the environment file, you can connect to the database like this:
-
-```php
-db()->autoConnect();
+```txt [PostgreSQL]
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=LeafMVC
+DB_USERNAME=root
+DB_PASSWORD=
 ```
+
+```txt [SQLite]
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database.sqlite
+```
+
+:::
+
+Remember to head over to `public/index.php` and uncomment the line that says `\Leaf\Database::initDb();`. This will automatically connect to your database using the details in your environment file.
 
 ## Writing simple queries
 
@@ -147,22 +186,3 @@ There may be times when you want to get a single value from a query that returns
 ```php
 $user = db()->query('SELECT * FROM users')->first();
 ```
-
-## Leaf DB + MVC
-
-Leaf MVC comes with a more structured way to work with databases. You can use models to interact with your database. This makes it easier to manage your database operations and keep your code clean. However, you can still use the query builder to run raw queries if you need to.
-
-To get started, you need to set up your database connection in your environment file.
-
-```txt
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=LeafMVC
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-From there, you just need to head over to `public/index.php` and uncomment the line that says `\Leaf\Database::initDb();`. This will automatically connect to your database using the details in your environment file.
-
-If you have multiple databases, Leaf DB will connect to your database which has been labelled as your default database. Leaf DB does not yet support multiple database connections, but of course, you can manually create multiple instances of Leaf DB.

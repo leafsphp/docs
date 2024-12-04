@@ -33,23 +33,34 @@ While this may seem like a lot of work, it's a good way to ensure that your user
 
 ## User relationships
 
-Relationships are a way to connect different models in your application. For instance, a user may have many posts, or a user may have many transactions. Using relationships, you can fetch related data from your database. If you have a user model with a one-to-many relationship with a posts model, you can fetch the user's posts using the user object:
+Leaf auth comes with a very basic model system that allows you to get/set data related to the current user. For instance, you may want to get all posts by the current user or all transactions by the current user, or maybe add a new purchase to the current user. All these can be done using the user method.
 
 ```php
-$posts = auth()->user()->posts();
+$posts = auth()->user()->posts()->get();
 // will return a Leaf DB instance with posts by the current user
 // SELECT * FROM posts WHERE user_id = $current_user_id
 ```
 
-You can further filter the data by using any of the Leaf DB methods:
+If you want to relate a user to a different table, you can do this by calling whatever table your user is related to as a method on the user object. For instance, if you want to grab all user posts from the `posts` table, you can call the `posts()` method on the user object. If you want to grab all user transactions from the `transactions` table, you can call the `transactions()` method on the user object. Once you call the method, it will return a Leaf DB instance which has already been filtered by the user's ID.
+
+```php
+$purchases = auth()->user()->purchases();
+// will return a Leaf DB instance with purchases by the current user
+
+$purchases->get();
+$purchases->first();
+...
+```
+
+### Filtering user relationships
+
+Since a Leaf DB instance is returned, you can further filter the data by using any of the Leaf DB methods:
 
 ```php:no-line-numbers
 $posts = auth()->user()->posts()->where('title', 'like', '%leaf%')->get();
 ```
 
-You can do this by calling whatever table your user is related to as a method on the user object. For instance, if you want to grab all user transactions from the `transactions` table, you can call the `transactions()` method on the user object. If you want to grab all books your user has read from the `read_books` table, you can call the `readBooks()` method on the user object.
-
-It will return a Leaf DB instance with the related data. You can further filter the data by using any of the Leaf DB methods:
+Here are some common examples:
 
 ```php:no-line-numbers
 $posts = auth()
@@ -63,6 +74,69 @@ $books = auth()
   ->readBooks()
   ->where('title', 'Building with Leaf')
   ->first();
+```
+
+### Creating related data
+
+If you want to add new data to a database table which should be related to the current user, you can call the table name as a method on the user object and then call the `create()` method on the returned Leaf DB instance.
+
+```php
+auth()->user()->posts()->create([
+  'title' => 'My first post',
+  'content' => 'This is my first post'
+]);
+```
+
+This will create a new post in the `posts` table with the `user_id` set to the current user's ID.
+
+### Updating related data
+
+If you want to update data related to the current user, you can call the table name as a method on the user object and then call the `update()` method on the returned Leaf DB instance.
+
+```php
+auth()
+  ->user()
+  ->purchases()
+  ->update([
+    'status' => 'completed',
+  ])
+  ->execute();
+```
+
+You can also further filter the data before updating it:
+
+```php
+auth()
+  ->user()
+  ->purchases()
+  ->update([
+    'status' => 'completed',
+  ])
+  ->where('status', 'pending')
+  ->execute();
+```
+
+### Deleting related data
+
+If you want to delete data related to the current user, you can call the table name as a method on the user object and then call the `delete()` method on the returned Leaf DB instance.
+
+```php
+auth()
+  ->user()
+  ->purchases()
+  ->delete()
+  ->where('status', 'cancelled')
+  ->execute();
+```
+
+You can also delete all related data:
+
+```php
+auth()
+  ->user()
+  ->purchases()
+  ->delete()
+  ->execute();
 ```
 
 ## Updating a logged-in user
