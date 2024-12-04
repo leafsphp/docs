@@ -39,18 +39,18 @@ composer require leafs/bareui
 
 :::
 
-Once installed, BareUI will be available in your Leaf app on the `bareui()` method. This makes it easy to use BareUI from anywhere in your app.
+Once installed, BareUI will be available in your Leaf app on the `template()` method. This makes it easy to use BareUI from anywhere in your app.
 
-```php
-app()->bareui()->render('welcome');
+```php:no-line-numbers
+app()->template()->render('welcome');
 ```
 
 ## Configuring BareUI
 
 BareUI doesn't require any real configuration to work, but you need to tell it where to look for your templates. You can do this using the `config()` method. If you are using Leaf MVC, this has already been done for you in the `config/view.php` file, so you can skip this step.
 
-```php
-app()->bareui()->config('path', './views');
+```php:no-line-numbers
+app()->template()->config('path', './views');
 ```
 
 This will tell BareUI to look for templates in the `views` directory in your project. Now that BareUI knows where to look for templates, you can start writing your templates.
@@ -82,8 +82,8 @@ BareUI templates are regular PHP files, so you can create your templates using P
 
 Once you have your template, you can render it using the `render` method. This method takes in the name of the template to render and an array of data to pass to the template.
 
-```php
-echo app()->bareui()->render('welcome');
+```php:no-line-numbers
+echo app()->template()->render('welcome');
 ```
 
 When rendering a template, you don't need to include the `.view.php` extension in the template name. BareUI automatically adds it for you when it looks for the template file. So, you only need to pass the name of the template without the extension, and BareUI will handle the rest!
@@ -118,7 +118,7 @@ This is an empty HTML page with a PHP tag that echoes a variable. On its own, th
 To pass data to this `$name` variable, you can pass an array of data as the second argument to the `render()` method. This array should contain the same keys as the variables you want to use in the template.
 
 ```php
-echo app()->bareui()->render('welcome', [
+echo app()->template()->render('welcome', [
     'name' => 'Something',
 ]);
 ```
@@ -126,7 +126,7 @@ echo app()->bareui()->render('welcome', [
 This will render the template and replace the `$name` variable with the value `'Something'`. You can pass as many variables as you want to the template, and they will all be available in the template file. These values can be anything from strings to arrays, objects, or even functions.
 
 ```php [app.php]
-echo app()->template->render('products', [
+echo app()->template()->render('products', [
     'items' => [
       ['name' => 'Item 1'],
       ['name' => 'Item 2'],
@@ -197,7 +197,7 @@ BareUI supports all the control structures you'd expect in a templating engine. 
 
 As you guessed, any valid PHP code can be used in BareUI templates. This means you can use any PHP function, class, or method in your templates. This makes BareUI a powerful templating engine that can handle any task you throw at it.
 
-## Sub-templates
+## Sub-templates/Partials
 
 Sub-templates are templates that are included in other templates. This allows you to break your templates into smaller, more manageable pieces that can be reused across multiple templates. This is a great way to keep your templates DRY and avoid repeating yourself.
 

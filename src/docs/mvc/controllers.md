@@ -54,7 +54,7 @@ You can have as many methods as you want in your controller. Each method should 
 
 After defining a controller with the methods that you will use to handle your routes, you need to tell Leaf when to load a controller and which method to call. You can do this by defining a route in your `app/routes/` directory, and then calling the method in the controller that should handle the route. Here's an example:
 
-```php
+```php:no-line-numbers
 app()->get('/users', 'UsersController@index');
 ```
 
@@ -83,7 +83,7 @@ You can find the views documentation [here](/docs/frontend/)
 
 When you're building web apps, sometimes you need extra functionality when someone visits a route. For example, maybe only logged-in users should be able to see certain pages. To manage this, Leaf lets you add route parameters like middleware to your routes. This feature also works for controllers and uses the same syntax as function route handlers. Here's an example:
 
-```php
+```php:no-line-numbers
 app()->get('/users', ['middleware' => 'auth', 'UsersController@index']);
 ```
 
@@ -95,7 +95,7 @@ Leaf makes it super easy to set up routes for common actions like creating, read
 
 To get started, you can generate a resource controller using the Aloe CLI:
 
-```bash
+```bash:no-line-numbers
 php leaf g:controller photos --resource
 ```
 
@@ -146,7 +146,7 @@ class PhotosController extends Controller {
 
 You can then define your routes like this:
 
-```php
+```php:no-line-numbers
 app()->resource('/photos', 'PhotosController');
 ```
 
@@ -164,13 +164,13 @@ This will automatically set up all the routes you need for CRUD operations on th
 
 API resource controllers are similar to resource controllers, but they return JSON responses instead of HTML which means that the `create` and `edit` methods are not included. You can generate an API resource controller using the Aloe CLI:
 
-```bash
+```bash:no-line-numbers
 php leaf g:controller photos --api
 ```
 
 You can load the controller in your routes like this:
 
-```php
+```php:no-line-numbers
 app()->apiResource('/photos', 'PhotosController');
 ```
 
@@ -178,19 +178,19 @@ app()->apiResource('/photos', 'PhotosController');
 
 Allow has a few more shortcuts you can incorporate into your controller generation:
 
-```bash
+```bash:no-line-numbers
 php leaf g:controller <ControllerName> -m
 ```
 
 This command will generate your controller together with a model that corresponds to the controller name. The model will be generated in the `app/models` directory.
 
-```bash
+```bash:no-line-numbers
 php leaf g:controller <ControllerName> -t
 ```
 
 The `-t` flag will generate a controller with a frontend template that corresponds to the controller name. The template will be generated in the `app/views` directory.
 
-```bash
+```bash:no-line-numbers
 php leaf g:controller <ControllerName> -a
 ```
 
