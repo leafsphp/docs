@@ -110,6 +110,27 @@ app()->get('/home', ['name' => 'home', function () {
 }]);
 ```
 
+You can then redirect to this route using the route name by passing an array with the route name to the `redirect()` method.
+
+```php:no-line-numbers
+response()->redirect(['home']);
+```
+
+If you want to get details about a route, you can use the `getRoute()` method.
+
+```php:no-line-numbers
+$route = app()->route($routeName);
+```
+
+This will return an array containing the following information:
+
+- `pattern`: The route pattern
+- `path`: The route path
+- `name`: The route name
+- `method`: The route method
+- `handler`: The route handler
+- Any other route options
+
 ## Getting the current route
 
 There are times when you need to get the current route which the user is visiting from inside your route handler. You can do this by calling the `getRoute()` method on the router instance.
@@ -132,24 +153,16 @@ This method returns an array containing the following information:
 
 ## Navigating to another route
 
-There are times when you need to redirect users to another route. For example, after a user logs in, you might want to redirect them to their dashboard. You can do this by calling the `push()` method on the router instance or the `redirect()` method on the response instance.
+There are times when you need to redirect users to another route. For example, after a user logs in, you might want to redirect them to their dashboard. You can do this by calling the `redirect()` method on the response instance.
 
-::: code-group
-
-```php:no-line-numbers [router]
-app()->push('/login');
-```
-
-```php:no-line-numbers [response]
+```php:no-line-numbers
 response()->redirect('/login');
 ```
 
-:::
-
-If your route has a name, you can navigate to it by passing the route name in an array to the `push()` method.
+If your route has a name, you can navigate to it by passing the route name in an array to the `redirect()` method.
 
 ```php:no-line-numbers
-app()->push(['home']);
+response()->redirect(['home']);
 ```
 
 ## Routing in Leaf MVC
