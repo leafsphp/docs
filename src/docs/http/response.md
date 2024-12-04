@@ -333,7 +333,7 @@ Leaf allows you to set flash messages for your response using the `withFlash()` 
 - The name of the flash message
 - The value of the flash message
 
-```php
+```php:no-line-numbers
 response()->withFlash('message', 'something');
 ```
 
