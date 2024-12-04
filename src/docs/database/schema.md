@@ -1,8 +1,12 @@
-# Schema
+# Schema v0.X
 
 <!-- markdownlint-disable no-inline-html -->
 
-Schema is a simple, yet powerful tool for generating database migrations from JSON data. Instead of dealing with the stress of writing your database migrations from scratch and thinking about all the types of your data, you can simply create a JSON file with sample data and let Leaf do the rest.
+JSON Schema is a simple, yet powerful tool for generating database migrations from JSON data. Instead of dealing with the stress of writing your database migrations from scratch and thinking about all the types of your data, you can simply create a JSON file with sample data and let Leaf do the rest.
+
+<!-- ::: warning Schema v1 released 💚
+We provided schema as a way to create database migrations from readable JSON. While v0.1 was a great start, v0.2 is a complete overhaul of the schema system which doesn't just make it easier to write migrations, but completely replaces migrations, seeds and factories. Check out the [new schema system](/docs/database/files) for more info.
+::: -->
 
 ## Writing your schema
 

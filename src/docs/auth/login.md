@@ -71,15 +71,25 @@ If you want to use a couple of fields from the user within your application, you
 
 Leaf uses token based authentication by default which uses a JWT to authenticate your users. Sessions are a more common way to authenticate users in fullstack applications. To switch to session based authentication, you can update your auth config:
 
-```php:no-line-numbers
+::: code-group
+
+```php [Leaf]
 auth()->config('session', true);
+
+...
+
+// auth login
 ```
+
+```php:no-line-numbers [Leaf MVC - config/auth.php]
+  'session' => true,
+```
+
+:::
 
 With the addition of session auth, `login()` will automatically start a session, but will behave in the same way, which means redirects and any other functionality you need will be left up to you to handle:
 
 ```php
-auth()->config('session', true);
-
 ...
 
 // session is automatically started
@@ -110,6 +120,45 @@ auth()->config('session.cookie', [
   'samesite' => 'lax'
 ]);
 ```
+
+## Signing up from OAuth
+
+Some applications only allow users to sign in using OAuth which means there's no need for users to add emails or passwords. Leaf Auth provides the `fromOAuth()` function which allows you to create a session or token for a user without needing a password.
+
+```php
+$user = Github()->getResourceOwner($token)->toArray();
+
+$success = auth()->fromOAuth([
+    'token' => $token,
+    'user' => [
+        'name' => $user['name'],
+        'email' => $user['email'],
+        'avatar' => $user['avatar_url']
+    ]
+]);
+```
+
+If the user is successfully saved in the database, a session or token is created for them and the rest of the process is the same as signing up a user normally. If Leaf Auth fails to save the user, the method returns `false`. You can then use the `errors()` method to get the error message.
+
+```php
+$success = auth()->fromOAuth([
+    'token' => $token,
+    'user' => [
+        'name' => $user['name'],
+        'email' => $user['email'],
+        'avatar' => $user['avatar_url']
+    ]
+]);
+
+if (!$success) {
+    $error = auth()->errors();
+}
+
+// user is authenticated
+$user = auth()->user();
+```
+
+Everything after this point is the same as signing up a user normally.
 
 ## Auth with no password
 

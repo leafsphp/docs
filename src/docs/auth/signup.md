@@ -98,13 +98,60 @@ if ($success) {
 }
 ```
 
+## Signing up from OAuth
+
+Some applications only allow users to sign up using OAuth which means there's no need for users to add emails or passwords. Leaf Auth provides the `fromOAuth()` function which allows you to save users to your database and immediately authenticate them.
+
+```php
+$user = Github()->getResourceOwner($token)->toArray();
+
+$success = auth()->fromOAuth([
+    'token' => $token,
+    'user' => [
+        'name' => $user['name'],
+        'email' => $user['email'],
+        'avatar' => $user['avatar_url']
+    ]
+]);
+```
+
+If the user is successfully saved in the database, a session or token is created for them and the rest of the process is the same as signing up a user normally. If Leaf Auth fails to save the user, the method returns `false`. You can then use the `errors()` method to get the error message.
+
+```php
+$success = auth()->fromOAuth([
+    'token' => $token,
+    'user' => [
+        'name' => $user['name'],
+        'email' => $user['email'],
+        'avatar' => $user['avatar_url']
+    ]
+]);
+
+if (!$success) {
+    $error = auth()->errors();
+}
+
+// user is authenticated
+$user = auth()->user();
+```
+
+`fromOAuth()` automatically turns off password encoding, so you don't need to worry doing it manually. If you want to turn off password encoding for normal signups, you can find the documentation [here](#password-hashing).
+
 ## Unique fields
 
 There are some fields in your database that should not be repeated for different users. For example, you wouldn't want two users to have the same email address. You can configure Leaf Auth to check for unique fields when a user is being registered:
 
-```php:no-line-numbers
+::: code-group
+
+```php:no-line-numbers [Leaf]
 auth()->config('unique', ['email', 'username']);
 ```
+
+```php:no-line-numbers [Leaf MVC - config/auth.php]
+'unique' => ['email', 'username']
+```
+
+:::
 
 Now if a user tries to register with an email or username that already exists in the database, Leaf Auth will return an error. You can get the error message using the `errors()` method.
 
@@ -155,6 +202,15 @@ These are the available options you can pass to `password.encode`:
 - `false` - This turns off password encoding
 - `null`/`true` - This uses the default encoding method (Leaf\Helpers\Password::hash)
 - `function` - This uses a custom method. The method should accept a password and return the encoded password.
+
+::: info Watch out
+Turning off password encoding does not mean that Leaf will not expect a password field when authenticating users. You will need to turn off password verification as well. If you want to turn off password authentication completely, you can configure Leaf Auth like this:
+
+```php:no-line-numbers
+auth()->config('password.key', false);
+```
+
+:::
 
 ## Hiding sensitive information
 
