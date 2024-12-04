@@ -121,7 +121,7 @@ auth()->config('session.cookie', [
 ]);
 ```
 
-## Signing up from OAuth
+## Signing in from OAuth
 
 Some applications only allow users to sign in using OAuth which means there's no need for users to add emails or passwords. Leaf Auth provides the `fromOAuth()` function which allows you to create a session or token for a user without needing a password.
 
@@ -159,6 +159,15 @@ $user = auth()->user();
 ```
 
 Everything after this point is the same as signing up a user normally.
+
+::: info OAuth Token
+The `fromOAuth()` method expects an OAuth token to be passed in. This token is usually gotten from the OAuth provider you are using. You can later use this token to make requests to the OAuth provider on behalf of the user. Leaf Auth saves this token so you can retrieve it later using the `auth()->oauthToken()` method.
+
+```php
+$token = auth()->oauthToken();
+```
+
+:::
 
 ## Auth with no password
 
