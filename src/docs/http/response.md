@@ -260,7 +260,7 @@ $app->response()->xml('<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
 
 ### Custom responses
 
-If you need to create a custom response, which is not covered by the methods above, you can use the `custom()` method. This method accepts 2 parameters:
+If you need to create a custom response, which is not covered by the methods above, you can use the `echo()` method. This method accepts 2 parameters:
 
 - the content to output
 - an optional status code (defaults to 200/OK)
@@ -274,7 +274,7 @@ response()
     'Content-Length' => $dataLength,
     'Content-Disposition' => "inline; filename=\"$filename\""
   ])
-  ->custom($rawData);
+  ->echo($rawData);
 ```
 
 ```php:no-line-numbers [Leaf Instance]
@@ -285,7 +285,7 @@ $app
     'Content-Length' => $dataLength,
     'Content-Disposition' => "inline; filename=\"$filename\""
   ])
-  ->custom($rawData);
+  ->echo($rawData);
 ```
 
 :::
