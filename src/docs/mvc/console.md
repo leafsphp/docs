@@ -238,7 +238,7 @@ These commands handle your frontend setup, building, and serving.
 This is a list of every command available in Aloe. To view this list from your terminal, run `php leaf list`.
 
 ```bash:no-line-numbers
-Leaf MVC v3.5.0
+Leaf MVC v3.8.0
 
 Usage:
   command [options] [arguments]
@@ -253,9 +253,9 @@ Options:
 
 Available commands:
   completion        Dump the shell completion script
-  example           example command's description
   help              Display help for a command
   interact          Interact with your application
+  link              Create a symbolic link for the storage directory
   list              List commands
   serve             Start the leaf development server
  app
@@ -263,6 +263,9 @@ Available commands:
   app:up            Remove app from maintainance mode
  auth
   auth:scaffold     Scaffold basic app authentication
+ config
+  config:lib        Setup Leaf MVC to use external libraries
+  config:mail       Install leaf mail and setup mail config
  d
   d:command         Delete a console command
   d:controller      Delete a controller
@@ -286,12 +289,13 @@ Available commands:
   g:factory         Create a new model factory
   g:helper          Create a new helper class
   g:mailer          Create a new mailer
+  g:middleware      Create a new application middleware
   g:migration       Create a new migration file
   g:model           Create a new model class
   g:seed            Create a new seed file
   g:template        Create a new view file
- mail
-  mail:setup        Install leaf mail and setup mail config
+ key
+  key:generate      Run your frontend dev server
  view
   view:build        Run your frontend dev server
   view:dev          [view:serve] Run your frontend dev server

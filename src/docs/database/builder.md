@@ -348,6 +348,25 @@ db()
   ->all();
 ```
 
+## Counting results
+
+You can count the number of results returned by a query using the `count()` method.
+
+```php
+db()
+  ->select('users')
+  ->count();
+```
+
+Or even with complex queries:
+
+```php
+db()
+  ->select('users')
+  ->where('age', '>', 20)
+  ->count();
+```
+
 ## Error Handling
 
 There are lots of times where your query might fail. This could be because of a syntax error, a missing table, or a missing column. Leaf DB provides an `errors()` method that allows you to get the error message if your query fails.
