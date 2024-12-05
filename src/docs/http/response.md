@@ -54,7 +54,7 @@ Also, Leaf's response object provides a clean and consistent API for creating re
 
 ## Plain text responses
 
-Plain text responses can be created using the `text()` method. This method accepts 2 parameters:
+Plain text responses can be created using the `plain()` method. This method accepts 2 parameters:
 
 - a string as text to output
 - an optional status code (defaults to 200/OK)
@@ -62,11 +62,11 @@ Plain text responses can be created using the `text()` method. This method accep
 ::: code-group
 
 ```php [Functional Mode]
-response()->text('Hello, world!');
+response()->plain('Hello, world!');
 ```
 
 ```php [Leaf Instance]
-$app->response()->text('Hello, world!');
+$app->response()->plain('Hello, world!');
 ```
 
 :::
