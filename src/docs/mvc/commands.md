@@ -82,7 +82,7 @@ class CachePurgeCommand extends Command
 }
 ```
 
-You can register this component by heading over to the `app/console/commands.php` file and adding the command to the `register()` method.
+If you are using Leaf MVC v3.8 and above, the command is automatically loaded by Leaf MVC. If you are using Leaf MVC v3.7 and below, you will need to register the command in the `app/console/Commands.php` file.n
 
 ```php
 <?php

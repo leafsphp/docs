@@ -43,7 +43,7 @@ composer require leafs/redis
 
 Once that's done, we can start using Leaf Redis in our Leaf application. Just like any other database, we need to initialize a connection to Redis before we can start using it.
 
-```php
+```php:no-line-numbers
 redis()->connect();
 ```
 
@@ -53,7 +53,26 @@ This will initialize a new Redis connection. From there, you can start storing a
 
 If you're using Leaf MVC, you can add on some extra features to your setup. Leaf Redis comes with a few commands that you can attach to your Aloe CLI. You can do this by heading over to the `app/console/Commands.php` file in your Leaf MVC app and adding the following line to the return array.
 
-```php
+::: code-group
+
+```php [Leaf MVC 3.8 and above]
+/*
+|--------------------------------------------------------------------------
+| Load Leaf configuration
+|--------------------------------------------------------------------------
+|
+| Leaf MVC allows you to customize Leaf and it's modules using
+| configuration files defined in the config folder. This line
+| loads the configuration files and makes them available to
+| your application.
+|
+*/
+Leaf\Core::loadConsole([
+    Leaf\Redis::commands() // [!code ++]
+]);
+```
+
+```php [Leaf MVC 3.7 and below]
 <?php 
 
 namespace App\Console;
@@ -71,15 +90,17 @@ class Commands
     {
         $console->register([
             ExampleCommand::class,
-            \Leaf\Redis::commands() // [!code ++]
+            Leaf\Redis::commands() // [!code ++]
         ]);
     }
 }
 ```
 
+:::
+
 Once you've done that, you should have access to a bunch of new commands from Leaf Redis. The available commands are:
 
-```bash
+```bash:no-line-numbers
 redis
   redis:install  Create leaf redis config and .env variables
   redis:server   Start redis server
@@ -212,7 +233,7 @@ redis()->connect([
 
 You can check if your Redis connection is working by using the `ping()` method. The `ping()` method returns a string with the message "PONG" if the connection is successful.
 
-```php
+```php:no-line-numbers
 echo redis()->ping();
 ```
 
@@ -220,7 +241,7 @@ echo redis()->ping();
 
 You can set values in Redis using the `set()` method. The `set()` method takes in a key and a value.
 
-```php
+```php:no-line-numbers
 redis()->set('name', 'Michael');
 ```
 

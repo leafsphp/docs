@@ -10,6 +10,8 @@ Blade is a templating engine included with Laravel that helps you create dynamic
 
 Leaf Blade is a port of the [jenssegers/blade](https://github.com/jenssegers/blade) package that allows you to use blade templates in your Leaf PHP projects.
 
+<!-- Leaf Blade is an adaptation of the original Blade package, which provides a powerful engine that is familiar to most PHP developers. While similar, Leaf Blade has some differences from the original Blade package, so be sure to keep this documentation handy. -->
+
 ::: details New to Blade?
 
 This video by The Net Ninja will help you get started with blade.
@@ -27,7 +29,7 @@ This video by The Net Ninja will help you get started with blade.
 
 ::: info Blade + Leaf MVC
 
-Blade comes with Leaf MVC out of the box, fully configured and ready to use. However, if you're using Leaf Core, you'll need to set up Blade yourself.
+Blade comes with Leaf MVC out of the box, fully configured and ready to use, so you can skip this section if you're using Leaf MVC.
 
 :::
 
@@ -85,7 +87,7 @@ Blade views are a pretty sweet mixture of HTML, PHP, and clean syntax. You can c
 
 :::
 
-This should look pretty familiar if you know HTML (of course you do). The only difference is the `{{ $name }}` part. This is Blade's way of creating a variable in your view. When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of `{{ $name }}`. Let's see how you can render this view.
+This should look pretty familiar if you know HTML (of course you do). The only difference is the <span v-pre>`{{ $name }}`</span> part. This is Blade's way of creating a variable in your view. When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of <span v-pre>`{{ $name }}`</span>. Let's see how you can render this view.
 
 ## Rendering Blade Views
 
@@ -96,6 +98,47 @@ echo app()->blade()->render('hello', ['name' => 'Michael']);
 ```
 
 This will render the `hello.blade.php` view and pass in a variable called `name` with the value `Michael`. When you open the view in your browser, you should see a big "Hello, Michael" on your screen.
+
+<!-- ## Directives included in Leaf Blade
+
+As mentioned earlier, Leaf Blade is an adaptation of the original Blade package, so it includes some directives that are not available in the original Blade package. Here are some of the directives included in Leaf Blade:
+
+### `@csrf`
+
+The `@csrf` directive generates a hidden CSRF token field for forms. This is useful when you want to include a CSRF token in your form.
+
+```blade:no-line-numbers
+<form method="POST">
+  @csrf
+  ...
+</form>
+```
+
+### `@method`
+
+The `@method` directive generates a hidden input field with the value of the method you specify. This is useful when you want to use methods other than `GET` and `POST` in your forms.
+
+```blade:no-line-numbers
+<form method="POST">
+  @method('PUT')
+  ...
+</form>
+
+<form method="POST">
+  @method('DELETE')
+  ...
+</form>
+```
+
+### `@submit`
+
+The `@submit` directive allows you to wrap an item with a form that submits when the item is clicked. This is useful when you want to redirect to a post route when an item is clicked.
+
+```blade:no-line-numbers
+@submit('DELETE', '/posts/1')
+  <button>Delete</button>
+@endsubmit
+``` -->
 
 ## Extending Blade Views
 

@@ -54,19 +54,19 @@ Also, Leaf's response object provides a clean and consistent API for creating re
 
 ## Plain text responses
 
-Plain text responses can be created using the `text()` method. This method accepts 2 parameters:
+Plain text responses can be created using the `plain()` method. This method accepts 2 parameters:
 
 - a string as text to output
 - an optional status code (defaults to 200/OK)
 
 ::: code-group
 
-```php [Functional Mode]
-response()->text('Hello, world!');
+```php:no-line-numbers [Functional Mode]
+response()->plain('Hello, world!');
 ```
 
-```php [Leaf Instance]
-$app->response()->text('Hello, world!');
+```php:no-line-numbers [Leaf Instance]
+$app->response()->plain('Hello, world!');
 ```
 
 :::
@@ -254,6 +254,38 @@ response()->xml('<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" versio
 
 ```php:no-line-numbers [Leaf Instance]
 $app->response()->xml('<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0.0" />');
+```
+
+:::
+
+### Custom responses
+
+If you need to create a custom response, which is not covered by the methods above, you can use the `echo()` method. This method accepts 2 parameters:
+
+- the content to output
+- an optional status code (defaults to 200/OK)
+
+::: code-group
+
+```php:no-line-numbers [Functional Mode]
+response()
+  ->withHeader([
+    'Content-Type' => 'application/pdf',
+    'Content-Length' => $dataLength,
+    'Content-Disposition' => "inline; filename=\"$filename\""
+  ])
+  ->echo($rawData);
+```
+
+```php:no-line-numbers [Leaf Instance]
+$app
+  ->response()
+  ->withHeader([
+    'Content-Type' => 'application/pdf',
+    'Content-Length' => $dataLength,
+    'Content-Disposition' => "inline; filename=\"$filename\""
+  ])
+  ->echo($rawData);
 ```
 
 :::
