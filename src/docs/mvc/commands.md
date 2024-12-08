@@ -82,7 +82,7 @@ class CachePurgeCommand extends Command
 }
 ```
 
-If you are using Leaf MVC v3.8 and above, the command is automatically loaded by Leaf MVC. If you are using Leaf MVC v3.7 and below, you will need to register the command in the `app/console/Commands.php` file.n
+If you are using Leaf MVC v3.8 and above, the command is automatically loaded by Leaf MVC. If you are using Leaf MVC v3.7 and below, you will need to register the command in the `app/console/Commands.php` file.
 
 ```php
 <?php
@@ -112,7 +112,7 @@ class Commands
 
 Command arguments are values that are passed to the command when it is run in the console. For example, if you have a command named `example` and you run it like this:
 
-```bash
+```bash:no-line-numbers
 php leaf example argument
 ```
 
@@ -138,7 +138,7 @@ protected function handle()
 
 Command options are values that are passed to the command when it is run in the console. For example, if you have a command named `example` and you run it like this:
 
-```bash
+```bash:no-line-numbers
 php leaf example --option=value
 ```
 
@@ -371,6 +371,6 @@ This method asks a question but hides the keystrokes. It takes in 2 parameters:
 - the question to ask
 - use hidden fallback (optional)
 
-```php
+```php:no-line-numbers
 $password = $this->secret('Confirm your password');
 ```

@@ -39,17 +39,7 @@ Once you've installed Leaf Mail, you need to connect to your mail server. Every 
 
 Since every mail server is different, you'll need to check your mail server's documentation for the correct configuration options.
 
-## Connection in Leaf MVC
-
-If you're using Leaf MVC, we've included a handy command that sets up mailing in your application:
-
-```bash:no-line-numbers
-php leaf config:mail
-```
-
-This command will create a `config/mail.php` file which contains all the configuration options for your mail server. The configuration options are the same as the ones we listed above and you can use them to configure your mail server connection.
-
-You can refer to the examples below for how to connect to different mail servers. Just remember to exclude the `mailer()->connect()` section as that is already done for you.
+::: details Example connections
 
 ## Example SMTP connection
 
@@ -75,8 +65,6 @@ mailer()->connect([
 
 Below is an example of connecting to a Gmail server. This example uses OAuth, which is the only way to connect to Gmail servers:
 
-::: code-group
-
 ```bash:no-line-numbers [Leaf CLI]
 leaf install league/oauth2-google
 ```
@@ -84,8 +72,6 @@ leaf install league/oauth2-google
 ```bash:no-line-numbers [Composer]
 composer require league/oauth2-google
 ```
-
-:::
 
 We install the `league/oauth2-google` package to handle the OAuth connection to Gmail. This is how the connection to Gmail would look:
 
@@ -114,6 +100,34 @@ mailer()->connect([
   )
 ]);
 ```
+
+:::
+
+## Connection in Leaf MVC
+
+If you're using Leaf MVC, the simplest way to connect to your mail server is to use your .env file. You can update the following configuration options in your .env file:
+
+```txt
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=xxx
+MAIL_PASSWORD=xxx
+MAIL_DEBUG=SERVER
+MAIL_SENDER_NAME='Leaf MVC'
+MAIL_SENDER_EMAIL=user@example.com
+```
+
+That's it! Leaf Mail will automatically connect to your mail server when you send an email.
+
+While this is a simple and straightforward way to connect to your mail server, you may need finer control over your mail server connection, for example, you may want to connect to a server that only supports OAuth. In this case, you can publish the mail configuration file from Leaf MVC using the following command:
+
+```bash:no-line-numbers
+php leaf config:publish mail
+```
+
+This command will create a `config/mail.php` file which contains all the configuration options for your mail server. The configuration options are the same as the ones we listed above and will still be linked to the correct environment variables, so you can still use your .env file to configure your mail server.
+
+You can refer to the examples above for how to connect to different mail servers. Just remember to exclude the `mailer()->connect()` section as that is already done for you.
 
 ## Writing mails
 

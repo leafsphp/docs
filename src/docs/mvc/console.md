@@ -8,6 +8,20 @@ Leaf MVC includes a powerful command-line tool called Aloe to help you manage yo
 php leaf list
 ```
 
+::: details Missing commands?
+
+If you get errors from commands which you saw in the documentation, you are probably running an older version of the Leaf MVC console. We add more handy commands regularly, but as the console does not automatically update, you may run into the missing command error. To fix that problem, you need to install the latest version of Aloe:
+
+```bash:no-line-numbers
+leaf install aloe
+
+# or with composer
+
+composer require leafs/aloe
+```
+
+:::
+
 ## Aloe vs. Leaf CLI: What's the Difference?
 
 Before diving in, it’s important to know that Aloe is different from Leaf CLI.

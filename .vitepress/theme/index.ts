@@ -1,4 +1,4 @@
-import { h } from 'vue';
+import { defineAsyncComponent, h } from 'vue';
 import DefaultTheme from 'vitepress/theme';
 import { VueWriter } from 'vue-writer';
 import { MotionPlugin } from '@vueuse/motion';
@@ -15,8 +15,8 @@ export default {
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      // 'layout-top': () =>
-      //   h(defineAsyncComponent(() => import('./components/shared/Banner.vue'))),
+      'layout-top': () =>
+        h(defineAsyncComponent(() => import('./components/shared/Banner.vue'))),
     });
   },
 };

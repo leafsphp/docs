@@ -10,7 +10,7 @@ Factories are a way to conveniently generate large amounts of database records. 
 
 To create a factory, you can use the `g:factory` command. This command will create a new factory class in the `app/database/factories` directory.
 
-```bash
+```bash:no-line-numbers
 php leaf g:factory UserFactory
 ```
 
@@ -58,7 +58,7 @@ This factory class defines the attributes for the `User` model. The `definition`
 
 To use a factory to generate records, you can use the `create` method on the factory class. This method will create a new record in the database using the attributes defined in the factory.
 
-```php
+```php:no-line-numbers
 (new UserFactory)->create(20)->save();
 ```
 
@@ -92,7 +92,7 @@ This will generate 20 records in the `users` table using the attributes defined 
 
 In some cases, you may not want to save the generated records to the database. You can use the `get()` method to get the generated data without saving it to the database.
 
-```php
+```php:no-line-numbers
 $users = (new UserFactory)->create(20)->get();
 ```
 
@@ -100,6 +100,6 @@ $users = (new UserFactory)->create(20)->get();
 
 You don't need to run factories manually. You can use the `db:seed` command to run your seeders, which will in turn run your factories.
 
-```bash
+```bash:no-line-numbers
 php leaf db:seed
 ```

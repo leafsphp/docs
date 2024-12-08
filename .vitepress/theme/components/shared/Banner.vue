@@ -31,7 +31,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text">
-      WARNING You're browsing the documentation for an upcoming version of Leaf. The documentation and features of this release are subject to change.
+      🎉 Leaf MVC v3.8 released. Check out the <a href="https://blog.leafphp.dev/posts/leaf-mvc-3-8" target="_blank">release post</a>
     </div>
 
     <button type="button" @click="dismiss">
