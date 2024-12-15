@@ -31,7 +31,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text">
-      🎉 Leaf MVC v3.8 released. Check out the <a href="https://blog.leafphp.dev/posts/leaf-mvc-3-8" target="_blank">release post</a>
+      🎉 You can now use <a href="/docs/auth/permissions">Roles and permissions</a> natively in your apps.
     </div>
 
     <button type="button" @click="dismiss">
