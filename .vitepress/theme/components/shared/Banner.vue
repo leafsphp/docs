@@ -31,7 +31,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text">
-      WARNING You're browsing the documentation for an upcoming version of Leaf. The documentation and features of this release are subject to change.
+      🎉 You can now use <a href="/docs/auth/permissions">Roles and permissions</a> natively in your apps.
     </div>
 
     <button type="button" @click="dismiss">

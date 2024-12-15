@@ -63,9 +63,23 @@ Don't worry if you're not familiar with these concepts, we'll provide videos and
 
 Leaf is built with many classes and components, but for simpler apps or APIs, it also offers a functional mode. This lets you use Leaf and its modules without class imports, instantiation, or lengthy namespaces—keeping things simple and streamlined.
 
-Of course, you can still use Leaf in class mode if you prefer that. Here's an example of a simple Leaf app in functional mode:
+Of course, you can still use Leaf in class mode if you prefer that. Here's an example of a simple Leaf app in both modes:
 
-```php
+::: code-group
+
+```php [Functional Mode]
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+  response()->json(['message' => 'Leaf is amazing!']);
+});
+
+app()->run();
+```
+
+```php [Class Mode]
 <?php
 
 use Leaf\App;
@@ -80,6 +94,8 @@ $app->get('/', function () use ($app) {
 
 $app->run();
 ```
+
+:::
 
 The documentation will usually show you how to use modules in functional mode as this is the default mode for Leaf. However, if you are migrating from another framework or you prefer to use Leaf in class mode, you can always instantiate the classes and use them as you would in any other framework.
 

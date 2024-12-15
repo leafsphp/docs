@@ -17,11 +17,58 @@ $controllersPath = AppPaths('controllers'); // you can do this
 $controllersPath = $paths['controllers']; // or this
 ```
 
-If the path you are looking for doesn't have a helper function, you can use the `AppPaths()` helper to get the path. Just make sure that the path is defined in your `config/paths.php` file.
+If the path you are looking for doesn't have a helper function, you can use the `AppPaths()` helper to get the path. Just make sure that the path is defined in your `config/paths.php` file. If your Leaf MVC app does not come with a `config/paths.php` file, you can create one. This is the default structure of the `config/paths.php` file:
 
-```php
-AppPaths('weirdPath');
+```php{15}
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Paths Config
+|--------------------------------------------------------------------------
+|
+| Leaf allows you to completely modify the directory structure of your
+| MVC application. This file just tells Leaf and other components
+| where to find the important files in your app.
+|
+*/
+
+return [
+    'myCustomPath' => 'app/myCustomPath',
+    'commands' => 'app/console',
+    'config' => 'config',
+    'channels' => 'app/channels',
+    'components' => 'app/components',
+    'controllers' => 'app/controllers',
+    'databaseStorage' => 'storage/app/db',
+    'events' => 'app/events',
+    'factories' => 'app/database/factories',
+    'helpers' => 'app/helpers',
+    'jobs' => 'app/jobs',
+    'lib' => 'lib',
+    'mail' => 'app/mail',
+    'middleware' => 'app/middleware',
+    'migrations' => 'app/database/migrations',
+    'models' => 'app/models',
+    'routes' => 'app/routes',
+    'schema' => 'app/database/schema',
+    'scripts' => 'app/scripts',
+    'seeds' => 'app/database/seeds',
+    'services' => 'app/services',
+    'storage' => 'storage',
+    'utils' => 'app/utils',
+    'views' => 'app/views',
+    'workers' => 'app/workers',
+];
 ```
+
+After defining your paths in your `config/paths.php` file, you can use the `AppPaths()` helper to get the path.
+
+```php:no-line-numbers
+AppPaths('myCustomPath');
+```
+
+Keep in mind that not every path in your `config/paths.php` file has a helper function. If you want to get the path to a path that doesn't have a helper function, you can use the `AppPaths()` helper.
 
 ### assets()
 
@@ -34,7 +81,7 @@ $asset = assets('css/main.css');
 
 You can configure the path to your assets folder in your `config/paths.php` file.
 
-```php
+```php:no-line-numbers
 'assets' => 'public/assets'
 ```
 
@@ -53,7 +100,7 @@ This returns the path to your commands folder. You can pass in a file name to ge
 
 ```php
 $command = CommandsPath('MainCommand.php');
-// -> app/commands/MainCommand.php
+// -> app/console/MainCommand.php
 ```
 
 ### ControllersPath()

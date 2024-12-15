@@ -49,6 +49,41 @@ Databases are essential for most applications, as they help you store and retrie
 
 :::
 
+## Leaf MVC + DB
+
+Leaf MVC comes with built-in support for models which are a way to programmatically represent resources in your database using PHP classes. For that reason, you have no real need for this module unless you want to use Leaf Auth. If you choose to use Leaf DB in your MVC application, we have already set up everything for you. All you need to do is to head over to your `.env` file and set up your database connection details. Here are a few example connections:
+
+::: code-group
+
+```txt [MySQL]
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=LeafMVC
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+```txt [PostgreSQL]
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=LeafMVC
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+```txt [SQLite]
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database.sqlite
+```
+
+:::
+
+Remember to head over to `public/index.php` and uncomment the line that says `\Leaf\Database::initDb();`. This will automatically connect to your database using the details in your environment file.
+
+You can safely skip the "Connecting to a database" section.
+
 ## Connecting to a database
 
 The first step to using a database is to create a connection. It's like opening a door to the database, allowing you to interact with it. Here's how you can connect to a database using Leaf:
@@ -100,44 +135,13 @@ db()->connect([
 
 :::
 
-If you are using Leaf MVC, we have already set up everything for you. All you need to do is to head over to your `.env` file and set up your database connection details.
-
-::: code-group
-
-```txt [MySQL]
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=LeafMVC
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-```txt [PostgreSQL]
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=LeafMVC
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-```txt [SQLite]
-DB_CONNECTION=sqlite
-DB_DATABASE=/absolute/path/to/database.sqlite
-```
-
-:::
-
-Remember to head over to `public/index.php` and uncomment the line that says `\Leaf\Database::initDb();`. This will automatically connect to your database using the details in your environment file.
-
 ## Writing simple queries
 
 Once you've connected to a database, you can start writing queries to interact with it. Queries are the commands you run on your database to get, insert, update or delete data. Leaf DB provides a simple way to run queries using the query builder, but also allows you to run raw SQL queries.
 
 We can run queries using the `query()` method. This method takes in a query string and returns a query builder instance. This means that you can run queries like this:
 
-```php
+```php:no-line-numbers
 $users = db()->query('SELECT * FROM users')->all();
 ```
 
@@ -158,13 +162,13 @@ There are different kinds of database commands: some give you results (like data
 
 You can use `execute()` to run queries that don't return values. This method returns `true` if the query was successful and `false` if it wasn't. You can run a query like this:
 
-```php
+```php:no-line-numbers
 db()->query('CREATE DATABASE dbname')->execute();
 ```
 
 If you want to run a query that returns data, you can use the `all()` method to get all the results. For example, you can run a query like this:
 
-```php
+```php:no-line-numbers
 $users = db()->query('SELECT * FROM users')->all();
 ```
 
@@ -183,6 +187,6 @@ This will return the matched user as an object.
 
 There may be times when you want to get a single value from a query that returns multiple rows. In such cases, you can use the `first()` method. For example, you can run a query like this:
 
-```php
+```php:no-line-numbers
 $user = db()->query('SELECT * FROM users')->first();
 ```

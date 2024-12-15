@@ -62,9 +62,15 @@ This will automatically generate a CSRF token using a default secret key and a r
 
 If the CSRF token is missing or invalid, the CSRF module will throw an exception, which you can catch and handle as you see fit.
 
-::: info Leaf MVC + CSRF
+::: info Usage with Leaf MVC
 
-Once you install the CSRF module, Leaf will automatically pick up the `config/csrf.php` file and use it to set up CSRF protection for your app, so you don't need to manually call `app()->csrf()` or worry about passing any configuration to the CSRF module.
+After installing the CSRF module, Leaf will automatically configure it and initialize it on all POST, PUT, PATCH and DELETE requests. If you want to configure the CSRF module manually, you can run the command below:
+
+```bash:no-line-numbers
+php leaf config:publish csrf
+```
+
+This will generate or update your CSRF config in the `config/csrf.php` file. Any changes you make in this file will be automatically applied to the CSRF module.
 
 :::
 

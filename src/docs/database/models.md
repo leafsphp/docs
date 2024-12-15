@@ -51,7 +51,7 @@ This code will retrieve all rows from the `flights` table and then loop through 
 
 The Leaf all method will return all of the results in the model's table. Since each Leaf model serves as a query builder, you may also add constraints to queries, and then use the get method to retrieve the results:
 
-```php
+```php:no-line-numbers
 $flights = Flight::where('active', 1)->orderBy('name', 'desc')->take(10)->get();
 ```
 

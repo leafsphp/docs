@@ -137,6 +137,27 @@ $user = auth()->user();
 
 `fromOAuth()` automatically turns off password encoding, so you don't need to worry doing it manually. If you want to turn off password encoding for normal signups, you can find the documentation [here](#password-hashing).
 
+## Signing up another user <Badge type="tip" text="New" />
+
+When building applications that may require you to sign up users on their behalf, for example, an admin signing up a user, you can use the `createUserFor()` method. This method allows you to create a user without needing to log in as the user. It takes in the user's data and returns the auth user instance if the user is saved successfully.
+
+```php
+$user = auth()->createUserFor([
+  'username' => 'example',
+  'email' => 'example@example.com',
+  'password' => 'password'
+]);
+
+if ($user) {
+  // user is saved
+} else {
+  // user is not saved
+  $error = auth()->errors();
+}
+```
+
+It behaves the same way as the `register()` method, except that it doesn't create a session when the user is saved. The user instance returned can be used to perform operations on the user like assigning roles and more.
+
 ## Unique fields
 
 There are some fields in your database that should not be repeated for different users. For example, you wouldn't want two users to have the same email address. You can configure Leaf Auth to check for unique fields when a user is being registered:

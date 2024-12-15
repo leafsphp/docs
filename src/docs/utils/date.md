@@ -4,7 +4,7 @@ Working with PHP dates can be challenging due to various date formats, handling 
 
 Leaf provides a minimalistic module that provides a simple and clean API for working with dates in PHP. It is 100% compatible with PHP's native `DateTime` class, but offers a more fluent and expressive API inspired by Day.js.
 
-```php
+```php:no-line-numbers
 tick()->now(); // get the current timestamp
 tick()->format('YYYY-MM-DD'); // format the current timestamp
 tick()
@@ -36,7 +36,7 @@ Once installed, you can start using Tick in your application.
 
 You probably noticed the `tick()` function in the examples above. This function is the entry point for Tick and initializes a date for manipulation or formatting. You can pass a date string, a timestamp, or a `DateTime` object to the `tick()` function.
 
-```php
+```php:no-line-numbers
 tick(); // will use today's date
 tick('2018-01-01 12:00:00'); // create a date from a string
 
@@ -50,14 +50,14 @@ Tick is versatile and smart enough to handle dates correctly, so you can pass in
 
 Tick provides methods for getting and setting various parts of a date, such as the year, month, day, hour, minute, second, and millisecond. This uses a syntax where the same function can be used to get or set a value.
 
-```php
+```php:no-line-numbers
 tick()->second(30); // set the second to 30
 tick()->second(); // get the second
 ```
 
 This works for all parts of a date, including the year, month, day, hour, minute, second, and millisecond.
 
-```php
+```php:no-line-numbers
 tick()->year(2018); // set the year to 2018
 tick()->year(); // get the year
 
@@ -85,7 +85,7 @@ tick()->millisecond(1); // returns new tick object
 
 You can also use the `get()` and `set()` methods to get and set values.
 
-```php
+```php:no-line-numbers
 tick()->get('year'); // get the year
 tick()->set('year', 2018); // set the year to 2018
 ```
@@ -110,7 +110,7 @@ This is a fancy way of saying "changing dates" into some other kind of date. Tic
 
 *All manipulation methods return a new Tick object, so you can chain them together.*
 
-```php
+```php:no-line-numbers
 tick()->add(1, 'day')->format('YYYY-MM-DD');
 ```
 
@@ -118,14 +118,14 @@ tick()->add(1, 'day')->format('YYYY-MM-DD');
 
 Tick allows you to add time to a date using the `add()` method. You can add any number of years, months, days, hours, minutes, seconds, or milliseconds to a date.
 
-```php
+```php:no-line-numbers
 tick()->add(1, 'day');
 tick()->add(1, 'week');
 ```
 
 You can also subtract time from a date using the `subtract()` method.
 
-```php
+```php:no-line-numbers
 tick()->subtract(1, 'day');
 tick()->subtract(1, 'week');
 ```
@@ -147,14 +147,14 @@ This is a list of all available units that can be used with the `add()` and `sub
 
 You can get the start of a unit using the `startOf()` method. This method sets the date to the start of the specified unit, such as the start of the day, month, or year. For example, to get the first day of the month or the first day of the year, you can use the following code:
 
-```php
+```php:no-line-numbers
 tick()->startOf('month'); // => 2024-10-01 00:00:00
 tick()->startOf('year'); // => 2024-01-01 00:00:00
 ```
 
 You can also use the `endOf()` method to get the end of a unit. This method sets the date to the end of the specified unit, such as the end of the day, month, or year. For example, to get the last day of the month or the last day of the year, you can use the following code:
 
-```php
+```php:no-line-numbers
 tick()->endOf('month'); // => 2024-10-31 23:59:59
 tick()->endOf('year'); // => 2024-12-31 23:59:59
 ```
@@ -178,7 +178,7 @@ The following units are available for use with the `startOf()` and `endOf()` met
 
 Formatting dates is a common task when working with dates in PHP. Formatting a date allows you to display the date in a specific format, such as `YYYY-MM-DD` or `DD/MM/YYYY`. Tick provides a `format()` method that allows you to format a date using a format string.
 
-```php
+```php:no-line-numbers
 tick()->format();
 // '2024-10-03T18:04:37+00:00'
 // current date in ISO8601, without fraction seconds
@@ -218,7 +218,7 @@ You can combine various format tokens to create a custom date format. The follow
 
 Anything you pass into the `format()` method will be formatted according to the format string you provide. If you want to ignore parts of information you pass into the `format()` method, you can wrap them in square brackets.
 
-```php
+```php:no-line-numbers
 tick('2019-01-25')->format('[YYYYescape] YYYY-MM-DDTHH:mm:ssZ[Z]');
 // 'YYYYescape 2019-01-25T00:00:000Z'
 ```
@@ -229,14 +229,14 @@ YYYYescape got ignored instead of turning into a year. This is powerful, especia
 
 You can get how far a date is from now using the `fromNow()` method. This method returns a string that represents the difference between the date and the current date in a human-readable format.
 
-```php
+```php:no-line-numbers
 tick('2014-10-01')->fromNow(); // 10 years ago
 tick('2027-10-04')->fromNow(); // in 3 years
 ```
 
 If you want to remove the suffix (ago or in), you can pass `true` as the first argument to the `fromNow()` method.
 
-```php
+```php:no-line-numbers
 tick('2014-10-01')->fromNow(true); // 10 years
 tick('2027-10-04')->fromNow(true); // 3 years
 ```
@@ -245,14 +245,14 @@ tick('2027-10-04')->fromNow(true); // 3 years
 
 If you want to check how much time has passed since a specific date, you can use the `from()` method. This method returns a string that represents the difference between the date and the specified date in a human-readable format.
 
-```php
+```php:no-line-numbers
 tick('2014-10-01')->from('2015-10-01'); // 1 year ago
 tick('2015-10-01')->from('2014-10-01'); // in 1 year
 ```
 
 If you want to remove the suffix (ago or in), you can pass `true` as the first argument to the `from()` method.
 
-```php
+```php:no-line-numbers
 tick('2014-10-01')->from('2015-10-01', true); // 1 year
 tick('2015-10-01')->from('2014-10-01', true); // 1 year
 ```
@@ -265,7 +265,7 @@ Querying dates allows you to check relationships between dates, such as whether 
 
 This indicates whether the Tick object is before the other supplied date-time.
 
-```php
+```php:no-line-numbers
 tick()->isBefore('2011-01-01');
 ```
 
@@ -273,7 +273,7 @@ tick()->isBefore('2011-01-01');
 
 This indicates whether the Tick object is the same as the other supplied date-time.
 
-```php
+```php:no-line-numbers
 tick()->isSame(new \DateTime('2011-01-01'));
 ```
 
@@ -281,7 +281,7 @@ tick()->isSame(new \DateTime('2011-01-01'));
 
 This indicates whether the Tick object is after the other supplied date-time.
 
-```php
+```php:no-line-numbers
 tick()->isAfter('2011-01-01');
 ```
 
@@ -289,7 +289,7 @@ tick()->isAfter('2011-01-01');
 
 This indicates whether the Tick object is between two other supplied date-time.
 
-```php
+```php:no-line-numbers
 tick('2010-10-20')
   ->isBetween('2010-10-19', new \DateTime('2010-10-25'));
 ```
@@ -298,7 +298,7 @@ tick('2010-10-20')
 
 This indicates whether the Tick object is between two other supplied date-time or equal to one of them.
 
-```php
+```php:no-line-numbers
 tick('2010-10-20')
   ->isBetweenOrEqual('2010-10-19', new \DateTime('2010-10-25'));
 ```
@@ -307,7 +307,7 @@ tick('2010-10-20')
 
 This indicates whether the Tick object is the same day as the other supplied date-time.
 
-```php
+```php:no-line-numbers
 tick('2010-10-20')->isSameDay('2010-10-20');
 ```
 
@@ -315,7 +315,7 @@ tick('2010-10-20')->isSameDay('2010-10-20');
 
 This indicates whether the Tick object is the same month as the other supplied date-time.
 
-```php
+```php:no-line-numbers
 
 
 tick('2010-10-20')->isSameMonth('2010-10-20');
@@ -325,7 +325,7 @@ tick('2010-10-20')->isSameMonth('2010-10-20');
 
 This indicates whether the Tick object is the same year as the other supplied date-time.
 
-```php
+```php:no-line-numbers
 tick('2010-10-20')->isSameYear('2010-10-20');
 ```
 
@@ -333,7 +333,7 @@ tick('2010-10-20')->isSameYear('2010-10-20');
 
 This indicates whether the Tick object's year is a leap year or not.
 
-```php
+```php:no-line-numbers
 tick('2000-01-01')->isLeapYear(); // true
 ```
 
@@ -341,6 +341,6 @@ tick('2000-01-01')->isLeapYear(); // true
 
 This indicates whether the Tick object is a DateTime object or not.
 
-```php
+```php:no-line-numbers
 tick()->isDateTime('2000-01-01'); // false
 ```

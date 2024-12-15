@@ -73,15 +73,7 @@ app()->get('/protected', function () {
 
 ## Using Middleware
 
-Leaf Auth also provides a middleware that you can use to protect your routes. The `auth` middleware checks if a user is logged in and allows you to set a callback function to run if a user is not logged in.
-
-```php
-auth()->middleware('auth.required', function () {
-  response()->redirect('/login');
-});
-```
-
-Once you have defined a callback for the middleware, you can use it in your routes like this:
+Leaf Auth provides middleware to keep guest users out and logged in users in. This is a more flexible way to protect your routes and allows you to define more complex authentication logic. The `auth:required` middleware checks if a user is logged in and redirects to `/auth/login` if a user is not logged in.
 
 ```php
 app()->get('/protected', ['middleware' => 'auth.required', function () {
@@ -96,27 +88,11 @@ app()->group('/protected', ['middleware' => 'auth.required', function () {
 }]);
 ```
 
-If you use this method, the middleware will run before the route is executed. If the user is not logged in, the callback function you defined will be executed. This means you can remove the check for a logged in user from your route handler.
-
-```php
-app()->get('/protected', ['auth.required', function () {
-  $user = auth()->user();
-
-  // no need to check if user is logged in
-}]);
-```
+The route or group of routes will only be accessible to logged in users, so you don't need to check if a user is logged in inside the route handler.
 
 ## Protected Guest Routes
 
-You can also protect routes that should only be accessible to guest users. This is useful for routes like the login and register routes. You can use the `auth.guest` middleware to protect these routes.
-
-```php
-auth()->middleware('auth.guest', function () {
-  response()->redirect('/dashboard');
-});
-```
-
-You can then use this middleware on your guest routes like this:
+Just like the `auth.required` middleware, Leaf Auth provides a `auth.guest` middleware to protect routes that should only be accessible to guest users. This is useful for routes like the login and register routes.
 
 ```php
 app()->get('/login', ['middleware' => 'auth.guest', function () {
@@ -124,7 +100,35 @@ app()->get('/login', ['middleware' => 'auth.guest', function () {
 }]);
 ```
 
-This middleware will run before the route is executed. If a user is logged in, the callback function you defined will be executed. This means you can remove the check for a guest user from your route handler.
+If a logged in user tries to access a route protected by the `auth.guest` middleware, they will be redirected to the `/dashboard` route by default.
+
+## Customizing auth middleware
+
+Your application may need you to return different responses for the `auth.required` and `auth.guest` middleware. You can customize the middleware by defining your own function that should be called when the middleware fails.
+
+```php
+auth()->middleware('auth.required', function () {
+  response()->exit('You need to be logged in to access this route');
+});
+
+auth()->middleware('auth.guest', function () {
+  response()->exit('You are already logged in');
+});
+```
+
+After defining the custom middleware, you can use it in your routes.
+
+```php
+app()->get('/protected', ['middleware' => 'auth.required', function () {
+  // this route is protected
+}]);
+
+app()->get('/login', ['middleware' => 'auth.guest', function () {
+  // this route is only accessible to guest users
+}]);
+```
+
+You only need to define the custom middleware if the default behavior of the `auth.required` and `auth.guest` middleware does not meet your requirements.
 
 ## Session Guards <Badge type="danger" text="DEPRECATED" />
 

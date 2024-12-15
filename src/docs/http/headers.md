@@ -122,7 +122,7 @@ Leaf\Http\Headers::remove(['WWW-Authenticate', 'Authorization']);
 
 You can check if a header exists using the `Leaf\Http\Headers::has()` method. This method takes in a single parameter, the header to check and returns a boolean.
 
-```php
+```php:no-line-numbers
 $exists = Leaf\Http\Headers::has('Content-Type');
 ```
 
