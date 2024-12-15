@@ -163,11 +163,27 @@ Everything after this point is the same as signing up a user normally.
 ::: info OAuth Token
 The `fromOAuth()` method expects an OAuth token to be passed in. This token is usually gotten from the OAuth provider you are using. You can later use this token to make requests to the OAuth provider on behalf of the user. Leaf Auth saves this token so you can retrieve it later using the `auth()->oauthToken()` method.
 
-```php
+```php:no-line-numbers
 $token = auth()->oauthToken();
 ```
 
 :::
+
+## Finding a user by id <Badge type="tip" text="New" />
+
+There are times when you might want to find a user by their id to perform some operations on them while they are NOT logged in. For instance, finding a user by their id to assign a role to them. Leaf Auth provides the `find()` method to do this:
+
+```php
+$user = auth()->find(1);
+
+...
+
+$user->assign('admin');
+
+...
+
+$user->transactions()->create([...]);
+```
 
 ## Auth with no password
 
