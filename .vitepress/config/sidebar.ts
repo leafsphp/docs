@@ -91,7 +91,7 @@ const sidebar = [
         text: 'Protecting your routes',
         link: '/docs/auth/protected-routes',
       },
-      // { text: 'Updating logged-in user', link: '/docs/auth/update' },
+      { text: 'Roles/Permissions', link: '/docs/auth/permissions' },
       // { text: 'Build your own auth library', link: '/docs/auth/helpers' },
     ],
   },
