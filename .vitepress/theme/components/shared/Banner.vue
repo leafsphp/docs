@@ -31,7 +31,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text">
-      🎉 You can now use <a href="/docs/auth/permissions">Roles and permissions</a> natively in your apps.
+      We need your help to keep Leaf's development active. <a href="/support/">Support Leaf today!</a>
     </div>
 
     <button type="button" @click="dismiss">

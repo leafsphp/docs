@@ -26,8 +26,9 @@ export default defineConfig({
     siteTitle: 'Leaf PHP',
 
     search: {
-      provider: 'local',
       // provider: 'algolia',
+      provider: 'local',
+
       // options: {
       //   appId: 'Q38TT8XUN9',
       //   indexName: 'leafphp',
