@@ -38,11 +38,15 @@ You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/cont
 - Mention in every release annoucement
 - Dedicated first priority support from the Leaf team.
 
-## Past/Present Sponsors
+## Our Sponsors
 
 We are grateful to all our sponsors, both past and present for their generous support 💚
 
 <SponsorGroup group="sponsor" class="w-full" />
+
+And our previous sponsors:
+
+<SponsorGroup group="pastSponsors" class="w-full" />
 
 ## Financial Reports
 
