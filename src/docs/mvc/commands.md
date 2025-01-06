@@ -49,7 +49,7 @@ Leaf MVC's aloe command line tool is built on top of Symfony's console component
 
 ## Manually creating a command
 
-All commands created through the `g:command` command are stored in the `app/console` directory and are automatically loaded by Leaf MVC. However, you can also create a command manually by creating a new class that extends the `Command` class and implementing the `handle()` method just like the example above.
+The `g:command` command is a shortcut to creating a new command which creates a boilerplate command class for you in the `app/console` directory. If you want to create a command manually, you can create a new class that extends the `Command` class and implements the `handle()` method.
 
 ```php
 <?php
@@ -82,31 +82,22 @@ class CachePurgeCommand extends Command
 }
 ```
 
-If you are using Leaf MVC v3.8 and above, the command is automatically loaded by Leaf MVC. If you are using Leaf MVC v3.7 and below, you will need to register the command in the `app/console/Commands.php` file.
+Be sure to keep your command class in the `App\Console` namespace and extend the `Command` class and in the `app/console` directory. Once you've created your command, Leaf MVC will automatically load it when you run the `php leaf` console.
 
-```php
-<?php
+::: details Commands not auto-loading?
+If your command is not auto-loading, make sure you have the latest versions of MVC Core and Aloe installed.
 
-namespace App\Console;
+::: code-group
 
-class Commands
-{
-    /**
-     * Register commands
-     *
-     * @param $console
-     * @return void
-     *
-     */
-    public static function register($console): void
-    {
-        $console->register([
-            ExampleCommand::class,
-            CachePurgeCommand::class
-        ]);
-    }
-}
+```bash:no-line-numbers [Leaf CLI]
+leaf install aloe mvc-core
 ```
+
+```bash:no-line-numbers [Composer]
+composer require leafs/aloe leafs/mvc-core
+```
+
+:::
 
 ## Command Arguments
 

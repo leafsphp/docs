@@ -14,14 +14,14 @@ php leaf config:lib
 
 That's it! A `lib` folder will be created in your application root and Leaf will now autoload any library you place in this folder.
 
-::: info Older Leaf MVC versions
+<!-- ::: info Older Leaf MVC versions
 If you are using an older version of Leaf MVC where you don't have the `config:lib` command, you simply need to head over to your `public/index.php` file and uncomment the following line:
 
 ```php
 // \Leaf\Core::loadLibs();
 ```
 
-:::
+::: -->
 
 ## Creating a Library
 
