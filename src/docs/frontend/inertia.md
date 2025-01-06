@@ -6,47 +6,27 @@ In short, Inertia let's you use your favourite frontend framework together with 
 
 ## Setting Up
 
-We've simplified the whole setup process into one command for you. Whether you are using Leaf MVC or just Leaf, you can use the CLI to scaffold a basic UI integration using your preferred frontend tooling.
+We've simplified the whole setup process into one command for you. Whether you are using Leaf MVC or just Leaf, you can use the CLI to scaffold a basic UI integration using your preferred frontend tooling. Simply run the `view:install` command with the name of the frontend framework you want to use.
 
 To get started, you can run:
 
 ::: code-group
 
 ```bash:no-line-numbers [Leaf MVC CLI]
-php leaf view:install
-```
-
-```bash:no-line-numbers [Leaf CLI]
-leaf view:install
-```
-
-:::
-
-This will prompt you to select your preferred frontend framework. You can choose from Vue, React, and Svelte. There is also support for styling with Tailwind/Bootstrap. After selecting your preferred framework, Leaf will automatically install and setup inertia for you, including examples for you to get started with.
-
-::: tip view:install
-
-If you know the specific frontend framework you want to use, you can pass the `--{framework}` flag to the `view:install` command. For example, to install inertia for Vue, you can run:
-
-```bash:no-line-numbers
 php leaf view:install --vue
-```
-
-:::
-
-You can then start your server which will automatically start both your Leaf server and your frontend server:
-
-::: code-group
-
-```bash:no-line-numbers [Leaf MVC CLI]
-php leaf serve
+php leaf view:install --react
+php leaf view:install --svelte
 ```
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf serve
+leaf view:install --vue
+leaf view:install --react
+leaf view:install --svelte
 ```
 
 :::
+
+This will automatically set up everything you need to get started with Inertia and your preferred frontend framework. You can then start your development server and start building your app.
 
 ## Setting up your routes
 
@@ -101,7 +81,7 @@ export default function Home({ name }) {
 }
 ```
 
-```jsx [Home.vue]
+```vue [Home.vue]
 <script setup>
 import Layout from './Layout';
 import { Head } from '@inertiajs/vue3';
@@ -137,6 +117,23 @@ defineProps({ name: String });
 :::
 
 You can find more information on using Inertia with your frontend framework in the [Inertia documentation](https://inertiajs.com/).
+
+## Generating Inertia Views
+
+Leaf MVC makes your life easier by providing a command to generate views for you. You can use the `g:template` command to generate a new Inertia view:
+
+```bash:no-line-numbers
+php leaf g:template Home --jsx # React
+php leaf g:template Home --vue # Vue
+php leaf g:template Home --svelte # Svelte
+php leaf g:template home # Blade
+```
+
+You can also specify the directory where you want the view to be generated:
+
+```bash:no-line-numbers
+php leaf g:template Home --jsx --dir=components
+```
 
 ## Manually setting up inertia
 
