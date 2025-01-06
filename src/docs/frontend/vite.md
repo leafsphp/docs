@@ -18,51 +18,13 @@ Check out these articles from SitePoint and Next JS:
 
 ## Setting Up
 
-You can install the Vite module with the Leaf CLI:
+Leaf MVC comes with Vite pre-installed, so you only need to start your server and you're good to go. If you are not using Leaf MVC, you can setup Vite using the Leaf CLI:
 
 ```bash:no-line-numbers
 leaf view:install --vite
 ```
 
-This command will install vite and the vite-leaf plugin, and will also install the vite module which will be used to load your assets on the server side. It will also create a vite config file at the root of your project. This config file can be used to configure vite, add plugins and more.
-
-If you are using Leaf MVC, all of this is done for you automatically. You just need to start your Vite server and add your assets.
-
-## Manually Installing Vite
-
-If you don't have the Leaf CLI installed, you can manually install Vite although it's a bit more complex. First, you need to install all the JavaScript dependencies:
-
-::: code-group
-
-```bash:no-line-numbers [npm]
-npm i -D vite @leafphp/vite-plugin
-```
-
-```bash:no-line-numbers [pnpm]
-pnpm i -D vite @leafphp/vite-plugin
-```
-
-```bash:no-line-numbers [yarn]
-yarn add -D vite @leafphp/vite-plugin
-```
-
-:::
-
-After that, you need to install the server component for Vite. This will allow you to load your assets on the server side using PHP. You can install this by running:
-
-::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf install vite
-```
-
-```bash:no-line-numbers [Composer]
-composer require leafs/vite
-```
-
-:::
-
-Finally, Vite requires a configuration file to run. You can create a `vite.config.js` file at the root of your project and add your configuration there. You can learn more about Vite configuration files [here](#vite-config).
+This command will install vite, and the leaf-vite module which will be used to load your assets on the server side plus all vite-specific dependencies and config files.
 
 ## Loading your assets
 
@@ -76,7 +38,7 @@ Here's an example of how you can load a CSS file:
 ::: code-group
 
 ```blade:no-line-numbers [Blade]
-{{ vite('css/app.css') }}
+@vite('css/app.css')
 ```
 
 ```php:no-line-numbers [BareUI]
@@ -90,7 +52,7 @@ You can also load multiple assets at once by passing in an array of assets:
 ::: code-group
 
 ```blade:no-line-numbers [Blade]
-{{ vite(['app.css', 'app.js']) }}
+@vite(['app.css', 'app.js'])
 ```
 
 ```php:no-line-numbers [BareUI]
@@ -137,7 +99,23 @@ Unlike the `vite.config.js` file, this configuration is done in PHP and is compl
 
 ## Running Vite
 
-Vite comes with a development server that you can use to serve your frontend assets. This is a bit different from the traditional way of serving assets with PHP because you need to run a separate server for your assets. You can start your Vite server by running:
+Vite comes with a development server that you can use to serve your frontend assets which is separate from your PHP server. If you use Leaf MVC or the Leaf CLI, this server will be automatically fired up when you run the serve command:
+
+::: code-group
+
+```bash:no-line-numbers [Leaf MVC CLI]
+php leaf serve
+```
+
+```bash:no-line-numbers [Leaf CLI]
+leaf serve
+```
+
+:::
+
+::: details Running Vite manually
+
+If you are not using Leaf MVC, you need to start the Vite server manually in a separate terminal process:
 
 ::: code-group
 
@@ -157,11 +135,9 @@ pnpm i && pnpm run dev
 yarn && yarn dev
 ```
 
-:::
-
 This will install the necessary dependencies and start your Vite server. You don't need to do anything with the Vite server, just keep it running in the background and Leaf will take care of the rest.
 
-**You need to keep the Vite server running in a separate terminal window while you work on your project.**
+:::
 
 ## Adding Aliases
 
@@ -192,3 +168,39 @@ export default defineConfig({
 ## Vite + other frameworks
 
 Using a combination of Leaf and Vite, you can use React with your favourite frontend technologies like React, Vue and Svelte. We've added a guide to setting up frontend frameworks using Inertia [over here](/docs/frontend/inertia).
+
+## Manually Installing Vite
+
+If you don't have the Leaf CLI installed, you can manually install Vite although it's a bit more complex. First, you need to install all the JavaScript dependencies:
+
+::: code-group
+
+```bash:no-line-numbers [npm]
+npm i -D vite @leafphp/vite-plugin
+```
+
+```bash:no-line-numbers [pnpm]
+pnpm i -D vite @leafphp/vite-plugin
+```
+
+```bash:no-line-numbers [yarn]
+yarn add -D vite @leafphp/vite-plugin
+```
+
+:::
+
+After that, you need to install the server component for Vite. This will allow you to load your assets on the server side using PHP. You can install this by running:
+
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf install vite
+```
+
+```bash:no-line-numbers [Composer]
+composer require leafs/vite
+```
+
+:::
+
+Finally, Vite requires a configuration file to run. You can create a `vite.config.js` file at the root of your project and add your configuration there. You can learn more about Vite configuration files [here](#vite-config).

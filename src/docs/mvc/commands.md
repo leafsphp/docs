@@ -82,22 +82,31 @@ class CachePurgeCommand extends Command
 }
 ```
 
-Be sure to keep your command class in the `App\Console` namespace and extend the `Command` class and in the `app/console` directory. Once you've created your command, Leaf MVC will automatically load it when you run the `php leaf` console.
+If you are using Leaf MVC v3.8 and above, the command is automatically loaded by Leaf MVC, but Leaf MVC v3.7 and below require you to register your new command in the `app/console/Commands.php` file.
 
-::: details Commands not auto-loading?
-If your command is not auto-loading, make sure you have the latest versions of MVC Core and Aloe installed.
+```php
+<?php
 
-::: code-group
+namespace App\Console;
 
-```bash:no-line-numbers [Leaf CLI]
-leaf install aloe mvc-core
+class Commands
+{
+    /**
+     * Register commands
+     *
+     * @param $console
+     * @return void
+     *
+     */
+    public static function register($console): void
+    {
+        $console->register([
+            ExampleCommand::class,
+            CachePurgeCommand::class
+        ]);
+    }
+}
 ```
-
-```bash:no-line-numbers [Composer]
-composer require leafs/aloe leafs/mvc-core
-```
-
-:::
 
 ## Command Arguments
 
