@@ -6,9 +6,9 @@
 import VideoModal from '@theme/components/shared/VideoModal.vue'
 </script>
 
-Blade is a templating engine included with Laravel that helps you create dynamic views easily. Unlike other templating engines, Blade allows you to use regular PHP code inside your templates together with all the goodness it offers you. Behind the scenes, Blade templates are turned into plain PHP and cached, so they run quickly without slowing down your app. Blade files use the `.blade.php` extension to distinguish them from regular PHP files.
+Blade is Laravel's own templating engine that makes creating dynamic views easy. It lets you mix regular PHP code with its own features for more flexibility, has a clean syntax and caches your views for faster performance.
 
-Leaf Blade is a port of the [jenssegers/blade](https://github.com/jenssegers/blade) package that allows you to use blade templates in your Leaf PHP projects.
+Leaf Blade is an adaptation of the original Blade package that allows you to use Blade templates in your Leaf PHP projects powered by [jenssegers/blade](https://github.com/jenssegers/blade).
 
 <!-- Leaf Blade is an adaptation of the original Blade package, which provides a powerful engine that is familiar to most PHP developers. While similar, Leaf Blade has some differences from the original Blade package, so be sure to keep this documentation handy. -->
 
@@ -27,13 +27,7 @@ This video by The Net Ninja will help you get started with blade.
 
 ## Setting Up
 
-::: info Blade + Leaf MVC
-
-Blade comes with Leaf MVC out of the box, fully configured and ready to use, so you can skip this section if you're using Leaf MVC.
-
-:::
-
-You can install Leaf Blade using the Leaf CLI:
+Blade comes with Leaf MVC out of the box, fully configured and ready to use, however, if you're using Leaf on its own, you can install Blade using the Leaf CLI or Composer.
 
 ::: code-group
 
@@ -47,7 +41,9 @@ composer require leafs/blade
 
 :::
 
-After this, you just need to inform Leaf of Blade's existence:
+::: details Configuring your paths
+
+After installing Blade in your Leaf app, you just need to inform Leaf of Blade's existence:
 
 ```php:no-line-numbers
 app()->attachView(Leaf\Blade::class);
@@ -61,6 +57,10 @@ app()->blade()->configure([
   'cache' => 'storage/cache'
 ]);
 ```
+
+Once again, this is only necessary if you're using Leaf on its own. If you're using Leaf MVC, Blade is already set up for you.
+
+:::
 
 Magic! You can now use Blade to create and render your views.
 
@@ -99,11 +99,13 @@ echo app()->blade()->render('hello', ['name' => 'Michael']);
 
 This will render the `hello.blade.php` view and pass in a variable called `name` with the value `Michael`. When you open the view in your browser, you should see a big "Hello, Michael" on your screen.
 
-<!-- ## Directives included in Leaf Blade
+## Directives included in Leaf Blade
 
-As mentioned earlier, Leaf Blade is an adaptation of the original Blade package, so it includes some directives that are not available in the original Blade package. Here are some of the directives included in Leaf Blade:
+Although Leaf Blade is just an adaptation of the original Blade package, it comes pre-packaged with some original Blade directives remodelled to work with Leaf and a few custom directives to make your life easier. You can find all common Blade directives in the [Blade documentation](https://laravel.com/docs/8.x/blade).
 
-### `@csrf`
+Here are some of the directives you can use in your Blade views:
+
+### CSRF protection
 
 The `@csrf` directive generates a hidden CSRF token field for forms. This is useful when you want to include a CSRF token in your form.
 
@@ -114,7 +116,239 @@ The `@csrf` directive generates a hidden CSRF token field for forms. This is use
 </form>
 ```
 
-### `@method`
+### Working with JSON
+
+You can use the `@json` directive to convert a PHP array to a JSON string. This is useful when you want to pass a JSON string to a JavaScript variable.
+
+```blade:no-line-numbers
+<script>
+  var app = @json($array);
+</script>
+```
+
+### Loading assets with vite
+
+You can use the `@vite` directive to load assets like CSS and JS files in your Blade views using Vite.
+
+```blade:no-line-numbers
+@vite('app.js')
+@vite(['app.js', 'app.css'])
+```
+
+### Adding Alpine.js
+
+Alpine.js is a minimal framework for composing JavaScript behavior in your views. You can use the `@alpine` directive to add Alpine.js to your Blade views.
+
+```blade:no-line-numbers
+<head>
+  ...
+
+  @alpine
+</head>
+```
+
+### Checking for null
+
+You can use the `@isNull` directive to check if a variable is null.
+
+```blade
+@isNull($variable)
+  <p>This will only show if $variable is null</p>
+@else
+  <p>This will show if $variable is not null</p>
+@endisNull
+```
+
+### Conditional rendering with env
+
+You can use the `@env` directive to conditionally render content based on the environment.
+
+```blade
+@env('local')
+  <p>This will only show in the local environment</p>
+@else
+  <p>This will show in all other environments</p>
+@endenv
+```
+
+### Working with sessions
+
+The `@session` directive may be used to determine if a session value exists. If the session value exists, the template contents within the `@session` and `@endsession` directives will be evaluated. Within the `@session` directive's contents, you may echo the `$value` variable to display the session value:
+
+```blade
+@session('status')
+  <div class="p-4 bg-green-100">
+    {{ $value }}
+  </div>
+@endsession
+```
+
+### Working with flash messages
+
+The `@flash` directive may be used to determine if a flash message exists. If the flash message exists, the template contents within the `@flash` and `@endflash` directives will be evaluated. Within the `@flash` directive's contents, you may echo the `$message` variable to display the flash message:
+
+```blade
+@flash('status')
+  <div class="p-4 bg-green-100">
+    {{ $message }}
+  </div>
+@endflash
+```
+
+### Conditional Classes & Styles
+
+The `@class` directive conditionally compiles a CSS class string. The directive accepts an array of classes where the array key contains the class or classes you wish to add, while the value is a boolean expression. If the array element has a numeric key, it will always be included in the rendered class list:
+
+```blade
+@php
+  $isActive = false;
+  $hasError = true;
+@endphp
+
+<span @class([
+  'p-4',
+  'font-bold' => $isActive,
+  'text-gray-500' => ! $isActive,
+  'bg-red' => $hasError,
+])></span>
+
+OUTPUT: <span class="p-4 text-gray-500 bg-red"></span>
+```
+
+Likewise, the @style directive may be used to conditionally add inline CSS styles to an HTML element:
+
+```blade
+@php
+  $isActive = true;
+@endphp
+
+<span @style([
+  'background-color: red',
+  'font-weight: bold' => $isActive,
+])></span>
+
+OUTPUT: <span style="background-color: red; font-weight: bold;"></span>
+```
+
+### Additional Attributes
+
+For convenience, you may use the @checked directive to easily indicate if a given HTML checkbox input is "checked". This directive will echo checked if the provided condition evaluates to true:
+
+```blade
+<input
+  type="checkbox"
+  name="active"
+  value="active"
+  @checked($isActive)
+/>
+```
+
+Likewise, the @selected directive may be used to indicate if a given select option should be "selected":
+
+```blade
+<select name="version">
+  @foreach ($product->versions as $version)
+    <option ... @selected($shouldBeSelected)>
+      ...
+    </option>
+  @endforeach
+</select>
+```
+
+Additionally, the @disabled directive may be used to indicate if a given element should be "disabled":
+
+```blade
+<button type="submit" @disabled($shouldBeDisabled)>Submit</button>
+```
+
+Moreover, the @readonly directive may be used to indicate if a given element should be "readonly":
+
+```blade
+<input
+  type="email"
+  name="email"
+  value="email@laravel.com"
+  @readonly($shouldBeReadonly)
+/>
+```
+
+In addition, the @required directive may be used to indicate if a given element should be "required":
+
+```blade
+<input
+  type="text"
+  name="title"
+  value="title"
+  @required($shouldBeRequired)
+/>
+```
+
+### Leaf Auth
+
+The `@auth` and `@guest` directives may be used to quickly determine if the current user is authenticated or is a guest:
+
+```blade
+@auth
+  // The user is authenticated...
+@endauth
+
+@guest
+  // The user is not authenticated...
+@endguest
+```
+
+### Roles & Permissions
+
+You can use the `@is` directive to check if the current user has a specific role:
+
+```blade
+@is('admin')
+  // The user has the admin role...
+@else
+  // The user does not have the admin role...
+@endis
+```
+
+You can also use the `@can` directive to check if the current user has a specific permission:
+
+```blade
+@can('edit articles')
+  // The user can edit articles...
+@else
+  // The user cannot edit articles...
+@endcan
+```
+
+<!-- ### SEO Meta Tags
+
+You can use the `@Meta` directive to add SEO meta tags to your Blade views.
+
+```blade:no-line-numbers
+@Meta([
+  'title' => 'My Page',
+  'description' => 'This is my page',
+  'keywords' => 'page, my',
+  'author' => 'Michael',
+  'robots' => 'index, follow',
+  'canonical' => 'https://example.com/page',
+  'image' => 'https://example.com/image.jpg',
+  'og' => [
+    'title' => 'My Page',
+    'description' => 'This is my page',
+    'image' => 'https://example.com/image.jpg',
+    'url' => 'https://example.com/page',
+    'type' => 'website'
+  ],
+  'twitter' => [
+    'title' => 'My Page',
+    'description' => 'This is my page',
+    'image' => 'https://example.com/image.jpg',
+    'card' => 'summary_large_image'
+  ]
+])
+``` -->
+
+<!-- ### `@method`
 
 The `@method` directive generates a hidden input field with the value of the method you specify. This is useful when you want to use methods other than `GET` and `POST` in your forms.
 
@@ -128,13 +362,13 @@ The `@method` directive generates a hidden input field with the value of the met
   @method('DELETE')
   ...
 </form>
-```
+````
 
 ### `@submit`
 
 The `@submit` directive allows you to wrap an item with a form that submits when the item is clicked. This is useful when you want to redirect to a post route when an item is clicked.
 
-```blade:no-line-numbers
+````blade:no-line-numbers
 @submit('DELETE', '/posts/1')
   <button>Delete</button>
 @endsubmit
@@ -146,9 +380,9 @@ Blade allows you to define custom directives using the `directive()` method. Whe
 
 ```php
 app()->blade()->directive('datetime', function ($expression) {
-    return "<?php echo with({$expression})->format('F d, Y g:i a'); ?>";
+    return "<?php echo tick({$expression})->format('F d, Y g:i a'); ?>";
 });
-```
+````
 
 Which allows you to use the following in your blade template:
 
