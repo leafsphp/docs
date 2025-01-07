@@ -101,7 +101,7 @@ This will render the `hello.blade.php` view and pass in a variable called `name`
 
 ## Directives included in Leaf Blade
 
-Although Leaf Blade is just an adaptation of the original Blade package, it comes pre-packaged with some original Blade directives remodelled to work with Leaf and a few custom directives to make your life easier. You can find all common Blade directives in the [Blade documentation](https://laravel.com/docs/8.x/blade).
+Although Leaf Blade is just an adaptation of the original Blade package, it comes pre-packaged with some original Blade directives remodelled to work with Leaf and a few custom directives to make your life easier. You can find all common Blade directives in the [Blade documentation](https://laravel.com/docs/11.x/blade#blade-directives).
 
 Here are some of the directives you can use in your Blade views:
 
