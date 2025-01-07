@@ -123,16 +123,18 @@ You can find more information on using Inertia with your frontend framework in t
 Leaf MVC makes your life easier by providing a command to generate views for you. You can use the `g:template` command to generate a new Inertia view:
 
 ```bash:no-line-numbers
-php leaf g:template Home --jsx # React
-php leaf g:template Home --vue # Vue
-php leaf g:template Home --svelte # Svelte
+php leaf g:template home --type=jsx # React
+php leaf g:template home --type=vue # Vue
+php leaf g:template home --type=svelte # Svelte
 php leaf g:template home # Blade
 ```
 
-You can also specify the directory where you want the view to be generated:
+By default, React, Vue and Svelte views are generated in the `app/views/js` directory, while Blade views are generated in the `app/views` directory. You can further specify the directory where you want the view to be generated:
 
 ```bash:no-line-numbers
-php leaf g:template Home --jsx --dir=components
+php leaf g:template Components/Home --type=jsx # app/views/js/Components/Home.jsx
+php leaf g:template Layout/Home --type=vue # app/views/js/Layout/Home.vue
+php leaf g:template pages/Home # app/views/pages/Home.view.php
 ```
 
 ## Manually setting up inertia
