@@ -6,71 +6,27 @@ In short, Inertia let's you use your favourite frontend framework together with 
 
 ## Setting Up
 
-We've simplified the whole setup process into one command for you. Whether you are using Leaf MVC or just Leaf, you can use the CLI to scaffold a basic UI integration using your preferred frontend tooling.
+We've simplified the whole setup process into one command for you. Whether you are using Leaf MVC or just Leaf, you can use the CLI to scaffold a basic UI integration using your preferred frontend tooling. Simply run the `view:install` command with the name of the frontend framework you want to use.
 
 To get started, you can run:
 
 ::: code-group
 
-```bash:no-line-numbers [Leaf CLI]
-leaf view:install
-```
-
 ```bash:no-line-numbers [Leaf MVC CLI]
-php leaf view:install
-```
-
-:::
-
-This will prompt you to select your preferred frontend framework. You can choose from Vue, React, and Svelte. There is also support for styling with Tailwind/Bootstrap. After selecting your preferred framework, Leaf will automatically install and setup inertia for you, including examples for you to get started with.
-
-::: tip view:install
-
-If you know the specific frontend framework you want to use, you can pass the `--{framework}` flag to the `view:install` command. For example, to install inertia for Vue, you can run:
-
-```bash
 php leaf view:install --vue
+php leaf view:install --react
+php leaf view:install --svelte
 ```
-
-:::
-
-To run your app, you'll need to start two servers. One to actively bundle your frontend dependencies (your framework, styles, ...):
-
-::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf view:dev
-```
-
-```bash:no-line-numbers [npm]
-npm i && npm run dev
-```
-
-```bash:no-line-numbers [pnpm]
-pnpm i && pnpm run dev
-```
-
-```bash:no-line-numbers [yarn]
-yarn && yarn dev
+leaf view:install --vue
+leaf view:install --react
+leaf view:install --svelte
 ```
 
 :::
 
-And then your main Leaf server which will run your app:
-
-::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf serve
-```
-
-```bash:no-line-numbers [Leaf MVC CLI]
-php leaf serve
-```
-
-:::
-
-If you want to read more on why 2 servers are necessary, you can check out the [Leaf + Vite documentation](/docs/frontend/vite#vite-other-frameworks)
+This will automatically set up everything you need to get started with Inertia and your preferred frontend framework. You can then start your development server and start building your app.
 
 ## Setting up your routes
 
@@ -125,7 +81,7 @@ export default function Home({ name }) {
 }
 ```
 
-```jsx [Home.vue]
+```vue [Home.vue]
 <script setup>
 import Layout from './Layout';
 import { Head } from '@inertiajs/vue3';
@@ -162,20 +118,39 @@ defineProps({ name: String });
 
 You can find more information on using Inertia with your frontend framework in the [Inertia documentation](https://inertiajs.com/).
 
+## Generating Inertia Views
+
+Leaf MVC makes your life easier by providing a command to generate views for you. You can use the `g:template` command to generate a new Inertia view:
+
+```bash:no-line-numbers
+php leaf g:template home --type=jsx # React
+php leaf g:template home --type=vue # Vue
+php leaf g:template home --type=svelte # Svelte
+php leaf g:template home # Blade
+```
+
+By default, React, Vue and Svelte views are generated in the `app/views/js` directory, while Blade views are generated in the `app/views` directory. You can further specify the directory where you want the view to be generated:
+
+```bash:no-line-numbers
+php leaf g:template Components/Home --type=jsx # app/views/js/Components/Home.jsx
+php leaf g:template Layout/Home --type=vue # app/views/js/Layout/Home.vue
+php leaf g:template pages/Home # app/views/pages/Home.view.php
+```
+
 ## Manually setting up inertia
 
 If you don't want to use the Leaf CLI, you can manually setup inertia. This guide will show you how to setup inertia with Vite and React. You can use this guide to setup inertia with any frontend framework.
 
-### Setting up Vite
+### 1. Setting up Vite
 
 To get started, you need to setup Vite. We have a Leaf plugin that takes care of a lot of the heavy lifting for you. We have a detailed guide on how to setup vite with Leaf [here](/docs/frontend/vite).
 
-```bash
+```bash:no-line-numbers
 npm i -D vite @leafphp/vite-plugin
 leaf install vite
 ```
 
-### Vite Config
+### 2. Vite Config
 
 The [Leaf Vite docs](/docs/frontend/vite#vite-config) have a detailed guide on how to setup vite config files. You should however note that for the best developer experience, you should point Vite to your view directory so you can enjoy hot module reloading.
 
@@ -201,25 +176,27 @@ leaf({
 }),
 ```
 
-### Setting up Inertia
+### 3. Setting up Inertia
 
 To setup inertia, you need to install the inertia package for whatever frontend framework you want to use, together with the Vite plugin for that framework. For example, if you want to use React, you should install the Inertia React package, React Vite plugin as well as React itself:
 
-```bash
+```bash:no-line-numbers
 npm i react react-dom @inertiajs/react @vitejs/plugin-react
 ```
 
 You should also install the Leaf Inertia PHP adapter:
 
-```bash
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
 leaf install inertia
 ```
 
-Or with composer:
-
-```bash
+```bash:no-line-numbers [Composer]
 composer require leafs/inertia
 ```
+
+:::
 
 After adding the React Vite plugin, you should add it to your vite config file:
 
@@ -238,7 +215,7 @@ export default defineConfig({
 });
 ```
 
-### Setting up your base JavaScript file
+### 4. Setting up your base JavaScript file
 
 You should create a base JavaScript file that will be used to mount your app. This file should import your CSS and other assets. For example, if you're using React, your base JavaScript file should look like this:
 
@@ -272,17 +249,17 @@ setup({ el, App, props }) {
 },
 ```
 
-### Setting up your base PHP file
+### 5. Setting up your base PHP file
 
 You should create a base PHP file that will be used to render your app. By default, the Leaf Inertia PHP adapter will look for a file named `_inertia.view.php` in your views directory. You can change this by passing the path to your base PHP file to the `Inertia::setRoot` method.
 
-```php
+```php:no-line-numbers
 Inertia::setRoot('myfiles/_base');
 ```
 
 Since the Leaf Inertia PHP adapter is built using the [Bare UI engine](/docs/frontend/bareui), your base file needs to maintain the `.view.php` extension. For example, if you're using React, your base PHP file should look like this:
 
-```php
+```blade
 <!DOCTYPE html>
 <html lang="en">
 
@@ -324,11 +301,11 @@ Since the Leaf Inertia PHP adapter is built using the [Bare UI engine](/docs/fro
 
 This might look pretty ugly, but you'll never have to touch this file again. You can also use the Leaf CLI to generate this file for you:
 
-```bash
+```bash:no-line-numbers
 leaf view:install --inertia
 ```
 
-### Setting up your frontend framework
+### 6. Setting up your frontend framework
 
 In the setup above, we told Inertia to look for our frontend framework files in `./DIRECTORYFORCOMPONENTS/`. You should create this directory and add your frontend framework files to it. For example, if you're using React, you should create a file named `Home.jsx` in this directory:
 
