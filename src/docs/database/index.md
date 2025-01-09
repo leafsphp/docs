@@ -51,7 +51,9 @@ Databases are essential for most applications, as they help you store and retrie
 
 ## Leaf MVC + DB
 
-Leaf MVC comes with built-in support for models which are a way to programmatically represent resources in your database using PHP classes. For that reason, you have no real need for this module unless you want to use Leaf Auth. If you choose to use Leaf DB in your MVC application, we have already set up everything for you. All you need to do is to head over to your `.env` file and set up your database connection details. Here are a few example connections:
+Leaf MVC comes with built-in support for models which are a way to programmatically represent resources in your database using PHP classes. For that reason, you have no real need to use the `db()` function unless you want to quickly run a query without creating a model. Still, everything has been set up for you and Leaf DB will use the default database connection details in your `.env` file.
+
+Here are a few example connections:
 
 ::: code-group
 
@@ -80,9 +82,7 @@ DB_DATABASE=/absolute/path/to/database.sqlite
 
 :::
 
-Remember to head over to `public/index.php` and uncomment the line that says `\Leaf\Database::initDb();`. This will automatically connect to your database using the details in your environment file.
-
-You can safely skip the "Connecting to a database" section.
+You can skip the DB connection section: Leaf MVC sets up a deferred connection for you. This means that the connection will only be made when you run a query.
 
 ## Connecting to a database
 
@@ -134,6 +134,25 @@ db()->connect([
 ```
 
 :::
+
+## Deferred database connection <Badge text="NEW" type="tip" />
+
+In a lot of cases, your application may have other routes that don't need a database connection, but popping up a connection before the route is hit can be a waste of resources. Leaf DB now allows you to defer your database connection until you actually need it. Here's how you can defer your database connection:
+
+```php
+db()->load([
+  'dbtype' => '...',
+  'charset' => '...',
+  'port' => '...',
+  'unixSocket' => '...',
+  'host' => '...',
+  'username' => '...',
+  'password' => '...',
+  'dbname' => '...',
+]);
+```
+
+It takes in the same arguments as `connect()`, but it doesn't connect to the database immediately. It only connects when you run a query.
 
 ## Writing simple queries
 
