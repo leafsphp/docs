@@ -18,7 +18,7 @@ import Particles from './Particles.vue';
     </p>
     <div class="gradient"></div>
     <div class="flex justify-center items-center mt-6 gap-4">
-      <VideoModal videoUrl="https://www.youtube.com/embed/KfClnH-fQz8" buttonText="Intro to Leaf" />
+      <VideoModal videoUrl="https://www.youtube.com/embed/wvDELSI7fHg" buttonText="Intro to Leaf" />
 
       <Button as="a" href="/docs/" variant="ghost">
         <span>Get Started</span>
