@@ -2,7 +2,17 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
+<script setup>
+import VideoModal from '@theme/components/shared/VideoModal.vue'
+</script>
+
 Routing is the foundation of every web application. It's the process of defining the URL structure of your application and how it responds to requests. Leaf comes with a powerful router that simplifies the way you define routes in your application. You can take routing as one fancy traffic officer that directs traffic to the right place.
+
+<VideoModal
+  buttonText="Basic routing with Leaf"
+  description="In this video, we look at how to create routes for your Leaf application"
+  videoUrl="https://www.youtube.com/embed/BWWVR9bSiQ0"
+/>
 
 ## Create a route
 
@@ -102,7 +112,13 @@ app()->run();
 
 In big applications, you might have to reference a route over and over again. When you change the route URL, you'll have to change it everywhere you referenced it. To avoid this, you can name your routes and reference them by their name. This will save you a lot of time and prevent errors.
 
-Leaf router allows you name routes by using route options. Route options allow you to configure a route in a more advanced way. You can set route options by passing an array with configuration options as the second argument to the whatever route you ar e wofking on.
+Leaf router allows you name routes by using route params. They allow you add extra options to your routes like a route name, middleware, etc. You can set route options by passing an array with configuration options as the second argument to the whatever route you are working on.
+
+<VideoModal
+  buttonText="Named routes in Leaf"
+  description="Route parameters help you define extra options for your application routes, let's take a look"
+  videoUrl="https://www.youtube.com/embed/_0B9Zoxgv64"
+/>
 
 ```php
 app()->get('/home', ['name' => 'home', function () {

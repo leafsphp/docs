@@ -48,7 +48,7 @@ leaf serve
 <VideoModal
   buttonText="Setup a project via CLI"
   subject="Watch the leaf installation walkthrough"
-  videoUrl="https://www.youtube.com/embed/PuOk5xqTIsA"
+  videoUrl="https://www.youtube.com/embed/d3Y-aOPLf4c"
 />
 
 ## Manual Installation

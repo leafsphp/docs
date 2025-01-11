@@ -15,7 +15,7 @@ The Leaf CLI is a powerful tool and offers multiple ways to create a new Leaf ap
 <VideoModal
   buttonText="Leaf CLI walkthrough"
   description="You can take a look at our leaf cli setup walkthrough on youtube."
-  videoUrl="https://www.youtube.com/embed/yb3LUYHtopQ"
+  videoUrl="https://www.youtube.com/embed/d3Y-aOPLf4c"
 />
 
 ## Basic Installation
