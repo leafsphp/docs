@@ -102,6 +102,46 @@ app()->get('/login', ['middleware' => 'auth.guest', function () {
 
 If a logged in user tries to access a route protected by the `auth.guest` middleware, they will be redirected to the `/dashboard` route by default.
 
+## Email verification middleware <Badge>NEW</Badge>
+
+Leaf Auth provides middleware to protect routes that should only be accessible to only users with a certain email verification status. The `auth.verified` middleware ensures that only verified users can access certain routes.
+
+```php
+app()->group('/dashboard', [
+  'middleware' => 'auth.verified',
+  function () {
+    // dashboard routes will only be accessible to verified users
+  }
+]);
+
+app()->get('/some-route', [
+  'middleware' => 'auth.verified',
+  function () {
+    // route will only be accessible to verified users
+  }
+]);
+```
+
+While the `auth.unverified` middleware which ensures that only unverified users can access certain routes.
+
+```php
+app()->group('/verify', [
+  'middleware' => 'auth.unverified',
+  function () {
+    // verify routes will only be accessible to unverified users
+  }
+]);
+
+app()->get('/some-route', [
+  'middleware' => 'auth.verified',
+  function () {
+    // route will only be accessible to unverified users
+  }
+]);
+```
+
+By default, the `auth.verified` middleware will redirect unverified users to the `/auth/verify` route if they are not verified, and the `auth.unverified` middleware will redirect verified users to the `/dashboard` route if they are verified. You can customize this behaviour by defining your own function that should be called when the middleware fails. You can follow the instructions in the next section to learn how to customize the auth middleware.
+
 ## Customizing auth middleware
 
 Your application may need you to return different responses for the `auth.required` and `auth.guest` middleware. You can customize the middleware by defining your own function that should be called when the middleware fails.
