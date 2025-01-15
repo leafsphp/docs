@@ -96,7 +96,7 @@ app()->get('/some-route', [
 ]);
 
 app()->get('/some-route', [
-  'middleware' => 'auth.verified',
+  'middleware' => 'auth.unverified',
   function () {
     // route will only be accessible to unverified users
   }
