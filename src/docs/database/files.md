@@ -58,11 +58,9 @@ seeds:
   count: 5
   truncate: true
   data:
-    name: 'faker:name'
-    email: 'faker:unique:safeEmail'
-    email_verified_at: 'tick:now'
-    password: 'hash:password'
-    remember_token: 'randomString:10'
+    name: '@faker.name'
+    identifier: '@faker.uuid'
+    verified_at: '@tick.format:YYYY-MM-DD HH:mm:ss'
 ```
 
 Breaking this file down, there are three main sections:
