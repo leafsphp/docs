@@ -156,7 +156,7 @@ const sidebar = [
       { text: 'Models', link: '/docs/database/models' },
       { text: 'Migrations', link: '/docs/database/migrations' },
       { text: 'JSON Schema', link: '/docs/database/schema' },
-      // { text: 'Schema Files', link: '/docs/database/files' },
+      { text: 'Schema Files', link: '/docs/database/files' },
       { text: 'Seeders', link: '/docs/database/seeders' },
       { text: 'Factories', link: '/docs/database/factories' },
       { text: 'Writing Commands', link: '/docs/mvc/commands' },

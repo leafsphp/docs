@@ -1,14 +1,12 @@
-# Schema Files
+# Schema Files <Badge type="warning">ALPHA v4+</Badge>
 
-Leaf MVC inherited all the teachings of Laravel and Ruby on Rails, including the use of migrations, seeders, and factories which made creating, testing and seeding databases a breeze. It even introduced schema files, allowing you to generate migrations from JSON data. While helpful, this added complexity and clutter to projects. To simplify things, we’re moving away from the Rails/Laravel approach and creating a more streamlined, Leaf-like solution.
+Leaf MVC inherited all the teachings of Laravel and Ruby on Rails, including the use of migrations, seeders, and factories which made creating, testing and seeding databases a breeze. While this is great and has been tried and tested over the years, having multiple files for a single database table can be a bit of a hassle. This is why we introduced Schema Files in Leaf MVC v4.
 
 ## What are Schema Files?
 
 Schema files build on the JSON schema idea we introduced in earlier Leaf MVC versions, but they take things further. Instead of juggling separate files for migrations, seeders, and factories, you can handle everything in one place. They’re written in YAML, so they’re easy to read and work with—no extra hassle, no repeating yourself.
 
 ```yml [flights.yml]
-increments: true
-timestamps: true
 columns:
   to: string
   from: string
@@ -17,9 +15,9 @@ columns:
 seeds:
   count: 10
   data:
-    to: 'faker:city'
-    from: 'faker:city'
-    identifier: 'faker:uuid'
+    to: '@faker.city'
+    from: '@faker.city'
+    identifier: '@faker.uuid'
 ```
 
 ## Creating a Schema File
@@ -33,36 +31,41 @@ php leaf g:schema <table-name>
 Remember, every schema file is tied to a table in your database. When you run the command above, Leaf will create a schema file in your `app/database` directory with the name `<table-name>.yml`. Here’s an example:
 
 ```bash:no-line-numbers
-php leaf g:schema users
+php leaf g:schema posts
 ```
 
-This will create a schema file at `app/database/users.yml` which looks like this:
+This will create a schema file at `app/database/posts.yml` which looks like this:
 
-```yml [users.yml]
-increments: true
-timestamps: true
+```yml [posts.yml]
+# schema files add auto-increments and timestamps by default
+
+# you can add all the columns you want under the columns key
 columns:
   name: string
-  email:
+  identifier:
     type: string
-    length: 255
     unique: true
-  password: string
-  email_verified_at: timestamp
+  verified_at:
+    type: timestamp
+    nullable: true
 
+# you can add foreign ids for other models under the relationships key key
+relationships:
+  - User
+
+# seeds are optional and can be used to populate the database with dummy data
 seeds:
-  count: 10
+  count: 5
+  truncate: true
   data:
     name: 'faker:name'
-    email: 'faker:email'
+    email: 'faker:unique:safeEmail'
+    email_verified_at: 'tick:now'
     password: 'hash:password'
+    remember_token: 'randomString:10'
 ```
 
-Breaking down this file, we have:
-
-- `increments`: This is used to set the default id of the table. If set to `true`, the table will have an auto-incrementing id. If set to `false`, the table will not have an id, and you can set your own primary key.
-
-- `timestamps`: This is used to set timestamps on the table. If set to `true`, the table will have `created_at` and `updated_at` columns. If set to `false`, the table will not have timestamps.
+Breaking this file down, there are three main sections:
 
 - `columns`: This is used to set the columns of the table. The key is the column name and the value is a key value pair of column properties. The available properties are:
   - `type`: The type of the column. This can be `string`, `integer`, `timestamp` or any type supported by Laravel's Eloquent.
@@ -80,8 +83,30 @@ Breaking down this file, we have:
 
 - `seeds`: This is used to set the seeders of the table. The available properties are:
   - `count`: This is used to set the number of seeds to generate.
-  - `data`: This is used to set the data of the seeds. The key is the column name and the value is the value of the column. You can use `faker:[value]` to generate fake data for the column. <!-- You can also use `{{ [value] }}` to use PHP code, but this is a separate PHP thread which means you can't use variables from the current scope. -->
+  - `data`: This is used to set the data of the seeds. The key is the column name and the value is the value of the column. You can use `@faker.[value]` to generate fake data for the column. <!-- You can also use `{{ [value] }}` to use PHP code, but this is a separate PHP thread which means you can't use variables from the current scope. -->
   - `truncate`: This is used to truncate the table before seeding.
+
+- `relationships`: This is used to set the relationships of the table. The value is an array of models the table is related to. This is used to generate foreign keys for the table.
+
+Besides these, Schema files also set a lot of defaults for you. For instance, the `id` column is set as the primary key and auto-incrementing by default. Timestamps are also added by default. You can override these defaults by adding the `id` and `timestamps` keys to your schema file. Here's an example:
+
+```yml:no-line-numbers [posts.yml]
+increments: false # this will remove the auto-incrementing id column
+timestamps: false # this will remove the timestamps columns
+```
+
+Once you turn off auto-increments, you can add your own `id` column. Here's an example:
+
+```yml:no-line-numbers [posts.yml]
+increments: false
+
+columns:
+  id:
+    type: integer
+    primary: true
+
+...
+```
 
 ## Database tables
 
@@ -162,17 +187,17 @@ In the end, this means you can continue to use `php leaf db:rollback` to roll ba
 
 Database seeds are a way to populate a database with initial data. This initial data can be used to set up default values or pre-populate a database with test data. Database seeds typically contain small amounts of data, such as default settings, test data, or sample records.
 
-Seeders are used to populate your database with dummy data. In Leaf MVC, you can create seeders in your database files. The `seeders` key in your database file is used to create seeders. Here's an example of a seeder:
+Seeders are used to populate your database with dummy data. In Leaf MVC, you can create seeders in your database files. The `seeds` key in your database file is used to create seeders. Here's an example of a seeder:
 
 ```yml [users.yml]
 seeds:
   data:
     - name: 'Example User'
       email: 'example@example.com'
-      password: 'hash:password'
+      password: '@hash:passwordForThisUser' # @hash requires leafs/password
     - name: 'Another User'
       email: 'another@example.com'
-      password: 'hash:password'
+      password: '@hash:passwordForThisUser' # @hash requires leafs/password
 ```
 
 In this example, we create a seeder that seeds the `users` table with two example users. We are passing an array of seeds to the `data` key, each seed being a key value pair of column name and value.
@@ -185,7 +210,7 @@ seeds:
   data:
     name: 'Example User'
     email: 'example@example.com'
-    password: 'hash:password'
+    password: '@hash:password'
 ```
 
 After creating your seeder, you can run your seeders using the `db:seed` command:
@@ -196,15 +221,15 @@ php leaf db:seed
 
 This will generate 10 seeds for the `users` table with the same data which is not very useful. To generate multiple fake seeds, you can use what other frameworks call a factory.
 
-In Leaf MVC, factories and seeders are the same thing as we believe this confusion is unnecessary. If you want to generate fake data for your seeders, you can add `faker:[value]` as the value of a column in your seeder. Here's an example:
+In Leaf MVC, factories and seeders are the same thing as we believe this confusion is unnecessary. If you want to generate fake data for your seeders, you can add `@faker.[value]` as the value of a column in your seeder. Here's an example:
 
 ```yml{4,5} [users.yml]
 seeds:
   count: 10
   data:
-    name: 'faker:name'
-    email: 'faker:email'
-    password: 'hash:password'
+    name: '@faker.name'
+    email: '@faker.email'
+    password: '@hash:password'
 ```
 
 In this example, we're generating 10 fake seeds for the `users` table.
