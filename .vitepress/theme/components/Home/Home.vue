@@ -7,6 +7,7 @@ import Sponsors from './Sponsors.vue';
 import Testimonials from './Testimonials.vue';
 import Community from './Community.vue';
 import Footer from './Footer.vue';
+import NewsLetterSubstack from './../Community/NewsLetterSubstack.vue';
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import Footer from './Footer.vue';
   <Sponsors />
   <Testimonials />
   <Community />
+  <NewsLetterSubstack />
   <Footer />
 </template>
 
