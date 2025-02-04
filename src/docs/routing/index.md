@@ -181,6 +181,19 @@ If your route has a name, you can navigate to it by passing the route name in an
 response()->redirect(['home']);
 ```
 
+## View routes <Badge text="NEW" type="tip" />
+
+If your route needs to return a template without any logic, you can use the `view()` method. This method accepts two arguments:
+
+- The route pattern
+- The view file to render
+
+```php:no-line-numbers
+app()->view('/home', 'home');
+```
+
+The `view()` method will look for the view file using whatever view engine you have set up in your app. For instance, if you have blade setup, it will look for a file called `home.blade.php`. The template location also depends on your view engine setup. If you are using Leaf MVC, it will look for the file in the `app/views` folder and will use blade as the view engine.
+
 ## Routing in Leaf MVC
 
 Leaf MVC comes with an `app/routes` folder that organizes all your route files. The `app/routes/index.php` file is the entry point for all your routes and contains the setup for 404s, maintenance mode and other global route settings.
