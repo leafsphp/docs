@@ -40,7 +40,7 @@ const {
 
 <template>
   <Button type="button" @click="openModal"
-    class="px-4 py-2 text-sm text-white">
+    class="pr-4 py-2 text-sm text-white">
     <svg v-if="showIcon" class="icon-play w-[25px] h-[25px]" aria-labelledby="simpleicons-play-icon" role="img" viewBox="0 0 100 100"
       fill="#FFFFFF">
       <title id="simpleicons-play-icon" lang="en">Play icon</title>

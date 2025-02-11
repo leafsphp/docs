@@ -4,7 +4,6 @@ const sidebar = [
     // collapsible: true,
     // collapsed: true,
     items: [
-      { text: 'Introduction', link: '/docs/' },
       { text: 'Installation', link: '/docs/installation' },
       { text: 'Migration Guide', link: '/docs/migrating' },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },

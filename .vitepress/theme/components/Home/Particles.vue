@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <div class="stars w-[70vw] h-[110vh] absolute pointer-events-none inset-x-0 bottom-0 opacity-75"
+  <div class="stars w-[70vw] h-[120vh] absolute pointer-events-none inset-x-0 bottom-0 opacity-75"
     :class="{ accelerate: props.accelerate }">
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />

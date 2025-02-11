@@ -16,7 +16,7 @@ export default defineConfig({
   srcExclude: ['tutorial/**/description.md'],
 
   title: 'Leaf PHP',
-  description: 'Simple and elegant PHP',
+  description: 'Elegant PHP, Built for Makers',
 
   themeConfig: {
     nav,

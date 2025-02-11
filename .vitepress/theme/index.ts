@@ -20,6 +20,8 @@ export default {
       'aside-ads-before' : () =>
         h(defineAsyncComponent(() => import('./components/shared/Paperplane.vue'))),
         // h(defineAsyncComponent(() => import('./components/shared/GPTLink.vue'))),
+      'sidebar-nav-before': () =>
+        h(defineAsyncComponent(() => import('./components/shared/SidebarLinks.vue'))),
     });
   },
 };

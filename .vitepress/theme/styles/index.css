@@ -61,6 +61,10 @@ html.dark {
   color: black;
 } */
 
+body {
+  font-family: 'Bricolage Grotesque', serif;
+}
+
 .is-typed span.cursor {
   display: inline-block;
   width: 3px;
@@ -135,7 +139,20 @@ html.dark {
   background-color: var(--vp-c-bg-alt);
 }
 
-.VPSidebar .group, .VPNavBarTitle.has-sidebar a {
+.VPNavBar.home {
+  @apply bg-opacity-50 backdrop-blur-md transition-colors duration-500 !bg-white/85 dark:!bg-[#001e26]/75;
+}
+
+.VPNavBar.home .wrapper {
+  @apply max-sm:!px-0;
+}
+
+.VPNavBar.home .container {
+  @apply !max-w-none;
+}
+
+.VPSidebar .group,
+.VPNavBarTitle.has-sidebar a {
   @apply !border-none;
 }
 

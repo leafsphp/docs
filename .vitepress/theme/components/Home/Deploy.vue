@@ -1,9 +1,13 @@
 <template>
-  <section class="deploy flex flex-col md:min-h-screen !py-48">
+  <section
+    class="deploy flex flex-col md:min-h-screen sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10 !py-28 !my-48">
     <div class="max-w-[500px] mt-24 pb-6 md:mb-48">
-      <h1 class="w-[85%] !text-5xl mb-8">From install to deploy in minutes 🚀</h1>
-      <p>Leaf prides itself on it’s ease of use, and especially its ease of deployment. Leaf will happily run anywhere
-        PHP is available without asking any questions. Shared hosting? No problem, just drag and drop!</p>
+      <h1 class="w-[88%] !text-5xl mb-8">The framework for people who just want to ship 🚀</h1>
+      <p class="text-xl">
+        Leaf is built for makers who move fast. With no config and effortless deployment, you can run Leaf
+        anywhere PHP is available—no questions asked. Shared hosting? Just drag and drop. Cloud or VPS? Seamless. Get
+        from idea to production in no time.
+      </p>
     </div>
   </section>
   <!-- <div class="flex flex-col justify-center item-center h-[80vh]">

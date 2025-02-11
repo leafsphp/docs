@@ -13,7 +13,7 @@ const head: HeadConfig[] = [
     {
       name: 'description',
       content:
-        'Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.',
+        'Leaf is a lightweight and elegant PHP framework built for makers. With zero-config setup and an ecosystem of powerful tools, Leaf helps you build and ship scalable apps—fast',
     },
   ],
   ['meta', { name: 'twitter:site', content: '@leafphp' }],
@@ -23,7 +23,7 @@ const head: HeadConfig[] = [
     'meta',
     {
       name: 'twitter:title',
-      content: 'Leaf PHP - Elegant PHP for Modern Development',
+      content: 'Leaf PHP - Elegant PHP, Built for Makers',
     },
   ],
   [
@@ -31,7 +31,7 @@ const head: HeadConfig[] = [
     {
       name: 'twitter:description',
       content:
-        'Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.',
+        'Leaf is a lightweight and elegant PHP framework built for makers. With zero-config setup and an ecosystem of powerful tools, Leaf helps you build and ship scalable apps—fast',
     },
   ],
   [
@@ -46,7 +46,7 @@ const head: HeadConfig[] = [
     'meta',
     {
       name: 'og:title',
-      content: 'Leaf PHP - Elegant PHP for Modern Development',
+      content: 'Leaf PHP - Elegant PHP, Built for Makers',
     },
   ],
   [
@@ -76,7 +76,7 @@ const head: HeadConfig[] = [
     {
       name: 'og:description',
       content:
-        'Leaf is a lightweight and user-friendly framework designed for quick and efficient development. It features a zero-config setup and an ecosystem of tools, making it ideal for building scalable apps with ease.',
+        'Leaf is a lightweight and elegant PHP framework built for makers. With zero-config setup and an ecosystem of powerful tools, Leaf helps you build and ship scalable apps—fast',
     },
   ],
   [
@@ -128,7 +128,22 @@ const head: HeadConfig[] = [
   [
     'link',
     {
-      href: 'https://fonts.googleapis.com/css?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500|DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700|Inter:300,400,500,600|Open+Sans:400,600;display=swap',
+      href: 'https://fonts.googleapis.com',
+      rel: 'preconnect',
+    },
+  ],
+  [
+    'link',
+    {
+      href: 'https://fonts.gstatic.com',
+      rel: 'preconnect',
+      crossorigin: '',
+    },
+  ],
+  [
+    'link',
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap',
       rel: 'stylesheet',
     },
   ],
@@ -147,24 +162,24 @@ const head: HeadConfig[] = [
   //     'utf-8'
   //   ),
   // ],
-  [
-    'script',
-    {
-      async: '',
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-QGZVHHLK12',
-    },
-  ],
-  [
-    'script',
-    {},
-    `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+  // [
+  //   'script',
+  //   {
+  //     async: '',
+  //     src: 'https://www.googletagmanager.com/gtag/js?id=G-QGZVHHLK12',
+  //   },
+  // ],
+  // [
+  //   'script',
+  //   {},
+  //   `
+  //       window.dataLayer = window.dataLayer || [];
+  //       function gtag(){dataLayer.push(arguments);}
+  //       gtag('js', new Date());
 
-        gtag('config', 'G-QGZVHHLK12');
-      `,
-  ],
+  //       gtag('config', 'G-QGZVHHLK12');
+  //     `,
+  // ],
 ];
 
 export default head;

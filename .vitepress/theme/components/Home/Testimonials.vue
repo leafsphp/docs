@@ -1,8 +1,8 @@
 <template>
-  <div class="hidden sm:flex justify-center item-center md:py-48 bg-[var(--vp-c-bg-secondary)]">
+  <div class="hidden sm:flex justify-center item-center md:pt-36 md:pb-48 bg-[var(--vp-c-bg-secondary)] !px-2 sm:!px-10">
     <section class="flex flex-col justify-center items-center">
       <div class="text-center mb-16">
-        <h1 class="text-3xl md:!text-5xl px-[20%]">Loved by thousands of product people like you.</h1>
+        <h1 class="text-3xl md:!text-5xl px-[20%]">Powering thousands of makers, just like you.</h1>
       </div>
 
       <div class="mx-auto mt-4 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 xl:grid-cols-4">
@@ -22,6 +22,26 @@
               </div>
             </Card>
           </div>
+        </div>
+      </div>
+
+      <div class="relative z-10 text-center max-w-screen-lg xl:max-w-screen-xl mx-auto pt-20">
+        <div class="px-4 sm:px-6 md:px-8">
+          <figure class="max-w-3xl">
+            <blockquote class="!border-none !my-7">
+              <p class="text-center !text-3xl !font-semibold sm:!text-4xl !text-[initial] leading-relaxed">
+                <span class="text-gray-400">“</span>I don’t have time for complexity. Leaf gives me the tools I need,
+                nothing more.<span class="text-gray-400">”</span>
+              </p>
+            </blockquote>
+            <figcaption class="sm:text-xl font-medium flex flex-col items-center">
+              <div class="p-1 border-2 border-[var(--vp-c-brand)] rounded-full mb-3"><img
+                  src="https://avatars.githubusercontent.com/u/26604242?v=4" alt=""
+                  class="w-14 h-14 rounded-full bg-[var(--vp-c-brand)]" loading="lazy"></div>
+              <div>Michael Darko</div>
+              <small class="text-[var(--vp-c-brand)]">Creator of Leaf PHP</small>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
