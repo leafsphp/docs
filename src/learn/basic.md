@@ -162,7 +162,7 @@ Okay, looks like some magic is happening here. Let's break it down:
 - `app()` is a helper function that gives you access to the Leaf app instance, it is available from anywhere in your app.
 - `view()` is a method that you can use to create a route that renders a Blade view. The first argument is what the user enters in the URL, and the second argument is the name of the view file to render.
 
-Notice we did not have to configure Blade because Leaf does that for you. You can now navigate to http://localhost:5500/prelaunch to see your pre-launch page.
+Notice we did not have to configure Blade because Leaf does that for you. You can now navigate to `http://localhost:5500/prelaunch` to see your pre-launch page.
 
 ### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">2</span> Handling the form submission
 
