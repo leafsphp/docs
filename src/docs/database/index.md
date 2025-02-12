@@ -3,7 +3,8 @@
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
 A database is an organized storage system for managing data like your users' profiles or product details. Leaf offers a lightweight module that simplifies database interaction and supports five major database systems.
@@ -51,7 +52,37 @@ Databases are essential for most applications, as they help you store and retrie
 
 ## Leaf MVC + DB
 
-Leaf MVC comes with built-in support for models which are a way to programmatically represent resources in your database using PHP classes. For that reason, you have no real need to use the `db()` function unless you want to quickly run a query without creating a model. Still, everything has been set up for you and Leaf DB will use the default database connection details in your `.env` file.
+<div
+    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
+>
+    <div
+        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+    >
+        <div
+            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
+        >
+            <p class="font-medium text-rose-100 text-shadow mb-4">
+              Models are a more powerful way to interact with your database in Leaf MVC using an object-oriented approach, which also makes your code more readable and maintainable.
+            </p>
+            <Button
+                as="a"
+                href="/docs/database/models"
+                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                >Let's go</Button
+            >
+        </div>
+        <!-- <div
+            class="relative md:pl-6 xl:pl-8 hidden sm:block"
+        >
+            Hello
+        </div> -->
+    </div>
+    <div
+        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+    ></div>
+</div>
+
+If you still want to use Leaf DB with Leaf MVC, everything has been set up for you and Leaf DB will use the default database connection details in your `.env` file.
 
 Here are a few example connections:
 

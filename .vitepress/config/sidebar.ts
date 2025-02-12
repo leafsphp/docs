@@ -29,7 +29,7 @@ const sidebar = [
       { text: 'Route Groups', link: '/docs/routing/route-groups' },
       { text: 'Dynamic routing', link: '/docs/routing/dynamic' },
       { text: 'Middleware', link: '/docs/routing/middleware/' },
-      { text: 'Middleware in Leaf MVC', link: '/docs/routing/middleware/mvc' },
+      // { text: 'Middleware in Leaf MVC', link: '/docs/routing/middleware/mvc' },
     ],
   },
   {
