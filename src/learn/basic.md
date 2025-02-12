@@ -75,7 +75,7 @@ Once you are in your application root, you can run the app using the `serve` com
 php leaf serve
 ```
 
-Your app is now running! Open [http://localhost:5500](http://localhost:5500) in your browser.
+Your app is now running! Open <a href="http://localhost:5500" target="_blank" rel="noreferrer">http://localhost:5500</a> in your browser.
 
 ## Building your first app
 
@@ -162,7 +162,7 @@ Okay, looks like some magic is happening here. Let's break it down:
 - `app()` is a helper function that gives you access to the Leaf app instance, it is available from anywhere in your app.
 - `view()` is a method that you can use to create a route that renders a Blade view. The first argument is what the user enters in the URL, and the second argument is the name of the view file to render.
 
-Notice we did not have to configure Blade because Leaf does that for you. You can now navigate to [http://localhost:5500/prelaunch](http://localhost:5500/prelaunch) to see your pre-launch page.
+Notice we did not have to configure Blade because Leaf does that for you. You can now navigate to http://localhost:5500/prelaunch to see your pre-launch page.
 
 ### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">2</span> Handling the form submission
 
@@ -298,7 +298,7 @@ You can use the `withFlash()` method to send a message to the next request. This
 
 ### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">5</span> Deploying your app
 
-We have built a simple pre-launch page using Leaf. You can now deploy your app to a server using a service like [Heroku](/learn/deployment/heroku), [Fly.io](/learn/deployment/flyio) a VPS like [DigitalOcean](/learn/deployment/digitalocean), or even a shared hosting service like [Sevalla](/learn/deployment/sevalla).
+We have built a simple pre-launch page using Leaf. You can now deploy your app to a server using a service like [Heroku](/learn/deployment/heroku/), [Fly.io](/learn/deployment/flyio/) a VPS like [DigitalOcean](/learn/deployment/digitalocean/), or even a shared hosting service like [Sevalla](/learn/deployment/sevalla/).
 
 <div class="my-4 md:my-10">
     <div

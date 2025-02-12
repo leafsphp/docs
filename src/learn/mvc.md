@@ -54,7 +54,7 @@ cd my-app
 php leaf serve
 ```
 
-Your app is now running! Open [http://localhost:5500](http://localhost:5500) in your browser.
+Your app is now running! Open <a href="http://localhost:5500" target="_blank" rel="noreferrer">http://localhost:5500</a> in your browser.
 
 ## Project Structure
 
@@ -257,7 +257,7 @@ You can use the `withFlash()` method to send a message to the next request. This
 
 ### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">5</span> Deploying your app
 
-We have built a simple pre-launch page using Leaf MVC. You can now deploy your app to a server using a service like [Heroku](/learn/deployment/heroku), [Fly.io](/learn/deployment/flyio) a VPS like [DigitalOcean](/learn/deployment/digitalocean), or even a shared hosting service like [Sevalla](/learn/deployment/sevalla).
+We have built a simple pre-launch page using Leaf MVC. You can now deploy your app to a server using a service like [Heroku](/learn/deployment/heroku/), [Fly.io](/learn/deployment/flyio/) a VPS like [DigitalOcean](/learn/deployment/digitalocean/), or even a shared hosting service like [Sevalla](/learn/deployment/sevalla/).
 
 <div class="my-4 md:my-10">
     <div

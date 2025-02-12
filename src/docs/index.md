@@ -38,11 +38,11 @@ Most PHP frameworks are complex, slow, and opinionated. Leaf is different—it's
 
 ## Creating a new app
 
-Leaf is built to be incrementally adoptable: use it as a lightweight core for small to medium apps, or scale up with [Leaf MVC](/docs/mvc) for more structure in complex applications. No matter your stack, Leaf stays simple, fast, and developer-friendly—so you can build and ship with ease.
+Leaf is built to be incrementally adoptable: use it as a lightweight core for small to medium apps, or scale up with [Leaf MVC](/docs/mvc/) for more structure in complex applications. No matter your stack, Leaf stays simple, fast, and developer-friendly—so you can build and ship with ease.
 
 ::: details Technical Requirements
 
-Before you start with Leaf, verify that your system has PHP v7.4+, Composer (for package management) and [Leaf CLI](/docs/cli) (optional but recommended for easier app management)
+Before you start with Leaf, verify that your system has PHP v7.4+, Composer (for package management) and [Leaf CLI](/docs/cli/) (optional but recommended for easier app management)
 
 ::: details Don't have PHP & Composer installed?
 

@@ -173,8 +173,8 @@ const sidebar = [
   //   items: [
   //     { text: 'Intro', link: '/codelabs/' },
   //     { text: 'Contributing', link: '/codelabs/contributing' },
-  //     // { text: 'Deployment', link: '/codelabs/experiments/deployment/' },
-  //     // { text: 'Authentication', link: '/codelabs/experiments/auth/' },
+  //     // { text: 'Deployment', link: '/learn/deployment/' },
+  //     // { text: 'Authentication', link: '/learn/auth/' },
   //   ],
   // },
 ];
