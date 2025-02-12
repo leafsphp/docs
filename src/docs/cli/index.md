@@ -21,7 +21,7 @@ Leaf CLI is a command line tool that helps you create, manage and deploy Leaf ap
   videoUrl="https://www.youtube.com/embed/jqkear8zue8"
 />
 
-*This guide will assume that your system meets all the [technical requirements](/docs/installation#technical-requirements).*
+*This guide will assume that your system meets all the [technical requirements](/docs/#creating-a-new-app).*
 
 You can verify that composer is installed by running:
 

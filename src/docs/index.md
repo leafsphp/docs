@@ -1,13 +1,14 @@
-# Hello there 👋
+# Meet Leaf PHP
 
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
 import VideoModal from '@theme/components/shared/VideoModal.vue';
 import Card from '@theme/components/shared/Card.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
-Leaf is a slim and lightweight PHP framework focused on developer experience, usability, and high-performance code. It is a modern PHP framework built to be simple and elegant, yet extremely powerful.
+Leaf is PHP made simple—elegant, intuitive, and easy to pick up, with lightweight tools that help makers build, ship, and scale effortlessly.
 
 ```php
 <?php
@@ -21,95 +22,190 @@ app()->get('/', function () {
 app()->run();
 ```
 
-Writing code should be simple and fun, and that's what Leaf is all about.
+Leaf handles the heavy lifting so you can focus on building. It provides a simple routing system, powerful middleware support, seamless database integration, and a whole lot more.
+
+As we love to say, "Writing code should be simple and fun, and that's what Leaf is all about."
 
 ## Why Leaf?
 
-PHP frameworks often come with a steep learning curve, performance overhead, and strict conventions, which can complicate maintenance and limit flexibility amongst other issues like bloat. Leaf addresses these challenges by offering a range of features designed to make web development easier and more enjoyable:
+Most PHP frameworks are complex, slow, and opinionated. Leaf is different—it's built for makers.
 
-- Leaf is beginner-friendly, enabling PHP newcomers to build powerful apps within minutes. All you need is basic PHP knowledge and, optionally, some backend web dev familiarity.
+- 🚀 Beginner-friendly – Get started in minutes with just basic PHP knowledge.
+- ⚡ Lightweight & fast – A minimal core with high performance and low memory usage.
+- 🛠️ Built for makers – Simple APIs, class-free initializers, and global functions that let you focus on shipping.
+- 🔗 Seamless integration – Works effortlessly with any library or framework—no complex setups required.
+- 📈 Scales with you – Everything you need—routing, database tools, authentication, and more—but stays unopinionated, letting you pick and choose what fits your project.
 
-- Leaf is lightweight and blazing fast with a minimal core and a load of optional modules for building full apps and APIs efficiently, offering high performance and low memory usage.
+## Creating a new app
 
-- Leaf is built to enhance developer focus, offering features like class-free initializers and global functions for easy access to classes across your app, creating an optimized PHP developer experience.
+Leaf is built to be incrementally adoptable: use it as a lightweight core for small to medium apps, or scale up with [Leaf MVC](/docs/mvc) for more structure in complex applications. No matter your stack, Leaf stays simple, fast, and developer-friendly—so you can build and ship with ease.
 
-- Leaf is designed for seamless integration with other libraries and frameworks, prioritizing simplicity over complex setups like providers needed by other frameworks.
+::: details Technical Requirements
 
-- Leaf is highly scalable, and grows with your project. Its core and ecosystem of libraries make it ideal for projects of any size.
+Before you start with Leaf, verify that your system has PHP v7.4+, Composer (for package management) and [Leaf CLI](/docs/cli) (optional but recommended for easier app management)
 
-<!-- Leaf is built to be modular, so you can use only what you need. There's no need to learn a whole new framework to use Leaf, just familiarize yourself with the core concepts and you're good to go. This makes Leaf a great choice for both beginners and experienced developers. -->
+::: details Don't have PHP & Composer installed?
 
-## How to Use These Docs
+- Beyond Code released an amazing tool called [Laravel Herd](https://herd.laravel.com/) that provides a quick and easy way to set up a local PHP development environment for Mac and Windows. It's a great way to get started with PHP if you don't have it installed yet.
 
-On the left side of the screen, you'll find the docs navbar. The pages of the docs are organized sequentially, from basic to advanced, so you can follow them step-by-step when building your application. However, you can read them in any order or skip to the pages that apply to your use case.
+- Another way to install PHP and Composer without any hassle is to use [php.new](https://php.new/) which was created by Beyond Code. It's a quick way to get started on Windows, Linux and Mac with just one command.
 
-On the right side of the screen, you'll see a table of contents that makes it easier to navigate between sections of a page. If you need to quickly find a page, you can use the search bar at the top, or the search shortcut (Ctrl+K or Cmd+K).
-
-To get started, check out the [Installation guide](/docs/installation).
-
-## Pre-Requisite Knowledge
-
-Although our docs are designed to be beginner-friendly, we need to establish a baseline so that the docs can stay focused on Leaf's functionality. We assume you have a basic understanding of PHP and it's syntax, as well as a little familiarity with web development concepts like HTTP, routing, and middleware.
-
-Don't worry if you're not familiar with these concepts, we'll provide videos and links to relevant documentation whenever we introduce a new concept like the one below:
-
-<VideoModal
-  buttonText="PHP Tutorial for Beginners"
-  description="This video is a PHP tutorial for beginners. It covers the basics of PHP and is a great starting point for anyone new to the language."
-  videoUrl="https://www.youtube.com/embed/OK_JCtrrv-c"
-/>
-
-## Functions vs Class Mode
-
-Leaf is built with many classes and components, but for simpler apps or APIs, it also offers a functional mode. This lets you use Leaf and its modules without class imports, instantiation, or lengthy namespaces—keeping things simple and streamlined.
-
-Of course, you can still use Leaf in class mode if you prefer that. Here's an example of a simple Leaf app in both modes:
-
-::: code-group
-
-```php [Functional Mode]
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-app()->get('/', function () {
-  response()->json(['message' => 'Leaf is amazing!']);
-});
-
-app()->run();
-```
-
-```php [Class Mode]
-<?php
-
-use Leaf\App;
-
-require __DIR__ . '/vendor/autoload.php';
-
-$app = new App;
-
-$app->get('/', function () use ($app) {
-  $app->response()->json(['message' => 'Leaf is amazing!']);
-});
-
-$app->run();
-```
+- A more traditional way on Windows, Linux and Mac, you can use [Xampp](https://www.apachefriends.org/), which is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
 
 :::
 
-The documentation will usually show you how to use modules in functional mode as this is the default mode for Leaf. However, if you are migrating from another framework or you prefer to use Leaf in class mode, you can always instantiate the classes and use them as you would in any other framework.
+Once you install PHP and Composer, you can proceed with the installation of Leaf CLI:
 
-## Getting Started
+```bash:no-line-numbers
+composer global require leafs/cli
+```
 
-Ready to get started? Check out the [installation guide](/docs/installation) to get Leaf up and running in no time. You can also check out the [interactive tutorial](/tutorial/) to learn more about Leaf's core concepts and features.
+### Building your first app
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
+After setting up Leaf CLI, you can create a new Leaf app using the `create` command:
+
+```bash:no-line-numbers
+leaf create <project-name>
+```
+
+This will walk you through a quick setup process where you can select the kind of application you want to build. You can find more options in the [CLI documentation](/docs/cli/).
+
+Once your project is generated, you can run it using the `serve` command:
+
+```bash:no-line-numbers
+leaf serve
+```
+
+That's it! You're now ready to start building with Leaf. 🍃
+
+<VideoModal
+  buttonText="Setup a project via CLI"
+  subject="Watch the leaf installation walkthrough"
+  videoUrl="https://www.youtube.com/embed/d3Y-aOPLf4c"
+/>
+
+## Building with Leaf
+
+No project is the same, why should your tools be? Leaf is designed to be flexible and adaptable, so you can build your way. Choose your path and start building with Leaf:
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-4">
+    <section class="flex">
+        <div
+            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+        >
+            <div
+                class="w-full flex md:flex-col bg-gradient-to-br from-purple-500 to-indigo-500"
+            >
+                <div
+                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+                >
+                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                        Basic Leaf App
+                    </h3>
+                    <p class="font-medium text-violet-100 text-shadow mb-4">
+                        Use Leaf as a micro-framework to build simple apps and APIs.
+                    </p>
+                    <Button
+                        as="a"
+                        class="mt-auto bg-violet-800 hover:!bg-violet-800 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                        href="/learn/basic"
+                        >Start building</Button
+                    >
+                </div>
+                <!-- <div
+                    class="relative md:pl-6 xl:pl-8 hidden sm:block"
+                >
+                    Hello
+                </div> -->
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 hidden sm:block"
+                style="
+                    background: linear-gradient(
+                        to top,
+                        rgb(135, 94, 245),
+                        rgba(135, 94, 245, 0)
+                    );
+                "
+            ></div>
+        </div>
+    </section>
+    <section class="flex">
+        <div
+            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+        >
+            <div
+                class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+            >
+                <div
+                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+                >
+                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                        Leaf MVC App
+                    </h3>
+                    <p class="font-medium text-rose-100 text-shadow mb-4">
+                        Add an MVC structure on top of Leaf for more complex apps.
+                    </p>
+                    <Button
+                        as="a"
+                        href="/learn/mvc"
+                        class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                        >Start building</Button
+                    >
+                </div>
+                <!-- <div
+                    class="relative md:pl-6 xl:pl-8 hidden sm:block"
+                >
+                    Hello
+                </div> -->
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+            ></div>
+        </div>
+    </section>
+    <section class="flex">
+        <div
+            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+        >
+            <div
+                class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
+            >
+                <div
+                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+                >
+                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                        MVC for APIs
+                    </h3>
+                    <p class="font-medium text-amber-100 text-shadow mb-4">
+                      Build APIs with a structured approach for better organization.
+                    </p>
+                    <Button
+                        as="a"
+                        class="mt-auto bg-amber-900 hover:!bg-amber-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                        href="/learn/api"
+                        >Start building</Button
+                    >
+                </div>
+                <!-- <div class="relative hidden sm:block">
+                    <div class="absolute left-2 bottom-3 xl:bottom-5">
+                        Hello
+                    </div>
+                </div> -->
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-orange-500 hidden sm:block"
+            ></div>
+        </div>
+    </section>
+</div>
+
+<!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
   <Card class="p-6 docs-section-card hover:!border-[var(--vp-c-border-alt)]">
   <h3 class="!text-lg">Hello Leaf 🍃</h3>
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Let's get you up and running</p>
 
   <ul>
-    <li><a href="/docs/installation">Installation</a></li>
     <li><a href="/docs/cli">Leaf CLI</a></li>
     <li><a href="/docs/migrating">Migrating from other frameworks</a></li>
   </ul>
@@ -157,8 +253,8 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <p class="text-sm text-[var(--vp-c-text-2)] !m-0">Deploying your Leaf app</p>
 
   <ul>
-    <!-- <li><a href="/docs/config/deployment">Deployment</a></li>
-    <li><a href="/docs/utils/logging">Logging</a></li> -->
+    <li><a href="/docs/config/deployment">Deployment</a></li>
+    <li><a href="/docs/utils/logging">Logging</a></li>
     <li><a href="/docs/config/debugging">Debugging</a></li>
     <li><a href="/docs/routing/url-rewriting">Url rewriting</a></li>
   </ul>
@@ -175,7 +271,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
   <ul>
     <li><a href="/docs/database/">Database</a></li>
     <li><a href="/docs/database/redis">Redis</a></li>
-    <!-- <li><a href="/docs/database/others">Other DB Engines</a></li> -->
+    <li><a href="/docs/database/others">Other DB Engines</a></li>
   </ul>
   </Card>
 
@@ -267,7 +363,7 @@ Ready to get started? Check out the [installation guide](/docs/installation) to 
     <li><a href="/docs/mvc/console">MVC Console Tool</a></li>
   </ul>
   </Card>
-</div>
+</div> -->
 <!-- - Swoole
 - Queues
 - Testing -->

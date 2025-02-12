@@ -4,22 +4,22 @@ const sidebar = [
     // collapsible: true,
     // collapsed: true,
     items: [
-      { text: 'Installation', link: '/docs/installation' },
+      // { text: 'Installation', link: '/docs/installation' },
+      { text: 'Leaf CLI', link: '/docs/cli/' },
       { text: 'Migration Guide', link: '/docs/migrating' },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
       { text: 'Modules', link: '/docs/modules' },
     ],
   },
-  {
-    text: 'Leaf CLI',
-    // collapsible: true,
-    // collapsed: true,
-    items: [
-      { text: 'CLI Intro', link: '/docs/cli/' },
-      { text: 'Creating apps', link: '/docs/cli/creating-an-app' },
-      { text: 'Managing apps', link: '/docs/cli/managing-apps' },
-    ],
-  },
+  // {
+  //   text: 'Leaf CLI',
+  //   // collapsible: true,
+  //   // collapsed: true,
+  //   items: [
+  //     { text: 'Creating apps', link: '/docs/cli/creating-an-app' },
+  //     { text: 'Managing apps', link: '/docs/cli/managing-apps' },
+  //   ],
+  // },
   {
     text: 'Routing',
     // collapsible: true,

@@ -4,7 +4,7 @@ You've learnt how to create routes, handle requests, and responses, and even how
 
 As a next step, you can:
 
-- Set up a real project on your system by following the [installation docs](/docs/installation).
+- Set up a real project on your system by following the [installation docs](/docs/#creating-a-new-app).
 
 - Every feature you need is available as a module, so be sure to checkout the [modules documentation](/docs/modules).
 

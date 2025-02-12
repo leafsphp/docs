@@ -7,14 +7,14 @@ const links = [
   {
     name: 'Documentation',
     href: '/docs/',
-    color: 'text-sky-500 dark:text-sky-400 group-hover:shadow-sky-200 dark:group-hover:bg-sky-500 dark:bg-sky-500 dark:highlight-white/10',
+    color: 'group-hover:shadow-[var(--vp-c-brand)] dark:group-hover:bg-[var(--vp-c-brand)] dark:bg-[var(--vp-c-brand)] dark:highlight-white/10',
     icon: `<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M8.5 7c1.093 0 2.117.27 3 .743V17a6.345 6.345 0 0 0-3-.743c-1.093 0-2.617.27-3.5.743V7.743C5.883 7.27 7.407 7 8.5 7Z"
-              class="fill-sky-200 group-hover:fill-sky-500 dark:fill-sky-300 dark:group-hover:fill-sky-300"></path>
+              class="fill-[var(--vp-c-brand)] group-hover:fill-green-500 dark:fill-[var(--vp-c-brand)] dark:group-hover:fill-[var(--vp-c-brand)]"></path>
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M15.5 7c1.093 0 2.617.27 3.5.743V17c-.883-.473-2.407-.743-3.5-.743s-2.117.27-3 .743V7.743a6.344 6.344 0 0 1 3-.743Z"
-              class="fill-sky-400 group-hover:fill-sky-500 dark:fill-sky-200 dark:group-hover:fill-sky-200"></path>
+              class="fill-green-400 group-hover:fill-green-500 dark:fill-[var(--vp-c-brand)] dark:group-hover:fill-[var(--vp-c-brand)]"></path>
           </svg>`
   },
   {
@@ -33,8 +33,8 @@ const links = [
           </svg>`
   },
   {
-    name: 'Templates',
-    href: 'https://tailwindui.com/templates?ref=sidebar',
+    name: 'Learn',
+    href: '/learn/',
     color: 'group-hover:shadow-fuchsia-200 dark:group-hover:bg-fuchsia-600',
     icon: `<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -111,10 +111,11 @@ const links = [
 <template>
   <ul class="pt-4">
     <li v-for="link in links" :key="link.name">
-      <a class="group flex items-center lg:text-sm lg:leading-6 mb-4 font-semibold text-sky-500 dark:text-sky-400"
-        href="/docs/installation">
+      <a class="group flex items-center lg:text-sm lg:leading-6 mb-4 font-semibold"
+        :class="pathname.startsWith(link.href) ? 'text-[var(--vp-c-brand)]' : ''"
+        :href="link.href">
         <div
-          class="mr-4 rounded-md ring-1 ring-slate-900/5 shadow-sm group-hover:shadow group-hover:ring-slate-900/10 dark:ring-0 dark:shadow-none dark:group-hover:shadow-none dark:group-hover:highlight-white/10 group-hover:shadow-sky-200 dark:group-hover:bg-sky-500 dark:bg-sky-500 dark:highlight-white/10"
+          class="mr-4 rounded-md ring-1 ring-slate-900/5 shadow-sm group-hover:shadow group-hover:ring-slate-900/10 dark:ring-0 dark:shadow-none dark:group-hover:shadow-none dark:group-hover:highlight-white/10 group-hover:shadow-sky-200 dark:group-hover:bg-black dark:bg-[var(--vp-c-bg)] dark:highlight-white/10"
           v-html="link.icon">
         </div>
         {{ link.name }}
