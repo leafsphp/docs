@@ -54,7 +54,7 @@ cd my-app
 php leaf serve
 ```
 
-Your app is now running! Open <a href="http://localhost:5500" target="_blank" rel="noreferrer">http://localhost:5500</a> in your browser.
+Your app is now running! Open `http://localhost:5500` in your browser.
 
 ## Project Structure
 

@@ -75,7 +75,7 @@ Once you are in your application root, you can run the app using the `serve` com
 php leaf serve
 ```
 
-Your app is now running! Open <a href="http://localhost:5500" target="_blank" rel="noreferrer">http://localhost:5500</a> in your browser.
+Your app is now running! Open `http://localhost:5500` in your browser.
 
 ## Building your first app
 
