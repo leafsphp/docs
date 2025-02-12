@@ -4,10 +4,6 @@ Testing helps you and your team build Leaf apps faster by making sure that new f
 
 Since you might need to setup a project for rapid prototyping and deployment, we don't add any tests to the default Leaf installation. However, we have Alchemy, a user-friendly tool that simplifies your testing, code styling checks, and code coverage reports with a single command.
 
-::: warning Docs version
-This documentation covers Alchemy v2 and above. If you're using an older version, you can check the documentation [hosted here](https://v3.leafphp.dev/docs/tooling/testing.html).
-:::
-
 ## Setting up
 
 Leaf CLI will always ask if you want to add Alchemy to your project when you create a new project. If you already have a project and want to add Alchemy, you can do so by running the following command:
