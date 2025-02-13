@@ -1,5 +1,6 @@
 <template>
-  <div class="hidden sm:flex justify-center item-center md:pt-36 md:pb-48 bg-[var(--vp-c-bg-secondary)] !px-2 sm:!px-10">
+  <div
+    class="hidden sm:flex justify-center item-center md:pt-36 md:pb-48 bg-[var(--vp-c-bg-secondary)] !px-2 sm:!px-10">
     <section class="flex flex-col justify-center items-center">
       <div class="text-center mb-16">
         <h1 class="text-3xl md:!text-5xl px-[20%]">Powering thousands of makers, just like you.</h1>
@@ -28,8 +29,8 @@
       <div class="relative z-10 text-center max-w-screen-lg xl:max-w-screen-xl mx-auto pt-20">
         <div class="px-4 sm:px-6 md:px-8">
           <figure class="max-w-3xl">
-            <blockquote class="!border-none !my-7">
-              <p class="text-center !text-3xl !font-semibold sm:!text-4xl !text-[initial] leading-relaxed">
+            <blockquote class="!border-none !my-7 !text-[var(--vp-c-text-1)]">
+              <p class="text-center !text-3xl !font-semibold sm:!text-4xl leading-relaxed">
                 <span class="text-gray-400">“</span>I don’t have time for complexity. Leaf gives me the tools I need,
                 nothing more.<span class="text-gray-400">”</span>
               </p>

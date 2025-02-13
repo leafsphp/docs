@@ -1,5 +1,11 @@
 # Building full-stack with Leaf MVC
 
+<!-- markdownlint-disable no-inline-html -->
+
+<script setup>
+import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
+</script>
+
 <section class="flex mt-4">
     <div
         class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
@@ -29,7 +35,7 @@
     </div>
 </section>
 
-Full stack applications are usually monolithic applications that have both a front-end and a back-end. Leaf MVC gives you all the goodness of Leaf which you can use to handle requests and render views using a templating engine like [Blade](/docs/frontend/blade) or using a front-end framework like [React, Vue or Svelte](/docs/frontend/inertia).
+Full-stack applications typically combine both the front-end and back-end in a single, cohesive system. With Leaf MVC, you get all the power of Leaf for handling requests while seamlessly rendering views using [Blade](/docs/frontend/blade) or integrating with modern front-end frameworks like [React, Vue or Svelte](/docs/frontend/inertia).
 
 ## Getting started
 
@@ -58,7 +64,7 @@ Your app is now running! Open `http://localhost:5500` in your browser.
 
 ## Project Structure
 
-Leaf MVC, just like the rest of Leaf is built for makers, and as such, it keeps only the essentials. Here's a basic structure of a Leaf MVC app:
+Leaf MVC, like the rest of Leaf, is built for makers—focused, lightweight, and flexible. It keeps only the essentials, giving you everything you need without the extra baggage. Here’s the basic structure of a Leaf MVC app:
 
 ```bash:no-line-numbers
 ├───app
@@ -74,20 +80,24 @@ Leaf MVC, just like the rest of Leaf is built for makers, and as such, it keeps 
         └── img
 ```
 
-- app: Contains all the application code including controllers, models, views, and routes, as well as your database files.
-- public: Contains all the publicly accessible files including assets like bundled CSS, JS and images.
+Leaf MVC keeps things simple, ensuring you focus on building rather than configuration. Here’s a quick breakdown of the key directories:
 
-Just about all the work you'll be doing will be in the `app` directory. You can create routes which will call controllers which will interact with models and render views (the MVC cycle). Don't worry if you're not familiar with MVC, just remember that every request starts with a route and ends with a response of some sort.
+- app/ – This is where all your application logic lives, including controllers, models, views, and routes. Your database files also reside here.
+- public/ – Contains publicly accessible files like bundled CSS, JavaScript, and images. This is the only directory exposed to the browser.
+
+Most of your work will happen in the app directory, with a typical request starting with a route, which calls a controller, which interacts with a model, and finally renders a view—this is the MVC cycle in action.
+
+Don’t worry if you’re new to MVC! Just remember: every request starts with a route and ends with a response.
 
 ## Building your first app
 
 As a maker, the easiest way to get started with your app is by building a Coming Soon, Early Access, or Pre-Launch page. This gives you something real to share while you build, helping you gather interest and early users. Let’s create a simple pre-launch page in Leaf MVC!
 
-### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">1</span> The routing bit
+### <TutorialNumber number="1" /> The routing bit
 
-In Leaf MVC, routes live in the `app/routes` directory. You'll find an index.php file along with some files that start with \_. These are partials—automatically loaded by Leaf to help you organize your routes however you like.
+In Leaf MVC, routes are defined in the `app/routes` directory. You’ll see an index.php file along with some files that start with `_`. These are partials, and Leaf automatically loads them to help you organize routes in a way that fits your project.
 
-For our pre-launch page, we'll create a new route in the `app/routes/_prelaunch.php` file. Open the file and add a new route like this:
+For our pre-launch page, let’s create a new route inside `app/routes/_prelaunch.php`. Open the file and add this:
 
 ```php
 <?php
@@ -100,9 +110,11 @@ Okay, looks like some magic is happening here. Let's break it down:
 - `app()` is a helper function that gives you access to the Leaf app instance, it is available from anywhere in your app.
 - `view()` is a method that you can use to create a route that renders a Blade view. The first argument is what the user enters in the URL, and the second argument is the name of the view file to render.
 
-### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">2</span> The view bit
+### <TutorialNumber number="2" /> The view bit
 
-We created the route, but we'll get a very nasty error if we navigate to the `/prelaunch` page. That's because we don't have our prelaunch view, so let's create that. In our `app/views` folder, we can create a `prelaunch.blade.php` file.
+We’ve set up the route, but if we navigate to `/prelaunch` now, we’ll hit an error—because we haven’t created the prelaunch view yet!
+
+To fix this, let’s create a new Blade file inside the `app/views` directory. Name it `prelaunch.blade.php`, and this is where we’ll define our pre-launch page.
 
 ```blade [app/views/prelaunch.blade.php]
 <!DOCTYPE html>
@@ -122,7 +134,7 @@ We created the route, but we'll get a very nasty error if we navigate to the `/p
 <body>
     <h1>Something amazing is coming soon!</h1>
     <p>Sign up to be the first to know when we launch.</p>
-    <form action="/notify" method="post">
+    <form action="/store" method="post">
         <input type="email" name="email" placeholder="Enter your email">
         <button type="submit">Notify Me</button>
     </form>
@@ -130,69 +142,73 @@ We created the route, but we'll get a very nasty error if we navigate to the `/p
 </html>
 ```
 
-The most important bit here is the form. We're creating a simple form that takes an email address and sends it to a route that will handle the email. We'll create that route in a bit. Remember how to create a route?
+The most important part of this page is the form. We’re keeping it simple—it just collects an email address and submits it to a route that will handle the email. We’ll create that route in a moment. Remember how we set up a route earlier? We’ll follow the same approach!
 
-### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">3</span> Handling the form submission
+### <TutorialNumber number="3" /> Handling the form submission
 
-This is the final bit of our pre-launch page, but also the most complicated part. We need to create a route that will call a controller, validate the email and save it to a database using a model. So basically, we will go through the entire MVC cycle plus a bit of configuration. Let's start with the route.
+This is the final piece of our pre-launch page, but also the most involved. We need to create a route that calls a controller, validates the email, and saves it to a database using a model. This will take us through the full MVC cycle, plus a bit of setup.
 
-```php{4} [app/routes/_prelaunch.php]
+Let’s start by defining the route!
+
+```php [app/routes/_prelaunch.php]
 <?php
 
 app()->view('/prelaunch', 'prelaunch');
-app()->post('/notify', 'NotifyController@notify');
+app()->post('/store', 'SubscribersController@store'); // [!code ++]
 ```
 
-We used the `post()` method this time because we want only POST requests to hit this route. The second argument is the controller and method that will handle the request. We can create the controller using the CLI.
+We used the `post()` method because we only want POST requests to hit this route. The second argument specifies the controller and method that will handle the request.
+
+To generate the controller, we can use the Leaf CLI:
 
 ```bash:no-line-numbers
-php leaf g:controller notify
+php leaf g:controller subscribers
 ```
 
-This will create a new controller in the `app/controllers` directory. Open the `NotifyController.php` file and add the `notify` method.
+This will create a new controller in the `app/controllers` directory. Open the `SubscribersController.php` file and add the `store` method.
 
-```php{7-10} [app/controllers/NotifyController.php]
+```php [app/controllers/SubscribersController.php]
 <?php
 
 namespace App\Controllers;
 
-class NotifyController extends Controller
+class SubscribersController extends Controller
 {
-    public function notify()
-    {
-        // handle the email
-    }
+    public function store() // [!code ++]
+    { // [!code ++]
+        // handle the email // [!code ++]
+    } // [!code ++]
 }
 ```
 
 We're almost there! We need to validate the email and save it to a database. Validation is pretty simple with Leaf, we can use the `validate()` method on our request and pass in the rules we want to validate against.
 
-```php{9-12} [app/controllers/NotifyController.php]
+```php{9-12} [app/controllers/SubscribersController.php]
 <?php
 
 namespace App\Controllers;
 
-class NotifyController extends Controller
+class SubscribersController extends Controller
 {
-    public function notify()
+    public function store()
     {
-        if (!$data = request()->validate(['email' => 'email'])) {
-            // validation failed, redirect back with errors
-            return response()->with('errors', response()->errors())->redirect('/prelaunch');
-        }
+        if (!$data = request()->validate(['email' => 'email'])) { // [!code ++]
+            // validation failed, redirect back with errors // [!code ++]
+            return response()->with('errors', request()->errors())->redirect('/prelaunch'); // [!code ++]
+        } // [!code ++]
 
         // save the email
     }
 }
 ```
 
-That's pretty much it for validation. We can now save the email to a database using the model. Let's create a model for our subscribers.
+Great job so far! Now, let's save the email to a database using a model. First, we'll generate a Subscriber model:
 
 ```bash:no-line-numbers
-php leaf g:model Subscriber
+php leaf g:model subscriber
 ```
 
-We don't need to do anything to the model, however, we still have a bit more work to do. We have not connected our database to our application yet. We can do this by heading over to our `.env` file and adding our database credentials.
+We don’t need to modify the model—Leaf keeps things simple. But before we can store anything, we need to connect our database. Open your .env file and add your database credentials:
 
 ```env
 DB_CONNECTION=mysql
@@ -203,13 +219,15 @@ DB_USERNAME=xxx
 DB_PASSWORD=xxx
 ```
 
-Once you fill out this information, you may need to restart your server with `php leaf serve`. We have one more thing to do before we can save our email. We need to create our database tables. Leaf MVC gives us a simple way to do this using "schema files". We can create a schema file using the CLI.
+After updating your credentials, restart your server with: `php leaf serve`.
+
+Now, we need to create our database table. Leaf MVC makes this seamless with schema files, a simpler way to define and manage your database structure. Let’s set up our schema next!
 
 ```bash:no-line-numbers
 php leaf g:schema subscribers
 ```
 
-The name of the schema file should be the plural form of the table name. This will create a new schema file in the `app/database` directory. Open the file and add the columns you want in your table.
+The name of the schema file should be the same as your table name. This will create a new schema file in the `app/database` directory. Open the file and add the columns you want in your table.
 
 ```php [app/database/subscribers.yml]
 columns:
@@ -222,40 +240,40 @@ Here, we are telling Leaf to add a column where we can store the email. We can n
 php leaf db:migrate
 ```
 
-### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">4</span> Saving the email
+### <TutorialNumber number="4" /> Saving the email
 
 We can now save the email to the database using our `Subscriber` model.
 
-```php{5,16-18} [app/controllers/NotifyController.php]
+```php [app/controllers/SubscribersController.php]
 <?php
 
 namespace App\Controllers;
 
-use App\Models\Subscriber;
+use App\Models\Subscriber; // [!code ++]
 
-class NotifyController extends Controller
+class SubscribersController extends Controller
 {
-    public function notify()
+    public function store()
     {
         if (!$data = request()->validate(['email' => 'email'])) {
             // validation failed, redirect back with errors
-            return response()->withFlash('errors', response()->errors())->redirect('/prelaunch');
+            return response()->withFlash('errors', request()->errors())->redirect('/prelaunch');
         }
 
-        $subscriber = new Subscriber;
-        $subscriber->email = $data['email'];
-        $subscriber->save();
+        $subscriber = new Subscriber; // [!code ++]
+        $subscriber->email = $data['email']; // [!code ++]
+        $subscriber->save(); // [!code ++]
 
-        return response()
-          ->withFlash('success', 'Nice, we will send a mail when we launch!')
-          ->redirect('/prelaunch');
+        return response() // [!code ++]
+          ->withFlash('success', 'Nice, we will send a mail when we launch!') // [!code ++]
+          ->redirect('/prelaunch'); // [!code ++]
     }
 }
 ```
 
 You can use the `withFlash()` method to send a message to the next request. This is useful for sending messages to the user after a redirect. We can now test our app by navigating to the `/prelaunch` page and submitting an email.
 
-### <span class="bg-[var(--vp-c-bg-alt)] h-6 inline-flex items-center justify-center rounded-full text-gray-700 dark:text-gray-300 text-lg w-6 mr-1 flex-none font-normal">5</span> Deploying your app
+### <TutorialNumber number="5" /> Deploying your app
 
 We have built a simple pre-launch page using Leaf MVC. You can now deploy your app to a server using a service like [Heroku](/learn/deployment/heroku/), [Fly.io](/learn/deployment/flyio/) a VPS like [DigitalOcean](/learn/deployment/digitalocean/), or even a shared hosting service like [Sevalla](/learn/deployment/sevalla/).
 
@@ -309,179 +327,171 @@ We have built a simple pre-launch page using Leaf MVC. You can now deploy your a
     </div>
 </div>
 
-<section class="relative">
-    <h2
-        class="text-slate-900 text-xl tracking-tight font-bold mb-3 dark:text-slate-200"
-    >
-        What to read next
-    </h2>
-    <div class="mb-10 max-w-2xl prose prose-slate xl:mb-0 dark:prose-dark">
-        <p>
-            Now that you have built a simple pre-launch page, the next step is to get you familiar with the basics of building a full-stack application with Leaf. So you can build and launch your next big idea <i>fast</i>.
-        </p>
-    </div>
-    <ul
-        class="!mt-10 grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-2 xl:gap-y-10 !pl-0"
-    >
-        <li class="relative flex items-start">
+## What to read next
+
+Now that you have built a simple pre-launch page, the next step is to get you familiar with the basics of building a full-stack application with Leaf. So you can build and launch your next big idea *fast*.
+
+<ul
+    class="!mt-10 grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-2 xl:gap-y-10 !pl-0"
+>
+    <li class="relative flex items-start">
+        <div
+            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        >
             <div
-                class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-            >
-                <div
-                    class="bg-[length:150%] rounded-full h-full bg-center bg-no-repeat bg-pink-100 dark:bg-pink-200"
-                    style="
-                        background-image: url(/images/illustrations/Feature-Flags-5.svg);
-                    "
-                ></div>
-            </div>
-            <div class="peer group flex-auto ml-6">
-                <h3
-                  class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-                >
-                    <a
-                        class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                        href="/docs/routing/mvc"
-                        >Routing<svg
-                            viewBox="0 0 3 6"
-                            class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                        >
-                            <path
-                                d="M0 0L3 3L0 6"
-                                fill="none"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            ></path></svg
-                    ></a>
-                </h3>
-                <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-                  Learn more about routing in Leaf MVC, dynamic routes, middleware and more.
-                </p>
-            </div>
-            <div
-                class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+                class="bg-[length:150%] rounded-full h-full bg-center bg-no-repeat bg-pink-100 dark:bg-pink-200"
+                style="
+                    background-image: url(/images/illustrations/Feature-Flags-5.svg);
+                "
             ></div>
-        </li>
-        <li class="relative flex items-start">
-            <div
-                class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        </div>
+        <div class="peer group flex-auto ml-6">
+            <h3
+              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
             >
-                <div
-                    class="bg-[length:350%] rounded-full h-full bg-green-100 dark:bg-green-200 bg-center bg-no-repeat"
-                    style="
-                        background-image: url(/images/illustrations/Heading-2.svg);
-                    "
-                ></div>
-            </div>
-            <div class="peer group flex-auto ml-6">
-                <h3
-                  class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-                >
-                    <a
-                        class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                        href="/docs/mvc/controllers"
-                        >Using Controllers<svg
-                            viewBox="0 0 3 6"
-                            class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                        >
-                            <path
-                                d="M0 0L3 3L0 6"
-                                fill="none"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            ></path></svg
-                    ></a>
-                </h3>
-                <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-                  Controllers are the 'C' in MVC, and separate your logic from your views.
-                </p>
-            </div>
+                <a
+                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
+                    href="/docs/routing/mvc"
+                    >Routing<svg
+                        viewBox="0 0 3 6"
+                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                    >
+                        <path
+                            d="M0 0L3 3L0 6"
+                            fill="none"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path></svg
+                ></a>
+            </h3>
+            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
+              Learn more about routing in Leaf MVC, dynamic routes, middleware and more.
+            </p>
+        </div>
+        <div
+            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+        ></div>
+    </li>
+    <li class="relative flex items-start">
+        <div
+            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        >
             <div
-                class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+                class="bg-[length:350%] rounded-full h-full bg-green-100 dark:bg-green-200 bg-center bg-no-repeat"
+                style="
+                    background-image: url(/images/illustrations/Heading-2.svg);
+                "
             ></div>
-        </li>
-        <li class="relative flex items-start">
-            <div
-                class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        </div>
+        <div class="peer group flex-auto ml-6">
+            <h3
+              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
             >
-                <div
-                    class="bg-[length:120%] rounded-full h-full bg-purple-100 dark:bg-purple-200 bg-center bg-no-repeat"
-                    style="
-                        background-image: url(/images/illustrations/db.svg);
-                    "
-                ></div>
-            </div>
-            <div class="peer group flex-auto ml-6">
-                <h3
-                  class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-                >
-                    <a
-                        class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                        href="/docs/database/models"
-                        >Using Models<svg
-                            viewBox="0 0 3 6"
-                            class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                        >
-                            <path
-                                d="M0 0L3 3L0 6"
-                                fill="none"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            ></path></svg
-                    ></a>
-                </h3>
-                <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-                  Models are the 'M' in MVC, and let you interact with your database programmatically.
-                </p>
-            </div>
+                <a
+                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
+                    href="/docs/mvc/controllers"
+                    >Using Controllers<svg
+                        viewBox="0 0 3 6"
+                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                    >
+                        <path
+                            d="M0 0L3 3L0 6"
+                            fill="none"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path></svg
+                ></a>
+            </h3>
+            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
+              Controllers are the 'C' in MVC, and separate your logic from your views.
+            </p>
+        </div>
+        <div
+            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+        ></div>
+    </li>
+    <li class="relative flex items-start">
+        <div
+            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        >
             <div
-                class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+                class="bg-[length:120%] rounded-full h-full bg-purple-100 dark:bg-purple-200 bg-center bg-no-repeat"
+                style="
+                    background-image: url(/images/illustrations/db.svg);
+                "
             ></div>
-        </li>
-        <li class="relative flex items-start">
-            <div
-                class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        </div>
+        <div class="peer group flex-auto ml-6">
+            <h3
+              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
             >
-                <div
-                    class="bg-[length:400%] rounded-full h-full bg-yellow-100 dark:bg-yellow-200 bg-center bg-no-repeat"
-                    style="
-                        background-image: url(/images/illustrations/Stats-2.svg);
-                    "
-                ></div>
-            </div>
-            <div class="peer group flex-auto ml-6">
-                <h3
-                  class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-                >
-                    <a
-                        class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                        href="/docs/frontend/"
-                        >Frontend<svg
-                            viewBox="0 0 3 6"
-                            class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                        >
-                            <path
-                                d="M0 0L3 3L0 6"
-                                fill="none"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            ></path></svg
-                    ></a>
-                </h3>
-                <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-                  Learn about SSR, SPA, and how to use Leaf with your favorite frontend framework.
-                </p>
-            </div>
+                <a
+                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
+                    href="/docs/database/models"
+                    >Using Models<svg
+                        viewBox="0 0 3 6"
+                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                    >
+                        <path
+                            d="M0 0L3 3L0 6"
+                            fill="none"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path></svg
+                ></a>
+            </h3>
+            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
+              Models are the 'M' in MVC, and let you interact with your database programmatically.
+            </p>
+        </div>
+        <div
+            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+        ></div>
+    </li>
+    <li class="relative flex items-start">
+        <div
+            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
+        >
             <div
-                class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+                class="bg-[length:400%] rounded-full h-full bg-yellow-100 dark:bg-yellow-200 bg-center bg-no-repeat"
+                style="
+                    background-image: url(/images/illustrations/Stats-2.svg);
+                "
             ></div>
-        </li>
-    </ul>
-</section>
+        </div>
+        <div class="peer group flex-auto ml-6">
+            <h3
+              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
+            >
+                <a
+                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
+                    href="/docs/frontend/"
+                    >Frontend<svg
+                        viewBox="0 0 3 6"
+                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                    >
+                        <path
+                            d="M0 0L3 3L0 6"
+                            fill="none"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path></svg
+                ></a>
+            </h3>
+            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
+              Learn about SSR, SPA, and how to use Leaf with your favorite frontend framework.
+            </p>
+        </div>
+        <div
+            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
+        ></div>
+    </li>
+</ul>

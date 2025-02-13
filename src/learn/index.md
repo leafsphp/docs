@@ -3,9 +3,7 @@ prev: false
 next: false
 ---
 
-<script setup>
-import Button from '@theme/components/shared/Button.vue';
-</script>
+<!-- markdownlint-disable no-inline-html -->
 
 <h1>
   <small class="text-xl font-medium leading-10">Learn to write</small><br>
@@ -13,11 +11,15 @@ import Button from '@theme/components/shared/Button.vue';
   <strong class="text-4xl sm:text-5xl font-bold text-[#42d392]">Built for Makers</strong>
 </h1>
 
+<script setup>
+import Button from '@theme/components/shared/Button.vue';
+</script>
+
 Welcome to the Makers' Guide to Leaf—your fast track to building with Leaf. This guide walks you through everything you need to start shipping quickly and efficiently, from hello world to deploying your app.
 
 ## Choose your path
 
-<figure class="lg:w-2/4 flex-col justify-center items-center bg-[var(--vp-c-bg-alt)] p-4 md:p-10 rounded-2xl"><blockquote class="!border-none !mt-0 !mb-6 !px-0"><p class="text-center !text-lg !font-semibold sm:!text-xl !text-[initial] leading-relaxed"><span class="text-gray-400">“</span>No application is the same, why should your framework be?<span class="text-gray-400">”</span></p></blockquote><figcaption class="sm:text-xl font-medium flex flex-col items-center"><div class="p-1 border-2 border-[var(--vp-c-brand)] rounded-full mb-3"><img src="https://avatars.githubusercontent.com/u/26604242?v=4" alt="" class="w-10 h-10 rounded-full bg-[var(--vp-c-brand)]" loading="lazy"></div><div class="text-base">Michael Darko</div><small class="text-[var(--vp-c-brand)] text-sm">Creator of Leaf PHP</small></figcaption></figure>
+<figure class="lg:w-2/4 flex-col justify-center items-center bg-[var(--vp-c-bg-alt)] p-4 md:p-10 rounded-3xl"><blockquote class="!border-none !mt-0 !mb-6 !px-0 !text-[var(--vp-c-text-1)]"><p class="text-center !text-lg !font-semibold sm:!text-xl leading-relaxed"><span class="text-gray-400">“</span>No application is the same, why should your framework be?<span class="text-gray-400">”</span></p></blockquote><figcaption class="sm:text-xl font-medium flex flex-col items-center"><div class="p-1 border-2 border-[var(--vp-c-brand)] rounded-full mb-3"><img src="https://avatars.githubusercontent.com/u/26604242?v=4" alt="" class="w-10 h-10 rounded-full bg-[var(--vp-c-brand)]" loading="lazy"></div><div class="text-base">Michael Darko</div><small class="text-[var(--vp-c-brand)] text-sm">Creator of Leaf PHP</small></figcaption></figure>
 
 This is something we live and die by at Leaf. We believe that every application is unique and should be treated as such. That's why we've built Leaf to be as flexible as possible, allowing you to build your applications the way you want to. At the end of the day, we're here to help you build your applications, not to dictate how you should build them.
 
