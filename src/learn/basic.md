@@ -384,7 +384,7 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
             >
                 <a
                     class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/routing/mvc"
+                    href="/docs/routing/"
                     >Routing<svg
                         viewBox="0 0 3 6"
                         class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
@@ -424,8 +424,8 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
             >
                 <a
                     class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/mvc/controllers"
-                    >Using Controllers<svg
+                    href="/docs/http/request"
+                    >Handling Requests<svg
                         viewBox="0 0 3 6"
                         class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
                     >
@@ -440,7 +440,7 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
                 ></a>
             </h3>
             <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Controllers are the 'C' in MVC, and separate your logic from your views.
+              Learn how to process incoming requests, handle form submissions, and more.
             </p>
         </div>
         <div
@@ -464,8 +464,8 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
             >
                 <a
                     class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/database/models"
-                    >Using Models<svg
+                    href="/docs/database/"
+                    >Using Databases<svg
                         viewBox="0 0 3 6"
                         class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
                     >
@@ -480,7 +480,7 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
                 ></a>
             </h3>
             <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Models are the 'M' in MVC, and let you interact with your database programmatically.
+              Learn how to build queries, build relationships, and interact with your database programmatically.
             </p>
         </div>
         <div

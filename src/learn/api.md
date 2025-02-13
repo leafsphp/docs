@@ -417,7 +417,7 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
             >
                 <a
                     class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/frontend/"
+                    href="/docs/auth/mvc"
                     >Authentication<svg
                         viewBox="0 0 3 6"
                         class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"

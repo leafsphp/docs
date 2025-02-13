@@ -4,6 +4,7 @@
       alt="Paperplane" width="457" height="336">
 
     <p class="mt-4 mb-2 text-xs">
+      <i>From the creators of Leaf PHP - </i>
       Build your next big idea Supafast without the hassle of setting up repetitive tasks.
     </p>
 
