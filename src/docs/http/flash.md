@@ -32,18 +32,18 @@ response()->withFlash('int', $userInt)->json('...');
 
 ## Display a flash item
 
-To display a flash item, you can use the `display()` method. This method accepts the key of the item to get. If the key is not provided, it defaults to `message`.
+To display a flash item, you can use the `flash()` method on the Leaf Request. This method accepts the key of the item to get. If the key is not provided, it will return the default flash message.
 
 ```php:no-line-numbers
-$message = flash()->display();
+$message = request()->flash();
 ```
 
 If you set a flash item with a different key, you can pass the key to the `display()` method to get the item.
 
 ```php
-$message = flash()->display('info');
-$object = flash()->display('object');
-$array = flash()->display('array');
+$message = request()->flash('info');
+$object = request()->flash('object');
+$array = request()->flash('array');
 ```
 
 The item will be removed from the session after it has been displayed.

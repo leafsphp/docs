@@ -68,21 +68,25 @@ The `set()` method allows you to set cookies with more advanced options like exp
 
 ## Reading Cookies
 
-When you send cookies to the client, they are stored in your users' browser and automatically sent back to your app on every request. You can read these cookies using the `get()` method.
+When you send cookies to the client, they are stored in your users' browsers and automatically sent back to your app on every request. You can read these cookies using the `cookies()` method on the incoming request.
 
 ```php:no-line-numbers
-$name = cookie()->get('name');
+$name = request()->cookies('name');
+
+// You can also get multiple cookies at once
+$cookies = request()->cookies(['name', 'age']);
+// $cookies['name'] and $cookies['age']
 ```
 
-This method takes in the cookie name and returns the cookie value. If the cookie doesn't exist, it returns `null`.
+if a cookie doesn't exist, the `cookies()` method will return `null` for that cookie.
 
-You can also get all cookies at once using the `all()` method.
+You can also get all cookies at once by calling `cookies()` without any parameters.
 
 ```php:no-line-numbers
-$cookies = cookie()->all();
+$cookies = request()->cookies();
 ```
 
-This method returns an array of all cookies sent to your app. Be careful when using this method as it can return a lot of data.
+This method returns an array of all cookies sent to your app. Be careful when using this method as it can return a lot of data, including cookies that you may not need.
 
 ## Deleting Cookies
 

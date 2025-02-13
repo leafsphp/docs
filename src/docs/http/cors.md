@@ -3,7 +3,8 @@
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
 From Wikipedia, Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be accessed from another domain outside the domain from which the first resource was served.
@@ -20,6 +21,34 @@ Cross-Origin Resource Sharing or CORS is a mechanism that allows browsers to req
 :::
 
 Since CORS is a common pain point for web developers, Leaf provides a first-party integration that takes care of all the heavy lifting for you.
+
+<div
+    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
+>
+    <div
+        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+    >
+        <div
+            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
+        >
+            <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                Using Leaf MVC?
+            </h3>
+            <p class="font-medium text-rose-100 text-shadow mb-4">
+                We've crafted a specialized guide for CORS in Leaf MVC. While it's similar to the base usage in Leaf, it's more detailed and tailored for Leaf MVC.
+            </p>
+            <Button
+                as="a"
+                href="/docs/http/cors/mvc"
+                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                >Start building</Button
+            >
+        </div>
+    </div>
+    <div
+        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+    ></div>
+</div>
 
 ## Setting Up
 
