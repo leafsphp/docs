@@ -116,7 +116,7 @@ $firstName = session()->retrieve('firstName');
 
 You can also pass a default value to the `retrieve()` method.
 
-```php
+```php:no-line-numbers
 $firstName = session()->retrieve('firstName', 'John');
 ```
 
@@ -128,7 +128,7 @@ $firstName = session()->retrieve('firstName', 'John');
 
 To get all session data, you can use the `all()` method. This method returns all session data as an array.
 
-```php
+```php:no-line-numbers
 $sessionData = session()->all();
 ```
 
@@ -136,13 +136,13 @@ $sessionData = session()->all();
 
 When you're done with session data, you can delete it using the `delete()` method. This method takes the key to delete as a parameter.
 
-```php
+```php:no-line-numbers
 session()->delete('firstName');
 ```
 
 You can also delete multiple items by passing an array of keys to the `delete()` method.
 
-```php
+```php:no-line-numbers
 session()->delete(['firstName', 'lastName']);
 ```
 
@@ -150,7 +150,7 @@ session()->delete(['firstName', 'lastName']);
 
 There are situations where you want to delete all session data without stopping the session. In those cases, you can use the `clear()` method.
 
-```php
+```php:no-line-numbers
 session()->clear();
 ```
 
@@ -169,7 +169,7 @@ session()->set('user', [
 
 You can easily add a new item to the array using the same `set()` method:
 
-```php
+```php:no-line-numbers
 session()->set('user.location', 'Everywhere');
 ```
 

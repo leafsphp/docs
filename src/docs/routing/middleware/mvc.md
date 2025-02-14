@@ -3,11 +3,44 @@ next: false
 prev: false
 ---
 
+<!-- markdownlint-disable no-inline-html -->
+
 # Middleware in Leaf MVC
 
 Middleware is a piece of code that runs before or after your application processes a request. It helps control the flow of requests and responses. For example, when a user visits a page on your app, you can use middleware can check if the user is logged in and if everything is okay, the request moves on to the next step; if not, the middleware can redirect the user.
 
-Before you use middleware, Leaf has modules that offer a lot of functionality that you might not need to write your own middleware for. Be sure to check out the [Leaf Modules](/docs/modules) page first to see if there's a module that already does what you need.
+<section class="flex mt-4">
+    <div
+        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+    >
+        <div
+            class="w-full flex md:flex-col bg-gradient-to-br from-purple-500 to-indigo-500"
+        >
+            <div
+                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+            >
+                <p class="font-medium text-violet-100 text-shadow mb-4">
+                    Before writing custom middleware, check out <a href="/docs/modules" class="!text-white">Leaf Modules</a>—they offer built-in functionality that might already cover your needs, saving you time and effort.
+                </p>
+            </div>
+            <!-- <div
+                class="relative md:pl-6 xl:pl-8 hidden sm:block"
+            >
+                Hello
+            </div> -->
+        </div>
+        <div
+            class="absolute bottom-0 left-0 right-0 h-20 hidden sm:block"
+            style="
+                background: linear-gradient(
+                    to top,
+                    rgb(135, 94, 245),
+                    rgba(135, 94, 245, 0)
+                );
+            "
+        ></div>
+    </div>
+</section>
 
 ## Creating Middleware
 
@@ -32,7 +65,7 @@ class LogRequestMiddleware extends Middleware
 }
 ```
 
-Of course, you don't have to do this manually. You can use the Aloe Console to generate a middleware for you:
+Of course, you don't have to do this manually. You can use the MVC Console to generate a middleware for you:
 
 ```bash:no-line-numbers
 php leaf g:middleware LogRequest
@@ -42,45 +75,52 @@ This will generate a `LogRequestMiddleware.php` file in the `app/middleware` fol
 
 ## Loading Middleware for all routes
 
-All middleware generated using the Console will be automatically registered in the `app/routes/index.php` file. This file is automatically loaded by Leaf MVC, so any middleware you add to it will be loaded for every route in your application. If you don't want a middleware to be automatically loaded, you can remove it from the `app/routes/index.php` file.
+Once you generate your middleware, you can choose to load it for all routes in your application. This means that the middleware will run for every request made to your application, regardless of the route. It could be useful for logging requests, checking if a user is authenticated, etc.
+
+To do this, you need to add the middleware to the `app/routes/index.php` file. We have added an example middleware to the file for you:
 
 ```php
-use App\Middleware\LogRequestMiddleware;
+use App\Middleware\LogRequestMiddleware;  // [!code ++]
 
 ...
 
 /*
-|--------------------------------------------------------------------------
+|--------------------------------------------------------
 | Set middleware for all routes
-|--------------------------------------------------------------------------
+|--------------------------------------------------------
 |
 | You can use app()->use() to load middleware for all
 | routes in your application.
 |
 */
-app()->use(LogRequestMiddleware::class);
-app()->use(AnotherMiddleware::class);
+app()->use(LogRequestMiddleware::class);  // [!code ++]
+app()->use(AnotherMiddleware::class);  // [!code ++]
 ```
 
 ## Loading Middleware for specific routes
 
-If you don't want a middleware to be loaded for all routes in your application, you need to remove it from the `app/middleware/Middleware.php` file and load it manually in the route you want to use it in.
+The most common use case for middleware is to load it for specific routes, instead of all routes. You can do this by adding the middleware to the particular route you want to use it in using route parameters.
 
-```php
+```php{8}
 <?php
 
 use App\Middleware\LogRequestMiddleware;
 
-app()->get('/my-route', ['middleware' => LogRequestMiddleware::class, 'MyController@index']);
+...
+
+app()->get('/my-route', [
+  'middleware' => LogRequestMiddleware::class,
+  'MyController@index'
+]);
 ```
 
 This will run the `LogRequestMiddleware` middleware only for the `/my-route` route.
 
 ## Passing data from middleware
 
-You can pass data from middleware to your route handler in order to use it in your controller or another middleware. You can do this using the `response()->next()` method.
+You can pass data from middleware to your route handler using `response()->next()`, making it available in your controller or another middleware.
 
-```php{16}
+```php
 <?php
 
 namespace App\Middleware;
@@ -96,7 +136,7 @@ class LogRequestMiddleware extends Middleware
 
         echo "[$method] $uri\n";
 
-        response()->next('You can pass any value here');
+        response()->next('You can pass any value');  // [!code ++]
     }
 }
 ```
@@ -112,9 +152,9 @@ class MyController extends Controller
 {
     public function index()
     {
-        $middlewareData = request()->next();
+        $middlewareData = request()->next();  // [!code ++]
 
-        echo $middlewareData; // will output "You can pass any value here"
+        echo $middlewareData; // will output "You can pass any value"
     }
 }
 ```

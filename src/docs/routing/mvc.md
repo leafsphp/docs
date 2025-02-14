@@ -20,6 +20,35 @@ In Leaf MVC, all routes are defined in partials within the app/routes directory.
 
 To add a new route, simply place it in the relevant partial or create a new one if it doesn’t fit into an existing group. This keeps your routing intuitive and easy to manage.
 
+<section class="flex mt-4">
+    <div
+        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+    >
+        <div
+            class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+        >
+            <div
+                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+            >
+                <!-- <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                  Leaf MVC
+                </h3> -->
+                <p class="font-medium text-rose-100 text-shadow mb-4">
+                  Leaf MVC is just like Leaf is as unopinionated as it gets, so if you are anti-partials, you can define all your routes in the `app/routes/index.php` file.
+                </p>
+            </div>
+            <!-- <div
+                class="relative md:pl-6 xl:pl-8 hidden sm:block"
+            >
+                Hello
+            </div> -->
+        </div>
+        <div
+            class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+        ></div>
+    </div>
+</section>
+
 ## Breaking down routes
 
 Every route has a URL (the web address the user visits) and an HTTP method (like GET, POST, etc.), which tells the server what action to take. For example, if you create a route for a GET request to `/home`, the user can access that page by visiting `http://example.com/home`. This way, different URLs and methods control how users interact with your app.
@@ -33,7 +62,7 @@ You can add a route that handles only `GET` HTTP requests with the Leaf router's
 - The route pattern
 - The route handler (a controller method or a function)
 
-```php
+```php:no-line-numbers
 app()->get('/home', 'HomeController@index');
 ```
 
@@ -52,7 +81,7 @@ You can add a route that handles only `POST` HTTP requests with the Leaf router'
 - The route pattern
 - The route handler
 
-```php
+```php:no-line-numbers
 app()->post('/users/add', 'UsersController@store');
 ```
 
@@ -63,7 +92,7 @@ The `put()` method allows you to add a route that handles only `PUT` HTTP reques
 - The route pattern
 - The route handler
 
-```php
+```php:no-line-numbers
 app()->put('/book/edit/{id}', 'BooksController@update');
 ```
 
@@ -74,7 +103,7 @@ You can add a route that handles only `DELETE` HTTP requests with the Leaf route
 - The route pattern
 - The route handler
 
-```php
+```php:no-line-numbers
 app()->delete('/quotes/{id}', 'QuotesController@destroy');
 ```
 
@@ -85,7 +114,7 @@ You can add a route that handles only `PATCH` HTTP requests with the Leaf router
 - The route pattern
 - The route handler
 
-```php
+```php:no-line-numbers
 app()->patch('/quotes/{id}', 'QuotesController@update');
 ```
 
@@ -97,7 +126,7 @@ There are some cases where you want a route to handle multiple HTTP methods. You
 - The route pattern
 - The route handler
 
-```php
+```php:no-line-numbers
 app()->match('GET|POST', '/users', 'UsersController@index');
 ```
 
@@ -108,7 +137,7 @@ If your route needs to return a template without any logic, you can use the `vie
 - The route pattern
 - The view file to render
 
-```php
+```php:no-line-numbers
 app()->view('/home', 'home');
 ```
 
@@ -122,7 +151,7 @@ In larger applications, managing routes efficiently is key. Leaf lets you name r
   videoUrl="https://www.youtube.com/embed/_0B9Zoxgv64"
 />
 
-```php
+```php:no-line-numbers
 app()->get('/home', ['name' => 'home', 'HomeController@index']);
 ```
 
@@ -234,7 +263,7 @@ Now that you understand how to define routes in Leaf, you can learn more about L
                     background-image: url(/images/illustrations/deploy-to-install.svg);
                 "
             ></div>
-        </div>
+      </div>
         <div class="peer group flex-auto ml-6">
             <h3
               class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
@@ -321,8 +350,8 @@ Now that you understand how to define routes in Leaf, you can learn more about L
             >
                 <a
                     class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/database/models"
-                    >Using Models<svg
+                    href="/docs/mvc/controllers"
+                    >Using Controllers<svg
                         viewBox="0 0 3 6"
                         class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
                     >
@@ -337,7 +366,7 @@ Now that you understand how to define routes in Leaf, you can learn more about L
                 ></a>
             </h3>
             <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn how to interact with your database in a more structured way using models.
+              Learn how to handle incoming requests and responses using controllers.
             </p>
         </div>
         <div

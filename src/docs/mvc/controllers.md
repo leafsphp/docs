@@ -73,7 +73,7 @@ In fullstack applications, you'll need to render views (HTML pages) to the user.
 ```php
 public function index()
 {
-    render('users');
+    response()->render('users');
 }
 ```
 
@@ -152,13 +152,15 @@ app()->resource('/photos', 'PhotosController');
 
 This will automatically set up all the routes you need for CRUD operations on the `/photos` route. Here's a list of the routes that will be set up:
 
-- `GET /photos` - Index
-- `GET /photos/create` - Create
-- `POST /photos` - Store
-- `GET /photos/{id}` - Show
-- `GET /photos/{id}/edit` - Edit
-- `PUT /photos/{id}` - Update
-- `DELETE /photos/{id}` - Destroy
+| Method | URI | Action |
+| --- | --- | --- |
+| GET | /photos | index |
+| GET | /photos/create | create |
+| POST | /photos | store |
+| GET | /photos/{id} | show |
+| GET | /photos/{id}/edit | edit |
+| PUT/PATCH | /photos/{id} | update |
+| DELETE | /photos/{id} | destroy |
 
 ## API Resource Controllers
 
@@ -174,9 +176,9 @@ You can load the controller in your routes like this:
 app()->apiResource('/photos', 'PhotosController');
 ```
 
-## Aloe Console Helper
+## MVC Console Helper
 
-Allow has a few more shortcuts you can incorporate into your controller generation:
+Leaf MVC comes with a bunch of handy commands for generating controllers and associated files. Here are a few examples:
 
 ```bash:no-line-numbers
 php leaf g:controller <ControllerName> -m
@@ -194,4 +196,4 @@ The `-t` flag will generate a controller with a frontend template that correspon
 php leaf g:controller <ControllerName> -a
 ```
 
-This command will generate your controller together with a model and a migration that corresponds to the controller name. The model and migration will be generated in the `app/models` and `app/database/migrations` directories respectively.
+This command will generate your controller together with a model and a schema file that corresponds to the controller name. The model and schema file will be generated in the `app/models` and `app/database` directories respectively.

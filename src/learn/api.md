@@ -57,19 +57,14 @@ Leaf MVC, like the rest of Leaf, is built for makers—focused, lightweight, and
 │   ├── controllers
 │   ├── database
 │   ├── models
-│   ├── routes
-│   └── views
-│       └── errors
+│   └── routes
 └───public
-    └───assets
-        ├── css
-        └── img
 ```
 
 Leaf MVC keeps things simple, ensuring you focus on building rather than configuration. Here’s a quick breakdown of the key directories:
 
 - app/ – This is where all your application logic lives, including controllers, models, views, and routes. Your database files also reside here.
-- public/ – Contains publicly accessible files like bundled CSS, JavaScript, and images. This is the only directory exposed to the browser.
+- public/ – Contains publicly accessible files like images. This is the only directory exposed to the browser.
 
 Most of your work will happen in the app directory, with a typical request starting with a route, which calls a controller, which interacts with a model, and finally renders a view—this is the MVC cycle in action.
 
