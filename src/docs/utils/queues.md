@@ -45,6 +45,8 @@ Some tasks, like processing large CSV uploads, can slow down your app and hurt t
   link="https://www.youtube.com/embed/GsdfZ5TfGPw"
 /> -->
 
+Leaf queues have three parts: the queue (stores jobs), the job (task to run), and the worker (processes jobs). You push jobs to the queue, and the worker processes them.
+
 ## Installation
 
 To get started with Queues in Leaf, you need to install the `leaf/queue` package:
@@ -76,11 +78,11 @@ After installing the package, you need to register the Leaf Queue commands in th
 |
 */
 Leaf\Core::loadConsole([
-  Leaf\Redis::commands() // [!code ++]
+  Leaf\Queue::commands() // [!code ++]
 ]);
 ```
 
-This gives you access to new commands which you can use to manage your queues and workers.
+This adds commands for managing your queues and workers to the Leaf MVC console.
 
 <!-- This should give you access to the following commands:
 
@@ -90,13 +92,8 @@ This gives you access to new commands which you can use to manage your queues an
 - `php leaf queue:install` - Generate and run a schema file for the queue table.
 - `php leaf queue:run` - Start the queue worker. -->
 
-Leaf queues have three parts: the queue (stores jobs), the job (task to run), and the worker (processes jobs). You push jobs to the queue, and the worker processes them.
 
-By default, Leaf MVC uses your database as the queue backend, a new table called `leaf_php_jobs` is created to store your jobs. If you are okay with these defaults, you can start using the queue right away without any additional configuration by starting your worker:
-
-```bash:no-line-numbers
-php leaf queue:work
-```
+By default, Leaf MVC uses your database as the queue backend, storing jobs in a `leaf_php_jobs` table. If you're fine with these defaults, just restart your server—Leaf will detect the queue setup and automatically start processing jobs alongside the PHP and Vite servers.
 
 ## Creating a job
 
@@ -133,16 +130,26 @@ class SendEmailJob extends Job
 
 ## Dispatching a job
 
-After creating a job, you can dispatch it to the queue using the `dispatch()` method:
+After creating a job, you can dispatch it to the queue using the global `dispatch()` function:
 
 ```php:no-line-numbers
 dispatch(SendEmailJob::class);
 ```
 
-Some jobs like the send email job above may require some data to be passed to the job. You can pass data to the job using the `with()` method:
+Some jobs like the send email job above may require some data to be passed to the job. You can pass data to the job using the `with()` method on the job:
 
 ```php:no-line-numbers
 dispatch(SendEmailJob::with($userId));
+```
+
+You can also dispatch multiple jobs at once:
+
+```php:no-line-numbers
+dispatch([
+  SendEmailJob::with($userId),
+  SendReminderJob::with($userId),
+  ScheduleFlightJob::with($userId),
+]);
 ```
 
 ## Specifying options for a job
@@ -166,12 +173,6 @@ The available options are:
 | memory          | The maximum amount of memory the worker may consume.                                          |
 | timeout         | The number of seconds a child process can run before being killed.                            |
 | tries           | The maximum number of times a job may be attempted.                                           |
-
-Remember to start your worker to process the job:
-
-```bash:no-line-numbers
-php leaf queue:work
-```
 
 Without a worker running, your jobs will just sit in the queue without being processed.
 
@@ -218,6 +219,14 @@ You can then dispatch the batch to the queue:
 ```php:no-line-numbers
 dispatch(ProcessPodcastBatch::class);
 ```
+
+## Limitations of Queues/Workers
+
+Just as with every other aspect of Leaf, we try to set everything up for you so you can get started right after running `leaf install`. This makes Leaf's queue system very easy to use, but it also comes with some limitations:
+
+- Queues are completely stateless. This means that you can't access the current request, user, session, or any other stateful data in your jobs. If you need to access the current request, you should pass the necessary data to the job as a parameter.
+- Leaf's queue system is not designed for long-running tasks like video encoding. We are working on a separate system for long-running tasks.
+- Due to its simplicity, Leaf's queue system is not as feature-rich as other queue systems like Laravel's. We are working on adding more features to the queue system.
 
 ## Configuration
 
@@ -397,42 +406,6 @@ return [
 ];
 ```
 
-## Configuration options
-
-There are several configuration options available to you in the `config/queue.php` configuration file. These options are used to determine the connection information for your queues, as well as various other options such as queue retry settings, queue logging, queue worker sleep durations, and more.
-
-### Adapter
-
-The `adapter` option specifies the system that will be used to run your queues. Leaf supports `redis` and `db` as queue adapters. The `redis` adapter uses Redis as a queue backend, while the `db` adapter uses your database as a queue backend.
-
-### Default
-
-The `default` option specifies which of the queue connections found in your config should be used as the default connection for all queue operations. Leaf supports `redis`, `sqlite`, `mysql`, `pgsql`, and `sqlsrv` as queue connections. You can also specify a custom connection by providing the name of a connection that is defined in the `connections` array of your `config/queue.php` file.
-
-### Connections
-
-The `connections` option contains an array of all of the queue connections defined for your application. Each connection corresponds to a queue adapter supported by Leaf. For example, the following configuration defines a connection named `redis` that uses the `redis` adapter to connect to a Redis server:
-
-```php
-'connections' => [
-  'redis' => [
-    'host' => _env('REDIS_HOST', '127.0.0.1'),
-    'port' => _env('REDIS_PORT', '6379'),
-    'password' => _env('REDIS_PASSWORD', ''),
-    'dbname' => _env('REDIS_DB', 0),
-  ],
-
-  ...
-```
-
-### Queue table
-
-If you are using the `db` adapter, you will need to configure a database table to store your jobs. You can use the `table` option to specify the name of the table. By default, Leaf will use the `leafphp_main_jobs` table that is already included with your application. If you would like to use a different table, you should create the table and specify its name in your `config/queue.php` configuration file:
-
-```php:no-line-numbers
-'table' => 'leaf_php_jobs',
-```
-
 ### Worker Config
 
 Worker config includes the default settings used by your worker when executing a job. These settings can be specified when dispatching a job, but if not specified, the worker will use these settings instead.
@@ -449,13 +422,53 @@ Worker config includes the default settings used by your worker when executing a
 | timeout         | The number of seconds a child process can run before being killed.                            |
 | tries           | The maximum number of times a job may be attempted.                                           |
 
-## Connecting to your queue
+## Deployment
 
-As mentioned above, Leaf queue only supports `redis` and `db` as queue adapters. To connect to your queue, you need to specify the adapter and connection you want to use. You can do this by specifying the adapter and connection in the `config/queue.php` file:
+When deploying your application with queues, Leaf takes care of setting up the necessary files and commands based on your chosen queue driver. However, once deployed, you’ll need to set up your server to keep your workers running continuously.
 
-```php
-'default' => 'redis', // the connection to use for your queues and workers by default
-'adapter' => 'redis',
+For smaller applications, you can keep the queue worker running in the background with:
+
+```bash:no-line-numbers
+php leaf queue:work &
 ```
 
-<!-- ## Deployment -->
+This command will set up your queue and start a worker to process jobs. Leaf includes safeguards to prevent excessive memory usage, long-running processes, or crashes from failed jobs. However, for larger applications, this setup may not be enough. In such cases, using a process manager like Supervisor is recommended to ensure your workers run smoothly and restart automatically if needed:
+
+```bash:no-line-numbers
+sudo apt update && sudo apt install supervisor -y
+```
+
+Create a new configuration file for your Leaf queue worker:
+
+```bash:no-line-numbers
+sudo nano /etc/supervisor/conf.d/leaf-queue.conf
+```
+
+Add your Supervisor configuration:
+
+```ini:no-line-numbers
+[program:leaf-queue]
+process_name=%(program_name)s_%(process_num)02d
+command=php leaf queue:work
+autostart=true
+autorestart=true
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/log/leaf-queue.log
+```
+
+Save and exit, then update Supervisor and start the worker:
+
+```bash:no-line-numbers
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start leaf-queue
+```
+
+This will start a worker that will process jobs in the queue. You can check the status of the worker using the following command:
+
+```bash:no-line-numbers
+sudo supervisorctl status leaf-queue
+```
+
+And that's it! Your worker is now running and processing jobs in the queue.
