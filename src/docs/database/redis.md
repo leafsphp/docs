@@ -51,11 +51,9 @@ This will initialize a new Redis connection. From there, you can start storing a
 
 ## Usage with Leaf MVC
 
-If you're using Leaf MVC, you can add on some extra features to your setup. Leaf Redis comes with a few commands that you can attach to your Aloe CLI. You can do this by heading over to the `app/console/Commands.php` file in your Leaf MVC app and adding the following line to the return array.
+If you're using Leaf MVC, you can add on some extra features to your setup. Leaf Redis comes with a few commands that you can attach to the MVC console. You can do this by heading over to the `leaf` file in your project root and adding the following line to the return array.
 
-::: code-group
-
-```php [Leaf MVC 3.8 and above]
+```php
 /*
 |--------------------------------------------------------------------------
 | Load Leaf configuration
@@ -71,32 +69,6 @@ Leaf\Core::loadConsole([
     Leaf\Redis::commands() // [!code ++]
 ]);
 ```
-
-```php [Leaf MVC 3.7 and below]
-<?php 
-
-namespace App\Console;
-
-class Commands
-{
-    /**
-     * Register commands
-     * 
-     * @param $console
-     * @return void
-     * 
-     */
-    public static function register($console): void
-    {
-        $console->register([
-            ExampleCommand::class,
-            Leaf\Redis::commands() // [!code ++]
-        ]);
-    }
-}
-```
-
-:::
 
 Once you've done that, you should have access to a bunch of new commands from Leaf Redis. The available commands are:
 

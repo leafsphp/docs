@@ -16,8 +16,6 @@ import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
 
 <!-- ![image](https://github.com/user-attachments/assets/0e08dd91-db25-407a-9c17-aec25a01e241) -->
 
-Leaf began in 2019 as a boilerplate to supercharge API development but has since expanded into a full framework with libraries like [Hanabira](https://hana.leafphp.dev).
-
 We're committed to keeping Leaf free, but as the project grows, so do the costs. Maintaining and building new features now takes significant time and resources, mostly covered by our team. To keep Leaf thriving, we need your support for our maintainers 💚
 
 ## How to Sponsor

@@ -299,6 +299,8 @@ const tab = ref(tooling[0].title);
 
               <p>Leaf auto-detects your frontend files and bundles them whenever you run the leaf serve command. This
                 means you don't really have to do anything to get your frontend working correctly.</p>
+
+              <p>Find out more on the <a href="/docs/frontend/">Frontend documentation</a></p>
             </div>
           </div>
         </div>

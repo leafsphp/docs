@@ -1,3 +1,8 @@
+---
+next: false
+prev: false
+---
+
 # Building full-stack with Leaf MVC
 
 <!-- markdownlint-disable no-inline-html -->

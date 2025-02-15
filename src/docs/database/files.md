@@ -22,7 +22,7 @@ seeds:
 
 ## Creating a Schema File
 
-Aloe comes with a `g:schema` command that you can use to generate a database file. You can generate a database file by running:
+Leaf MVC's console comes with a `g:schema` command that you can use to generate a database file. You can generate a database file by running:
 
 ```bash:no-line-numbers
 php leaf g:schema <table-name>

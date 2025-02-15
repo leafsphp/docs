@@ -1,3 +1,8 @@
+---
+next: false
+prev: false
+---
+
 # Leaf MVC for APIs
 
 <!-- markdownlint-disable no-inline-html -->

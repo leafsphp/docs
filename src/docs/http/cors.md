@@ -108,24 +108,6 @@ app()->cors([
 
 This will allow `http://example.com`, `https://example.com`, `http://www.example.com`, and `https://some-subdomain.example.com` to access your app. Of course, you can also use a regular expression to match multiple domains. You can find a full list of options below.
 
-## CORS + Leaf MVC
-
-If you are using Leaf MVC, you can configure CORS using your environment variables in place of the configuration above:
-
-```txt:no-line-numbers [.env]
-CORS_ALLOWED_ORIGINS='/\.example\.com$/'
-CORS_ALLOWED_METHODS='GET,HEAD,PUT,PATCH,POST,DELETE'
-CORS_ALLOWED_HEADERS='*'
-```
-
-While this is easier and allows you to easily configure different environments, it can sometimes be limiting for example when you want to return a function for dynamically set your allowed origins. For this reason, you can publish your CORS configuration using the command below:
-
-```bash:no-line-numbers
-php leaf config:publish cors
-```
-
-This will create or update your CORS config in `config/cors.php`. You can then use the options below to configure the CORS module to suit your exact needs.
-
 ## Configuration Options
 
 The `cors()` method takes in an array of options. Here are the available options:

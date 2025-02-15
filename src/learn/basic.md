@@ -1,3 +1,8 @@
+---
+next: false
+prev: false
+---
+
 # Leaf as a micro-framework
 
 <!-- markdownlint-disable no-inline-html -->

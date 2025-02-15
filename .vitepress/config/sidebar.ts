@@ -125,7 +125,7 @@ const sidebar = [
       { text: 'HTTP Cache', link: '/docs/http/caching' },
       { text: 'Leaf Mail', link: '/docs/utils/mail/' },
       { text: 'File System', link: '/docs/utils/fs' },
-      // { text: 'Queues/Jobs', link: '/docs/utils/queues' },
+      { text: 'Queues/Jobs', link: '/docs/utils/queues' },
     ],
   },
   {

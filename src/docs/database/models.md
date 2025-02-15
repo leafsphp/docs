@@ -12,7 +12,7 @@ On top of all that, a single model corresponds to a single database table. This 
 
 ## Creating a model
 
-You can generate a model using the Aloe Console:
+You can generate a model using the MVC Console:
 
 ```bash:no-line-numbers
 php leaf g:model flight

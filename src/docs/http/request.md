@@ -22,7 +22,7 @@ Leaf provides a `get()` method on the request object that you can use to access 
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 $item = request()->get('item');
 ```
 
@@ -46,7 +46,7 @@ $item = $app->request()->get('item');
 
 The `get()` method works for all types of request data, including query parameters, form data, files, and JSON data so there's no need to worry about the type of data you're working with. You can also get multiple values at once by passing an array of keys to the `get()` method. This is especially useful when you're working with form data or JSON data where users can send any random data they want. In such cases, you can use the `get()` method to get only the data you're interested in.
 
-```php
+```php:no-line-numbers
 $data = request()->get(['name', 'email']);
 
 // $data = ['name' => '...', 'email' => '...']
@@ -56,7 +56,7 @@ $data = request()->get(['name', 'email']);
 
 Leaf automatically sanitizes all data coming into your application. This means that you don't have to worry about users sending malicious data to your application since Leaf will automatically clean it up for you. This lets you focus on building your application without worrying about security. There are some cases where you might want to disable this behavior, such as when you're working with raw data or when you're building an API that needs to accept any kind of data. In such cases, you can disable data sanitization by passing `false` as a second parameter to the `get()` method.
 
-```php
+```php:no-line-numbers
 $data = request()->get('data', false);
 ```
 
@@ -68,7 +68,7 @@ Disabling data sanitization can expose your application to security vulnerabilit
 
 Sometimes you might want to get a value from the request only if it exists. You can use the `try()` method to do this. The `try()` method takes an array of keys as an argument and returns only the values that exist in the request.
 
-```php
+```php:no-line-numbers
 $data = request()->try(['name', 'email']);
 
 // $data = ['name' => '...']
@@ -76,13 +76,13 @@ $data = request()->try(['name', 'email']);
 
 In the example above, the `try()` method only returns the value of the `name` key since the `email` key doesn't exist in the request. Just as with the `get()` method, you can disable data sanitization by passing `false` as a second parameter to the `try()` method.
 
-```php
+```php:no-line-numbers
 $data = request()->try(['name', 'email'], false);
 ```
 
 `try()` sees empty strings as existing values and will return them. If you want to get only non-empty values, you can pass `true` as a third parameter to the `try()` method.
 
-```php
+```php:no-line-numbers
 $data = request()->try(['name', 'email'], false, true);
 ```
 
@@ -90,7 +90,7 @@ $data = request()->try(['name', 'email'], false, true);
 
 There are many situations where you might want to make sure that a value exists in the request before using it, but also want to keep it an optional value for users. You can use the `getOrDefault()` method to do this. The `getOrDefault()` method takes a key and a default value as arguments and returns the value associated with the key if it exists, or the default value if it doesn't.
 
-```php
+```php:no-line-numbers
 $data = request()->getOrDefault('name', 'John Doe');
 ```
 
@@ -98,7 +98,7 @@ $data = request()->getOrDefault('name', 'John Doe');
 
 You can use the `all()` method to get all the data in the request. It returns an array of all the data in the request.
 
-```php
+```php:no-line-numbers
 $data = request()->all();
 
 // $data = ['name' => '...', 'email' => '...']
@@ -106,7 +106,7 @@ $data = request()->all();
 
 Every time you call the `all()` method, Leaf will sanitize the data in the request. If you want to disable data sanitization, you can pass `false` as a parameter to the `all()` method.
 
-```php
+```php:no-line-numbers
 $data = request()->all(false);
 ```
 
@@ -121,7 +121,7 @@ GET requests are the most common type of request and are used to access web page
 - The key of the query parameter
 - A default value to return if the query parameter doesn't exist (optional)
 
-```php
+```php:no-line-numbers
 $name = request()->query('name', 'John Doe');
 ```
 
@@ -132,13 +132,13 @@ These requests are used to handle form submissions, API requests, and other type
 - The key of the data
 - A default value to return if the data doesn't exist (optional)
 
-```php
+```php:no-line-numbers
 $name = request()->postData('name', 'John Doe');
 ```
 
 You can also use `rawData()` to get the raw data sent if the request is an `AJAX`/`XMLHttpRequest` request.
 
-```php
+```php:no-line-numbers
 $data = request()->rawData('name', 'John Doe');
 ```
 
@@ -187,13 +187,13 @@ $uploadInfo = request()->upload('profile_pic', './uploads', [
 
 Headers are a very important part of HTTP requests. They contain information about the request that can be used to make decisions in your application. You can use the `headers()` method to get a specific header from the request.
 
-```php
+```php:no-line-numbers
 $allHeaders = request()->headers();
 ```
 
 You can also use the `header()` method to get a specific header from the request.
 
-```php
+```php:no-line-numbers
 $contentType = request()->header('Content-Type');
 ```
 

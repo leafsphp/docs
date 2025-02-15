@@ -28,7 +28,7 @@ With Leaf Mail, you can easily send emails using various drivers and services su
             </p>
             <Button
                 as="a"
-                href="/docs/mvc/mail"
+                href="/docs/utils/mail/mvc"
                 class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
                 >Start mailing now</Button
             >
