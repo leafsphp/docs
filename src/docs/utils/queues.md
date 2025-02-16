@@ -225,7 +225,6 @@ dispatch(ProcessPodcastBatch::class);
 Just as with every other aspect of Leaf, we try to set everything up for you so you can get started right after running `leaf install`. This makes Leaf's queue system very easy to use, but it also comes with some limitations:
 
 - Queues are completely stateless. This means that you can't access the current request, user, session, or any other stateful data in your jobs. If you need to access the current request, you should pass the necessary data to the job as a parameter.
-- Leaf's queue system is not designed for long-running tasks like video encoding. We are working on a separate system for long-running tasks.
 - Due to its simplicity, Leaf's queue system is not as feature-rich as other queue systems like Laravel's. We are working on adding more features to the queue system.
 
 ## Configuration

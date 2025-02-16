@@ -91,34 +91,6 @@ auth()->dbConnection($db);
 
 :::
 
-## Auth + Leaf MVC
-
-If you are using Leaf MVC, you can set up Leaf Auth to work with your default database connection by heading over to the `public/index.php` file and uncommenting the line that connects to the database:
-
-```php
-/*
-|--------------------------------------------------------------------------
-| Sync Leaf Db with ORM and connect
-|--------------------------------------------------------------------------
-|
-| Sync Leaf Db with ORM and connect to the database
-| This allows you to use Leaf Db without having
-| to initialize it in your controllers.
-|
-| If you want to use a different connection from those
-| used in your models, you can remove the line below and
-| add your own connection with:
-| db()->connect(...)
-|
-| **Uncomment the line below to use Leaf Db**
-| **You don't need this line to use Leaf Auth**
-*/
-// \Leaf\Database::initDb(); [!code --]
-\Leaf\Database::initDb(); // [!code ++]
-```
-
-That's all you need to do. Leaf Auth will automatically connect to your database using the details in your environment file. The auth configuration for your project can be found in the `config/auth.php` file. You can edit this file to change the configuration of Leaf Auth.
-
 ## Database Considerations
 
 Leaf Auth doesn't give you any structure for your database, with that, you can structure your database in any way you prefer. However, there are some things you should note:

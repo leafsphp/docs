@@ -52,68 +52,66 @@ Databases are essential for most applications, as they help you store and retrie
 
 ## Leaf MVC + DB
 
-<div
-    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
->
-    <div
-        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-    >
-        <div
-            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
-        >
-            <p class="font-medium text-rose-100 text-shadow mb-4">
-              Models are a more powerful way to interact with your database in Leaf MVC using an object-oriented approach, which also makes your code more readable and maintainable.
-            </p>
-            <Button
-                as="a"
-                href="/docs/database/models"
-                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                >Let's go</Button
-            >
-        </div>
-        <!-- <div
-            class="relative md:pl-6 xl:pl-8 hidden sm:block"
-        >
-            Hello
-        </div> -->
-    </div>
-    <div
-        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-    ></div>
+<div class="grid md:grid-cols-2 gap-4">
+  <div
+      class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+  >
+      <div
+          class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+      >
+          <div
+              class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+          >
+              <p class="font-medium text-rose-100 text-shadow mb-4">
+                Models are a powerful way to interact with your database using an object-oriented approach, which also makes your code more readable and maintainable.
+              </p>
+              <Button
+                  as="a"
+                  href="/docs/database/models"
+                  class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                  >Check out models</Button
+              >
+          </div>
+          <!-- <div
+              class="relative md:pl-6 xl:pl-8 hidden sm:block"
+          >
+              Hello
+          </div> -->
+      </div>
+      <div
+          class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+      ></div>
+  </div>
+  <div
+      class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+  >
+      <div
+          class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
+      >
+          <div
+              class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+          >
+              <p class="font-medium text-amber-100 text-shadow mb-4">
+                You can use Leaf DB to build and run queries that don't fit into a model. Everything has been configured to work out of the box, so you can start querying your database right away.
+              </p>
+              <Button
+                  as="a"
+                  class="mt-auto bg-amber-900 hover:!bg-amber-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                  href="/docs/database/builder"
+                  >Skip to builder</Button
+              >
+          </div>
+          <!-- <div class="relative hidden sm:block">
+              <div class="absolute left-2 bottom-3 xl:bottom-5">
+                  Hello
+              </div>
+          </div> -->
+      </div>
+      <div
+          class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-orange-500 hidden sm:block"
+      ></div>
+  </div>
 </div>
-
-If you still want to use Leaf DB with Leaf MVC, everything has been set up for you and Leaf DB will use the default database connection details in your `.env` file.
-
-Here are a few example connections:
-
-::: code-group
-
-```txt [MySQL]
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=LeafMVC
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-```txt [PostgreSQL]
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=LeafMVC
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-```txt [SQLite]
-DB_CONNECTION=sqlite
-DB_DATABASE=/absolute/path/to/database.sqlite
-```
-
-:::
-
-You can skip the DB connection section: Leaf MVC sets up a deferred connection for you. This means that the connection will only be made when you run a query.
 
 ## Connecting to a database
 
