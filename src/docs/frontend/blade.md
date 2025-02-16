@@ -4,6 +4,7 @@
 
 <script setup>
 import VideoModal from '@theme/components/shared/VideoModal.vue'
+import Button from '@theme/components/shared/Button.vue'
 </script>
 
 Blade is Laravel's own templating engine that makes creating dynamic views easy. It lets you mix regular PHP code with its own features for more flexibility, has a clean syntax and caches your views for faster performance.
@@ -88,6 +89,135 @@ Blade views are a pretty sweet mixture of HTML, PHP, and clean syntax. You can c
 :::
 
 This should look pretty familiar if you know HTML (of course you do). The only difference is the <span v-pre>`{{ $name }}`</span> part. This is Blade's way of creating a variable in your view. When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of <span v-pre>`{{ $name }}`</span>. Let's see how you can render this view.
+
+<section id="leaf-zero" class="rounded-2xl shadow-md outline outline-gray-100 p-4 md:p-10">
+    <p
+        class="mt-4 text-3xl sm:text-4xl text-slate-900 font-extrabold tracking-tight dark:text-slate-50"
+    >
+        Ship even faster with Leaf Zero.
+    </p>
+    <p class="mt-4 max-w-3xl space-y-6">
+        Zero is a collection of free pre-built components, page sections, and templates powered by Blade, Tailwind and Alpine JS to help you build your UIs faster.
+    </p>
+    <Button as="a" href="/docs/frontend/zero" class="!text-white bg-red-500 hover:bg-red-600">View Leaf Zero</Button>
+    <div class="relative pt-10 xl:pt-0 mt-10">
+        <div
+            class="hidden dark:block absolute top-0 inset-x-0 h-[37.5rem] bg-gradient-to-b from-[#0c1120] xl:top-18"
+        ></div>
+        <div
+            class="absolute inset-x-0 bg-top bg-no-repeat GridLockup_beams-0___8Vns top-0 xl:top-18"
+        ></div>
+        <div
+            class="absolute inset-x-0 h-[37.5rem] bg-grid-slate-900/[0.04] bg-top [mask-image:linear-gradient(0deg,transparent,black)] dark:bg-grid-slate-100/[0.03] dark:bg-[center_top_-1px] dark:border-t dark:border-slate-100/5 top-0 xl:top-18"
+        ></div>
+        <div
+            style="
+                mask-image: linear-gradient(
+                    to bottom,
+                    white,
+                    white,
+                    transparent
+                );
+                -webkit-mask-image: linear-gradient(
+                    to bottom,
+                    white,
+                    white,
+                    transparent
+                );
+            "
+            class="max-w-7xl mx-auto sm:px-6 md:px-8"
+        >
+            <div class="flex justify-center">
+                <div class="w-[216%] ml-[28%] flex-none sm:w-[76rem] sm:ml-0">
+                    <div
+                        class="relative"
+                        style="padding-top: 30.647155812036274%"
+                    >
+                        <img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://zero.leafphp.dev/assets/img/hero.png"
+                            class="absolute shadow-xl rounded-lg"
+                            style="
+                                top: 3.55556%;
+                                left: 2.22589%;
+                                width: 19.4559%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        /><img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://zero.leafphp.dev/assets/img/hero.png"
+                            class="absolute shadow-xl rounded-lg"
+                            style="
+                                top: 0%;
+                                left: 23.6603%;
+                                width: 46.7436%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        /><img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://zero.leafphp.dev/assets/img/hero.png"
+                            class="absolute shadow-xl rounded-lg"
+                            style="
+                                top: 6.96296%;
+                                left: 72.3825%;
+                                width: 25.3916%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        /><img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://zero.leafphp.dev/assets/img/hero.png"
+                            class="absolute shadow-xl rounded-lg"
+                            style="
+                                top: 42.8148%;
+                                left: 0%;
+                                width: 38.9118%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        /><img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://zero.leafphp.dev/assets/img/hero.png"
+                            class="absolute shadow-xl rounded-lg"
+                            style="
+                                top: 42.8148%;
+                                left: 40.8904%;
+                                width: 36.3561%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        /><img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://zero.leafphp.dev/assets/img/hero.png"
+                            class="absolute shadow-xl rounded-lg"
+                            style="
+                                top: 42.8148%;
+                                left: 79.2251%;
+                                width: 20.7749%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 ## Rendering Blade Views
 
