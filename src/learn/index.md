@@ -137,6 +137,10 @@ With that in mind, we've created a few paths to help you get started with Leaf. 
     </section>
 </div>
 
+## Deploy your app
+
+After building your app, you'll want to deploy it to the web so that others can access it. We've got you covered with our [deployment guides](/learn/deployment) that walk you through deploying your app to various platforms.
+
 ## Contributing
 
 If you've written a tutorial that you think would be a great addition to our Learn section, feel free to submit a PR to our [GitHub repository](https://github.com/leafsphp/docs) with your tutorial. For our readers' benefit, be sure to follow the [contribution guide](/learn/contributing) when submitting your tutorial. Thank you for your contribution!
