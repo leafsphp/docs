@@ -12,7 +12,8 @@
 /docs/database/factories            /docs/database/files
 /docs/database/schema               /docs/database/files
 /docs/mvc/models                    /docs/database/models
-/docs/introduction/url-rewriting    /docs/routing/url-rewriting.html
+/docs/introduction/url-rewriting    /learn/deployment/#url-rewriting
+/docs/routing/url-rewriting.html    /learn/deployment/#url-rewriting
 /modules/cors/                      /docs/http/cors
 /modules/views/bareui/              /docs/frontend/bareui
 /modules/router/                    /docs/routing/

@@ -1,14 +1,14 @@
 # Models
 
-A model is a class that represents your app's data. It acts like the middle-man between your database and your app, allowing you work with the data in your database without writing complicated database code. Models have some advantages over using raw SQL queries and even using a query builder like Leaf DB, some of these advantages include:
+A model is a class that represents your app’s data, acting as a bridge between your database and application. Instead of [building complex SQL queries](/docs/database/builder), models let you work with your data in a clean, reusable, and organized way.
 
-- Organization: Models keep your code organized by separating the database logic from other parts of your application (like views or controllers). This makes your code cleaner and easier to maintain.
+## Why use models?
 
-- Reusability: Once a model is set up, you can reuse it throughout your app to handle database interactions without duplicating code.
+- Organization – Keeps database logic separate from your views and controllers, making your app cleaner and easier to maintain.
+- Reusability – Define once, use anywhere—no need to repeat database code.
+- Consistency – Enforces a structured way of interacting with data, reducing errors.
 
-- Consistency: Models enforce a consistent way of working with your data, reducing the chances of errors when interacting with the database.
-
-On top of all that, a single model corresponds to a single database table. This makes your data more organized and easier to work with.
+Each model maps to a database table, keeping your data structured and easy to manage.
 
 ## Creating a model
 
@@ -139,7 +139,7 @@ $flight->delete(); // Delete the flight
 
 A soft delete marks a record as deleted without actually removing it from the database. Instead, a `deleted_at` timestamp is set, and the record is hidden from query results. The data is still in the database, allowing you to restore it later if needed. To get started with soft deletes, add a `deleted_at` column to your table. You can do this by adding the following line to your [migration file](/docs/database/migrations):
 
-```php
+```php:no-line-numbers
 $table->timestamp('deleted_at')->nullable();
 ```
 

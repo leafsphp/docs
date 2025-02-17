@@ -1,8 +1,8 @@
 # Writing Commands
 
-Commands offer a way to encapsulate a piece of functionality that can be executed by yourself or other developers. They are a great way to automate repetitive tasks, such as setting up a new project, running tests, or deploying your app.
+Commands let you automate repetitive tasks—whether it's setting up a project, running tests, or deploying your app. Instead of handling these tasks manually, you can encapsulate them into reusable commands that you or other developers can run effortlessly.
 
-Leaf MVC comes with a powerful command line interface and a bunch of helpful commands to get you started, however, you can also create your own commands to automate your own tasks.
+Leaf MVC ships with a powerful command-line interface packed with useful commands to streamline development. But you’re not limited to the defaults—you can also create your own commands to automate workflows and boost productivity.
 
 ## Creating a command
 

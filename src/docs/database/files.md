@@ -1,10 +1,12 @@
 # Schema Files <Badge type="warning">ALPHA v4+</Badge>
 
-Leaf MVC inherited all the teachings of Laravel and Ruby on Rails, including the use of migrations, seeders, and factories which made creating, testing and seeding databases a breeze. While this is great and has been tried and tested over the years, having multiple files for a single database table can be a bit of a hassle. This is why we introduced Schema Files in Leaf MVC v4.
+Leaf MVC took inspiration from Laravel and Ruby on Rails, adopting migrations, seeders, and factories to make database management easy. While this approach is powerful, managing multiple files for a single table can become a hassle.
+
+That’s why in Leaf MVC v4, we’re introducing Schema Files—a simpler, more intuitive way to define, test, and seed your database in one place.
 
 ## What are Schema Files?
 
-Schema files build on the JSON schema idea we introduced in earlier Leaf MVC versions, but they take things further. Instead of juggling separate files for migrations, seeders, and factories, you can handle everything in one place. They’re written in YAML, so they’re easy to read and work with—no extra hassle, no repeating yourself.
+Schema Files build on the JSON schema idea from earlier Leaf MVC versions but take things even further. Instead of managing separate migrations, seeders, and factories, everything is now in one place. Written in YAML, they’re clean, easy to read, and eliminate unnecessary repetition—so you can focus on building, not juggling files.
 
 ```yml [flights.yml]
 columns:
@@ -175,17 +177,15 @@ php leaf db:script ImportUsersFromOldTable
 
 ## Migration histories
 
-Migration histories are used to keep track of the migrations that have been run on your database. This is useful for keeping track of the state of your database so you can easily roll back to a previous state if needed. Unlike in other frameworks, Leaf MVC does require you to manually create migrations to keep track of your migration history. This is done automatically for you.
+Migration histories keep track of changes to your database, making it easy to roll back if needed. Unlike other frameworks, **Leaf MVC handles this automatically**—no need to manually create migrations just to track history.
 
-Every time you edit a schema file and run the `db:migrate` command, Leaf will automatically keep track of the migrations that have been run on your database, which means less time scrambling through migration files and more time building your app.
-
-In the end, this means you can continue to use `php leaf db:rollback` to roll back your database to a previous state.
+Every time you update a Schema File and run `db:migrate`, Leaf logs the changes for you. No more digging through migration files—just focus on building. And when you need to roll back? Simply run `php leaf db:rollback`.
 
 ## Seeding your database
 
-Database seeds are a way to populate a database with initial data. This initial data can be used to set up default values or pre-populate a database with test data. Database seeds typically contain small amounts of data, such as default settings, test data, or sample records.
+Database seeds let you pre-populate your database with initial data—whether it's default settings, test data, or sample records. Instead of manually adding entries, you can use seeders to automate this process.
 
-Seeders are used to populate your database with dummy data. In Leaf MVC, you can create seeders in your database files. The `seeds` key in your database file is used to create seeders. Here's an example of a seeder:
+In Leaf MVC, you define seeders directly in your Schema Files under the `seeds` key. This keeps everything in one place, making it easier to manage your database setup. Here's an example of a seeder:
 
 ```yml [users.yml]
 seeds:

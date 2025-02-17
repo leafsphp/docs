@@ -17,7 +17,7 @@ $controllersPath = AppPaths('controllers'); // you can do this
 $controllersPath = $paths['controllers']; // or this
 ```
 
-If the path you are looking for doesn't have a helper function, you can use the `AppPaths()` helper to get the path. Just make sure that the path is defined in your `config/paths.php` file. If your Leaf MVC app does not come with a `config/paths.php` file, you can create one. This is the default structure of the `config/paths.php` file:
+<!-- If the path you are looking for doesn't have a helper function, you can use the `AppPaths()` helper to get the path. Just make sure that the path is defined in your `config/paths.php` file. If your Leaf MVC app does not come with a `config/paths.php` file, you can create one. This is the default structure of the `config/paths.php` file:
 
 ```php{15}
 <?php
@@ -68,7 +68,7 @@ After defining your paths in your `config/paths.php` file, you can use the `AppP
 AppPaths('myCustomPath');
 ```
 
-Keep in mind that not every path in your `config/paths.php` file has a helper function. If you want to get the path to a path that doesn't have a helper function, you can use the `AppPaths()` helper.
+Keep in mind that not every path in your `config/paths.php` file has a helper function. If you want to get the path to a path that doesn't have a helper function, you can use the `AppPaths()` helper. -->
 
 ### assets()
 
@@ -297,38 +297,4 @@ $configs = ViewConfig();
 
 $host = ViewConfig('viewEngine'); // you can do this
 $host = $configs['viewEngine']; // or this
-```
-
-## View Helpers
-
-View helpers are in charge of outputting your views.
-
-### view()
-
-This method calls the `render()` method of whatever view engine you are using. It takes in the name of the view you want to render and an optional array of data you want to pass to the view.
-
-```php
-view('index', [
-  'name' => 'Leaf'
-]);
-```
-
-The only issue here is that not all view engines directly output the view. For example, Blade and Twig return the view as a string. This means that you have to echo the view.
-
-```php
-echo view('index', [
-  'name' => 'Leaf'
-]);
-```
-
-To make this easier, Leaf MVC ships with a `render()` method that calls the `view()` helper and echoes the view.
-
-### render()
-
-This method calls the `view()` helper and echoes the view. It takes in the name of the view you want to render and an optional array of data you want to pass to the view.
-
-```php
-render('index', [
-  'name' => 'Leaf'
-]);
 ```

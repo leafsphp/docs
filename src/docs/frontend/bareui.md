@@ -41,10 +41,6 @@ composer require leafs/bareui
 
 Once installed, BareUI will be available in your Leaf app on the `template()` method. This makes it easy to use BareUI from anywhere in your app.
 
-```php:no-line-numbers
-app()->template()->render('welcome');
-```
-
 ## Configuring BareUI
 
 BareUI doesn't require any real configuration to work, but you need to tell it where to look for your templates. You can do this using the `config()` method. If you are using Leaf MVC, this has already been done for you in the `config/view.php` file, so you can skip this step.
@@ -80,10 +76,10 @@ BareUI templates are regular PHP files, so you can create your templates using P
 
 ## Rendering Templates
 
-Once you have your template, you can render it using the `render` method. This method takes in the name of the template to render and an array of data to pass to the template.
+Once you have your template, you can render it using the `render()` method on Leaf's response. This method takes in the name of the template to render and an array of data to pass to the template.
 
 ```php:no-line-numbers
-echo app()->template()->render('welcome');
+response()->render('welcome');
 ```
 
 When rendering a template, you don't need to include the `.view.php` extension in the template name. BareUI automatically adds it for you when it looks for the template file. So, you only need to pass the name of the template without the extension, and BareUI will handle the rest!
@@ -118,7 +114,7 @@ This is an empty HTML page with a PHP tag that echoes a variable. On its own, th
 To pass data to this `$name` variable, you can pass an array of data as the second argument to the `render()` method. This array should contain the same keys as the variables you want to use in the template.
 
 ```php
-echo app()->template()->render('welcome', [
+response()->render('welcome', [
     'name' => 'Something',
 ]);
 ```
@@ -126,7 +122,7 @@ echo app()->template()->render('welcome', [
 This will render the template and replace the `$name` variable with the value `'Something'`. You can pass as many variables as you want to the template, and they will all be available in the template file. These values can be anything from strings to arrays, objects, or even functions.
 
 ```php [app.php]
-echo app()->template()->render('products', [
+response()->render('products', [
     'items' => [
       ['name' => 'Item 1'],
       ['name' => 'Item 2'],

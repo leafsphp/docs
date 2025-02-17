@@ -63,26 +63,7 @@ composer require leafs/queue
 
 :::
 
-After installing the package, you need to register the Leaf Queue commands in the Leaf MVC console. You can do this by adding the following line to your `leaf` file in the root of your Leaf MVC app:
-
-```php
-/*
-|----------------------------------------------------------------
-| Load Leaf configuration
-|----------------------------------------------------------------
-|
-| Leaf MVC allows you to customize Leaf and it's modules using
-| configuration files defined in the config folder. This line
-| loads the configuration files and makes them available to
-| your application.
-|
-*/
-Leaf\Core::loadConsole([
-  Leaf\Queue::commands() // [!code ++]
-]);
-```
-
-This adds commands for managing your queues and workers to the Leaf MVC console.
+This will install the Leaf Queue package and set up the necessary files and commands for you to start using queues in your Leaf app.
 
 <!-- This should give you access to the following commands:
 
@@ -91,7 +72,6 @@ This adds commands for managing your queues and workers to the Leaf MVC console.
 - `php leaf d:job` - Delete a job class.
 - `php leaf queue:install` - Generate and run a schema file for the queue table.
 - `php leaf queue:run` - Start the queue worker. -->
-
 
 By default, Leaf MVC uses your database as the queue backend, storing jobs in a `leaf_php_jobs` table. If you're fine with these defaults, just restart your server—Leaf will detect the queue setup and automatically start processing jobs alongside the PHP and Vite servers.
 
@@ -423,51 +403,4 @@ Worker config includes the default settings used by your worker when executing a
 
 ## Deployment
 
-When deploying your application with queues, Leaf takes care of setting up the necessary files and commands based on your chosen queue driver. However, once deployed, you’ll need to set up your server to keep your workers running continuously.
-
-For smaller applications, you can keep the queue worker running in the background with:
-
-```bash:no-line-numbers
-php leaf queue:work &
-```
-
-This command will set up your queue and start a worker to process jobs. Leaf includes safeguards to prevent excessive memory usage, long-running processes, or crashes from failed jobs. However, for larger applications, this setup may not be enough. In such cases, using a process manager like Supervisor is recommended to ensure your workers run smoothly and restart automatically if needed:
-
-```bash:no-line-numbers
-sudo apt update && sudo apt install supervisor -y
-```
-
-Create a new configuration file for your Leaf queue worker:
-
-```bash:no-line-numbers
-sudo nano /etc/supervisor/conf.d/leaf-queue.conf
-```
-
-Add your Supervisor configuration:
-
-```ini:no-line-numbers
-[program:leaf-queue]
-process_name=%(program_name)s_%(process_num)02d
-command=php leaf queue:work
-autostart=true
-autorestart=true
-numprocs=1
-redirect_stderr=true
-stdout_logfile=/var/log/leaf-queue.log
-```
-
-Save and exit, then update Supervisor and start the worker:
-
-```bash:no-line-numbers
-sudo supervisorctl reread
-sudo supervisorctl update
-sudo supervisorctl start leaf-queue
-```
-
-This will start a worker that will process jobs in the queue. You can check the status of the worker using the following command:
-
-```bash:no-line-numbers
-sudo supervisorctl status leaf-queue
-```
-
-And that's it! Your worker is now running and processing jobs in the queue.
+Leaf sets up the necessary files and commands for you to start using queues in your Leaf app. However, once deployed, you’ll need to set up your server to keep your workers running continuously. Check out this guide on [deploying queues/workers](/learn/deployment/#deploying-queues-workers) for more information.

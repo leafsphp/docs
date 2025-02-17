@@ -90,7 +90,7 @@ Blade views are a pretty sweet mixture of HTML, PHP, and clean syntax. You can c
 
 This should look pretty familiar if you know HTML (of course you do). The only difference is the <span v-pre>`{{ $name }}`</span> part. This is Blade's way of creating a variable in your view. When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of <span v-pre>`{{ $name }}`</span>. Let's see how you can render this view.
 
-<section id="leaf-zero" class="rounded-2xl shadow-md outline outline-gray-100 p-4 md:p-10">
+<section id="leaf-zero" class="rounded-2xl shadow-md outline outline-gray-100 dark:outline-gray-800 p-4 md:p-10 bg-[var(--vp-c-bg-alt)]">
     <p
         class="mt-4 text-3xl sm:text-4xl text-slate-900 font-extrabold tracking-tight dark:text-slate-50"
     >
@@ -137,24 +137,11 @@ This should look pretty familiar if you know HTML (of course you do). The only d
                             alt=""
                             loading="lazy"
                             decoding="async"
-                            src="https://zero.leafphp.dev/assets/img/hero.png"
-                            class="absolute shadow-xl rounded-lg"
-                            style="
-                                top: 3.55556%;
-                                left: 2.22589%;
-                                width: 19.4559%;
-                                opacity: 1;
-                                transform: none;
-                            "
-                        /><img
-                            alt=""
-                            loading="lazy"
-                            decoding="async"
-                            src="https://zero.leafphp.dev/assets/img/hero.png"
-                            class="absolute shadow-xl rounded-lg"
+                            src="https://github.com/user-attachments/assets/97489e45-dde4-4645-b074-2dfabff5d518"
+                            class="absolute shadow-xl rounded-lg border border-gray-400/20 border-t-0"
                             style="
                                 top: 0%;
-                                left: 23.6603%;
+                                left: 20%;
                                 width: 46.7436%;
                                 opacity: 1;
                                 transform: none;
@@ -163,11 +150,24 @@ This should look pretty familiar if you know HTML (of course you do). The only d
                             alt=""
                             loading="lazy"
                             decoding="async"
-                            src="https://zero.leafphp.dev/assets/img/hero.png"
-                            class="absolute shadow-xl rounded-lg"
+                            src="https://github.com/user-attachments/assets/b1397a2e-d1ab-4b35-b2a3-d055cc8918d0"
+                            class="absolute shadow-xl rounded-lg border border-gray-400/20 !border-t-0"
                             style="
-                                top: 6.96296%;
-                                left: 72.3825%;
+                                top: 0%;
+                                left: 57.22589%;
+                                width: 19.4559%;
+                                opacity: 1;
+                                transform: none;
+                            "
+                        /><img
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            src="https://github.com/user-attachments/assets/49e18a39-45fd-419d-8033-050528a4052e"
+                            class="absolute shadow-xl rounded-lg border border-gray-400/20"
+                            style="
+                                top: 22.96296%;
+                                left: 52.3825%;
                                 width: 25.3916%;
                                 opacity: 1;
                                 transform: none;
@@ -176,11 +176,11 @@ This should look pretty familiar if you know HTML (of course you do). The only d
                             alt=""
                             loading="lazy"
                             decoding="async"
-                            src="https://zero.leafphp.dev/assets/img/hero.png"
-                            class="absolute shadow-xl rounded-lg"
+                            src="https://github.com/user-attachments/assets/791fbd51-46b9-4227-8a4c-d1959b1ee984"
+                            class="absolute shadow-xl rounded-lg border border-gray-400/20"
                             style="
                                 top: 42.8148%;
-                                left: 0%;
+                                left: 3%;
                                 width: 38.9118%;
                                 opacity: 1;
                                 transform: none;
@@ -189,25 +189,12 @@ This should look pretty familiar if you know HTML (of course you do). The only d
                             alt=""
                             loading="lazy"
                             decoding="async"
-                            src="https://zero.leafphp.dev/assets/img/hero.png"
-                            class="absolute shadow-xl rounded-lg"
+                            src="https://github.com/user-attachments/assets/1c893655-f66d-49e0-b5ed-2842bcf69b43"
+                            class="absolute shadow-xl rounded-lg border border-gray-400/20"
                             style="
                                 top: 42.8148%;
                                 left: 40.8904%;
                                 width: 36.3561%;
-                                opacity: 1;
-                                transform: none;
-                            "
-                        /><img
-                            alt=""
-                            loading="lazy"
-                            decoding="async"
-                            src="https://zero.leafphp.dev/assets/img/hero.png"
-                            class="absolute shadow-xl rounded-lg"
-                            style="
-                                top: 42.8148%;
-                                left: 79.2251%;
-                                width: 20.7749%;
                                 opacity: 1;
                                 transform: none;
                             "
@@ -224,7 +211,7 @@ This should look pretty familiar if you know HTML (of course you do). The only d
 Remember we set up Blade earlier? Now we can use it to render our Blade views. Here's how you can render the `hello.blade.php` view we created earlier:
 
 ```php:no-line-numbers
-echo app()->blade()->render('hello', ['name' => 'Michael']);
+response()->render('hello', ['name' => 'Michael']);
 ```
 
 This will render the `hello.blade.php` view and pass in a variable called `name` with the value `Michael`. When you open the view in your browser, you should see a big "Hello, Michael" on your screen.
@@ -387,7 +374,7 @@ Likewise, the @selected directive may be used to indicate if a given select opti
 
 Additionally, the @disabled directive may be used to indicate if a given element should be "disabled":
 
-```blade
+```blade:no-line-numbers
 <button type="submit" @disabled($shouldBeDisabled)>Submit</button>
 ```
 
@@ -510,9 +497,41 @@ Blade allows you to define custom directives using the `directive()` method. Whe
 
 ```php
 app()->blade()->directive('datetime', function ($expression) {
-    return "<?php echo tick({$expression})->format('F d, Y g:i a'); ?>";
+    return "<?php echo tick({$expression})->format('DD MM YYYY'); ?>";
 });
-````
+```
+
+::: details Extending blade in Leaf MVC
+If you use Leaf MVC, you will need to publish your view config to add custom directives. You can do this by running the following command:
+
+```bash:no-line-numbers
+php leaf config:publish view
+```
+
+After that, you can add your custom directives to the `config/view.php` file. Here's an example of how you can add a custom directive:
+
+```php:no-line-numbers [config/view.php]
+    ...
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extend view engine
+    |--------------------------------------------------------------------------
+    |
+    | Some view engines like blade allow you extend the engine to
+    | add extra functions or directives. This is just the place to
+    | do all of that. Extend is a function that accepts an instance
+    | of your view engine which you can 'extend'
+    |
+    */
+    'extend' => function (\Leaf\Blade $engine) {
+        $engine->directive('datetime', function ($expression) {
+            return "<?php echo tick({$expression})->format('DD MM YYYY'); ?>";
+        });
+    },
+```
+
+:::
 
 Which allows you to use the following in your blade template:
 
@@ -520,7 +539,7 @@ Which allows you to use the following in your blade template:
 Current date: @datetime($date)
 ```
 
-This will output the current date in the format `F d, Y g:i a`. You can define as many custom directives as you want to make your Blade views more powerful.
+This will output the current date in the format `DD MM YYYY`. You can define as many custom directives as you want to make your Blade views more powerful.
 
 ## Conclusion
 

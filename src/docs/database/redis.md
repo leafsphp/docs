@@ -70,34 +70,7 @@ composer require leafs/redis
 
 :::
 
-Leaf Redis comes with a few commands that you can attach to the MVC console. You can do this by heading over to the `leaf` file in your project root and adding the following line to the return array.
-
-```php
-/*
-|------------------------------------------------------------
-| Load Leaf configuration
-|------------------------------------------------------------
-|
-| Leaf MVC allows you to customize Leaf and it's modules using
-| configuration files defined in the config folder. This line
-| loads the configuration files and makes them available to
-| your application.
-|
-*/
-Leaf\Core::loadConsole([
-    Leaf\Redis::commands() // [!code ++]
-]);
-```
-
-Once you've done that, you should have access to a bunch of new commands from Leaf Redis. The available commands are:
-
-```bash:no-line-numbers
-redis
-  redis:install  Create leaf redis config and .env variables
-  redis:server   Start redis server
-```
-
-You won't need these commands in development because Leaf will automatically set up all the necessary files for you and will also start a Redis server whenever you start your application.
+From there, restart your server and Leaf will automatically detect the Redis package and start a Redis process alongside your application.
 
 ## Connecting to Redis
 

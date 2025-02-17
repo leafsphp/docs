@@ -55,3 +55,40 @@ You may choose to remove a flash item manually without displaying it first. You 
 ```php:no-line-numbers
 flash()->remove('info');
 ```
+
+## Toast Notifications
+
+If you are using Leaf Blade with Tailwind and Alpine, you can easily display toast notifications using the `@toastContainer` directive. This directive will automatically display all flash messages in the session.
+
+```php:no-line-numbers
+return response()
+  ->withFlash('leaf.toast', [
+      'title' => 'Your email has been verified. Sign in to continue.',
+      'type' => 'success'
+  ])
+  ->redirect('/pageWithToastContainer');
+```
+
+And then on the page you want to display the toast container:
+
+```blade
+<body>
+  ...
+
+  @toastContainer
+</body>
+```
+
+And that's it! You will see a toast notification with the message you provided.
+
+Available toast types are `success`, `danger`, `warning`, `info` and `default`. You can also pass a description to the toast notification which will appear below the title.
+
+```php:no-line-numbers
+return response()
+  ->withFlash('leaf.toast', [
+      'title' => 'Your email has been verified. Sign in to continue.',
+      'description' => 'You can now sign in to your account.',
+      'type' => 'success'
+  ])
+  ->redirect('/pageWithToastContainer');
+```

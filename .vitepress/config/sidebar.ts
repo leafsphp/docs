@@ -51,7 +51,7 @@ const sidebar = [
       // { text: 'Overview', link: '/docs/config/' },
       // { text: 'App settings', link: '/docs/config/settings' },
       { text: 'Application Env', link: '/docs/config/environment' },
-      { text: 'URL Rewriting', link: '/docs/routing/url-rewriting' },
+      { text: 'Deployment', link: '/learn/deployment/' },
       { text: 'Error Handling', link: '/docs/routing/error-handling' },
       { text: 'Dependency Injection', link: '/docs/config/container' },
       // { text: 'Logging', link: '/docs/utils/logging' },

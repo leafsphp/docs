@@ -55,7 +55,7 @@ Once this request is made, Fetch gives you a `FetchResponse` object which contai
 
 You will usually want to access the response data. You can do this using the `data` property of the `FetchResponse` object.
 
-```php
+```php:no-line-numbers
 response()->json($response->data);
 ```
 
@@ -76,7 +76,7 @@ It gets even simpler when you're making a GET or POST request. Fetch provides so
 
 GET requests are the most common type of request you'll make when fetching data from an API. Fetch makes it easy to make GET requests using the global `fetch()` function. Here's an example of how you can make a GET request using Fetch:
 
-```php
+```php:no-line-numbers
 $res = fetch()->get('https://jsonplaceholder.typicode.com/todos/');
 
 // data returned is saved in the $data property just like axios
@@ -85,7 +85,7 @@ response()->json($res->data);
 
 Or you pass the url directly to the `fetch()` function.
 
-```php
+```php:no-line-numbers
 $res = fetch('https://jsonplaceholder.typicode.com/todos/');
 
 // data returned is saved in the $data property just like axios
@@ -117,7 +117,7 @@ Base URLs are useful when you're making requests to the same server or API. One 
 
 You can set a base URL for all your requests using the `baseUrl()` method on the `fetch` function.
 
-```php
+```php:no-line-numbers
 fetch()->baseUrl('https://jsonplaceholder.typicode.com');
 ```
 
