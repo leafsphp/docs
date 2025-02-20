@@ -105,6 +105,7 @@ Here is a list of all available Leaf MVC config files:
 | database          | Configuration for database stuff                              |
 | mail              | Configuration for mailing (requires mail module)              |
 | redis             | Configuration for redis management (requires redis module)    |
+| queue             | Configuration for queue management (requires queue module)    |
 | view              | Configuration for view rendering                              |
 
 ## Application Environment
