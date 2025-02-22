@@ -134,12 +134,30 @@ dispatch([
 
 ## Specifying options for a job
 
-In the Worker config, you can specify default options for your jobs. However, you can also specify options for a job when dispatching it to the queue. For example, if you want to delay a job for 5 minutes, you can do so by passing the `delay` option to the `dispatch()` method:
+There are times when you need a job to behave a specific way, for instance, you may want to delay a job for a few minutes or specify the number of times a job should be attempted. You can do that by directly setting the options on the job:
 
-```php:no-line-numbers
-dispatch(SendEmailJob::with($userId), [
-  'delay' => 5
-]);
+```php
+<?php
+
+namespace App\Jobs;
+
+use Leaf\Job;
+use App\Mailers\UserMailer;
+
+class SendEmailJob extends Job
+{
+    protected $delay = 10; // add 10 sec delay // [!code ++]
+    protected $tries = 1; // try job only once (default 3) // [!code ++]
+
+    /**
+     * Handle the job.
+     * @return void
+     */
+    public function handle($userId)
+    {
+       UserMailer::welcome($userId)->send();
+    }
+}
 ```
 
 The available options are:
@@ -156,7 +174,7 @@ The available options are:
 
 Without a worker running, your jobs will just sit in the queue without being processed.
 
-## Batching Jobs
+<!-- ## Batching Jobs
 
 You can use batches to to queue multiple jobs in sequence—they will be processed in the order they were dispatched. The key advantage of batching is that it allows you to specify a callback that runs only after all the jobs have been completed. This is useful for cases where you need to perform an action after a set of jobs finishes successfully, such as logging the results or notifying a user when all tasks are done. To create a batch, you can use the `g:job` command:
 
@@ -198,7 +216,7 @@ You can then dispatch the batch to the queue:
 
 ```php:no-line-numbers
 dispatch(ProcessPodcastBatch::class);
-```
+``` -->
 
 ## Limitations of Queues/Workers
 
@@ -241,7 +259,7 @@ return [
     | used by your application. An example configuration is provided for
     | each backend supported by Leaf. You're also free to add more.
     |
-    | Drivers: "redis", "database", "file (BETA)"
+    | Drivers: "database", "redis (BETA)", "file (WIP)"
     |
     */
     'connections' => [
@@ -260,7 +278,40 @@ return [
 ];
 ```
 
-You can change the default queue connection, the queue connections, and the table name for the database queue. You can also add more queue connections if you want to use a different queue backend.
+You can set up multiple queue connections, and Leaf will connect to them when a job is run. For now, only database queues are supported, but we are working on redis and file drivers which will be available pretty soon.
+
+## Using a different connection
+
+Once you have configured another database connection, you can run a job using that queue connection by specifying it inside the job you create like this:
+
+```php
+<?php
+
+namespace App\Jobs;
+
+use Leaf\Job;
+use App\Mailers\UserMailer;
+
+class SendEmailJob extends Job
+{
+    protected $connection = 'myOtherConnection';
+
+    /**
+     * Handle the job.
+     * @return void
+     */
+    public function handle($userId)
+    {
+       UserMailer::welcome($userId)->send();
+    }
+}
+```
+
+From there, you can dispatch the job just as you always do:
+
+```php:no-line-numbers
+dispatch(SendEmailJob::with($userId));
+```
 
 ## Deployment
 
