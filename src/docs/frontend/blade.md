@@ -90,7 +90,7 @@ Blade views are a pretty sweet mixture of HTML, PHP, and clean syntax. You can c
 
 This should look pretty familiar if you know HTML (of course you do). The only difference is the <span v-pre>`{{ $name }}`</span> part. This is Blade's way of creating a variable in your view. When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of <span v-pre>`{{ $name }}`</span>. Let's see how you can render this view.
 
-<section id="leaf-zero" class="rounded-2xl shadow-md outline outline-gray-100 dark:outline-gray-800 p-4 md:p-10 bg-[var(--vp-c-bg-alt)]">
+<!-- <section id="leaf-zero" class="rounded-2xl shadow-md outline outline-gray-100 dark:outline-gray-800 p-4 md:p-10 bg-[var(--vp-c-bg-alt)]">
     <p
         class="mt-4 text-3xl sm:text-4xl text-slate-900 font-extrabold tracking-tight dark:text-slate-50"
     >
@@ -99,7 +99,7 @@ This should look pretty familiar if you know HTML (of course you do). The only d
     <p class="mt-4 max-w-3xl space-y-6">
         Zero is a collection of free pre-built components, page sections, and templates powered by Blade, Tailwind and Alpine JS to help you build your UIs faster.
     </p>
-    <Button as="a" href="/docs/frontend/zero" class="!text-white bg-red-500 hover:bg-red-600">View Leaf Zero</Button>
+    <Button as="a" href="/docs/frontend/zero/" class="!text-white bg-red-500 hover:bg-red-600">View Leaf Zero</Button>
     <div class="relative pt-10 xl:pt-0 mt-10">
         <div
             class="hidden dark:block absolute top-0 inset-x-0 h-[37.5rem] bg-gradient-to-b from-[#0c1120] xl:top-18"
@@ -204,7 +204,7 @@ This should look pretty familiar if you know HTML (of course you do). The only d
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 ## Rendering Blade Views
 

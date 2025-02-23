@@ -15,9 +15,9 @@ const repositionTabMarker = (el) => {
 </script>
 
 <template>
-  <div class="relative z-30 w-full mb-5 rounded-lg">
+  <div class="relative z-10 w-full mb-5 rounded-lg">
     <div class="flex items-center justify-between mb-3">
-      <h4 class="!m-0 !p-0">{{ props.title }}</h4>
+      <h3 class="!m-0 !p-0">{{ props.title }}</h3>
       <div
         class="relative inline-grid items-center justify-center w-auto h-10 grid-cols-2 p-1 bg-[var(--vp-c-bg-alt)] rounded-xl select-none">
         <button type="button" @click="repositionTabMarker($event.target); tab = 'preview';"
