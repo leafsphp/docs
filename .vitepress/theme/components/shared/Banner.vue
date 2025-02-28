@@ -31,7 +31,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text">
-      Pre-order the Paperplane starter kit and get 50% off: <a href="https://paperplane.leafphp.dev">Pre-order today!</a>
+      We just published v4.0 Beta of Leaf and Leaf MVC - <a href="https://beta.leafphp.dev">Check it out!</a>
     </div>
 
     <button type="button" @click="dismiss">
