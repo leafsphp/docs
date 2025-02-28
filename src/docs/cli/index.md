@@ -139,19 +139,19 @@ This video will help you understand how to work with packages on the Leaf CLI.
 This cli tool also adds a feature to install leaf packages from composer.
 
 ```bash:no-line-numbers
-leaf install leafs/ui
+leaf install leafs/auth
 ```
 
 If you are installing a leaf module or package, you can leave out the `leafs/` part.
 
 ```bash:no-line-numbers
-leaf install ui
+leaf install auth
 ```
 
 You can also pass in a bunch of packages to install at once.
 
 ```bash:no-line-numbers
-leaf install ui db illuminate/support
+leaf install auth db illuminate/support
 ```
 
 ***Versioning***
@@ -159,7 +159,7 @@ leaf install ui db illuminate/support
 Leaf CLI also allows you to install a particular version of any package using `@`
 
 ```bash:no-line-numbers
-leaf install ui@1.0 illuminate/support@9.0.2
+leaf install auth@4.0 illuminate/support@9.0.2
 ```
 
 ### Uninstalling packages
@@ -167,11 +167,11 @@ leaf install ui@1.0 illuminate/support@9.0.2
 This works the same way as installing packages, but you use the `uninstall` command instead.
 
 ```bash:no-line-numbers
-leaf uninstall ui
-leaf uninstall ui db illuminate/support
+leaf uninstall auth
+leaf uninstall auth db illuminate/support
 ```
 
-## View commands
+<!-- ## View commands
 
 Leaf CLI also allows you to create and interact with frontend setups using the `view` commands. You can scaffold frontend setups like React, Vue, templating engines, build tools, and more.
 
@@ -183,7 +183,7 @@ Leaf CLI ships with a `view:install` command that allows you to set up React, Vu
 leaf view:install --react
 ```
 
-You can also use the `--vite` and `--tailwind` options to scaffold Vite and Tailwind respectively.
+You can also use the `--vite` and `--tailwind` options to scaffold Vite and Tailwind respectively. -->
 
 ### Building frontend setups
 

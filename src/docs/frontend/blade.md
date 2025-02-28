@@ -33,11 +33,11 @@ Blade comes with Leaf MVC out of the box, fully configured and ready to use, how
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install blade
+leaf install blade@v4
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/blade
+composer require leafs/blade:v4
 ```
 
 :::

@@ -119,11 +119,11 @@ We've already seen how routes work by returning JSON in the previous example. No
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install blade
+leaf install blade@v4
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/blade
+composer require leafs/blade:v4
 ```
 
 :::

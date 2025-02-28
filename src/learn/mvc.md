@@ -53,7 +53,7 @@ leaf create my-app --mvc
 ```
 
 ```bash:no-line-numbers [Composer]
-composer create-project leafs/mvc my-app
+composer create-project leafs/mvc:v4.0-beta my-app
 ```
 
 :::

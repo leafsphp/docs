@@ -54,11 +54,11 @@ To get started with Queues in Leaf, you need to install the `leaf/queue` package
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install queue
+leaf install queue@v4.0-beta
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/queue
+composer require leafs/queue:v4.0-beta
 ```
 
 :::

@@ -12,12 +12,16 @@ php leaf list
 
 If you get errors from commands which you saw in the documentation, you are probably running an older version of the Leaf MVC console. We add more handy commands regularly, but as the console does not automatically update, you may run into the missing command error. To fix that problem, you need to install the latest version of Aloe:
 
-```bash:no-line-numbers
-leaf install aloe
+::: code-group
 
-# or with composer
+```bash:no-line-numbers [Leaf CLI]
+leaf install aloe@v4.0-beta
+leaf install mvc-core@v4.0-beta
+```
 
-composer require leafs/aloe
+```bash:no-line-numbers [Composer]
+composer require leafs/aloe:v4.0-beta
+composer require leafs/mvc-core:v4.0-beta
 ```
 
 :::

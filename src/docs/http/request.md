@@ -165,11 +165,11 @@ This requires the Leaf FS module. If you are not using Leaf MVC, you will have t
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install fs
+leaf install fs@v4
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/fs
+composer require leafs/fs:v4
 ```
 
 :::

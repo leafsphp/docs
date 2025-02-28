@@ -39,8 +39,7 @@ import Particles from './Particles.vue';
                     class="size-3 rounded-full bg-gray-950/5 dark:bg-white/20"></span><span class="size-3 rounded-full bg-gray-950/5 dark:bg-white/20"></span>
                 </div>
                 <pre>
-
-  <code>$ composer global require leafs/cli</code>
+  <code>$ composer global require leafs/cli:v4.0-beta</code>
   <code>$ leaf create app</code>
   <code>$ cd app</code>
                 </pre>
