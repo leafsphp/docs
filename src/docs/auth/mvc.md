@@ -22,7 +22,7 @@ composer require leafs/auth
 Leaf Auth will automatically pick up your default database connection and will work with it, so you can immediately start working with it without any config. Checkout the following pages to authenticate users:
 
 - [Login](/docs/auth/login)
-- [Register](/docs/auth/register)
+- [Register](/docs/auth/signup)
 - [User Data](/docs/auth/user)
 - [Protected routes](/docs/auth/protected-routes)
 - [Roles & Permissions](/docs/auth/permissions)

@@ -137,10 +137,14 @@ $flight->delete(); // Delete the flight
 
 ### Soft deletes
 
-A soft delete marks a record as deleted without actually removing it from the database. Instead, a `deleted_at` timestamp is set, and the record is hidden from query results. The data is still in the database, allowing you to restore it later if needed. To get started with soft deletes, add a `deleted_at` column to your table. You can do this by adding the following line to your [migration file](/docs/database/migrations):
+A soft delete marks a record as deleted without actually removing it from the database. Instead, a `deleted_at` timestamp is set, and the record is hidden from query results. The data is still in the database, allowing you to restore it later if needed. To get started with soft deletes, head over to your [schema file](/docs/database/files) and turn on soft deletes by adding a `softDeletes` option:
 
-```php:no-line-numbers
-$table->timestamp('deleted_at')->nullable();
+```yaml
+softDeletes: true // [!code ++]
+
+columns:
+  name: string
+  ...
 ```
 
 After that, we can add the `SoftDeletes` trait to our model. This is a trait provided by Eloquent that will automatically handle soft deletes for us:

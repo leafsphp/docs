@@ -139,7 +139,7 @@ With that in mind, we've created a few paths to help you get started with Leaf. 
 
 ## Deploy your app
 
-After building your app, you'll want to deploy it to the web so that others can access it. We've got you covered with our [deployment guides](/learn/deployment) that walk you through deploying your app to various platforms.
+After building your app, you'll want to deploy it to the web so that others can access it. We've got you covered with our [deployment guides](/learn/deployment/) that walk you through deploying your app to various platforms.
 
 ## Contributing
 
