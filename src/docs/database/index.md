@@ -164,24 +164,32 @@ db()->connect([
 
 :::
 
-## Deferred database connection <Badge text="NEW" type="tip" />
+Leaf DB will not connect to your database until you run a query. This means that you can pass in your database connection at the beginning of your application and only connect when you need to run a query which is a great way to save resources.
 
-In a lot of cases, your application may have other routes that don't need a database connection, but popping up a connection before the route is hit can be a waste of resources. Leaf DB now allows you to defer your database connection until you actually need it. Here's how you can defer your database connection:
+## Multi-DB Connections <Badge text="NEW" type="tip" />
+
+Some applications may need to connect to multiple databases for things like queues and logs, and Leaf DB allows you to keep multiple connections open and query them independently. Here's how you can connect to multiple databases:
 
 ```php
-db()->load([
-  'dbtype' => '...',
-  'charset' => '...',
-  'port' => '...',
-  'unixSocket' => '...',
-  'host' => '...',
-  'username' => '...',
-  'password' => '...',
-  'dbname' => '...',
-]);
+db()->addConnections([
+  'conn1' => [
+    'dbtype' => '...',
+    ...
+  ],
+  'conn2' => [
+    'dbtype' => '...',
+    ...
+  ],
+], 'conn1');
 ```
 
-It takes in the same arguments as `connect()`, but it doesn't connect to the database immediately. It only connects when you run a query.
+The `addConnections()` method takes an array of connection details for your databases as its first argument and the default connection name as its second argument. You can then switch between connections using the `useConnection()` method:
+
+```php
+db('conn2')->select('users')->all();
+```
+
+If no connection name is provided, Leaf DB will use the default connection.
 
 ## Writing simple queries
 
