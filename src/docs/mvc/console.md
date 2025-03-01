@@ -108,7 +108,7 @@ These commands help you quickly create files and structure your app.
 
 ### Generate Commands
 
-These commands are used to generate files for your project, saving you time by automating tasks like creating controllers, models, migrations, etc.
+These commands are used to generate files for your project, saving you time by automating tasks like creating controllers, models, schema files, etc.
 
 - Create a Controller
 
@@ -124,7 +124,7 @@ These commands are used to generate files for your project, saving you time by a
   php leaf g:controller [name] --resource
   ```
 
-  You can also create a controller with a model or migration:
+  You can also create a controller with a model or schema file:
 
   ```bash:no-line-numbers
   php leaf g:controller [name] --model
@@ -139,18 +139,18 @@ These commands are used to generate files for your project, saving you time by a
   php leaf g:model [name]
   ```
 
-  To create a model with a migration, use:
+<!-- To create a model with a migration, use:
 
-  ```bash:no-line-numbers
-  php leaf g:model [name] --migration
-  ```
+```bash:no-line-numbers
+php leaf g:model [name] --migration
+``` -->
 
 - Other Generate Commands
 
   - Factory: php leaf g:factory [name]
   - Helper: php leaf g:helper [name]
   - Mailer: php leaf g:mailer [name]
-  - Migration: php leaf g:migration [name]
+  - Schema file: php leaf g:schema [name]
   - Seed: php leaf g:seed [name]
   - View Template: php leaf g:template [name] --type=[blade|jsx|vue|html]
 
@@ -160,7 +160,7 @@ These are the reverse of generate commands—use them to delete files.
 
 - Delete Controller: php leaf d:controller [name]
 - Delete Model: php leaf d:model [name]
-- Delete Migration: php leaf d:migration [name]
+- Delete Schema: php leaf d:schema [name]
 - Delete Seed: php leaf d:seed [name]
 
 ### Database Commands
@@ -177,7 +177,7 @@ Leaf MVC makes database management easy with these commands.
 
 - Migrate Database
 
-  To run your migrations and set up your database schema, run:
+  To migrate your db using your schema files, run:
 
   ```bash:no-line-numbers
   php leaf db:migrate
@@ -256,7 +256,7 @@ These commands handle your frontend setup, building, and serving.
 This is a list of every command available in Aloe. To view this list from your terminal, run `php leaf list`.
 
 ```bash:no-line-numbers
-Leaf MVC v3.8.0
+Leaf MVC v4.x-BETA
 
 Usage:
   command [options] [arguments]
@@ -279,23 +279,17 @@ Available commands:
  app
   app:down          Place app in maintainance mode
   app:up            Remove app from maintainance mode
- auth
-  auth:scaffold     Scaffold basic app authentication
  config
   config:lib        Setup Leaf MVC to use external libraries
-  config:mail       Install leaf mail and setup mail config
+  config:publish    Publish config files to your project
  d
   d:command         Delete a console command
   d:controller      Delete a controller
-  d:factory         Delete a model factory
-  d:migration       Delete a migration
   d:model           Delete a model
-  d:seed            Delete a model seeder
  db
-  db:install        Create new database from .env variables
-  db:migrate        Run the database migrations
-  db:reset          Rollback, migrate and seed database
-  db:rollback       Rollback all database migrations
+  db:migrate        Migrate your db schema files
+  db:reset          Reset migration history + db tables
+  db:rollback       Rollback database to a previous state
   db:seed           Seed the database with records
  devtools
   devtools:install  Install the Leaf PHP devtools
@@ -304,16 +298,17 @@ Available commands:
  g
   g:command         Create a new console command
   g:controller      Create a new controller class
-  g:factory         Create a new model factory
   g:helper          Create a new helper class
   g:mailer          Create a new mailer
   g:middleware      Create a new application middleware
-  g:migration       Create a new migration file
   g:model           Create a new model class
-  g:seed            Create a new seed file
-  g:template        Create a new view file
+  g:schema          Create a new schema file
+  g:template        [g:view] Create a new view file
  key
-  key:generate      Run your frontend dev server
+  key:generate      Generate/Regenerate your app key
+ scaffold
+  scaffold:auth     Scaffold basic app authentication
+  scaffold:mail     Install leaf mail and setup mail config
  view
   view:build        Run your frontend dev server
   view:dev          [view:serve] Run your frontend dev server
