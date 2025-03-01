@@ -60,7 +60,7 @@ const links = [
           </svg>`
   },
   {
-    name: 'Playground',
+    name: 'Sandbox',
     href: 'https://sandbox.leafphp.dev/',
     color: 'group-hover:shadow-blue-200 dark:group-hover:bg-blue-500',
     icon: `<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
@@ -90,8 +90,8 @@ const links = [
           </svg>`
   },
   {
-    name: 'Community',
-    href: 'https://discord.gg/Pkrm9NJPE3',
+    name: 'API Reference',
+    href: '/api/',
     color: 'group-hover:shadow-violet-200 dark:group-hover:bg-violet-500',
     icon: `<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"

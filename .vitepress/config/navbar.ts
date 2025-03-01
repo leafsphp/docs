@@ -10,7 +10,6 @@ const nav: DefaultTheme.NavItem[] = [
     text: 'Blog',
     link: 'https://blog.leafphp.dev',
   },
-
   {
     text: 'Community',
     activeMatch: `^/(about|community)/`,

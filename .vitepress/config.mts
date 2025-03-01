@@ -87,4 +87,8 @@ export default defineConfig({
   vite: {
     plugins: [groupIconVitePlugin()],
   },
+
+  rewrites: {
+    '/api/': '/api/app.html',
+  }
 });

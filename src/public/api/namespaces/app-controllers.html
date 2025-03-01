@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+            <title>Leaf PHP</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
+    </head>
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="/" class="phpdocumentor-title__link">Leaf PHP</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
+    <section data-search-form class="phpdocumentor-search">
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
+
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
+            <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/app.html" class="">App</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/app-controllers.html" class="-active">Controllers</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-models.html" class="">Models</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-mailers.html" class="">Mailers</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/composer.html" class="">Composer</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/composer-autoload.html" class="">Autoload</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/doctrine.html" class="">Doctrine</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/doctrine-dbal.html" class="">DBAL</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/doctrine-deprecations.html" class="">Deprecations</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/doctrine-common.html" class="">Common</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/doctrine-inflector.html" class="">Inflector</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/faker.html" class="">Faker</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/faker-calculator.html" class="">Calculator</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/faker-container.html" class="">Container</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/faker-core.html" class="">Core</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/faker-extension.html" class="">Extension</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/faker-guesser.html" class="">Guesser</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/faker-orm.html" class="">ORM</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/faker-provider.html" class="">Provider</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/firebase.html" class="">Firebase</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/firebase-jwt.html" class="">JWT</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/grahamcampbell.html" class="">GrahamCampbell</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/grahamcampbell-resulttype.html" class="">ResultType</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/illuminate.html" class="">Illuminate</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/illuminate-bus.html" class="">Bus</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-support.html" class="">Support</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-container.html" class="">Container</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-contracts.html" class="">Contracts</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-database.html" class="">Database</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-events.html" class="">Events</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-filesystem.html" class="">Filesystem</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-pipeline.html" class="">Pipeline</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/illuminate-view.html" class="">View</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/jenssegers.html" class="">Jenssegers</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/jenssegers-blade.html" class="">Blade</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/aloe.html" class="">Aloe</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/aloe-command.html" class="">Command</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/leaf.html" class="">Leaf</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/leaf-alchemy.html" class="">Alchemy</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-console.html" class="">Console</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-auth.html" class="">Auth</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-http.html" class="">Http</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-anchor.html" class="">Anchor</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-db.html" class="">Db</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-exception.html" class="">Exception</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-exceptions.html" class="">Exceptions</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-fs.html" class="">FS</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-inertia.html" class="">Inertia</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-mail.html" class="">Mail</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-helpers.html" class="">Helpers</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-queue.html" class="">Queue</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/leaf-redis.html" class="">Redis</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/carbon.html" class="">Carbon</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/carbon-doctrine.html" class="">Doctrine</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/carbon-messageformatter.html" class="">MessageFormatter</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/carbon-phpstan.html" class="">PHPStan</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/carbon-cli.html" class="">Cli</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/carbon-exceptions.html" class="">Exceptions</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/carbon-laravel.html" class="">Laravel</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/carbon-traits.html" class="">Traits</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/phpparser.html" class="">PhpParser</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/phpparser-builder.html" class="">Builder</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-comment.html" class="">Comment</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-errorhandler.html" class="">ErrorHandler</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-lexer.html" class="">Lexer</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-node.html" class="">Node</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-nodevisitor.html" class="">NodeVisitor</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-parser.html" class="">Parser</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phpparser-prettyprinter.html" class="">PrettyPrinter</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/phario.html" class="">PharIo</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/phario-composerdistributor.html" class="">ComposerDistributor</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phario-composerdistributortest.html" class="">ComposerDistributorTest</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phario-csfixer.html" class="">CSFixer</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phario-executor.html" class="">Executor</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phario-filesystem.html" class="">FileSystem</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/phario-gnupg.html" class="">GnuPG</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/phpdocumentor.html" class="">phpDocumentor</a>
+</h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/phpmailer.html" class="">PHPMailer</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/phpmailer-phpmailer.html" class="">PHPMailer</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/phpoption.html" class="">PhpOption</a>
+</h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/psr.html" class="">Psr</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/psr-cache.html" class="">Cache</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psr-clock.html" class="">Clock</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psr-container.html" class="">Container</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psr-log.html" class="">Log</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psr-simplecache.html" class="">SimpleCache</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/psy.html" class="">Psy</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/psy-codecleaner.html" class="">CodeCleaner</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-command.html" class="">Command</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-exception.html" class="">Exception</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-executionloop.html" class="">ExecutionLoop</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-formatter.html" class="">Formatter</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-input.html" class="">Input</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-output.html" class="">Output</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-readline.html" class="">Readline</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-reflection.html" class="">Reflection</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-sudo.html" class="">Sudo</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-tabcompletion.html" class="">TabCompletion</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-util.html" class="">Util</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-vardumper.html" class="">VarDumper</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/psy-versionupdater.html" class="">VersionUpdater</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/symfony.html" class="">Symfony</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/symfony-component.html" class="">Component</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/symfony-contracts.html" class="">Contracts</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/dotenv.html" class="">Dotenv</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/dotenv-exception.html" class="">Exception</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/dotenv-loader.html" class="">Loader</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/dotenv-parser.html" class="">Parser</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/dotenv-repository.html" class="">Repository</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/dotenv-store.html" class="">Store</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/voku.html" class="">voku</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/voku-helper.html" class="">helper</a>
+                
+            </li>
+            </ul>
+
+                        </section>
+                <section class="phpdocumentor-sidebar__category -packages">
+            <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Application.html" class="">Application</a>
+</h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Authentication.html" class="">Authentication</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="packages/Authentication-JWT.html" class="">JWT</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Leaf.html" class="">Leaf</a>
+</h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/PHPMailer.html" class="">PHPMailer</a>
+</h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/PHPMailerSomeFrenchpunctuationrequiresathinnon.html" class="">PHPMailerSomeFrenchpunctuationrequiresathinnon</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="packages/PHPMailerSomeFrenchpunctuationrequiresathinnon-breakingspaceU202Fcharacterbeforeitforexamplebeforeacolonorexclamationmark.html" class="">breakingspaceU202Fcharacterbeforeitforexamplebeforeacolonorexclamationmark</a>
+                
+            </li>
+            </ul>
+
+                        </section>
+            
+    <section class="phpdocumentor-sidebar__category -reports">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category -indices">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
+</aside>
+
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
+    </ul>
+
+    <article class="phpdocumentor-element -namespace">
+        <h2 class="phpdocumentor-content__title">Controllers</h2>
+
+        
+<h3 id="toc">
+    Table of Contents
+    <a href="namespaces/app-controllers.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h3>
+
+
+<h4 id="namespaces">
+    Namespaces
+    <a href="namespaces/app-controllers.html#namespaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/app-controllers-auth.html"><abbr title="\App\Controllers\Auth">Auth</abbr></a></dt>
+            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/app-controllers-profile.html"><abbr title="\App\Controllers\Profile">Profile</abbr></a></dt>
+    </dl>
+
+
+    <h4 id="toc-classes">
+        Classes
+        <a href="namespaces/app-controllers.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/App-Controllers-Controller.html"><abbr title="\App\Controllers\Controller">Controller</abbr></a></dt><dd>This is the base controller for your Leaf MVC Project.</dd>    </dl>
+
+
+
+
+
+
+
+
+        
+
+        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
+
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', src, true);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+                            Prism.highlightElement(code);
+                            return;
+                        }
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
+                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
+                    }
+                    modal.classList.add("phpdocumentor-modal__open");
+
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
+    </article>
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                            
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                                                                                    <li><a href="namespaces/app-controllers.html#toc-classes">Classes</a></li>
+                                                                                                                    </ul>
+            </li>
+
+            
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
+        </div>
+        <a href="namespaces/app-controllers.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+</body>
+</html>

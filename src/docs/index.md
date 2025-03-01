@@ -42,7 +42,11 @@ Leaf is built to be incrementally adoptable: use it as a lightweight core for sm
 
 ::: details Technical Requirements
 
-Before you start with Leaf, verify that your system has PHP v7.4+, Composer (for package management) and [Leaf CLI](/docs/cli/) (optional but recommended for easier app management)
+Before you start with Leaf, verify that your system has the following installed:
+
+- PHP v7.4 or higher
+- Composer (for package management)
+- [Leaf CLI](/docs/cli/) (optional but recommended for easier app management)
 
 ::: details Don't have PHP & Composer installed?
 
@@ -57,7 +61,7 @@ Before you start with Leaf, verify that your system has PHP v7.4+, Composer (for
 Once you install PHP and Composer, you can proceed with the installation of Leaf CLI:
 
 ```bash:no-line-numbers
-composer global require leafs/cli
+composer global require leafs/cli:v4.0-beta -W
 ```
 
 ### Building your first app
