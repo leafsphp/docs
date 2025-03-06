@@ -8,7 +8,7 @@ As a next step, you can:
 
 - Every feature you need is available as a module, so be sure to checkout the [modules documentation](/docs/modules).
 
-- Join the [Leaf Discord server](https://discord.gg/SpmNs4S) to ask questions, share what you're building, and get help from the community.
+- Join the [Leaf Discord server](https://discord.gg/Pkrm9NJPE3) to ask questions, share what you're building, and get help from the community.
 
 - Follow Leaf on [Twitter](https://twitter.com/leafphp) to stay up-to-date with the news and updates.
 

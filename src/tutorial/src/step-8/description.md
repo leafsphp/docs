@@ -6,19 +6,36 @@ A golden rule in web development is to never trust user input. Users will always
 
 These are the rules Leaf provides out-of-the-box for validating data:
 
-| Validation rule     |  Purpose                                     |
-|:--------------------|:---------------------------------------------|
-| required            | field is required                             |
-| number              | must only contain numbers                    |
-| text                | must only contain text and spaces            |
-| textOnly            | should be text only, no spaces allowed       |
-| validUsername       | must only contain characters 0-9, A-Z and _  |
-| username            | alias for validUsername                      |
-| email               | must be a valid email                        |
-| noSpaces            | can't contain any spaces                     |
-| max                 | max length of a string (requires arguments)  |
-| min                 | min length of a string (requires arguments)  |
-| date                | string should be a valid date                |
+| Rule | Description |
+| --- | --- |
+| `email` | The field under validation must be formatted as an e-mail address. |
+| `string` | The field under validation must contain only alphabetic characters and spaces. |
+| `text` | The field under validation must contain only alphabetic characters and spaces. |
+| `textOnly` | The field under validation must contain only alphabetic characters (no-spaces). |
+| `alpha` | The field under validation must contain only alphabetic characters. |
+| `alphaNum` | The field under validation must contain only alpha-numeric characters. |
+| `alphaDash` | The field under validation must contain only alpha-numeric characters, underscores, and dashes. |
+| `username` | The field under validation must contain only alpha-numeric characters and underscores. |
+| `number` | The field under validation must contain only numeric characters. |
+| `float` | The field under validation must contain only float values. |
+| `date` | The field under validation must be a valid date. |
+| `min` | The field under validation must have a minimum value. |
+| `max` | The field under validation must have a maximum value. |
+| `between` | The field under validation must be between two values in length. |
+| `match` | The field under validation must match a value. |
+| `contains` | The field under validation must contain a value. |
+| `in` | The field under validation must be included in a given list of values. |
+| `ip` | The field under validation must be a valid IP address. |
+| `ipv4` | The field under validation must be a valid IPv4 address. |
+| `ipv6` | The field under validation must be a valid IPv6 address. |
+| `url` | The field under validation must be a valid URL. |
+| `domain` | The field under validation must be a valid domain. |
+| `creditCard` | The field under validation must be a valid credit card number. |
+| `phone` | The field under validation must be a valid phone number. |
+| `uuid` | The field under validation must be a valid UUID. |
+| `slug` | The field under validation must be a valid slug. |
+| `json` | The field under validation must be a valid JSON string. |
+| `regex` | The field under validation must match a given regular expression. |
 
 ::: tip Note
 These rules are **NOT** case-sensitive, so you can type them anyway you prefer, as long as the spelling is the same.
@@ -48,13 +65,15 @@ This is the data we're passing into our app.
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  $isValid = request()->validate([
+  $validatedData = request()->validate([
     'email' => 'email',
-    'name' => 'text',
+    'name' => 'string',
+    'city' => 'string',
+    'country' => 'string',
   ]);
 
   response()->json(
-    $isValid ? 'success' : request()->errors()
+    $validatedData ?: request()->errors()
   );
 });
 
@@ -63,32 +82,40 @@ app()->run();
 
 </div>
 
-The array tells the `validate()` function what rule(s) to run against what data. The `email` rule is run against the email field we passed to make sure it's a valid email. In the same way, we're running the `text` method against the name field to make sure that it only contains text and spaces. You can try this out in the editor.
+The array tells the `validate()` function what rule(s) to run against what data. The `email` rule is run against the email field we passed to make sure it's a valid email. It works the same for all other fields, but there are a few things to note about Leaf's validation.
 
-If you want the validation to fail, you can edit the `data` in the `request.json` file with invalid data. Try passing a number into the email field and see what happens.
+1. The `validate()` method will only return the fields that were validated. If there are fields that weren't validated, they won't be returned. *You can try this by removing the `name` field from the `validate()` method and see what happens.*
+2. The `validate()` method will return the validated data if the validation passes. If the validation fails, it will return `false`. *You can try this by passing an invalid email address and see what happens.*
+3. Leaf's validation assumes that every field is required. If you want to make a field optional, you can use the `optional` rule.
 
 ## Multiple validation rules
 
 So far, we've only looked at validating data against a single rule. But what if we want to validate data against multiple rules? We can do this by passing an array of rules into the `validate` function. For example, we can validate the email field against the `email` and `required` rules.
 
 ```php
-'email' => ['required', 'email'],
+'email' => ['string', 'email'],
 ```
 
-You can add as many rules as you want to the array, in the order you want to validate the data. The only rule here is to make sure your validation rules don't fight each other. For example, if you use the `textOnly` rule and the `number` rule together, the validation will always fail because the `textOnly` rule will always fail the `number` rule.
+You can also use a string with rules separated by a pipe `|`.
+
+```php
+'email' => 'string|email',
+```
+
+You can add as many rules as you want, in the order you want to validate the data. The only rule here is to make sure your validation rules don't fight each other. For example, if you use the `textOnly` rule and the `number` rule together, the validation will always fail because the `textOnly` rule will always fail the `number` rule and vice versa.
 
 ## Getting validation errors
 
 When validation fails, Leaf automatically stores the errors in the request object and returns `false`. You can get these errors by calling the `errors()` method on the request object. This method returns an array of errors. You can output these errors to the user or use them in any way you want.
 
 ```php
-$isValid = request()->validate([
-  'email' => ['required', 'email'],
-  'name' => ['required', 'text'],
+$validatedData = request()->validate([
+  'email' => 'email',
+  'name' => 'string',
 ]);
 
 response()->json(
-  $isValid ? 'success' : request()->errors()
+  $validatedData ?: request()->errors()
 );
 ```
 

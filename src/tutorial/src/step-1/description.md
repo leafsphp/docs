@@ -36,4 +36,4 @@ Leaf offers two API styles: functional mode and class mode. This tutorial is des
 
 ::: -->
 
-Ready to begin your journey? Click **"Next"** to get started.
+Ready to begin your journey? Click **"->"** to get started.
