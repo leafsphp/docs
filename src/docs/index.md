@@ -61,7 +61,7 @@ Before you start with Leaf, verify that your system has the following installed:
 Once you install PHP and Composer, you can proceed with the installation of Leaf CLI:
 
 ```bash:no-line-numbers
-composer global require leafs/cli:v4.0-RC -W
+composer global require leafs/cli:v4.x-dev -W
 ```
 
 ### Building your first app
