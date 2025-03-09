@@ -31,7 +31,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text">
-      Leaf v4 is here 🎉🚀 - <a href="https://beta.leafphp.dev">Check it out!</a>
+      Leaf v4 is here 🎉🚀 - <a href="https://leafphp.dev">Check it out!</a>
     </div>
 
     <button type="button" @click="dismiss">
