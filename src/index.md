@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Simple and elegant PHP
+title: Elegant PHP Built for Makers
 ---
 
 <script setup>
