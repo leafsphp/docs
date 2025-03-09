@@ -49,11 +49,14 @@
   font-size: 16px !important;
 }
 
-.vt-doc [class*='language-'] pre, .vt-doc [class*='language-'] code span, .editor-container * {
+.vt-doc [class*='language-'] pre,
+.vt-doc [class*='language-'] code span,
+.editor-container * {
   font-family: DM Mono !important;
 }
 
-.dark .cm-variable-2, .dark .cm-atom {
+.dark .cm-variable-2,
+.dark .cm-atom {
   color: #fff !important;
 }
 
@@ -78,7 +81,10 @@
   border: none !important;
 }
 
-.vue-repl .tab-buttons, .vue-repl .file-selector, .vue-repl .left, .vue-repl {
+.vue-repl .tab-buttons,
+.vue-repl .file-selector,
+.vue-repl .left,
+.vue-repl {
   border: none !important;
 }
 

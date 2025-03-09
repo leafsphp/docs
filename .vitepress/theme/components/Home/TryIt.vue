@@ -4,7 +4,8 @@ import Button from '../shared/Button.vue';
 
 <template>
   <div class="flex justify-center item-center py-48 bg-[var(--vp-c-bg-alt)]">
-    <section class="flex flex-col justify-center items-center">
+    <section
+      class="flex flex-col justify-center items-center sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10">
       <div class="text-center mb-24">
         <h1 class="!text-3xl md:!text-5xl mb-8">Try it out️</h1>
         <p class="md:px-[22%]">
@@ -23,7 +24,7 @@ import Button from '../shared/Button.vue';
       </div>
 
       <iframe src="https://sandbox.leafphp.dev/"
-        class="w-full min-h-[70vh] border border-[var(--vp-c-brand-1)] rounded-lg" />
+        class="w-full min-h-[70vh] rounded-3xl bg-black/5 p-4 outline outline-white/15 backdrop-blur-md dark:bg-white/10" />
     </section>
   </div>
 </template>

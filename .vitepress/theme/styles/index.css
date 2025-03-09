@@ -33,6 +33,12 @@
 
   --vp-c-card-bg: #fefefe;
   --vp-c-card-text-2: #333333;
+
+  --shiki-light: #ABB2BF;
+  --vp-code-block-bg: #292d3e;
+  --vp-code-tab-divider: #394d4e;
+  --vp-code-block-divider-color: #394d4e;
+  --vp-code-line-number-color: rgba(235, 235, 245, 0.38);
 }
 
 html.dark {
@@ -51,6 +57,10 @@ html.dark {
 
   --vp-c-card-bg: #0b2a32;
   --vp-c-card-text-2: #bebebe;
+
+  --vp-code-block-bg: var(--vp-c-bg-alt);
+  --vp-code-tab-divider: #112121;
+  --vp-code-block-divider-color: #112121;
 }
 
 /* .is-typed {
@@ -60,6 +70,10 @@ html.dark {
 /* .is-typed span.typed {
   color: black;
 } */
+
+body {
+  font-family: 'Bricolage Grotesque', serif;
+}
 
 .is-typed span.cursor {
   display: inline-block;
@@ -135,7 +149,20 @@ html.dark {
   background-color: var(--vp-c-bg-alt);
 }
 
-.VPSidebar .group, .VPNavBarTitle.has-sidebar a {
+.VPNavBar.home {
+  @apply bg-opacity-50 backdrop-blur-md transition-colors duration-500 !bg-white/85 dark:!bg-[#001e26]/75;
+}
+
+.VPNavBar.home .wrapper {
+  @apply max-sm:!px-0;
+}
+
+.VPNavBar.home .container {
+  @apply !max-w-none;
+}
+
+.VPSidebar .group,
+.VPNavBarTitle.has-sidebar a {
   @apply !border-none;
 }
 
@@ -145,4 +172,12 @@ html.dark {
 
 .VPNavBarTitle.has-sidebar img {
   @apply !w-8 !h-8;
+}
+
+.vp-code-block-title-bar {
+  @apply text-gray-200 dark:text-gray-400;
+}
+
+.vp-code-group .tabs label {
+  @apply !text-gray-200 dark:text-gray-400;
 }

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <section id="newsletter" class="NewsLetter">
+  <section id="newsletter" class="NewsLetter !max-w-none !py-20">
     <div class="container">
       <iframe src="https://leafphp.substack.com/embed" style="display: #041D24;" width="100%" height="320" frameborder="0" scrolling="no"></iframe>
 

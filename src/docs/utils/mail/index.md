@@ -2,9 +2,47 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
+<script setup>
+import VideoModal from '@theme/components/shared/VideoModal.vue';
+import Button from '@theme/components/shared/Button.vue';
+</script>
+
 Mailing in PHP apps has always been seen as a daunting task. Leaf Mail provides a simple, straightforward and efficient email API that is built on the widely used [PHPMailer Library](https://github.com/PHPMailer/PHPMailer) component.
 
 With Leaf Mail, you can easily send emails using various drivers and services such as SMTP, Mailgun, SendGrid, Amazon SES, and sendmail. This flexibility enables you to swiftly begin sending emails through a preferred local or cloud-based service.
+
+<div
+    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
+>
+    <div
+        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+    >
+        <div
+            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
+        >
+            <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                Using Leaf MVC?
+            </h3>
+            <p class="font-medium text-rose-100 text-shadow mb-4">
+                We've crafted a specialized guide for routing in Leaf MVC. While it's similar to the mailing in Leaf, it's more detailed and tailored for Leaf MVC.
+            </p>
+            <Button
+                as="a"
+                href="/docs/utils/mail/mvc"
+                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                >Start mailing now</Button
+            >
+        </div>
+        <!-- <div
+            class="relative md:pl-6 xl:pl-8 hidden sm:block"
+        >
+            Hello
+        </div> -->
+    </div>
+    <div
+        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+    ></div>
+</div>
 
 ## Setting Up
 
@@ -103,32 +141,6 @@ mailer()->connect([
 
 :::
 
-## Connection in Leaf MVC
-
-If you're using Leaf MVC, the simplest way to connect to your mail server is to use your .env file. You can update the following configuration options in your .env file:
-
-```txt
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=xxx
-MAIL_PASSWORD=xxx
-MAIL_DEBUG=SERVER
-MAIL_SENDER_NAME='Leaf MVC'
-MAIL_SENDER_EMAIL=user@example.com
-```
-
-That's it! Leaf Mail will automatically connect to your mail server when you send an email.
-
-While this is a simple and straightforward way to connect to your mail server, you may need finer control over your mail server connection, for example, you may want to connect to a server that only supports OAuth. In this case, you can publish the mail configuration file from Leaf MVC using the following command:
-
-```bash:no-line-numbers
-php leaf config:publish mail
-```
-
-This command will create a `config/mail.php` file which contains all the configuration options for your mail server. The configuration options are the same as the ones we listed above and will still be linked to the correct environment variables, so you can still use your .env file to configure your mail server.
-
-You can refer to the examples above for how to connect to different mail servers. Just remember to exclude the `mailer()->connect()` section as that is already done for you.
-
 ## Writing mails
 
 Once we have all the annoying stuff out of the way, we can now write our emails. This involves creating a new mail and then sending it when you're ready. At it's core, a mail is just a class call to the `mail()->create()` method. This method takes in the name of the mail you want to create and returns a new mail object.
@@ -161,42 +173,11 @@ The `create()` method takes in an array of options that you can use to configure
 | isHTML          | A boolean value that determines if your mail is HTML or not                                   | No       |
 | altBody         | This body can be read by mail clients that do not have HTML email capability such as mutt & Eudora. Clients that can read HTML will view the normal Body                       | No       |
 
-If you're using Leaf MVC, you can turn to the terminal to create a new mail:
-
-```bash:no-line-numbers
-php leaf g:mail user
-```
-
-This will create a `UserMailer` class in the `app/mailers` directory. Leaf MVC mailers are just a collection of methods that return a new mail object. You can then call these methods in your controllers to send mails.
-
-```php
-<?php
-
-namespace App\Mailers;
-
-class UserMailer
-{
-    public static function welcome()
-    {
-        return mailer()->create([
-            'subject' => 'Welcome to my app',
-            'body' => 'This is a test mail from action',
-            'recipientEmail' => 'example@example.com',
-            'recipientName' => 'Example',
-        ]);
-    }
-}
-```
-
-This example shows a UserMailer class with a `welcome()` method that returns a new mail object. With this structure, you can create multiple mail methods to handle different types of emails. For example, your UserMailer class could have a `passwordReset()` method that sends a password reset email.
-
 ## Sending mails
 
-Once you've created your mail, you can send it using the `send()` method. This method sends the mail and returns a boolean value indicating whether the mail was sent successfully. For Leaf MVC, you can call the mailer method directly in your controller:
+Once you've created your mail, you can send it using the `send()` method. This method sends the mail and returns a boolean value indicating whether the mail was sent successfully:
 
-::: code-group
-
-```php [Leaf]
+```php
 $mail = mailer()->create([
   'subject' => 'Leaf Mail Test',
   'body' => 'This is a test mail from Leaf Mail using gmail',
@@ -206,16 +187,6 @@ $mail = mailer()->create([
 
 $mail->send();
 ```
-
-```php [Leaf MVC]
-use App\Mailers\UserMailer;
-
-...
-
-UserMailer::welcome()->send();
-```
-
-:::
 
 ## Adding Attachments
 

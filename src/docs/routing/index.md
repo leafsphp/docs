@@ -3,7 +3,8 @@
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
 Routing is the foundation of every web application. It's the process of defining the URL structure of your application and how it responds to requests. Leaf comes with a powerful router that simplifies the way you define routes in your application. You can take routing as one fancy traffic officer that directs traffic to the right place.
@@ -15,6 +16,39 @@ Routing is the foundation of every web application. It's the process of defining
 />
 
 ## Create a route
+
+<div
+    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
+>
+    <div
+        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+    >
+        <div
+            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
+        >
+            <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                Using Leaf MVC?
+            </h3>
+            <p class="font-medium text-rose-100 text-shadow mb-4">
+                We've crafted a specialized guide for routing in Leaf MVC. While it's similar to the basic routing in Leaf, it's more detailed and tailored for Leaf MVC.
+            </p>
+            <Button
+                as="a"
+                href="/docs/routing/mvc"
+                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                >Start building</Button
+            >
+        </div>
+        <!-- <div
+            class="relative md:pl-6 xl:pl-8 hidden sm:block"
+        >
+            Hello
+        </div> -->
+    </div>
+    <div
+        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+    ></div>
+</div>
 
 Every route has a URL (the web address the user visits) and an HTTP method (like GET, POST, etc.), which tells the server what action to take. For example, if you create a route for a GET request to `/home`, the user can access that page by visiting `http://example.com/home`. This way, different URLs and methods control how users interact with your app.
 
@@ -41,8 +75,8 @@ You can add a route that handles only `POST` HTTP requests with the Leaf router'
 - The route handler
 
 ```php
-app()->post('/users/add', function () use($request) {
-  $user = $request->get('user');
+app()->post('/users/add', function () {
+  $user = request()->get('user');
   // create a new user
 });
 ```
@@ -99,6 +133,19 @@ app()->match('GET|POST', '/users', function () {
   // your code
 });
 ```
+
+## Create a view route
+
+If your route needs to return a template without any logic, you can use the `view()` method. This method accepts two arguments:
+
+- The route pattern
+- The view file to render
+
+```php
+app()->view('/home', 'home');
+```
+
+The `view()` method will look for the view file using whatever view engine you have set up in your app. For instance, if you have blade setup, it will look for a file called `home.blade.php`. The template location also depends on your view engine setup.
 
 ## Running your routes
 
@@ -179,63 +226,4 @@ If your route has a name, you can navigate to it by passing the route name in an
 
 ```php:no-line-numbers
 response()->redirect(['home']);
-```
-
-## View routes <Badge text="NEW" type="tip" />
-
-If your route needs to return a template without any logic, you can use the `view()` method. This method accepts two arguments:
-
-- The route pattern
-- The view file to render
-
-```php:no-line-numbers
-app()->view('/home', 'home');
-```
-
-The `view()` method will look for the view file using whatever view engine you have set up in your app. For instance, if you have blade setup, it will look for a file called `home.blade.php`. The template location also depends on your view engine setup. If you are using Leaf MVC, it will look for the file in the `app/views` folder and will use blade as the view engine.
-
-## Routing in Leaf MVC
-
-Leaf MVC comes with an `app/routes` folder that organizes all your route files. The `app/routes/index.php` file is the entry point for all your routes and contains the setup for 404s, maintenance mode and other global route settings.
-
-To create a new route, add a file that starts with `_` to the `app/routes` folder. For example, you can create a file called `app/routes/_auth.php` and add all your authentication routes to it. This file will be automatically loaded by Leaf MVC, and all the routes in it will be available in your app.
-
-If you don't want a file in the `app/routes` folder to be automatically loaded, create a file that doesn't start with `_`. For example, you can create a file called `app/routes/custom.php` and add all your routes to it. This file will **NOT** be automatically loaded by Leaf MVC, and you'll have to load it manually.
-
-### Controllers
-
-Beyond that, Leaf MVC uses controllers to handle routes instead of closures. This means you can create a controller for each route and handle the route logic in the controller. You can learn more about controllers in the [Controller section.](/docs/mvc/controllers)
-
-### Updating Error Screens
-
-If you need to set up custom error responses, you can do so in the `app/routes/index.php` file. We have loaded examples for 404 and 500 error pages. You can customize these to your liking.
-
-```php
-/*
-|--------------------------------------------------------------------------
-| Set up 404 handler
-|--------------------------------------------------------------------------
-|
-| Leaf provides a default 404 page, but you can also create your
-| own 404 handler by calling app()->set404(). Whatever function
-| you set will be called when a 404 error is encountered
-|
-*/
-app()->set404(function () {
-  response()->json('Resource not found', 404, true);
-});
-
-/*
-|--------------------------------------------------------------------------
-| Set up 500 handler
-|--------------------------------------------------------------------------
-|
-| Leaf provides a default 500 page, but you can create your own error
-| 500 handler by calling the setErrorHandler() method. The function
-| you set will be called when a 500 error is encountered
-|
-*/
-app()->setErrorHandler(function () {
-  response()->json('An error occured, our team has been notified', 500, true);
-});
 ```

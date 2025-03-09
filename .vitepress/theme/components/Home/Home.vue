@@ -8,16 +8,22 @@ import Testimonials from './Testimonials.vue';
 import Community from './Community.vue';
 import Footer from './Footer.vue';
 import NewsLetterSubstack from './../Community/NewsLetterSubstack.vue';
+import Blog from '../Community/Blog.vue';
+import Speak from '../Community/Speak.vue';
+import WallOfFame from '../Community/WallOfFame.vue';
 </script>
 
 <template>
   <Hero />
-  <Tooling />
   <Deploy />
+  <Tooling />
+  <Testimonials />
   <TryIt />
   <Sponsors />
-  <Testimonials />
   <Community />
+  <Blog />
+  <Speak />
+  <WallOfFame />
   <NewsLetterSubstack />
   <Footer />
 </template>

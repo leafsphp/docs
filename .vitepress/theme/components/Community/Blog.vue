@@ -5,32 +5,35 @@ import Button from '../shared/Button.vue';
 </script>
 
 <template>
-  <section id="blog" class="testimonials hidden md:flex justify-center items-center h-[70vh]">
-    <div class="flex:center-between py:_10" style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 4rem;">
-      <div class="text-sm">
-        <h2 class="title mb-4" style="text-align: left;">Latest writings from the Leaf team</h2>
-        <p class="mb-2">
-          Our main goal and pride at Leaf is to make PHP development as simple and elegant as possible.
-        </p>
-        <p class="mb-6">
-          Our team is always looking to improve your experience using the Leaf framework and it's ecosystem of tools.
-          You
-          can follow along as our team discusses it's insights from the past year and what's to come in 2025.
-        </p>
-        <Button as="a" href="https://blog.leafphp.dev" target="_blank">
-          <span>Read the Blog</span>
-          <ExternalLink height="18px" />
-        </Button>
-      </div>
+  <div class="flex justify-center items-center">
+    <section id="blog"
+      class="testimonials hidden md:flex justify-center items-center h-[70vh] w-full sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl !px-2 sm:!px-10">
+      <div class="flex justify-center w-full items-center py:_10"
+        style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 4rem;">
+        <div class="text-sm max-w-[400px]">
+          <h1 class="title mb-4" style="text-align: left;">Latest writings from the Leaf team</h1>
+          <p class="mb-2 text-base">
+            Our main goal and pride at Leaf is to make PHP development as simple and elegant as possible.
+          </p>
+          <p class="mb-6 text-base">
+            Our team is always looking to improve your experience using the Leaf framework and it's ecosystem of tools.
+            You
+            can follow along as our team discusses it's insights from the past year and what's to come in 2025.
+          </p>
+          <Button as="a" class="!text-white" href="https://blog.leafphp.dev" target="_blank">
+            <span>Read the Blog</span>
+            <ExternalLink height="18px" />
+          </Button>
+        </div>
 
-      <div class="elfsight-app-6190fe7f-f619-4dda-9952-9324f84ba50c" data-elfsight-app-lazy></div>
-    </div>
-  </section>
+        <div class="elfsight-app-6190fe7f-f619-4dda-9952-9324f84ba50c" data-elfsight-app-lazy></div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style scoped>
 .testimonials {
-  padding: 32px 24px;
   /* padding: 42px 32px; */
   background: var(--vt-c-bg-dark);
   transition: border-color 0.5s, background-color 0.5s;
@@ -39,7 +42,6 @@ import Button from '../shared/Button.vue';
 
 .testimonials>div {
   padding: 0px 32px;
-  max-width: 900px;
 }
 
 .blog-card {

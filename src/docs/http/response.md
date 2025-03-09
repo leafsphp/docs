@@ -118,11 +118,11 @@ HTML responses can be created using the `markup()` method. This method accepts 2
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 response()->markup('<h1>Hello, world!</h1>');
 ```
 
-```php [Leaf Instance]
+```php:no-line-numbers [Leaf Instance]
 $app->response()->markup('<h1>Hello, world!</h1>');
 ```
 
@@ -135,21 +135,21 @@ If you have a full HTML/PHP file you want to output, you can use the `page()` me
 
 ::: code-group
 
-```php [Functional Mode]
+```php:no-line-numbers [Functional Mode]
 response()->page('path/to/file.html');
 ```
 
-```php [Leaf Instance]
+```php:no-line-numbers [Leaf Instance]
 $app->response()->page('path/to/file.html');
 ```
 
 :::
 
-**Note that this only works for static files. If you want to output a dynamic file, you should consider using a templating engine instead.**
+**Note that this only works for static files. If you want to output a dynamic file, [templating](#templating) engine instead.**
 
 ## Error responses
 
-During production development, you most likely would not want to throw exceptions to the user. Instead, you would want to return a nice error message. Leaf provides a simple way to do this using the `exit()` method. This method outputs an error message and exits your application immediately so that nothing else is executed. It takes in 2 parameters:
+During production development, you most likely would not want to throw exceptions to the user. Instead, you would want to return a nice error message. Leaf provides a simple way to do this using the `exit()` or `die()` method. This method outputs an error message and exits your application immediately so that nothing else is executed. It takes in 2 parameters:
 
 - the error message to output
 - an optional status code (defaults to 500/Internal Server Error)
@@ -158,12 +158,14 @@ During production development, you most likely would not want to throw exception
 
 ```php [Functional Mode]
 response()->exit('An error occurred', 500);
+response()->die('An error occurred', 500);
 
 // code below won't run
 ```
 
 ```php [Leaf Instance]
 $app->response()->exit('An error occurred', 500);
+$app->response()->die('An error occurred', 500);
 
 // code below won't run
 ```
@@ -171,6 +173,37 @@ $app->response()->exit('An error occurred', 500);
 :::
 
 If you pass a string as the first parameter, Leaf will automatically convert it to a markup response. If you pass an array, Leaf will automatically convert it to a JSON response.
+
+## Templating <Badge>NEW</Badge>
+
+Leaf has support for a wide range of templating engines plus any other templating engine you might want to use. Once you have a view engine installed and set up, you can use the `view()` or `render()` method to render views. This method accepts 2 parameters:
+
+- the name of the view to render
+- an array of data to pass to the view
+
+::: code-group
+
+```php:no-line-numbers [Functional Mode]
+response()->view('home', [
+  'name' => 'Michael'
+]);
+
+response()->render('home', [
+  'name' => 'Michael'
+]);
+```
+
+```php:no-line-numbers [Leaf Instance]
+$app->response()->view('home', [
+  'name' => 'Michael'
+]);
+
+$app->response()->render('home', [
+  'name' => 'Michael'
+]);
+```
+
+:::
 
 ## Other response types
 

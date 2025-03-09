@@ -1,9 +1,15 @@
+---
+next: false
+prev: false
+---
+
 # Leaf + MVC
 
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
 Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
@@ -27,152 +33,68 @@ If you're new to the MVC pattern, you can take a look at this video by Traversy 
 
 ## MVC in Leaf
 
-Leaf provides a minimal but powerful setup for building applications using the MVC pattern. It's built on top of Leaf, and comes with additional tooling that makes building with Leaf even faster. It is a good starting point for building scalable applications with well-organized code.
+Leaf MVC is a minimal yet powerful setup for building applications with the MVC pattern. It extends Leaf with additional tools and structure, making development faster and more intuitive. With a clean, organized codebase, Leaf MVC is a great starting point for building scalable and maintainable applications.
 
-### Installation
+<VideoModal
+  buttonText="Building with Leaf MVC 4"
+  description="This video talks about building with Leaf MVC v4"
+  videoUrl="https://www.youtube.com/embed/_uB3NpV5o0A"
+/>
 
-You can set up a new MVC application using the [Leaf CLI](/docs/cli/) or using [Composer](https://getcomposer.org/). They both work, but using the Leaf CLI gives you the option to choose between a regular MVC app and an MVC app that is fine-tuned for creating APIs, plus a few other options.
-
-::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf create <project-name>
-```
-
-```bash:no-line-numbers [Composer]
-composer create-project leafs/mvc <project-name>
-```
-
-:::
-
-This command will set up a new MVC app in the `<project-name>` directory. You can then run the app using the Leaf CLI:
-
-```bash:no-line-numbers
-cd <project-name>
-php leaf serve
-```
-
-You should then see the welcome page in your browser.
-
-![Leaf MVC Welcome Page](https://github.com/user-attachments/assets/947cc13e-cada-4489-aed4-b3f44b262b76)
+<img src="https://github.com/user-attachments/assets/5fc4e221-8728-4d37-8683-28455f685d1f" alt="Leaf MVC 4" class="w-full rounded-lg outline outline-gray-100 dark:outline-gray-700 mt-6" />
 
 ## Directory Structure
 
-The Leaf MVC directory structure is inspired by [Ruby on Rails](https://rubyonrails.org/) and [Laravel](https://laravel.com/). It takes a lot of inspiration from these frameworks, but it's not a clone of either of them. It is meant to be a starting point for building your own applications, and is fully customizable. You can completely change the directory structure to suit your needs, just be sure to update the [paths config file](/docs/mvc/globals.html#loading-app-paths).
+Leaf MVC’s directory structure is inspired by [Rails](https://rubyonrails.org/) and [Laravel](https://laravel.com/) but remains lightweight and flexible. It’s a solid starting point, fully equipped with everything you need to build a modern web application.
 
-For a fresh MVC app, the directory structure looks like this:
+A fresh Leaf MVC app follows this structure:
 
 ::: code-group
 
-```bash:no-line-numbers [v3.8 upwards]
+```bash:no-line-numbers [Default Starter]
 ├───app
 │   ├── controllers
 │   ├── database
-│   │   ├── factories
-│   │   ├── migrations
-│   │   ├── schema
-│   │   └── seeds
 │   ├── models
 │   ├── routes
 │   └── views
-│       └── errors
-├───config
-├───public
-│   └───assets
-│       ├── css
-│       └── img
-└───vendor
+└───public
+    └───assets
+        ├── css
+        └── img
 ```
 
-```bash:no-line-numbers [v3.7 downwards]
+```bash:no-line-numbers [API Starter]
 ├───app
-│   ├── console
-│   ├── controllers
-│   ├── database
-│   │   ├── factories
-│   │   ├── migrations
-│   │   ├── schema
-│   │   └── seeds
-│   ├── helpers
-│   ├── models
-│   ├── routes
-│   └── views
-│       └── errors
-├───config
-├───public
-│   └───assets
-│       ├── css
-│       └── img
-├───storage
-│   ├───app
-│   │   └───public
-│   ├───framework
-│   │   └───views
-│   └───logs
-└───vendor
+│   ├── controllers
+│   ├── database
+│   ├── models
+│   └── routes
+└───public
 ```
 
 :::
 
-- ### The `app` directory
+- app/ – This is where all your application logic lives, including controllers, models, views, and routes. Your database files also reside here.
+- public/ – Contains publicly accessible files like bundled CSS, JavaScript, and images. This is the only directory exposed to the browser.
 
-  The `app` directory contains the core code of your application. It's divided into a few sub-directories:
-
-  - `console` - Contains the console commands for your application. These are used to perform tasks on the command line. You can check the [console commands](/docs/mvc/commands) documentation for more information.
-  - `controllers` - Contains the controllers for your application. These are used to handle HTTP requests.
-  - `database` - Contains the database related code for your application. This includes migrations, seeds, factories and schema.
-  - `helpers` - Contains the helper functions for your application.
-  - `models` - Contains the models for your application. These are used to interact with the database.
-  - `routes` - Contains the routes for your application. These are used to map HTTP requests to controllers.
-  - `views` - Contains the views for your application. These are used to render HTML responses.
-
-- ### The `config` directory
-
-  The `config` directory contains the configuration files for your application. The configuration files are used to configure how Leaf and it's modules interact with your application. Each file controls a different feature of your application, e.g. the `app.php` file is used to configure the application, the `database.php` file is used to configure the database connection, etc.
-
-  Leaf MVC now allows you to completely remove this directory if you are only going to use the default configuration values which will make your application lighter. Leaf v3.8 and above allow you to publish the default configuration files using the [`config:publish` command](#configuring-leaf-mvc) if you end up deleting the `config` directory and want it back.
-
-- ### The `public` directory
-
-  The `public` directory contains the entry point for your application, and it's also used to serve static assets. The `index.php` file is the entry point for your application. All requests are routed through this file by the web server. This file doesn't contain any application logic, but it does load the Composer autoloader, the application config and all your routes.
-
-  There is also an `assets` directory found in the `public` directory. It contains the static assets for your application. These are served by the web server and are accessible to users.
-
-- ### The `storage` directory
-
-  The `storage` directory contains the compiled views, logs and other files generated by your application. It's divided into a few sub-directories:
-
-  - `app` - Contains the files generated by your application. This includes the compiled views and the files uploaded by users.
-  - `framework` - Contains the framework generated files for your application.
-  - `logs` - Contains the log files generated by your application.
-
-  This directory is not created by default in Leaf v3.8 and above. It will be automatically created when you run the `leaf serve` command, logging, storage link or any other command/module that requires it.
-
-- ### The `vendor` directory
-
-  The `vendor` directory contains all the dependencies installed by Composer. It's automatically generated when you install the dependencies using Composer.
+There are also some folders that may be generated automatically by modules like the `storage` directory, which is used to store logs, cache, and other temporary files.
 
 ## Configuring Leaf MVC
 
-Leaf MVC tries to maintain a clean and easy-to-understand structure that works out-of-the-box for most applications, which means that for most applications, you only need to change a few details in your .env file. For this reason, we allow you to completely remove the `config` directory if you are only going to use the default configuration values. This will make your application lighter and easier to maintain.
-
-There are however some times when you need to customize some features to fit your specific use-cases, and that's where the configuration files come in. Leaf MVC separates the configuration files for each feature of the framework, so you can easily customize one feature without affecting the others. To publish all the default configuration files, you can run the following command:
+Leaf MVC works out of the box with minimal setup—most apps just need a few tweaks in the .env file, so it doesn’t include a config directory by default. When customization is needed, config files are organized by feature, making it easy to adjust settings without affecting others. To publish all default config files, run the following command:
 
 ```bash:no-line-numbers
 php leaf config:publish
 ```
 
-This will re-create a config directory in your application root and copy all the default configuration files to this directory just as we had in previous versions. You can then go ahead to customize the configuration files to fit your specific use-cases.
-
-Since Leaf MVC has defaults set for most of the configuration options, you don't need to change all the values in the configuration files, you only need to change only the specific values you want to customize so you can leave the rest of the configuration as it is. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
-
-If you have a specific configuration you want to change, you can publish only that configuration file by running the following command:
+This command will create the `config` directory in your app and copy all default config files, just like in earlier versions. You can also publish a specific config file while keeping the rest untouched:
 
 ```bash:no-line-numbers
 php leaf config:publish <config-file>
 ```
 
-This will copy the specified configuration file to the `config` directory in your application root, and you can then go ahead to customize the configuration file to fit your specific use-case. This is a list of all of Leaf MVC's configuration files:
+Here is a list of all available Leaf MVC config files:
 
 | Config file       |  Use-case                                                     |
 | ----------------- | :------------------------------------------------------------ |
@@ -183,15 +105,12 @@ This will copy the specified configuration file to the `config` directory in you
 | database          | Configuration for database stuff                              |
 | mail              | Configuration for mailing (requires mail module)              |
 | redis             | Configuration for redis management (requires redis module)    |
+| queue             | Configuration for queue management (requires queue module)    |
 | view              | Configuration for view rendering                              |
 
 ## Application Environment
 
-A fresh Leaf MVC installation comes with a `.env.example` file which is automatically duplicated to a `.env` file on installation. This file is used to store your application's environment variables, and you can put sensitive information like your database credentials or mail server credentials in this file. This allows you to have different configurations for different environments like development, testing, and production.
-
-Any value in your `.env` file is automatically loaded into your application's environment variables, and you can access these values using the `_env()` helper function. This function takes in the key of the environment variable you want to access and an optional default value if the environment variable is not set.
-
-Here's an example of how you can use the `_env()` helper function:
+Leaf MVC includes a `.env.example` file, which is copied to `.env` during installation. This file stores environment variables like database credentials, making it easy to configure different environments (development, testing, production). All values in `.env` are automatically loaded into the application, and you can access them using the `_env()` helper function. This function takes a key and an optional default value if the variable isn't set. Here's an example:
 
 ```php
 $database = _env('DB_DATABASE');
@@ -199,3 +118,78 @@ $databaseWithDefault = _env('DB_DATABASE', 'leaf');
 ```
 
 Be careful not to commit your `.env` file to your version control system as it contains sensitive information. We have already added the `.env` file to your `.gitignore` file so you don't have to worry about this.
+
+## Building with Leaf MVC
+
+Although Leaf MVC is structured, it is still incredibly flexible, and offers you different ways to build your application. You can build a full-stack application using your favourite frontend tooling, or an extensive API using all the tools Leaf MVC provides. We have guides on how to build different types of applications with Leaf MVC, so you can choose the one that best fits your use-case.
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-4">
+    <section class="flex">
+        <div
+            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+        >
+            <div
+                class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
+            >
+                <div
+                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+                >
+                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                        MVC for Full-stack
+                    </h3>
+                    <p class="font-medium text-rose-100 text-shadow mb-4">
+                        Build full-stack applications with Leaf MVC.
+                    </p>
+                    <Button
+                        as="a"
+                        href="/learn/mvc"
+                        class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                        >Start building</Button
+                    >
+                </div>
+                <!-- <div
+                    class="relative md:pl-6 xl:pl-8 hidden sm:block"
+                >
+                    Hello
+                </div> -->
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
+            ></div>
+        </div>
+    </section>
+    <section class="flex">
+        <div
+            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+        >
+            <div
+                class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
+            >
+                <div
+                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+                >
+                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
+                        MVC for APIs
+                    </h3>
+                    <p class="font-medium text-amber-100 text-shadow mb-4">
+                      Build APIs with a structured approach for better organization.
+                    </p>
+                    <Button
+                        as="a"
+                        class="mt-auto bg-amber-900 hover:!bg-amber-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                        href="/learn/api"
+                        >Start building</Button
+                    >
+                </div>
+                <!-- <div class="relative hidden sm:block">
+                    <div class="absolute left-2 bottom-3 xl:bottom-5">
+                        Hello
+                    </div>
+                </div> -->
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-orange-500 hidden sm:block"
+            ></div>
+        </div>
+    </section>
+</div>

@@ -3,15 +3,15 @@
 require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
-  $isValid = form()->validate([
-    'name' => 'text',
-    'country' => ['required', 'text'],
-    'city' => 'required',
+  $validatedData = request()->validate([
+    'name' => 'string',
+    'country' => ['string', 'min:2'],
+    'city' => 'string',
     'email' => 'email',
   ]);
 
   response()->json(
-    $isValid ? 'success' : form()->errors()
+    $validatedData ?: request()->errors()
   );
 });
 

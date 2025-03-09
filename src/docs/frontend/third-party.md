@@ -44,20 +44,18 @@ That's it! Pretty simple, right? You can follow this same pattern to use any oth
 
 ## Using with Leaf MVC
 
-Unlike Leaf Core, Leaf MVC comes with a view manager that makes Leaf aware of any template engine you want to use. This gives you pretty handy functions like the global `view()` function. To make our Smarty engine available in Leaf MVC, we need to let Leaf know about it and also let Leaf MVC know it's supposed to use it when you call the global `view()` function.
+Leaf MVC comes with a view manager that makes Leaf aware of any template engine you want to use. This gives you pretty handy functions like the global `view()` function. To make our Smarty engine available in Leaf MVC, we need to let Leaf know about it and also let Leaf MVC know it's supposed to use it when you call the global `response()->render()` function.
 
-The first step is to head over to your `public/index.php` file and attach Smarty to Leaf:
+The first step is to publish your view config so you can edit it:
 
-```php:no-line-numbers
-app()->attachView(Smarty::class);
+```bash:no-line-numbers
+php leaf config:publish view
 ```
 
-This will immediately make Smarty available in Leaf, but there's one more thing we need to do. We need to let Leaf MVC know that Smarty is the engine we want to use. We can do this by setting the `engine` key in the `config/view.php` file:
+This will create a `config/view.php` file in your project. You can then edit this file to include your Smarty engine:
 
 ```php
 <?php
-
-use Leaf\View;
 
 return [
     /*
@@ -69,7 +67,7 @@ return [
     | you need. As such, you can decide which view engine to use.
     |
     */
-    'viewEngine' => Smarty::class,
+    'viewEngine' => \Smarty::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -79,11 +77,11 @@ return [
     | Configuration for your templating engine.
     |
     */
-    'config' => function ($config) {
-        app()->smarty()->setTemplateDir($config['views']);
-        app()->smarty()->setConfigDir('/some/config/dir');
-        app()->smarty()->setCompileDir('/some/compile/dir');
-        app()->smarty()->setCacheDir($config['cache']);
+    'config' => function (\Smarty $engine, array $config) {
+        $engine->setTemplateDir($config['views']);
+        $engine->setConfigDir('/some/config/dir');
+        $engine->setCompileDir('/some/compile/dir');
+        $engine->setCacheDir($config['cache']);
     },
 
     /*
@@ -95,12 +93,25 @@ return [
     | in your app if you're using a custom view engine.
     |
     */
-    'render' => function ($view, $data) {
+    'render' => function (\Smarty $engine, $view, $data) {
         foreach ($data as $key => $value) {
-            app()->smarty()->assign($key, $value);
+            $engine->assign($key, $value);
         }
 
-        app()->smarty()->display($view);
+        $engine->display($view);
     }),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extend view engine
+    |--------------------------------------------------------------------------
+    |
+    | Some view engines like blade allow you extend the engine to
+    | add extra functions or directives. This is just the place to
+    | do all of that. Extend is a function that accepts an instance
+    | of your view engine which you can 'extend'
+    |
+    */
+    'extend' => null,
 ];
 ```

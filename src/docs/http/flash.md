@@ -32,18 +32,18 @@ response()->withFlash('int', $userInt)->json('...');
 
 ## Display a flash item
 
-To display a flash item, you can use the `display()` method. This method accepts the key of the item to get. If the key is not provided, it defaults to `message`.
+To display a flash item, you can use the `flash()` method on the Leaf Request. This method accepts the key of the item to get. If the key is not provided, it will return the default flash message.
 
 ```php:no-line-numbers
-$message = flash()->display();
+$message = request()->flash();
 ```
 
 If you set a flash item with a different key, you can pass the key to the `display()` method to get the item.
 
 ```php
-$message = flash()->display('info');
-$object = flash()->display('object');
-$array = flash()->display('array');
+$message = request()->flash('info');
+$object = request()->flash('object');
+$array = request()->flash('array');
 ```
 
 The item will be removed from the session after it has been displayed.
@@ -54,4 +54,41 @@ You may choose to remove a flash item manually without displaying it first. You 
 
 ```php:no-line-numbers
 flash()->remove('info');
+```
+
+## Toast Notifications
+
+If you are using Leaf Blade with Tailwind and Alpine, you can easily display toast notifications using the `@toastContainer` directive. This directive will automatically display all flash messages in the session.
+
+```php:no-line-numbers
+return response()
+  ->withFlash('leaf.toast', [
+      'title' => 'Your email has been verified. Sign in to continue.',
+      'type' => 'success'
+  ])
+  ->redirect('/pageWithToastContainer');
+```
+
+And then on the page you want to display the toast container:
+
+```blade
+<body>
+  ...
+
+  @toastContainer
+</body>
+```
+
+And that's it! You will see a toast notification with the message you provided.
+
+Available toast types are `success`, `danger`, `warning`, `info` and `default`. You can also pass a description to the toast notification which will appear below the title.
+
+```php:no-line-numbers
+return response()
+  ->withFlash('leaf.toast', [
+      'title' => 'Your email has been verified. Sign in to continue.',
+      'description' => 'You can now sign in to your account.',
+      'type' => 'success'
+  ])
+  ->redirect('/pageWithToastContainer');
 ```

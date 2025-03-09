@@ -3,7 +3,8 @@
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
+import VideoModal from '@theme/components/shared/VideoModal.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
 You can think of your application's environment as a set of configurations that define how your application behaves in different situations. For example, you may run a local database when developing your app, but will want your app to connect to a remote database when it's in production.

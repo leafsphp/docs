@@ -4,11 +4,11 @@ You've learnt how to create routes, handle requests, and responses, and even how
 
 As a next step, you can:
 
-- Set up a real project on your system by following the [installation docs](/docs/installation).
+- Set up a real project on your system by following the [installation docs](/docs/#creating-a-new-app).
 
 - Every feature you need is available as a module, so be sure to checkout the [modules documentation](/docs/modules).
 
-- Join the [Leaf Discord server](https://discord.gg/SpmNs4S) to ask questions, share what you're building, and get help from the community.
+- Join the [Leaf Discord server](https://discord.gg/Pkrm9NJPE3) to ask questions, share what you're building, and get help from the community.
 
 - Follow Leaf on [Twitter](https://twitter.com/leafphp) to stay up-to-date with the news and updates.
 

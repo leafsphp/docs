@@ -3,11 +3,10 @@ import Button from '../shared/Button.vue';
 </script>
 
 <template>
-  <section id="newsletter" class="speak flex flex-col justify-center items-center">
+  <section id="newsletter" class="speak flex flex-col justify-center items-center !bg-[var(--vp-c-bg-alt)] !max-w-none">
     <div class="container">
       <div class="flex justify-center items-center">
-        <div class="flex justify-center items-center rounded-full w-12 h-12 mb-2"
-          style="background: var(--vp-c-bg-soft);">
+        <div class="flex justify-center items-center rounded-full w-12 h-12 mb-2 bg-[var(--vp-c-bg)]">
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512" height="20px"
             width="20px" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -16,7 +15,7 @@ import Button from '../shared/Button.vue';
           </svg>
         </div>
       </div>
-      <h2 class="title">Invite us to speak at your next event</h2>
+      <h1 class="title">Invite us to speak at your next event</h1>
       <p class="help">
         Want a Leaf core team member to speak at your next event? Invite us to create a memorable and engaging
         experience for your attendees.
@@ -24,7 +23,7 @@ import Button from '../shared/Button.vue';
 
       <div class="mt-5 text-center">
         <Button as="a" href="mailto:mychi.darko@gmail.com?subject=Invitation to speak at our next event" rel="noopener"
-          target="_blank" class="bg-white text-black m-auto">
+          target="_blank" class="!text-white m-auto">
           Reach out to us
         </Button>
       </div>
@@ -36,7 +35,6 @@ import Button from '../shared/Button.vue';
 /* // old component. will refactor later */
 .speak {
   padding: 32px 24px;
-  background: var(--vt-c-bg);
   transition: border-color 0.5s, background-color 0.5s;
   height: 70vh;
 }

@@ -180,6 +180,29 @@ db()->select('users')->find(1);
 
 This will look in the "users" table for the row with the `id` of 1 and return it.
 
+## Data relationships
+
+Sometimes you might want to retrieve data from multiple tables. For example, you might want to retrieve all the posts by a user. Leaf DB provides a `with()` method that allows you to do this.
+
+```php
+db()
+  ->select('users')
+  ->with('posts')
+  ->all();
+```
+
+This will return all the users in the users table along with their posts. It also works the same way for getting a single row.
+
+```php
+db()
+  ->select('users')
+  ->where('id', 1)
+  ->with('posts')
+  ->first();
+```
+
+The `with()` method works the same way whether you are dealing with a `hasMany` or `belongsTo` relationship.
+
 ## Updating data in a database
 
 Updating data in a database works by finding the data you want to update and then passing new data in to change the existing data. Leaf DB provides an `update()` method that allows you to build a query to update data in a table. You need to pair this with the `params()` method to specify the new data you want to update.

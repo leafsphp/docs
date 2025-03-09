@@ -16,7 +16,7 @@ export default defineConfig({
   srcExclude: ['tutorial/**/description.md'],
 
   title: 'Leaf PHP',
-  description: 'Simple and elegant PHP',
+  description: 'Elegant PHP, Built for Makers',
 
   themeConfig: {
     nav,
@@ -75,6 +75,10 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
+    theme: {
+      light: 'one-dark-pro',
+      dark: 'one-dark-pro',
+    },
     config(md) {
       md.use(groupIconMdPlugin);
     },
@@ -83,4 +87,8 @@ export default defineConfig({
   vite: {
     plugins: [groupIconVitePlugin()],
   },
+
+  rewrites: {
+    '/api/': '/api/app.html',
+  }
 });

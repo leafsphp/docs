@@ -4,7 +4,7 @@ This page contains a guide for developers who have a working application in anot
 
 Before you go on, we just want to say
 
-![image](https://github.com/user-attachments/assets/e324cb25-2fa6-4c03-b490-499173992f99)
+![image](https://github.com/user-attachments/assets/34fc4b51-8312-49e6-9e97-07b10b262d13)
 
 ## Why Migrate to Leaf?
 
@@ -41,11 +41,11 @@ Slim and Leaf are both micro-frameworks, so the migration process is relatively 
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install leaf
+leaf install leaf@v4.0-beta
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/leaf
+composer require leafs/leaf:4.0-beta
 ```
 
 :::

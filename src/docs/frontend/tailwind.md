@@ -1,14 +1,14 @@
 # Tailwind + Leaf
 
+<!-- markdownlint-disable no-inline-html -->
+
+<script setup>
+import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
+</script>
+
 Tailwind is a utility-first CSS framework that provides a set of utility classes to help you build your UI. Leaf has first-class support for Tailwind CSS, and it's the recommended way to style your Inertia apps. This guide will show you how to set up Tailwind CSS in your Leaf project with minimal configuration.
 
 ## Using the CLI
-
-::: warning CLI Installation
-
-Tailwind 4 has been released, and it unfortunately breaks the current Leaf CLI installation. Leaf MVC works fine with Tailwind 4, but we are working on a fix for the CLI. For now, you can install Tailwind manually if you are not using Leaf MVC.
-
-:::
 
 You can set up Tailwind CSS in your Leaf MVC project using the php leaf console. To do this, run the following command:
 
@@ -42,13 +42,13 @@ npm install tailwindcss @tailwindcss/vite
 
 And then configure Vite to include the Tailwind plugin:
 
-```js{2,6} [vite.config.js]
+```js [vite.config.js]
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'; // [!code ++]
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
+    tailwindcss(), // [!code ++]
     // …
   ],
 });
@@ -66,14 +66,14 @@ Finally, you need to import Tailwind in your CSS file:
 
 And then include your CSS file in your layout templates:
 
-```blade{7,12-14}
+```blade{12-14}
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    @vite('resources/css/app.css')
+    @vite('css/app.css')  // [!code ++]
 
     ...
   </head>
@@ -89,21 +89,21 @@ And then include your CSS file in your layout templates:
 
 If you want to migrate from Tailwind v3 to v4 in Leaf MVC, you can do so by following these steps:
 
-1. Update all your dependencies to the latest version:
+<TutorialNumber number="1" /> Update all your dependencies to the latest version:
 
 ```bash:no-line-numbers
 composer update
 ```
 
-2. Remove old tailwind config, autoprefixer, and postcss files
+<TutorialNumber number="2" /> Remove old tailwind config, autoprefixer, and postcss files. <br /><br />
 
-3. Run the `view:install` command to install Tailwind v4:
+<TutorialNumber number="3" /> Run the `view:install` command to install Tailwind v4:
 
 ```bash:no-line-numbers
 php leaf view:install --tailwind
 ```
 
-4. Update your CSS file to remove @tailwind directives:
+<TutorialNumber number="4" /> Update your CSS file to remove @tailwind directives:
 
 ```css [app/views/css/app.css]
 @import "tailwindcss";
@@ -171,14 +171,15 @@ defineConfig({
 
 The final step is to import your CSS file in your root layout file so that it gets included in your HTML.
 
-```blade{7}
+```blade
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leaf</title>
-  {{ vite('css/app.css') }}
+
+  @vite('css/app.css') // [!code ++]
   ...
 ```
 

@@ -1,5 +1,11 @@
 # Inertia + Leaf
 
+<!-- markdownlint-disable no-inline-html -->
+
+<script setup>
+import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
+</script>
+
 [Inertia](https://inertiajs.com/) is a new approach to building classic server-driven web apps. It allows you to create fully client-side rendered, single-page apps, without the complexity that comes with modern SPAs.
 
 In short, Inertia let's you use your favourite frontend framework together with Leaf, reaping the benefits of both. While it's still more popular to build completely separate frontend and backends, combining them lets you have your code in one place.
@@ -141,7 +147,7 @@ php leaf g:template pages/Home # app/views/pages/Home.view.php
 
 If you don't want to use the Leaf CLI, you can manually setup inertia. This guide will show you how to setup inertia with Vite and React. You can use this guide to setup inertia with any frontend framework.
 
-### 1. Setting up Vite
+### <TutorialNumber number="1" /> Setting up Vite
 
 To get started, you need to setup Vite. We have a Leaf plugin that takes care of a lot of the heavy lifting for you. We have a detailed guide on how to setup vite with Leaf [here](/docs/frontend/vite).
 
@@ -150,7 +156,7 @@ npm i -D vite @leafphp/vite-plugin
 leaf install vite
 ```
 
-### 2. Vite Config
+### <TutorialNumber number="2" /> Vite Config
 
 The [Leaf Vite docs](/docs/frontend/vite#vite-config) have a detailed guide on how to setup vite config files. You should however note that for the best developer experience, you should point Vite to your view directory so you can enjoy hot module reloading.
 
@@ -176,7 +182,7 @@ leaf({
 }),
 ```
 
-### 3. Setting up Inertia
+### <TutorialNumber number="3" /> Setting up Inertia
 
 To setup inertia, you need to install the inertia package for whatever frontend framework you want to use, together with the Vite plugin for that framework. For example, if you want to use React, you should install the Inertia React package, React Vite plugin as well as React itself:
 
@@ -215,7 +221,7 @@ export default defineConfig({
 });
 ```
 
-### 4. Setting up your base JavaScript file
+### <TutorialNumber number="4" /> Setting up your base JavaScript file
 
 You should create a base JavaScript file that will be used to mount your app. This file should import your CSS and other assets. For example, if you're using React, your base JavaScript file should look like this:
 
@@ -249,7 +255,7 @@ setup({ el, App, props }) {
 },
 ```
 
-### 5. Setting up your base PHP file
+### <TutorialNumber number="5" /> Setting up your base PHP file
 
 You should create a base PHP file that will be used to render your app. By default, the Leaf Inertia PHP adapter will look for a file named `_inertia.view.php` in your views directory. You can change this by passing the path to your base PHP file to the `Inertia::setRoot` method.
 
@@ -305,7 +311,7 @@ This might look pretty ugly, but you'll never have to touch this file again. You
 leaf view:install --inertia
 ```
 
-### 6. Setting up your frontend framework
+### <TutorialNumber number="6" /> Setting up your frontend framework
 
 In the setup above, we told Inertia to look for our frontend framework files in `./DIRECTORYFORCOMPONENTS/`. You should create this directory and add your frontend framework files to it. For example, if you're using React, you should create a file named `Home.jsx` in this directory:
 
