@@ -32,7 +32,7 @@ composer --version
 To install the Leaf CLI, you can run the following command:
 
 ```bash:no-line-numbers
-composer global require leafs/cli:v4.x-dev -W
+composer global require leafs/cli -W
 ```
 
 This tells Composer to install the Leaf CLI globally on your system. You can verify that the CLI is installed correctly by typing `leaf` in your terminal:
