@@ -1,4 +1,4 @@
-# Schema Files <Badge type="warning">ALPHA v4+</Badge>
+# Schema Files
 
 Leaf MVC took inspiration from Laravel and Ruby on Rails, adopting migrations, seeders, and factories to make database management easy. While this approach is powerful, managing multiple files for a single table can become a hassle.
 
