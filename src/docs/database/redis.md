@@ -61,11 +61,11 @@ After that, we can install Leaf Redis through composer or the leaf cli.
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install redis@v4.0-beta
+leaf install redis
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/redis:v4.0-beta
+composer require leafs/redis
 ```
 
 :::
