@@ -54,24 +54,14 @@ To get started with Queues in Leaf, you need to install the `leaf/queue` package
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install queue@v4.0-beta
+leaf install queue
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/queue:v4.0-beta
+composer require leafs/queue
 ```
 
 :::
-
-This will install the Leaf Queue package and set up the necessary files and commands for you to start using queues in your Leaf app.
-
-<!-- This should give you access to the following commands:
-
-- `php leaf config:publish queue` - Generate a queue configuration file.
-- `php leaf g:job` - Generate a job class.
-- `php leaf d:job` - Delete a job class.
-- `php leaf queue:install` - Generate and run a schema file for the queue table.
-- `php leaf queue:run` - Start the queue worker. -->
 
 By default, Leaf MVC uses your database as the queue backend, storing jobs in a `leaf_php_jobs` table. If you're fine with these defaults, just restart your server—Leaf will detect the queue setup and automatically start processing jobs alongside the PHP and Vite servers.
 
@@ -225,6 +215,16 @@ Just as with every other aspect of Leaf, we try to set everything up for you so 
 - Queues are completely stateless. This means that you can't access the current request, user, session, or any other stateful data in your jobs. If you need to access the current request, you should pass the necessary data to the job as a parameter.
 - Due to its simplicity, Leaf's queue system is not as feature-rich as other queue systems like Laravel's. We are working on adding more features to the queue system.
 
+## Switching to Redis
+
+Leaf's queue system uses the database as the default queue backend. If you want to use Redis instead, you can change the default queue connection in your `.env` file:
+
+```env:no-line-numbers
+QUEUE_CONNECTION=redis
+```
+
+This will switch to using your Redis connection for the queue. Leaf Redis currently only supports one connection, but we are working on adding support for multiple connections.
+
 ## Configuration
 
 If you want to change the default config for the queues and workers, you need to publish the queue config file using the MVC console:
@@ -259,7 +259,7 @@ return [
     | used by your application. An example configuration is provided for
     | each backend supported by Leaf. You're also free to add more.
     |
-    | Drivers: "database", "redis (BETA)", "file (WIP)"
+    | Drivers: "redis", "database", "file (BETA)"
     |
     */
     'connections' => [
@@ -272,7 +272,7 @@ return [
         'redis' => [
             'driver' => 'redis',
             'connection' => _env('REDIS_QUEUE_CONNECTION', 'default'),
-            'queue' => _env('REDIS_QUEUE', 'default'),
+            'table' => _env('REDIS_QUEUE', 'leaf_php_jobs'),
         ],
     ],
 ];
