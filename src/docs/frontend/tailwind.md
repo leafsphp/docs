@@ -6,11 +6,13 @@
 import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
 </script>
 
-Tailwind is a utility-first CSS framework that provides a set of utility classes to help you build your UI. Leaf has first-class support for Tailwind CSS, and it's the recommended way to style your Inertia apps. This guide will show you how to set up Tailwind CSS in your Leaf project with minimal configuration.
+Tailwind is a utility-first CSS framework that provides a set of utility classes to help you build your UI, and is the recommended way to style your Leaf MVC apps.
 
-## Using the CLI
+## Setting Up
 
-You can set up Tailwind CSS in your Leaf MVC project using the php leaf console. To do this, run the following command:
+***If you are using the Leaf MVC application starter or one of the inertia setups, then all of this is already set up for you. Just restart your server and you are good to go.***
+
+Leaf MVC doesn't force you into any patterns, which is why we do not ship with tailwind by default. However, you can easily set up Tailwind CSS in your Leaf project using the `view:install` command.
 
 ::: code-group
 
@@ -18,7 +20,7 @@ You can set up Tailwind CSS in your Leaf MVC project using the php leaf console.
 leaf view:install --tailwind
 ``` -->
 
-```bash:no-line-numbers [Leaf MVC CLI]
+```bash:no-line-numbers [Leaf MVC Console]
 php leaf view:install --tailwind
 ```
 
@@ -26,163 +28,39 @@ php leaf view:install --tailwind
 
 This command will install Tailwind CSS v4 and its dependencies, update your vite file, and set up your CSS file to import Tailwind CSS. It will also add your CSS file to Vite as an entry point. From there, you need to head over to your template file and make sure that you are including the CSS file.
 
+## Usage with Blade
+
+To use Tailwind CSS in your Blade views, you can simply include the CSS file in your Blade template:
+
 ```blade:no-line-numbers
 @vite('css/app.css')
 ```
 
-You can then restart your Leaf server and start using Tailwind CSS in your project.
+An easier way to do this is to add it to a layout file, so you don't have to include it in every view file. If you are not using Blade, you can use the `vite()` function to include the CSS file in your template.
 
-## Manual Installation for TW v4
-
-v4 is now the default version of Tailwind CSS, and it comes with a bunch of new features and improvements, but also has a different setup compared to v3. To get started, you need to install all your frontend dependencies:
-
-```bash:no-line-numbers
-npm install tailwindcss @tailwindcss/vite
+```php:no-line-numbers
+<?php vite('css/app.css'); ?>
 ```
 
-And then configure Vite to include the Tailwind plugin:
+## Basic Theming
 
-```js [vite.config.js]
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite'; // [!code ++]
+Tailwind v4 has extensive support for CSS variables which Leaf takes advantage of. You can easily set up your theme colors in your CSS file like this:
 
-export default defineConfig({
-  plugins: [
-    tailwindcss(), // [!code ++]
-    // …
-  ],
-});
-```
-
-Finally, you need to import Tailwind in your CSS file:
-
-```css [app/views/css/app.css]
-@import "tailwindcss";
-@source "../";
-
-...
-
-```
-
-And then include your CSS file in your layout templates:
-
-```blade{12-14}
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    @vite('css/app.css')  // [!code ++]
-
-    ...
-  </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  </body>
-</html>
-```
-
-## Migrating from v3 to v4
-
-If you want to migrate from Tailwind v3 to v4 in Leaf MVC, you can do so by following these steps:
-
-<TutorialNumber number="1" /> Update all your dependencies to the latest version:
-
-```bash:no-line-numbers
-composer update
-```
-
-<TutorialNumber number="2" /> Remove old tailwind config, autoprefixer, and postcss files. <br /><br />
-
-<TutorialNumber number="3" /> Run the `view:install` command to install Tailwind v4:
-
-```bash:no-line-numbers
-php leaf view:install --tailwind
-```
-
-<TutorialNumber number="4" /> Update your CSS file to remove @tailwind directives:
-
-```css [app/views/css/app.css]
-@import "tailwindcss";
-@source "../";
-
-@tailwind base; [!code --]
-@tailwind components; [!code --]
-@tailwind utilities; [!code --]
-```
-
-That's it!
-
-## Manual Installation for TW v3
-
-Leaf MVC comes with Vite out of the box, which is a modern build tool that supports Tailwind CSS out of the box. To get started, you need to install Tailwind CSS and its dependencies:
-
-```bash:no-line-numbers
-npm install tailwindcss@latest postcss@latest autoprefixer@latest
-```
-
-Next, you need to create a Tailwind configuration file. You can do this by running the following command:
-
-```bash:no-line-numbers
-npx tailwindcss init
-```
-
-This will create a `tailwind.config.js` file in the root of your project. You can customize this file to suit your needs.
-
-Next, you need to create a PostCSS configuration file. You can do this by running the following command:
-
-```bash:no-line-numbers
-touch postcss.config.js
-```
-
-Add the following code to your `postcss.config.js` file:
-
-```javascript
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+```css:no-line-numbers
+@theme {
+  --color-primary: #ff0000;
+  --color-secondary: #00ff00;
 }
 ```
 
-Next, you need to create a CSS file that imports Tailwind CSS. You can do this by running the following command:
+You can then use these variables in your view files like this:
 
-```bash:no-line-numbers
-touch app/views/css/app.css
+```blade:no-line-numbers
+<div class="bg-primary text-secondary">
+  Hello, World!
+</div>
 ```
 
-Add the following code to your `app/views/css/app.css` file:
+Pretty sweet! All our scaffolds follow this pattern, so you can easily set up your theme colors in your CSS file and have them applied automatically.
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-Next, you need to add your CSS file to vite as an entry point. You can do this by adding the following code to your `vite.config.js` file:
-
-```javascript
-defineConfig({
-```
-
-The final step is to import your CSS file in your root layout file so that it gets included in your HTML.
-
-```blade
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leaf</title>
-
-  @vite('css/app.css') // [!code ++]
-  ...
-```
-
-That's it! You now have Tailwind CSS set up in your Leaf project. You can start using Tailwind utility classes in your views to style your UI.
-
-Be sure to restart your Leaf server so that Leaf can pick up on the new Vite configuration.
+You can check out the [Tailwind docs](https://tailwindcss.com/docs/theme) for more information on theming with Tailwind.
