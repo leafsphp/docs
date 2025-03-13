@@ -180,3 +180,13 @@ app()->get('/home', ['middleware' => 'logRequest', function () {
 ```
 
 Once the data is read using `request()->next()`, it is removed from the request object and cannot be accessed again during the request lifecycle.
+
+## Middleware with MVC
+
+We've crafted a specialized guide for routing in Leaf MVC. While it's similar to the base middleware in Leaf, it's more detailed and tailored for Leaf MVC.
+
+<Button
+    as="a"
+    href="/docs/routing/middleware/mvc"
+    class="!text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+    >Go to MVC Docs</Button>
