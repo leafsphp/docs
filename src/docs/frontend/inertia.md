@@ -25,8 +25,8 @@ php leaf view:install --svelte
 Adding Inertia to your Leaf app doesn't change the way you handle routing, so you'll still be using your controllers, except that instead of a Blade view, you would return an inertia view:
 
 ```php [app/controllers/MyController.php]
-return response()->view('something'); // ![code --]
-return response()->inertia('something'); // ![code ++]
+return response()->view('something'); // [!code --]
+return response()->inertia('something'); // [!code ++]
 ```
 
 If you need to return a view directly without the need for a controller, you can add an inertia route directly like this:
