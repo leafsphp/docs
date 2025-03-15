@@ -303,7 +303,7 @@ export default function MyComponent({ user }) {
         return <p>You are subscribed to a plan</p>;
     }
 
-    if (user.subscriptionPlan === 'Starter') {
+    if (user.subscription === 'Starter') {
         return <p>You are subscribed to the Starter plan</p>;
     }
 }
@@ -319,7 +319,7 @@ const { user } = defineProps({
 
 <template>
     <p v-if="user.hasSubscription">You are subscribed to a plan</p>
-    <p v-if="user.subscriptionPlan === 'Starter'">You are subscribed to the Starter plan</p>
+    <p v-if="user.subscription === 'Starter'">You are subscribed to the Starter plan</p>
 </template>
 ```
 
@@ -333,7 +333,7 @@ const { user } = $props();
     <p>You are subscribed to a plan</p>
 {/if}
 
-{#if $user.subscriptionPlan === 'Starter'}
+{#if $user.subscription === 'Starter'}
     <p>You are subscribed to the Starter plan</p>
 {/if}
 ```
@@ -419,16 +419,9 @@ In your models, you can add billing add-ons to get extra functions directly from
 | `isSubscribed()` | Check if the user is subscribed to a plan |
 | `isOnTrial()` | Check if the user is on a trial period |
 | `subscription()` | Get the user's subscription |
-| `subscriptionPlan()` | Get the user's subscription plan |
-| `subscriptionStatus()` | Get the user's subscription status |
-| `subscriptionPrice()` | Get the user's subscription price |
-| `subscriptionDiscount()` | Get the user's subscription discount |
-| `subscriptionFeatures()` | Get the user's subscription features |
-| `subscriptionTrialDays()` | Get the user's subscription trial days |
 | `subscriptionNextBillingDate()` | Get the user's subscription next billing date |
 | `subscriptionEndDate()` | Get the user's subscription end date |
 | `subscriptionPeriod()` | Get the user's subscription period |
-| `subscriptionStatus()` | Get the user's subscription status |
 
 You can add the `HasBilling` trait to your models like this:
 
