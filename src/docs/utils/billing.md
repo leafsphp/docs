@@ -1,6 +1,6 @@
 # Payments/Billing <Badge text="BETA - MVC Only" type="warning"/>
 
-Several projects require billing, be it for subscriptions, one-time payments, or donations. Leaf 4 now comes with billing support for Stripe and PayStack right out of the box. This makes integrating billing into your Leaf MVC project a breeze.
+Leaf MVC’s billing system helps makers ship faster by handling payments and subscriptions seamlessly. With built-in Stripe and Paystack support, you can set up one-time payments and recurring subscriptions in minutes—so you can focus on building, not billing.
 
 ## Setting up
 
@@ -42,7 +42,7 @@ This is all you have to do if you're planning to bill on-the-fly. Let's take a l
 
 ## Billing on-the-fly
 
-Billing on-the-fly is the simplest way to bill a customer. This is useful for one-time payments, donations, and charging customers for services or cart items. Leaf takes care of everything for you, all you need to do is use Leaf billing to generate a payment link. This is the same whether for Blade, React, Vue, or Svelte since billing is done on the server.
+Billing on-the-fly is the fastest way to charge customers—perfect for one-time payments, donations, or services. Just generate a payment link with Leaf Billing, and we handle the rest. Whether you're using Blade, React, Vue, or Svelte, the process stays the same since billing runs on the server. No extra setup, just fast and seamless payments.
 
 ```php:no-line-numbers [MyController.php]
 ...
@@ -50,31 +50,9 @@ Billing on-the-fly is the simplest way to bill a customer. This is useful for on
 public function handleCartPurchase($cartId) {
     $cart = Cart::find($cartId);
 
-    response()->redirect(
-      billing()->instantLink([
-          'amount' => $cart->total(),
-          'currency' => 'USD',
-          'description' => 'Purchase of items in cart',
-          'metadata' => [
-              'cart_id' => $cartId,
-              'items' => $cart->items(),
-          ]
-      ])
-    );
-}
-```
-
-While this is incredibly simple, you would usually want to store other information about the payment session in your database. For those use-cases, you can use the `instantSession()` method.
-
-```php:no-line-numbers [MyController.php]
-...
-
-public function handleCartPurchase($cartId) {
-    $cart = Cart::find($cartId);
-
-    $session = billing()->instantSession([
-        'amount' => $cart->total(),
-        'currency' => 'USD',
+    $session = billing()->charge([
+        'amount' => $cart->total(), // will auto convert to lowest currency unit
+        'currency' => 'NGN',
         'description' => 'Purchase of items in cart',
         'metadata' => [
             'cart_id' => $cartId,
@@ -89,11 +67,11 @@ public function handleCartPurchase($cartId) {
 }
 ```
 
-This way, you can store the payment session in your database and use it to track the payment session. Either way, Leaf will automatically handle the payment session and will add data like the user who made the payment (if available), any metadata you added, and the payment status.
+Leaf takes care of the entire payment session for you—automatically tracking the user (if available), any metadata you provide, and the payment status, keeping your code clean and focused on your app.
 
 ## Billing Events/Webhooks
 
-Once you have billed a customer, either on-the-fly or through a subscription, you would want to track the payment status, and webhook events are the best way to do this. Leaf billing comes with built-in support for webhooks. Leaf can automatically set up your webhooks for you using the `scaffold:billing-webhooks` command.
+Once you've charged a customer—whether with a one-time payment or a subscription—you’ll want to track the payment status. Webhooks are the best way to do this, and Leaf Billing has built-in support.
 
 ```bash:no-line-numbers
 php leaf scaffold:billing-webhooks
@@ -107,30 +85,29 @@ This will generate a `_billing_webhooks.php` file in your `routes` directory whi
 public function handle() {
     $event = billing()->webhook();
 
-    // Handle the event
-    switch ($event->type) {
-        case 'checkout.session.completed':
-            // Payment was successful and the Checkout Session is complete
-            // ✅ Give access to your service
-            // $event->user() will give you the user who made the payment (if available)
-            break;
-        case 'checkout.session.expired':
-            // Payment was not successful and the Checkout Session has expired
-            // 📧 Maybe send an abandoned checkout mail?
-            break;
-        // ... handle all necessary events
+    if ($event->is('checkout.session.completed')) {
+        // Payment was successful and the Checkout Session is complete
+        // ✅ Give access to your service
+        // $event->user() will give you the user who made the payment (if available)
+        return;
+    }
+
+    if ($event->is('checkout.session.expired')) {
+        // Payment was not successful and the Checkout Session has expired
+        // 📧 Maybe send an abandoned checkout mail?
+        return;
+    }
+
+    // ... handle all necessary events
 }
 ```
 
-<!-- TODO: change specific events to Leaf billing events like $event->type()->paymentSuccessful() -->
-
-This way, you can handle all billing events in one place, and you can easily track the payment status of your customers.
-
-Since webhooks are stateless, you can't use the `session()` helper to get the user who made the payment...so we added a `webhook()` method to the billing instance to parse all data from the webhook event and create a `BillingEvent` instance which you can use to get the user who made the payment, the payment session, and all other necessary information.
+Since webhooks are stateless, you can't use the `session()` helper to retrieve the user who made the payment. To solve this, Leaf Billing provides a `webhook()` method on the billing instance which automatically parses the webhook, validates its source and generates a `BillingEvent` instance, giving you access to the user who made the payment, the payment session, and all other relevant details—effortlessly keeping your billing logic clean and efficient.
 
 The billing event instance has the following items:
 
 - `type`: The type of the event
+- `is()`: A method to check if the event is of a specific type
 - `user()`: The user who made the payment
 - `session()`: The payment session
 - `metadata`: The raw metadata of the payment session
@@ -143,19 +120,23 @@ For our example above, we can handle the payment event like this:
 public function handle() {
     $event = billing()->webhook();
 
-    // Handle the event
-    switch ($event->type) {
-        case 'checkout.session.completed':
-            $cart = Cart::find($event->metadata['cart_id']);
-            $cart->status = 'paid';
-            $cart->save();
-            break;
-        case 'checkout.session.expired':
-            $cart = Cart::find($event->metadata['cart_id']);
-            $cart->status = 'abandoned';
-            $cart->save();
-            break;
-        // ... handle all necessary events
+    if ($event->is('checkout.session.completed')) {
+        $cart = Cart::find($event->metadata['cart_id']);
+        $cart->status = 'paid';
+        $cart->save();
+
+        return;
+    }
+
+    if ($event->is('checkout.session.expired')) {
+        $cart = Cart::find($event->metadata['cart_id']);
+        $cart->status = 'abandoned';
+        $cart->save();
+
+        return;
+    }
+
+    // ... handle all necessary events
 }
 ```
 
@@ -163,13 +144,13 @@ For more information on billing events, you can check the [Stripe](https://strip
 
 ## Adding billing plans
 
-While billing on-the-fly is great for one-time payments, you may want to set up subscriptions for your customers. Leaf billing allows you to set up billing plans for your customers. For this, you will have to set up your billing plans in your billing configuration file. Leaf scaffolding makes this easy with the `scaffold:billing-plans` command.
+While billing on-the-fly works for one-time payments, subscriptions need a structured setup. Leaf Billing makes this effortless—just run:
 
 ```bash:no-line-numbers
 php leaf scaffold:billing-plans
 ```
 
-This will generate a `config/billing.php` file with a `plans` key where you can set up your billing plans, which should look like this:
+This will generate a `config/billing.php` file with a `tiers` key where you can set up your billing plans, which should look like this:
 
 ```php:no-line-numbers [billing.php]
 ...
@@ -214,9 +195,9 @@ You just need to add an array of tiers with the following keys:
 | `discount` | The discount percentage | `true` |
 | `features` | An array of features for the tier | `true` |
 
-For the pricing, you can specify different prices for different durations. You can specify the price for `monthly`, `yearly`, `quarterly`, `weekly`, and `daily` durations. You only need to specify the price for the duration you want to use, if you want to create a one-time payment instead of a subscription, you can set the `price` instead of `price.duration`.
+You can set different prices for various durations—`monthly`, `yearly`, `quarterly`, `weekly`, or even `daily`. Just define the ones you need. For one-time payments, simply set `price` instead of `price.duration`.
 
-Besides this, you also get a pricing component based on your view engine. This component is available in Blade, React, Vue, and Svelte, and you can use it to display your billing plans.
+Plus, Leaf provides a built-in pricing component for Blade, React, Vue, and Svelte, so you can display your plans effortlessly in your app.
 
 ::: code-group
 
@@ -256,7 +237,7 @@ import Pricing from '@/components/pricing.svelte';
 
 ## Billing Subscriptions
 
-Once you have set up your billing plans in the billing config, your users can subscribe to these plans. The `scaffold:billing-plans` command also generates a `BillingPlans` controller with a `subscribe()` method that you can use to subscribe your users to a plan.
+After setting up your billing plans in the config, users can subscribe effortlessly. The `scaffold:billing-plans` command also generates a BillingPlans controller with a `subscribe()` method, making it easy to enroll users into a plan with minimal setup.
 
 ```php:no-line-numbers{4} [BillingPlansController.php]
 ...
@@ -270,7 +251,7 @@ public function subscribe($plan) {
 }
 ```
 
-This will redirect your users to the billing provider's checkout page where they can subscribe to the plan. Once they have subscribed, you can track their subscription status using the webhook events. The `scaffold:billing-plans` command also updates the `BillingWebhooks` controller to handle subscription events.
+This redirects users to the billing provider’s checkout page to subscribe. Once subscribed, you can track their status via webhook events. The `scaffold:billing-plans` command also updates the BillingWebhooks controller to handle subscription events seamlessly.
 
 ```php:no-line-numbers [BillingWebhooksController.php]
 ...
@@ -278,23 +259,26 @@ This will redirect your users to the billing provider's checkout page where they
 public function handle() {
     $event = billing()->webhook();
 
-    // Handle the event
-    switch ($event->type) {
-        case 'checkout.session.completed':
-            $event->user()->newSubscription();
-            // update other models if needed
-            break;
-        case 'checkout.session.expired':
-            UserMailer::sendAbandonedCheckoutMail($event->user());
-            break;
-        case 'customer.subscription.deleted':
-            // Subscription was deleted
-            $event->user()->cancelSubscription();
-            break;
+    if ($event->is('checkout.session.completed')) {
+        $event->user()->newSubscription();
+        return;
+    }
+
+    if ($event->is('customer.subscription.deleted')) {
+        $event->user()->cancelSubscription();
+        return;
+    }
+
+    if ($event->is('checkout.session.expired')) {
+        UserMailer::sendAbandonedCheckoutMail($event->user());
+        return;
+    }
+
+    // ... handle all necessary events
 }
 ```
 
-`$event->user()` returns an instance of Leaf's auth user, which automatically gets the `HasBilling` trait once Leaf billing is installed. This trait allows you to easily check the user's subscription status, plan, and other billing information directly on the user. `$event->user()` automatically attaches the billing tier information to the user object, which is why we can call `newSubscription()` and `cancelSubscription()` without any arguments in the example above.
+`$event->user()` returns an instance of Leaf's auth user, enhanced with the `HasBilling` trait when Leaf Billing is installed. This lets you effortlessly check a user's subscription status, plan, and billing details. Since the billing tier is automatically attached, methods like `newSubscription()` and `cancelSubscription()` work without extra arguments.
 
 ## Checking billing status
 
@@ -552,15 +536,22 @@ As with all payment systems, you need to ensure that your billing system is secu
 - In your [Developers], copy your public & private keys and add them to `BILLING_SECRET_KEY` & `BILLING_PUBLISHABLE_KEY` in your production environment variables.
 - In your [Developers], [Webhook], [Add Enpoint]. Set `<your-domain>/billing/webhook`. Select [checkout.session.completed] event (or more if needed). Copy the signing secret and add it to `BILLING_WEBHOOK_SECRET` in your production environment variables.
 
-::: warning CSRF Protection
-If you are using the default CSRF config, then your `/billing/webhook` route is already excluded from CSRF protection, however, if you maintain your own CSRF config in `config/csrf.php`, you should exclude the `/billing/webhook` route from CSRF protection.
+## Security
 
-```php:no-line-numbers [csrf.php]
-...
-    'except' => [
-        '/billing/webhook',
-    ],
-...
-```
+When using Leaf billing, you need to ensure that your billing system is secure. Here are a few things to check:
 
-:::
+- Billing Webhooks
+
+  Always make sure that your `BILLING_WEBHOOK_SECRET` is set in your `.env` file. This secret is used to verify that the webhook is coming from your billing provider. You can get this secret from your billing provider's dashboard. Once you set this secret, Leaf billing will automatically verify that the webhook is coming from your billing provider.
+
+- CSRF Protection
+
+  If you are using the default CSRF config, then your `/billing/webhook` route is already excluded from CSRF protection, however, if you maintain your own CSRF config in `config/csrf.php`, you should exclude the `/billing/webhook` route from CSRF protection.
+
+  ```php:no-line-numbers [csrf.php]
+  ...
+      'except' => [
+          '/billing/webhook',
+      ],
+  ...
+  ```
