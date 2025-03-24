@@ -66,11 +66,6 @@ export default defineConfig({
         }
       },
     },
-
-    footer: {
-      message: `Released under the <a href="https://github.com/leafsphp/leaf/blob/v3.x/LICENSE">MIT License</a>.`,
-      copyright: `Copyright © 2019-${new Date().getFullYear()} Michael Darko-Duodu`,
-    },
   },
 
   markdown: {
