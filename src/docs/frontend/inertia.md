@@ -322,6 +322,10 @@ response()->inertia('profile/update', [
 
 That's all you have to do, inertia will automatically catch the errors in `useForm` and display them in the `InputError` component since we already set that up.
 
+## Deploying Inertia Apps
+
+While deployment is pretty much the same as deploying a regular Leaf app, you'll need to build your assets before deploying to production otherwise you'll have quite a broken app. Check out the [deployment guide](/learn/deployment/#deploying-vite-inertia-apps) for more information.
+
 ## Conclusion
 
 Inertia is the perfect replacement for Blade views in Leaf MVC, and actually allows you build more powerful applications with the tons of available JavaScript libraries out there. It's a great way to build full-stack apps, supercharged by Leaf 💚

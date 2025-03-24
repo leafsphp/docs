@@ -42,6 +42,28 @@ Okay, now let’s get your app live! 🚀
 | [Heroku](/learn/deployment/heroku/)              | Deploying a base Leaf project to Heroku using the Leaf CLI |
 | [Fly.io](/learn/deployment/flyio/)              | Deploying a base Leaf application to Fly.io                |
 
+## Deploying Vite/Inertia Apps
+
+If you’re using [Vite](/docs/frontend/vite) and [Inertia.js](/docs/frontend/inertia), the process is pretty much the same as deploying a regular Leaf app. However, you’ll need to build your assets before deploying to production. Here’s how you can do that:
+
+::: code-group
+
+```bash:no-line-numbers [NPM]
+npm run build
+```
+
+```bash:no-line-numbers [Yarn]
+yarn build
+```
+
+```bash:no-line-numbers [PNPM]
+pnpm run build
+```
+
+:::
+
+If you don't build your assets before deploying, you will either have a fully broken app or a CORS error in the case of Inertia.js, so make sure to build your assets before deploying or add it to your deployment script.
+
 ## Deploying Queues/Workers
 
 When deploying your application with [queues](/docs/utils/queues), Leaf takes care of setting up the necessary files and commands based on your chosen queue driver. However, once deployed, you’ll need to set up your server to keep your workers running continuously.
