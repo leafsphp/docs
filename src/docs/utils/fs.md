@@ -154,15 +154,15 @@ $dirname = storage()->dirname('path/to/file.txt'); // path/to
 
 ## File Uploads
 
-File uploads are a common feature in most applications. Users can upload files like images, videos, and documents to your server. Leaf provides a simple way to handle file uploads using the `upload()` method.
+File uploads are a common feature in most applications. Users can upload files like images, videos, and documents to your server. Leaf provides a simple way to handle file uploads using the `upload()` method right on the request.
 
 ```php
-$uploaded = storage()->upload('fileToUpload', 'path/to/uploads');
+$uploaded = request()->upload('fileToUpload', 'path/to/uploads');
 
 if ($uploaded) {
   echo 'File uploaded successfully';
 } else {
-  $errors = storage()->errors();
+  $errors = request()->errors();
 }
 ```
 
@@ -171,7 +171,7 @@ The `upload()` method automatically grabs the file from the request, so you don'
 One amazing thing about the `upload()` method is that it can detect the file type and automatically handle any associated configuration. If you need to customize the upload configuration, you can pass an array of configuration options as the third parameter.
 
 ```php
-$uploaded = storage()->upload('fileToUpload', 'path/to/uploads', [
+$uploaded = request()->upload('fileToUpload', 'path/to/uploads', [
   'maxSize' => 1024 * 1024, // 1MB
   'allowedTypes' => ['image'],
   'allowedExtensions' => ['jpg', 'png', 'gif'],
@@ -206,6 +206,75 @@ This is a list of values Leaf uses to check for file types:
 | compressed   | 'zip', 'rar', 'bz', 'gz', 'iso', 'tar.gz', 'tgz', 'zipx', '7z', 'dmg'                                   |
 | spreadsheet  | 'ods', 'xls', 'xlsx', 'xlsm'                                                                            |
 | application  | 'apk', 'bat', 'cgi', 'pl', 'com', 'exe', 'gadget', 'jar', 'msi', 'py', 'wsf'                            |
+
+When the file is uploaded, Leaf will return information about the uploaded file, or `false` if the file was not uploaded successfully.
+
+```php
+if ($uploaded) {
+  echo 'File uploaded successfully';
+  echo $uploaded['name']; // file name
+  echo $uploaded['path']; // file path
+  echo $uploaded['size']; // file size
+  echo $uploaded['type']; // file type
+  echo $uploaded['extension']; // file extension
+} else {
+  $errors = request()->errors();
+}
+```
+
+If your `.env` file has an `APP_URL` configured, Leaf will add the `APP_URL` to the file path under the `url` key.
+
+```php
+if ($uploaded) {
+  echo 'File uploaded successfully';
+  echo $uploaded['url']; // file url -> http://yourapp.com/path/to/uploads/file.txt
+}
+```
+
+## Uploading multiple files <Badge>NEW</Badge>
+
+You may need to allow users enter multiple files at once on the same input, for example, uploading multiple documents to a teacher's portal. Leaf's `upload()` now automatically handles multiple files under the same input.
+
+::: code-group
+
+```html:no-line-numbers [Input]
+<input type="file" name="files[]" multiple>
+```
+
+```javascript:no-line-numbers [FormData]
+const formData = new FormData();
+formData.append('files[]', file1);
+formData.append('files[]', file2);
+
+...
+```
+
+:::
+
+And then your handler will look like this:
+
+```php:no-line-numbers
+$uploaded = request()->upload('files', 'path/to/uploads');
+```
+
+The value of `$uploaded` will be an array of the uploaded files.
+
+```php
+if ($uploaded) {
+  echo 'Files uploaded successfully';
+
+  foreach ($uploaded as $file) {
+    echo $file['name']; // file name
+    echo $file['path']; // file path
+    echo $file['size']; // file size
+    echo $file['type']; // file type
+    echo $file['extension']; // file extension
+    echo $file['url']; // file url -> http://yourapp.com/path/to/uploads/file.txt
+  }
+} else {
+  $errors = request()->errors();
+}
+```
 
 ## Working with Folders
 
