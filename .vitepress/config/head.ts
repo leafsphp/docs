@@ -154,14 +154,14 @@ const head: HeadConfig[] = [
       src: 'https://static.elfsight.com/platform/platform.js',
     },
   ],
-  // [
-  //   'script',
-  //   {},
-  //   fs.readFileSync(
-  //     path.resolve(__dirname, './inlined-scripts/restorePreference.js'),
-  //     'utf-8'
-  //   ),
-  // ],
+  [
+    'script',
+    {},
+    fs.readFileSync(
+      path.resolve(__dirname, './inlined-scripts/restorePreference.js'),
+      'utf-8'
+    ),
+  ],
   [
     'script',
     {
