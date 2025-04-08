@@ -110,7 +110,7 @@ const tab = ref(tooling[0].title);
 
         <div class="col-span-2">
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
             v-if="tab === 'Powerful DB Layer'">
             <h3 class="font-bold text-2xl !mt-0">Powerful DB Layer</h3>
             <div class="mt-4 leading-relaxed space-y-4">
@@ -147,7 +147,7 @@ const tab = ref(tooling[0].title);
           </div>
 
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
             v-if="tab === 'Dead-simple Authentication'">
             <h3 class="font-bold text-2xl !mt-0">Authentication</h3>
             <div class="mt-4 leading-relaxed space-y-4">
@@ -180,7 +180,7 @@ const tab = ref(tooling[0].title);
           </div>
 
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
             v-if="tab === 'Simplified Http API'">
             <h3 class="font-bold text-2xl !mt-0">Simplified HTTP</h3>
             <div class="mt-4 leading-relaxed space-y-4">
@@ -221,7 +221,7 @@ const tab = ref(tooling[0].title);
           </div>
 
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
             v-if="tab === 'Useful App Utils'">
             <h3 class="font-bold text-2xl !mt-0">Useful App Utils</h3>
             <div class="mt-4 leading-relaxed space-y-4">
@@ -279,7 +279,7 @@ const tab = ref(tooling[0].title);
           </div>
 
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
             v-if="tab === 'Dynamic View Layer'">
             <h3 class="font-bold text-2xl !mt-0">Dynamic View Layer</h3>
             <div class="mt-4 leading-relaxed space-y-4">
