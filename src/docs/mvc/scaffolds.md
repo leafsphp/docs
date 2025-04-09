@@ -43,21 +43,46 @@ You get:
 
 <img src="https://github.com/user-attachments/assets/3f078440-a7a1-4586-9239-a738398f9536" alt="lander" width="100%" class="border border-gray-500 rounded-lg">
 
-## Coming Soon page/Waitlist page <Badge type="warning">Coming Soon</Badge>
+## Billing Subscription
 
-A waitlist/coming page is the easiest way to put your product out there, generate engagement and get some leads all while your application is still in development. You will be able to scaffold these pages using:
+Subscriptions are pretty common in modern applications, but quite annoying to set up. Leaf MVC's scaffolding tool allows you to scaffold a billing subscription system with a single command:
+
+```bash:no-line-numbers
+php leaf scaffold:subscriptions
+```
+
+It requires [Leaf Billing](/docs/utils/billing/) to be installed, and you get:
+
+- A pricing component in whatever frontend setup you are using
+- Subscription/cancellation controllers
+- Webhooks/callbacks/routes for Stripe
+- Database schema, models and config
+
+<img src="https://github.com/user-attachments/assets/8e7f9be6-89f8-42de-a245-e46d73c9baf7" alt="billing" width="100%" class="border border-gray-500 rounded-lg">
+
+## Waitlists
+
+Creating a waitlist/coming soon page is a great way to build anticipation for your product before it launches. It allows you to collect email addresses from interested users, which can be invaluable for marketing and user engagement once your product is live. You can scaffold a waitlist using:
 
 ```bash:no-line-numbers
 php leaf scaffold:waitlist
-
-# or for coming soon
-php leaf scaffold:coming-soon
 ```
 
 These will give you:
 
-- Structured waitlist/coming soon pages
-- Middleware and routes to redirect to waitlist/coming soon page
+- Waitlist component for collecting emails in your frontend setup
+- Middleware to restrict accidental access to your app
 - Models and schema files for email collection
-- Jobs to export waitlist
-- Mailers to notify waitlist
+- Waitlist invites and more
+
+<img src="https://github.com/user-attachments/assets/dac0822a-5cc8-4b9a-a818-bb66895c45bd" alt="billing" width="100%" class="border border-gray-500 rounded-lg">
+
+## More coming soon
+
+We are working on scaffolding for more features like:
+
+- Blog
+- Admin panel
+- API Dashboard & more.
+
+We'll be adding these in the future, so stay tuned!

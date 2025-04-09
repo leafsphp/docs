@@ -9,7 +9,7 @@ const sidebar = [
       { text: 'Migration Guide', link: '/docs/migrating' },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
       { text: 'Modules', link: '/docs/modules' },
-      { text: 'Leaf MVC Scaffolding', link: '/docs/mvc/scaffolds' },
+      { text: 'App Scaffolding', link: '/docs/mvc/scaffolds' },
     ],
   },
   // {
