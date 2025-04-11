@@ -51,7 +51,7 @@ Subscriptions are pretty common in modern applications, but quite annoying to se
 php leaf scaffold:subscriptions
 ```
 
-It requires [Leaf Billing](/docs/utils/billing/) to be installed, and you get:
+It requires [Leaf Billing](/docs/utils/billing) to be installed, and you get:
 
 - A pricing component in whatever frontend setup you are using
 - Subscription/cancellation controllers
