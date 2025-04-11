@@ -136,12 +136,12 @@ const sidebar = [
     // collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/frontend/' },
-      { text: 'Bare UI', link: '/docs/frontend/bareui' },
       { text: 'Leaf Blade', link: '/docs/frontend/blade' },
-      { text: 'Other Engines', link: '/docs/frontend/third-party' },
+      { text: 'Inertia JS', link: '/docs/frontend/inertia' },
       { text: 'Vite JS', link: '/docs/frontend/vite' },
       { text: 'Tailwind CSS', link: '/docs/frontend/tailwind' },
-      { text: 'Inertia JS', link: '/docs/frontend/inertia' },
+      { text: 'Bare UI', link: '/docs/frontend/bareui' },
+      { text: 'Other Engines', link: '/docs/frontend/third-party' },
       // { text: 'Leaf UI', link: '/docs/frontend/leaf-ui' },
       // {
       //   text: 'Leaf Zero',

@@ -141,6 +141,36 @@ php leaf g:template home --type=vue # Vue
 php leaf g:template home --type=svelte # Svelte
 ```
 
+## Using Shadcn
+
+If you are pairing React with your Leaf app, you can use [shadcn/ui](https://ui.shadcn.com/) to build your UI. We don't ship with the necessary files to use shadcn/ui, but you can easily set it up by running the following command:
+
+```bash:no-line-numbers
+php leaf scaffold:shadcn
+```
+
+From there, you can install any shadcn/ui component you want, and it will automatically be configured to work with your Leaf app.
+
+```bash:no-line-numbers
+pnpm dlx shadcn@latest add switch
+```
+
+The final step is to use the component you just installed:
+
+```jsx{6}
+import { Switch } from "@/components/ui/switch"
+
+const MyPage = () => {
+  return (
+    <div>
+      <Switch />
+    </div>
+  )
+}
+
+export default MyPage
+```
+
 ## Form validation with inertia
 
 Leaf has already configured inertia for the vast majority of use-cases, which also includes form validation. This is an example form for updating a user's name. The first part is creating the form, which inertia has a beautiful helper for:
