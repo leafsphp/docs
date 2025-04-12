@@ -53,7 +53,7 @@ app()->group('/admin', ['middleware' => 'auth', function () {
   app()->get('/users', function () {
     echo 'admin users';
   });
-});
+}]);
 ```
 
 Or you can directly pass the middleware in like this:
@@ -71,7 +71,7 @@ app()->group('/user', ['middleware' => $middleware, function () {
   app()->get('/(\d+)', function ($id) {
     response()->markup("user $id");
   });
-});
+}]);
 ```
 
 ## Subfolder Support
