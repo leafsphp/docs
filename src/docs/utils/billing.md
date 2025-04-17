@@ -12,15 +12,15 @@ To get started, create a Stripe account and grab your API keys. Then, drop them 
 
 ```env:no-line-numbers [Stripe]
 BILLING_PROVIDER=stripe
-STRIPE_SECRET_KEY=sk_test_XXXX
-STRIPE_PUBLIC_KEY=pk_test_XXXX
+STRIPE_API_KEY=sk_test_XXXX
+STRIPE_PUBLISHABLE_KEY=pk_test_XXXX
 STRIPE_WEBHOOK_SECRET=whsec_XXXX # only if you are using webhooks
 ```
 
 <!-- ```env:no-line-numbers [PayStack]
 BILLING_PROVIDER=paystack
-STRIPE_SECRET_KEY=sk_test_XXXX
-STRIPE_PUBLIC_KEY=pk_test_XXXX
+STRIPE_API_KEY=sk_test_XXXX
+STRIPE_PUBLISHABLE_KEY=pk_test_XXXX
 ``` -->
 
 :::
@@ -92,7 +92,7 @@ This is a list of the parameters you can pass to the `charge()` method:
 | `currency` | The currency to charge the customer (e.g. USD, EUR) |
 | `description` | A description of the charge (optional) |
 | `metadata` | An array of metadata to attach to the charge. This is useful for tracking the user who made the payment, the items they purchased, and any other relevant information. |
-| `metadata.items` | An array of items to charge the customer, every item should have a name and amount, and optional quantity: `['name' => 'XXX', 'amount' => xxx]`. Optional if you pass `items` |
+| `metadata.items` | An array of items to charge the customer, every item should have a name and amount, and optional quantity: `['item' => 'XXX', 'amount' => xxx]`. Optional if you pass `items` |
 | `items` | Array of stripe formatted items to charge the customer, eg: `['price_data' => ['currency' => 'usd', 'product_data' => ['name' => 'T-shirt'], 'unit_amount' => 2000], 'quantity' => 1]`. You can use `metadata.items` if you want leaf to format your data for you |
 | `customer` | The customer email to charge (optional) |
 | `urls` | An array of URLs to redirect the customer to. Accepts `success` and `cancel` keys. If you don't pass this, Leaf will use the default URLs. |
@@ -553,7 +553,7 @@ class User extends Model {
 
 This way, you can easily check the user's subscription status, plan, and other billing information directly from the user model or any other model you add the `HasBilling` trait to. -->
 
-<!-- ## Billing Middleware
+## Billing Middleware
 
 Leaf billing comes with a middleware that you can use to protect your routes based on specific conditions. This is a list of the billing middleware available:
 
@@ -580,7 +580,15 @@ app()->get('/protected', [
     'middleware' => 'billing.unsubscribed',
     'SubscriptionController@subscribe'
 ]);
-``` -->
+```
+
+If you want to customize what the middleware does if the user is not allowed to access the route, you can do that by calling the `billing()->middleware()` method in your `app/routes/index.php` file. This method accepts a callback that will be called if the user is not allowed to access the route.
+
+```php:no-line-numbers [index.php]
+billing()->middleware('billing.subscribed', function () {
+    response()->redirect('/billing/subscribe');
+});
+```
 
 <!-- ## Billing Currency
 
