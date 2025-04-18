@@ -111,7 +111,7 @@ const tab = ref(tooling[0].title);
         <div class="col-span-2">
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-if="tab === 'Powerful DB Layer'">
+            v-show="tab === 'Powerful DB Layer'">
             <h3 class="font-bold text-2xl !mt-0">Powerful DB Layer</h3>
             <div class="mt-4 leading-relaxed space-y-4">
               <p>Leaf's DB module takes all the complexity out of data fetching, relationships and saving data in your
@@ -148,7 +148,7 @@ const tab = ref(tooling[0].title);
 
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-if="tab === 'Dead-simple Authentication'">
+            v-show="tab === 'Dead-simple Authentication'">
             <h3 class="font-bold text-2xl !mt-0">Authentication</h3>
             <div class="mt-4 leading-relaxed space-y-4">
               <p>Sign users in or create accounts using Leaf's Auth module:</p>
@@ -181,7 +181,7 @@ const tab = ref(tooling[0].title);
 
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-if="tab === 'Simplified Http API'">
+            v-show="tab === 'Simplified Http API'">
             <h3 class="font-bold text-2xl !mt-0">Simplified HTTP</h3>
             <div class="mt-4 leading-relaxed space-y-4">
               <p>Leaf abstracts all the annoying little HTTP details and provides a simple API for handling requests,
@@ -222,7 +222,7 @@ const tab = ref(tooling[0].title);
 
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-if="tab === 'Useful App Utils'">
+            v-show="tab === 'Useful App Utils'">
             <h3 class="font-bold text-2xl !mt-0">Useful App Utils</h3>
             <div class="mt-4 leading-relaxed space-y-4">
               <p>Leaf provides all the utilities you need to handle all the tiny repetitive tasks that come with
@@ -280,7 +280,7 @@ const tab = ref(tooling[0].title);
 
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-if="tab === 'Dynamic View Layer'">
+            v-show="tab === 'Dynamic View Layer'">
             <h3 class="font-bold text-2xl !mt-0">Dynamic View Layer</h3>
             <div class="mt-4 leading-relaxed space-y-4">
               <p>Leaf has support for some of the most popular frontend technologies, from templating engines like Blade
