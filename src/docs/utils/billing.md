@@ -563,8 +563,8 @@ Leaf billing comes with a middleware that you can use to protect your routes bas
 | `billing.subscribed:plan-name` | Protect a route to only allow users subscribed to a specific plan |
 | `billing.not-subscribed` | Protect a route to only allow users who aren't subscribed |
 | `billing.not-subscribed:plan-name` | Protect a route to only allow users not subscribed to a specific plan |
-| `billing.trial` | Protect a route to only allow users on a trial period |
-| `billing.not-trial` | Protect a route to only allow users not on a trial period |
+<!-- | `billing.trial` | Protect a route to only allow users on a trial period |
+| `billing.not-trial` | Protect a route to only allow users not on a trial period | -->
 
 You can use these middlewares in your routes like this:
 
@@ -577,7 +577,7 @@ app()->get('/protected', [
 ]);
 
 app()->get('/protected', [
-    'middleware' => 'billing.not-subscribed',
+    'middleware' => 'billing.not-subscribed:Starter',
     'SubscriptionController@subscribe'
 ]);
 ```
@@ -586,8 +586,19 @@ If you want to customize what the middleware does if the user is not allowed to 
 
 ```php:no-line-numbers [index.php]
 billing()->middleware('billing.subscribed', function () {
-    response()->redirect('/billing/subscribe');
+    response()->redirect('/some-special-page');
 });
+```
+
+And then you can use the middleware like this:
+
+```php [_some-route.php]
+app()->get('/protected', [
+    'middleware' => 'billing.subscribed',
+    function() {
+        return 'You are subscribed';
+    }
+]);
 ```
 
 <!-- ## Billing Currency
