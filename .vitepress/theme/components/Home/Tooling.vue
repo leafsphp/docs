@@ -47,12 +47,12 @@ const tooling = [
   //   description: 'There are no “Oh no!” moments with Leaf. We\'ve got all the tools you need to fail-in-style: from devtools to debug modes and custom errors.',
   //   link: '/docs/routing/error-handling',
   // },
-  {
-    icon: '🎨',
-    title: 'Dynamic View Layer',
-    description: 'Leaf supports multiple template engines and even frameworks like React, Vue and Svelte.',
-    link: '/docs/frontend/',
-  },
+  // {
+  //   icon: '🎨',
+  //   title: 'Dynamic View Layer',
+  //   description: 'Leaf supports multiple template engines and even frameworks like React, Vue and Svelte.',
+  //   link: '/docs/frontend/',
+  // },
   // {
   //   icon: '🔧',
   //   title: 'Friendly system utilities',

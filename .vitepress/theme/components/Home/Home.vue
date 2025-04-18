@@ -7,6 +7,7 @@ import Sponsors from './Sponsors.vue';
 import Testimonials from './Testimonials.vue';
 import Community from './Community.vue';
 import Footer from './Footer.vue';
+import FlexibleFrontend from './FlexibleFrontend.vue';
 import NewsLetterSubstack from './../Community/NewsLetterSubstack.vue';
 import Blog from '../Community/Blog.vue';
 import Speak from '../Community/Speak.vue';
@@ -17,6 +18,7 @@ import WallOfFame from '../Community/WallOfFame.vue';
   <Hero />
   <Deploy />
   <Tooling />
+  <FlexibleFrontend />
   <Testimonials />
   <TryIt />
   <Sponsors />
