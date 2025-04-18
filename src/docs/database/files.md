@@ -65,23 +65,7 @@ seeds:
 
 Breaking this file down, there are three main sections:
 
-- `columns`: This is used to set the columns of the table. The key is the column name and the value is a key value pair of column properties. The available properties are:
-  - `type`: The type of the column. This can be `string`, `integer`, `timestamp` or any type supported by Laravel's Eloquent.
-  - `length`: The length of the column. This is only used for `string` columns.
-  - `nullable`: This is used to set the column as nullable.
-  - `default`: This is used to set the default value of the column.
-  - `unsigned`: This is used to set the column as unsigned.
-  - `index`: This is used to set the column as an index.
-  - `unique`: This is used to set the column as unique.
-  - `primary`: This is used to set the column as the primary key.
-  - `foreign`: This is used to set the column as a foreign key. The value of this key is the table and column the column is a foreign key to.
-  - `values`: This is used to set the values of the column. This is only used for `enum` and `set` columns.
-  - `onDelete`: This is used to set the `ON DELETE` constraint of the foreign key.
-  - `onUpdate`: This is used to set the `ON UPDATE` constraint of the foreign key.
-  - `comment`: This is used to set the comment of the column.
-  - `autoIncrement`: This is used to set the column as auto-incrementing.
-  - `useCurrent`: This is used to set the column to use the current timestamp. This is only used for `timestamp` columns.
-  - `useCurrentOnUpdate`: This is used to set the column to use the current timestamp on update. This is only used for `timestamp` columns.
+- `columns`: This is used to set the columns of the table. The key is the column name and the value is the type/properties of the column.
 
 - `seeds`: This is used to set the seeders of the table. The available properties are:
   - `count`: This is used to set the number of seeds to generate.
@@ -90,29 +74,9 @@ Breaking this file down, there are three main sections:
 
 - `relationships`: This is used to set the relationships of the table. The value is an array of models the table is related to. This is used to generate foreign keys for the table.
 
-Besides these, Schema files also set a lot of defaults for you. For instance, the `id` column is set as the primary key and auto-incrementing by default. Timestamps are also added by default. You can override these defaults by adding the `id` and `timestamps` keys to your schema file. Here's an example:
+## Applying schema files
 
-```yml:no-line-numbers [posts.yml]
-increments: false # this will remove the auto-incrementing id column
-timestamps: false # this will remove the timestamps columns
-```
-
-Once you turn off auto-increments, you can add your own `id` column. Here's an example:
-
-```yml:no-line-numbers [posts.yml]
-increments: false
-
-columns:
-  id:
-    type: integer
-    primary: true
-
-...
-```
-
-## Database tables
-
-Traditionally, migrations are used to create database tables and modify them. In Leaf MVC, every schema file is tied to a particular table which is the name of the file. All you need to do is modify the columns of the table using the `columns` key in your schema file. Here's an example:
+Each schema file represents a single database table—just name the file after the table you’re creating. Inside, define your table structure under the `columns` key. Leaf takes care of the rest. No need for separate migration files or extra setup—just one clear, structured file for everything your table needs. Here's an example:
 
 ```yml [users.yml]
 columns:
@@ -137,45 +101,112 @@ You can have multiple schema files in your `app/database` directory, each tied t
 php leaf db:migrate users
 ```
 
-<!-- ## Database migrations vs data migrations
+## Database schema defaults
 
-Usually, when making substancial changes to your database, you would create a migration file which is usually in charge of modifying the structure of your database. In some situations, you might want to run some kind of data migration which may copy data from one table to another, or run some kind of data manipulation on your recently migrated database. Some frameworks combine these two into one, but in Leaf MVC, we separate these two because we believe they are two different things. While database migrations are common, data migrations are not so common and are usually done manually.
+Schema Files come with smart defaults to make setup faster. Every table automatically includes an auto-incrementing `id` and `created_at`/`updated_at` timestamps—no need to add them manually. Want to change that? Use the `increments` and `timestamps` keys to disable them. Here's an example:
 
-Leaf MVC provides database scripts which you can use to handle your data migrations. Separating database migrations from data migrations allows you to safely roll-back your data migrations without affecting your database structure. Here's an example of a database script:
-
-```php [ImportUsersFromOldTable.php]
-<?php
-
-use App\Models\User;
-
-class ImportUsersFromOldTable
-{
-  public function up()
-  {
-    $oldUsers = getOldUsersAndMapToNewUsers();
-
-    foreach ($oldUsers as $oldUser) {
-      User::create([
-        'name' => $oldUser->name,
-        'email' => $oldUser->email,
-        'password' => $oldUser->password,
-        'is_from_old_table' => true
-      ]);
-    }
-  }
-
-  public function down()
-  {
-    User::where('is_from_old_table', true)->delete();
-  }
-}
+```yml:no-line-numbers [posts.yml]
+increments: false # this will remove the auto-incrementing id column
+timestamps: false # this will remove the timestamps columns
 ```
 
-Now you just need to run the script using the `db:script` command:
+Once you turn off auto-increments, you can add your own `id` column. Here's an example:
 
-```bash:no-line-numbers
-php leaf db:script ImportUsersFromOldTable
-``` -->
+```yml:no-line-numbers [posts.yml]
+increments: false
+
+columns:
+  id:
+    type: integer
+    primary: true
+
+...
+```
+
+The same thing goes for timestamps. If you want to add your own timestamps, you can turn off the default timestamps and add your own. Here's an example:
+
+```yml:no-line-numbers [posts.yml]
+timestamps: false
+
+columns:
+  ...
+  created_at: timestamp
+```
+
+This example will add a `created_at` column to the `posts` table with the current timestamp as the default value.
+
+## Schema columns
+
+In a schema file, you can define the columns of your table under the `columns` key. The key is the column name and the value is the type of column or an array of properties for the column:
+
+```yml:no-line-numbers [users.yml]
+columns:
+  # directly defining the column type
+  email: string
+
+  # defining the column type and properties
+  email:
+    type: string
+    length: 255
+    unique: true
+```
+
+The schema builder blueprint offers a variety of methods that correspond to the different types of columns you can add to your database tables. Each of the available methods are listed in the table below:
+
+| Method | Description | Method | Description |
+|--------|-------------| -------|-------------|
+| `boolean` | Creates a boolean column. | `increments` | Creates an auto-incrementing integer column. |
+| `integer` | Creates an integer column. | `bigIncrements` | Creates a big integer column. |
+| `bigInteger` | Creates a big integer column. | `smallIncrements` | Creates a small integer column. |
+| `char` | Creates a character column. | `decimal` | Creates a decimal column. |
+| `string` | Creates a string column. | `float` | Creates a float column. |
+| `text` | Creates a text column. | `double` | Creates a double column. |
+| `tinyText` | Creates a tiny text column. | `unsignedBigInteger` | Creates an unsigned big integer column. |
+| `mediumText` | Creates a medium text column. | `id` | Creates an auto-incrementing integer column. |
+| `longText` | Creates a long text column. | `uuid` | Creates a UUID column. |
+| `date` | Creates a date column. | `json` | Creates a JSON column. |
+| `enum` | Creates an enum column. | `jsonb` | Creates a JSONB column. |
+
+You can check the [Laravel migration documentation](https://laravel.com/docs/12.x/migrations#available-column-types) for more information on the available types. Any method that is not present in the table above or not listed in the Laravel migration documentation is not supported in Leaf MVC.
+
+## Column properties/modifiers
+
+In addition to the column types, you can also add properties/modifiers to your columns to make them behave differently. The available properties are:
+
+| Property | Description |
+|----------|-------------|
+| `type` | The type of the column. This is required for all columns |
+| `length` | The length of the column. This is optional and defaults to 255 for string columns |
+| `nullable` | This is used to set the column as nullable. This is optional and defaults to false |
+| `default` | This is used to set the default value of the column. |
+| `unsigned` | This is used to set the column as unsigned. This is optional and defaults to false |
+| `index` | This is used to set the column as an index. This is optional and defaults to false |
+| `unique` | This is used to set the column as unique. This is optional and defaults to false |
+| `primary` | This is used to set the column as the primary key. This is optional and defaults to false |
+| `values` | This is used to set the values of the column. This is only required for `enum` and `set` columns. |
+| `onDelete` | This is used to set the `ON DELETE` constraint of the foreign key. |
+| `onUpdate` | This is used to set the `ON UPDATE` constraint of the foreign key. |
+| `comment` | This is used to set the comment of the column. |
+| `autoIncrement` | This is used to set the column as auto-incrementing. This is optional and defaults to false |
+| `useCurrent` | This is used to set the column to use the current timestamp. This is only used for `timestamp` columns. |
+| `useCurrentOnUpdate` | This is used to set the column to use the current timestamp on update. This is only used for `timestamp` columns. |
+<!-- | `foreign` | This is used to set the column as a foreign key. The value of this key is the table and column the column is a foreign key to. | -->
+
+You can use these properties to modify the behavior of your columns. For example, if you want to create a `name` column that is unique and has a default value of `John Doe`, you can do it like this:
+
+```yml:no-line-numbers [users.yml]
+columns:
+  name:
+    type: string
+    unique: true
+    default: 'John Doe'
+```
+
+When defining columns, it’s good to be mindful—some properties can affect performance or behave differently across databases. For example, setting a column as `unique` adds an index, which can slow down inserts and updates on large tables. And properties like `comment` aren’t supported in SQLite, which could lead to unexpected behavior. Leaf gives you the flexibility—you just want to use it wisely.
+
+::: tip Missing some functionality?
+We are working on adding more properties/modifiers to the columns, just to make it easier to work with your database. If you have any suggestions, please let us know.
+:::
 
 ## Migration histories
 
@@ -197,8 +228,7 @@ columns:
 
 This example adds a new column `is_super_admin` to the `users` table. When you run `php leaf db:migrate`, Leaf will compare it to the previous version of the file, find the differences and automatically create the `is_super_admin` column for you in your database. You don't need to worry about writing migration files or keeping track of changes manually.
 
-Every time you update a Schema File and run `db:migrate`, Leaf logs the changes for you. No more digging through migration files—just focus on building. And when you need to roll back? Simply run `php leaf db:rollback`.
-
+And when you need to roll back? Simply run `php leaf db:rollback`.
 
 ## Seeding your database
 
@@ -262,3 +292,43 @@ If you want to seed a specific table, you can pass the table name as an argument
 ```bash:no-line-numbers
 php leaf db:seed users
 ```
+
+<!-- ## Database migrations vs data migrations
+
+Usually, when making substancial changes to your database, you would create a migration file which is usually in charge of modifying the structure of your database. In some situations, you might want to run some kind of data migration which may copy data from one table to another, or run some kind of data manipulation on your recently migrated database. Some frameworks combine these two into one, but in Leaf MVC, we separate these two because we believe they are two different things. While database migrations are common, data migrations are not so common and are usually done manually.
+
+Leaf MVC provides database scripts which you can use to handle your data migrations. Separating database migrations from data migrations allows you to safely roll-back your data migrations without affecting your database structure. Here's an example of a database script:
+
+```php [ImportUsersFromOldTable.php]
+<?php
+
+use App\Models\User;
+
+class ImportUsersFromOldTable
+{
+  public function up()
+  {
+    $oldUsers = getOldUsersAndMapToNewUsers();
+
+    foreach ($oldUsers as $oldUser) {
+      User::create([
+        'name' => $oldUser->name,
+        'email' => $oldUser->email,
+        'password' => $oldUser->password,
+        'is_from_old_table' => true
+      ]);
+    }
+  }
+
+  public function down()
+  {
+    User::where('is_from_old_table', true)->delete();
+  }
+}
+```
+
+Now you just need to run the script using the `db:script` command:
+
+```bash:no-line-numbers
+php leaf db:script ImportUsersFromOldTable
+``` -->
