@@ -560,9 +560,9 @@ Leaf billing comes with a middleware that you can use to protect your routes bas
 | Middleware | Description |
 | --- | --- |
 | `billing.subscribed` | Protect a route to only allow subscribed users |
-| `billing.unsubscribed` | Protect a route to only allow unsubscribed users |
 | `billing.subscribed:plan-name` | Protect a route to only allow users subscribed to a specific plan |
-| `billing.unsubscribed:plan-name` | Protect a route to only allow users not subscribed to a specific plan |
+| `billing.not-subscribed` | Protect a route to only allow users who aren't subscribed |
+| `billing.not-subscribed:plan-name` | Protect a route to only allow users not subscribed to a specific plan |
 | `billing.trial` | Protect a route to only allow users on a trial period |
 | `billing.not-trial` | Protect a route to only allow users not on a trial period |
 
@@ -577,7 +577,7 @@ app()->get('/protected', [
 ]);
 
 app()->get('/protected', [
-    'middleware' => 'billing.unsubscribed',
+    'middleware' => 'billing.not-subscribed',
     'SubscriptionController@subscribe'
 ]);
 ```
