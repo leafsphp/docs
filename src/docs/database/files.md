@@ -1,12 +1,10 @@
 # Schema Files
 
-Leaf MVC took inspiration from Laravel and Ruby on Rails, adopting migrations, seeders, and factories to make database management easy. While this approach is powerful, managing multiple files for a single table can become a hassle.
-
-That’s why in Leaf MVC v4, we’re introducing Schema Files—a simpler, more intuitive way to define, test, and seed your database in one place.
+Leaf MVC has always taken cues from Laravel and Rails to make database management smooth. But juggling migrations, seeders, and factories for one table? That gets messy, quickly! Schema files offer a cleaner, all-in-one way to define, test, and seed your database.
 
 ## What are Schema Files?
 
-Schema Files build on the JSON schema idea from earlier Leaf MVC versions but take things even further. Instead of managing separate migrations, seeders, and factories, everything is now in one place. Written in YAML, they’re clean, easy to read, and eliminate unnecessary repetition—so you can focus on building, not juggling files.
+With Schema Files in Leaf MVC 4, you can define your database tables, seed data, and test data—all in one simple YAML file. No need to manage separate migrations, seeders, or factories. It’s clean, readable, and designed to help you move fast without the overhead.
 
 ```yml [flights.yml]
 columns:
@@ -70,16 +68,20 @@ Breaking this file down, there are three main sections:
 - `columns`: This is used to set the columns of the table. The key is the column name and the value is a key value pair of column properties. The available properties are:
   - `type`: The type of the column. This can be `string`, `integer`, `timestamp` or any type supported by Laravel's Eloquent.
   - `length`: The length of the column. This is only used for `string` columns.
-  - `unique`: This is used to set the column as unique.
   - `nullable`: This is used to set the column as nullable.
   - `default`: This is used to set the default value of the column.
-  - `autoIncrement`: This is used to set the column as auto-incrementing.
   - `unsigned`: This is used to set the column as unsigned.
   - `index`: This is used to set the column as an index.
+  - `unique`: This is used to set the column as unique.
   - `primary`: This is used to set the column as the primary key.
   - `foreign`: This is used to set the column as a foreign key. The value of this key is the table and column the column is a foreign key to.
+  - `values`: This is used to set the values of the column. This is only used for `enum` and `set` columns.
   - `onDelete`: This is used to set the `ON DELETE` constraint of the foreign key.
   - `onUpdate`: This is used to set the `ON UPDATE` constraint of the foreign key.
+  - `comment`: This is used to set the comment of the column.
+  - `autoIncrement`: This is used to set the column as auto-incrementing.
+  - `useCurrent`: This is used to set the column to use the current timestamp. This is only used for `timestamp` columns.
+  - `useCurrentOnUpdate`: This is used to set the column to use the current timestamp on update. This is only used for `timestamp` columns.
 
 - `seeds`: This is used to set the seeders of the table. The available properties are:
   - `count`: This is used to set the number of seeds to generate.
@@ -179,7 +181,24 @@ php leaf db:script ImportUsersFromOldTable
 
 Migration histories keep track of changes to your database, making it easy to roll back if needed. Unlike other frameworks, **Leaf MVC handles this automatically**—no need to manually create migrations just to track history.
 
+```yml [users.yml]
+columns:
+  name: string
+  email:
+    type: string
+    length: 255
+    unique: true
+  password: string
+  email_verified_at: timestamp
+  is_super_admin: # [!code ++]
+    type: boolean # [!code ++]
+    default: false # [!code ++]
+```
+
+This example adds a new column `is_super_admin` to the `users` table. When you run `php leaf db:migrate`, Leaf will compare it to the previous version of the file, find the differences and automatically create the `is_super_admin` column for you in your database. You don't need to worry about writing migration files or keeping track of changes manually.
+
 Every time you update a Schema File and run `db:migrate`, Leaf logs the changes for you. No more digging through migration files—just focus on building. And when you need to roll back? Simply run `php leaf db:rollback`.
+
 
 ## Seeding your database
 
