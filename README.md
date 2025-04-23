@@ -1,6 +1,6 @@
 # Leaf PHP Documentation
 
-Welcome to the official documentation for Leaf PHP, a PHP framework that helps you build simple yet powerful web applications and APIs. You can find the online version of this documentation at [leafphp.dev](https://beta.leafphp.dev).
+Welcome to the official documentation for Leaf PHP, a PHP framework that helps you build simple yet powerful web applications and APIs. You can find the online version of this documentation at [leafphp.dev](https://leafphp.dev).
 
 ## Contributing
 
