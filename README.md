@@ -6,7 +6,7 @@ Welcome to the official documentation for Leaf PHP, a PHP framework that helps y
 
 If you find any issues with the documentation or have any suggestions, feel free to open an issue or a pull request here. This documentation is built using [VitePress](https://vitepress.dev/), a Vue-powered static site generator. The actual documentation content is written in Markdown and can be found in the `src/` directory.
 
-Be sure to read our [contribution guidelines](https://leafphp.dev/community/contributing/writing-guide.html) before contributing.
+Be sure to read our [contribution guidelines](https://leafphp.dev/community/guide.html#documentation) before contributing.
 
 ## Sponsoring Leaf
 
