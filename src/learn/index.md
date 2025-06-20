@@ -141,6 +141,10 @@ With that in mind, we've created a few paths to help you get started with Leaf. 
 
 After building your app, you'll want to deploy it to the web so that others can access it. We've got you covered with our [deployment guides](/learn/deployment/) that walk you through deploying your app to various platforms.
 
+## Monitor your app
+
+Once your app is live, you'll want to monitor it to ensure it's running smoothly. For now, we have a guide on [monitoring your Leaf app with Sentry](/learn/monitoring/sentry/) to help you get started. We'll be adding guides for other monitoring tools like New Relic, Datadog, and more in the future.
+
 ## Contributing
 
 If you've written a tutorial that you think would be a great addition to our Learn section, feel free to submit a PR to our [GitHub repository](https://github.com/leafsphp/docs) with your tutorial. For our readers' benefit, be sure to follow the [contribution guide](/learn/contributing) when submitting your tutorial. Thank you for your contribution!
