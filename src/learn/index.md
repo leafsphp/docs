@@ -145,6 +145,10 @@ After building your app, you'll want to deploy it to the web so that others can 
 
 Once your app is live, you'll want to monitor it to ensure it's running smoothly. For now, we have a guide on [monitoring your Leaf app with Sentry](/learn/monitoring/sentry/) to help you get started. We'll be adding guides for other monitoring tools like New Relic, Datadog, and more in the future.
 
+## Track data in your app
+
+Marketing teams and founders often need to track user interactions and events in their applications to make data-driven decisions. We have a guide on [tracking data in your Leaf app](/learn/monitoring/tracking) that covers how to set up Google Analytics and Mixpanel for tracking user interactions and events.
+
 ## Contributing
 
 If you've written a tutorial that you think would be a great addition to our Learn section, feel free to submit a PR to our [GitHub repository](https://github.com/leafsphp/docs) with your tutorial. For our readers' benefit, be sure to follow the [contribution guide](/learn/contributing) when submitting your tutorial. Thank you for your contribution!
