@@ -6,14 +6,14 @@ After successfully logging in or registering a user, Leaf Auth provides a bunch 
 
 You can usually get the current user's information using the `data()` method, however, the output is an array of the user's data together with the tokens which is not very convenient for use within your application.
 
-```php
+```php:no-line-numbers
 $data = auth()->data();
 // ['user' => [...], 'accessToken' => '...', 'refreshToken' => '...']
 ```
 
 The `user()` method allows you to pick out exactly the information you need from the user's data. If you need all the user's data, you can use the `get()` method:
 
-```php
+```php:no-line-numbers
 $user = auth()->user()->get();
 
 // or pick specific fields
@@ -23,7 +23,7 @@ $username = auth()->user()->username;
 
 Picking specific fields also gives you access to fields you may have hidden using the auth config. This is useful because it allows you to perform operations on the user's data without mistakenly exposing hidden fields.
 
-```php
+```php:no-line-numbers
 auth()->config('hidden', ['secret_field']);
 
 $secretField = auth()->user()->secret_field;
@@ -31,7 +31,7 @@ $secretField = auth()->user()->secret_field;
 
 While this may seem like a lot of work, it's a good way to ensure that your user's data is secure and only accessible where needed.
 
-## Email verification <Badge>NEW</Badge>
+## Email verification
 
 Email verification is a very important feature in most applications. It allows you to verify that the email address provided by a user is valid and that they have access to it. Leaf Auth by default does not incorporate email verification into the authentication process, but you can easily add it to your application using handy functions added in Auth v3.4.0.
 
@@ -57,13 +57,13 @@ $token = auth()->user()->generateVerificationToken(time() + 3600); // 1 hour
 
 ### Verifying a user
 
-When a user clicks on the verification link, you first need to verify the token. You can do this using the `verifyToken()` method. This method returns `true` if the token is valid and `false` if the token is invalid.
+When a user clicks on the verification link, you first need to verify the token. You can do this using the `verifyToken()` method. This method returns the user tied to the token if the token is valid and `false` if the token is invalid.
 
 ```php
 $token = request()->get('token');
-$isValid = auth()->verifyToken($token);
+$userToVerify = auth()->verifyToken($token);
 
-if ($isValid) {
+if ($userToVerify) {
   // Token is valid
 } else {
   // Token is invalid
@@ -74,9 +74,9 @@ If the token is valid, you can then update the user's `email_verified_at` column
 
 ```php
 $token = request()->get('token');
-$isValid = auth()->verifyToken($token);
+$userToVerify = auth()->verifyToken($token);
 
-if ($isValid && auth()->user()->verifyEmail()) {
+if ($userToVerify && $userToVerify->verifyEmail()) {
   // Email is verified
 } else {
   // Could not verify email, missing or invalid token
