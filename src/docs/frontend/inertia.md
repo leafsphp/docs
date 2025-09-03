@@ -24,14 +24,14 @@ php leaf view:install --svelte
 
 Adding Inertia to your Leaf app doesn't change the way you handle routing, so you'll still be using your controllers, except that instead of a Blade view, you would return an inertia view:
 
-```php [app/controllers/MyController.php]
+```php:no-line-numbers [app/controllers/MyController.php]
 return response()->view('something'); // [!code --]
 return response()->inertia('something'); // [!code ++]
 ```
 
 If you need to return a view directly without the need for a controller, you can add an inertia route directly like this:
 
-```php [app/routes/_route.php]
+```php:no-line-numbers [app/routes/_route.php]
 app()->inertia('/some-route', 'something');
 ```
 
@@ -122,6 +122,22 @@ defineProps({ prop1: Array, ... });
 :::
 
 You can find more information on using Inertia with your frontend framework in the [Inertia documentation](https://inertiajs.com/).
+
+## Shared Data <Badge text="New" type="tip" />
+
+Sometimes, you might want to share data across all your inertia views. Leaf MVC makes this super easy by providing a simple way to do this. You can use the `Inertia::share()` method to share data across all your inertia views. You can do this in your `app/routes/index.php` file like this:
+
+```php:no-line-numbers [app/routes/index.php]
+use Leaf\Inertia;
+
+Inertia::share('appName', 'Some constant value');
+Inertia::share('someDeferredValue', fn() => asyncData()->get() ?? null);
+Inertia::share('specialFlashMessage', function () {
+    return flash()->display('specialFlashMessage') ?? null;
+});
+```
+
+Using a function to share data is useful when you want to share dynamic data, because the function won't be executed until the data is actually needed, so if you share something like a flash message which can only be read once, it won't be lost.
 
 ## Generating Inertia Views
 
