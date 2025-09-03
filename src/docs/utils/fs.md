@@ -231,7 +231,7 @@ if ($uploaded) {
 }
 ```
 
-## Uploading multiple files <Badge>NEW</Badge>
+## Uploading multiple files
 
 You may need to allow users enter multiple files at once on the same input, for example, uploading multiple documents to a teacher's portal. Leaf's `upload()` now automatically handles multiple files under the same input.
 
@@ -275,6 +275,55 @@ if ($uploaded) {
   $errors = request()->errors();
 }
 ```
+
+## Using s3 or other cloud storage services <Badge>NEW - WIP</Badge>
+
+Leaf FS now supports using Amazon s3 and other cloud storage services that support the S3 protocol. This allows you to switch from local storage to cloud storage without changing any code. To get started, you need to configure your cloud storage settings in the `.env` file.
+
+```env
+AWS_ACCESS_KEY_ID=1234567890abcdef1234
+AWS_SECRET_ACCESS_KEY=1234567890abcdef1234567890abcdef1234
+AWS_DEFAULT_REGION=weur
+AWS_BUCKET=bucket-name
+AWS_URL=https://cdn.leafphp.dev
+AWS_USE_PATH_STYLE_ENDPOINT=false
+AWS_ENDPOINT=https://something.r2.cloudflarestorage.com
+```
+
+Next you need to install the s3 addon for Leaf FS.
+
+::: code-group
+
+```bash:no-line-numbers [Leaf CLI]
+leaf install s3
+```
+
+```bash:no-line-numbers [Composer]
+composer require leafs/s3
+```
+
+:::
+
+Now just add `withBucket()` as the destination when creating or uploading files to use the cloud storage.
+
+```php
+$displayUrl = request()->upload(
+    'fileInRequest',
+    'local/path', // [!code --]
+    withBucket('path/in/bucket'), // [!code ++]
+)['url'] ?? null;
+
+$videoUrl = storage()->createFile(
+    withBucket("imports/$request/video.mp4"),
+    $this->fetchRemoteVideo($post['videoUrl']),
+    [
+        'rename' => true,
+        'recursive' => true,
+    ]
+);
+```
+
+We are working on a 100% interchangeable API for local and cloud storage, so you can use `withBucket()` anywhere you would normally use a local path, however, some methods may not be supported yet. We would love to hear your feedback on this feature.
 
 ## Working with Folders
 
