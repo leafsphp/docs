@@ -123,20 +123,73 @@ auth()->config('session.cookie', [
 
 ## Signing in from OAuth
 
-Some applications only allow users to sign in using OAuth which means there's no need for users to add emails or passwords. Leaf Auth provides the `fromOAuth()` function which allows you to create a session or token for a user without needing a password.
+Some applications allow users to sign in using OAuth which means there's no need for users to add emails or passwords, usually because the OAuth provider handles that for you. The most common OAuth providers are Google, Facebook, Twitter, GitHub, etc. To make it even easier to sign in users from OAuth, you can use one of the League OAuth2 client providers to get the user's data from the OAuth provider and then use that data to sign in the user using Leaf Auth.
+
+::: info Registering OAuth Providers <Badge text="New" />
+
+Although you can use any OAuth provider you want, using one of the League OAuth2 client providers makes it easier to work within the context of Leaf Auth. You can find a list of all the available providers [on the League Website](https://oauth2-client.thephpleague.com/providers/league/). For instance, to use Google/GitHub as providers, you simply need to install the required packages and them add them to Leaf Auth in your `app/routes/index.php` file or just `index.php` if you are not using Leaf MVC:
+
+::: code-group
+
+```php:no-line-numbers [Google]
+// .env
+GOOGLE_AUTH_CLIENT_ID={google-client-id}
+GOOGLE_AUTH_CLIENT_SECRET={google-client-secret}
+
+// anywhere in your app
+$token = auth()->client('google')->anyLeagueMethod();
+```
+
+```php:no-line-numbers [Any Provider]
+$provider = new League\OAuth2\Client\Provider\Github([
+    'clientId'     => '{github-client-id}',
+    'clientSecret' => '{github-client-secret}',
+    'redirectUri'  => 'https://example.com/callback-url',
+]);
+
+auth()->withProvider('github', $provider);
+
+// anywhere in your app
+$token = auth()->client('github')->anyLeagueMethod();
+```
+
+:::
+
+Leaf Auth provides the `fromOAuth()` function which allows you to create a session or token for a user without needing a password.
 
 ```php
-$user = Github()->getResourceOwner($token)->toArray();
+$user = auth()->client('github')->getResourceOwner($token);
 
 $success = auth()->fromOAuth([
     'token' => $token,
     'user' => [
-        'name' => $user['name'],
-        'email' => $user['email'],
-        'avatar' => $user['avatar_url']
+        'name' => $user->getName(),
+        'email' => $user->getEmail(),
+        'avatar' => $user->getAvatar() ?? null,
     ]
 ]);
 ```
+
+::: details Password Required in DB <Badge type="tip" text="New" />
+
+It is common for applications to start of with email/password authentication and later add OAuth as an alternative way to sign in. In such cases, the users table will most likely have a password field which is required. In such cases, you can fill the password field with a random string when creating a user from OAuth:
+
+```php:no-line-numbers
+$user = auth()->client('google')->getResourceOwner($token);
+
+$success = auth()->fromOAuth([
+    'token' => $token,
+    'user' => [
+        'name' => $user->getName(),
+        'email' => $user->getEmail(),
+        'password' => 'GOOGLE_AUTH_PLACEHOLDER', // [!code ++]
+        'email_verified_at' => tick()->format('Y-M-D H:i:s'),
+        'avatar' => $user->getAvatar() ?? null,
+    ]
+]);
+```
+
+:::
 
 If the user is successfully saved in the database, a session or token is created for them and the rest of the process is the same as signing up a user normally. If Leaf Auth fails to save the user, the method returns `false`. You can then use the `errors()` method to get the error message.
 
@@ -169,7 +222,7 @@ $token = auth()->oauthToken();
 
 :::
 
-## Finding a user by id <Badge type="tip" text="New" />
+## Finding a user by id <Badge text="New" />
 
 There are times when you might want to find a user by their id to perform some operations on them while they are NOT logged in. For instance, finding a user by their id to assign a role to them. Leaf Auth provides the `find()` method to do this:
 
