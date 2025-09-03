@@ -45,7 +45,13 @@ Some tasks, like processing large CSV uploads, can slow down your app and hurt t
   link="https://www.youtube.com/embed/GsdfZ5TfGPw"
 /> -->
 
-Leaf queues have three parts: the queue (stores jobs), the job (task to run), and the worker (processes jobs). You push jobs to the queue, and the worker processes them.
+Leaf queues have three parts:
+
+- the queue (stores jobs eg: database table, redis, ...)
+- the job (task to run eg: sending emails)
+- the worker (processes jobs eg: terminal process)
+
+You write your tasks as jobs, dispatch them to a queue so they can be processed later, and run a worker to process the jobs in the background. That way, your app stays fast and responsive while handling heavy tasks in the background. This might sound complicated, but Leaf makes it super easy to get started.
 
 ## Installation
 
@@ -67,7 +73,7 @@ By default, Leaf MVC uses your database as the queue backend, storing jobs in a 
 
 ## Creating a job
 
-Jobs handle background tasks like sending emails after user registration. Instead of delaying the response, you can dispatch a job to the queue, keeping your app fast and responsive.
+A job is a class containing any logic you might want to offload to the background. For example, you might want to send a welcome email after a user registers, but due to an external API call or overloaded email server, sending the email might take a few seconds. Instead of making the user wait, you can create a job to handle sending the email in the background.
 
 You can create a new job using the `g:job` command:
 
@@ -100,13 +106,19 @@ class SendEmailJob extends Job
 
 ## Dispatching a job
 
-After creating a job, you can dispatch it to the queue using the global `dispatch()` function:
+Dispatching a job means adding it to the queue so it can be processed later. You can imagine your queue as a to-do list, and dispatching a job is like adding a new task to that list. Leaf allows you to dispatch jobs from anywhere in your application using the global `dispatch()` function:
 
 ```php:no-line-numbers
 dispatch(SendEmailJob::class);
 ```
 
-Some jobs like the send email job above may require some data to be passed to the job. You can pass data to the job using the `with()` method on the job:
+One major thing to note is that dispatching a job does not run it immediately. Instead, it adds the job to the queue, and a worker will process it in the background. This means your application can continue running without waiting for the job to finish.
+
+## Passing data to a job
+
+Some jobs like the send email job above may require some data to be passed to the job, but this will need to be done from the place where you dispatch the job because the job itself should not be aware of where the data is coming from. All jobs run in a stateless environment, so you can't access the current request, user, session, or any other stateful data in your jobs. If you need to access the current request, you should pass the necessary data to the job as a parameter.
+
+You can pass data to the job using the `with()` method when dispatching it to the queue:
 
 ```php:no-line-numbers
 dispatch(SendEmailJob::with($userId));
@@ -121,6 +133,18 @@ dispatch([
   ScheduleFlightJob::with($userId),
 ]);
 ```
+
+After dispatching the job, you need a worker to run all jobs in the queue.
+
+## Starting a worker
+
+Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed. Leaf will automatically start a worker for you when you start the PHP server using `leaf serve` or `php leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
+
+```bash:no-line-numbers
+php leaf queue:work
+```
+
+This is fine in development, but in production, you’ll need to set up your server to keep your workers running continuously. Check out this guide on [deploying queues/workers](/learn/deployment/#deploying-queues-workers) for more information.
 
 ## Specifying options for a job
 
@@ -158,11 +182,69 @@ The available options are:
 | delayBeforeRetry| The number of seconds to wait before retrying a job that has failed.                          |
 | expire          | The number of seconds to wait before archiving a job that has not yet been processed.        |
 | force           | Whether to force the worker to process the job, even if it has expired or has reached its maximum number of retries. |
-| memory          | The maximum amount of memory the worker may consume.                                          |
+| memory (WIP)    | The maximum amount of memory the worker may consume.                                          |
 | timeout         | The number of seconds a child process can run before being killed.                            |
 | tries           | The maximum number of times a job may be attempted.                                           |
 
-Without a worker running, your jobs will just sit in the queue without being processed.
+## Scheduling jobs <Badge>NEW</Badge>
+
+Some background tasks need to be run at specific times or intervals, for instance, every week, you get an email report of your app's activity. This is usually done using CRON jobs, but Leaf allows you to schedule jobs directly from your already existing jobs. Let's take an example of sending an application report to the admin every week. First, you create a job that sends the report:
+
+```php
+<?php
+
+namespace App\Jobs;
+
+use Leaf\Job;
+use App\Mailers\AdminMailer;
+
+class SendAppReportJob extends Job
+{
+    /**
+     * Handle the job.
+     * @return void
+     */
+    public function handle()
+    {
+       AdminMailer::applicationReport()->send();
+    }
+}
+```
+
+This is an ordinary job that needs manual dispatching, meaning you would need to call `dispatch(SendAppReportJob::class)` somewhere in your app. However, since this is a job that needs to be run automatically, you can add a `schedule()` method to the job that defines when the job should be run:
+
+```php
+<?php
+
+namespace App\Jobs;
+
+use Leaf\Job;
+use App\Mailers\AdminMailer;
+
+class SendAppReportJob extends Job
+{
+    public function handle()
+    {
+       AdminMailer::applicationReport()->send();
+    }
+
+    public function schedule()
+    {
+        return $this->every('week')->on('tuesday')->at('8:00'); // every week on tuesday at 8am
+    }
+}
+```
+
+Leaf will automatically detect the `schedule()` method and run the job at the specified time. You don't need to do anything else. Just make sure your worker is running, and Leaf will take care of the rest.
+
+While this human-readable syntax is great for most use cases, you can also use CRON expressions if you need more control over the scheduling:
+
+```php
+    public function schedule()
+    {
+        return $this->cron('0 8 * * 2'); // every week on tuesday at 8am
+    }
+```
 
 <!-- ## Batching Jobs
 
@@ -263,16 +345,18 @@ return [
     |
     */
     'connections' => [
-        'database' => [
-            'driver' => 'database',
-            'connection' => _env('DB_QUEUE_CONNECTION', 'default'),
-            'table' => _env('DB_QUEUE_TABLE', 'leaf_php_jobs'),
-        ],
-
         'redis' => [
             'driver' => 'redis',
             'connection' => _env('REDIS_QUEUE_CONNECTION', 'default'),
             'table' => _env('REDIS_QUEUE', 'leaf_php_jobs'),
+            'schedules.table' => _env('REDIS_QUEUE_SCHEDULES_TABLE', 'leaf_php_schedules'),
+        ],
+
+        'database' => [
+            'driver' => 'database',
+            'connection' => _env('DB_QUEUE_CONNECTION', 'default'),
+            'table' => _env('DB_QUEUE_TABLE', 'leaf_php_jobs'),
+            'schedules.table' => _env('DB_QUEUE_SCHEDULES_TABLE', 'leaf_php_schedules'),
         ],
     ],
 ];
@@ -312,7 +396,3 @@ From there, you can dispatch the job just as you always do:
 ```php:no-line-numbers
 dispatch(SendEmailJob::with($userId));
 ```
-
-## Deployment
-
-Leaf sets up the necessary files and commands for you to start using queues in your Leaf app. However, once deployed, you’ll need to set up your server to keep your workers running continuously. Check out this guide on [deploying queues/workers](/learn/deployment/#deploying-queues-workers) for more information.
