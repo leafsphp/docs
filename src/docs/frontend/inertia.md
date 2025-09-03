@@ -61,6 +61,28 @@ app()->inertia('/route', 'view', [
 
 :::
 
+::: details Automatic Props
+
+By default, Leaf automatically passes in some useful props into your inertia views. These include:
+
+- `auth`: The current auth context, including:
+  - `user`: The currently authenticated user, or `null` if not authenticated.
+  - `id`: The ID of the currently authenticated user, or `null` if not authenticated.
+  - `errors`: Any authentication errors that might have occurred during login or registration.
+  - `permissions`: The permissions of the currently authenticated user if in use.
+  - `roles`: The roles of the currently authenticated user if in use.
+  - `hasSubscription`: Whether the currently authenticated user has an active subscription if using Leaf's billing features.
+  - `subscription`: The current subscription of the authenticated user if using Leaf's billing features.
+  - `isOnTrial`: Whether the currently authenticated user is on a trial if using Leaf's billing features.
+- `flash`: The default flash message or `null` if none exists.
+- `session`: The current session data, excluding flash messages and hidden data.
+- `billing`: The billing context if using Leaf's billing features, including:
+  - `tiers`: The available billing tiers.
+  - `periods`: The available billing periods.
+- `_token`: The current CSRF token if CSRF protection is enabled.
+
+:::
+
 ## Accessing data passed into views
 
 In the example above, we passed in some data from our application into our inertia view. Remember, Inertia views can be React, Vue or Svelte files, and any data we pass in from our app can be accessed as a prop like this:
