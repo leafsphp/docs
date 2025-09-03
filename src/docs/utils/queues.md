@@ -223,11 +223,19 @@ use App\Mailers\AdminMailer;
 
 class SendAppReportJob extends Job
 {
+    /**
+     * Handle the job.
+     * @return void
+     */
     public function handle()
     {
        AdminMailer::applicationReport()->send();
     }
 
+    /**
+     * Define the job schedule.
+     * @return \Leaf\Job
+     */
     public function schedule()
     {
         return $this->every('week')->on('tuesday')->at('8:00'); // every week on tuesday at 8am
