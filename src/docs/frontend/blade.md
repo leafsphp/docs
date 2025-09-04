@@ -414,6 +414,8 @@ The `@auth` and `@guest` directives may be used to quickly determine if the curr
 @endguest
 ```
 
+`@guest` will be `true` if leaf auth is not installed and `@auth` will be `false`, which makes them safe to use even if you don't have Leaf Auth installed.
+
 ### Roles & Permissions
 
 You can use the `@is` directive to check if the current user has a specific role:
