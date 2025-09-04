@@ -230,6 +230,51 @@ app()->post('/example/register', function() {
 
 In the example above, we're validating the data coming into our application. We're checking if the `name` field is a text, if the `email` field is a valid email, and if the `password` field is at least 8 characters long. If any of these validations fail, the `validate()` method will return `false` and you can get the errors using the `errors()` method. You can find the full list of validation rules [here](/docs/data/validation).
 
+## Client IP & Geo Location
+
+You can get the IP address of the client making the request using the `getIp()` method on the request object.
+
+```php:no-line-numbers
+request()->getIp();
+```
+
+::: danger Frontend IP Address
+The IP address returned by `getIp()` may not always be the actual client IP address, especially if your application is behind a proxy or load balancer. In such cases, the IP address returned may be that of the proxy or load balancer. We have added support for the **`X-Forwarded-For`** HTTP header, which is commonly used by proxies and load balancers to pass along the original client IP address, but be sure to validate the IP address returned by `getIp()` before using it in your application for critical tasks like rate limiting or logging.
+:::
+
+### Get location from IP
+
+You can get the geographical location of the client based on the current IP address from `getIp()` using the `getUserLocation()` method. This method uses the [ip-api](https://ip-api.com/) service to get the location data.
+
+```php:no-line-numbers
+$location = request()->getUserLocation();
+
+// $location = [
+//   country' => 'United States',
+//  'countryCode' => 'US',
+//  'region' => 'CA',
+//  'regionName' => 'California',
+//  'currency' => 'USD',
+//  'city' => 'San Francisco',
+//  'zip' => '94105',
+//  'lat' => 37.7898,
+//  'lon' => -122.3942,
+//  'timezone' => 'America/Los_Angeles',
+//  'ip' => $ip,
+//  'continent' => 'North America',
+//  'continentCode' => 'NA',
+```
+
+Keep in mind that the free tier of the ip-api service has a limit of 45 requests per minute from an IP address, you can check out other implementations for more robust solutions.
+
+### Pass in a custom IP
+
+You can also pass in a custom IP address to the `getLocationFromIp()` method to get the location data for that IP address.
+
+```php:no-line-numbers
+$location = request()->getLocationFromIp('xxx.xxx.xxx.xxx');
+```
+
 ## Request Object Methods
 
 The request object comes with other methods for doing things like interacting with the request headers, cookies, checking request types, and even user data. Here are some of the most common functionality you'll use:
@@ -284,7 +329,7 @@ This section contains methods which allow you to retrieve information about the 
 Fetch the request’s host (e.g. “leafphp.dev”):
 
 ```php:no-line-numbers
-$app->request()->getHost();
+request()->getHost();
 ```
 
 ### Host with Port
@@ -325,14 +370,6 @@ Fetch the request’s URL (scheme + host [ + port if non-standard ]):
 
 ```php:no-line-numbers
 request()->getUrl();
-```
-
-### IP Address
-
-Fetch the request’s IP address:
-
-```php:no-line-numbers
-request()->getIp();
 ```
 
 ### Referer
