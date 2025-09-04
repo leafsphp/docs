@@ -185,26 +185,26 @@ $uploadInfo = request()->upload('profile_pic', './uploads', [
 
 ## Request Headers
 
-Headers are a very important part of HTTP requests. They contain information about the request that can be used to make decisions in your application. You can use the `headers()` method to get a specific header from the request.
+Headers contain information about the request that can be used to make decisions in your application. You can use the `headers()` method to pull the header information from the request.
 
 ```php:no-line-numbers
 $allHeaders = request()->headers();
 ```
 
-You can also use the `header()` method to get a specific header from the request.
+You can also specify a specific header to get:
 
 ```php:no-line-numbers
-$contentType = request()->header('Content-Type');
+$contentType = request()->headers('Content-Type');
 ```
 
-One thing to note is that all headers are sanitized automatically by Leaf. If you want to disable this behavior, you can pass `false` as a parameter to the `headers()` or `header()` method.
+One thing to note is that all headers are sanitized automatically by Leaf. If you want to disable this behavior, you can pass `false` as a parameter to the `headers()` method.
 
 ```php
 $allHeaders = request()->headers(
   safeHeaders: false
 );
 
-$contentType = request()->header(
+$contentType = request()->headers(
   'Content-Type',
   false
 );
