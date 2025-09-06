@@ -66,7 +66,7 @@ Leaf MVC configures everything for you out of the box, so you just need to defin
           <div
               class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
           >
-              <p class="font-semibold text-sm text-rose-100 text-shadow mb-4">
+              <p class="font-semibold text-sm text-rose-100 text-shadow mb-4 !mt-0">
                 Schema files allow you to define the structure of your database tables in a simple and intuitive way.
               </p>
               <Button
@@ -95,8 +95,8 @@ Leaf MVC configures everything for you out of the box, so you just need to defin
           <div
               class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
           >
-              <p class="font-semibold text-sm text-blue-100 text-shadow mb-4">
-                Models are a powerful way to interact with your database using an object-oriented approach.
+              <p class="font-semibold text-sm text-blue-100 text-shadow mb-4 !mt-0">
+                Models are a powerful way to interact with your db using an object-oriented approach.
               </p>
               <Button
                   as="a"
@@ -124,8 +124,8 @@ Leaf MVC configures everything for you out of the box, so you just need to defin
           <div
               class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
           >
-              <p class="font-semibold text-sm text-amber-100 text-shadow mb-4">
-                You can use Leaf DB to build and run queries that don't fit into a model, without any config.
+              <p class="font-semibold text-sm text-amber-100 text-shadow mb-4 !mt-0">
+                You can use Leaf DB to build queries that don't fit into a model, without any config.
               </p>
               <Button
                   as="a"

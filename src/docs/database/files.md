@@ -135,6 +135,18 @@ columns:
 
 This example will add a `created_at` column to the `posts` table with the current timestamp as the default value.
 
+## Multiple DB connections <Badge>New</Badge>
+
+Leaf MVC supports multiple database connections via the `database.php` configuration file. By default, Leaf uses the `default` connection for all database operations. However, if you want to use a different connection for a specific table, you can specify the connection in the schema file using the `connection` key. Here's an example:
+
+```yml:no-line-numbers [posts.yml]
+connection: postsDbConnection
+
+columns:
+  title: string
+  body: text
+```
+
 ## Schema columns
 
 In a schema file, you can define the columns of your table under the `columns` key. The key is the column name and the value is the type of column or an array of properties for the column:
@@ -228,7 +240,59 @@ columns:
 
 This example adds a new column `is_super_admin` to the `users` table. When you run `php leaf db:migrate`, Leaf will compare it to the previous version of the file, find the differences and automatically create the `is_super_admin` column for you in your database. You don't need to worry about writing migration files or keeping track of changes manually.
 
-And when you need to roll back? Simply run `php leaf db:rollback`.
+## Reverting changes
+
+The schema system automatically tracks changes, so you can easily roll back to a previous state. Just run:
+
+```bash:no-line-numbers
+php leaf db:rollback
+```
+
+This will revert the last set of changes made to your database. If you want to roll back a specific table instead of all tables, you can pass the table name as an argument to the `db:rollback` command:
+
+```bash:no-line-numbers
+php leaf db:rollback users
+```
+
+Rolling back is like hitting "undo" on your database: It reverts the last migration, letting you step back through changes one at a time. Sometimes, you might need to revert multiple steps at a time, so you can use the `--steps` option to specify how many steps to roll back:
+
+```bash:no-line-numbers
+php leaf db:rollback --steps=3
+```
+
+This command will roll back the last three migrations made to your database.
+
+------
+
+### Resetting tables
+
+While rolling back is great for undoing recent changes, there are times when you might want to reset your entire database to a clean state. For those situations, Leaf provides the `db:reset` command. This command will roll back all migrations and then re-apply them, effectively giving you a fresh start. You can run it like this:
+
+```bash:no-line-numbers
+php leaf db:reset
+```
+
+You can also reset a specific table by passing the table name as an argument:
+
+```bash:no-line-numbers
+php leaf db:reset users
+```
+
+------
+
+### Dropping tables <Badge>New</Badge>
+
+Finally, if you want to completely remove all tables from your database, you can use the `db:drop` command, meaning all your data and tables will be deleted. Use this command with caution:
+
+```bash:no-line-numbers
+php leaf db:drop
+```
+
+You can also drop a specific table by passing the table name as an argument:
+
+```bash:no-line-numbers
+php leaf db:drop users
+```
 
 ## Seeding your database
 
