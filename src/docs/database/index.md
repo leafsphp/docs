@@ -52,7 +52,11 @@ Databases are essential for most applications, as they help you store and retrie
 
 ## Leaf MVC + DB
 
-<div class="grid md:grid-cols-2 gap-4">
+Leaf's DB module is great for building simple queries, especially when you are using Leaf as a micro-framework. However, if you are building a full-fledged application using Leaf MVC, you can take advantage of the powerful models and schema files which make it easy to interact with your database.
+
+Leaf MVC configures everything for you out of the box, so you just need to define your database schema using the schema files and create models to represent your database tables. You can then use the models to perform CRUD operations on your database without writing any SQL queries.
+
+<div class="grid md:grid-cols-3 gap-4">
   <div
       class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
   >
@@ -60,16 +64,16 @@ Databases are essential for most applications, as they help you store and retrie
           class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
       >
           <div
-              class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+              class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
           >
-              <p class="font-medium text-rose-100 text-shadow mb-4">
-                Models are a powerful way to interact with your database using an object-oriented approach, which also makes your code more readable and maintainable.
+              <p class="font-semibold text-sm text-rose-100 text-shadow mb-4">
+                Schema files allow you to define the structure of your database tables in a simple and intuitive way.
               </p>
               <Button
                   as="a"
-                  href="/docs/database/models"
+                  href="/docs/database/files"
                   class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                  >Check out models</Button
+                  >Create your schema</Button
               >
           </div>
           <!-- <div
@@ -86,13 +90,42 @@ Databases are essential for most applications, as they help you store and retrie
       class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
   >
       <div
+          class="w-full flex md:flex-col bg-gradient-to-br from-green-500 to-blue-500"
+      >
+          <div
+              class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
+          >
+              <p class="font-semibold text-sm text-blue-100 text-shadow mb-4">
+                Models are a powerful way to interact with your database using an object-oriented approach.
+              </p>
+              <Button
+                  as="a"
+                  href="/docs/database/models"
+                  class="mt-auto bg-blue-900 hover:!bg-blue-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
+                  >Check out models</Button
+              >
+          </div>
+          <!-- <div
+              class="relative md:pl-6 xl:pl-8 hidden sm:block"
+          >
+              Hello
+          </div> -->
+      </div>
+      <div
+          class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-blue-500 hidden sm:block"
+      ></div>
+  </div>
+  <div
+      class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+  >
+      <div
           class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
       >
           <div
-              class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+              class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
           >
-              <p class="font-medium text-amber-100 text-shadow mb-4">
-                You can use Leaf DB to build and run queries that don't fit into a model. Everything has been configured to work out of the box, so you can start querying your database right away.
+              <p class="font-semibold text-sm text-amber-100 text-shadow mb-4">
+                You can use Leaf DB to build and run queries that don't fit into a model, without any config.
               </p>
               <Button
                   as="a"
@@ -117,7 +150,7 @@ Databases are essential for most applications, as they help you store and retrie
 
 The first step to using a database is to create a connection. It's like opening a door to the database, allowing you to interact with it. Here's how you can connect to a database using Leaf:
 
-```php
+```php:no-line-numbers
 db()->connect([
   'dbtype' => '...',
   'charset' => '...',
@@ -135,7 +168,7 @@ Here are some examples of how you can connect to different databases:
 
 ::: code-group
 
-```php [MySQL]
+```php:no-line-numbers [MySQL]
 db()->connect([
   'host' => '127.0.0.1',
   'username' => 'root',
@@ -144,7 +177,7 @@ db()->connect([
 ]);
 ```
 
-```php [PostgreSQL]
+```php:no-line-numbers [PostgreSQL]
 db()->connect([
   'dbtype' => 'pgsql',
   'host' => '127.0.0.1',
@@ -155,7 +188,7 @@ db()->connect([
 ]);
 ```
 
-```php [SQLite]
+```php:no-line-numbers [SQLite]
 db()->connect([
   'dbtype' => 'sqlite',
   'dbname' => 'db.sqlite',
@@ -170,7 +203,7 @@ Leaf DB will not connect to your database until you run a query. This means that
 
 Some applications may need to connect to multiple databases for things like queues and logs, and Leaf DB allows you to keep multiple connections open and query them independently. Here's how you can connect to multiple databases:
 
-```php
+```php:no-line-numbers
 db()->addConnections([
   'conn1' => [
     'dbtype' => '...',
@@ -185,7 +218,7 @@ db()->addConnections([
 
 The `addConnections()` method takes an array of connection details for your databases as its first argument and the default connection name as its second argument. You can then switch between connections using the `useConnection()` method:
 
-```php
+```php:no-line-numbers
 db('conn2')->select('users')->all();
 ```
 
@@ -203,7 +236,7 @@ $users = db()->query('SELECT * FROM users')->all();
 
 The `query()` method takes an SQL query that you want to execute as its argument. You can then use the query builder methods to modify your query. For example, you can bind values to your query using the `bind()` method:
 
-```php
+```php:no-line-numbers
 db()
   ->query('SELECT * FROM users WHERE id = ?')
   ->bind('1')
@@ -232,7 +265,7 @@ This will return an array of all the users in the database that match the query.
 
 If you only want to get one result, you can use the `fetchObj()` or `fetchAssoc()` method. For example, you can run a query like this:
 
-```php
+```php:no-line-numbers
 $user = db()
   ->query('SELECT * FROM users WHERE id = ?')
   ->bind('1')
