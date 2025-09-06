@@ -259,6 +259,25 @@ const tab = ref(tooling[0].title);
                   tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$uploaded </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> storage</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">upload</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'fileToUpload'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'path/to/uploads'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre>
               </div>
 
+              <p>Need to cache something?</p>
+
+              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
+                  class="lang">php</span>
+                <pre
+                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
+                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$dataFromDatabase</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> cache</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    'queries.complexQuery'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    60</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> *</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 60</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">,</span></span>
+<span class="line"><span style="---shiki-light:#D73A49;--shiki-dark:#F97583;">    function</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> {</span></span>
+<span class="line"><span style="--shiki-light:#7F848E;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic;">        // Simulate a complex database query</span></span>
+<span class="line"><span style="---shiki-light:#D73A49;--shiki-dark:#F97583;">        return</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> db</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">select</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'complex_table'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">where</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'some_column'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'some_value'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">get</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">();</span></span>
+<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">    }</span></span>
+<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">);</span></span></code></pre>
+              </div>
+
               <p>Date and time formatting?</p>
 
               <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span

@@ -1,12 +1,12 @@
 # Payments/Billing <Badge text="BETA - MVC Only" type="warning"/>
 
-Leaf MVC’s billing system helps makers move faster by handling payments and subscriptions out of the box. With built-in Stripe support—and more providers like Paystack coming soon—you can set up one-time payments or recurring subscriptions in just a few minutes. That means less time worrying about billing and more time building.
+Leaf MVC’s billing system helps makers move faster by handling payments and subscriptions out of the box. With built-in Stripe/PayStack support—and more providers like Lemonsqueezy coming soon—you can set up one-time payments or recurring subscriptions in just a few minutes. That means less time worrying about billing and more time building.
 
 ## Setting up
 
-<!-- You can set up billing with Stripe, PayStack or both depending on your use-case. --> Currently, Leaf Billing supports Stripe. Support for Paystack and other providers is on the way.
+You can set up billing with Stripe, PayStack or both depending on your use-case.
 
-To get started, create a Stripe account and grab your API keys. Then, drop them into your `.env` file:
+To get started, create an account on the payment provider you want to use, and grab your API keys. Then, drop them into your `.env` file:
 
 ::: code-group
 
@@ -17,51 +17,40 @@ STRIPE_PUBLISHABLE_KEY=pk_test_XXXX
 STRIPE_WEBHOOK_SECRET=whsec_XXXX # only if you are using webhooks
 ```
 
-<!-- ```env:no-line-numbers [PayStack]
+```env:no-line-numbers [PayStack]
 BILLING_PROVIDER=paystack
-STRIPE_API_KEY=sk_test_XXXX
-STRIPE_PUBLISHABLE_KEY=pk_test_XXXX
-``` -->
+PAYSTACK_API_KEY=sk_test_XXXXX
+PAYSTACK_PUBLISHABLE_KEY=pk_text_XXXX
+PAYSTACK_WEBHOOK_SECRET= # paystack doesn't use WH secrets
+```
 
 :::
 
-You then have to install the Stripe module for Leaf:
+You then have to install the module for the provider you want to use:
 
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install stripe
+leaf install stripe # stripe
+leaf install paystack # paystack
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/stripe
+composer require leafs/stripe # stripe
+composer require leafs/paystack # paystack
 ```
 
 :::
 
-<!-- module for the billing provider you select (install both if you need to use both Stripe and PayStack): -->
-
-<!-- ::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf install stripe # for Stripe
-leaf install paystack # for PayStack
-```
-
-```bash:no-line-numbers [Composer]
-composer require leafs/stripe # for Stripe
-composer require leafs/paystack # for PayStack
-```
-
-::: -->
-
-This is all you have to do if you're planning to bill on-the-fly. Let's take a look at how to bill a customer.
+You only need to install the module for the billing provider you intend to use, or both if you plan to support payments via Stripe and Paystack. For one-time payments, this is all you have to do. Here's an example on billing a customer.
 
 ## Billing on-the-fly
 
 Billing on-the-fly is the fastest way to charge customers—ideal for one-time payments, donations, or services. Just generate a payment link with Leaf Billing, and we’ll handle the rest. You can do this using the `billing()` helper in your controller.
 
-```php:no-line-numbers [MyController.php]
+::: code-group
+
+```php:no-line-numbers [Stripe - MyController.php]
 ...
 
 public function handleCartPurchase($cartId) {
@@ -76,30 +65,75 @@ public function handleCartPurchase($cartId) {
         ]
     ]);
 
-    $cart->payment_session = $session->id;
+    $cart->payment_session = $session->id();
     $cart->save();
 
-    response()->redirect($session->url);
+    response()->redirect($session->url());
 }
 ```
+
+```php:no-line-numbers [PayStack - MyController.php]
+...
+
+public function handleCartPurchase($cartId) {
+    $cart = Cart::find($cartId);
+
+    $session = billing()->charge([
+        'amount' => $cartTotal * 100,
+        'currency' => 'NGN',
+        'description' => 'Purchase of items in cart',
+        'customer' => $customer->email,
+        'url' => 'https://example.com/billing/callback', // only for paystack
+        'metadata' => [
+            'cart_id' => $cart->id,
+            'customer_id' => $customer->id,
+        ]
+    ]);
+
+    $cart->payment_session = $session->id();
+    $cart->save();
+
+    response()->redirect($session->url());
+}
+```
+
+:::
 
 Leaf takes care of the entire payment session for you—automatically tracking the user (if available), any metadata you provide, and the payment status, keeping your code clean and focused on your app.
 
 This is a list of the parameters you can pass to the `charge()` method:
 
-| Parameter | Description |
-| --- | --- |
-| `currency` | The currency to charge the customer (e.g. USD, EUR) |
-| `description` | A description of the charge (optional) |
-| `metadata` | An array of metadata to attach to the charge. This is useful for tracking the user who made the payment, the items they purchased, and any other relevant information. |
-| `metadata.items` | An array of items to charge the customer, every item should have a name and amount, and optional quantity: `['item' => 'XXX', 'amount' => xxx]`. Optional if you pass `items` |
-| `items` | Array of stripe formatted items to charge the customer, eg: `['price_data' => ['currency' => 'usd', 'product_data' => ['name' => 'T-shirt'], 'unit_amount' => 2000], 'quantity' => 1]`. You can use `metadata.items` if you want leaf to format your data for you |
-| `customer` | The customer email to charge (optional) |
-| `urls` | An array of URLs to redirect the customer to. Accepts `success` and `cancel` keys. If you don't pass this, Leaf will use the default URLs. |
+::: details Stripe Params
+
+| Parameter        | Description                                                                                                                                                                                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currency`       | The currency to charge the customer (e.g. USD, EUR)                                                                                                                                                                                                               |
+| `description`    | A description of the charge (optional)                                                                                                                                                                                                                            |
+| `metadata`       | An array of metadata to attach to the charge. This is useful for tracking the user who made the payment, the items they purchased, and any other relevant information.                                                                                            |
+| `metadata.items` | An array of items to charge the customer, every item should have a name and amount, and optional quantity: `['item' => 'XXX', 'amount' => xxx]`. Optional if you pass `items`                                                                                     |
+| `items`          | Array of stripe formatted items to charge the customer, eg: `['price_data' => ['currency' => 'usd', 'product_data' => ['name' => 'T-shirt'], 'unit_amount' => 2000], 'quantity' => 1]`. You can use `metadata.items` if you want leaf to format your data for you |
+| `customer`       | The customer email to charge (optional)                                                                                                                                                                                                                           |
+| `urls`           | An array of URLs to redirect the customer to. Accepts `success` and `cancel` keys. If you don't pass this, Leaf will use the default URLs.                                                                                                                        |
+
+:::
+
+::: details Paystack Params
+
+| Parameter     | Description                                                                                                                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currency`    | The currency to charge the customer (e.g. GHS, NGN)                                                                                                                                          |
+| `amount`      | The total amount of the transaction in the lowest currency unit                                                                                                                              |
+| `description` | A description of the charge (optional)                                                                                                                                                       |
+| `metadata`    | An array of metadata to attach to the charge. This is useful for tracking the user who made the payment, the items they purchased, and any other relevant information.                       |
+| `customer`    | The customer email to charge (optional)                                                                                                                                                      |
+| `url`         | The URL to redirect the customer to on payment completion or cancellation. If you don't pass this, Leaf will use the default URL.                                                            |
+| `_paystack`   | Any other PayStack specific parameters you want to pass to the PayStack API. Check the [PayStack documentation](https://paystack.com/docs/api/transaction/#initialize) for more information. |
+
+:::
 
 ## Billing Callbacks
 
-By default, Leaf Billing redirects users to `/billing/callback` after a payment is completed or canceled. You can customize this behavior by setting `BILLING_SUCCESS_URL` and `BILLING_CANCEL_URL` in your `.env` file, or by passing custom URLs directly to the `charge()` method.
+By default, Leaf Billing redirects users to `/billing/callback` after a payment is completed or cancelled. You can customize this behavior by setting `BILLING_SUCCESS_URL` and `BILLING_CANCEL_URL` in your `.env` file, or by passing custom URLs directly to the `charge()` method.
 
 ```php [CallbacksController.php]
 <?php
@@ -119,6 +153,13 @@ class CallbacksController extends Controller
         $billingSession = billing()->callback();
 
         if (!$billingSession->isSuccessful()) {
+            $checkoutSession = $billingSession->session();
+            $checkoutMetadata = $billingSession->metadata();
+
+            // you can get data like this
+            $checkoutSession->id();
+            $checkoutSession->data;
+
             return response()->json(['message' => 'Payment failed']);
         }
 
@@ -127,9 +168,9 @@ class CallbacksController extends Controller
 }
 ```
 
-`billing()->callback()` parses and validates the callback, returning a BillingSession with full payment details. Use `isSuccessful()` to determine the outcome. This is ideal for one-time payments—no subscription logic needed.
+`billing()->callback()` parses and validates the callback, returning a BillingSession with full payment details. Stripe and PayStack send back different data, but Leaf normalizes it for you, so you can handle the payment result in one place.
 
-## Billing with subscriptions
+## Billing with subscriptions <Badge text="Stripe Only" type="warning"/>
 
 Unlike one-time payments, subscriptions require a more structured setup—but Leaf Billing makes it effortless. Just run the `scaffold:subscriptions` command to instantly generate everything you need: billing config, controllers, routes, and views. You'll be up and running with subscriptions in minutes.
 
@@ -198,13 +239,13 @@ You then need to update the generated `config/billing.php` file with your subscr
 
 You can use the following keys:
 
-| Key | Description | Optional |
-| --- | --- | --- |
-| `name` | The name of the tier | `false` |
-| `description` | A short description of the tier | `false` |
-| `trialDays` | The number of days for the trial period | `true` |
-| `discount` | The discount percentage | `true` |
-| `features` | An array of features for the tier | `true` |
+| Key           | Description                             | Optional |
+| ------------- | --------------------------------------- | -------- |
+| `name`        | The name of the tier                    | `false`  |
+| `description` | A short description of the tier         | `false`  |
+| `trialDays`   | The number of days for the trial period | `true`   |
+| `discount`    | The discount percentage                 | `true`   |
+| `features`    | An array of features for the tier       | `true`   |
 
 You can set different prices for various durations—`monthly`, `yearly`, `quarterly`, `weekly`, or even `daily` in the format `price.monthly`, `price.yearly`, etc.
 
@@ -365,18 +406,18 @@ class WebhooksController extends Controller
 
 Since webhooks are stateless, you can't use the `session()` or `auth()` helpers to retrieve the user who made the payment. This is a common issue with webhooks, as they are designed to be stateless and don't have access to the session or authentication data. However, Leaf Billing automatically parses the webhook payload and provides you with a `BillingEvent` instance, which gives you access to the user who made the payment, the subscription, and all other relevant details.
 
-| Method | Description |
-| --- | --- |
-| `type()` | Get the event type |
-| `is()` | Check if the event is a specific type |
-| `tier()` | Get the subscription tier (if available) |
-| `subscription()` | Get the current subscription (if available) |
-| `user()` | Get the current user (returns auth()->user() if available) |
-| `previousSubscriptionTier()` | Get the previous subscription tier (if available) |
-| `cancelSubscription()` | Cancel the subscription in webhook request (if available) |
-| `activateSubscription()` | Activate the new subscription in webhook (if available) |
-| `data()` | Get the raw event data |
-| `metadata()` | Get the metadata from the event (if available) |
+| Method                       | Description                                                |
+| ---------------------------- | ---------------------------------------------------------- |
+| `type()`                     | Get the event type                                         |
+| `is()`                       | Check if the event is a specific type                      |
+| `tier()`                     | Get the subscription tier (if available)                   |
+| `subscription()`             | Get the current subscription (if available)                |
+| `user()`                     | Get the current user (returns auth()->user() if available) |
+| `previousSubscriptionTier()` | Get the previous subscription tier (if available)          |
+| `cancelSubscription()`       | Cancel the subscription in webhook request (if available)  |
+| `activateSubscription()`     | Activate the new subscription in webhook (if available)    |
+| `data()`                     | Get the raw event data                                     |
+| `metadata()`                 | Get the metadata from the event (if available)             |
 
 For more information on billing events, you can check the [Stripe](https://stripe.com/docs/api/events/types) and [PayStack](https://paystack.com/docs/payments/webhooks/#types-of-events) documentation.
 
@@ -557,14 +598,14 @@ This way, you can easily check the user's subscription status, plan, and other b
 
 Leaf billing comes with a middleware that you can use to protect your routes based on specific conditions. This is a list of the billing middleware available:
 
-| Middleware | Description |
-| --- | --- |
-| `billing.subscribed` | Protect a route to only allow subscribed users |
-| `billing.subscribed:plan-name` | Protect a route to only allow users subscribed to a specific plan |
-| `billing.not-subscribed` | Protect a route to only allow users who aren't subscribed |
+| Middleware                         | Description                                                           |
+| ---------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------- |
+| `billing.subscribed`               | Protect a route to only allow subscribed users                        |
+| `billing.subscribed:plan-name`     | Protect a route to only allow users subscribed to a specific plan     |
+| `billing.not-subscribed`           | Protect a route to only allow users who aren't subscribed             |
 | `billing.not-subscribed:plan-name` | Protect a route to only allow users not subscribed to a specific plan |
-<!-- | `billing.trial` | Protect a route to only allow users on a trial period |
-| `billing.not-trial` | Protect a route to only allow users not on a trial period | -->
+| <!--                               | `billing.trial`                                                       | Protect a route to only allow users on a trial period |
+| `billing.not-trial`                | Protect a route to only allow users not on a trial period             | -->                                                   |
 
 You can use these middlewares in your routes like this:
 
@@ -655,15 +696,6 @@ public function handleCartPurchase($cartId) {
 
 In this example, we are using the Stripe provider instance to create a checkout session. While this particular use-case is covered extensively in the Leaf billing API, you can use the raw provider instances for more advanced use-cases like creating payment intents, specific tax calculations, and more.
 
-## Production Checklist
-
-As with all payment systems, you need to ensure that your billing system is secure. Here are a few things to check before going live:
-
-- Ensure that your billing provider is set up correctly
-- Turn of test mode in your billing provider
-- In your [Developers], copy your public & private keys and add them to the api key and publishable key in your production environment variables.
-- In your [Developers], [Webhook], [Add Enpoint]. Set `<your-domain>/billing/webhook`. Copy the signing secret and add it to `STRIPE_WEBHOOK_SECRET` in your production environment variables.
-
 ## Security
 
 When using Leaf billing, you need to ensure that your billing system is secure. Here are a few things to check:
@@ -671,6 +703,8 @@ When using Leaf billing, you need to ensure that your billing system is secure. 
 - Billing Webhooks
 
   Always make sure that your `STRIPE_WEBHOOK_SECRET` is set in your `.env` file. This secret is used to verify that the webhook is coming from your billing provider. You can get this secret from your billing provider's dashboard. Once you set this secret, Leaf billing will automatically verify that the webhook is coming from your billing provider.
+
+  For PayStack, you don't need to set a webhook secret, as PayStack doesn't use webhook secrets, however, you should check out IP whitelisting in the [PayStack documentation](https://paystack.com/docs/payments/webhooks/#ip-whitelisting). Leaf billing automatically verifies the webhook payload for PayStack, so you don't need to worry about that.
 
 - CSRF Protection
 
@@ -683,3 +717,12 @@ When using Leaf billing, you need to ensure that your billing system is secure. 
       ],
   ...
   ```
+
+## Production Checklist <Badge text="Stripe Only" type="warning"/>
+
+As with all payment systems, you need to ensure that your billing system is secure. Here are a few things to check before going live:
+
+- Ensure that your billing provider is set up correctly
+- Turn of test mode in your billing provider
+- In your [Developers], copy your public & private keys and add them to the api key and publishable key in your production environment variables.
+- In your [Developers], [Webhook], [Add Enpoint]. Set `<your-domain>/billing/webhook`. Copy the signing secret and add it to `STRIPE_WEBHOOK_SECRET` in your production environment variables.
