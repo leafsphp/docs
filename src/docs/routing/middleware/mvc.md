@@ -161,6 +161,42 @@ class MyController extends Controller
 
 Once the data is read using `request()->next()`, it is removed from the request object and cannot be accessed again during the request lifecycle.
 
+## Controller Middleware <Badge>New</Badge>
+
+The middleware we have seen so far is applied to routes, which is great for most use-cases. However, there are times when you may want to apply middleware to one or more controller methods, instead of individual routes. This is especially useful when you have an application which has both web and API routes, and you want to apply different middleware to each. To use this, find the controller you want to add middleware to, and add a `__middleware` method to it:
+
+```php
+<?php
+
+namespace App\Controllers\Mobile;
+
+/**
+ * This is a base controller for the mobile namespace
+ */
+class Controller extends \App\Controllers\Controller
+{
+    public function __middleware()
+    {
+        auth()->config('session', false);
+
+        if (!auth()->user()) {
+            response()->json([
+                'success' => false,
+                'message' => 'Unauthorized',
+            ], 401);
+
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+In this example, we have a base controller for the `Mobile` namespace, which contains all controllers for our mobile API. The `__middleware` method disables session auth, meaning all authentication will be done using API tokens (JWTs), and then returns a JSON response if the user is not authenticated. Since this is a base controller, all controllers in the `Mobile` namespace will inherit this middleware which means all routes in this namespace will require authentication.
+
+Unlike the route middleware, the controller middleware returns a boolean value. If it returns `true`, the request will continue to the next step (either another middleware or the controller method). If it returns `false`, the request will stop and no further processing will be done.
+
 ## What to read next
 
 Middleware is a powerful tool that can help you control the flow of requests in your application, but Leaf already has a lot of functionality built-in that you might not need to write your own middleware for. Check out some of the other features of Leaf & Leaf MVC:
