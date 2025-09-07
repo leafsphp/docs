@@ -176,7 +176,7 @@ const sidebar = [
       // { text: 'Migrations', link: '/docs/database/migrations' },
       // { text: 'JSON Schema', link: '/docs/database/schema' },
       { text: 'Schema Files', link: '/docs/database/files' },
-      // { text: 'Seeders', link: '/docs/database/seeders' },
+      { text: 'Services', link: '/docs/mvc/services' },
       // { text: 'Factories', link: '/docs/database/factories' },
       { text: 'Writing Commands', link: '/docs/mvc/commands' },
       // { text: 'Mailing', link: '/docs/utils/mail/mvc' },
