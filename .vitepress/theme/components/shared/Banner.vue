@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useElementSize } from '@vueuse/core';
+import { ArrowRight } from 'lucide-vue-next';
 import { ref, watchEffect } from 'vue';
 
 defineProps<{
@@ -30,8 +31,8 @@ const dismiss = () => {
 
 <template>
   <div ref="el" class="banner">
-    <div class="text">
-      You are viewing the v4 documentation. You can switch to the <a href="https://v3.leafphp.dev">v3 documentation</a> if you need.
+    <div class="text flex items-center justify-center gap-2">
+      We’re taking Leaf to the next level, and we need your help. <a href="/support" class="flex">Become a sponsor <ArrowRight /> </a>
     </div>
 
     <button type="button" @click="dismiss">

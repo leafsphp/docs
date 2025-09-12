@@ -37,7 +37,7 @@ const nav: DefaultTheme.NavItem[] = [
     ],
   },
   {
-    text: 'Support Leaf',
+    text: '💚 SUPPORT LEAF',
     link: '/support/',
   },
 ];

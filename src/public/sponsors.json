@@ -17,19 +17,9 @@
       "img": "https://avatars.githubusercontent.com/u/9919?s=200&v=4"
     },
     {
-      "name": "Terry",
-      "url": "https://github.com/terrybr",
-      "img": "https://avatars.githubusercontent.com/u/378788?v=4"
-    },
-    {
-      "name": "Kunule Imbayi",
-      "url": "https://opencollective.com/kunule-imbayi",
-      "img": "https://images.opencollective.com/kunule-imbayi/avatar.png"
-    },
-    {
-      "name": "Axiojet",
+      "name": "Kurnia",
       "url": "#",
-      "img": "https://images.opencollective.com/guest-5b09479c/avatar.png"
+      "img": "https://images.opencollective.com/guest-da0b50b5/avatar.png"
     }
   ],
   "pastSponsors": [
@@ -42,6 +32,11 @@
       "name": "JetBrains",
       "url": "https://www.jetbrains.com/",
       "img": "https://avatars.githubusercontent.com/u/878437?s=200&v=4"
+    },
+    {
+      "name": "Terry",
+      "url": "https://github.com/terrybr",
+      "img": "https://avatars.githubusercontent.com/u/378788?v=4"
     },
     {
       "name": "Vano",
@@ -97,6 +92,16 @@
       "name": "Diego",
       "url": "https://opencollective.com/guest-d6b48e41",
       "img": "https://images.opencollective.com/guest-d6b48e41/avatar.png"
+    },
+    {
+      "name": "Axiojet",
+      "url": "#",
+      "img": "https://images.opencollective.com/guest-5b09479c/avatar.png"
+    },
+    {
+      "name": "Kunule Imbayi",
+      "url": "https://opencollective.com/kunule-imbayi",
+      "img": "https://images.opencollective.com/kunule-imbayi/avatar.png"
     }
   ],
   "code": [
