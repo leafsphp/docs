@@ -43,6 +43,8 @@ But to make this possible, we need you.
 
 Your support means Leaf’s maintainers can dedicate focused time to building, fixing, and improving. It means we don’t burn out. And it means Leaf stays healthy for the long run.
 
+![goal](https://github.com/user-attachments/assets/b7b8e449-f2ce-4858-9dfb-e43e87ef1302)
+
 — With love and gratitude,
 
 Michael from Leaf
@@ -57,7 +59,7 @@ Back Leaf through [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [Op
 Prefer crypto? Send USDT (TRC20) to:
 `TK6d2w4EqSDsf2xB2SLcEkfUt3vxADtFmp`
 
-<iframe src="https://opencollective.com/embed/leaf/donate" style="width: 100%; min-height: 100vh;"></iframe>
+<!-- <iframe src="https://opencollective.com/embed/leaf/donate" style="width: 100%; min-height: 100vh;"></iframe> -->
 
 ## Businesses Using Leaf
 
