@@ -4,7 +4,7 @@ Leaf MVC has always taken cues from Laravel and Rails to make database managemen
 
 ## What are Schema Files?
 
-With Schema Files in Leaf MVC 4, you can define your database tables, seed data, and test data—all in one simple YAML file. No need to manage separate migrations, seeders, or factories. It’s clean, readable, and designed to help you move fast without the overhead.
+Schema Files allow you to define your database tables, seed data, and keep track of your database automatically in one simple YAML file. It’s clean, readable, and designed to help you move fast without the overhead.
 
 ```yml [flights.yml]
 columns:
@@ -14,10 +14,6 @@ columns:
 
 seeds:
   count: 10
-  data:
-    to: '@faker.city'
-    from: '@faker.city'
-    identifier: '@faker.uuid'
 ```
 
 ## Creating a Schema File
@@ -37,7 +33,7 @@ php leaf g:schema posts
 This will create a schema file at `app/database/posts.yml` which looks like this:
 
 ```yml [posts.yml]
-# schema files add auto-increments and timestamps by default
+# schema files add auto-increments and timestamps automatically
 
 # you can add all the columns you want under the columns key
 columns:
@@ -53,14 +49,10 @@ columns:
 relationships:
   - User
 
-# seeds are optional and can be used to populate the database with dummy data
+# seeds are optional and can be used to populate the database with dummy data from models
 seeds:
   count: 5
   truncate: true
-  data:
-    name: '@faker.name'
-    identifier: '@faker.uuid'
-    verified_at: '@tick.format:YYYY-MM-DD HH:mm:ss'
 ```
 
 Breaking this file down, there are three main sections:
@@ -69,7 +61,7 @@ Breaking this file down, there are three main sections:
 
 - `seeds`: This is used to set the seeders of the table. The available properties are:
   - `count`: This is used to set the number of seeds to generate.
-  - `data`: This is used to set the data of the seeds. The key is the column name and the value is the value of the column. You can use `@faker.[value]` to generate fake data for the column. <!-- You can also use `{{ [value] }}` to use PHP code, but this is a separate PHP thread which means you can't use variables from the current scope. -->
+  <!-- - `data`: This is used to set the data of the seeds. The key is the column name and the value is the value of the column. You can use `@faker.[value]` to generate fake data for the column. You can also use `{{ [value] }}` to use PHP code, but this is a separate PHP thread which means you can't use variables from the current scope. -->
   - `truncate`: This is used to truncate the table before seeding.
 
 - `relationships`: This is used to set the relationships of the table. The value is an array of models the table is related to. This is used to generate foreign keys for the table.
@@ -395,17 +387,17 @@ php leaf db:drop users
 
 Database seeds let you pre-populate your database with initial data—whether it's default settings, test data, or sample records. Instead of manually adding entries, you can use seeders to automate this process.
 
-In Leaf MVC, you define seeders directly in your Schema Files under the `seeds` key. This keeps everything in one place, making it easier to manage your database setup. Here's an example of a seeder:
+In Leaf MVC, you can define seeders directly in your Schema Files under the `seeds` key. This keeps everything in one place, making it easier to manage your database setup. Here's an example of a seeder:
 
 ```yml [users.yml]
 seeds:
   data:
     - name: 'Example User'
       email: 'example@example.com'
-      password: '@hash:passwordForThisUser' # @hash requires leafs/password
+      password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
     - name: 'Another User'
       email: 'another@example.com'
-      password: '@hash:passwordForThisUser' # @hash requires leafs/password
+      password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
 ```
 
 In this example, we create a seeder that seeds the `users` table with two example users. We are passing an array of seeds to the `data` key, each seed being a key value pair of column name and value.
@@ -418,7 +410,7 @@ seeds:
   data:
     name: 'Example User'
     email: 'example@example.com'
-    password: '@hash:password'
+    password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
 ```
 
 After creating your seeder, you can run your seeders using the `db:seed` command:
@@ -429,6 +421,8 @@ php leaf db:seed
 
 This will generate 10 seeds for the `users` table with the same data which is not very useful. To generate multiple fake seeds, you can use what other frameworks call a factory.
 
+## Using factories for generating fake data
+
 In Leaf MVC, factories and seeders are the same thing as we believe this confusion is unnecessary. If you want to generate fake data for your seeders, you can add `@faker.[value]` as the value of a column in your seeder. Here's an example:
 
 ```yml{4,5} [users.yml]
@@ -437,10 +431,10 @@ seeds:
   data:
     name: '@faker.name'
     email: '@faker.email'
-    password: '@hash:password'
+    password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
 ```
 
-In this example, we're generating 10 fake seeds for the `users` table.
+In this example, we're generating 10 fake records for the `users` table.
 
 After adding your seeds, you can run your seeders using the `db:seed` command:
 
@@ -454,7 +448,52 @@ If you want to seed a specific table, you can pass the table name as an argument
 php leaf db:seed users
 ```
 
-<!-- ## Database migrations vs data migrations
+## Writing custom seeders <Badge>New</Badge>
+
+While schema-based seeders are great for simple data, sometimes you need more control. For complex scenarios—like pulling data from an API, processing files, or setting up intricate relationships—you can create seeders in your models. Your model can have a static `__seeder` method that contains the logic for seeding data. Here's an example:
+
+```php [User.php]
+<?php
+
+namespace App\Models;
+
+class User extends Model
+{
+  public static function __seeder()
+  {
+    return [
+      'name' => fake()->name(),
+      'email' => fake()->email(),
+      'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+    ];
+  }
+}
+```
+
+In this case, your schema file's `seeds` section can simply specify the number of records to create:
+
+```yml:no-line-numbers [users.yml]
+seeds:
+  count: 10
+```
+
+Schema files will automatically detect this method if the model name matches the table name, eg: `User` model for `users` table, `TestUser` model for `test_users` table, etc. You can also specify a different model name in your schema file using the `model` key:
+
+```yml:no-line-numbers [users.yml]
+seeds:
+  count: 10
+  model: CustomUserModel
+```
+
+Then, when you run the `db:seed` command, Leaf will call the `__seeder` method on your model to generate the seed data.
+
+```bash:no-line-numbers
+php leaf db:seed
+```
+
+<!--
+
+## Database migrations vs data migrations
 
 Usually, when making substancial changes to your database, you would create a migration file which is usually in charge of modifying the structure of your database. In some situations, you might want to run some kind of data migration which may copy data from one table to another, or run some kind of data manipulation on your recently migrated database. Some frameworks combine these two into one, but in Leaf MVC, we separate these two because we believe they are two different things. While database migrations are common, data migrations are not so common and are usually done manually.
 
