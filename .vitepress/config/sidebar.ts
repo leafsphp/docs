@@ -58,7 +58,7 @@ const sidebar = [
       // { text: 'Logging', link: '/docs/utils/logging' },
       { text: 'Using Swoole', link: '/docs/swoole' },
       { text: 'Using Docker', link: '/docs/docker' },
-      // { text: 'Debugging', link: '/docs/config/debugging' },
+      // { text: 'Debugging', link: '/docs/routing/error-handling' },
       // { text: 'Leaf Devtools', link: '/docs/utils/devtools' },
       // { text: 'Deployment', link: '/docs/config/deployment' },
       { text: 'Testing/Linting', link: '/docs/utils/testing' },

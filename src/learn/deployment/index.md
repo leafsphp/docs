@@ -7,7 +7,7 @@ Getting your Leaf app live should be as simple as building it. Whether you're de
 Before deploying your app, make sure you’ve covered the following:
 
 - **[Environment Variables](/docs/config/environment)**: Set up your environment variables for production.
-- **[Debug Mode](/docs/config/debugging)**: Turn off debug mode and disable Leaf DevTools.
+- **[Debug Mode](/docs/routing/error-handling)**: Turn off debug mode and disable Leaf DevTools.
 
 These are meant to ensure your app runs smoothly in production, without exposing sensitive information or running unnecessary debugging tools.
 
