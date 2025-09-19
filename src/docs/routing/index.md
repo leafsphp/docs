@@ -151,9 +151,27 @@ The `view()` method will look for the view file using whatever view engine you h
 
 After defining all the routes you application needs, you need to start the router to listen for incoming requests. You can do this by calling the `run()` method.
 
-```php
+```php:no-line-numbers
 app()->run();
 ```
+
+## Handling 404
+
+Leaf displays a default 404 screen when it can't find a page that a user wants to access in your app, however this page may not match your app's design or you may want to return JSON instead of HTML.
+
+<img alt="404 page" src="https://github.com/user-attachments/assets/97073d77-1298-4549-aca0-7b652dd2aa0f" width="100%" class="border border-gray-500 rounded-lg">
+
+You can customize the 404 page using Leaf's `set404()` method.
+
+```php
+app()->set404(function () {
+  response()->json([
+    "error" => "Page not found"
+  ]);
+});
+```
+
+Once this is set, Leaf will automatically use your custom 404 page when a user tries to access a page that doesn't exist in your app.
 
 ## Named routes
 

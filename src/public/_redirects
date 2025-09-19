@@ -22,3 +22,4 @@
 /community/docs-writing-guide       /community/guide
 /community/contribute               /community/guide
 /docs/installation                  /docs/
+/docs/debugging                     /docs/routing/error-handling
