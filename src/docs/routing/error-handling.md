@@ -130,6 +130,27 @@ That's it! Leaf will no longer log errors or exceptions for your app.
 
 :::
 
+## Rescue Helper <Badge>New</Badge>
+
+Leaf provides an elegant way to handle exceptions using the `rescue()` function. This function automically catches any exceptions thrown within the provided callback and logs them if logging is enabled, and then returns a default value. This way, you can use try-catch with a more inline syntax.
+
+```php
+$someValue = rescue(function () {
+    // Code that may throw an exception
+    return someRiskyOperation();
+}, 'default value');
+```
+
+In this example, if `someRiskyOperation()` throws an exception, the `rescue()` function will catch it, log it if logging is enabled, and return `'default value'` instead. While it may seem similar to using a try-catch block, `rescue()` provides a more concise and readable way to handle exceptions in your code, especially if you need to provide a default value:
+
+```php
+$someRiskyOperation = function () {
+    // Code that may throw an exception
+};
+
+$someValue = rescue($someRiskyOperation, 'default value');
+```
+
 ## Leaf DevTools <Badge type="warning" text="BETA" />
 
 Leaf provides DevTools to give you more insight into your app than you can get from the error page. It has a beautiful and intuitive interface that give you information about your Leaf application, and a light-weight library that you can use to interact with the devtools frontend.
