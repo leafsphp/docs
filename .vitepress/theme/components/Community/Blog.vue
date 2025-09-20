@@ -5,18 +5,18 @@ import Button from '../shared/Button.vue';
 // Dummy blog posts data
 const blogPosts = [
   {
+    id: 2,
+    title: 'September Recap: New in Leaf!',
+    excerpt: 'It\'s been 6 months since we released Leaf 4 and Leaf MVC 4, and what a journey it\'s been! From new features to community growth, we\'ve been busy making Leaf the best framework for Makers. In this recap, we\'ll highlight some of the exciting developments and what\'s coming next. Let\'s dive in!',
+    image: 'https://github.com/user-attachments/assets/9e97bc87-0cdc-4bc1-95e3-aeba4ab7788e',
+    url: 'https://blog.leafphp.dev/posts/sep-2025-recap.html'
+  },
+  {
     id: 1,
     title: 'Build Your Next SaaS with PHP — In Hours, Not Days',
     excerpt: 'We\'ve been working on Leaf PHP, and building it into the perfect tool for makers and solo builders.If you’re looking to build fast and ship faster, Leaf might be the fastest way to launch your next SaaS — all with plain, elegant PHP that scales with you.',
     image: 'https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fba2wnotxn1952b8am43b.jpg',
     url: 'https://dev.to/mychi_darko/build-your-next-saas-with-php-in-hours-not-days-30if'
-  },
-  {
-    id: 2,
-    title: 'Leaf 4.0 is finally here! Build 10x Faster and Lighter',
-    excerpt: 'Today, we are excited to announce the release of Leaf 4 (🌷 Snowdrop) and Leaf MVC 4 (✈️ Hughes H-4 Hercules)! This marks a new chapter in the evolution of Leaf, making PHP development faster, simpler, and more powerful than ever before.',
-    image: 'https://github.com/user-attachments/assets/0ddae472-9d1d-4547-8c1c-68529949f0df',
-    url: 'https://blog.leafphp.dev/posts/leaf4-is-here'
   },
 ];
 </script>
