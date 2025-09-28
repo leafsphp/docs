@@ -2,7 +2,7 @@
 
 Commands let you automate repetitive tasks—whether it's setting up a project, running tests, or deploying your app. Instead of handling these tasks manually, you can encapsulate them into reusable commands that you or other developers can run effortlessly.
 
-Leaf MVC ships with a powerful command-line interface packed with useful commands to streamline development. But you’re not limited to the defaults—you can also create your own commands to automate workflows and boost productivity.
+Leaf MVC's CLI system is powered by the powerful Sprout library which is a standalone interface for creating console apps. It's lightweight, powerful and comes with a ton of useful tools.
 
 ## Creating a command
 
@@ -19,187 +19,135 @@ This will create a `CachePurgeCommand.php` file in your `app/console` directory.
 
 namespace App\Console;
 
-use Aloe\Command;
+use Leaf\Sprout\Command;
 
 class CachePurgeCommand extends Command
 {
-  protected static $defaultName = 'cache:purge';
-  public $description = 'cache:purge command\'s description';
-  public $help = 'cache:purge command\'s help';
+    protected $signature = 'cache:purge
+        {argument? : argument description}
+        {--o|option? : option description}';
+    protected $description = 'cache:purge command\'s description';
+    protected $help = 'cache:purge command\'s help';
 
-  protected function config()
-  {
-    $this
-      ->setArgument('argument', 'optional', 'argument description')
-      ->setOption('option', 'o', 'required', 'option description');
-  }
-
-  protected function handle()
-  {
-    $this->comment(
-      "cache:purge command's output {$this->argument('argument')} {$this->option('option')}"
-    );
-
-    return 0;
-  }
-}
-```
-
-Leaf MVC's aloe command line tool is built on top of Symfony's console component, so you can use the same methods and properties you would use in a Symfony command. You can read more about Symfony Console [here](https://symfony.com/doc/current/components/console.html).
-
-## Manually creating a command
-
-The `g:command` command is a shortcut to creating a new command which creates a boilerplate command class for you in the `app/console` directory. If you want to create a command manually, you can create a new class that extends the `Command` class and implements the `handle()` method.
-
-```php
-<?php
-
-namespace App\Console;
-
-use Aloe\Command;
-
-class CachePurgeCommand extends Command
-{
-  protected static $defaultName = 'cache:purge';
-  public $description = 'cache:purge command\'s description';
-  public $help = 'cache:purge command\'s help';
-
-  protected function config()
-  {
-    $this
-      ->setArgument('argument', 'optional', 'argument description')
-      ->setOption('option', 'o', 'required', 'option description');
-  }
-
-  protected function handle()
-  {
-    $this->comment(
-      "cache:purge command's output {$this->argument('argument')} {$this->option('option')}"
-    );
-
-    return 0;
-  }
-}
-```
-
-If you are using Leaf MVC v3.8 and above, the command is automatically loaded by Leaf MVC, but Leaf MVC v3.7 and below require you to register your new command in the `app/console/Commands.php` file.
-
-```php
-<?php
-
-namespace App\Console;
-
-class Commands
-{
     /**
-     * Register commands
-     *
-     * @param $console
-     * @return void
-     *
+     * Main body for your command
      */
-    public static function register($console): void
+    protected function handle()
     {
-        $console->register([
-            ExampleCommand::class,
-            CachePurgeCommand::class
-        ]);
+        $this->comment(
+            "cache:purge command's output {$this->argument('argument')} {$this->option('option')}"
+        );
+
+        return 0;
     }
 }
 ```
+
+This has a few parts:
+
+- `protected $signature`: This is where you define the name of your command, its arguments, and its options. In this example, the command is named `cache:purge`, it has one optional argument named `argument`, and one optional option named `option` with a shortcut of `o`. This means that to call this command, you would run `php leaf cache:purge` in your terminal, and it can accept an optional argument and option like this: `php leaf cache:purge myArgument --option myOption` or `php leaf cache:purge myArgument -o myOption`.
+
+- `protected $description`: This is a brief description of what your command does. This will be displayed when you run `php leaf list` in your terminal.
+
+- `protected $help`: This is a more detailed description of what your command does. This will be displayed when you run `php leaf cache:purge --help` in your terminal.
+
+- `protected function handle()`: This is where you put the main logic for your command. This method will be called when you run your command in the terminal. In this example, it simply outputs a comment to the console with the values of the argument and option that were passed in.
+
+Unlike in the Symfony console, you don't have to manually deal with the `$input` and `$output`, or use a config method to define your arguments and options. Sprout makes it easier to work with commands by providing methods that allow you to access the input and output directly from within your command class.
+
+After creating the command, Leaf will automatically register it so you can start using it right away.
 
 ## Command Arguments
 
 Command arguments are values that are passed to the command when it is run in the console. For example, if you have a command named `example` and you run it like this:
 
 ```bash:no-line-numbers
-php leaf example argument
+php leaf example argument1 argument2
 ```
 
-The `argument` value is an argument that is passed to the command. You can access the argument in the `config()` method using the `setArgument()` method. It typically follows the same convention as symfony console's `addArgument` except that instead of passing in `InputArgument::state`, you just pass in the state as a string. For example, instead of `InputArgument::REQUIRED`, you just pass in `"required"`, any case is supported.
+For example, with system commands like `cd`, the argument is the directory you want to change to. In this case, `argument1` and `argument2` are arguments that are passed to the command.
+
+To define an argument for your command, you need to add it to the `protected $signature` property of your command class. You can define whether the argument is required or optional by adding a `?` at the end of the argument name.
 
 ```php
-protected function config()
-{
-  $this->setArgument('argument', 'required', 'argument description');
-}
+protected $signature = 'example
+    {argument1 : argument1 description}
+    {argument2? : argument2 description}';
 ```
 
-You can access the argument in the `handle()` method using the `argument()` method.
+In this case, `argument1` is a required argument and `argument2` is an optional argument, so a user could run the command like this:
+
+```bash:no-line-numbers
+php leaf example value1
+```
+
+Or passing both arguments like this:
+
+```bash:no-line-numbers
+php leaf example value1 value2
+```
+
+You can then access the argument in the command's body using the `argument()` method.
 
 ```php
 protected function handle()
 {
-  $this->comment("example command's output {$this->argument('argument')}");
+  $this->comment("example command's output {$this->argument('argument1')} {$this->argument('argument2')}");
 }
+```
+
+In some cases, you might want to define an argument that can accept multiple values. You can do this by adding `*` at the end of the argument name.
+
+```php
+protected $signature = 'example
+    {argument* : argument description}';
+```
+
+In this case, `argument` can accept multiple values, so a user could run the command like this:
+
+```bash:no-line-numbers
+php leaf example value1 value2 value3
 ```
 
 ## Command Options
 
-Command options are values that are passed to the command when it is run in the console. For example, if you have a command named `example` and you run it like this:
+Command options are also known as flags or switches, and they are additional parameters that modify the behavior of a command. They are typically optional and can be specified in various ways, such as with a `--` prefix or a shorthand `-` prefix. For example, if you have a command named `example` and you run it like this:
 
 ```bash:no-line-numbers
-php leaf example --option=value
+php leaf example --option1 --option2 valueForOption2 -o valueForOption3
 ```
 
-To add an option to your command, you can use the `setOption()` method in the `config()` method. It typically follows the same convention as symfony console's `addOption` except that instead of passing in `InputOption::state`, you just pass in the state as a string. For example, instead of `InputOption::VALUE_REQUIRED`, you just pass in `"required"`, any case is supported.
+To add an option to your command, you need to add it to the `protected $signature` property of your command class. You can define whether the option is required or optional by adding a `?` at the end of the option name. You can also define a shortcut for the option by adding it before the option name, separated by a `|`.
 
 ```php
-protected function config()
-{
-  $this->setOption('option', 'o', 'required', 'option description');
-}
+protected $signature = 'example
+    {--option1 : option1 description}
+    {--option2? : option2 description}
+    {--o|option3? : option3 description}';
 ```
 
-You can access the option in the `handle()` method using the `option()` method.
+In this case, `option1` is required, `option2` is optional, and `option3` is optional with a shortcut of `o`. A user could run the command like this:
+
+```bash:no-line-numbers
+php leaf example --option1 --option2 valueForOption2 -o valueForOption3
+```
+
+You can then access the option in the command's body using the `option()` method.
 
 ```php
 protected function handle()
 {
-  $this->comment("example command's output {$this->option('option')}");
-}
-```
-
-## Command Input
-
-Aloe makes it easier to grab the Symfony input object from anywhere in your command. This means that you don't have to pass in the `$input` variable to the `handle()` method. Instead, you can use the `input()` method.
-
-```php
-public function handle()
-{
-  $input = $this->input();
-  $name = $input->getArgument('name');
+  $this->comment("example command's output {$this->option('option1')} {$this->option('option2')} {$this->option('option3')}");
 }
 ```
 
 ## Command Output
 
-Aloe makes it easier to grab and output text to the console from anywhere in your command. Unlike with symfony console, you don't have to pass in the `$output` variable to the `handle()` method. Instead, you can use `ouput()`, `write()`, `writeln()`, `comment()`, `info()`, `error()`, `question()` and `link()` methods.
-
-### output()
-
-This method either outputs text in your console or returns the Symfony output object. If a value is passed into `output()`, it will write the value to the console.
-
-```php
-public function handle()
-{
-  $this->output('Hello World');
-}
-```
-
-If no value is passed into `output()`, it will return the Symfony output object.
-
-```php
-public function handle()
-{
-  $output = $this->output();
-  $output->writeln('This is output');
-}
-```
+Sprout allows you to easily output text to the console using various methods. This makes it easier to format your output and make it more readable. You can use `write()`, `writeln()`, `comment()`, `info()` and `error()` methods.
 
 ### write()
 
-This method writes text to the console. It is the same as the `output()->write()` method.
+This method writes text to the console.
 
 ```php
 public function handle()
@@ -210,7 +158,7 @@ public function handle()
 
 ### writeln()
 
-This method writes text to the console and adds a new line. It is the same as the `output()->writeln()` method.
+This method writes text to the console and adds a new line.
 
 ```php
 public function handle()
@@ -219,158 +167,237 @@ public function handle()
 }
 ```
 
-### comment()
+### Styled Output
 
-This method writes a comment styled message to the console and adds a new line. It is the same as the `output()->writeln()` method with the `SymfonyStyle::COMMENT` style.
+Leaf Sprout comes with a built-in output styling system that allows you to style your output using a simple API inspired by Symfony Console. Here's an example of how you can style your output:
 
 ```php
-public function handle()
-{
-  $this->comment('Hello World');
+$this->write("<info>Hello</info>, <comment>world</comment>!");
+$this->write("<error>Error occurred!</error>");
+$this->write("<question>Are you sure?</question>");
+```
+
+Or you can use pre-configured styles like success(), error(), warning(), and info():
+
+```php
+$this->success('Operation successful');
+$this->error('Operation failed');
+$this->warning('This is a warning');
+$this->info('This is some information');
+```
+
+Later versions will include more advanced styling options modelled after TailwindCSS and TermWind.
+
+## User Input/Prompts
+
+Leaf Sprout provides a unique, dead-simple way to interact with users via the console. You can ask questions, get input, and even create interactive prompts. Prompts basically allow you to ask a question and get a response from the user.
+
+```php
+$name = sprout()->prompt([
+    'type' => 'text',
+    'message' => 'What is your name?',
+]);
+
+$command->write("Hello, $name!"); // Hello, John Doe!
+```
+
+This will display a prompt in the console asking the user for their name.
+
+```bash:no-line-numbers
+? What is your name?
+```
+
+And when the user types their name and presses enter, it will be stored in the `$name` variable. This is a simple text prompt, but you can create more complex prompts as well.
+
+### Confirm Prompt
+
+A confirm prompt is a simple yes/no question that the user can answer by typing `y` or `n`. You can create a confirm prompt like this:
+
+```php
+$confirm = sprout()->prompt([
+    'type' => 'confirm',
+    'message' => 'Do you want to continue?',
+]);
+
+if ($confirm) {
+    $command->write("Continuing...");
+} else {
+    $command->write("Exiting...");
 }
 ```
 
-### info()
+This will display a prompt in the console asking the user if they want to continue.
 
-This method writes an info styled message to the console and adds a new line. It is the same as the `output()->writeln()` method with the `SymfonyStyle::INFO` style.
+```bash:no-line-numbers
+? Do you want to continue? (Y/n)
+```
+
+And when the user types `y` or `n`, it will be stored in the `$confirm` variable as a boolean value.
+
+### Select Prompt
+
+A select prompt allows the user to choose from a list of options. You can create a select prompt like this:
 
 ```php
-public function handle()
-{
-  $this->info('Hello World');
+$appType = sprout()->prompt([
+    'type' => 'select',
+    'message' => 'What type of project do you want?',
+    'default' => 0,
+    'choices' => [
+        ['title' => 'Leaf App', 'value' => 'leaf'],
+        ['title' => 'Laravel App', 'value' => 'laravel'],
+        ['title' => 'CodeIgniter App', 'value' => 'codeigniter'],
+        ['title' => 'Symfony App', 'value' => 'symfony'],
+        ['title' => 'CakePHP App', 'value' => 'cakephp'],
+    ],
+]);
+
+$command->write("You selected: $appType"); // You selected: leaf
+```
+
+This will display a prompt in the console asking the user to select a project type.
+
+```bash:no-line-numbers
+? What type of project do you want? (Use arrow keys)
+> Leaf App
+  Laravel App
+  CodeIgniter App
+  Symfony App
+  CakePHP App
+```
+
+And when the user selects an option and presses enter, the value of the selected option will be stored in the `$appType` variable. In this case, if the user selects "Leaf App", the value `leaf` will be stored in the `$appType` variable.
+
+## Confirmation Prompt
+
+For simple yes/no confirmations, you can use the `confirm()` method which is a shorthand for creating a confirm prompt.
+
+```php
+if (sprout()->confirm('Do you want to continue?')) {
+    $command->write("Continuing...");
+} else {
+    $command->write("Exiting...");
 }
 ```
 
-### error()
+This works the same way as the confirm prompt example above, but it's more concise.
 
-This method writes an error styled message to the console and adds a new line. It is the same as the `output()->writeln()` method with the `SymfonyStyle::ERROR` style.
+## Multi-question Prompts
+
+You can also ask multiple questions in a single prompt by passing an array of questions to the `prompt()` method. Each question can have its own type, message, and other options.
 
 ```php
-public function handle()
-{
-  $this->error('Hello World');
+$answers = sprout()->prompt([
+    [
+        'type' => 'text',
+        'name' => 'username',
+        'message' => 'What is your name?',
+    ],
+    [
+        'type' => 'confirm',
+        'name' => 'userConfirm',
+        'message' => 'Are you above 18?',
+    ],
+    [
+        'type' => 'select',
+        'name' => 'userSelect',
+        'message' => 'What is your favorite color?',
+        'choices' => [
+            ['title' => 'Red', 'value' => 'red'],
+            ['title' => 'Green', 'value' => 'green'],
+            ['title' => 'Blue', 'value' => 'blue'],
+        ],
+    ],
+]);
+
+$command->write("Hello, {$answers['username']}!"); // Hello, John Doe!
+$command->write($answers['userConfirm'] ? "You are above 18." : "You are below 18."); // You are above 18.
+$command->write("Your favorite color is {$answers['userSelect']}."); // Your favorite color is red.
+```
+
+This will display a series of prompts in the console asking the user for their name, if they are above 18, and their favorite color, one after the other. When the user answers all the questions, their answers will be stored in the `$answers` array, which you can then access using the question names as keys, as well as their order in the array.
+
+We recommend using the `name` key to access the answers, as it makes your code more readable and easier to maintain. On top of that, some questions may be optional, and if the user skips them, the answers array may not have the same number of elements as the questions array. Using the `name` key ensures that you can always access the correct answer regardless of whether the question was answered or not.
+
+### Optional Questions
+
+There are situations where you would want to skip asking the user a question based on some condition. You can do this by setting the `type` key to `null` based on a condition.
+
+```php
+$askName = true; // Change this to false to skip the name question
+
+$answers = sprout()->prompt([
+    [
+        'type' => $askName ? 'text' : null,
+        'name' => 'username',
+        'message' => 'What is your name?',
+    ],
+    [
+        'type' => 'confirm',
+        'name' => 'userConfirm',
+        'message' => 'Are you above 18?',
+    ],
+]);
+```
+
+You can also use a closure to determine whether to ask the question or not. The closure will receive the current answers array as its only argument, allowing you to make decisions based on previous answers.
+
+```php
+$answers = sprout()->prompt([
+    [
+        'type' => 'text',
+        'name' => 'username',
+        'message' => 'What is your name?',
+    ],
+    [
+        'type' => function ($answers) {
+            return strtolower($answers['username']) === 'admin' ? null : 'confirm';
+        },
+        'name' => 'userConfirm',
+        'message' => 'Are you above 18?',
+    ],
+]);
+```
+
+## Shell Processes
+
+Sometimes, you may want to run a shell command from within your command. You can do this using the `sprout()->process()` method. This method allows you to run a shell command and capture its output.
+
+```php
+$process = sprout()->process('ls -la');
+$process->run();
+
+if ($process->isSuccessful()) {
+    $output = $process->getOutput();
+    $command->write($output);
+} else {
+    $error = $process->getErrorOutput();
+    $command->error($error);
 }
 ```
 
-### question()
+This will run the `ls -la` command and capture its output. If the command is successful, it will output the result to the console. If the command fails, it will output the error message to the console.
 
-This method writes a question styled message to the console and adds a new line. It is the same as the `output()->writeln()` method with the `SymfonyStyle::QUESTION` style.
-
-```php
-public function handle()
-{
-  $this->question('Hello World');
-}
-```
-
-### link()
-
-This method writes a link to the console and adds a new line.
+You can also use the shorter `sprout()->run()` method which is a shorthand for creating a process and running it.
 
 ```php
-public function handle()
-{
-  $this->link('https://leafphp.dev', 'Leaf PHP');
-}
+sprout()->run('pnpm create naytive-app my-app');
 ```
 
-## Command Questions
+## Composer/Npm Commands
 
-Aloe makes it easier to ask questions in your command. You can use the `ask()`, `confirm()`, `askRaw()`, `autoComplete()`, `choice()` and `multiChoice()` methods.
-
-### ask()
-
-This method asks a question and returns the answer. It takes in 2 parameters:
-
-- the question to ask
-- the default answer (optional)
+Sprout also includes built-in methods for running Composer and NPM commands. This makes it easy to manage your dependencies from within your command.
 
 ```php
-public function handle()
-{
-  $name = $this->ask('What is your name?', 'Leaf');
-}
-```
+sprout()->composer()->install('leafs/leaf');
+sprout()->composer()->runScript('dev');
+sprout()->composer()->remove('some/package');
 
-### askRaw()
+$composerJsonFile = sprout()->composer()->json();
 
-This is the same as the `ask()` method above, except that it does not trim the results that the user enters. Whatever the user enters is returned as is.
+sprout()->npm()->install('express');
+sprout()->npm()->runScript('build');
+sprout()->npm()->remove('some-package');
 
-```php
-public function handle()
-{
-  $name = $this->askRaw('What is your name?', 'Leaf');
-}
-```
-
-### autoComplete()
-
-This method allows you to ask a question and provide a list of values that the user can choose from. The user's answer will be auto-completed as they type if it matches one of the values in the list. It takes in 3 parameters:
-
-- the question to ask
-- the list of values to choose from
-- the default answer (optional)
-
-```php
-public function handle()
-{
-  $name = $this->autoComplete('What is your name?', ['Leaf', 'PHP'], 'Leaf');
-}
-```
-
-### choice()
-
-This method allows you to ask a question and provide a list of values that the user can choose from. The user must select one of the values in the list. It takes in 4 parameters:
-
-- the question to ask
-- the list of values to choose from
-- the error message to display if the user does not select one of the values in the list
-- the default answer (optional)
-
-```php
-public function handle()
-{
-  $name = $this->choice('What is your name?', ['Leaf', 'PHP'], 'Please select a name');
-}
-```
-
-### multiChoice()
-
-This method allows you to ask a question and provide a list of values that the user can choose from. The user must select one or more of the values in the list. It takes in 4 parameters:
-
-- the question to ask
-- the list of values to choose from
-- the error message to display if the user does not select one of the values in the list
-- the default answer (optional)
-
-```php
-public function handle()
-{
-  $name = $this->multiChoice('What is your name?', ['Leaf', 'PHP'], 'Please select a name');
-}
-```
-
-### confirm()
-
-This method asks a yes/no question and returns the answer. It takes in 2 parameters:
-
-- the question to ask
-- the default answer (optional)
-
-```php
-public function handle()
-{
-  $name = $this->confirm('Are you sure?', 'yes');
-}
-```
-
-### secret()
-
-This method asks a question but hides the keystrokes. It takes in 2 parameters:
-
-- the question to ask
-- use hidden fallback (optional)
-
-```php:no-line-numbers
-$password = $this->secret('Confirm your password');
+$packageJsonFile = sprout()->npm()->json();
 ```
