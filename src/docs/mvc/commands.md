@@ -2,7 +2,13 @@
 
 Commands let you automate repetitive tasks—whether it's setting up a project, running tests, or deploying your app. Instead of handling these tasks manually, you can encapsulate them into reusable commands that you or other developers can run effortlessly.
 
-Leaf MVC's CLI system is powered by the powerful Sprout library which is a standalone interface for creating console apps. It's lightweight, powerful and comes with a ton of useful tools.
+Leaf MVC ships with a CLI tool that allows you to create and manage custom commands for your application.
+
+::: details Choosing Seedling over Leaf MVC
+
+While Leaf MVC provides a robust framework for building web applications, if your primary focus is on creating and managing console commands, you might find [Leaf Seedling](https://seedling.leafphp.dev) to be a more streamlined choice. Leaf Seedling is specifically designed for building command-line applications, offering a lightweight and efficient environment tailored for CLI tasks. It provides all the necessary tools and features to create, organize, and execute commands without the additional overhead of a full web framework. If your project is centered around command-line utilities, without the need for web functionalities, Leaf Seedling could be the ideal solution.
+
+:::
 
 ## Creating a command
 

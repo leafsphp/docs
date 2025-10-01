@@ -4,9 +4,9 @@
     <div class="max-w-[500px] mt-24 pb-6 md:mb-48">
       <h1 class="w-[88%] !text-5xl mb-8">The framework for people who just want to ship 🚀</h1>
       <p class="text-xl">
-        Leaf is built for makers who move fast. With no config and effortless deployment, you can run Leaf
-        anywhere PHP is available—no questions asked. Shared hosting? Just drag and drop. Cloud or VPS? Seamless. Get
-        from idea to production in no time.
+        Leaf is built for makers who move fast. Whether you are building a web app, API, microservice or console application, Leaf
+        gets you up and running in seconds. With no config and effortless deployment, you can run Leaf anywhere PHP is
+        available—instantly!
       </p>
     </div>
   </section>

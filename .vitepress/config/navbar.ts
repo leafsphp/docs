@@ -18,14 +18,14 @@ const nav: DefaultTheme.NavItem[] = [
         text: 'Contribute to Leaf',
         link: '/community/guide',
       },
-      // {
-      //   text: 'Changelog',
-      //   link: '/community/releases',
-      // },
-      // {
-      //   text: 'Project Showcase',
-      //   link: '/community/showcase',
-      // },
+      {
+        text: 'Hana JS',
+        link: 'https://hana.leafphp.dev',
+      },
+      {
+        text: 'Seedling Framework',
+        link: 'https://seedling.leafphp.dev',
+      },
       {
         text: 'Team',
         link: '/community/team',
