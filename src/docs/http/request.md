@@ -88,26 +88,26 @@ $data = request()->try(['name', 'email'], false, true);
 
 ## Getting request data with a default value
 
-There are many situations where you might want to make sure that a value exists in the request before using it, but also want to keep it an optional value for users. You can use the `getOrDefault()` method to do this. The `getOrDefault()` method takes a key and a default value as arguments and returns the value associated with the key if it exists, or the default value if it doesn't.
+There are many situations where you might want to make sure that a value exists in the request before using it, but also want to keep it an optional value for users. You can use the `params()` method to do this. The `params()` method takes a key and a default value as arguments and returns the value associated with the key if it exists, or the default value if it doesn't.
 
 ```php:no-line-numbers
-$data = request()->getOrDefault('name', 'John Doe');
+$data = request()->params('name', 'John Doe');
 ```
 
 ## Getting all request data
 
-You can use the `all()` method to get all the data in the request. It returns an array of all the data in the request.
+You can use the `body()` method to get all the data in the request. It returns an array of all the data in the request.
 
 ```php:no-line-numbers
-$data = request()->all();
+$data = request()->body();
 
 // $data = ['name' => '...', 'email' => '...']
 ```
 
-Every time you call the `all()` method, Leaf will sanitize the data in the request. If you want to disable data sanitization, you can pass `false` as a parameter to the `all()` method.
+Every time you call the `body()` method, Leaf will sanitize the data in the request. If you want to disable data sanitization, you can pass `false` as a parameter to the `body()` method.
 
 ```php:no-line-numbers
-$data = request()->all(false);
+$data = request()->body(false);
 ```
 
 ## Request type specific methods
