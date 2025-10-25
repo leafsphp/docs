@@ -138,7 +138,7 @@ After dispatching the job, you need a worker to run all jobs in the queue.
 
 ## Starting a worker
 
-Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed. Leaf will automatically start a worker for you when you start the PHP server using `leaf serve` or `leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
+Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed. Leaf will automatically start a worker for you when you start the PHP server using `leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
 
 ```bash:no-line-numbers
 leaf queue:work
