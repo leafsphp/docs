@@ -9,7 +9,7 @@ Authentication with Leaf is straightforward and is powered by [Leaf Auth](/docs/
 You can get started using the `scaffold:auth` command:
 
 ```bash:no-line-numbers
-php leaf scaffold:auth
+leaf scaffold:auth
 ```
 
 The scaffold:auth command sets up a fully functional authentication system, including:
@@ -31,7 +31,7 @@ This is automatically done for you if you choose to install the application star
 Another annoying starting point for most developers is the landing page. Leaf MVC's scaffolding tool allows you to scaffold a landing page with a single command:
 
 ```bash:no-line-numbers
-php leaf scaffold:landing-page
+leaf scaffold:landing-page
 ```
 
 You get:
@@ -48,7 +48,7 @@ You get:
 Subscriptions are pretty common in modern applications, but quite annoying to set up. Leaf MVC's scaffolding tool allows you to scaffold a billing subscription system with a single command:
 
 ```bash:no-line-numbers
-php leaf scaffold:subscriptions
+leaf scaffold:subscriptions
 ```
 
 It requires [Leaf Billing](/docs/utils/billing) to be installed, and you get:
@@ -65,7 +65,7 @@ It requires [Leaf Billing](/docs/utils/billing) to be installed, and you get:
 Creating a waitlist/coming soon page is a great way to build anticipation for your product before it launches. It allows you to collect email addresses from interested users, which can be invaluable for marketing and user engagement once your product is live. You can scaffold a waitlist using:
 
 ```bash:no-line-numbers
-php leaf scaffold:waitlist
+leaf scaffold:waitlist
 ```
 
 These will give you:

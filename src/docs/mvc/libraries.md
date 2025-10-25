@@ -11,7 +11,7 @@ Custom libraries aren’t stored in the `app` folder because Leaf MVC doesn’t 
 Leaf MVC only loads items in the `app` folder by default. To add any external library to your project, you need to set Leaf MVC up for it using the console. You can do this by running the following command:
 
 ```bash:no-line-numbers
-php leaf config:lib
+leaf config:lib
 ```
 
 That's it! A `lib` folder will be created in your application root and Leaf will now autoload any library you place in this folder.

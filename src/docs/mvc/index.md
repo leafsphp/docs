@@ -85,13 +85,13 @@ There are also some folders that may be generated automatically by modules like 
 Leaf MVC works out of the box with minimal setup—most apps just need a few tweaks in the .env file, so it doesn’t include a config directory by default. When customization is needed, config files are organized by feature, making it easy to adjust settings without affecting others. To publish all default config files, run the following command:
 
 ```bash:no-line-numbers
-php leaf config:publish
+leaf config:publish
 ```
 
 This command will create the `config` directory in your app and copy all default config files, just like in earlier versions. You can also publish a specific config file while keeping the rest untouched:
 
 ```bash:no-line-numbers
-php leaf config:publish <config-file>
+leaf config:publish <config-file>
 ```
 
 Here is a list of all available Leaf MVC config files:

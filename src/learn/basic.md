@@ -83,7 +83,7 @@ app()->run();
 Once you are in your application root, you can run the app using the `serve` command.
 
 ```bash:no-line-numbers
-php leaf serve
+leaf serve
 ```
 
 Your app is now running! Open `http://localhost:5500` in your browser.

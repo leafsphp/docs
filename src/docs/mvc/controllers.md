@@ -20,11 +20,11 @@ This is okay for simple apps, but as your app grows, it can get messy. You donâ€
 Controllers are classes that contain methods (functions) that handle requests to your app. When a request comes into your app, Leaf calls the method in the controller that matches the route. This keeps your route definitions clean, and let's you neatly organize your logic so you don't mix your application logic with any other code. Leaf MVC includes a really handy command that you can use to create controllers:
 
 ```bash
-php leaf g:controller <controller-name>
+leaf g:controller <controller-name>
 
 # example ðŸ‘‡
 
-php leaf g:controller users
+leaf g:controller users
 ```
 
 Leaf will automatically format the controller name to match the Leaf naming convention, so in the example above, Leaf will create a controller named `UsersController` in the `app/controllers` directory. The generated controller will look like this:
@@ -101,7 +101,7 @@ Leaf makes it super easy to set up routes for common actions like creating, read
 To get started, you can generate a resource controller using the Aloe CLI:
 
 ```bash:no-line-numbers
-php leaf g:controller photos --resource
+leaf g:controller photos --resource
 ```
 
 This command will generate a controller at `app/controllers/PhotosController.php` which has a bunch of methods pre-defined for you like this:
@@ -172,7 +172,7 @@ This will automatically set up all the routes you need for CRUD operations on th
 API resource controllers are similar to resource controllers, but they return JSON responses instead of HTML which means that the `create` and `edit` methods are not included. You can generate an API resource controller using the Aloe CLI:
 
 ```bash:no-line-numbers
-php leaf g:controller photos --api
+leaf g:controller photos --api
 ```
 
 You can load the controller in your routes like this:
@@ -186,19 +186,19 @@ app()->apiResource('/photos', 'PhotosController');
 Leaf MVC comes with a bunch of handy commands for generating controllers and associated files. Here are a few examples:
 
 ```bash:no-line-numbers
-php leaf g:controller <ControllerName> -m
+leaf g:controller <ControllerName> -m
 ```
 
 This command will generate your controller together with a model that corresponds to the controller name. The model will be generated in the `app/models` directory.
 
 ```bash:no-line-numbers
-php leaf g:controller <ControllerName> -t
+leaf g:controller <ControllerName> -t
 ```
 
 The `-t` flag will generate a controller with a frontend template that corresponds to the controller name. The template will be generated in the `app/views` directory.
 
 ```bash:no-line-numbers
-php leaf g:controller <ControllerName> -a
+leaf g:controller <ControllerName> -a
 ```
 
 This command will generate your controller together with a model and a schema file that corresponds to the controller name. The model and schema file will be generated in the `app/models` and `app/database` directories respectively.

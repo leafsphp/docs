@@ -49,7 +49,7 @@ Leaf MVC comes with a view manager that makes Leaf aware of any template engine 
 The first step is to publish your view config so you can edit it:
 
 ```bash:no-line-numbers
-php leaf config:publish view
+leaf config:publish view
 ```
 
 This will create a `config/view.php` file in your project. You can then edit this file to include your Smarty engine:

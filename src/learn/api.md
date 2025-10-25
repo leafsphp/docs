@@ -48,7 +48,7 @@ This command sets up a new Leaf MVC app in the my-app directory, optimized for b
 
 ```bash:no-line-numbers
 cd my-app
-php leaf serve
+leaf serve
 ```
 
 Your app is now running! Open `http://localhost:5500` in your browser.
@@ -103,7 +103,7 @@ This is the most important piece of our pre-launch API. We need to create a rout
 Let’s start by generating the controller we defined in our route, we'll use the console for this:
 
 ```bash:no-line-numbers
-php leaf g:controller subscribers
+leaf g:controller subscribers
 ```
 
 This will create a new controller in the `app/controllers` directory. Open the `SubscribersController.php` file and add the `store` method.
@@ -149,7 +149,7 @@ This validates the entered email and returns an error if it's not a valid email.
 First, we'll generate a Subscriber model using the console:
 
 ```bash:no-line-numbers
-php leaf g:model subscriber
+leaf g:model subscriber
 ```
 
 We don’t need to modify the model—Leaf keeps things simple. But before we can store anything, we need to connect our database. Open your .env file and add your database credentials:
@@ -163,12 +163,12 @@ DB_USERNAME=xxx
 DB_PASSWORD=xxx
 ```
 
-After updating your credentials, restart your server with: `php leaf serve`.
+After updating your credentials, restart your server with: `leaf serve`.
 
 Now, we need to create our database table. Leaf MVC makes this seamless with schema files, a simpler way to define and manage your database structure. Let’s set up our schema next!
 
 ```bash:no-line-numbers
-php leaf g:schema subscribers
+leaf g:schema subscribers
 ```
 
 The name of the schema file should be the same as your table name. This will create a new schema file in the `app/database` directory. Open the file and add the columns you want in your table.
@@ -181,7 +181,7 @@ columns:
 Here, we are telling Leaf to add a column where we can store the email. We can now run the migration to create the table.
 
 ```bash:no-line-numbers
-php leaf db:migrate
+leaf db:migrate
 ```
 
 ### <TutorialNumber number="4" /> Saving the email

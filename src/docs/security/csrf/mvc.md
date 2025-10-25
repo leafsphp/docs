@@ -149,7 +149,7 @@ $csrfToken = csrf()->token();
 By default, the CSRF module will be enabled for all your `POST`, `PUT`, `PATCH`, and `DELETE` requests. If you want to exclude certain methods or make some other relevant changes, you will need to publish the configuration file:
 
 ```bash:no-line-numbers
-php leaf config:publish csrf
+leaf config:publish csrf
 ```
 
 This will create a `config/csrf.php` file in your application, which looks like this:

@@ -507,7 +507,7 @@ app()->blade()->directive('datetime', function ($expression) {
 If you use Leaf MVC, you will need to publish your view config to add custom directives. You can do this by running the following command:
 
 ```bash:no-line-numbers
-php leaf config:publish view
+leaf config:publish view
 ```
 
 After that, you can add your custom directives to the `config/view.php` file. Here's an example of how you can add a custom directive:

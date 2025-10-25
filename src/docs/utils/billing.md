@@ -175,7 +175,7 @@ class CallbacksController extends Controller
 Unlike one-time payments, subscriptions require a more structured setup—but Leaf Billing makes it effortless. Just run the `scaffold:subscriptions` command to instantly generate everything you need: billing config, controllers, routes, and views. You'll be up and running with subscriptions in minutes.
 
 ```bash:no-line-numbers
-php leaf scaffold:subscriptions
+leaf scaffold:subscriptions
 ```
 
 You then need to update the generated `config/billing.php` file with your subscription tiers under the `tiers` key:
@@ -252,7 +252,7 @@ You can set different prices for various durations—`monthly`, `yearly`, `quart
 Once you've set up your billing tiers like the example above, you just need to publish them on Stripe. You can do that by running the following command:
 
 ```bash:no-line-numbers
-php leaf config:billing
+leaf config:billing
 ```
 
 That's it! We can now let users subscribe to our plans.

@@ -58,7 +58,7 @@ CORS_ALLOWED_HEADERS='*'
 While this is easier and allows you to easily configure different environments, it can sometimes be limiting for example when you want to return a function for dynamically set your allowed origins. For this reason, you can publish your CORS configuration using the command below:
 
 ```bash:no-line-numbers
-php leaf config:publish cors
+leaf config:publish cors
 ```
 
 This will publish the CORS config file to `config/cors.php`, where you can customize the settings to your liking.

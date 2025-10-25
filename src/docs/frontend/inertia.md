@@ -166,7 +166,7 @@ Using a function to share data is useful when you want to share dynamic data, be
 Once you set up your preferred frontend framework using the `view:install` command, Leaf MVC automatically reconfigures the framework to work primarily with your tooling. So you can generate a new inertia view using the `g:template` command.
 
 ```bash:no-line-numbers
-php leaf g:template home
+leaf g:template home
 ```
 
 This command will detect your frontend tooling and generate a file based on the engine you have configured. This will be in the `app/views/js/` directory and will be `home.jsx`, `home.vue` or `home.svelte`.
@@ -174,9 +174,9 @@ This command will detect your frontend tooling and generate a file based on the 
 If you want to Leaf MVC to generate a different kind of view file, you can always pass a `--type` flag to the g:template command:
 
 ```bash:no-line-numbers
-php leaf g:template home --type=jsx # React
-php leaf g:template home --type=vue # Vue
-php leaf g:template home --type=svelte # Svelte
+leaf g:template home --type=jsx # React
+leaf g:template home --type=vue # Vue
+leaf g:template home --type=svelte # Svelte
 ```
 
 ## Using Shadcn
@@ -184,7 +184,7 @@ php leaf g:template home --type=svelte # Svelte
 If you are pairing React with your Leaf app, you can use [shadcn/ui](https://ui.shadcn.com/) to build your UI. We don't ship with the necessary files to use shadcn/ui, but you can easily set it up by running the following command:
 
 ```bash:no-line-numbers
-php leaf scaffold:shadcn
+leaf scaffold:shadcn
 ```
 
 From there, you can install any shadcn/ui component you want, and it will automatically be configured to work with your Leaf app.

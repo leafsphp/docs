@@ -62,7 +62,7 @@ This will create a new Leaf MVC app in the `my-app` directory. You can then navi
 
 ```bash:no-line-numbers
 cd my-app
-php leaf serve
+leaf serve
 ```
 
 Your app is now running! Open `http://localhost:5500` in your browser.
@@ -167,7 +167,7 @@ We used the `post()` method because we only want POST requests to hit this route
 To generate the controller, we can use the Leaf CLI:
 
 ```bash:no-line-numbers
-php leaf g:controller subscribers
+leaf g:controller subscribers
 ```
 
 This will create a new controller in the `app/controllers` directory. Open the `SubscribersController.php` file and add the `store` method.
@@ -210,7 +210,7 @@ class SubscribersController extends Controller
 Great job so far! Now, let's save the email to a database using a model. First, we'll generate a Subscriber model:
 
 ```bash:no-line-numbers
-php leaf g:model subscriber
+leaf g:model subscriber
 ```
 
 We don’t need to modify the model—Leaf keeps things simple. But before we can store anything, we need to connect our database. Open your .env file and add your database credentials:
@@ -224,12 +224,12 @@ DB_USERNAME=xxx
 DB_PASSWORD=xxx
 ```
 
-After updating your credentials, restart your server with: `php leaf serve`.
+After updating your credentials, restart your server with: `leaf serve`.
 
 Now, we need to create our database table. Leaf MVC makes this seamless with schema files, a simpler way to define and manage your database structure. Let’s set up our schema next!
 
 ```bash:no-line-numbers
-php leaf g:schema subscribers
+leaf g:schema subscribers
 ```
 
 The name of the schema file should be the same as your table name. This will create a new schema file in the `app/database` directory. Open the file and add the columns you want in your table.
@@ -242,7 +242,7 @@ columns:
 Here, we are telling Leaf to add a column where we can store the email. We can now run the migration to create the table.
 
 ```bash:no-line-numbers
-php leaf db:migrate
+leaf db:migrate
 ```
 
 ### <TutorialNumber number="4" /> Saving the email

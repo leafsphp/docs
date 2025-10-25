@@ -68,7 +68,7 @@ class LogRequestMiddleware extends Middleware
 Of course, you don't have to do this manually. You can use the MVC Console to generate a middleware for you:
 
 ```bash:no-line-numbers
-php leaf g:middleware LogRequest
+leaf g:middleware LogRequest
 ```
 
 This will generate a `LogRequestMiddleware.php` file in the `app/middleware` folder.

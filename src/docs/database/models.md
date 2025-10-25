@@ -15,7 +15,7 @@ Each model maps to a database table, keeping your data structured and easy to ma
 You can generate a model using the MVC Console:
 
 ```bash:no-line-numbers
-php leaf g:model flight
+leaf g:model flight
 ```
 
 This will create a model at `app/models/Flight.php` which looks like this:

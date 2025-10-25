@@ -78,7 +78,7 @@ A job is a class containing any logic you might want to offload to the backgroun
 You can create a new job using the `g:job` command:
 
 ```bash:no-line-numbers
-php leaf g:job SendEmail
+leaf g:job SendEmail
 ```
 
 This creates a `SendEmailJob` class in `app/jobs` with a `handle()` method that runs when the job is processed. You can add any logic here, like using UserMailer to send an email:
@@ -138,10 +138,10 @@ After dispatching the job, you need a worker to run all jobs in the queue.
 
 ## Starting a worker
 
-Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed. Leaf will automatically start a worker for you when you start the PHP server using `leaf serve` or `php leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
+Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed. Leaf will automatically start a worker for you when you start the PHP server using `leaf serve` or `leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
 
 ```bash:no-line-numbers
-php leaf queue:work
+leaf queue:work
 ```
 
 This is fine in development, but in production, you’ll need to set up your server to keep your workers running continuously. Check out this guide on [deploying queues/workers](/learn/deployment/#deploying-queues-workers) for more information.
@@ -259,7 +259,7 @@ While this human-readable syntax is great for most use cases, you can also use C
 You can use batches to to queue multiple jobs in sequence—they will be processed in the order they were dispatched. The key advantage of batching is that it allows you to specify a callback that runs only after all the jobs have been completed. This is useful for cases where you need to perform an action after a set of jobs finishes successfully, such as logging the results or notifying a user when all tasks are done. To create a batch, you can use the `g:job` command:
 
 ```bash:no-line-numbers
-php leaf g:job ProcessPodcast --batch
+leaf g:job ProcessPodcast --batch
 ```
 
 This will generate a file in the `app/jobs` directory with a `handle()` method that runs when the job is processed. You can add any the list of jobs you want to batch like this:
@@ -320,7 +320,7 @@ This will switch to using your Redis connection for the queue. Leaf Redis curren
 If you want to change the default config for the queues and workers, you need to publish the queue config file using the MVC console:
 
 ```bash:no-line-numbers
-php leaf config:publish queue
+leaf config:publish queue
 ```
 
 This will generate a `queue.php` file in your `config` directory which looks something like this:

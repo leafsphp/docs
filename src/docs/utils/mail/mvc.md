@@ -39,7 +39,7 @@ That's it! Leaf Mail will automatically connect to your mail server when you sen
 In Leaf MVC, emails are handled through **mailers**—dedicated classes that keep your email logic clean and structured. Instead of mixing email-sending code throughout your app, mailers centralize everything in one place. For example, a `WelcomeMailer` can manage all welcome emails, with separate methods for different messages. With the MVC console, you can generate mailers instantly, making it easy to manage and scale email functionality while keeping your code simple and maintainable..
 
 ```bash:no-line-numbers
-php leaf g:mailer welcome
+leaf g:mailer welcome
 ```
 
 This will generate a mailer at `app/mailers/WelcomeMailer.php` which looks like this:
@@ -205,7 +205,7 @@ Note that these errors are tied to the specific mail object and are only availab
 While you can configure Leaf Mail through your environment variables, some mailers may require additional configuration or connection using other methods like OAuth. For those methods, you need to publish Leaf MVC's default mail config using the MVC console:
 
 ```bash:no-line-numbers
-php leaf config:publish mail
+leaf config:publish mail
 ```
 
 This will create a `mail.php` file in your `config` folder, which will look something like this:

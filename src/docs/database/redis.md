@@ -181,7 +181,7 @@ REDIS_SESSION=false
 If you need to set more configurations, you can publish the built-in Redis config file by running the following command:
 
 ```bash:no-line-numbers
-php leaf config:publish redis
+leaf config:publish redis
 ```
 
 This will generate a `config/redis.php` file in your project root. You can then set your configurations in this file.

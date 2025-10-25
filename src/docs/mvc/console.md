@@ -52,13 +52,13 @@ Aloe commands are divided into six groups to help with different parts of your d
   To run your app, use the serve command, which starts a development server. It’s similar to running php -S localhost:[PORT], but with some added setup specific to Leaf.
 
   ```bash:no-line-numbers
-  php leaf serve
+  leaf serve
   ```
 
   You can also specify a custom port:
 
   ```bash:no-line-numbers
-  php leaf serve --port=8000
+  leaf serve --port=8000
   ```
 
 - Interact
@@ -74,8 +74,8 @@ Aloe commands are divided into six groups to help with different parts of your d
   Sometimes you need to take your app down for maintenance. Use app:down to put your app in maintenance mode (it will return a 503 status), and app:up to bring it back online.
 
   ```bash:no-line-numbers
-  php leaf app:down
-  php leaf app:up
+  leaf app:down
+  leaf app:up
   ```
 
 ### Scaffold Commands
@@ -87,13 +87,13 @@ These commands help you quickly create files and structure your app.
   Need basic user authentication? Use the auth:scaffold command to automatically generate everything you need for login and registration (routes, models, controllers, views, etc.).
 
   ```bash:no-line-numbers
-  php leaf auth:scaffold
+  leaf auth:scaffold
   ```
 
   For a Leaf MVC app: generates full login and registration views and controllers. You can force it to generate API files using `--api`.
 
   ```bash:no-line-numbers
-  php leaf auth:scaffold --api
+  leaf auth:scaffold --api
   ```
 
 - Mail Setup
@@ -101,7 +101,7 @@ These commands help you quickly create files and structure your app.
   To set up mailing for your app, run:
 
   ```bash:no-line-numbers
-  php leaf mail:setup
+  leaf mail:setup
   ```
 
   This installs the Leaf Mail package and sets up the necessary configuration files.
@@ -115,20 +115,20 @@ These commands are used to generate files for your project, saving you time by a
   To generate a new controller, use:
 
   ```bash:no-line-numbers
-  php leaf g:controller [name]
+  leaf g:controller [name]
   ```
 
   You can add a resource route (for standard CRUD operations) with:
 
   ```bash:no-line-numbers
-  php leaf g:controller [name] --resource
+  leaf g:controller [name] --resource
   ```
 
   You can also create a controller with a model or schema file:
 
   ```bash:no-line-numbers
-  php leaf g:controller [name] --model
-  php leaf g:controller [name] --all # or -a to generate everything
+  leaf g:controller [name] --model
+  leaf g:controller [name] --all # or -a to generate everything
   ```
 
 - Create a Model
@@ -136,32 +136,32 @@ These commands are used to generate files for your project, saving you time by a
   Need a model for your database? Generate one with:
 
   ```bash:no-line-numbers
-  php leaf g:model [name]
+  leaf g:model [name]
   ```
 
 <!-- To create a model with a migration, use:
 
 ```bash:no-line-numbers
-php leaf g:model [name] --migration
+leaf g:model [name] --migration
 ``` -->
 
 - Other Generate Commands
 
-  - Factory: php leaf g:factory [name]
-  - Helper: php leaf g:helper [name]
-  - Mailer: php leaf g:mailer [name]
-  - Schema file: php leaf g:schema [name]
-  - Seed: php leaf g:seed [name]
-  - View Template: php leaf g:template [name] --type=[blade|jsx|vue|html]
+  - Factory: leaf g:factory [name]
+  - Helper: leaf g:helper [name]
+  - Mailer: leaf g:mailer [name]
+  - Schema file: leaf g:schema [name]
+  - Seed: leaf g:seed [name]
+  - View Template: leaf g:template [name] --type=[blade|jsx|vue|html]
 
 ### Delete Commands
 
 These are the reverse of generate commands—use them to delete files.
 
-- Delete Controller: php leaf d:controller [name]
-- Delete Model: php leaf d:model [name]
-- Delete Schema: php leaf d:schema [name]
-- Delete Seed: php leaf d:seed [name]
+- Delete Controller: leaf d:controller [name]
+- Delete Model: leaf d:model [name]
+- Delete Schema: leaf d:schema [name]
+- Delete Seed: leaf d:seed [name]
 
 ### Database Commands
 
@@ -172,7 +172,7 @@ Leaf MVC makes database management easy with these commands.
   To create a new database from the credentials in your .env file, use:
 
   ```bash:no-line-numbers
-  php leaf db:install
+  leaf db:install
   ```
 
 - Migrate Database
@@ -180,7 +180,7 @@ Leaf MVC makes database management easy with these commands.
   To migrate your db using your schema files, run:
 
   ```bash:no-line-numbers
-  php leaf db:migrate
+  leaf db:migrate
   ```
 
 - Reset Database
@@ -188,13 +188,13 @@ Leaf MVC makes database management easy with these commands.
   This command rolls back, migrates, and seeds your database in one go:
 
   ```bash:no-line-numbers
-  php leaf db:reset
+  leaf db:reset
   ```
 
   You can skip the seeding step if you want:
 
   ```bash:no-line-numbers
-  php leaf db:reset --noSeed
+  leaf db:reset --noSeed
   ```
 
 - Rollback Database
@@ -202,13 +202,13 @@ Leaf MVC makes database management easy with these commands.
   If you need to undo recent changes, you can roll back your migrations with:
 
   ```bash:no-line-numbers
-  php leaf db:rollback
+  leaf db:rollback
   ```
 
   You can also rollback a specific number of migrations using the --step flag:
 
   ```bash:no-line-numbers
-  php leaf db:rollback --step=2
+  leaf db:rollback --step=2
   ```
 
 - Seed Database
@@ -216,7 +216,7 @@ Leaf MVC makes database management easy with these commands.
   To populate your database with dummy data, use:
 
   ```bash:no-line-numbers
-  php leaf db:seed
+  leaf db:seed
   ```
 
 ### View Commands
@@ -228,7 +228,7 @@ These commands handle your frontend setup, building, and serving.
   When you’re ready to compile your frontend for production, run:
 
   ```bash:no-line-numbers
-  php leaf view:build
+  leaf view:build
   ```
 
 - Serve Your Frontend
@@ -236,7 +236,7 @@ These commands handle your frontend setup, building, and serving.
   To start your frontend development server, use:
 
   ```bash:no-line-numbers
-  php leaf view:serve
+  leaf view:serve
   ```
 
 - Viewing All Commands
@@ -244,7 +244,7 @@ These commands handle your frontend setup, building, and serving.
   You can always view the full list of Aloe commands by running:
 
   ```bash:no-line-numbers
-  php leaf list
+  leaf list
   ```
 
   This will display all available commands for your version of Leaf MVC.
@@ -253,7 +253,7 @@ These commands handle your frontend setup, building, and serving.
 
 ## Command List
 
-This is a list of every command available in Aloe. To view this list from your terminal, run `php leaf list`.
+This is a list of every command available in Aloe. To view this list from your terminal, run `leaf list`.
 
 ```bash:no-line-numbers
 Leaf MVC v4.x-BETA

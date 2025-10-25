@@ -101,17 +101,9 @@ Unlike the `vite.config.js` file, this configuration is done in PHP and is compl
 
 Vite comes with a development server that you can use to serve your frontend assets which is separate from your PHP server. If you use Leaf MVC or the Leaf CLI, this server will be automatically fired up when you run the serve command:
 
-::: code-group
-
-```bash:no-line-numbers [Leaf MVC CLI]
-php leaf serve
-```
-
-```bash:no-line-numbers [Leaf CLI]
+```bash:no-line-numbers
 leaf serve
 ```
-
-:::
 
 ::: details Running Vite manually
 

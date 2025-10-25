@@ -132,11 +132,11 @@ and perform initial Leaf tasks:
 
 ```bash
 composer install
-php leaf db:install
-php leaf db:migrate
+leaf db:install
+leaf db:migrate
 ```
 
-You also may seed the database if required: `php leaf db:seed`.
+You also may seed the database if required: `leaf db:seed`.
 
 Congratulations 🎉, you now have a fully working production server, and should be able to reach your application at $DOMAIN.
 

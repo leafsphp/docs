@@ -21,13 +21,13 @@ seeds:
 Leaf MVC's console comes with a `g:schema` command that you can use to generate a database file. You can generate a database file by running:
 
 ```bash:no-line-numbers
-php leaf g:schema <table-name>
+leaf g:schema <table-name>
 ```
 
 Remember, every schema file is tied to a table in your database. When you run the command above, Leaf will create a schema file in your `app/database` directory with the name `<table-name>.yml`. Here’s an example:
 
 ```bash:no-line-numbers
-php leaf g:schema posts
+leaf g:schema posts
 ```
 
 This will create a schema file at `app/database/posts.yml` which looks like this:
@@ -84,13 +84,13 @@ columns:
 In this example, we create a `users` table with `name`, `email`, `password`, and `email_verified_at` columns. We can then migrate this table to our database using the `db:migrate` command:
 
 ```bash:no-line-numbers
-php leaf db:migrate
+leaf db:migrate
 ```
 
 You can have multiple schema files in your `app/database` directory, each tied to a particular table. When you run the `db:migrate` command, Leaf will migrate all the tables in your `app/database` directory. If you want to migrate only a specific table, you can pass the table name as an argument to the `db:migrate` command:
 
 ```bash:no-line-numbers
-php leaf db:migrate users
+leaf db:migrate users
 ```
 
 ## Database schema defaults
@@ -327,26 +327,26 @@ columns:
     default: false # [!code ++]
 ```
 
-This example adds a new column `is_super_admin` to the `users` table. When you run `php leaf db:migrate`, Leaf will compare it to the previous version of the file, find the differences and automatically create the `is_super_admin` column for you in your database. You don't need to worry about writing migration files or keeping track of changes manually.
+This example adds a new column `is_super_admin` to the `users` table. When you run `leaf db:migrate`, Leaf will compare it to the previous version of the file, find the differences and automatically create the `is_super_admin` column for you in your database. You don't need to worry about writing migration files or keeping track of changes manually.
 
 ## Reverting changes
 
 The schema system automatically tracks changes, so you can easily roll back to a previous state. Just run:
 
 ```bash:no-line-numbers
-php leaf db:rollback
+leaf db:rollback
 ```
 
 This will revert the last set of changes made to your database. If you want to roll back a specific table instead of all tables, you can pass the table name as an argument to the `db:rollback` command:
 
 ```bash:no-line-numbers
-php leaf db:rollback users
+leaf db:rollback users
 ```
 
 Rolling back is like hitting "undo" on your database: It reverts the last migration, letting you step back through changes one at a time. Sometimes, you might need to revert multiple steps at a time, so you can use the `--steps` option to specify how many steps to roll back:
 
 ```bash:no-line-numbers
-php leaf db:rollback --steps=3
+leaf db:rollback --steps=3
 ```
 
 This command will roll back the last three migrations made to your database.
@@ -358,13 +358,13 @@ This command will roll back the last three migrations made to your database.
 While rolling back is great for undoing recent changes, there are times when you might want to reset your entire database to a clean state. For those situations, Leaf provides the `db:reset` command. This command will roll back all migrations and then re-apply them, effectively giving you a fresh start. You can run it like this:
 
 ```bash:no-line-numbers
-php leaf db:reset
+leaf db:reset
 ```
 
 You can also reset a specific table by passing the table name as an argument:
 
 ```bash:no-line-numbers
-php leaf db:reset users
+leaf db:reset users
 ```
 
 ------
@@ -374,13 +374,13 @@ php leaf db:reset users
 Finally, if you want to completely remove all tables from your database, you can use the `db:drop` command, meaning all your data and tables will be deleted. Use this command with caution:
 
 ```bash:no-line-numbers
-php leaf db:drop
+leaf db:drop
 ```
 
 You can also drop a specific table by passing the table name as an argument:
 
 ```bash:no-line-numbers
-php leaf db:drop users
+leaf db:drop users
 ```
 
 ## Seeding your database
@@ -416,7 +416,7 @@ seeds:
 After creating your seeder, you can run your seeders using the `db:seed` command:
 
 ```bash:no-line-numbers
-php leaf db:seed
+leaf db:seed
 ```
 
 This will generate 10 seeds for the `users` table with the same data which is not very useful. To generate multiple fake seeds, you can use what other frameworks call a factory.
@@ -439,13 +439,13 @@ In this example, we're generating 10 fake records for the `users` table.
 After adding your seeds, you can run your seeders using the `db:seed` command:
 
 ```bash:no-line-numbers
-php leaf db:seed
+leaf db:seed
 ```
 
 If you want to seed a specific table, you can pass the table name as an argument to the `db:seed` command:
 
 ```bash:no-line-numbers
-php leaf db:seed users
+leaf db:seed users
 ```
 
 ## Writing custom seeders <Badge>New</Badge>
@@ -488,7 +488,7 @@ seeds:
 Then, when you run the `db:seed` command, Leaf will call the `__seeder` method on your model to generate the seed data.
 
 ```bash:no-line-numbers
-php leaf db:seed
+leaf db:seed
 ```
 
 <!--
@@ -530,5 +530,5 @@ class ImportUsersFromOldTable
 Now you just need to run the script using the `db:script` command:
 
 ```bash:no-line-numbers
-php leaf db:script ImportUsersFromOldTable
+leaf db:script ImportUsersFromOldTable
 ``` -->

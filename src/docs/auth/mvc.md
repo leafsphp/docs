@@ -42,7 +42,7 @@ AUTH_SESSIONS=true
 These are options for the database table to store users, the primary key of the table, whether to use timestamps and the format of the timestamps, and whether to use sessions. If you need to configure something else, you will need to publish the entire auth config using the MVC CLI:
 
 ```bash:no-line-numbers
-php leaf config:publish auth
+leaf config:publish auth
 ```
 
 This will generate a `config/auth.php` file with the default auth config. You can then edit this file to suit your needs.
