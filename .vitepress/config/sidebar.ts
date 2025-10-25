@@ -178,11 +178,19 @@ const sidebar = [
       { text: 'Schema Files', link: '/docs/database/files' },
       { text: 'Services', link: '/docs/mvc/services' },
       // { text: 'Factories', link: '/docs/database/factories' },
-      { text: 'Writing Commands', link: '/docs/mvc/commands' },
       // { text: 'Mailing', link: '/docs/utils/mail/mvc' },
       { text: 'MVC Globals', link: '/docs/mvc/globals' },
       { text: 'Custom Libraries', link: '/docs/mvc/libraries' },
-      { text: 'MVC Console Tool', link: '/docs/mvc/console' },
+      // { text: 'MVC Console Tool', link: '/docs/mvc/console' },
+    ],
+  },
+  {
+    text: 'Console Apps',
+    // collapsible: true,
+    // collapsed: true,
+    items: [
+      { text: 'Leaf Seedling', link: '/docs/seedling/' },
+      { text: 'Writing Commands', link: '/docs/mvc/commands' },
     ],
   },
   // {

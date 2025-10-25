@@ -1,21 +1,21 @@
 # Writing Commands
 
-Commands let you automate repetitive tasks—whether it's setting up a project, running tests, or deploying your app. Instead of handling these tasks manually, you can encapsulate them into reusable commands that you or other developers can run effortlessly.
-
-Leaf MVC ships with a CLI tool that allows you to create and manage custom commands for your application.
+Commands let you automate repetitive tasks—whether it's spinning up a project, running tests, or deploying your app. You can wrap all that logic into reusable commands that you or your team run in a heartbeat.
 
 ::: details Choosing Seedling over Leaf MVC
 
-While Leaf MVC provides a robust framework for building web applications, if your primary focus is on creating and managing console commands, you might find [Leaf Seedling](https://seedling.leafphp.dev) to be a more streamlined choice. Leaf Seedling is specifically designed for building command-line applications, offering a lightweight and efficient environment tailored for CLI tasks. It provides all the necessary tools and features to create, organize, and execute commands without the additional overhead of a full web framework. If your project is centered around command-line utilities, without the need for web functionalities, Leaf Seedling could be the ideal solution.
+If you're focused on building command-line tools rather than full web apps, consider using [Leaf's Seedling](/docs/seedling/) over Leaf MVC. Seedling offers a lightweight, optimized environment solely for CLI workflows — no HTTP or view layers required. It's perfect when your project is all about commands and utilities.
 
 :::
+
+This documentation covers both Leaf MVC and Seedling.
 
 ## Creating a command
 
 You can create a new command using the `g:command` command. This command will create a new command class in your `app/console` directory.
 
 ```bash:no-line-numbers
-php leaf g:command cache:purge
+leaf g:command cache:purge
 ```
 
 This will create a `CachePurgeCommand.php` file in your `app/console` directory. The file will contain a class that extends the `Command` class and implements the `handle()` method.
@@ -51,11 +51,11 @@ class CachePurgeCommand extends Command
 
 This has a few parts:
 
-- `protected $signature`: This is where you define the name of your command, its arguments, and its options. In this example, the command is named `cache:purge`, it has one optional argument named `argument`, and one optional option named `option` with a shortcut of `o`. This means that to call this command, you would run `php leaf cache:purge` in your terminal, and it can accept an optional argument and option like this: `php leaf cache:purge myArgument --option myOption` or `php leaf cache:purge myArgument -o myOption`.
+- `protected $signature`: This is where you define the name of your command, its arguments, and its options. In this example, the command is named `cache:purge`, it has one optional argument named `argument`, and one optional option named `option` with a shortcut of `o`. This means that to call this command, you would run `leaf cache:purge` in your terminal, and it can accept an optional argument and option like this: `leaf cache:purge myArgument --option myOption` or `leaf cache:purge myArgument -o myOption`.
 
-- `protected $description`: This is a brief description of what your command does. This will be displayed when you run `php leaf list` in your terminal.
+- `protected $description`: This is a brief description of what your command does. This will be displayed when you run `leaf list` in your terminal.
 
-- `protected $help`: This is a more detailed description of what your command does. This will be displayed when you run `php leaf cache:purge --help` in your terminal.
+- `protected $help`: This is a more detailed description of what your command does. This will be displayed when you run `leaf cache:purge --help` in your terminal.
 
 - `protected function handle()`: This is where you put the main logic for your command. This method will be called when you run your command in the terminal. In this example, it simply outputs a comment to the console with the values of the argument and option that were passed in.
 
@@ -68,7 +68,7 @@ After creating the command, Leaf will automatically register it so you can start
 Command arguments are values that are passed to the command when it is run in the console. For example, if you have a command named `example` and you run it like this:
 
 ```bash:no-line-numbers
-php leaf example argument1 argument2
+leaf example argument1 argument2
 ```
 
 For example, with system commands like `cd`, the argument is the directory you want to change to. In this case, `argument1` and `argument2` are arguments that are passed to the command.
@@ -84,13 +84,13 @@ protected $signature = 'example
 In this case, `argument1` is a required argument and `argument2` is an optional argument, so a user could run the command like this:
 
 ```bash:no-line-numbers
-php leaf example value1
+leaf example value1
 ```
 
 Or passing both arguments like this:
 
 ```bash:no-line-numbers
-php leaf example value1 value2
+leaf example value1 value2
 ```
 
 You can then access the argument in the command's body using the `argument()` method.
@@ -112,7 +112,7 @@ protected $signature = 'example
 In this case, `argument` can accept multiple values, so a user could run the command like this:
 
 ```bash:no-line-numbers
-php leaf example value1 value2 value3
+leaf example value1 value2 value3
 ```
 
 ## Command Options
@@ -120,7 +120,7 @@ php leaf example value1 value2 value3
 Command options are also known as flags or switches, and they are additional parameters that modify the behavior of a command. They are typically optional and can be specified in various ways, such as with a `--` prefix or a shorthand `-` prefix. For example, if you have a command named `example` and you run it like this:
 
 ```bash:no-line-numbers
-php leaf example --option1 --option2 valueForOption2 -o valueForOption3
+leaf example --option1 --option2 valueForOption2 -o valueForOption3
 ```
 
 To add an option to your command, you need to add it to the `protected $signature` property of your command class. You can define whether the option is required or optional by adding a `?` at the end of the option name. You can also define a shortcut for the option by adding it before the option name, separated by a `|`.
@@ -135,7 +135,7 @@ protected $signature = 'example
 In this case, `option1` is required, `option2` is optional, and `option3` is optional with a shortcut of `o`. A user could run the command like this:
 
 ```bash:no-line-numbers
-php leaf example --option1 --option2 valueForOption2 -o valueForOption3
+leaf example --option1 --option2 valueForOption2 -o valueForOption3
 ```
 
 You can then access the option in the command's body using the `option()` method.
