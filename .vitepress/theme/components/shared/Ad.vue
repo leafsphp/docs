@@ -1,7 +1,8 @@
 <template>
-  <a href="https://studio.leafphp.dev" target="_blank"
-    class="group block rounded-xl overflow-hidden mt-5 ![text-decoration:none] ring-1 ring-gray-200 dark:ring-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--vp-c-brand)]/10"
-    id="widget">
+  <a href="https://thecreativeleaf.com" target="_blank"
+    class="group block rounded-xl overflow-visible mt-5 ![text-decoration:none] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--vp-c-brand)]/10"
+    id="widget"
+    :class="{ 'animate-border': showAnimation }">
     <div class="relative">
       <img src="https://github.com/user-attachments/assets/db120ec2-7092-4b18-b1ec-96c9aab90641"
         class="w-full object-cover" alt="Leaf Studio" width="457" height="336">
@@ -31,3 +32,93 @@
     </div>
   </a>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      showAnimation: false
+    }
+  },
+  mounted() {
+    const storageKey = 'leafAdAnimationCount';
+    const count = parseInt(localStorage.getItem(storageKey) || '0', 10);
+
+    if (count < 3) {
+      this.showAnimation = true;
+      localStorage.setItem(storageKey, String(count + 1));
+    }
+  }
+}
+</script>
+
+<style scoped>
+#widget {
+  position: relative;
+}
+
+#widget.animate-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-brand) 0%,
+    var(--vp-c-brand) 25%,
+    transparent 100%
+  ) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 2s linear forwards;
+  animation-iteration-count: 2;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes borderFlow {
+  0% {
+    background: linear-gradient(
+      90deg,
+      var(--vp-c-brand) 0%,
+      var(--vp-c-brand) 25%,
+      transparent 100%
+    ) border-box;
+  }
+  25% {
+    background: linear-gradient(
+      180deg,
+      var(--vp-c-brand) 0%,
+      var(--vp-c-brand) 25%,
+      transparent 100%
+    ) border-box;
+  }
+  50% {
+    background: linear-gradient(
+      270deg,
+      var(--vp-c-brand) 0%,
+      var(--vp-c-brand) 25%,
+      transparent 100%
+    ) border-box;
+  }
+  75% {
+    background: linear-gradient(
+      0deg,
+      var(--vp-c-brand) 0%,
+      var(--vp-c-brand) 25%,
+      transparent 100%
+    ) border-box;
+  }
+  100% {
+    background: linear-gradient(
+      0deg,
+      var(--vp-c-brand) 0%,
+      var(--vp-c-brand) 25%,
+      transparent 100%
+    ) border-box;
+    opacity: 0;
+  }
+}
+</style>
