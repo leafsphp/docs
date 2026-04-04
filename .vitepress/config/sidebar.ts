@@ -129,6 +129,8 @@ const sidebar = [
       { text: 'Caching', link: '/docs/utils/cache' },
       { text: 'File System', link: '/docs/utils/fs' },
       { text: 'Queues/Jobs', link: '/docs/utils/queues' },
+      { text: 'Multi-Language', link: '/docs/utils/lingo' },
+      { text: 'Sitemaps', link: '/docs/utils/sitemaps' },
     ],
   },
   {
