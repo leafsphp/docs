@@ -1,7 +1,7 @@
 <!-- markdownlint-disable no-inline-html -->
-# Multi-locale support [BETA]
+# Multi-locale support <Badge type="warning">BETA</Badge>
 
-English is the most widely used language on the web, but it's not the only one. If you want to reach a global audience, you need to support multiple languages in your application. Leaf Lingo provides a first-party solution for adding multi-language support to your Leaf applications. With Lingo, you can provide translations for your application in multiple languages, and easily switch between them based on the user's preferences without having to alter your code structure or add any middleware.
+English is the most widely used language on the web, but it's far from the only one. Supporting multiple languages helps you reach a global audience. Leaf Lingo provides an official solution for adding multi-language support to your Leaf applications, without restructuring your code or adding middleware.
 
 ## Installation
 
@@ -21,7 +21,7 @@ composer require leafs/lingo
 
 :::
 
-Once installed, Lingo will automatically set up everything you need to get started with multi-language support in your Leaf application. You can start defining your translation files in the `app/locales` folder. Translation files are written in YML, and can use languages like `en.yml` and `de.yml` or specific locales like `en_US.yml` and `pt_BR.yml`.
+Once installed, Lingo automatically sets up everything you need for multi-language support. Define your translation files in the `app/locales` folder using language codes like `en.yml` and `de.yml`, or specific locales like `en_US.yml` and `pt_BR.yml`.
 
 ```yaml:no-line-numbers
 # app/locales/fr.yml
@@ -29,13 +29,13 @@ Once installed, Lingo will automatically set up everything you need to get start
 hero.title: "Bonjour le monde"
 ```
 
-From there, you can use the `lingo()` helper function to translate strings in your views or controllers.
+Now you can use the `lingo()` helper function to translate strings in your views or controllers:
 
 ```php:no-line-numbers
 $heroTitle = lingo('hero.title'); // "Bonjour le monde"
 ```
 
-In a Blade template, you can use it like this:
+In Blade templates, use it the same way:
 
 ```blade:no-line-numbers
 <h1>@lingo('hero.title')</h1> <!-- "Bonjour le monde" -->
@@ -55,7 +55,7 @@ app()->get('/about', function() {
 });
 ```
 
-Lingo will automatically create routes for each language like this:
+Lingo automatically creates routes for each language:
 
 ```txt
 /en/home
@@ -64,13 +64,13 @@ Lingo will automatically create routes for each language like this:
 /fr/about
 ```
 
-This will be done automatically for you, based on the locales you have defined in your translation files. If you have `de.yml` and `fr.yml`, Lingo will create routes for `/de/*` and `/fr/*`. It will also set up redirects so that if a user visits `/home`, they will be redirected to the default language route, e.g. `/en/home`. The default language can be configured in your `.env` file with `APP_LOCALE=...`.
+The routes are generated based on your translation files. If you have `de.yml` and `fr.yml`, Lingo creates routes for `/de/*` and `/fr/*`. It also redirects requests to base paths (like `/home`) to the default language route (e.g., `/en/home`). Set your default language in `.env` with `APP_LOCALE=...`.
 
 ### Header Mode <Badge type="warning">Experimental</Badge>
 
-Header mode is useful when you are building an API with Leaf and want to support multiple languages based on the `Accept-Language` header sent by the client. In this mode, Lingo will **not** create language-specific routes, but will instead determine the language to use based on the `Accept-Language` header.
+Use header mode when building an API that needs to support multiple languages via the `Accept-Language` header. In this mode, Lingo doesn't create language-specific routes. Instead, it determines the language from the `Accept-Language` header sent by the client.
 
-For example, if a client sends a request with the header `Accept-Language: fr`, Lingo will use the French translations for that request, even though the route is **not** prefixed with `/fr`.
+For example, a request with `Accept-Language: fr` uses French translations, even though the route isn't prefixed with `/fr`.
 
 To enable header mode, you need to set the following in your `.env` file:
 
@@ -80,7 +80,7 @@ LOCALES_STRATEGY=header
 
 ### Session Mode <Badge type="warning">Experimental</Badge>
 
-Session mode is useful when you want to allow users to switch languages without changing the URL structure. In this mode, Lingo will store the selected language in the user's session. When a user selects a language, Lingo will update the session with the chosen language, and all subsequent requests will use that language for translations. Again, there will be no language-specific routes created in this mode.
+Use session mode when you want users to switch languages without changing the URL. Lingo stores the selected language in the user's session, so all subsequent requests use that language. Like header mode, session mode doesn't create language-specific routes.
 
 To enable session mode, you need to set the following in your `.env` file:
 
@@ -90,7 +90,7 @@ LOCALES_STRATEGY=session
 
 ## Switching Locales
 
-Lingo uses the same approach for switching locales regardless of the mode you are using. You can use the `lingo()->setCurrentLocale()` method to create a route that handles locale switching. This will switch the current locale based on the strategy you have configured (routes or session). In header mode, this method will not have any effect since the locale is determined by the `Accept-Language` header.
+Lingo uses the same approach for switching locales across all modes. Use the `lingo()->setCurrentLocale()` method to create a route that handles locale switching. The method switches the current locale based on your configured strategy (routes or session). In header mode, this method has no effect since the locale is determined by the `Accept-Language` header.
 
 Here is an example of how to create a route for switching locales:
 
@@ -106,7 +106,7 @@ app()->post('/language/switch', function() {
 
 ### Switcher Templating
 
-You can create a simple language switcher in your views. Here is an example of how to do this in a Blade template:
+Create a simple language switcher in your views. Here's an example in Blade:
 
 ```php
 <form method="post" action="/language/switch">
@@ -120,7 +120,7 @@ You can create a simple language switcher in your views. Here is an example of h
 <h1>@lingo('welcome.title')</h1>
 ```
 
-`getAvailableLocalesWithNames()` will return an array with the available locales as keys and the language names as values, so you can easily create a dropdown or any other UI element for switching languages, eg:
+`getAvailableLocalesWithNames()` returns an array with locale codes as keys and language names as values, making it easy to create dropdowns or other UI elements:
 
 ```php
 [
@@ -134,7 +134,7 @@ You can create a simple language switcher in your views. Here is an example of h
 ]
 ```
 
-You can also use `getAvailableLocales()` if you just want the locale codes, eg:
+Use `getAvailableLocales()` if you only need the locale codes:
 
 ```php
 [
@@ -148,7 +148,7 @@ You can also use `getAvailableLocales()` if you just want the locale codes, eg:
 ]
 ```
 
-Now you should be able to display translations and switch between languages in your Leaf application using Lingo!
+You now have everything you need to display translations and switch languages in your Leaf application with Lingo!
 
 ### Current Locale Info
 
@@ -161,7 +161,7 @@ You can retrieve information about the current locale using the following method
 
 ## Translation Parameters
 
-Lingo supports translation parameters, allowing you to insert dynamic values into your translations. You can define placeholders in your translation strings using the `{{ parameterName }}` or `$parameterName` syntax. For example:
+Lingo supports translation parameters for inserting dynamic values into translations. Define placeholders in your translation strings using the `{{ parameterName }}` or `$parameterName` syntax:
 
 ```yaml
 # app/locales/en.yml
@@ -177,9 +177,9 @@ $message1 = lingo('greeting.message', ['name' => 'John']); // "Hello, John! Welc
 $message2 = lingo('farewell.message', ['name' => 'John']); // "Goodbye, John! See you next time."
 ```
 
-## Multi-language routes
+## Multi-language routes <Badge>Router Mode Only</Badge>
 
-Some applications may require multi-language routes where certain parts of the URL are translated based on the current locale. For example, you might want `/en/products` to be `/fr/produits` in French. Lingo supports this functionality through Leaf's route parameters. Just define your routes as you always would, and then pass the route variants as an array to the route definition:
+Some applications need multi-language routes where URL segments are translated based on the current locale. For example, `/en/products` could be `/fr/produits` in French. Lingo supports this through Leaf's route parameters. Define your routes as usual, then pass route variants as an array:
 
 ```php
 app()->get('/products', [
@@ -192,11 +192,24 @@ app()->get('/products', [
 ]);
 ```
 
-Leaf will automatically handle the routing based on the current locale, allowing you to have translated routes in your application. Switching between locales will still work as expected, and users will be redirected to the appropriate translated route, so no additional handling is required on your part.
+Leaf automatically handles routing based on the current locale. Switching locales redirects users to the appropriate translated route without any additional handling.
 
 Note that this feature only works with Lingo's route-based strategy.
 
-## Lingo URL
+## Disabling Auto-Route Generation <Badge>Router Mode Only</Badge>
+
+By default, Lingo's route-based strategy generates localized routes for all your routes. To disable this for specific routes, set `lingo.routes` to `false`:
+
+```php
+app()->get('/contact', [
+    'lingo.routes' => false,
+    'ContactController@index'
+]);
+```
+
+This is useful for routes that shouldn't be localized, like API endpoints or routes that should be language-independent.r
+
+## Lingo URL <Badge>Router Mode Only</Badge>
 
 When using Lingo's route-based strategy, you can generate localized URLs using the `lingo()->url()` method. This method takes a path as an argument and returns the localized URL based on the current locale.
 
@@ -204,11 +217,11 @@ When using Lingo's route-based strategy, you can generate localized URLs using t
 $url = lingo()->url('home'); // e.g., "/en/home" or "/fr/home"
 ```
 
-If you are not using the route-based strategy, this method will simply return the path as is.
+In non-route-based strategies, this method returns the path unchanged.
 
 ## Using Variants
 
-Lingo provides a convenient method called `variants()` that allows you to define different string variants based on the current locale. This is particularly useful for localizing routes or other strings that may not be part of the translation files.
+The `variants()` method lets you define different string variants based on the current locale. This is useful for localizing routes or strings outside your translation files:
 
 ```php
 $localizedRoute = lingo()->variants([
@@ -219,7 +232,7 @@ $localizedRoute = lingo()->variants([
 // e.g., "/en/products" or "/fr/produits" or "/es/productos"
 ```
 
-Variants aren't just limited to routes; you can use them for text, URLs, or any other strings that need localization based on the current locale.
+You can also use variants for text, URLs, or other strings:
 
 ```php
 $greeting = lingo()->variants([
@@ -230,4 +243,4 @@ $greeting = lingo()->variants([
 // e.g., "Hello" or "Bonjour" or "Hola"
 ```
 
-We recommend using the translation files instead of `variants()` for most text translations, as it provides better organization and maintainability. However, `variants()` can be useful for quick translations which are non-repetitive or for localized routes.
+For most text, translation files are better because they're more organized and maintainable. Use `variants()` for one-off translations or localized routes.
