@@ -10,14 +10,14 @@ To get started, create an account on the payment provider you want to use, and g
 
 ::: code-group
 
-```env:no-line-numbers [Stripe]
+```txt:no-line-numbers [Stripe]
 BILLING_PROVIDER=stripe
 STRIPE_API_KEY=sk_test_XXXX
 STRIPE_PUBLISHABLE_KEY=pk_test_XXXX
 STRIPE_WEBHOOK_SECRET=whsec_XXXX # only if you are using webhooks
 ```
 
-```env:no-line-numbers [PayStack]
+```txt:no-line-numbers [PayStack]
 BILLING_PROVIDER=paystack
 PAYSTACK_API_KEY=sk_test_XXXXX
 PAYSTACK_PUBLISHABLE_KEY=pk_text_XXXX
@@ -646,13 +646,13 @@ app()->get('/protected', [
 
 PayStack is only available in Africa, and relies on local currency. Stripe is available globally and supports multiple currencies, so Leaf's billing allows you to set your currency in your `.env` file.
 
-```env:no-line-numbers
+```txt:no-line-numbers
 BILLING_CURRENCY=GHS
 ```
 
 For your applications, you may need to display a different currency from the actual purchase currency. While we advise against this, you may run into geolocation issues which may make this necessary. Leaf Billing allows you to set up a display currency with your own convertion.
 
-```env:no-line-numbers
+```txt:no-line-numbers
 BILLING_CURRENCY_DISPLAY=USD
 BILLING_CURRENCY_DISPLAY_SYMBOL=$
 BILLING_CURRENCY_DISPLAY_CONVERSION=0.07

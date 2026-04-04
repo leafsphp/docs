@@ -20,7 +20,7 @@ const nav: DefaultTheme.NavItem[] = [
       },
       {
         text: 'Hana JS',
-        link: 'https://hana.leafphp.dev',
+        link: 'https://hanabira.dev',
       },
       {
         text: 'Seedling Framework',
@@ -37,7 +37,7 @@ const nav: DefaultTheme.NavItem[] = [
     ],
   },
   {
-    text: '💚 SUPPORT LEAF',
+    text: '🧡 SUPPORT LEAF',
     link: '/support/',
   },
 ];

@@ -30,7 +30,7 @@ app()->config([
 ]);
 ```
 
-```env:no-line-numbers [Leaf MVC]
+```txt:no-line-numbers [Leaf MVC]
 APP_DEBUG=false
 ```
 

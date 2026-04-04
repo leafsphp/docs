@@ -2,11 +2,10 @@
   <section
     class="flex flex-col justify-center items-center sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10 !py-28 !my-48 rounded-3xl">
     <div class="text-center mb-4 max-w-4xl mx-auto">
-      <h2 class="!text-3xl md:!text-4xl font-bold !mb-4 text-gray-800 dark:text-gray-100 !border-none">Worried about
-        frontend lock-in? Don't be.</h2>
+      <h2 class="!text-3xl md:!text-4xl font-bold !mb-4 text-gray-800 dark:text-gray-100 !border-none">Your stack stays yours</h2>
       <p class="text-lg text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto">
-        If you're tired of frameworks that dictate your frontend choices, Leaf is different. Use any frontend framework
-        you prefer — Vue, React, Svelte, Blade or bring your own view engine.
+        Use any frontend you want. React, Vue, Svelte, Blade, PHP. Use <br> whatever you want. <span class="text-[var(--vp-c-brand-1)]">Your tools follow
+          your stack.</span>
       </p>
       <a href="/docs/frontend/" class="inline-flex items-center text-blue-500 font-medium hover:text-blue-600">
         Learn more
@@ -22,14 +21,7 @@
       <div class="code-preview-container rounded-3xl overflow-hidden shadow-lg">
         <!-- Code Window -->
         <div class="bg-[var(--vp-code-block-bg)] p-8 text-white">
-          <!-- <div class="flex items-center mb-3">
-            <div class="flex space-x-2">
-              <div class="w-3 h-3 rounded-full bg-red-500"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            </div>
-            <div class="ml-4 text-gray-400 text-xs">file.php</div>
-          </div> -->
+          <div class="mb-4 text-gray-400 text-sm font-medium">Backend logic</div>
           <pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">app</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">get</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'/menu/items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">, </span><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">function</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">() {</span></span>
 <span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">  return</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;"> response</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">inertia</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'menu'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">, [</span></span>
 <span class="line"><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">    'items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> =&gt; </span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">db</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">select</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'menu_items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">all</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()</span></span>
@@ -38,11 +30,11 @@
         </div>
 
         <!-- Preview Tabs -->
-        <div class="bg-white dark:bg-gray-800">
-
+        <div class="bg-white dark:bg-orange-900/10">
+          <div class="px-8 pt-6 pb-2 text-gray-500 dark:text-gray-400 text-sm font-medium">Works with any frontend</div>
           <!-- Preview Content -->
           <div class="p-4">
-            <div class="flex items-start p-6 bg-gray-50 dark:bg-gray-700 rounded-lg mb-3">
+            <div class="flex items-start p-6 bg-gray-50 dark:bg-orange-900/5 rounded-lg mb-3">
               <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-md mr-3 flex items-center justify-center">
                 <span class="text-orange-600 dark:text-orange-300">🍔</span>
               </div>
@@ -52,7 +44,7 @@
                 <div class="text-sm font-semibold text-blue-500">$8.99</div>
               </div>
             </div>
-            <div class="flex items-start p-6 bg-gray-50 dark:bg-gray-700 rounded-lg mb-3">
+            <div class="flex items-start p-6 bg-gray-50 dark:bg-orange-900/5 rounded-lg mb-3">
               <div class="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-md mr-3 flex items-center justify-center">
                 <span class="text-red-600 dark:text-red-300">🍗</span>
               </div>
@@ -62,7 +54,7 @@
                 <div class="text-sm font-semibold text-blue-500">$9.49</div>
               </div>
             </div>
-            <div class="flex items-start p-6 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="flex items-start p-6 bg-gray-50 dark:bg-orange-900/5 rounded-lg">
               <div class="w-10 h-10 bg-amber-100 dark:bg-amber-900 rounded-md mr-3 flex items-center justify-center">
                 <span class="text-amber-600 dark:text-amber-300">🥩</span>
               </div>
@@ -93,6 +85,7 @@
             </svg>
           </div>
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300">React</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 mt-1">or anything</span>
         </div>
         <div class="flex flex-col items-center">
           <div class="w-12 h-12 flex items-center justify-center rounded-full mb-2">
@@ -104,6 +97,7 @@
             </svg>
           </div>
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Vue</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 mt-1">or anything</span>
         </div>
         <div class="flex flex-col items-center">
           <div class="w-12 h-12 flex items-center justify-center rounded-full mb-2">
@@ -116,6 +110,7 @@
             </svg>
           </div>
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Svelte</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 mt-1">or anything</span>
         </div>
         <div class="flex flex-col items-center">
           <div class="w-12 h-12 flex items-center justify-center rounded-full mb-2">
@@ -133,6 +128,7 @@
             </svg>
           </div>
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Blade</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 mt-1">or anything</span>
         </div>
       </div>
     </div>

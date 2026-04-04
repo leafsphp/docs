@@ -7,16 +7,13 @@ import Button from '../shared/Button.vue';
     <section
       class="flex flex-col justify-center items-center sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10">
       <div class="text-center mb-24">
-        <h1 class="!text-3xl md:!text-5xl mb-8">Try it out️</h1>
+        <h1 class="!text-3xl md:!text-5xl mb-8">Try it. It just works.</h1>
         <p class="md:px-[22%]">
-          We’ve said enough about Leaf and what it can do. Why don’t you try changing the code below and see what you
-          can
-          create. If you want to follow a guided tutorial in our sandbox, you can check out the interactive tutorial
-          🏄‍♀
+          Write real code. Run it instantly. See how everything stays simple, structured, and easy to understand.
         </p>
 
         <Button as="a" href="/tutorial/" class="!text-white fill-white">
-          <span>Go to tutorial</span>
+          <span>Try the tutorial</span>
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
             <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
           </svg>

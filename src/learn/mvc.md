@@ -215,7 +215,7 @@ leaf g:model subscriber
 
 We don’t need to modify the model—Leaf keeps things simple. But before we can store anything, we need to connect our database. Open your .env file and add your database credentials:
 
-```env
+```txt
 DB_CONNECTION=mysql
 DB_HOST=xxx
 DB_PORT=xxx

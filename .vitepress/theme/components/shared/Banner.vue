@@ -32,7 +32,7 @@ const dismiss = () => {
 <template>
   <div ref="el" class="banner">
     <div class="text flex items-center justify-center gap-2">
-      We’re taking Leaf to the next level, and we need your help. <a href="/support" class="flex">Become a sponsor <ArrowRight /> </a>
+      Leaf V is here — a new era for PHP development. <a href="/docs/" class="flex">Explore what's new <ArrowRight /> </a>
     </div>
 
     <button type="button" @click="dismiss">

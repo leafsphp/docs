@@ -4,7 +4,7 @@ const props = withDefaults(defineProps<{
   color?: string
 }>(), {
   accelerate: false,
-  color: '#00DC82',
+  color: '#E8753A',
 })
 </script>
 

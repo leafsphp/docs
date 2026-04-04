@@ -85,5 +85,5 @@ export default defineConfig({
 
   rewrites: {
     '/api/': '/api/app.html',
-  }
+  },
 });

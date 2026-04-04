@@ -1,83 +1,36 @@
 <script setup>
 import { ref } from 'vue';
 
-const tooling = [
-  // {
-  //   icon: '🚦',
-  //   title: 'Powerful Routing',
-  //   description: 'Leaf comes with a super lightweight but powerful router that handles all the heavy lifting for you.',
-  //   // image: '/images/illustrations/routing.svg',
-  //   link: '/docs/routing/'
-  // },
+const properties = [
   {
-    icon: '🔐',
-    title: 'Dead-simple Authentication',
-    description: 'Create full-fledged authentication systems for your API or with a full UI in seconds with Leaf Auth.',
-    // image: '/images/illustrations/auth.svg',
-    link: '/docs/auth/'
+    title: 'Consistent by default',
+    description: 'Every part of your app follows the same patterns, so nothing feels out of place.',
   },
   {
-    icon: '💾',
-    title: 'Powerful DB Layer',
-    description: 'Leaf provides a highly performant database layer for all your queries with support for ORMs like Eloquent.',
-    // image: '/images/illustrations/db.svg',
-    link: '/docs/database/'
-  },
-  // {
-  //   icon: '🍱',
-  //   title: 'Multiple Flavours',
-  //   description: 'No application is the same, why should every framework be the same? Customize your Leaf installation with our powerful CLI.',
-  //   link: '/docs/cli/',
-  // },
-  {
-    icon: '📡',
-    title: 'Simplified Http API',
-    description: 'Leaf provides user-friendly APIs for handling requests, CORS, sessions, cookies and everything in-between.',
-    link: '/docs/http/request',
+    title: 'Predictable structure',
+    description: 'You always know where things live and how they connect.',
   },
   {
-    icon: '📦',
-    title: 'Useful App Utils',
-    description: 'From data fetching to dates, validation, caching, mailing, logging, everyday functions and all those goodies, Leaf has got you covered.',
-    link: '/docs/modules',
+    title: 'Clean, readable code',
+    description: 'What you build stays easy to understand and maintain.',
   },
-  // {
-  //   icon: '🔍',
-  //   title: 'Graceful Erroring',
-  //   description: 'There are no “Oh no!” moments with Leaf. We\'ve got all the tools you need to fail-in-style: from devtools to debug modes and custom errors.',
-  //   link: '/docs/routing/error-handling',
-  // },
-  // {
-  //   icon: '🎨',
-  //   title: 'Dynamic View Layer',
-  //   description: 'Leaf supports multiple template engines and even frameworks like React, Vue and Svelte.',
-  //   link: '/docs/frontend/',
-  // },
-  // {
-  //   icon: '🔧',
-  //   title: 'Friendly system utilities',
-  //   description: 'Access/modify system info securely without dealing with the complex functions taken directly from C.',
-  //   link: '/docs/modules',
-  // },
-  // {
-  //   icon: '🏎️',
-  //   title: 'Swoole Support',
-  //   description: 'Leaf + Swoole = Rocket + Gravity assist. Leaf offers a clean way to use Swoole with the same API.',
-  //   link: '/docs/swoole',
-  // },
+  {
+    title: 'Built to extend',
+    description: 'Adding new features doesn\'t break the system or create chaos.',
+  },
 ];
 
-const tab = ref(tooling[0].title);
+const tab = ref(properties[0].title);
 </script>
 
 <template>
   <section
-    class="flex flex-col justify-center items-center mb-24  sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10 !pt-28 !my-48">
+    class="flex flex-col justify-center items-center mb-24 sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10 !pt-28 !my-48">
     <div class="text-center mb-4">
-      <h1 class="md:!text-4xl">Everything you need to build and grow a SaaS</h1>
-      <p class="max-w-[700px] md:text-xl">
-        Leaf provides lightweight, customizable tools designed to help you to build, ship, and scale—without
-        unnecessary complexity. Now, you can quickly go from idea to profitable product.
+      <h1 class="md:!text-4xl">Your code stays structured. No matter how you build.</h1>
+      <p class="max-w-[700px] md:text-xl !mx-auto">
+        Leaf keeps your app consistent and readable from day one, so every feature, change, and iteration fits naturally
+        into your codebase.
       </p>
     </div>
 
@@ -90,236 +43,117 @@ const tab = ref(tooling[0].title);
       <div class="space-y-4 lg:grid grid-cols-3 gap-4 lg:space-y-0">
         <div class="w-full">
           <div class="flex space-x-2 sm:space-y-4 sm:space-x-0 sm:block overflow-y-auto max-h-[600px]">
-            <button v-for="item in tooling" :key="item.title" :class="tab !== item.title ?
+            <button v-for="item in properties" :key="item.title" :class="tab !== item.title ?
               'hover:bg-white border-neutral-300/60 dark:border-neutral-800 hover:border-neutral-200 dark:hover:bg-[var(--vp-c-bg-alt)] dark:hover:border-neutral-800' :
               'dark:bg-[var(--vp-c-bg-alt)] bg-white border-neutral-200 dark:border-neutral-800'"
               class="flex flex-col items-center flex-1 w-full py-5 space-y-2 text-left duration-200 ease-out border rounded-lg sm:px-6 sm:space-y-0 sm:items-start sm:flex-row sm:rounded-2xl group hover:bg-white border-neutral-300/60 dark:border-neutral-800 hover:border-neutral-200 dark:hover:bg-[var(--vp-c-bg-alt)] dark:hover:border-neutral-800"
               @click.prevent="tab = item.title">
-              {{ item.icon }}
               <div :class="tab !== item.title ? 'opacity-80 group-hover:opacity-100' : 'opacity-100'"
                 class="opacity-80 group-hover:opacity-100 ml-3">
                 <div
                   class="mb-0 text-sm font-medium sm:text-lg sm:font-semibold md:mb-1 text-neutral-700 font-inter-tight dark:text-neutral-200">
                   {{ item.title }}
                 </div>
-                <div class="hidden text-gray-800 dark:text-gray-300 md:block">{{ item.description }}</div>
+                <div class="hidden text-gray-600 dark:text-gray-400 md:block text-sm">{{ item.description }}</div>
               </div>
             </button>
           </div>
         </div>
 
         <div class="col-span-2">
+          <!-- Consistent by default -->
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-show="tab === 'Powerful DB Layer'">
-            <h3 class="font-bold text-2xl !mt-0">Powerful DB Layer</h3>
+            v-show="tab === 'Consistent by default'">
+            <h3 class="font-bold text-2xl !mt-0">{{ properties[0].title }}</h3>
             <div class="mt-4 leading-relaxed space-y-4">
-              <p>Leaf's DB module takes all the complexity out of data fetching, relationships and saving data in your
-                database.</p>
+              <p>Every module in Leaf follows the same API patterns. Routes, controllers, models, and services all use
+                familiar patterns, so you don't have to learn a different way for each part.</p>
 
               <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
                   class="lang">php</span>
                 <pre
                   class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">db</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">select</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'users'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">where</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'name'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'John Doe'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">with</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'transactions'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">fetchObj</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span></code></pre>
+                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">auth</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">login</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([...]);</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">db</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">select</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(...)</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">where</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([...]);</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">cache</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'key'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">response</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">json</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([...]);</span></span></code></pre>
               </div>
 
-              <p>
-                For more complicated applications, Leaf MVC comes built-in with Eloquent ORM, a powerful and expressive
-                ORM that allows you to interact with your database using a simple and expressive syntax.
-              </p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$flight </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> Flight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">::</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">where</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'number'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'FR 900'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">first</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$flight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">number </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'FR 456'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$flight</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">save</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span></code></pre>
-              </div>
-
-              <p><a href="/docs/database/">DB documentation</a>.</p>
+              <p>Same fluent, chainable pattern across everything. This predictability is what makes tools <span class="text-[var(--vp-c-brand)]">and AI</span> work
+                better with your code.</p>
             </div>
           </div>
 
+          <!-- Predictable structure -->
           <div
             class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-show="tab === 'Dead-simple Authentication'">
-            <h3 class="font-bold text-2xl !mt-0">Authentication</h3>
+            v-show="tab === 'Predictable structure'">
+            <h3 class="font-bold text-2xl !mt-0">{{ properties[1].title }}</h3>
             <div class="mt-4 leading-relaxed space-y-4">
-              <p>Sign users in or create accounts using Leaf's Auth module:</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">auth</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">login</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">...]);</span></span></code></pre>
-              </div>
-
-              <p>
-                Leaf will automatically handle the authentication process, including hashing passwords and storing user
-                + sessions and JWTs. You can also protect your routes with Leaf's middleware.
-              </p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'/login'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'middleware'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'auth.required'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">function</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> () {</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // this route is only accessible to logged in users</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}]);</span></span></code></pre>
-              </div>
-
-              <p>From account verification to roles and permissions, Leaf Auth gives you a ton of features right out of
-                the box. Check out the <a href="/docs/auth/">authentication documentation</a>.</p>
-            </div>
-          </div>
-
-          <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-show="tab === 'Simplified Http API'">
-            <h3 class="font-bold text-2xl !mt-0">Simplified HTTP</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
-              <p>Leaf abstracts all the annoying little HTTP details and provides a simple API for handling requests,
-                CORS, sessions, cookies and everything in-between.</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">cors</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">app</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">csrf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">...);</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">session</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">...);</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">cookies</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">...);</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">response</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">json</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">...);</span></span></code></pre>
-              </div>
-
-              <p>You can also quickly validate any request that hits your application</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$validatedData </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> request</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">validate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'title'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'string|min:5'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'body'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'email'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'description'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'optional|string|min:8'</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]);</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">!</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$validatedData) {</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  $errors </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> request</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">errors</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
-              </div>
-
-              <p>You also have access to flash messages, downloads, redirects, and more.
-                Check out the <a href="/docs/http/request.html">HTTP documentation</a>.</p>
-            </div>
-          </div>
-
-          <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-show="tab === 'Useful App Utils'">
-            <h3 class="font-bold text-2xl !mt-0">Useful App Utils</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
-              <p>Leaf provides all the utilities you need to handle all the tiny repetitive tasks that come with
-                building
-                a web application. Want to send an email? No problem.</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">mailer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">create</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'subject'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'Leaf Mail Test'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'body'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'This is a test mail from Leaf Mail using gmail'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'recipientEmail'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'example@example.com'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'recipientName'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'Example'</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]);</span></span></code></pre>
-              </div>
-
-              <p>Need to integrate with an external API? Fetch has you covered.</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$response </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> fetch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(<span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'https://example.com/api/something'</span>);</span></span></code></pre>
-              </div>
-
-              <p>Saving an uploaded file?</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$uploaded </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> storage</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">upload</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'fileToUpload'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'path/to/uploads'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre>
-              </div>
-
-              <p>Need to cache something?</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">$dataFromDatabase</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> cache</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span></span>
-<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    'queries.complexQuery'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    60</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> *</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 60</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">,</span></span>
-<span class="line"><span style="---shiki-light:#D73A49;--shiki-dark:#F97583;">    function</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> {</span></span>
-<span class="line"><span style="--shiki-light:#7F848E;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic;">        // Simulate a complex database query</span></span>
-<span class="line"><span style="---shiki-light:#D73A49;--shiki-dark:#F97583;">        return</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> db</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">select</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'complex_table'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">where</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'some_column'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'some_value'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">get</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">();</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">    }</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">);</span></span></code></pre>
-              </div>
-
-              <p>Date and time formatting?</p>
-
-              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
-                  class="lang">php</span>
-                <pre
-                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">tick</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">now</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(); </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// get the current timestamp</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">tick</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">format</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'YYYY-MM-DD'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// format the current timestamp</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">tick</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">startOf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'month'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'day'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'year'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2018</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  -&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">format</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'YYYY-MM-DD HH:mm:ss'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre>
-              </div>
-
-              <p>In addition to these, Leaf also provides HTTP Caching, built-in request parsing and more.</p>
-            </div>
-          </div>
-
-          <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
-            v-show="tab === 'Dynamic View Layer'">
-            <h3 class="font-bold text-2xl !mt-0">Dynamic View Layer</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
-              <p>Leaf has support for some of the most popular frontend technologies, from templating engines like Blade
-                and BareUI, to frontend frameworks like React, Vue and Svelte, bundling with Vite and styling with
-                TailwindCSS.</p>
-
-              <p>The choice of frontend technology is yours, and Leaf makes it even easier with commands to scaffold
-                your frontend tooling.</p>
+              <p>Controllers handle requests. Models query data. Views render the UI. Everything lives where you'd
+                expect it.</p>
 
               <div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
                   class="lang">bash</span>
                 <pre
                   class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
-                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">leaf view:install --react</span></span></code></pre>
+                  tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">app/</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  controllers/  <span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// request handlers</span></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  models/       <span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// data queries</span></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  views/        <span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// views and UI</span></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  routes/       <span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// all endpoints</span></span></span></code></pre>
               </div>
 
-              <p>Leaf auto-detects your frontend files and bundles them whenever you run the leaf serve command. This
-                means you don't really have to do anything to get your frontend working correctly.</p>
+              <p>No hunting for files. No hidden conventions. Your entire structure is immediately obvious to anyone
+                reading it, <span class="text-[var(--vp-c-brand-1)]">especially AI and new team members</span></p>
+            </div>
+          </div>
 
-              <p>Find out more on the <a href="/docs/frontend/">Frontend documentation</a></p>
+          <!-- Clean, readable code -->
+          <div
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            v-show="tab === 'Clean, readable code'">
+            <h3 class="font-bold text-2xl !mt-0">{{ properties[2].title }}</h3>
+            <div class="mt-4 leading-relaxed space-y-4">
+              <p>Leaf keeps boilerplate out of the way. You write what matters.</p>
+
+              <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
+                  class="lang">php</span>
+                <pre
+                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
+                  tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> storeUser</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">() {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  $data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> request</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">validate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([...]); </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// validated</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  User::</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">create</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">($data);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">return</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> response</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()-&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">json</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">([...]); </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// sent</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+              </div>
+
+              <p>No framework noise. Just your application logic, clearly expressed.</p>
+            </div>
+          </div>
+
+          <!-- Built to extend -->
+          <div
+            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            v-show="tab === 'Built to extend'">
+            <h3 class="font-bold text-2xl !mt-0">{{ properties[3].title }}</h3>
+            <div class="mt-4 leading-relaxed space-y-4">
+              <p>Because everything follows the same patterns, <span class="font-semibold text-[var(--vp-c-brand)]">AI can generate code that fits perfectly</span>. Human code and generated code merge seamlessly. No friction. No cleanup.</p>
+
+              <div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
+                  class="lang">bash</span>
+                <pre
+                  class="shiki shiki-themes github-light github-dark vp-code dark:!bg-[var(--vp-c-bg)] !bg-[var(--vp-c-bg-alt)]"
+                  tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// You: "Build a payment module"</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// AI generates this:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">app/models/Payment.php</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">app/controllers/PaymentController.php</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">app/services/PaymentService.php</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// And it all just works, perfectly placed</span></span></code></pre>
+              </div>
+
+              <p><span class="text-[var(--vp-c-brand)]">This is leverage</span>. AI does the repetitive work. You refine, review, and direct. The code stays clean, readable, and under your control. No black boxes. No surprises. Just faster iteration.</p>
             </div>
           </div>
         </div>

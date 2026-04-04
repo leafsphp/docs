@@ -1,14 +1,14 @@
 <script setup>
 import Hero from './Hero.vue';
 import Tooling from './Tooling.vue';
-import Deploy from './Deploy.vue';
+import SpeedDemo from './SpeedDemo.vue';
 import TryIt from './TryIt.vue';
 import Sponsors from './Sponsors.vue';
 import Testimonials from './Testimonials.vue';
 import Community from './Community.vue';
 import Footer from './Footer.vue';
 import FlexibleFrontend from './FlexibleFrontend.vue';
-import NewsLetterSubstack from './../Community/NewsLetterSubstack.vue';
+import NewsLetterSubstack from '../Community/NewsLetterSubstack.vue';
 import Blog from '../Community/Blog.vue';
 import Speak from '../Community/Speak.vue';
 import WallOfFame from '../Community/WallOfFame.vue';
@@ -16,7 +16,7 @@ import WallOfFame from '../Community/WallOfFame.vue';
 
 <template>
   <Hero />
-  <Deploy />
+  <SpeedDemo />
   <Tooling />
   <FlexibleFrontend />
   <Testimonials />

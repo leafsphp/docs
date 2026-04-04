@@ -309,7 +309,7 @@ Just as with every other aspect of Leaf, we try to set everything up for you so 
 
 Leaf's queue system uses the database as the default queue backend. If you want to use Redis instead, you can change the default queue connection in your `.env` file:
 
-```env:no-line-numbers
+```txt:no-line-numbers
 QUEUE_CONNECTION=redis
 ```
 

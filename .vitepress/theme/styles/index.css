@@ -7,60 +7,53 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #3077c6,
-    #3eaf7c
+    #D4652E,
+    #F5B731
   );
   --vp-c-banner: var(--vp-c-brand-1);
-  --vp-home-hero-name-background: #3eaf7c;
-  --vp-c-brand-1: #3eaf7c;
-  --vp-c-brand-2: #07c16b;
-  --vp-button-brand-bg: #3eaf7c;
-  --vp-button-brand-hover-bg: #b07b29;
-  --vp-code-color: #3077c6;
-  --vp-button-brand-alt-bg: #919191;
-  --vp-c-ghost: #476582;
+  --vp-home-hero-name-background: #D4652E;
+  --vp-c-brand-1: #D4652E;
+  --vp-c-brand-2: #C05424;
+  --vp-c-brand-3: #F5B731;
+  --vp-button-brand-bg: #D4652E;
+  --vp-button-brand-hover-bg: #BE4A1F;
+  --vp-code-color: #D4652E;
+  --vp-button-brand-alt-bg: #787878;
+  --vp-c-ghost: #6B5B4E;
 
-  /* --vp-local-search-bg: var(--vp-c-bg);
-  --vp-local-search-result-bg: var(--vp-c-bg);
-  --vp-local-search-result-border: var(--vp-c-divider);
-  --vp-local-search-result-selected-bg: var(--vp-c-bg);
-  --vp-local-search-result-selected-border: var(--vp-c-brand-1);
-  --vp-local-search-highlight-bg: var(--vp-c-brand-1);
-  --vp-local-search-highlight-text: var(--vp-c-neutral-inverse); */
+  --vp-c-border-alt: #E8E0D8;
+  --vp-c-border-alt-hovered: #A09080;
 
-  --vp-c-border-alt: #eaeaea;
-  --vp-c-border-alt-hovered: #8a8a8a;
-
-  --vp-c-card-bg: #fefefe;
-  --vp-c-card-text-2: #333333;
+  --vp-c-card-bg: #FDFBF9;
+  --vp-c-card-text-2: #3D3330;
 
   --shiki-light: #ABB2BF;
-  --vp-code-block-bg: #292d3e;
-  --vp-code-tab-divider: #394d4e;
-  --vp-code-block-divider-color: #394d4e;
-  --vp-code-line-number-color: rgba(235, 235, 245, 0.38);
+  --vp-code-block-bg: #1E1714;
+  --vp-code-tab-divider: #3D3330;
+  --vp-code-block-divider-color: #3D3330;
+  --vp-code-line-number-color: rgba(235, 225, 215, 0.38);
 }
 
 html.dark {
-  --vp-c-banner: #0e5f3c;
-  --vp-code-color: #3eaf7c;
-  --vp-c-bg: #001e26;
-  --vp-c-bg-alt: #001318;
+  --vp-c-banner: #7A3518;
+  --vp-code-color: #E8873A;
+  --vp-c-bg: #110E0B;
+  --vp-c-bg-alt: #0A0807;
   --vp-button-brand-alt-bg: #f1f1f1;
-  --vp-c-ghost: #87a5b2;
-  --vp-c-bg-soft: #002f3b;
-  --vp-c-divider: #2b4a52;
+  --vp-c-ghost: #A89080;
+  --vp-c-bg-soft: #1C1814;
+  --vp-c-divider: #2D2720;
   --vp-c-bg-elv: var(--vp-c-bg);
 
-  --vp-c-border-alt: #0b2a32;
-  --vp-c-border-alt-hovered: #2b4a52;
+  --vp-c-border-alt: #1A1512;
+  --vp-c-border-alt-hovered: #2D2720;
 
-  --vp-c-card-bg: #0b2a32;
-  --vp-c-card-text-2: #bebebe;
+  --vp-c-card-bg: #1A1512;
+  --vp-c-card-text-2: #C8B8A8;
 
   --vp-code-block-bg: var(--vp-c-bg-alt);
-  --vp-code-tab-divider: #112121;
-  --vp-code-block-divider-color: #112121;
+  --vp-code-tab-divider: #1A1512;
+  --vp-code-block-divider-color: #1A1512;
 }
 
 /* .is-typed {
@@ -150,7 +143,7 @@ body {
 }
 
 .VPNavBar.home {
-  @apply bg-opacity-50 backdrop-blur-md transition-colors duration-500 !bg-white/85 dark:!bg-[#001e26]/75;
+  @apply bg-opacity-50 backdrop-blur-md transition-colors duration-500 !bg-white/85 dark:!bg-[#110E0B]/75;
 }
 
 .VPNavBar.home .wrapper {

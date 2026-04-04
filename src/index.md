@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Elegant PHP Built for Makers
+title: Build Products at the Speed of Thought
 ---
 
 <script setup>

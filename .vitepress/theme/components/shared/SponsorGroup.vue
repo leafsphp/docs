@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
+  <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
     <SponsorCard v-for="sponsor in sponsors" :key="sponsor.name" v-bind="sponsor" />
   </div>
 </template>

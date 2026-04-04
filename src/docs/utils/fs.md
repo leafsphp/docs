@@ -280,7 +280,7 @@ if ($uploaded) {
 
 Leaf FS now supports using Amazon s3 and other cloud storage services that support the S3 protocol. This allows you to switch from local storage to cloud storage without changing any code. To get started, you need to configure your cloud storage settings in the `.env` file.
 
-```env
+```txt
 AWS_ACCESS_KEY_ID=1234567890abcdef1234
 AWS_SECRET_ACCESS_KEY=1234567890abcdef1234567890abcdef1234
 AWS_DEFAULT_REGION=weur
