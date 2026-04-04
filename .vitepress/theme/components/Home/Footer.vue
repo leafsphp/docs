@@ -7,7 +7,7 @@
           }}</a>
       </div>
       <div class="mx-auto w-full container font-bold lg:text-5xl 2xl:text-[70px]">
-        <a href="https://studio.leafphp.dev"
+        <a href="https://thecreativeleaf.com"
           class="flex items-center gap-2 !no-underline transition-colors !text-[var(--vp-c-text-1)]"><span
             class="lg:text-9xl 2xl:text-[180px] font-semibold">Leaf PHP</span><small class="italic ml-6">by Creative
             Leaf</small></a>
