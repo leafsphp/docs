@@ -165,6 +165,8 @@ This will render a list of items if there are any items in the array, or display
 
 Lots of templating engines shun PHP's native templating capabilities because they don't encode output by default. This can lead to security vulnerabilities if you're not careful. While BareUI doesn't come with any built-in encoding, Leaf takes care of this for you. Leaf automatically encodes all data in your app to prevent XSS attacks. This means you can safely echo data in your templates without worrying about encoding it yourself.
 
+> **Note**: This is only true if you are using Leaf's built-in request object to handle incoming requests. If you are using a different request handling mechanism, you will need to ensure that your data is properly encoded before passing it to your templates.
+
 ## Control Structures
 
 BareUI supports all the control structures you'd expect in a templating engine. This includes `if`, `else`, `elseif`, `foreach`, `for`, and `while` loops. You can use these control structures to conditionally display content, loop over arrays, and more.
