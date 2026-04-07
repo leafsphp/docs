@@ -2,7 +2,7 @@ const sidebar = [
   {
     text: 'Quick Start',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: false,
     items: [
       // { text: 'Installation', link: '/docs/installation' },
       { text: 'Leaf CLI', link: '/docs/cli/' },
@@ -24,7 +24,7 @@ const sidebar = [
   {
     text: 'Routing',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Basic Routing', link: '/docs/routing/' },
       { text: 'Route Groups', link: '/docs/routing/route-groups' },
@@ -36,7 +36,7 @@ const sidebar = [
   {
     text: 'Request/Response',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Request', link: '/docs/http/request' },
       { text: 'Response', link: '/docs/http/response' },
@@ -47,7 +47,7 @@ const sidebar = [
   {
     text: 'Config & Deployment',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       // { text: 'Overview', link: '/docs/config/' },
       // { text: 'App settings', link: '/docs/config/settings' },
@@ -67,7 +67,7 @@ const sidebar = [
   {
     text: 'Database',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/database/' },
       // { text: 'MVC Support', link: '/docs/database/mvc' },
@@ -79,7 +79,7 @@ const sidebar = [
   {
     text: 'Authentication',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/auth/' },
       // { text: 'MVC Support', link: '/docs/auth/mvc' },
@@ -98,7 +98,7 @@ const sidebar = [
   {
     text: 'Sessions',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Using Sessions', link: '/docs/http/session' },
       { text: 'Session Flash', link: '/docs/http/flash' },
@@ -108,7 +108,7 @@ const sidebar = [
   {
     text: 'Security',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Validation', link: '/docs/data/validation' },
       { text: 'CSRF Protection', link: '/docs/security/csrf' },
@@ -119,7 +119,7 @@ const sidebar = [
   {
     text: 'Utilities',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Date/Time', link: '/docs/utils/date' },
       { text: 'Data Fetching', link: '/docs/utils/fetch' },
@@ -136,7 +136,7 @@ const sidebar = [
   {
     text: 'Frontend',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Introduction', link: '/docs/frontend/' },
       { text: 'Leaf Blade', link: '/docs/frontend/blade' },
@@ -168,7 +168,7 @@ const sidebar = [
   {
     text: 'Building to scale',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       // { text: 'Leaf + MVC', link: '/docs/mvc/' },
       // { text: 'Leaf MVC v4', link: '/docs/mvc/mvc4' },
@@ -189,7 +189,7 @@ const sidebar = [
   {
     text: 'Console Apps',
     // collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: 'Leaf Seedling', link: '/docs/seedling/' },
       { text: 'Writing Commands', link: '/docs/mvc/commands' },

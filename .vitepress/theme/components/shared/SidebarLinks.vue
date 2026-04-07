@@ -7,14 +7,14 @@ const links = [
   {
     name: 'Documentation',
     href: '/docs/',
-    color: 'group-hover:shadow-[var(--vp-c-brand)] dark:group-hover:bg-[var(--vp-c-brand)] dark:bg-[var(--vp-c-brand)] dark:highlight-white/10',
+    color: 'group-hover:shadow-[var(--vp-c-brand)] group-hover:bg-[var(--vp-c-brand)] bg-[var(--vp-c-brand)] dark:highlight-white/10',
     icon: `<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M8.5 7c1.093 0 2.117.27 3 .743V17a6.345 6.345 0 0 0-3-.743c-1.093 0-2.617.27-3.5.743V7.743C5.883 7.27 7.407 7 8.5 7Z"
-              class="fill-[var(--vp-c-brand)] group-hover:fill-green-500 dark:fill-[var(--vp-c-brand)] dark:group-hover:fill-[var(--vp-c-brand)]"></path>
+              class="fill-[var(--vp-c-brand)] fill-[var(--vp-c-brand)] group-hover:fill-[var(--vp-c-brand)]"></path>
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M15.5 7c1.093 0 2.617.27 3.5.743V17c-.883-.473-2.407-.743-3.5-.743s-2.117.27-3 .743V7.743a6.344 6.344 0 0 1 3-.743Z"
-              class="fill-green-400 group-hover:fill-green-500 dark:fill-[var(--vp-c-brand)] dark:group-hover:fill-[var(--vp-c-brand)]"></path>
+              class="fill-[var(--vp-c-brand)] group-hover:fill-[var(--vp-c-brand)]"></path>
           </svg>`
   },
   {
