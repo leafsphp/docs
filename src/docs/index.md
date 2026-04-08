@@ -105,7 +105,7 @@ Pick what you want to build:
                     class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
                 >
                     <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                        Basic App
+                        Micro-tool
                     </h3>
                     <p class="text-sm text-violet-200 text-shadow !my-0 font-medium">
                         Start simple. Ship fast
