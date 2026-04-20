@@ -176,8 +176,6 @@ namespace App\Models;
 
 class Post extends Model
 {
-    protected $table = 'posts';
-
     protected $fillable = [
         'title',
         'slug',
@@ -198,6 +196,7 @@ class Post extends Model
 **Notes:**
 - Do not extend `Leaf\Model` directly. Extend the base `Model` that ships with the project.
 - Models use an Eloquent-like API (see Database section).
+- **`$table` is optional.** The model automatically resolves the table name as the snake_case plural of the class name — `Post` → `posts`, `BlogPost` → `blog_posts`. Only define `$table` when your table name doesn't follow this convention (e.g. a legacy table with an irregular name).
 
 ---
 
@@ -235,7 +234,7 @@ columns:
     nullable: true
 
 relationships:
-  - Team   # generates team_id foreign key
+  - Team   # generates team_id FK — do NOT also add team_id manually in columns
 
 seeds:
   count: 10
@@ -249,13 +248,13 @@ seeds:
 - **Never manually add `id`, `created_at`, or `updated_at`** — they are auto-added to every table.
 - Disable them with `increments: false` / `timestamps: false` if genuinely not needed.
 - One file per table. File name = table name (e.g. `posts.yml` → `posts` table).
-- It has diffing built in, so you can modify the same file over time to evolve your schema. No need for separate migration files.
+- **Never manually add foreign key columns** (e.g. `user_id`). Use the `relationships` key instead — `- User` automatically generates `user_id`. Adding it manually in `columns` as well will cause a duplicate column error.
 
 ```bash
-leaf db:migrate <file? optional>     # apply all schema files
-leaf db:rollback <file? optional>    # undo last migration
-leaf db:seed <file? optional>        # run seeders
-leaf db:reset <file? optional>       # rollback all + re-migrate
+leaf db:migrate      # apply all schema files
+leaf db:rollback     # undo last migration
+leaf db:seed         # run seeders
+leaf db:reset        # rollback all + re-migrate
 ```
 
 ### Query Builder — `db()`
@@ -321,7 +320,22 @@ $body = request()->body();
 // Type-specific
 request()->query('name');       // URL params only
 request()->postData('name');    // POST body only
-request()->files('avatar');     // $_FILES
+request()->files('avatar');     // raw $_FILES data — use only if you need the raw array
+
+// File uploads — always use upload() instead of manually handling $_FILES
+$file = request()->upload('image', 'uploads/');
+// Returns the saved file path on success, or false on failure
+// Leaf handles validation, moving the file, and generating the path
+
+// Upload with options
+$file = request()->upload('image', 'uploads/', [
+    'maxSize'    => 2048,                        // max size in KB
+    'extensions' => ['jpg', 'jpeg', 'png', 'gif'], // allowed extensions
+]);
+
+if (!$file) {
+    $errors = request()->errors();
+}
 request()->params('name', 'default');  // with default
 
 // Validation — returns false on failure
@@ -644,6 +658,9 @@ Access anywhere: `_env('KEY', 'default')`
 12. **Don't mix `db()` and Models in the same transaction** — they must share a connection.
 13. **`request()->next()` is consumed on first read** — only call it once per request.
 14. **Inertia redirects use 303**, not 302, to prevent method re-use.
+15. **Don't define `$table` in a model unless the table name is irregular.** Leaf resolves it automatically from the class name (`Pin` → `pins`, `BlogPost` → `blog_posts`).
+16. **Don't add foreign key columns manually in schema files.** Use `relationships: - ModelName` — it generates the FK column automatically. Adding it in both `columns` and `relationships` causes a duplicate column error.
+17. **Don't use `move_uploaded_file()` or manually handle `$_FILES` for uploads.** Use `request()->upload('field', 'destination/')` — Leaf handles everything including validation and file moving.
 
 ---
 
