@@ -2,6 +2,46 @@
 
 Leaf 4 is all about how quickly you can go from idea to a working application, and scaffolding is a big part of that. Leaf MVC comes with a powerful console tool that allows you to scaffold entire features in your application with a single command.
 
+<section class="flex mt-4">
+    <div
+        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
+    >
+        <div
+            class="w-full flex md:flex-col bg-gradient-to-br"
+            style="
+                background: linear-gradient(
+                    to bottom,
+                    rgb(245, 183, 49),
+                    rgb(212, 101, 46)
+                );
+            "
+        >
+            <div
+                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
+            >
+                <p class="font-medium text-violet-100 text-shadow mb-4">
+                    If you are using Claude or other AI assistants to build your app, you don't even need to run these commands yourself. Just ask your assistant to scaffold the features you need and it will use the Leaf CLI to do it for you, with your own designs and preferences.
+                </p>
+            </div>
+            <!-- <div
+                class="relative md:pl-6 xl:pl-8 hidden sm:block"
+            >
+                Hello
+            </div> -->
+        </div>
+        <div
+            class="absolute bottom-0 left-0 right-0 h-20 hidden sm:block"
+            style="
+                background: linear-gradient(
+                    to top,
+                    rgb(212, 101, 46),
+                    rgba(245, 183, 49, 0)
+                );
+            "
+        ></div>
+    </div>
+</section>
+
 ## Authentication
 
 Authentication with Leaf is straightforward and is powered by [Leaf Auth](/docs/auth/) which provides a simple way to authenticate users in your application, plus other essentials like middleware, password hashing, and user management, all out of the box. Leaf MVC's scaffolding tool takes this a step further by allowing you to scaffold an entire authentication system with models, controllers, routes and even views that use your configured frontend tooling.
