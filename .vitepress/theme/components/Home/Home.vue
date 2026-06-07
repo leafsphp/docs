@@ -44,46 +44,27 @@ import WallOfFame from '../Community/WallOfFame.vue';
   max-width: unset !important;
 }
 
-.VPContent.is-home section {
-  margin: auto;
-  width: 100%;
-  max-width: 1280px;
-  padding: 0 24px;
+.VPContent.is-home > * > section,
+.VPContent.is-home section.home-section {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .VPHome {
   margin-bottom: 0 !important;
 }
 
+.VPContent.is-home .home-section,
+.VPContent.is-home .home-band__inner {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 @media (min-width: 640px) {
-  .VPContent.is-home section {
-    padding: 0 48px;
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .VPContent.is-home section {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 960px) {
-  .VPContent.is-home section {
-    width: 100%;
-    padding: 0 64px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .VPContent.is-home section {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .VPContent.is-home section {
-    max-width: 1280px;
+  .VPContent.is-home .home-section,
+  .VPContent.is-home .home-band__inner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 </style>

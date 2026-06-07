@@ -24,15 +24,15 @@ const tab = ref(properties[0].title);
 </script>
 
 <template>
-  <section
-    class="flex flex-col justify-center items-center mb-24 sm:!max-w-3xl lg:!max-w-5xl xl:!max-w-7xl w-full !px-2 sm:!px-10 !pt-28 !my-48">
-    <div class="text-center mb-4">
-      <h1 class="md:!text-4xl">Your code stays structured. No matter how you build.</h1>
-      <p class="max-w-[700px] md:text-xl !mx-auto">
+  <section class="home-section home-section--spacious">
+    <header class="home-section__header home-section__header--wide">
+      <p class="home-section__eyebrow">Architecture</p>
+      <h2 class="home-section__title !mt-0 !pt-0">Your code stays structured. No matter how you build.</h2>
+      <p class="home-section__subtitle">
         Leaf keeps your app consistent and readable from day one, so every feature, change, and iteration fits naturally
         into your codebase.
       </p>
-    </div>
+    </header>
 
     <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <DataCard v-for="item in tooling" :key="item.title" v-bind="item" />
