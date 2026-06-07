@@ -1,22 +1,22 @@
 <template>
   <div class="home-band">
-    <section class="home-band__inner home-section !max-w-none">
-      <div class="home-panel home-panel-split items-center">
+    <section class="home-band__inner home-section">
+      <div class="home-panel grid grid-cols-1 lg:grid-cols-12 items-center">
         <span class="home-marker home-marker--tl" aria-hidden="true" />
         <span class="home-marker home-marker--tr" aria-hidden="true" />
         <span class="home-marker home-marker--bl" aria-hidden="true" />
         <span class="home-marker home-marker--br" aria-hidden="true" />
 
-        <div class="flex items-center justify-center border-b border-[var(--home-border)] p-8 lg:border-b-0 lg:border-r">
-          <img src="/images/community.svg" alt="" class="max-w-[280px] opacity-90" />
+        <div class="lg:col-span-5 flex items-center justify-center border-b border-[var(--home-border)] p-8 lg:border-b-0 lg:border-r h-full min-h-[300px]">
+          <img src="/images/community.svg" alt="Leaf Community" class="w-full max-w-[380px] opacity-90 transition-transform duration-500 hover:scale-[1.02]" />
         </div>
 
-        <div class="flex flex-col items-center justify-center p-8 text-center md:p-12 lg:items-start lg:text-left">
+        <div class="lg:col-span-7 flex flex-col items-center justify-center p-8 text-center md:p-12 lg:p-16 lg:items-start lg:text-left">
           <p class="home-section__eyebrow !mb-3">Community</p>
-          <h2 class="home-section__title text-center lg:text-left">
+          <h2 class="home-section__title text-center lg:text-left !mt-0 !pt-0">
             Join other people building real products
           </h2>
-          <p class="home-section__subtitle text-center lg:text-left">
+          <p class="home-section__subtitle text-center lg:text-left !pt-0 !mt-0">
             Build alongside developers shaping how modern products are made. Share what you're building, get help when
             you're stuck, and grow with people who move fast.
           </p>

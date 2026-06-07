@@ -6,7 +6,7 @@ import SponsorGroup from '../shared/SponsorGroup.vue';
   <section class="home-section home-section--spacious">
     <header class="home-section__header">
       <p class="home-section__eyebrow">Open Source</p>
-      <h2 class="home-section__title">Backed by the community</h2>
+      <h2 class="home-section__title !mt-0 !pt-0">Backed by the community</h2>
       <p class="home-section__subtitle">
         Leaf is fully community-backed. Your support keeps the momentum going and helps us build faster.
       </p>
