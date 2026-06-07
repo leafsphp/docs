@@ -1,186 +1,88 @@
 <script setup lang="ts">
-// old component. will refactor later
-import { Globe, MapPin } from 'lucide-vue-next';
-import { Event } from './event'
+import { computed } from 'vue';
+import { Event } from './event';
 
-const { data, hero, page } = defineProps<{
-  data: Event
-  hero?: boolean
-  page?: boolean
-}>()
+const { data } = defineProps<{
+  data: Event;
+}>();
 
-const { name, intro, location, region, flyer, topics, date, website } = data
+const { name, intro, location, region, flyer, topics, date, website } = data;
+
+const formattedDate = computed(() => {
+  const d = new Date(date);
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+});
+
+const locationLabel = computed(() =>
+  [...location, ...region].filter(Boolean).join(' · ')
+);
 </script>
 
 <template>
-  <component :is="page ? 'div' : 'a'" class="partner-card bg-[var(--vp-c-bg-alt)]" :class="{ hero, page }"
-    :href="website.url" target="_blank">
-    <div class="info">
-      <h3>{{ name }}</h3>
-      <p>{{ intro }}</p>
-
-      <h5>Topics</h5>
-      <p>
-        <span class="proficiency" v-for="p in topics">{{ p }}</span>
-      </p>
-
-      <img class="big mb:_2" :src="flyer" :alt="name + ' hero'" />
-
-      <p class="region">
-        <MapPin />
-        <span>{{ location.join(', ') }}, {{ region.join(', ') }}</span>
-      </p>
-      <p class="region" style="margin-top: -20px;">
-        <Globe />
-        <span>{{ (new Date(date)).toLocaleString() }}</span>
-      </p>
+  <a
+    :href="website.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="home-card group flex flex-col overflow-hidden ![text-decoration:none] !text-inherit"
+  >
+    <!-- Flyer -->
+    <div class="aspect-[16/9] overflow-hidden border-b border-[var(--home-border)]">
+      <div
+        class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+        :style="{ backgroundImage: `url(${flyer})` }"
+      />
     </div>
-  </component>
+
+    <!-- Content -->
+    <div class="flex flex-1 flex-col gap-3 p-5">
+      <!-- Topics -->
+      <div class="flex flex-wrap gap-1.5">
+        <span
+          v-for="topic in topics"
+          :key="topic"
+          class="inline-flex items-center rounded-full border border-[var(--home-border)] bg-[var(--home-surface-muted)] px-2.5 py-0.5 text-[0.6875rem] font-medium text-[var(--home-muted)]"
+        >
+          {{ topic }}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h3 class="!m-0 text-[0.9375rem] font-semibold leading-snug tracking-tight text-[var(--home-fg)] transition-colors group-hover:text-[var(--home-muted)]">
+        {{ name }}
+      </h3>
+
+      <!-- Intro -->
+      <p class="!m-0 flex-1 text-sm leading-relaxed text-[var(--home-muted)] line-clamp-3">
+        {{ intro }}
+      </p>
+
+      <!-- Meta -->
+      <div class="mt-auto flex flex-col gap-1.5 border-t border-[var(--home-border)] pt-4 text-xs text-[var(--home-muted)]">
+        <span class="flex items-center gap-1.5">
+          <!-- Calendar icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          {{ formattedDate }}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <!-- Location icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          {{ locationLabel }}
+        </span>
+      </div>
+    </div>
+  </a>
 </template>
-
-<style scoped>
-.partner-card {
-  padding: 24px 28px;
-  border-radius: 4px;
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 36px;
-  font-size: 15px;
-  transition: background-color 0.5s, box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.partner-card.hero {
-  font-size: 16px;
-  flex-direction: row;
-  width: 100%;
-}
-
-.partner-card.page {
-  padding: 0;
-}
-
-h3 {
-  font-size: 1.3em;
-  font-weight: 700;
-  letter-spacing: -0.1px;
-  margin-bottom: 1em;
-}
-
-.logo {
-  margin-bottom: 1em;
-  max-width: 240px;
-  max-height: 120px;
-}
-
-.logo.dark,
-.dark .flipLogo .logo:not(.dark) {
-  display: none;
-}
-
-.dark .logo.dark {
-  display: inline-block;
-}
-
-.partner-card:not(.hero) .big {
-  margin-top: auto;
-}
-
-.partner-card.hero .info {
-  margin-right: 2em;
-}
-
-.partner-card.hero .big {
-  display: inline-block;
-  margin-left: auto;
-  max-width: 60%;
-  max-height: 360px;
-  object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  .partner-card {
-    width: 100%;
-  }
-
-  .partner-card.hero {
-    flex-direction: column;
-  }
-
-  .logo {
-    max-width: 200px;
-  }
-
-  .partner-card.hero .big {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-.partner-card:hover {
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
-}
-
-.partner-card:hover h3 {
-  color: var(--vt-c-green);
-}
-
-.partner-card h3 {
-  transition: color 0.25s ease;
-}
-
-.dark .partner-card,
-.partner-card.page {
-  box-shadow: none !important;
-}
-
-.dark .partner-card:not(.hero) {
-  border: 1px solid var(--vt-c-divider-light);
-}
-
-.dark .partner-card:not(.hero):hover {
-  border-color: #555;
-}
-
-.partner-card h3 {
-  font-size: 1.5em;
-  font-weight: 700;
-  letter-spacing: -0.1px;
-  margin-bottom: 0.4em;
-}
-
-.partner-card p {
-  margin-bottom: 1.6em;
-}
-
-.region {
-  color: var(--vt-c-text-2);
-  font-size: 0.9em;
-}
-
-.region svg {
-  display: inline-block;
-  opacity: 0.5;
-  position: relative;
-  top: -1px;
-  left: -2px;
-}
-
-h4 {
-  font-size: 1.2em;
-  font-weight: 600;
-  margin-bottom: 0.6em;
-}
-
-.proficiency {
-  display: inline-block;
-  color: var(--vt-c-text-code);
-  font-weight: 600;
-  font-size: 0.85em;
-  margin: 2px;
-  background-color: var(--vt-c-bg-mute);
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-</style>

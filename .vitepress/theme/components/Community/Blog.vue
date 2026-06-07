@@ -21,7 +21,7 @@ const blogPosts = [
   <section id="blog" class="home-section home-section--spacious">
     <header class="home-section__header">
       <p class="home-section__eyebrow">Building in public</p>
-      <h2 class="home-section__title">Ideas behind the way we build</h2>
+      <h2 class="home-section__title !mt-0 !pt-0">Ideas behind the way we build</h2>
       <p class="home-section__subtitle">
         How we think about frameworks, AI, and shipping products that last.
       </p>
