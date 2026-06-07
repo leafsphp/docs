@@ -139,11 +139,16 @@ body {
 }
 
 .VPContent.is-home + .VPFooter {
-  background-color: var(--vp-c-bg-alt);
+  display: none;
 }
 
 .VPNavBar.home {
-  @apply bg-opacity-50 backdrop-blur-md transition-colors duration-500 !bg-white/85 dark:!bg-[#110E0B]/75;
+  @apply bg-opacity-80 backdrop-blur-md transition-colors duration-300 !bg-white/80 dark:!bg-[#0a0807]/80;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+html.dark .VPNavBar.home {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
 .VPNavBar.home .wrapper {

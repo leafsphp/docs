@@ -5,6 +5,7 @@ import { MotionPlugin } from '@vueuse/motion';
 
 import 'virtual:group-icons.css';
 import './styles/index.css';
+import './styles/home.css';
 
 /** @type {import('vitepress').Theme} */
 export default {
