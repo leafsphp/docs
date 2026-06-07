@@ -1,10 +1,6 @@
 <template>
   <footer class="relative w-full -mb-4">
-
-    <!-- CTA band -->
     <div class="home-footer-cta relative overflow-hidden">
-
-      <!-- Subtle radial glow -->
       <div
         class="pointer-events-none absolute inset-0 flex items-center justify-center"
         aria-hidden="true"
@@ -14,8 +10,6 @@
       </div>
 
       <div class="home-section !max-w-4xl relative z-10 text-center">
-
-        <!-- Eyebrow badge -->
         <div class="home-badge mx-auto mb-8 w-fit">
           <span class="home-badge__dot" aria-hidden="true" />
           Leaf V — Available now
