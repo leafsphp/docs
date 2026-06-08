@@ -50,12 +50,12 @@
         <!-- Social proof metrics -->
         <div class="mt-12 flex flex-wrap items-center justify-center gap-8 border-t border-[var(--home-border)] pt-10">
           <div class="flex flex-col items-center gap-0.5">
-            <span class="text-2xl font-semibold tracking-tight text-[var(--home-fg)]">4k+</span>
+            <span class="text-2xl font-semibold tracking-tight text-[var(--home-fg)]">1.3k+</span>
             <span class="text-xs text-[var(--home-muted)]">GitHub stars</span>
           </div>
           <div class="h-6 w-px bg-[var(--home-border)]" aria-hidden="true" />
           <div class="flex flex-col items-center gap-0.5">
-            <span class="text-2xl font-semibold tracking-tight text-[var(--home-fg)]">250k+</span>
+            <span class="text-2xl font-semibold tracking-tight text-[var(--home-fg)]">500k+</span>
             <span class="text-xs text-[var(--home-muted)]">Downloads</span>
           </div>
           <div class="h-6 w-px bg-[var(--home-border)]" aria-hidden="true" />
