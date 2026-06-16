@@ -8,6 +8,7 @@ aside: false
 
 <script setup>
 import StartPage from '@theme/components/Docs/StartPage.vue';
+import Button from '@theme/components/shared/Button.vue';
 </script>
 
 <StartPage />

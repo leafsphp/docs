@@ -8,120 +8,58 @@ prev: false
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
+import MvcIntroPage from '@theme/components/Docs/MvcIntroPage.vue';
 import Button from '@theme/components/shared/Button.vue';
 </script>
 
-Leaf is a lightweight PHP framework with a ton of loosely coupled libraries that can be used to build any kind of application. By default, Leaf doesn't give you a lot of structure, but it fully supports the MVC pattern without any extra configuration.
+<MvcIntroPage section="hero" />
 
 ## What is MVC?
 
-MVC stands for Model-View-Controller. It is a pattern that separates your application into three distinct parts:
+MVC stands for Model-View-Controller. It separates your application into the parts that hold data, display interfaces, and respond to requests.
 
-- Models: These are the classes that represent your data. They are responsible for interacting with your database, and for validating your data.
-- Views: These are the files that are responsible for displaying your data to your user. They are usually written in HTML, but can also be written in other templating languages like [BareUI](/docs/frontend/bareui) or [Blade](/docs/frontend/blade) or frameworks like [Vue](https://vuejs.org/) or [React](https://reactjs.org/)
-- Controllers: These are the classes that are responsible for handling the user's request, and for returning the appropriate response.
+<MvcIntroPage section="parts" />
 
 ::: details New to MVC?
-If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications.
+MVC is a simple way to keep application code organized. Models talk to data, views present the interface, and controllers coordinate requests. Traversy Media has a useful overview if you want a broader introduction before building with Leaf.
 
-<VideoModal
-  description="If you're new to the MVC pattern, you can take a look at this video by Traversy Media that explains the MVC pattern, how it works and how it works in real-world applications."
-  videoUrl="https://www.youtube.com/embed/pCvZtjoRq1I"
-/>
+[Watch the MVC overview](https://www.youtube.com/watch?v=pCvZtjoRq1I)
 :::
 
 ## MVC in Leaf
 
-Leaf MVC is a minimal yet powerful setup for building applications with the MVC pattern. It extends Leaf with additional tools and structure, making development faster and more intuitive. With a clean, organized codebase, Leaf MVC is a great starting point for building scalable and maintainable applications.
+Leaf MVC is a minimal setup for building structured applications. It adds the folders and commands most projects need, but avoids forcing your app into a heavy framework model.
 
-<VideoModal
-  buttonText="Building with Leaf MVC 4"
-  description="This video talks about building with Leaf MVC v4"
-  videoUrl="https://www.youtube.com/embed/_uB3NpV5o0A"
-/>
-
-<img src="https://github.com/user-attachments/assets/5fc4e221-8728-4d37-8683-28455f685d1f" alt="Leaf MVC 4" class="w-full rounded-lg outline outline-gray-100 dark:outline-gray-700 mt-6" />
+<MvcIntroPage section="flow" />
 
 ## Directory Structure
 
-Leaf MVC’s directory structure is inspired by [Rails](https://rubyonrails.org/) and [Laravel](https://laravel.com/) but remains lightweight and flexible. It’s a solid starting point, fully equipped with everything you need to build a modern web application.
+Leaf MVC's directory structure is inspired by Rails and Laravel, but it stays lightweight and flexible. A fresh app starts with the places most product code naturally belongs.
 
-A fresh Leaf MVC app follows this structure:
+<MvcIntroPage section="tree" />
 
-::: code-group
-
-```bash:no-line-numbers [Default Starter]
-├───app
-│   ├── controllers
-│   ├── database
-│   ├── models
-│   ├── routes
-│   └── views
-└───public
-    └───assets
-        ├── css
-        └── img
-```
-
-```bash:no-line-numbers [API Starter]
-├───app
-│   ├── controllers
-│   ├── database
-│   ├── models
-│   └── routes
-└───public
-```
-
-:::
-
-- app/ – This is where all your application logic lives, including controllers, models, views, and routes. Your database files also reside here.
-- public/ – Contains publicly accessible files like bundled CSS, JavaScript, and images. This is the only directory exposed to the browser.
-
-There are also some folders that may be generated automatically by modules like the `storage` directory, which is used to store logs, cache, and other temporary files.
+Modules may also generate folders like `storage` for logs, cache, and temporary files.
 
 ## Configuring Leaf MVC
 
-Leaf MVC works out of the box with minimal setup—most apps just need a few tweaks in the .env file, so it doesn’t include a config directory by default. When customization is needed, config files are organized by feature, making it easy to adjust settings without affecting others. To publish all default config files, run the following command:
+Leaf MVC works out of the box. Most projects only need a few environment variables, so there is no config directory until you publish one.
 
-```bash:no-line-numbers
-leaf config:publish
-```
-
-This command will create the `config` directory in your app and copy all default config files, just like in earlier versions. You can also publish a specific config file while keeping the rest untouched:
-
-```bash:no-line-numbers
-leaf config:publish <config-file>
-```
-
-Here is a list of all available Leaf MVC config files:
-
-| Config file       |  Use-case                                                     |
-| ----------------- | :------------------------------------------------------------ |
-| app               | Configuration for core features                               |
-| auth              | Configuration for authentication (requires auth module)       |
-| cors              | Configuration for cors (requires cors module)                 |
-| csrf              | Configuration for csrf protection (requires csrf module)      |
-| database          | Configuration for database stuff                              |
-| mail              | Configuration for mailing (requires mail module)              |
-| redis             | Configuration for redis management (requires redis module)    |
-| queue             | Configuration for queue management (requires queue module)    |
-| view              | Configuration for view rendering                              |
+<MvcIntroPage section="config" />
 
 ## Application Environment
 
-Leaf MVC includes a `.env.example` file, which is copied to `.env` during installation. This file stores environment variables like database credentials, making it easy to configure different environments (development, testing, production). All values in `.env` are automatically loaded into the application, and you can access them using the `_env()` helper function. This function takes a key and an optional default value if the variable isn't set. Here's an example:
+Leaf MVC ships with a `.env.example` file that is copied to `.env` during installation. Values are automatically loaded and available through the `_env()` helper.
 
 ```php
 $database = _env('DB_DATABASE');
 $databaseWithDefault = _env('DB_DATABASE', 'leaf');
 ```
 
-Be careful not to commit your `.env` file to your version control system as it contains sensitive information. We have already added the `.env` file to your `.gitignore` file so you don't have to worry about this.
+Do not commit your `.env` file. Leaf MVC already adds it to `.gitignore` because it can contain database credentials, API keys, and other secrets.
 
 ## Building with Leaf MVC
 
-Although Leaf MVC is structured, it is still incredibly flexible, and offers you different ways to build your application. You can build a full-stack application using your favourite frontend tooling, or an extensive API using all the tools Leaf MVC provides. We have guides on how to build different types of applications with Leaf MVC, so you can choose the one that best fits your use-case.
+Leaf MVC gives you structure without taking away your choices. Build a full-stack app, serve a frontend with Inertia or Blade, or expose a clean JSON API for any client.
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-4">
     <section class="flex">
