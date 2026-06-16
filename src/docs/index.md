@@ -1,97 +1,19 @@
-# Let's get started
+---
+aside: false
+---
+
+# Start building with Leaf
 
 <!-- markdownlint-disable no-inline-html -->
 
 <script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Card from '@theme/components/shared/Card.vue';
-import Button from '@theme/components/shared/Button.vue';
+import StartPage from '@theme/components/Docs/StartPage.vue';
 </script>
 
-You can set up your first Leaf app in just a minute:
+<StartPage />
 
-```bash
-composer global require leafs/cli -W
-leaf create my-app
-cd my-app
-leaf serve
-```
+<h2>Choose your path</h2>
 
-Open your browser → `http://localhost:5500`
-
-You now have a running app.
-
-No setup maze. No config files. No ceremony.
-
-## Everything you need, nothing you don't
-
-Most PHP frameworks are complex, slow, and opinionated. Leaf is different. It gives you everything you need to start building immediately, without the setup overhead.
-
-```php
-<?php
-
-require __DIR__ . '/vendor/autoload.php';
-
-app()->get('/', function () {
-  response()->json(['message' => 'Hello World!']);
-});
-
-app()->run();
-```
-
-Out of the box, you already have:
-
-- 🔐 Authentication (login, signup, sessions, JWT)
-- 🗄️ Database (query builder + ORM ready)
-- 🌐 Routing & middleware
-- 🛡️ Security (CSRF, headers, encryption)
-- 📡 HTTP helpers (validation, cookies, responses)
-
-With a ton of add-ons and integrations available with a simple command:
-
-::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf install <package-name>
-```
-
-```bash:no-line-numbers [Composer]
-composer require leafs/<package-name>
-```
-
-:::
-
-No wiring tools together. No setup overhead. Just build.
-
-Tell your AI "build out authentication" and watch it scaffold a complete auth system using Leaf's built-in auth command in seconds.
-
-::: details Technical Requirements
-
-Before you start with Leaf, verify that your system has the following installed:
-
-- PHP v7.4 or higher
-- Composer (for package management)
-- [Leaf CLI](/docs/cli/) (optional but recommended for easier app management)
-
-If you don't have PHP and Composer installed, here are some easy options to get you set up:
-
-- Beyond Code released an amazing tool called [Laravel Herd](https://herd.laravel.com/) that provides a quick and easy way to set up a local PHP development environment for Mac and Windows. It's a great way to get started with PHP if you don't have it installed yet.
-
-- Another way to install PHP and Composer without any hassle is to use [php.new](https://php.new/) which was created by Beyond Code. It's a quick way to get started on Windows, Linux and Mac with just one command.
-
-- A more traditional way on Windows, Linux and Mac, you can use [Xampp](https://www.apachefriends.org/), which is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
-
-<VideoModal
-  buttonText="Setup a project via CLI"
-  subject="Watch the leaf installation walkthrough"
-  videoUrl="https://www.youtube.com/embed/d3Y-aOPLf4c"
-/>
-
-:::
-
-## What do you want to build?
-
-Pick what you want to build:
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-4">
     <section class="flex">
@@ -213,18 +135,3 @@ Pick what you want to build:
         </div>
     </section>
 </div>
-<!-- - Swoole
-- Queues
-- Testing -->
-<!-- - Rate Limiting -->
-<!-- - Websockets -->
-<!-- - Events -->
-<!-- - Caching -->
-<!-- - Testing -->
-<!-- - Localization -->
-<!-- - File Storage -->
-<!-- - Cron Jobs -->
-<!-- - Webhooks -->
-<!-- - API Versioning -->
-<!-- - Pagination -->
-<!-- - Search -->
