@@ -54,7 +54,7 @@ onMounted(() => {
       </p>
 
       <div :class="[ui.actions, 'max-sm:px-4']">
-        <a href="/docs/" :class="[ui.btn, ui.btnPrimary]">
+        <a href="/docs/" :class="[ui.btn, ui.btnPrimary, '!text-white']">
           <span>Start building</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true">
             <path fill="currentColor"
@@ -71,6 +71,7 @@ onMounted(() => {
 
       <div class="mt-16 sm:mt-20">
         <div :class="[ui.panel, 'grid grid-cols-1 gap-0 lg:grid-cols-2']">
+          <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
           <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
           <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
           <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
@@ -79,16 +80,16 @@ onMounted(() => {
           <div class="border-b border-black/[0.08] p-3 dark:border-white/[0.08] lg:border-b-0 lg:border-r">
             <div :class="ui.terminal">
               <div :class="ui.terminalHeader">
-                <span class="h-2.5 w-2.5 rounded-full bg-[#e85d3a]" />
-                <span class="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-                <span class="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-500" />
+                <span class="h-2.5 w-2.5 rounded-full bg-[#e85d3a] shadow-[0_0_14px_rgba(232,93,58,0.55)]" />
+                <span class="h-2.5 w-2.5 rounded-full bg-[#f5b731] shadow-[0_0_14px_rgba(245,183,49,0.45)]" />
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.4)]" />
                 <span :class="ui.terminalLabel">Terminal</span>
               </div>
               <div :class="[ui.terminalBody, '!pb-3 !min-h-[254px]']">
                 <div
                   v-for="(line, i) in terminalLines"
                   :key="i"
-                  class="animate-fade-slide-in"
+                  class="animate-fade-slide-in !text-sm"
                   :class="{
                     'text-neutral-900 dark:text-neutral-200': line.type === 'cmd',
                     'text-emerald-600 dark:text-emerald-400': line.type === 'ok',

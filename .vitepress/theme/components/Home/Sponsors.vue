@@ -15,6 +15,7 @@ import { ui } from './ui';
     </header>
 
     <div :class="[ui.panel, 'p-6 md:p-8']">
+      <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <SponsorGroup group="sponsor" class="w-full" />

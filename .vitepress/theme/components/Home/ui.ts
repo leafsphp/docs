@@ -22,7 +22,8 @@ export const ui = {
   actions: 'flex flex-wrap items-center gap-3',
   btn:
     'inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-transparent px-4 text-sm font-medium leading-none !no-underline transition-colors duration-150',
-  btnPrimary: 'bg-neutral-950 text-white hover:opacity-90 dark:bg-neutral-50 dark:text-neutral-950',
+  btnPrimary:
+    'bg-[var(--vp-c-brand-1)] text-white shadow-[0_16px_34px_-24px_rgba(232,117,58,0.8)] hover:bg-[#d7662f] dark:bg-[var(--vp-c-brand-1)] dark:text-white',
   btnGhost:
     'border-black/[0.08] text-neutral-950 hover:border-neutral-300 hover:bg-neutral-50 dark:border-white/[0.08] dark:text-neutral-50 dark:hover:border-white/20 dark:hover:bg-white/[0.04]',
   btnBrand: 'bg-[var(--vp-c-brand-1)] text-white hover:opacity-90',
@@ -37,6 +38,8 @@ export const ui = {
   codeLabel:
     '!m-0 mb-3 text-xs font-medium uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-400',
   accent: 'text-[var(--vp-c-brand-1)]',
+  accentBar:
+    'hidden',
   terminal:
     'overflow-hidden rounded-[10px] border border-black/[0.08] bg-neutral-50 dark:border-white/[0.08] dark:bg-[#0a0807]',
   terminalHeader:

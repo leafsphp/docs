@@ -22,6 +22,7 @@ import { ui } from './ui';
     </header>
 
     <div :class="ui.panel">
+      <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
@@ -30,6 +31,7 @@ import { ui } from './ui';
       <div class="grid border-b border-black/[0.08] bg-neutral-100 dark:border-white/[0.08] dark:bg-black/40 lg:grid-cols-2">
         <div class="border-b border-black/[0.08] p-6 dark:border-white/[0.08] md:p-8 lg:border-b-0 lg:border-r">
           <p :class="ui.codeLabel">Leaf route</p>
+          <div class="mb-4 h-1 w-16 rounded-full bg-[var(--vp-c-brand-1)]" aria-hidden="true" />
           <pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code !m-0 !bg-transparent !p-0" tabindex="0"><code><span class="line"><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">app</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">get</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'/menu/items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">, </span><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">function</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">() {</span></span>
 <span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">  return</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;"> response</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">inertia</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'menu'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">, [</span></span>
 <span class="line"><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">    'items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> =&gt; </span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">db</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">select</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'menu_items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">all</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()</span></span>
@@ -38,6 +40,7 @@ import { ui } from './ui';
         </div>
         <div class="p-6 md:p-8">
           <p :class="ui.codeLabel">React view</p>
+          <div class="mb-4 h-1 w-16 rounded-full bg-emerald-400" aria-hidden="true" />
           <pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code !m-0 !bg-transparent !p-0" tabindex="0"><code><span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">export default function</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;"> Menu</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">({ items }) {</span></span>
 <span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">  return</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> (</span></span>
 <span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">    &lt;</span><span style="--shiki-light:#E06C75;--shiki-dark:#E06C75;">div</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> className=</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">"menu-grid"</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">&gt;</span></span>
@@ -55,7 +58,7 @@ import { ui } from './ui';
           <div class="px-4 pt-6 pb-2 text-gray-500 dark:text-gray-400 text-sm font-medium">Rendered by React from Leaf data</div>
           <!-- Preview Content -->
           <div class="p-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-            <div class="flex items-start p-6 bg-gray-50 dark:bg-orange-900/5 rounded-lg border border-orange-700/10">
+            <div class="flex items-start rounded-lg border border-orange-700/10 bg-gray-50 p-6 transition-colors duration-300 hover:border-orange-400/40 hover:bg-orange-50/70 dark:bg-orange-900/5">
               <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-md mr-3 flex items-center justify-center">
                 <span class="text-orange-600 dark:text-orange-300">🍔</span>
               </div>
@@ -65,7 +68,7 @@ import { ui } from './ui';
                 <div class="text-sm font-semibold text-blue-500">$8.99</div>
               </div>
             </div>
-            <div class="flex items-start p-6 bg-gray-50 dark:bg-orange-900/5 rounded-lg border border-orange-700/10">
+            <div class="flex items-start rounded-lg border border-orange-700/10 bg-gray-50 p-6 transition-colors duration-300 hover:border-red-400/40 hover:bg-red-50/60 dark:bg-orange-900/5">
               <div class="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-md mr-3 flex items-center justify-center">
                 <span class="text-red-600 dark:text-red-300">🍗</span>
               </div>
@@ -75,7 +78,7 @@ import { ui } from './ui';
                 <div class="text-sm font-semibold text-blue-500">$9.49</div>
               </div>
             </div>
-            <div class="items-start p-6 bg-gray-50 dark:bg-orange-900/5 rounded-lg hidden md:flex border border-orange-700/10">
+            <div class="hidden items-start rounded-lg border border-orange-700/10 bg-gray-50 p-6 transition-colors duration-300 hover:border-amber-400/40 hover:bg-amber-50/60 dark:bg-orange-900/5 md:flex">
               <div class="w-10 h-10 bg-amber-100 dark:bg-amber-900 rounded-md mr-3 flex items-center justify-center">
                 <span class="text-amber-600 dark:text-amber-300">🥩</span>
               </div>

@@ -35,39 +35,37 @@ const tab = ref(properties[0].title);
       </p>
     </header>
 
-    <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <DataCard v-for="item in tooling" :key="item.title" v-bind="item" />
-    </div> -->
+    <div :class="[ui.panel, 'mt-10 grid lg:grid-cols-[320px_1fr]']">
+      <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
+      <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
+      <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
+      <span :class="[ui.marker, ui.markerBR]" aria-hidden="true" />
 
-    <div
-      class="max-w-xl px-4 mx-auto mt-10 lg:max-w-7xl rounded-3xl bg-black/5 p-4 outline outline-white/15 backdrop-blur-md dark:bg-white/10 w-full">
-      <div class="space-y-4 lg:grid grid-cols-3 gap-4 lg:space-y-0">
-        <div class="w-full">
-          <div class="flex space-x-2 sm:space-y-4 sm:space-x-0 sm:block overflow-y-auto max-h-[600px]">
-            <button v-for="item in properties" :key="item.title" :class="tab !== item.title ?
-              'hover:bg-white border-neutral-300/60 dark:border-neutral-800 hover:border-neutral-200 dark:hover:bg-[var(--vp-c-bg-alt)] dark:hover:border-neutral-800' :
-              'dark:bg-[var(--vp-c-bg-alt)] bg-white border-neutral-200 dark:border-neutral-800'"
-              class="flex flex-col items-center flex-1 w-full py-5 space-y-2 text-left duration-200 ease-out border rounded-lg sm:px-6 sm:space-y-0 sm:items-start sm:flex-row sm:rounded-2xl group hover:bg-white border-neutral-300/60 dark:border-neutral-800 hover:border-neutral-200 dark:hover:bg-[var(--vp-c-bg-alt)] dark:hover:border-neutral-800"
-              @click.prevent="tab = item.title">
-              <div :class="tab !== item.title ? 'opacity-80 group-hover:opacity-100' : 'opacity-100'"
-                class="opacity-80 group-hover:opacity-100 ml-3">
-                <div
-                  class="mb-0 text-sm font-medium sm:text-lg sm:font-semibold md:mb-1 text-neutral-700 font-inter-tight dark:text-neutral-200">
-                  {{ item.title }}
-                </div>
-                <div class="hidden text-gray-600 dark:text-gray-400 md:block text-sm">{{ item.description }}</div>
-              </div>
-            </button>
-          </div>
+      <aside class="border-b border-black/[0.08] bg-neutral-50/70 p-2 dark:border-white/[0.08] dark:bg-white/[0.025] lg:border-b-0 lg:border-r">
+        <div class="flex gap-2 overflow-x-auto lg:block lg:space-y-1 lg:overflow-visible">
+          <button
+            v-for="item in properties"
+            :key="item.title"
+            :class="tab !== item.title
+              ? 'border-transparent text-neutral-500 hover:bg-white hover:text-neutral-950 dark:text-neutral-400 dark:hover:bg-white/[0.04] dark:hover:text-neutral-50'
+              : 'border-[var(--vp-c-brand-1)] bg-[color-mix(in_srgb,var(--vp-c-brand-1)_10%,white)] text-neutral-950 dark:bg-[color-mix(in_srgb,var(--vp-c-brand-1)_16%,transparent)] dark:text-neutral-50'"
+            class="group flex min-w-[220px] flex-1 flex-col rounded-lg px-4 py-4 text-left transition-colors duration-200 lg:min-w-0"
+            @click.prevent="tab = item.title"
+          >
+            <span class="text-sm font-semibold tracking-[-0.01em]">{{ item.title }}</span>
+            <span class="mt-1 hidden text-sm leading-6 text-neutral-500 dark:text-neutral-400 lg:block">{{ item.description }}</span>
+          </button>
         </div>
+      </aside>
 
-        <div class="col-span-2">
+      <div class="min-h-[540px] bg-white dark:bg-[#070707]">
           <!-- Consistent by default -->
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="h-full w-full overflow-y-auto p-6 md:p-8 lg:p-12"
             v-show="tab === 'Consistent by default'">
-            <h3 class="font-bold text-2xl !mt-0">{{ properties[0].title }}</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
+            <p :class="ui.codeLabel">Pattern language</p>
+            <h3 class="!m-0 !border-0 !p-0 text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50">{{ properties[0].title }}</h3>
+            <div class="mt-5 space-y-5 leading-relaxed text-neutral-600 dark:text-neutral-300">
               <p>Every module in Leaf follows the same API patterns. Routes, controllers, models, and services all use
                 familiar patterns, so you don't have to learn a different way for each part.</p>
 
@@ -88,10 +86,11 @@ const tab = ref(properties[0].title);
 
           <!-- Predictable structure -->
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="h-full w-full overflow-y-auto p-6 md:p-8 lg:p-12"
             v-show="tab === 'Predictable structure'">
-            <h3 class="font-bold text-2xl !mt-0">{{ properties[1].title }}</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
+            <p :class="ui.codeLabel">Project map</p>
+            <h3 class="!m-0 !border-0 !p-0 text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50">{{ properties[1].title }}</h3>
+            <div class="mt-5 space-y-5 leading-relaxed text-neutral-600 dark:text-neutral-300">
               <p>Controllers handle requests. Models query data. Views render the UI. Everything lives where you'd
                 expect it.</p>
 
@@ -113,10 +112,11 @@ const tab = ref(properties[0].title);
 
           <!-- Clean, readable code -->
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="h-full w-full overflow-y-auto p-6 md:p-8 lg:p-12"
             v-show="tab === 'Clean, readable code'">
-            <h3 class="font-bold text-2xl !mt-0">{{ properties[2].title }}</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
+            <p :class="ui.codeLabel">Application logic</p>
+            <h3 class="!m-0 !border-0 !p-0 text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50">{{ properties[2].title }}</h3>
+            <div class="mt-5 space-y-5 leading-relaxed text-neutral-600 dark:text-neutral-300">
               <p>Leaf keeps boilerplate out of the way. You write what matters.</p>
 
               <div class="language-php vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
@@ -136,10 +136,11 @@ const tab = ref(properties[0].title);
 
           <!-- Built to extend -->
           <div
-            class="w-full bg-white dark:bg-[var(--vp-c-bg-alt)] rounded-2xl p-6 md:p-8 lg:p-14 overflow-y-auto max-h-[600px] h-full"
+            class="h-full w-full overflow-y-auto p-6 md:p-8 lg:p-12"
             v-show="tab === 'Built to extend'">
-            <h3 class="font-bold text-2xl !mt-0">{{ properties[3].title }}</h3>
-            <div class="mt-4 leading-relaxed space-y-4">
+            <p :class="ui.codeLabel">Agent-ready extension</p>
+            <h3 class="!m-0 !border-0 !p-0 text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50">{{ properties[3].title }}</h3>
+            <div class="mt-5 space-y-5 leading-relaxed text-neutral-600 dark:text-neutral-300">
               <p>Because everything follows the same patterns, <span class="font-semibold text-[var(--vp-c-brand)]">AI can generate code that fits perfectly</span>. Human code and generated code merge seamlessly. No friction. No cleanup.</p>
 
               <div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span
@@ -157,7 +158,6 @@ const tab = ref(properties[0].title);
               <p><span class="text-[var(--vp-c-brand)]">This is leverage</span>. AI does the repetitive work. You refine, review, and direct. The code stays clean, readable, and under your control. No black boxes. No surprises. Just faster iteration.</p>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </section>

@@ -52,6 +52,7 @@ const metrics = [
     </header>
 
     <div :class="ui.panel" aria-label="Leaf workflow">
+      <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
@@ -61,13 +62,13 @@ const metrics = [
         <article
           v-for="step in steps"
           :key="step.number"
-          class="flex min-h-full flex-col border-b border-black/[0.08] p-8 pb-7 transition-colors hover:bg-neutral-50 dark:border-white/[0.08] dark:hover:bg-white/[0.04] md:border-b-0 md:border-r md:p-10 md:pb-8 last:md:border-r-0"
+          class="group flex min-h-full flex-col border-b border-black/[0.08] p-8 pb-7 transition-colors duration-300 hover:bg-orange-50/50 dark:border-white/[0.08] dark:hover:bg-white/[0.04] md:border-b-0 md:border-r md:p-10 md:pb-8 last:md:border-r-0"
         >
-          <span class="mb-5 block font-mono text-[0.6875rem] font-medium tracking-[0.06em] text-neutral-500 dark:text-neutral-400">{{ step.number }}</span>
+          <span class="mb-5 flex h-8 w-8 items-center justify-center rounded-full border border-orange-200 bg-orange-50 text-xs font-semibold text-[var(--vp-c-brand-1)] dark:border-orange-500/20 dark:bg-orange-500/10">{{ step.number }}</span>
           <h3 class="!m-0 !mb-2.5 text-lg font-semibold leading-[1.35] tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">{{ step.title }}</h3>
           <p class="!m-0 mb-6 flex-1 text-[0.9375rem] leading-[1.6] text-neutral-500 dark:text-neutral-400">{{ step.description }}</p>
 
-          <div class="mt-auto rounded-lg border border-black/[0.08] bg-neutral-100 px-4 py-3 font-mono text-[0.8125rem] leading-normal text-neutral-900 dark:border-white/[0.08] dark:bg-black/40 dark:text-neutral-200" aria-hidden="true">
+          <div class="mt-auto rounded-lg border border-black/[0.08] bg-neutral-100 px-4 py-3 font-mono text-[0.8125rem] leading-normal text-neutral-900 transition-colors group-hover:border-[var(--vp-c-brand-1)]/30 dark:border-white/[0.08] dark:bg-black/40 dark:text-neutral-200" aria-hidden="true">
             <template v-if="step.snippet.parts">
               <span
                 v-for="(part, i) in step.snippet.parts"
@@ -87,7 +88,7 @@ const metrics = [
         <div
           v-for="metric in metrics"
           :key="metric.label"
-          class="flex flex-col items-center justify-center gap-1.5 border-b border-r border-black/[0.08] px-4 py-6 text-center even:border-r-0 dark:border-white/[0.08] sm:border-b-0 sm:even:border-r sm:last:border-r-0"
+          class="flex flex-col items-center justify-center gap-1.5 border-b border-r border-black/[0.08] px-4 py-6 text-center transition-colors hover:bg-orange-50/50 dark:border-white/[0.08] dark:hover:bg-white/[0.04] even:border-r-0 sm:border-b-0 sm:even:border-r sm:last:border-r-0"
           role="listitem"
         >
           <span class="text-[clamp(1.5rem,3vw,1.875rem)] font-semibold leading-none tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 tabular-nums">{{ metric.value }}</span>

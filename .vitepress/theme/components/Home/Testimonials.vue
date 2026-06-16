@@ -29,7 +29,7 @@
               :class="[ui.card, 'relative flex h-auto flex-col p-6', testimonial.version === 5 ? ui.cardFeatured : '']"
             >
               <div v-if="testimonial.version === 5"
-                class="absolute bottom-6 right-5 bg-[var(--vp-c-brand)] text-white text-xs font-semibold px-2 py-1 rounded-full">
+                class="absolute bottom-6 right-5 rounded-full bg-[var(--vp-c-brand-1)] px-2 py-1 text-xs font-semibold text-white">
                 Leaf V</div>
               <p class="!m-0 text-[0.9375rem] leading-relaxed text-neutral-500 dark:text-neutral-400">{{ testimonial.body }}</p>
 

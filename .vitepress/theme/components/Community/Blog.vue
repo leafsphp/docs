@@ -45,6 +45,7 @@ const blogPosts = [
           />
         </div>
         <div class="p-6">
+          <div class="mb-4 h-1 w-12 rounded-full bg-[var(--vp-c-brand-1)] transition-all duration-300 group-hover:w-20" aria-hidden="true" />
           <h3 class="!m-0 !mb-2 text-base font-semibold tracking-tight text-neutral-950 transition-colors group-hover:text-neutral-500 dark:text-neutral-50 dark:group-hover:text-neutral-400">
             {{ post.title }}
           </h3>

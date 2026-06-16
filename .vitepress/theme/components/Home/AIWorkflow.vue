@@ -6,6 +6,7 @@ const layers = [
     label: '01',
     eyebrow: 'Context',
     title: 'Agents get the map',
+    accent: 'bg-[linear-gradient(90deg,#f5b731,#e8753a)]',
     description:
       'Leaf keeps routes, modules, structure, conventions, and project state readable so AI can work inside your app instead of guessing around it.',
   },
@@ -13,6 +14,7 @@ const layers = [
     label: '02',
     eyebrow: 'Patterns',
     title: 'Agents follow your conventions',
+    accent: 'bg-[linear-gradient(90deg,#e8753a,#34d399)]',
     description:
       'Routes, controllers, models, services, config, and views stay predictable, so generated code lands where it belongs.',
   },
@@ -20,6 +22,7 @@ const layers = [
     label: '03',
     eyebrow: 'Sync',
     title: 'Context updates as code changes',
+    accent: 'bg-[linear-gradient(90deg,#34d399,#60a5fa)]',
     description:
       'Leaf can refresh the project map after changes, keeping assistants aligned with the app you are actually building.',
   },
@@ -46,7 +49,8 @@ const agentLoop = [
       </p>
     </header>
 
-    <div :class="ui.panel">
+    <div :class="[ui.panel, 'bg-[linear-gradient(180deg,rgba(245,183,49,0.07),transparent_34%),#fff] dark:bg-[linear-gradient(180deg,rgba(245,183,49,0.08),transparent_34%),rgba(255,255,255,0.02)]']">
+      <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
@@ -56,12 +60,13 @@ const agentLoop = [
         <article
           v-for="layer in layers"
           :key="layer.label"
-          class="min-h-70 border-r border-black/[0.08] p-6 last:border-r-0 dark:border-white/[0.08] max-[900px]:min-h-0 max-[900px]:border-b max-[900px]:border-r-0 max-[900px]:border-black/[0.08] max-[900px]:last:border-b-0 max-[900px]:dark:border-white/[0.08]"
+          class="group min-h-70 border-r border-black/[0.08] p-6 transition-colors hover:bg-white/70 last:border-r-0 dark:border-white/[0.08] dark:hover:bg-white/[0.04] max-[900px]:min-h-0 max-[900px]:border-b max-[900px]:border-r-0 max-[900px]:border-black/[0.08] max-[900px]:last:border-b-0 max-[900px]:dark:border-white/[0.08]"
         >
           <div class="mb-8 flex items-center justify-between gap-4 max-[900px]:mb-8">
             <span class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-400">{{ layer.label }}</span>
             <small class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-400">{{ layer.eyebrow }}</small>
           </div>
+          <div class="mb-5 h-1 w-10 rounded-full bg-[var(--vp-c-brand-1)] opacity-80" aria-hidden="true" />
           <h3 class="!m-0 !border-0 !p-0 text-[clamp(1.35rem,2vw,1.75rem)] font-semibold leading-[1.12] tracking-[-0.035em] text-neutral-950 dark:text-neutral-50 !mt-0">{{ layer.title }}</h3>
           <p class="!m-0 !mt-3.5 text-[0.95rem] leading-[1.62] text-neutral-500 dark:text-neutral-400">{{ layer.description }}</p>
         </article>
@@ -73,7 +78,7 @@ const agentLoop = [
           <div class="mt-4 grid gap-2.5">
             <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400">Ask your agent</span>
             <div class="rounded-xl border border-black/[0.08] bg-neutral-50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.08] dark:bg-black/20 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <div class="flex items-start gap-3 rounded-lg bg-white px-3 py-3 dark:bg-white/[0.03] cursor-pointer">
+              <div class="flex cursor-pointer items-start gap-3 rounded-lg bg-white px-3 py-3 ring-1 ring-transparent transition duration-300 hover:ring-[var(--vp-c-brand-1)]/30 dark:bg-white/[0.03]">
                 <div class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-black/[0.08] bg-white text-[var(--vp-c-brand-1)] dark:border-white/[0.08] dark:bg-white/[0.04]">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M12 3l1.45 4.55L18 9l-4.55 1.45L12 15l-1.45-4.55L6 9l4.55-1.45L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
@@ -85,7 +90,7 @@ const agentLoop = [
                 </p>
                 <button
                   type="button"
-                  class="mt-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-neutral-950 text-white shadow-sm dark:bg-neutral-50 dark:text-neutral-950 !cursor-auto"
+                  class="!cursor-auto mt-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[var(--vp-c-brand-1)] text-white"
                   aria-label="Send prompt"
                   tabindex="-1"
                 >

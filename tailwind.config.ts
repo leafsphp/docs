@@ -77,6 +77,19 @@ export default {
           from: { opacity: 0, transform: 'translateY(4px)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
+        'gradient-pan': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        'float-soft': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        'pulse-soft': {
+          '0%, 100%': { opacity: 0.45 },
+          '50%': { opacity: 1 },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -85,6 +98,9 @@ export default {
         'collapsible-up': 'collapsible-up 0.2s ease-in-out',
         blink: 'blink 1s steps(1) infinite',
         'fade-slide-in': 'fade-slide-in 0.3s ease-out',
+        'gradient-pan': 'gradient-pan 8s ease infinite',
+        'float-soft': 'float-soft 5s ease-in-out infinite',
+        'pulse-soft': 'pulse-soft 2.6s ease-in-out infinite',
       },
     },
   },

@@ -6,12 +6,13 @@ import { ui } from './ui';
   <div :class="ui.band">
     <section :class="ui.bandInner">
       <div :class="[ui.panel, 'grid grid-cols-1 items-center lg:grid-cols-12']">
+        <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
         <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
         <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
         <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
         <span :class="[ui.marker, ui.markerBR]" aria-hidden="true" />
 
-        <div class="flex h-full min-h-[300px] items-center justify-center border-b border-black/[0.08] p-8 dark:border-white/[0.08] lg:col-span-5 lg:border-b-0 lg:border-r">
+        <div class="flex h-full min-h-[300px] items-center justify-center border-b border-black/[0.08] bg-orange-50/70 p-8 dark:border-white/[0.08] dark:bg-orange-500/5 lg:col-span-5 lg:border-b-0 lg:border-r">
           <img src="/images/community.svg" alt="Leaf Community" class="w-full max-w-[380px] opacity-90 transition-transform duration-500 hover:scale-[1.02]" />
         </div>
 
