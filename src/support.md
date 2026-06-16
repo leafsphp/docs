@@ -12,7 +12,7 @@ lastUpdated: false
 import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
 </script>
 
-# Let’s Shape the Future of PHP 💚
+# Let’s Shape the Future of PHP 🧡
 
 <!-- ![image](https://github.com/user-attachments/assets/0e08dd91-db25-407a-9c17-aec25a01e241) -->
 

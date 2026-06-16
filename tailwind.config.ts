@@ -1,5 +1,5 @@
-const animate = require('tailwindcss-animate');
-const headlessui = require('@headlessui/tailwindcss');
+import animate from 'tailwindcss-animate';
+import headlessui from '@headlessui/tailwindcss';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -69,12 +69,22 @@ export default {
           from: { height: 'var(--radix-collapsible-content-height)' },
           to: { height: 0 },
         },
+        blink: {
+          '0%, 49%': { opacity: 1 },
+          '50%, 100%': { opacity: 0 },
+        },
+        'fade-slide-in': {
+          from: { opacity: 0, transform: 'translateY(4px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'collapsible-down': 'collapsible-down 0.2s ease-in-out',
         'collapsible-up': 'collapsible-up 0.2s ease-in-out',
+        blink: 'blink 1s steps(1) infinite',
+        'fade-slide-in': 'fade-slide-in 0.3s ease-out',
       },
     },
   },

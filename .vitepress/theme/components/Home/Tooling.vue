@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { ui } from './ui';
 
 const properties = [
   {
@@ -24,13 +25,13 @@ const tab = ref(properties[0].title);
 </script>
 
 <template>
-  <section class="home-section home-section--spacious">
-    <header class="home-section__header home-section__header--wide">
-      <p class="home-section__eyebrow">Architecture</p>
-      <h2 class="home-section__title !mt-0 !pt-0">Your code stays structured. No matter how you build.</h2>
-      <p class="home-section__subtitle">
-        Leaf keeps your app consistent and readable from day one, so every feature, change, and iteration fits naturally
-        into your codebase.
+  <section :class="[ui.section, ui.spacious]">
+    <header :class="[ui.header, ui.headerWide]">
+      <p :class="ui.eyebrow">Architecture</p>
+      <h2 :class="ui.title">Your code stays structured. No matter how you build.</h2>
+      <p :class="ui.subtitle">
+        Leaf keeps your app consistent, readable, and easy for AI to reason about from day one, so every feature, change,
+        and iteration fits naturally into your codebase.
       </p>
     </header>
 

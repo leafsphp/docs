@@ -1,21 +1,21 @@
 <script setup>
 import SponsorGroup from '../shared/SponsorGroup.vue';
+import { ui } from '../Home/ui';
 </script>
 
 <template>
-  <section class="home-section home-section--spacious">
-    <header class="home-section__header">
-      <p class="home-section__eyebrow">Contributors</p>
-      <h2 class="home-section__title">Wall of Fame</h2>
-      <p class="home-section__subtitle">
-        These are the heroes who have made Leaf what it is today. We are grateful for their contributions and support
-        ❤️
+  <section :class="[ui.section, ui.spacious]">
+    <header :class="ui.header">
+      <p :class="ui.eyebrow">Contributors</p>
+      <h2 :class="ui.title">Wall of Fame</h2>
+      <p :class="ui.subtitle">
+        These contributors make Leaf cleaner, faster, and easier for humans and AI tools to understand.
       </p>
     </header>
 
-    <div class="home-panel p-4 md:p-6">
-      <span class="home-marker home-marker--tl" aria-hidden="true" />
-      <span class="home-marker home-marker--tr" aria-hidden="true" />
+    <div :class="[ui.panel, 'p-4 md:p-12']">
+      <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
+      <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <SponsorGroup group="code" class="w-full sm:!grid-cols-4 md:!grid-cols-6 lg:!grid-cols-8 xl:!grid-cols-10" />
     </div>
 

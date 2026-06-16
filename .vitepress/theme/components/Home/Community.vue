@@ -1,30 +1,34 @@
-<template>
-  <div class="home-band">
-    <section class="home-band__inner home-section">
-      <div class="home-panel grid grid-cols-1 lg:grid-cols-12 items-center">
-        <span class="home-marker home-marker--tl" aria-hidden="true" />
-        <span class="home-marker home-marker--tr" aria-hidden="true" />
-        <span class="home-marker home-marker--bl" aria-hidden="true" />
-        <span class="home-marker home-marker--br" aria-hidden="true" />
+<script setup>
+import { ui } from './ui';
+</script>
 
-        <div class="lg:col-span-5 flex items-center justify-center border-b border-[var(--home-border)] p-8 lg:border-b-0 lg:border-r h-full min-h-[300px]">
+<template>
+  <div :class="ui.band">
+    <section :class="ui.bandInner">
+      <div :class="[ui.panel, 'grid grid-cols-1 items-center lg:grid-cols-12']">
+        <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
+        <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
+        <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
+        <span :class="[ui.marker, ui.markerBR]" aria-hidden="true" />
+
+        <div class="flex h-full min-h-[300px] items-center justify-center border-b border-black/[0.08] p-8 dark:border-white/[0.08] lg:col-span-5 lg:border-b-0 lg:border-r">
           <img src="/images/community.svg" alt="Leaf Community" class="w-full max-w-[380px] opacity-90 transition-transform duration-500 hover:scale-[1.02]" />
         </div>
 
         <div class="lg:col-span-7 flex flex-col items-center justify-center p-8 text-center md:p-12 lg:p-16 lg:items-start lg:text-left">
-          <p class="home-section__eyebrow !mb-3">Community</p>
-          <h2 class="home-section__title text-center lg:text-left !mt-0 !pt-0">
+          <p :class="[ui.eyebrow, '!mb-3']">Community</p>
+          <h2 :class="[ui.title, 'text-center lg:text-left']">
             Join other people building real products
           </h2>
-          <p class="home-section__subtitle text-center lg:text-left !pt-0 !mt-0">
+          <p :class="[ui.subtitle, 'text-center lg:text-left !pt-0 !mt-0']">
             Build alongside developers shaping how modern products are made. Share what you're building, get help when
-            you're stuck, and grow with people who move fast.
+            you're stuck, and compare the ways people are building with AI in real Leaf apps.
           </p>
           <a
             href="https://discord.gg/Pkrm9NJPE3"
             target="_blank"
             rel="noopener noreferrer"
-            class="home-btn home-btn--primary mt-8"
+            :class="[ui.btn, ui.btnPrimary, 'mt-8']"
           >
             <span>Start building with us</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true">

@@ -1,15 +1,15 @@
 <template>
-  <div class="home-band hidden sm:block">
-    <section class="home-band__inner home-section !max-w-none !px-4 sm:!px-6">
-      <header class="home-section__header">
-        <p class="home-section__eyebrow">Community</p>
-        <h2 class="home-section__title !mt-0 !pt-0">
-          Trusted by people building <span class="home-accent">real products</span>
+  <div :class="[ui.band, 'hidden sm:block']">
+    <section :class="[ui.bandInner, '!max-w-none !px-4 sm:!px-6']">
+      <header :class="ui.header">
+        <p :class="ui.eyebrow">Community</p>
+        <h2 :class="ui.title">
+          Trusted by people building <span :class="ui.accent">real products</span>
         </h2>
-        <p class="home-section__subtitle">
-          <span class="home-badge inline-flex !mb-0">
-            <span class="home-badge__dot" />
-            Leaf V
+        <p :class="ui.subtitle">
+          <span :class="[ui.badge, 'inline-flex !mb-0']">
+            <span :class="ui.badgeDot" />
+            AI-ready Leaf V
           </span>
           testimonials below
         </p>
@@ -26,19 +26,18 @@
             <article
               v-for="testimonial in columnGroup"
               :key="testimonial.tagline"
-              class="home-card relative flex h-auto flex-col p-6"
-              :class="{ 'home-card--featured': testimonial.version === 5 }"
+              :class="[ui.card, 'relative flex h-auto flex-col p-6', testimonial.version === 5 ? ui.cardFeatured : '']"
             >
               <div v-if="testimonial.version === 5"
                 class="absolute bottom-6 right-5 bg-[var(--vp-c-brand)] text-white text-xs font-semibold px-2 py-1 rounded-full">
                 Leaf V</div>
-              <p class="!m-0 text-[0.9375rem] leading-relaxed text-[var(--home-muted)]">{{ testimonial.body }}</p>
+              <p class="!m-0 text-[0.9375rem] leading-relaxed text-neutral-500 dark:text-neutral-400">{{ testimonial.body }}</p>
 
               <div class="mt-6 flex items-center gap-3">
-                <img class="h-9 w-9 rounded-full border border-[var(--home-border)] object-cover" :src="testimonial.imageUrl" alt="" />
+                <img class="h-9 w-9 rounded-full border border-black/[0.08] object-cover dark:border-white/[0.08]" :src="testimonial.imageUrl" alt="" />
                 <div>
-                  <div class="text-sm font-medium text-[var(--home-fg)]">{{ testimonial.name }}</div>
-                  <div class="text-xs text-[var(--home-muted)]">{{ testimonial.tagline }}</div>
+                  <div class="text-sm font-medium text-neutral-950 dark:text-neutral-50">{{ testimonial.name }}</div>
+                  <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ testimonial.tagline }}</div>
                 </div>
               </div>
             </article>
@@ -46,22 +45,22 @@
         </div>
       </div>
 
-      <div class="home-quote pt-16">
-        <blockquote>
-          <p>
-            <span class="home-quote__mark">"</span>I just want things to work, and still make sense when I come back to
-            them later.<span class="home-quote__mark">"</span>
+      <div class="mx-auto max-w-3xl pt-16 text-center">
+        <blockquote class="!m-0 !mb-6 !border-0 !p-0">
+          <p class="!text-[clamp(1.375rem,3vw,1.75rem)] font-medium leading-[1.45] tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">
+            <span class="text-neutral-500 dark:text-neutral-400">"</span>I just want things to work, and still make sense to me and my tools
+            when I come back later.<span class="text-neutral-500 dark:text-neutral-400">"</span>
           </p>
         </blockquote>
-        <figcaption>
+        <figcaption class="flex flex-col items-center gap-2 text-[0.9375rem] font-medium text-neutral-950 dark:text-neutral-50">
           <img
             src="https://avatars.githubusercontent.com/u/26604242?v=4"
             alt=""
-            class="home-quote__avatar"
+            class="h-12 w-12 rounded-full border border-black/[0.08] object-cover dark:border-white/[0.08]"
             loading="lazy"
           />
           <div>Michael Darko</div>
-          <small class="home-quote__role">Creator of Leaf PHP</small>
+          <small class="text-[0.8125rem] font-normal text-neutral-500 dark:text-neutral-400">Creator of Leaf PHP</small>
         </figcaption>
       </div>
     </section>
@@ -69,6 +68,8 @@
 </template>
 
 <script setup>
+import { ui } from './ui';
+
 const testimonials = [
   [
     {

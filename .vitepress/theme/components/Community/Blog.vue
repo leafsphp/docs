@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { ui } from '../Home/ui';
+
 const blogPosts = [
   {
     id: 2,
     title: 'What changed in how we build this month',
-    excerpt: 'New patterns, better defaults, and the small decisions that compound into a faster workflow.',
+    excerpt: 'New patterns, better defaults, AI-readable structure, and the small decisions that compound into a faster workflow.',
     image: 'https://github.com/user-attachments/assets/9e97bc87-0cdc-4bc1-95e3-aeba4ab7788e',
     url: 'https://blog.leafphp.dev/posts/sep-2025-recap.html',
   },
@@ -18,12 +20,12 @@ const blogPosts = [
 </script>
 
 <template>
-  <section id="blog" class="home-section home-section--spacious">
-    <header class="home-section__header">
-      <p class="home-section__eyebrow">Building in public</p>
-      <h2 class="home-section__title !mt-0 !pt-0">Ideas behind the way we build</h2>
-      <p class="home-section__subtitle">
-        How we think about frameworks, AI, and shipping products that last.
+  <section id="blog" :class="[ui.section, ui.spacious]">
+    <header :class="ui.header">
+      <p :class="ui.eyebrow">Building in public</p>
+      <h2 :class="ui.title">Ideas behind the way we build</h2>
+      <p :class="ui.subtitle">
+        How we think about frameworks, AI-assisted development, and shipping products that last.
       </p>
     </header>
 
@@ -34,19 +36,19 @@ const blogPosts = [
         :href="post.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="home-card group overflow-hidden ![text-decoration:none] !text-inherit"
+        :class="[ui.card, 'group overflow-hidden ![text-decoration:none] !text-inherit']"
       >
-        <div class="aspect-[2/1] overflow-hidden border-b border-[var(--home-border)]">
+        <div class="aspect-[2/1] overflow-hidden border-b border-black/[0.08] dark:border-white/[0.08]">
           <div
             class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
             :style="{ backgroundImage: `url(${post.image})` }"
           />
         </div>
         <div class="p-6">
-          <h3 class="!m-0 !mb-2 text-base font-semibold tracking-tight text-[var(--home-fg)] transition-colors group-hover:text-[var(--home-muted)]">
+          <h3 class="!m-0 !mb-2 text-base font-semibold tracking-tight text-neutral-950 transition-colors group-hover:text-neutral-500 dark:text-neutral-50 dark:group-hover:text-neutral-400">
             {{ post.title }}
           </h3>
-          <p class="!m-0 text-sm leading-relaxed text-[var(--home-muted)]">
+          <p class="!m-0 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
             {{ post.excerpt }}
           </p>
         </div>
@@ -54,7 +56,7 @@ const blogPosts = [
     </div>
 
     <div class="mt-10 text-center">
-      <a href="https://blog.leafphp.dev" target="_blank" rel="noopener noreferrer" class="home-btn home-btn--ghost">
+      <a href="https://blog.leafphp.dev" target="_blank" rel="noopener noreferrer" :class="[ui.btn, ui.btnGhost]">
         See how we're building
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
