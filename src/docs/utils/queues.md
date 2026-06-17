@@ -2,48 +2,27 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
-
-Some tasks, like processing large CSV uploads, can slow down your app and hurt the user experience. Leaf makes it easy to offload heavy work to background jobs, keeping your app fast and responsive. With built-in queuing, you get better performance without the complexity.
-
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <!-- <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                  Leaf MVC
-                </h3> -->
-                <p class="font-medium text-rose-100 text-shadow mb-4">
-                  Queues are only supported by Leaf MVC. We plan to add support for Leaf Core in the near future.
-                </p>
-            </div>
-            <!-- <div
-                class="relative md:pl-6 xl:pl-8 hidden sm:block"
-            >
-                Hello
-            </div> -->
-        </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-        ></div>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Background work</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Move slow tasks out of the request path.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf queues let MVC apps dispatch jobs, run workers, and keep user-facing requests fast while emails, imports, reports, and AI-heavy tasks run separately.</p>
     </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> leaf install queue</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">dispatch(SendEmailJob::with($userId));</div>
+        <div class="text-sky-600 dark:text-sky-400">leaf queue:work</div>
+      </div>
+      <div class="mt-4 rounded-lg border border-neutral-200 bg-white p-4 text-sm leading-6 text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+        Queues are currently supported in Leaf MVC. Core support is planned, but MVC apps can use jobs and workers today.
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- <VideoDocs
-  title="New to Queues/Jobs/Workers?"
-  subject="Understanding queues & background processing"
-  description="Watch the this video by Mateus Guimarães"
-  link="https://www.youtube.com/embed/GsdfZ5TfGPw"
-/> -->
+Some tasks, like processing large CSV uploads, sending emails, or generating reports, can slow down your app and hurt the user experience. Leaf makes it easy to offload heavy work to background jobs, keeping your app fast and responsive.
 
 Leaf queues have three parts:
 

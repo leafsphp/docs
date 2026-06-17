@@ -2,28 +2,24 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">HTTP performance</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Tell browsers when a response can be reused.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf gives you a small interface for ETags, expiry, last-modified checks, and cache headers so repeated requests can skip work safely.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div>use Leaf\Http\Cache;</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">Cache::etag('menu-v1');</div>
+        <div class="text-sky-600 dark:text-sky-400">Cache::expires('+1 week');</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-HTTP caching is a way to store copies of web resources (like images, CSS files, or API responses) so they can be quickly accessed later without re-downloading them from the server every time. This speeds up loading times of your application and reduces the load on servers.
-
-Leaf provides a clean interface for caching resources and instructing the client on how to cache them.
-
-::: details New to HTTP Caching?
-
-This video by @roadmapsh will help you understand everything you need to know about HTTP Caching and Cache-Control headers.
-
-<VideoModal
-  title="Lesson by @roadmapsh"
-  subject="Everything you need to know about HTTP Caching"
-  description="Web Cache or HTTP Cache allows you to store a copy of a resource and serve it back when requested. Serving the item from the cache, instead of re-downloading it from the origin server eases the load on the server, improves performance, and reduces the bandwidth usage on the server..."
-  videoUrl="https://www.youtube.com/embed/HiBDZgTNpXY"
-/>
-
-:::
-
-This documentation is a bit more technical and assumes you have a basic understanding of HTTP caching. If you're new to caching, you can watch the video above or [read this article](https://www.keycdn.com/blog/http-cache-headers) to get a better understanding.
+HTTP caching stores copies of web resources, like images, CSS files, or API responses, so they can be quickly accessed later without re-downloading them from the server every time. Leaf provides a clean interface for caching resources and instructing the client on how to cache them.
 
 ## etag
 

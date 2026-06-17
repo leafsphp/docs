@@ -2,34 +2,29 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Authentication flow</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Sign users in with tokens or sessions from the same API.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf Auth gives web apps and APIs one login method, then lets your app decide whether the result should power JWT tokens, sessions, redirects, or JSON responses.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div>$success = auth()-&gt;login([</div>
+        <div class="pl-4 text-[var(--vp-c-brand-1)]">'email' =&gt; 'm@example.com',</div>
+        <div class="pl-4 text-sky-600 dark:text-sky-400">'password' =&gt; 'password'</div>
+        <div>]);</div>
+      </div>
+      <div class="mt-4 grid gap-3 md:grid-cols-2 2xl:grid-cols-1">
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 text-sm dark:border-neutral-800 dark:bg-neutral-950">Token auth for APIs</div>
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 text-sm dark:border-neutral-800 dark:bg-neutral-950">Session auth for full-stack apps</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Leaf Auth provides a flexible and secure login system that works for both token based and session based authentication. It provides a unified way to authenticate users in your web apps and APIs.
-
-::: details Token vs Session Authentication
-
-- Token based authentication is a system where a user is given a token upon login which is then used to authenticate the user on every request. It is the most common authentication system for APIs. This video by Hamy Labs explains how token authentication works
-
-  <VideoModal
-    subject="How Token Authentication Works"
-    description="Many websites use token authentication to secure access to their services. This video explains what tokens are and how token authentication works."
-    videoUrl="https://www.youtube.com/embed/giKeegmeaKw"
-  />
-
-  <br />
-  <br />
-
-- Session-based authentication is a method where, after a user logs in, the server creates a session to remember them. Every time the user makes a request, their session ID is sent back to the server to verify their identity, allowing them to stay logged in while using the app.
-
-  <VideoModal
-    subject="Session Based Authentication | Authentication Series"
-    description="Session-based authentication is a stateful authentication technique where we use sessions to keep track of the authenticated user. In this video, we learn what session-based authentication is, what session is and how session-based authentication is implemented."
-    videoUrl="https://www.youtube.com/embed/gKkBEOq_shs"
-  />
-
-:::
+Leaf Auth provides a flexible and secure login system that works for both token-based and session-based authentication. It provides a unified way to authenticate users in your web apps and APIs.
 
 ## Signing a user in
 

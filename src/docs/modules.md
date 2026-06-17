@@ -1,28 +1,126 @@
 # Modules
 
-Modules are the building blocks of Leaf. They are independent pieces of Leaf's functionality available for use in your app. They are designed to be simple, easy to use, framework-agnostic, and can be used in any PHP project with nearly zero configuration.
+<!-- markdownlint-disable no-inline-html -->
+
+<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid 2xl:grid-cols-[1fr_320px]">
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Composable PHP</p>
+      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Add the parts your app needs, exactly when it needs them.</div>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Modules are independent pieces of Leaf functionality. They stay small, framework-agnostic, easy to install, and ready to use in Leaf apps, Leaf MVC projects, or even plain PHP projects.</p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
+          </div>
+          <span class="font-mono text-xs text-neutral-500">install</span>
+        </div>
+        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
+          <div><span class="text-neutral-500">$</span> leaf install auth db mail</div>
+          <div><span class="text-neutral-500">$</span> leaf install cors cache queue</div>
+          <div class="text-neutral-400">modules wire into the Leaf ecosystem</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Why modules</p>
+      <div class="space-y-4 md:space-y-0 grid md:grid-cols-3 2xl:grid-cols-1 gap-3">
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Start small</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use the core framework first, then add capabilities as your product grows.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Stay explicit</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Installed modules make your app's capabilities obvious to people and AI tools.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Avoid lock-in</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Most modules are regular Composer packages that fit normal PHP workflows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ## Installing Modules
 
-Modules are just like regular PHP packages. You can install them using Composer. To install a module, run:
+Modules are Composer packages, so you can install them with Composer:
 
 ```bash:no-line-numbers
 composer require leafs/<module>
 ```
 
-If you're using Leaf CLI, you can install a module without the `leafs/` prefix:
+If you're using Leaf CLI, you can install official Leaf modules without the `leafs/` prefix:
 
 ```bash:no-line-numbers
 leaf install <module>
 ```
 
+You can also install multiple modules at once:
+
+```bash:no-line-numbers
+leaf install auth db mail
+```
+
+<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Leaf CLI</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Best for Leaf projects. Short names work for first-party modules, and the command keeps the workflow consistent.</p>
+  </div>
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Composer</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Best when you want the raw PHP package manager flow or are installing modules outside a Leaf app.</p>
+  </div>
+</div>
+
 ## Using Modules
 
-Most modules integrate directly into Leaf, so you can use them with Leaf's functional mode. This gives you a little more performance and flexibility. The documentation for each module covers everything you need to know about using the module.
+Most modules integrate directly into Leaf's functional style, so you can use focused helpers without building your own wiring layer.
+
+```php:no-line-numbers
+auth()->login($credentials);
+db()->select('users')->where('id', 1)->first();
+response()->json(['ok' => true]);
+```
+
+In Leaf MVC, modules can also work through config files, controllers, models, services, and other structured app pieces.
+
+## Common Module Groups
+
+<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Product basics</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Auth, sessions, cookies, validation, CSRF, CORS, request, and response helpers.</p>
+  </div>
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Data and state</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Database, Redis, cache, queues, files, sitemaps, and storage integrations.</p>
+  </div>
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Frontend and views</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Blade, BareUI, Inertia, Vite, frontend asset builds, and view rendering.</p>
+  </div>
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Production features</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Mail, billing, testing, logging, devtools, encryption, and deployment helpers.</p>
+  </div>
+</div>
+
+## Modules and AI Context
+
+Modules make your app easier for assistants to understand because they make capabilities explicit. After adding modules, run:
+
+```bash:no-line-numbers
+leaf context
+```
+
+Your `.leaf/context.md` can include installed modules, app structure, routes, and conventions, so AI tools can use what your app already has instead of inventing new patterns.
 
 ## List of Modules
 
-*We update this list regularly. If you have a module you'd like to see here, feel free to [open an issue](https://github.com/leafsphp/docs/issues/new) or create a pull request on our documentation repository. Community created modules are welcome here too ❤️*
+*We update this list regularly. If you have a module you'd like to see here, feel free to [open an issue](https://github.com/leafsphp/docs/issues/new) or create a pull request on our documentation repository. Community-created modules are welcome too.*
 
 | Project                | Status                                                                                                                                                                                                                                                         | Description                                                       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |

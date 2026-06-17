@@ -2,40 +2,102 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-Both Leaf and Leaf MVC offer first-class support for frontend tooling and libraries. This includes support for different templating engines, CSS preprocessors, and JavaScript libraries.
+<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid 2xl:grid-cols-[1fr_320px]">
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Frontend freedom</p>
+      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Use the frontend that fits your product, not the one your backend forces on you.</div>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf works with simple PHP views, Blade, BareUI, Vite, Tailwind, Inertia, React, Vue, Svelte, and third-party engines. Your backend stays readable while your UI stack stays yours.</p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
+          </div>
+          <span class="font-mono text-xs text-neutral-500">views</span>
+        </div>
+        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
+          <div>leaf view:install</div>
+          <div class="text-neutral-400">blade, bareui, inertia, vite, tailwind</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Choose by workflow</p>
+      <div class="space-y-4 md:space-y-0 grid md:grid-cols-3 2xl:grid-cols-1 gap-3">
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Templates</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Blade or BareUI when server-rendered pages are enough.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Modern assets</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Vite and Tailwind when you want fast local builds and utility styling.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">App UIs</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Inertia when React, Vue, or Svelte should talk to Leaf directly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ## Templating Engines
 
-Leaf is modular and allows you to use any templating engine you want, however, it comes with 2 first-class templating engines:
+Leaf is modular and lets you use any templating engine you want. It includes first-class support for two common options:
 
-- Leaf's BareUI engine
-- Laravel's Blade engine
+- Leaf's [BareUI](/docs/frontend/bareui) engine
+- Laravel's [Blade](/docs/frontend/blade) engine
 
-While both of these engines are great, they both have their own strengths and weaknesses. Leaf's BareUI engine is a simple, lightweight, and fast engine but it's not as feature-rich as Blade. Blade, on the other hand, is a feature-rich engine with a lot of features but it's not as fast as BareUI since it has to compile and cache views.
+BareUI relies on PHP's native templating capabilities, so its syntax is just PHP. Blade has its own directive syntax and a larger feature set. Both are valid choices; pick based on how much template power you want.
 
-BareUI relies on PHP's innate templating capabilities so it's syntax is PHP's syntax. Blade, on the other hand, has its own syntax using `@` directives. They are both great engines and the choice of which to use is up to you.
-
-| Engine                           |  Speed  |  Cool Magic  |  Lightweight  | Editor Support |
-| -------------------------------- | :-----: | :----------: | :-----------: | :------------: |
-| [bareui](/docs/frontend/bareui) |    ⚡️   |       ❌      |      ⚡️       |       ⚡️       |
-| [blade](/docs/frontend/blade)   |    ❌   |       ⚡️      |      ❌       |       ⚡️       |
+<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid grid-cols-[1fr_1fr_1fr] border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400">
+    <span>Engine</span>
+    <span>Best for</span>
+    <span>Tradeoff</span>
+  </div>
+  <div class="grid grid-cols-[1fr_1fr_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <a href="/docs/frontend/bareui" class="font-semibold text-neutral-950 no-underline dark:text-neutral-50">BareUI</a>
+    <span class="text-neutral-600 dark:text-neutral-400">Tiny PHP-first views</span>
+    <span class="text-neutral-600 dark:text-neutral-400">Fewer template features</span>
+  </div>
+  <div class="grid grid-cols-[1fr_1fr_1fr] px-4 py-3 text-sm">
+    <a href="/docs/frontend/blade" class="font-semibold text-neutral-950 no-underline dark:text-neutral-50">Blade</a>
+    <span class="text-neutral-600 dark:text-neutral-400">Feature-rich templates</span>
+    <span class="text-neutral-600 dark:text-neutral-400">More compilation overhead</span>
+  </div>
+</div>
 
 ## Asset Bundling
 
-Leaf provides first-class support for asset bundling using [Vite](https://vite.dev/). Vite is a modern build tool for frontend applications which aims to provide a faster and leaner development experience for modern web projects. Vite and Leaf make the perfect pair for building modern web applications since they are both fast and lightweight.
+Leaf provides first-class support for asset bundling using [Vite](https://vite.dev/). Vite gives modern frontend projects fast development, ES modules, JSX, TypeScript support, and production builds.
 
-<img src="https://github.com/user-attachments/assets/43e7b482-8b0f-4c19-9f7f-05cbfa129186" alt="Error Page" width="100%" class="border border-gray-500 rounded-lg">
-
-Bundling assets allows you to write your frontend code in a modular way and then bundle it into a single file for production. This makes your frontend code more maintainable and easier to work with. Vite also allows you to use modern JavaScript features like ES6 modules, JSX, and even TypeScript.
-
-The Vite + Leaf stack unlocks a lot of possibilities for building modern web applications with Leaf and your favorite frontend tooling. You can find the full documentation on the [Vite module page](/docs/frontend/vite)
+The Vite + Leaf stack works well when you want Leaf to own the backend while your frontend code stays modular and easy to build. You can find the full documentation on the [Vite module page](/docs/frontend/vite).
 
 ## Frontend Frameworks
 
-Modern web apps are built on the backs of powerful UI libraries like React, Vue, and Svelte. Leaf provides an easy way to integrate these libraries into your Leaf applications using [Inertia.js](https://inertiajs.com/).
+Modern app interfaces often use React, Vue, or Svelte. Leaf integrates with these through [Inertia.js](https://inertiajs.com/), giving your frontend direct access to Leaf-powered pages without building a separate API for every screen.
 
-<img src="https://github.com/user-attachments/assets/442ca249-e7d4-4099-aa9b-f8ddfaaa7d2f" alt="" width="100%" class="border border-gray-500 rounded-lg">
+<div class="not-prose my-6 grid gap-3 md:grid-cols-3">
+  <a href="/docs/frontend/inertia" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Inertia</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Bridge Leaf with React, Vue, Svelte, or other app UI libraries.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Open Inertia docs -&gt;</span>
+  </a>
+  <a href="/docs/frontend/vite" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Vite</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Build frontend assets for development and production.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Open Vite docs -&gt;</span>
+  </a>
+  <a href="/docs/frontend/tailwind" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Tailwind</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use utility-first styling with your Leaf frontend setup.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Open Tailwind docs -&gt;</span>
+  </a>
+</div>
 
-Inertia acts as a bridge between your Leaf backend and your frontend UI library that allows them to communicate seamlessly. This allows you to build modern web applications with Leaf and your favorite frontend library without much of the complexity that comes with modern SPAs.
+## AI context
 
-You can find the full documentation on the [Inertia module page](/docs/frontend/inertia)
+Frontend choices are part of your app's context. After installing a view engine, Vite, Tailwind, or Inertia, run `leaf context` so assistants know which UI stack they should generate for.

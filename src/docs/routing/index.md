@@ -2,52 +2,58 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
-
-Routing is the foundation of every web application. It's the process of defining the URL structure of your application and how it responds to requests. Leaf comes with a powerful router that simplifies the way you define routes in your application. You can take routing as one fancy traffic officer that directs traffic to the right place.
-
-<VideoModal
-  buttonText="Basic routing with Leaf"
-  description="In this video, we look at how to create routes for your Leaf application"
-  videoUrl="https://www.youtube.com/embed/BWWVR9bSiQ0"
-/>
+<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid 2xl:grid-cols-[1fr_320px]">
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">HTTP routing</p>
+      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Turn URLs into application behavior with a tiny, readable router.</div>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf routes define the URL, HTTP method, and handler for each request. The API stays small enough to read quickly, while still supporting named routes, redirects, 404 handling, dynamic routes, middleware, groups, and MVC controllers.</p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
+          </div>
+          <span class="font-mono text-xs text-neutral-500">routes/index.php</span>
+        </div>
+        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
+          <div>app()-&gt;get('/home', function () {</div>
+          <div class="pl-4 text-neutral-400">return response()-&gt;json(['ok' =&gt; true]);</div>
+          <div>});</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Routing covers</p>
+      <div class="space-y-4 md:space-y-0 grid md:grid-cols-3 2xl:grid-cols-1 gap-3">
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Methods</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">GET, POST, PUT, PATCH, DELETE, and multi-method routes.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Flow</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Names, redirects, current route data, custom 404s, and middleware.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI context</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Routes are one of the first maps assistants use to understand an app.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ## Create a route
 
-<div
-    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
->
-    <div
-        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-    >
-        <div
-            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
-        >
-            <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                Using Leaf MVC?
-            </h3>
-            <p class="font-medium text-rose-100 text-shadow mb-4">
-                We've crafted a specialized guide for routing in Leaf MVC. While it's similar to the basic routing in Leaf, it's more detailed and tailored for Leaf MVC.
-            </p>
-            <Button
-                as="a"
-                href="/docs/routing/mvc"
-                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                >Start building</Button
-            >
-        </div>
-        <!-- <div
-            class="relative md:pl-6 xl:pl-8 hidden sm:block"
-        >
-            Hello
-        </div> -->
+<div class="not-prose my-6 rounded-lg border border-black/10 bg-neutral-50 p-4 dark:border-white/10 dark:bg-white/[0.03]">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Using Leaf MVC?</p>
+      <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">There is a routing guide tailored for controllers, MVC file structure, and app routes.</p>
     </div>
-    <div
-        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-    ></div>
+    <a href="/docs/routing/mvc" class="inline-flex h-9 items-center justify-center rounded-lg border border-black/10 bg-white px-3 text-sm font-semibold text-neutral-950 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] dark:border-white/10 dark:bg-white/[0.04] dark:text-neutral-50">Open MVC routing</a>
+  </div>
 </div>
 
 Every route has a URL (the web address the user visits) and an HTTP method (like GET, POST, etc.), which tells the server what action to take. For example, if you create a route for a GET request to `/home`, the user can access that page by visiting `http://example.com/home`. This way, different URLs and methods control how users interact with your app.
@@ -178,12 +184,6 @@ Once this is set, Leaf will automatically use your custom 404 page when a user t
 In big applications, you might have to reference a route over and over again. When you change the route URL, you'll have to change it everywhere you referenced it. To avoid this, you can name your routes and reference them by their name. This will save you a lot of time and prevent errors.
 
 Leaf router allows you name routes by using route params. They allow you add extra options to your routes like a route name, middleware, etc. You can set route options by passing an array with configuration options as the second argument to the whatever route you are working on.
-
-<VideoModal
-  buttonText="Named routes in Leaf"
-  description="Route parameters help you define extra options for your application routes, let's take a look"
-  videoUrl="https://www.youtube.com/embed/_0B9Zoxgv64"
-/>
 
 ```php
 app()->get('/home', ['name' => 'home', function () {

@@ -9,7 +9,6 @@ prev: false
 
 <script setup>
 import MvcIntroPage from '@theme/components/Docs/MvcIntroPage.vue';
-import Button from '@theme/components/shared/Button.vue';
 </script>
 
 <MvcIntroPage section="hero" />
@@ -61,73 +60,17 @@ Do not commit your `.env` file. Leaf MVC already adds it to `.gitignore` because
 
 Leaf MVC gives you structure without taking away your choices. Build a full-stack app, serve a frontend with Inertia or Blade, or expose a clean JSON API for any client.
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-4">
-    <section class="flex">
-        <div
-            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-        >
-            <div
-                class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-            >
-                <div
-                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-                >
-                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                        MVC for Full-stack
-                    </h3>
-                    <p class="font-medium text-rose-100 text-shadow mb-4">
-                        Build full-stack applications with Leaf MVC.
-                    </p>
-                    <Button
-                        as="a"
-                        href="/learn/mvc"
-                        class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                        >Start building</Button
-                    >
-                </div>
-                <!-- <div
-                    class="relative md:pl-6 xl:pl-8 hidden sm:block"
-                >
-                    Hello
-                </div> -->
-            </div>
-            <div
-                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-            ></div>
-        </div>
-    </section>
-    <section class="flex">
-        <div
-            class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-        >
-            <div
-                class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
-            >
-                <div
-                    class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-                >
-                    <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                        MVC for APIs
-                    </h3>
-                    <p class="font-medium text-amber-100 text-shadow mb-4">
-                      Build APIs with a structured approach for better organization.
-                    </p>
-                    <Button
-                        as="a"
-                        class="mt-auto bg-amber-900 hover:!bg-amber-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                        href="/learn/api"
-                        >Start building</Button
-                    >
-                </div>
-                <!-- <div class="relative hidden sm:block">
-                    <div class="absolute left-2 bottom-3 xl:bottom-5">
-                        Hello
-                    </div>
-                </div> -->
-            </div>
-            <div
-                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-orange-500 hidden sm:block"
-            ></div>
-        </div>
-    </section>
+<div class="not-prose my-8 grid gap-4 md:grid-cols-2">
+  <a class="group rounded-xl border border-neutral-200 bg-white p-5 no-underline transition hover:border-[var(--vp-c-brand-1)] dark:border-neutral-800 dark:bg-neutral-950" href="/learn/mvc">
+    <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">Full-stack apps</p>
+    <h3 class="mt-3 text-lg font-semibold text-neutral-950 dark:text-neutral-50">Build product screens, auth flows, dashboards, and admin tools.</h3>
+    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use controllers, models, views, and AI-readable project structure without buying into a heavy framework.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-[var(--vp-c-brand-1)]">Start building -&gt;</span>
+  </a>
+  <a class="group rounded-xl border border-neutral-200 bg-white p-5 no-underline transition hover:border-[var(--vp-c-brand-1)] dark:border-neutral-800 dark:bg-neutral-950" href="/learn/api">
+    <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">APIs</p>
+    <h3 class="mt-3 text-lg font-semibold text-neutral-950 dark:text-neutral-50">Expose structured JSON endpoints for any frontend or client.</h3>
+    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Keep routing, controllers, middleware, and database code predictable enough for humans and agents to extend.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-[var(--vp-c-brand-1)]">Build an API -&gt;</span>
+  </a>
 </div>

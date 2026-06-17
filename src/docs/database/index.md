@@ -2,20 +2,42 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
+<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid 2xl:grid-cols-[1fr_320px]">
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Leaf DB</p>
+      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Query data without dragging a heavy database layer behind you.</div>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf DB is a lightweight database module for connecting to SQL databases, writing fluent queries, running raw SQL when needed, and powering models and schema files in Leaf MVC.</p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
+          </div>
+          <span class="font-mono text-xs text-neutral-500">query</span>
+        </div>
+        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
+          <div>$users = db()-&gt;select('users')</div>
+          <div class="pl-4 text-neutral-400">-&gt;where('active', true)</div>
+          <div class="pl-4 text-neutral-400">-&gt;all();</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Supported</p>
+      <div class="grid grid-cols-2 gap-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
+        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">MariaDB</div>
+        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">MySQL</div>
+        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">PostgreSQL</div>
+        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">SQLite</div>
+        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">SQL Server</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-A database is an organized storage system for managing data like your users' profiles or product details. Leaf offers a lightweight module that simplifies database interaction and supports five major database systems.
-
-- MariaDB
-- MySQL
-- PostgreSQL
-- SQLite
-- SQL Server
-
-You can install the Leaf database module using the following command:
+Install the Leaf database module using Leaf CLI or Composer:
 
 ::: code-group
 
@@ -29,121 +51,28 @@ composer require leafs/db
 
 :::
 
-::: details New to databases?
-
-Databases are essential for most applications, as they help you store and retrieve data efficiently. Check out this video from Linux Academy to learn more about databases and the different types available:
-
-<VideoModal
-  buttonText="DB intro by Linux Academy"
-  subject="What is a database in under 4 minutes"
-  description="In this episode of the Linux Academy Weekly Update, we are covering Databases, what they are, and what are the different types of them."
-  videoUrl="https://www.youtube.com/embed/Tk1t3WKK-ZY"
-/>
-
-<!-- <VideoModal
-  button="Structured Query Language - or SQL, is a language that communicates with databases. Learn what SQL is, and why it is an important language to learn in the era of big data."
-  title="Danielle Thé explains SQL"
-  subject="What is SQL? [in 4 minutes for beginners]"
-  description="Structured Query Language - or SQL, is a language that communicates with databases. Learn what SQL is, and why it is an important language to learn in the era of big data."
-  link="https://www.youtube.com/embed/27axs9dO7AE"
-/> -->
-
-:::
-
 ## Leaf MVC + DB
 
 Leaf's DB module is great for building simple queries, especially when you are using Leaf as a micro-framework. However, if you are building a full-fledged application using Leaf MVC, you can take advantage of the powerful models and schema files which make it easy to interact with your database.
 
 Leaf MVC configures everything for you out of the box, so you just need to define your database schema using the schema files and create models to represent your database tables. You can then use the models to perform CRUD operations on your database without writing any SQL queries.
 
-<div class="grid md:grid-cols-3 gap-4">
-  <div
-      class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-  >
-      <div
-          class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-      >
-          <div
-              class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
-          >
-              <p class="font-semibold text-sm text-rose-100 text-shadow mb-4 !mt-0">
-                Schema files allow you to define the structure of your database tables in a simple and intuitive way.
-              </p>
-              <Button
-                  as="a"
-                  href="/docs/database/files"
-                  class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                  >Create your schema</Button
-              >
-          </div>
-          <!-- <div
-              class="relative md:pl-6 xl:pl-8 hidden sm:block"
-          >
-              Hello
-          </div> -->
-      </div>
-      <div
-          class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-      ></div>
-  </div>
-  <div
-      class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-  >
-      <div
-          class="w-full flex md:flex-col bg-gradient-to-br from-green-500 to-blue-500"
-      >
-          <div
-              class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
-          >
-              <p class="font-semibold text-sm text-blue-100 text-shadow mb-4 !mt-0">
-                Models are a powerful way to interact with your db using an object-oriented approach.
-              </p>
-              <Button
-                  as="a"
-                  href="/docs/database/models"
-                  class="mt-auto bg-blue-900 hover:!bg-blue-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                  >Check out models</Button
-              >
-          </div>
-          <!-- <div
-              class="relative md:pl-6 xl:pl-8 hidden sm:block"
-          >
-              Hello
-          </div> -->
-      </div>
-      <div
-          class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-blue-500 hidden sm:block"
-      ></div>
-  </div>
-  <div
-      class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-  >
-      <div
-          class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
-      >
-          <div
-              class="sm:max-w-sm sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
-          >
-              <p class="font-semibold text-sm text-amber-100 text-shadow mb-4 !mt-0">
-                You can use Leaf DB to build queries that don't fit into a model, without any config.
-              </p>
-              <Button
-                  as="a"
-                  class="mt-auto bg-amber-900 hover:!bg-amber-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                  href="/docs/database/builder"
-                  >Skip to builder</Button
-              >
-          </div>
-          <!-- <div class="relative hidden sm:block">
-              <div class="absolute left-2 bottom-3 xl:bottom-5">
-                  Hello
-              </div>
-          </div> -->
-      </div>
-      <div
-          class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-orange-500 hidden sm:block"
-      ></div>
-  </div>
+<div class="not-prose my-6 grid gap-3 md:grid-cols-3">
+  <a href="/docs/database/files" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Schema files</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Define table structure in a simple, readable way.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Create your schema -&gt;</span>
+  </a>
+  <a href="/docs/database/models" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Models</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Work with database records through object-oriented app code.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Check out models -&gt;</span>
+  </a>
+  <a href="/docs/database/builder" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Query builder</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Write direct queries when a model is more structure than you need.</p>
+    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Skip to builder -&gt;</span>
+  </a>
 </div>
 
 ## Connecting to a database

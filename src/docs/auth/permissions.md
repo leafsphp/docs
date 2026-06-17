@@ -2,34 +2,25 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Authorization</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Give users roles, then let roles carry permissions.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf Auth keeps authorization simple: users receive roles, roles contain permissions, and your app can check access without extra database ceremony.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div>auth()-&gt;createRoles([</div>
+        <div class="pl-4 text-[var(--vp-c-brand-1)]">'admin' =&gt; ['create user', 'delete user'],</div>
+        <div class="pl-4 text-sky-600 dark:text-sky-400">'user' =&gt; ['view user']</div>
+        <div>]);</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Authorization and authentication usually come together, but are different. Authentication is the process of verifying who you are usually in the form of signing in or logging in, while authorization is the process of verifying what you can do in the application. Leaf Auth now comes with a built-in way to manage what users can do in your application using roles and permissions.
-
-<!-- ::: details Roles vs Permissions
-
-- Token based authentication is a system where a user is given a token upon login which is then used to authenticate the user on every request. It is the most common authentication system for APIs. This video by Hamy Labs explains how token authentication works
-
-  <VideoModal
-    subject="How Token Authentication Works"
-    description="Many websites use token authentication to secure access to their services. This video explains what tokens are and how token authentication works."
-    videoUrl="https://www.youtube.com/embed/giKeegmeaKw"
-  />
-
-  <br />
-  <br />
-
-- Session-based authentication is a method where, after a user logs in, the server creates a session to remember them. Every time the user makes a request, their session ID is sent back to the server to verify their identity, allowing them to stay logged in while using the app.
-
-  <VideoModal
-    subject="Session Based Authentication | Authentication Series"
-    description="Session-based authentication is a stateful authentication technique where we use sessions to keep track of the authenticated user. In this video, we learn what session-based authentication is, what session is and how session-based authentication is implemented."
-    videoUrl="https://www.youtube.com/embed/gKkBEOq_shs"
-  />
-
-::: -->
+Authorization and authentication usually come together, but are different. Authentication verifies who you are, while authorization verifies what you can do in the application. Leaf Auth now comes with a built-in way to manage user access with roles and permissions.
 
 ## Setting up
 

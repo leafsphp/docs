@@ -7,25 +7,24 @@ prev: false
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">MVC HTTP access</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Configure browser access from your app environment.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf MVC wires CORS into the app for you, then lets production apps tighten allowed origins, methods, and headers through environment config or a published config file.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div>CORS_ALLOWED_ORIGINS='https://app.example.com'</div>
+        <div class="text-[var(--vp-c-brand-1)]">CORS_ALLOWED_METHODS='GET,POST'</div>
+        <div class="mt-4 text-sky-600 dark:text-sky-400">leaf config:publish cors</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-From Wikipedia, Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be accessed from another domain outside the domain from which the first resource was served.
-
-::: details What is CORS?
-
-Cross-Origin Resource Sharing or CORS is a mechanism that allows browsers to request data from 3rd party URLs (or origins) and is a common pain point for web developers. Learn the basics of CORS in 100 seconds from Fireship.io.
-
-<VideoModal
-  subject="Watch this video on CORS by Fireship.io"
-  videoUrl="https://www.youtube.com/embed/4KHiSt0oLJ0"
-/>
-
-:::
-
-Since CORS is a common pain point for web developers, Leaf provides a first-party integration that takes care of all the heavy lifting for you.
+CORS is the browser security layer that decides which origins can read responses from your app. Since CORS is a common pain point for web developers, Leaf provides a first-party integration that takes care of the repetitive setup for you.
 
 ## Setting Up
 

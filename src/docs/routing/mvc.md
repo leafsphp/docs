@@ -7,12 +7,36 @@ prev: false
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
-
-Routing is at the heart of every web application, mapping URLs to functionality. Leaf’s powerful router keeps this process simple and intuitive, helping you define routes with minimal effort—like a smart traffic controller seamlessly directing requests.
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1.05fr_0.95fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Leaf MVC routing</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Keep every URL connected to the controller that owns it.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf MVC keeps routes readable as your app grows: split them into small partials, point them at controllers, and keep the map clear enough for your team and AI tools to follow.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> app/routes/_auth.php</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">app()-&gt;post('/login', 'AuthController@login');</div>
+        <div class="text-sky-600 dark:text-sky-400">app()-&gt;get('/dashboard', 'DashboardController@index');</div>
+      </div>
+      <div class="mt-4 grid gap-3 md:grid-cols-3 2xl:grid-cols-1">
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+          <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">Partials</p>
+          <p class="!m-0 !mt-1 text-sm text-neutral-600 dark:text-neutral-400">Group related routes.</p>
+        </div>
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+          <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">Controllers</p>
+          <p class="!m-0 !mt-1 text-sm text-neutral-600 dark:text-neutral-400">Move logic out of files.</p>
+        </div>
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+          <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">AI map</p>
+          <p class="!m-0 !mt-1 text-sm text-neutral-600 dark:text-neutral-400">Easy to regenerate context.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 ## Route partials
 
@@ -20,34 +44,9 @@ In Leaf MVC, all routes are defined in partials within the app/routes directory.
 
 To add a new route, simply place it in the relevant partial or create a new one if it doesn’t fit into an existing group. This keeps your routing intuitive and easy to manage.
 
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <!-- <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                  Leaf MVC
-                </h3> -->
-                <p class="font-medium text-rose-100 text-shadow mb-4">
-                  Leaf MVC is just like Leaf is as unopinionated as it gets, so if you are anti-partials, you can define all your routes in the `app/routes/index.php` file.
-                </p>
-            </div>
-            <!-- <div
-                class="relative md:pl-6 xl:pl-8 hidden sm:block"
-            >
-                Hello
-            </div> -->
-        </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-        ></div>
-    </div>
-</section>
+<div class="not-prose my-6 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
+  Prefer one file? You can still define everything in <code>app/routes/index.php</code>. Partials are there when your app needs a cleaner map, not because Leaf forces a folder ritual.
+</div>
 
 ## Breaking down routes
 
@@ -144,12 +143,6 @@ app()->view('/home', 'home');
 ## Named routes
 
 In larger applications, managing routes efficiently is key. Leaf lets you name routes, so you can reference them by name instead of hardcoding URLs, making updates easier. You can also define options like middleware using an array as the second argument when setting up a route, keeping your code flexible and maintainable.
-
-<VideoModal
-  buttonText="Named routes in Leaf"
-  description="Route parameters help you define extra options for your application routes, let's take a look"
-  videoUrl="https://www.youtube.com/embed/_0B9Zoxgv64"
-/>
 
 ```php:no-line-numbers
 app()->get('/home', ['name' => 'home', 'HomeController@index']);

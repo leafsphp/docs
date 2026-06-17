@@ -7,40 +7,28 @@ prev: false
 
 # Middleware in Leaf MVC
 
-Middleware is a piece of code that runs before or after your application processes a request. It helps control the flow of requests and responses. For example, when a user visits a page on your app, you can use middleware can check if the user is logged in and if everything is okay, the request moves on to the next step; if not, the middleware can redirect the user.
-
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-purple-500 to-indigo-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <p class="font-medium text-violet-100 text-shadow mb-4">
-                    Before writing custom middleware, check out <a href="/docs/modules" class="!text-white">Leaf Modules</a>—they offer built-in functionality that might already cover your needs, saving you time and effort.
-                </p>
-            </div>
-            <!-- <div
-                class="relative md:pl-6 xl:pl-8 hidden sm:block"
-            >
-                Hello
-            </div> -->
-        </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 hidden sm:block"
-            style="
-                background: linear-gradient(
-                    to top,
-                    rgb(135, 94, 245),
-                    rgba(135, 94, 245, 0)
-                );
-            "
-        ></div>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">MVC request flow</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Put route checks in classes your app can reuse.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Middleware in Leaf MVC gives auth checks, logging, permissions, and request context a clear place to live before the controller runs.</p>
     </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> leaf g:middleware LogRequest</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">app()-&gt;use(LogRequestMiddleware::class);</div>
+      </div>
+      <div class="mt-4 rounded-lg border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-950">
+        <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Check modules first</p>
+        <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Auth, CORS, CSRF, and other modules already ship common middleware behavior, which also gives AI clearer app context.</p>
+        <a class="mt-3 inline-flex text-sm font-semibold text-[var(--vp-c-brand-1)] no-underline" href="/docs/modules">Explore modules -&gt;</a>
+      </div>
+    </div>
+  </div>
 </section>
+
+Middleware is a piece of code that runs before or after your application processes a request. It helps control the flow of requests and responses. For example, middleware can check whether a user is logged in before a controller is allowed to run.
 
 ## Creating Middleware
 

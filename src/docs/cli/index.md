@@ -1,97 +1,112 @@
+---
+next: false
+prev: false
+---
+
 # Leaf CLI
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
-
-<p class="flex flex:start-all" style="gap:10px;">
-  <img src="https://poser.pugx.org/leafs/cli/v/stable" class="m:0" alt="">
-  <img src="https://poser.pugx.org/leafs/cli/downloads" class="m:0" alt="">
-</p>
-
-Leaf CLI is a command line tool that helps you create, manage and deploy Leaf applications. It's a powerful tool that helps you get started with Leaf quickly and easily. You can do things like creating apps, running your projects, installing dependencies, and more.
+<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid 2xl:grid-cols-[1fr_320px]">
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Command center</p>
+      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">
+        Create, run, extend, and explain your Leaf app from one CLI.
+      </div>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">
+        Leaf CLI is the fastest way to start a Leaf project, run it locally, install first-party modules, scaffold frontend tooling, and generate AI-readable context for your app.
+      </p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
+          </div>
+          <span class="font-mono text-xs text-neutral-500">terminal</span>
+        </div>
+        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
+          <div><span class="text-neutral-500">$</span> composer global require leafs/cli -W</div>
+          <div><span class="text-neutral-500">$</span> leaf create my-app</div>
+          <div><span class="text-neutral-500">$</span> cd my-app</div>
+          <div><span class="text-neutral-500">$</span> leaf serve</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">What it handles</p>
+      <div class="space-y-4 md:space-y-0 grid md:grid-cols-3 2xl:grid-cols-1 gap-3">
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Project shape</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start with lite or MVC without changing ecosystems later.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Modules</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install auth, db, mail, queues, billing, and other Leaf packages quickly.</p>
+        </div>
+        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI context</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Generate a project map assistants can use before making changes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ## Installation
 
-<VideoModal
-  buttonText="CLI installation walkthrough"
-  description="You can take a look at our leaf cli setup walkthrough on youtube."
-  videoUrl="https://www.youtube.com/embed/jqkear8zue8"
-/>
-
-*This guide will assume that your system meets all the [technical requirements](/docs/#creating-a-new-app).*
-
-You can verify that composer is installed by running:
+Make sure Composer is available on your machine:
 
 ```bash:no-line-numbers
 composer --version
 ```
 
-To install the Leaf CLI, you can run the following command:
+Install Leaf CLI globally:
 
 ```bash:no-line-numbers
 composer global require leafs/cli -W
 ```
 
-This tells Composer to install the Leaf CLI globally on your system. You can verify that the CLI is installed correctly by typing `leaf` in your terminal:
+Verify the install by running:
 
 ```bash:no-line-numbers
-
- _              __    ___ _    ___ 
-| |   ___ __ _ / _|  / __| |  |_ v4.x-dev
-| |__/ -_) _` |  _| | (__| |__ | | 
-|____\___\__,_|_|    \___|____|___|                       
-     
-
-Usage:
-  command [options] [arguments]
-
-Options:
-  -h, --help  -  Display help for the given command.
-  -V, --version  -  Display this application version
-
-Available commands:
-  list — List commands
-  create — Create a new Leaf project
-  update — Update leaf cli to the latest version
-  install — Install a new package
-  uninstall — Uninstall a package
-  serve — Run a server to serve your Leaf app
-  interact — Interact with your application
-  run — Run a script in your composer.json
-  view:build — Build your frontend assets
-  view:install — Set up a new view engine
-
+leaf
 ```
+
+<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Global command</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">The <code>leaf</code> command becomes available anywhere on your machine.</p>
+  </div>
+  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Composer-powered</p>
+    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Leaf CLI uses Composer underneath, so it fits naturally into PHP workflows.</p>
+  </div>
+</div>
 
 ::: details [Error] command not found: leaf
 
-If you get an error saying `leaf: command not found`, you need to add Composer's global bin directory to your system's PATH. This directory contains every package installed through `composer global require`. Let's fix this by adding the directory to your PATH.
-
-Depending on your operating system, the composer bin directory will be located in different places. You can find the location by running:
+If you get an error saying `leaf: command not found`, add Composer's global bin directory to your system's PATH. You can find the directory with:
 
 ```bash:no-line-numbers
 composer global config bin-dir --absolute
 ```
 
-If this command does not work, you can try these common locations:
+Common locations:
 
 - Windows: `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 - macOS: `$HOME/.composer/vendor/bin`
-- GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
+- GNU/Linux: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
 
-**Adding to PATH:**
-
-Once you have the location, you can add it to your PATH. On Mac and Linux, you can do this by running these in your terminal:
+On Bash:
 
 ```bash:no-line-numbers
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Or if you're using Zsh:
+On Zsh:
 
 ```bash:no-line-numbers
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc
@@ -100,88 +115,157 @@ source ~/.zshrc
 
 :::
 
-Besides creating apps, Leaf CLI also helps you manage your apps. This includes things like running your app, dependency management, running commands, and more. This guide covers all such features.
+## Creating apps
+
+Use `leaf create` to start a new project. You can choose the app shape interactively, or pass a flag when you already know what you want.
+
+```bash:no-line-numbers
+leaf create my-app
+```
+
+<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400 sm:grid-cols-[160px_120px_1fr]">
+    <span>Entry point</span>
+    <span>Flag</span>
+    <span>Best for</span>
+  </div>
+  <div class="grid border-b border-black/5 px-4 py-3 text-sm dark:border-white/5 sm:grid-cols-[160px_120px_1fr]">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">Basic app</span>
+    <code>--lite</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Prototypes, scripts, small tools, single-file starts.</span>
+  </div>
+  <div class="grid border-b border-black/5 px-4 py-3 text-sm dark:border-white/5 sm:grid-cols-[160px_120px_1fr]">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">MVC app</span>
+    <code>--mvc</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Full-stack products, teams, views, controllers, and structure.</span>
+  </div>
+  <div class="grid border-b border-black/5 px-4 py-3 text-sm dark:border-white/5 sm:grid-cols-[160px_120px_1fr]">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">API app</span>
+    <code>--api</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Backends, mobile apps, headless products, and frontend clients.</span>
+  </div>
+  <div class="grid px-4 py-3 text-sm sm:grid-cols-[160px_120px_1fr]">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">Console app</span>
+    <code>--console</code>
+    <span class="text-neutral-600 dark:text-neutral-400">CLI tools built with Seedling.</span>
+  </div>
+</div>
+
+You can skip the prompt:
+
+```bash:no-line-numbers
+leaf create my-app --lite
+leaf create my-app --mvc
+leaf create my-app --api
+leaf create my-app --console
+```
 
 ## Running your app
 
-You can run your app by navigating into your app's directory and running the `leaf serve` command. This will start a development server and serve your app on `localhost:5500`.
+Move into your project directory and run the development server:
 
 ```bash:no-line-numbers
 cd my-app
 leaf serve
 ```
 
-You can also specify a port to run your app on by passing the `--port` or `-p` flag:
+By default, Leaf serves your app on `localhost:5500`.
 
 ```bash:no-line-numbers
 leaf serve --port=8080
+leaf serve -p 8080
 ```
 
-The serve command also has a `--watch` flag that watches your app for changes and automatically reloads your app when changes are detected:
-
-```bash:no-line-numbers
-leaf serve --watch
-```
-
-*Note: The `--watch` flag is only available when running your app in development mode and uses nodejs to watch your app for changes.*
-
-If you want to run your application from a different directory, you can pass the path to the directory as an argument:
+You can also serve a project from another directory:
 
 ```bash:no-line-numbers
 leaf serve /path/to/your/app
 ```
 
+Use `--watch` during development when you want Leaf to watch for changes:
+
+```bash:no-line-numbers
+leaf serve --watch
+```
+
 ::: info Automatic dependency installation
-When running your app, Leaf will automatically try to install missing dependencies if no `vendor` directory is found in your app's directory.
+When running your app, Leaf will automatically try to install missing dependencies if no `vendor` directory is found in the project.
 :::
+
+## AI context
+
+Leaf CLI can generate a compact map of your project for AI assistants.
+
+```bash:no-line-numbers
+leaf context
+```
+
+This creates `.leaf/context.md`, which describes your routes, installed modules, project structure, and configuration. Attach it to your assistant before asking for larger changes.
+
+<div class="not-prose my-6 grid gap-4 md:grid-cols-[1fr_260px]">
+  <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
+    <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Prompt with context</p>
+    <div class="rounded-lg border border-black/10 bg-neutral-50 p-4 text-sm font-medium leading-6 text-neutral-800 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-200">
+      Add billing, protect the dashboard, and create the webhook route.
+    </div>
+  </div>
+  <div class="rounded-xl border border-black/10 bg-neutral-50 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+    <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">AI sees</p>
+    <div class="space-y-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
+      <div>routes</div>
+      <div>modules</div>
+      <div>entry point</div>
+      <div>structure</div>
+    </div>
+  </div>
+</div>
+
+## Scaling a project
+
+Use `leaf up` when a small app needs to grow into a structured MVC app.
+
+```bash:no-line-numbers
+leaf up
+```
+
+The command is designed to move your app forward without switching frameworks or rewriting everything by hand. It can move assets, organize controller-like code, detect database usage, and prepare MVC conventions around the app you already started.
 
 ## Running commands
 
-Leaf CLI also allows you to run commands in your app's directory. If you have a command in your `composer.json` file, you can run it using the `leaf run` command:
+Use `leaf run` to execute scripts from your app's `composer.json`.
 
 ```bash:no-line-numbers
 leaf run my-command
 ```
 
+This keeps project-specific commands close to the app while still giving you one consistent CLI entry point.
+
 ## Dependency management
 
-Leaf CLI also has commands built on top of Composer to help you manage your app's dependencies. Leaf has a whole ecosystem of packages that are treated as first-class citizens in the Leaf ecosystem, and are given special treatment by the CLI. This makes working with Leaf packages a breeze, but also allows you to work with any Composer package.
-
-::: details Are you a visual learner?
-
-This video will help you understand how to work with packages on the Leaf CLI.
-
-<VideoModal
-  subject="Working with packages on the Leaf CLI"
-  description="Working with packages and the leaf cli"
-  videoUrl="https://www.youtube.com/embed/K9jSl_xpr48"
-/>
-
-:::
+Leaf CLI adds a friendlier layer on top of Composer for Leaf modules and regular Composer packages.
 
 ### Installing packages
 
-This cli tool also adds a feature to install leaf packages from composer.
-
-```bash:no-line-numbers
-leaf install leafs/auth
-```
-
-If you are installing a leaf module or package, you can leave out the `leafs/` part.
+Install a Leaf module:
 
 ```bash:no-line-numbers
 leaf install auth
 ```
 
-You can also pass in a bunch of packages to install at once.
+You can also include the full Composer package name:
 
 ```bash:no-line-numbers
+leaf install leafs/auth
+```
+
+Install multiple packages at once:
+
+```bash:no-line-numbers
+leaf install auth db mail
 leaf install auth db illuminate/support
 ```
 
-***Versioning***
-
-Leaf CLI also allows you to install a particular version of any package using `@`
+Install a specific version with `@`:
 
 ```bash:no-line-numbers
 leaf install auth@4.0 illuminate/support@9.0.2
@@ -189,31 +273,61 @@ leaf install auth@4.0 illuminate/support@9.0.2
 
 ### Uninstalling packages
 
-This works the same way as installing packages, but you use the `uninstall` command instead.
+Use `uninstall` to remove packages:
 
 ```bash:no-line-numbers
 leaf uninstall auth
 leaf uninstall auth db illuminate/support
 ```
 
-<!-- ## View commands
+## View commands
 
-Leaf CLI also allows you to create and interact with frontend setups using the `view` commands. You can scaffold frontend setups like React, Vue, templating engines, build tools, and more.
-
-### Scaffolding views
-
-Leaf CLI ships with a `view:install` command that allows you to set up React, Vue, and templating engines like Blade and BareUI. You can use the `--react`, `--vue`, `--blade`, and `--svelte` options to scaffold your frontend setup.
+Leaf CLI also includes commands for frontend and view tooling.
 
 ```bash:no-line-numbers
-leaf view:install --react
-```
-
-You can also use the `--vite` and `--tailwind` options to scaffold Vite and Tailwind respectively. -->
-
-### Building frontend setups
-
-You can also use the `view:build` command to build your frontend setup for production.
-
-```bash:no-line-numbers
+leaf view:install
 leaf view:build
 ```
+
+Use `view:install` to set up a view engine or frontend integration, and `view:build` to build frontend assets for production.
+
+## Command reference
+
+<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400">
+    <span>Command</span>
+    <span>Use</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf create</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Create a new Leaf project.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf serve</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Run a local development server.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf context</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Generate AI-readable project context.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf up</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Scale a basic app into MVC structure.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf install</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Install Leaf modules or Composer packages.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf uninstall</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Remove modules or packages.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
+    <code>leaf run</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Run a script from composer.json.</span>
+  </div>
+  <div class="grid grid-cols-[160px_1fr] px-4 py-3 text-sm">
+    <code>leaf view:build</code>
+    <span class="text-neutral-600 dark:text-neutral-400">Build frontend assets.</span>
+  </div>
+</div>

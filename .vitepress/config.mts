@@ -13,7 +13,7 @@ export default defineConfig({
   lang: 'en-US',
   srcDir: 'src',
   scrollOffset: 'header',
-  srcExclude: ['tutorial/**/description.md'],
+  srcExclude: ['tutorial/**/description.md', 'old/**'],
 
   title: 'Leaf PHP',
   description: 'Elegant PHP, Built for Makers',

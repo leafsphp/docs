@@ -2,53 +2,30 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
-
-From Wikipedia, Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be accessed from another domain outside the domain from which the first resource was served.
-
-::: details What is CORS?
-
-Cross-Origin Resource Sharing or CORS is a mechanism that allows browsers to request data from 3rd party URLs (or origins) and is a common pain point for web developers. Learn the basics of CORS in 100 seconds from Fireship.io.
-
-<VideoModal
-  subject="Watch this video on CORS by Fireship.io"
-  videoUrl="https://www.youtube.com/embed/4KHiSt0oLJ0"
-/>
-
-:::
-
-Since CORS is a common pain point for web developers, Leaf provides a first-party integration that takes care of all the heavy lifting for you.
-
-<div
-    class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg sm:max-w-[50%]"
->
-    <div
-        class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-    >
-        <div
-            class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6"
-        >
-            <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                Using Leaf MVC?
-            </h3>
-            <p class="font-medium text-rose-100 text-shadow mb-4">
-                We've crafted a specialized guide for CORS in Leaf MVC. While it's similar to the base usage in Leaf, it's more detailed and tailored for Leaf MVC.
-            </p>
-            <Button
-                as="a"
-                href="/docs/http/cors/mvc"
-                class="mt-auto bg-rose-900 hover:!bg-rose-900 !text-white bg-opacity-50 hover:bg-opacity-75 transition-colors duration-200 rounded-xl font-bold py-2 px-4 inline-flex"
-                >Start building</Button
-            >
-        </div>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">HTTP access</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Let the right frontends talk to your API.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf CORS gives you a small, explicit configuration layer for browser access, preflight requests, credentials, and allowed origins.</p>
     </div>
-    <div
-        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-    ></div>
-</div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div>app()-&gt;cors([</div>
+        <div class="pl-4 text-[var(--vp-c-brand-1)]">'origin' =&gt; ['https://app.example.com'],</div>
+        <div class="pl-4 text-sky-600 dark:text-sky-400">'methods' =&gt; ['GET', 'POST'],</div>
+        <div>]);</div>
+      </div>
+      <div class="mt-4 rounded-lg border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-950">
+        <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Using Leaf MVC?</p>
+        <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use the MVC CORS guide when your configuration lives with the rest of your application environment.</p>
+        <a class="mt-3 inline-flex text-sm font-semibold text-[var(--vp-c-brand-1)] no-underline" href="/docs/http/cors/mvc">Open MVC CORS -&gt;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+CORS is the browser security layer that decides which origins can read responses from your app. Since CORS is a common pain point for web developers, Leaf provides a first-party integration that takes care of the repetitive setup for you.
 
 ## Setting Up
 

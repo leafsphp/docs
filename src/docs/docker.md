@@ -2,24 +2,24 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Portable runtime</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Run Leaf in the same environment everywhere.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf can scaffold Docker support so PHP, extensions, web server config, Composer, and your app runtime stay reproducible across local development and deployment.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> leaf create my-app --docker</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">leaf serve</div>
+        <div class="text-sky-600 dark:text-sky-400">docker compose up</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Docker allows developers to package their applications and dependencies into lightweight and portable containers, which can be easily deployed and run on any environment, making it easier to develop and deploy applications consistently. This means you don't have to worry about configuring or setting up complicated development tools such as web servers and databases on your local machine.
-
-::: details New to Docker?
-
-This video by Mosh Hamedani will walk you through the basics of Docker.
-
-<VideoModal
-  title="New to Docker?"
-  subject="Docker Tutorial for Beginners"
-  description="This video by Mosh Hamedani will walk you through the basics of Docker."
-  videoUrl="https://www.youtube.com/embed/pTFZFxd4hOI"
-/>
-
-:::
+Docker allows developers to package their applications and dependencies into lightweight and portable containers. This guide walks through setting up your Leaf application with Docker from scratch.
 
 This guide will walk you through how to set up your Leaf application using Docker from scratch. To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop/). After this, you can either use the Leaf CLI or manually create your application.
 

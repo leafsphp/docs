@@ -2,57 +2,35 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Fast app state</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Use Redis for cache, sessions, queues, and realtime state.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf Redis gives MVC apps a simple helper for working with Redis directly from your app code, using either the Redis extension or Predis.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> leaf install redis</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">redis()-&gt;set('cart:42', $items, 3600);</div>
+        <div class="text-sky-600 dark:text-sky-400">$items = redis()-&gt;get('cart:42');</div>
+      </div>
+      <div class="mt-4 grid gap-3 md:grid-cols-3 2xl:grid-cols-1">
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">Cache</div>
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">Sessions</div>
+        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">Queues</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Redis is like a powerful database, but instead of storing data on a hard drive like other databases, Redis keeps everything in memory (RAM), making it much super-fast. It's often used for things that need to be accessed really fast, like caching (storing temporary data), session management, or tracking real-time data.
-
-Leaf includes a Redis module that allows you to easily integrate Redis into your Leaf application.
-
-::: details New to Redis?
-
-We've included this amazing video by TechWorld with Nana to help you get started with Redis.
-
-<VideoModal
-  title="Redis intro by TechWorld with Nana"
-  subject="Redis Crash Course - the What, Why and How to use Redis ..."
-  description="Redis Tutorial - the What, Why and How to use Redis as a primary database."
-  videoUrl="https://www.youtube.com/embed/OqCK95AS-YE"
-/>
-
-:::
+Redis stores data in memory, which makes it useful for fast, temporary, or frequently-read application state. Leaf includes a Redis module that allows you to integrate Redis into your Leaf application.
 
 ## Setting Up Leaf Redis
 
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <!-- <h3 class="text-xl font-semibold mb-2 text-shadow !mt-0">
-                  Leaf MVC
-                </h3> -->
-                <p class="font-medium text-rose-100 text-shadow mb-4">
-                  Leaf Redis is only supported by Leaf MVC. We plan to add support for Leaf Core in the near future.
-                </p>
-            </div>
-            <!-- <div
-                class="relative md:pl-6 xl:pl-8 hidden sm:block"
-            >
-                Hello
-            </div> -->
-        </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-        ></div>
-    </div>
-</section>
+<div class="not-prose my-6 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
+  Leaf Redis is currently supported in Leaf MVC. Core support is planned, but MVC apps can use it today.
+</div>
 
 To get started with Leaf Redis, you need to have Redis installed on your machine. You can install Redis PHP extension by following the instructions [here](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md), however, if you can't install the extension, you can use the [Predis](https://github.com/predis/predis) composer package. Leaf Redis supports both the Redis PHP extension and Predis, and will automatically detect which one you have installed and work with it.
 

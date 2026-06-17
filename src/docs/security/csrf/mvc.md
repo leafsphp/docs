@@ -7,12 +7,25 @@ prev: false
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue';
-import Button from '@theme/components/shared/Button.vue';
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">MVC form security</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Protect forms with middleware and a Blade directive.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf MVC can install CSRF protection, wire the middleware, and let your views render tokens with <code>@csrf</code> so state-changing requests stay trusted.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> leaf install csrf</div>
+        <div class="mt-4 text-neutral-500">&lt;form method="POST"&gt;</div>
+        <div class="pl-4 text-[var(--vp-c-brand-1)]">@csrf</div>
+        <div class="text-neutral-500">&lt;/form&gt;</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-A CSRF (Cross-Site Request Forgery) attack tricks a user into performing unwanted actions on your website without their knowledge. This can be done by sending a request to your website from another website the user is logged into. To prevent this, Leaf provides a powerful CSRF protection module that handles all the funny business for you.
+A CSRF (Cross-Site Request Forgery) attack tricks a user into performing unwanted actions on your website without their knowledge. This can be done by sending a request to your website from another website the user is logged into.
 
 ::: details How does CSRF work?
 

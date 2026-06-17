@@ -2,26 +2,23 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import VideoModal from '@theme/components/shared/VideoModal.vue'
-</script>
+<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
+    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Native PHP views</p>
+      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Render templates without a compile step.</h1>
+      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">BareUI keeps templates close to plain PHP, which makes views fast, explicit, and easy for AI tools to inspect without learning another syntax layer.</p>
+    </div>
+    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
+      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
+        <div><span class="text-neutral-400">$</span> leaf install bareui</div>
+        <div class="mt-4 text-[var(--vp-c-brand-1)]">response()-&gt;render('welcome');</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-BareUI is a simple, lightweight, and barebones templating engine focused on speed, speed, and more speed! Most templating engines out there ship with a nice syntax, handy ways to use expressions, layouts and code blocks, however, there's one problem: they are slow!
-
-BareUI takes advantage of PHP's innate templating capabilities so it's syntax is PHP's syntax. It lacks all the syntactic sugar added in other engines like blade, but it also requires no compiling, no caching, just speed!
-
-::: details New to template engines?
-
-Learn how using a template engine can improve your view files with "dumb" templates that are easy to read and understand in this video by LaraCasts.
-
-<VideoModal
-  title="Templating engines in PHP"
-  subject="Templating engines in PHP: what they are and how they can improve your code"
-  description=""
-  videoUrl="https://www.youtube.com/embed/AmaZDxp7Ejg"
-/>
-
-:::
+BareUI is a simple, lightweight templating engine focused on speed and clarity. It takes advantage of PHP's native templating capabilities, so its syntax is PHP syntax.
 
 ## Setting Up
 
