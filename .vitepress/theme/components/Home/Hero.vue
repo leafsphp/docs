@@ -40,7 +40,7 @@ onMounted(() => {
     <div :class="[ui.section, 'relative z-10 w-full py-20 sm:py-24']">
       <div :class="[ui.badge, 'max-sm:mx-4 mb-8 w-fit']">
         <span :class="ui.badgeDot" aria-hidden="true" />
-        Leaf V — A new era
+        Leaf 5 — A new era
       </div>
 
       <h1
@@ -61,8 +61,8 @@ onMounted(() => {
               d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
           </svg>
         </a>
-        <a href="/docs/why-leaf-v" :class="[ui.btn, ui.btnGhost]">
-          <span>See why Leaf V</span>
+        <a href="/docs/why-leaf-5" :class="[ui.btn, ui.btnGhost]">
+          <span>See why Leaf 5</span>
         </a>
       </div>
 

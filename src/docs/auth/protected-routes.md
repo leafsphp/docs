@@ -102,7 +102,7 @@ app()->get('/login', ['middleware' => 'auth.guest', function () {
 
 If a logged in user tries to access a route protected by the `auth.guest` middleware, they will be redirected to the `/dashboard` route by default.
 
-## Email verification middleware <Badge>NEW</Badge>
+## Email verification middleware
 
 Leaf Auth provides middleware to protect routes that should only be accessible to only users with a certain email verification status. The `auth.verified` middleware ensures that only verified users can access certain routes.
 

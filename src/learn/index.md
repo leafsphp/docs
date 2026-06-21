@@ -148,7 +148,7 @@ This is something we live and die by at Leaf. We believe that every application 
 
 ## Build with AI, not against it
 
-Leaf V is designed to work with AI — not fight it.
+Leaf 5 is designed to work with AI — not fight it.
 
 Tell your AI:
 

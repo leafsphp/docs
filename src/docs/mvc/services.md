@@ -1,6 +1,6 @@
 <!-- markdownlint-disable no-inline-html -->
 
-# Services <Badge>New</Badge>
+# Services
 
 Services let you encapsulate business logic and make it reusable across your application. For example, you might have functionality in `StatsController` that you want to use in `DashboardController` or expose via an API. Instead of duplicating code, you can create a service class and inject it where needed.
 

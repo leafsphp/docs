@@ -57,21 +57,24 @@ Leaf's DB module is great for building simple queries, especially when you are u
 
 Leaf MVC configures everything for you out of the box, so you just need to define your database schema using the schema files and create models to represent your database tables. You can then use the models to perform CRUD operations on your database without writing any SQL queries.
 
-<div class="not-prose my-6 grid gap-3 md:grid-cols-3">
-  <a href="/docs/database/files" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Schema files</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Define table structure in a simple, readable way.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Create your schema -&gt;</span>
+<div class="docs-paths not-prose my-6">
+  <a href="/docs/database/files" class="docs-path-card">
+    <span class="docs-path-index">01 / Structure</span>
+    <strong class="docs-path-title">Schema files</strong>
+    <span class="docs-path-description">Define tables, columns, relationships, and seed data in one readable file.</span>
+    <span class="docs-path-action">Create your schema <span aria-hidden="true">&rarr;</span></span>
   </a>
-  <a href="/docs/database/models" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Models</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Work with database records through object-oriented app code.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Check out models -&gt;</span>
+  <a href="/docs/database/models" class="docs-path-card">
+    <span class="docs-path-index">02 / Records</span>
+    <strong class="docs-path-title">Models</strong>
+    <span class="docs-path-description">Give your data a clean, object-oriented API for everyday application logic.</span>
+    <span class="docs-path-action">Explore models <span aria-hidden="true">&rarr;</span></span>
   </a>
-  <a href="/docs/database/builder" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Query builder</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Write direct queries when a model is more structure than you need.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Skip to builder -&gt;</span>
+  <a href="/docs/database/builder" class="docs-path-card">
+    <span class="docs-path-index">03 / Queries</span>
+    <strong class="docs-path-title">Query builder</strong>
+    <span class="docs-path-description">Drop closer to SQL when you need precise control without losing readability.</span>
+    <span class="docs-path-action">Open the builder <span aria-hidden="true">&rarr;</span></span>
   </a>
 </div>
 

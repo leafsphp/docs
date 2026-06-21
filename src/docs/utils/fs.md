@@ -276,7 +276,7 @@ if ($uploaded) {
 }
 ```
 
-## Using s3 or other cloud storage services <Badge>NEW - WIP</Badge>
+## Using S3 or other cloud storage services <StatusBadge label="WIP" tone="wip" title="Cloud storage is being made native to Leaf 5" description="S3-compatible storage works today through the Leaf S3 add-on. We are refining the Leaf 5 integration so local and cloud paths share one predictable API, with less provider-specific setup and broader method support." meta="Status: available, API evolving" href="#working-with-folders" link-text="Continue the guide" />
 
 Leaf FS now supports using Amazon s3 and other cloud storage services that support the S3 protocol. This allows you to switch from local storage to cloud storage without changing any code. To get started, you need to configure your cloud storage settings in the `.env` file.
 

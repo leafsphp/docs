@@ -9,7 +9,7 @@
         <p :class="ui.subtitle">
           <span :class="[ui.badge, 'inline-flex !mb-0']">
             <span :class="ui.badgeDot" />
-            AI-ready Leaf V
+            AI-ready Leaf 5
           </span>
           testimonials below
         </p>
@@ -30,7 +30,7 @@
             >
               <div v-if="testimonial.version === 5"
                 class="absolute bottom-6 right-5 rounded-full bg-[var(--vp-c-brand-1)] px-2 py-1 text-xs font-semibold text-white">
-                Leaf V</div>
+                Leaf 5</div>
               <p class="!m-0 text-[0.9375rem] leading-relaxed text-neutral-500 dark:text-neutral-400">{{ testimonial.body }}</p>
 
               <div class="mt-6 flex items-center gap-3">
@@ -83,7 +83,7 @@ const testimonials = [
   ],
   [
     {
-      body: 'This is my first experience with PHP, I tried Leaf V out in the alpha with Claude code, and was genuinely impressed. I got my entire school project complete in a matter of minutes, especially the billing part. The best part is that it explains everything it does, so I can learn as I go. Can\'t wait to see how it evolves!',
+      body: 'This is my first experience with PHP, I tried Leaf 5 out in the alpha with Claude code, and was genuinely impressed. I got my entire school project complete in a matter of minutes, especially the billing part. The best part is that it explains everything it does, so I can learn as I go. Can\'t wait to see how it evolves!',
       name: 'Selasi Bansa',
       tagline: '@sdotb',
       imageUrl:

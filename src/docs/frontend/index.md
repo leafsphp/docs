@@ -80,21 +80,24 @@ The Vite + Leaf stack works well when you want Leaf to own the backend while you
 
 Modern app interfaces often use React, Vue, or Svelte. Leaf integrates with these through [Inertia.js](https://inertiajs.com/), giving your frontend direct access to Leaf-powered pages without building a separate API for every screen.
 
-<div class="not-prose my-6 grid gap-3 md:grid-cols-3">
-  <a href="/docs/frontend/inertia" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Inertia</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Bridge Leaf with React, Vue, Svelte, or other app UI libraries.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Open Inertia docs -&gt;</span>
+<div class="docs-paths not-prose my-6">
+  <a href="/docs/frontend/inertia" class="docs-path-card">
+    <span class="docs-path-index">01 / App bridge</span>
+    <strong class="docs-path-title">Inertia</strong>
+    <span class="docs-path-description">Bridge Leaf with React, Vue, Svelte, or another application UI library.</span>
+    <span class="docs-path-action">Open Inertia docs <span aria-hidden="true">&rarr;</span></span>
   </a>
-  <a href="/docs/frontend/vite" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Vite</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Build frontend assets for development and production.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Open Vite docs -&gt;</span>
+  <a href="/docs/frontend/vite" class="docs-path-card">
+    <span class="docs-path-index">02 / Tooling</span>
+    <strong class="docs-path-title">Vite</strong>
+    <span class="docs-path-description">Build and bundle modern frontend assets for development and production.</span>
+    <span class="docs-path-action">Open Vite docs <span aria-hidden="true">&rarr;</span></span>
   </a>
-  <a href="/docs/frontend/tailwind" class="group rounded-lg border border-black/10 bg-white p-4 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] hover:bg-neutral-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Tailwind</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use utility-first styling with your Leaf frontend setup.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-neutral-950 group-hover:text-[var(--vp-c-brand-1)] dark:text-neutral-50">Open Tailwind docs -&gt;</span>
+  <a href="/docs/frontend/tailwind" class="docs-path-card">
+    <span class="docs-path-index">03 / Styling</span>
+    <strong class="docs-path-title">Tailwind</strong>
+    <span class="docs-path-description">Add utility-first styling to Blade, Inertia, or any Leaf frontend setup.</span>
+    <span class="docs-path-action">Open Tailwind docs <span aria-hidden="true">&rarr;</span></span>
   </a>
 </div>
 

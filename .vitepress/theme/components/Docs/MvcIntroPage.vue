@@ -36,12 +36,11 @@
     </div>
   </div>
 
-  <div v-else-if="section === 'parts'" class="mvc-intro not-prose my-6 grid gap-3 md:grid-cols-3">
-    <div v-for="item in mvcParts" :key="item.title"
-      class="rounded-lg border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">{{ item.kicker }}</p>
-      <h3 class="text-base font-semibold text-neutral-950 dark:text-neutral-50">{{ item.title }}</h3>
-      <p class="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{{ item.description }}</p>
+  <div v-else-if="section === 'parts'" class="mvc-intro docs-paths not-prose my-6">
+    <div v-for="(item, index) in mvcParts" :key="item.title" class="docs-path-card docs-path-card--static">
+      <span class="docs-path-index">0{{ index + 1 }} / {{ item.kicker }}</span>
+      <strong class="docs-path-title">{{ item.title }}</strong>
+      <span class="docs-path-description">{{ item.description }}</span>
     </div>
   </div>
 

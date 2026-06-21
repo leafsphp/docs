@@ -27,7 +27,7 @@
             </h2>
           </div>
           <p :class="ui.subtitle">
-            Want a Leaf core team member to speak? We'd love to bring practical Leaf V and AI-native PHP demos to your
+            Want a Leaf core team member to speak? We'd love to bring practical Leaf 5 and AI-native PHP demos to your
             attendees.
           </p>
 
@@ -89,7 +89,7 @@ const perks = [
   {
     icon: '⚡',
     title: 'AI-native demos',
-    desc: 'We bring real code, real speed, and agent-friendly Leaf V walkthroughs.',
+    desc: 'We bring real code, real speed, and agent-friendly Leaf 5 walkthroughs.',
   },
   {
     icon: '🤝',

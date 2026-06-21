@@ -1,6 +1,6 @@
 <!-- markdownlint-disable no-inline-html -->
 
-# Leaf + Swoole <Badge type="danger" text="BETA" />
+# Leaf + Swoole <StatusBadge label="WIP" tone="wip" title="Swoole guidance is awaiting Leaf 5 verification" description="This page documents the existing Leaf 4 integration. The team is validating server startup, lifecycle hooks, and long-running process behavior against Leaf 5 before calling the guide production-ready." meta="Docs target: Leaf 4" href="#setting-up" link-text="Review setup" />
 
 Swoole is a high-performance network framework that supercharges PHP, allowing it to handle multiple tasks at the same time (asynchronous programming). Typically, PHP processes tasks one by one, but Swoole lets it manage thousands of tasks simultaneously, making your app faster and more efficient.
 
@@ -70,7 +70,7 @@ We promised that there would be no API changes, and this also applies to how you
 leaf serve
 ```
 
-## Websockets <Badge type="danger" text="EXPERIMENTAL" />
+## Websockets <StatusBadge label="Experimental" tone="wip" title="WebSocket support may still change" description="The WebSocket API is available for testing, but its behavior and integration surface may change as the Swoole support is updated for Leaf 5. Avoid treating this section as a stable production contract yet." meta="Stability: experimental" />
 
 WebSockets are a communication protocol that allows real-time, two-way interaction between your application and your users. Unlike traditional HTTP requests, where the user has to keep making requests to your app for updates, WebSockets create a persistent connection. Once connected, both your application and users can send and receive messages instantly, without needing to refresh or request new data. This is super useful for real-time apps like chat apps, live updates, or multiplayer games!
 

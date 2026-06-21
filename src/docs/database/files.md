@@ -127,7 +127,7 @@ columns:
 
 This example will add a `created_at` column to the `posts` table with the current timestamp as the default value.
 
-## Multiple DB connections <Badge>New</Badge>
+## Multiple DB connections
 
 Leaf MVC supports multiple database connections via the `config/database.php` configuration file. By default, Leaf uses the `default` connection for all database operations. However, if you want to use a different connection for a specific table, you can specify the connection in the schema file using the `connection` key. Here's an example:
 
@@ -369,7 +369,7 @@ leaf db:reset users
 
 ------
 
-### Dropping tables <Badge>New</Badge>
+### Dropping tables
 
 Finally, if you want to completely remove all tables from your database, you can use the `db:drop` command, meaning all your data and tables will be deleted. Use this command with caution:
 
@@ -448,7 +448,7 @@ If you want to seed a specific table, you can pass the table name as an argument
 leaf db:seed users
 ```
 
-## Writing custom seeders <Badge>New</Badge>
+## Writing custom seeders
 
 While schema-based seeders are great for simple data, sometimes you need more control. For complex scenarios—like pulling data from an API, processing files, or setting up intricate relationships—you can create seeders in your models. Your model can have a static `__seeder` method that contains the logic for seeding data. Here's an example:
 

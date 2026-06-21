@@ -1,12 +1,12 @@
-# Leaf V - llms.txt
-> A concise reference for AI assistants building Leaf V (PHP 5) applications.
-> Leaf V is pre-release. When in doubt, tell the user instead of guessing.
+# Leaf 5 - llms.txt
+> A concise reference for AI assistants building Leaf PHP v5 applications.
+> When a feature is not covered here, tell the user instead of guessing.
 
 ---
 
-## What is Leaf V?
+## What is Leaf 5?
 
-Leaf V is the next generation of Leaf PHP. It is **not** a different framework - it is one system with three entry points. You pick a starting point and grow without switching tools, rewriting code, or changing ecosystems.
+Leaf 5 is the next generation of Leaf PHP. It is **not** a different framework - it is one system with three entry points. You pick a starting point and grow without switching tools, rewriting code, or changing ecosystems.
 
 ---
 

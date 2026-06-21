@@ -46,13 +46,23 @@
 
 ## Create a route
 
-<div class="not-prose my-6 rounded-lg border border-black/10 bg-neutral-50 p-4 dark:border-white/10 dark:bg-white/[0.03]">
-  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-    <div>
-      <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Using Leaf MVC?</p>
-      <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">There is a routing guide tailored for controllers, MVC file structure, and app routes.</p>
+<div class="not-prose relative my-6 overflow-hidden rounded-xl border border-black/10 bg-neutral-50 dark:border-white/10 dark:bg-white/[0.03]">
+  <div class="absolute inset-y-0 left-0 w-0.5 bg-[var(--vp-c-brand-1)]" aria-hidden="true"></div>
+  <div class="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+    <div class="flex min-w-0 items-start gap-4">
+      <div class="hidden shrink-0 items-center gap-1 pt-1 sm:flex" aria-hidden="true">
+        <span class="h-2 w-2 rounded-full bg-[var(--vp-c-brand-1)]"></span>
+        <span class="h-px w-3 bg-black/15 dark:bg-white/15"></span>
+        <span class="h-2 w-2 rounded-full border border-black/20 bg-white dark:border-white/20 dark:bg-neutral-950"></span>
+        <span class="h-px w-3 bg-black/15 dark:bg-white/15"></span>
+        <span class="h-2 w-2 rounded-full border border-black/20 bg-white dark:border-white/20 dark:bg-neutral-950"></span>
+      </div>
+      <div class="min-w-0">
+        <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Route → Controller → Response</p>
+        <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-700 dark:text-neutral-300">Building with Leaf MVC? Keep routes thin and move application logic into controllers.</p>
+      </div>
     </div>
-    <a href="/docs/routing/mvc" class="inline-flex h-9 items-center justify-center rounded-lg border border-black/10 bg-white px-3 text-sm font-semibold text-neutral-950 no-underline transition-colors hover:border-[var(--vp-c-brand-1)] dark:border-white/10 dark:bg-white/[0.04] dark:text-neutral-50">Open MVC routing</a>
+    <a href="/docs/routing/mvc" class="!inline-flex !h-9 !shrink-0 !items-center !justify-center !whitespace-nowrap !rounded-lg !border !border-black/10 !bg-white !px-3 !text-sm !font-semibold !text-neutral-950 !no-underline !shadow-sm !transition-colors hover:!border-[var(--vp-c-brand-1)] hover:!text-[var(--vp-c-brand-1)] dark:!border-white/10 dark:!bg-white/[0.04] dark:!text-neutral-50">MVC routing <span class="!ml-1.5 text-[var(--vp-c-brand-1)]" aria-hidden="true">→</span></a>
   </div>
 </div>
 

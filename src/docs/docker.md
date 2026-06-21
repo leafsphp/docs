@@ -1,6 +1,6 @@
-# Docker + Leaf
-
 <!-- markdownlint-disable no-inline-html -->
+
+# Docker + Leaf <StatusBadge label="WIP" tone="wip" title="Leaf 5 Docker support is being updated" description="This guide still reflects the Leaf 4 Docker workflow. The core Docker examples remain useful, but Leaf 5 scaffolding, service orchestration, and CLI behavior are being reviewed before this page is marked current." meta="Docs target: Leaf 4" href="#using-the-leaf-cli" link-text="Review the guide" />
 
 <section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
   <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">

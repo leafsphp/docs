@@ -2,6 +2,7 @@ import { defineAsyncComponent, h } from 'vue';
 import DefaultTheme from 'vitepress/theme';
 import { VueWriter } from 'vue-writer';
 import { MotionPlugin } from '@vueuse/motion';
+import StatusBadge from './components/shared/StatusBadge.vue';
 
 import 'virtual:group-icons.css';
 import './styles/index.css';
@@ -13,6 +14,7 @@ export default {
   enhanceApp({ app }: any) {
     app.use(MotionPlugin);
     app.component('vue-writer', VueWriter);
+    app.component('StatusBadge', StatusBadge);
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

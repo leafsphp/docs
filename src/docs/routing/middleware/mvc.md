@@ -149,7 +149,7 @@ class MyController extends Controller
 
 Once the data is read using `request()->next()`, it is removed from the request object and cannot be accessed again during the request lifecycle.
 
-## Controller Middleware <Badge>New</Badge>
+## Controller Middleware
 
 The middleware we have seen so far is applied to routes, which is great for most use-cases. However, there are times when you may want to apply middleware to one or more controller methods, instead of individual routes. This is especially useful when you have an application which has both web and API routes, and you want to apply different middleware to each. To use this, find the controller you want to add middleware to, and add a `__middleware` method to it:
 

@@ -174,7 +174,7 @@ $app->response()->die('An error occurred', 500);
 
 If you pass a string as the first parameter, Leaf will automatically convert it to a markup response. If you pass an array, Leaf will automatically convert it to a JSON response.
 
-## Templating <Badge>NEW</Badge>
+## Templating
 
 Leaf has support for a wide range of templating engines plus any other templating engine you might want to use. Once you have a view engine installed and set up, you can use the `view()` or `render()` method to render views. This method accepts 2 parameters:
 

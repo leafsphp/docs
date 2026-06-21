@@ -6,7 +6,10 @@ const sidebar = [
     items: [
       // { text: 'Installation', link: '/docs/installation' },
       { text: 'Leaf CLI', link: '/docs/cli/' },
-      { text: 'AI', link: '/docs/ai' },
+      {
+        text: 'AI in Leaf <span class="badge new">New</span>',
+        link: '/docs/ai',
+      },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
       { text: 'Modules', link: '/docs/modules' },
       { text: 'App Scaffolding', link: '/docs/mvc/scaffolds' },

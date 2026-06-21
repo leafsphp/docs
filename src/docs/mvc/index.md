@@ -60,17 +60,17 @@ Do not commit your `.env` file. Leaf MVC already adds it to `.gitignore` because
 
 Leaf MVC gives you structure without taking away your choices. Build a full-stack app, serve a frontend with Inertia or Blade, or expose a clean JSON API for any client.
 
-<div class="not-prose my-8 grid gap-4 md:grid-cols-2">
-  <a class="group rounded-xl border border-neutral-200 bg-white p-5 no-underline transition hover:border-[var(--vp-c-brand-1)] dark:border-neutral-800 dark:bg-neutral-950" href="/learn/mvc">
-    <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">Full-stack apps</p>
-    <h3 class="mt-3 text-lg font-semibold text-neutral-950 dark:text-neutral-50">Build product screens, auth flows, dashboards, and admin tools.</h3>
-    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use controllers, models, views, and AI-readable project structure without buying into a heavy framework.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-[var(--vp-c-brand-1)]">Start building -&gt;</span>
+<div class="docs-paths docs-paths--two not-prose my-8">
+  <a class="docs-path-card" href="/learn/mvc">
+    <span class="docs-path-index">01 / Full-stack apps</span>
+    <strong class="docs-path-title">Build product screens, auth flows, dashboards, and admin tools.</strong>
+    <span class="docs-path-description">Use controllers, models, views, and AI-readable project structure without buying into a heavy framework.</span>
+    <span class="docs-path-action">Start building <span aria-hidden="true">&rarr;</span></span>
   </a>
-  <a class="group rounded-xl border border-neutral-200 bg-white p-5 no-underline transition hover:border-[var(--vp-c-brand-1)] dark:border-neutral-800 dark:bg-neutral-950" href="/learn/api">
-    <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">APIs</p>
-    <h3 class="mt-3 text-lg font-semibold text-neutral-950 dark:text-neutral-50">Expose structured JSON endpoints for any frontend or client.</h3>
-    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Keep routing, controllers, middleware, and database code predictable enough for humans and agents to extend.</p>
-    <span class="mt-4 inline-flex text-sm font-semibold text-[var(--vp-c-brand-1)]">Build an API -&gt;</span>
+  <a class="docs-path-card" href="/learn/api">
+    <span class="docs-path-index">02 / APIs</span>
+    <strong class="docs-path-title">Expose structured JSON endpoints for any frontend or client.</strong>
+    <span class="docs-path-description">Keep routing, controllers, middleware, and database code predictable enough for humans and agents to extend.</span>
+    <span class="docs-path-action">Build an API <span aria-hidden="true">&rarr;</span></span>
   </a>
 </div>

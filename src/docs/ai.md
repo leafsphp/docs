@@ -3,9 +3,9 @@ next: false
 prev: false
 ---
 
-# AI in Leaf V
-
 <!-- markdownlint-disable no-inline-html -->
+
+# AI in Leaf <StatusBadge label="New" title="AI-native project context arrived in Leaf 5" description="Leaf 5 gives assistants an explicit map of your app instead of making them infer routes, modules, configuration, and structure from scratch." meta="Introduced in Leaf 5" href="#instant-project-understanding" link-text="See how it works" />
 
 <div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
   <div class="grid 2xl:grid-cols-[1fr_320px]">
@@ -15,7 +15,7 @@ prev: false
         Give assistants the map, not just the prompt.
       </div>
       <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">
-        Leaf V is designed so AI tools can understand your app before they edit it. Routes, modules, config, entry point, and project structure become explicit context instead of hidden assumptions.
+        Leaf 5 is designed so AI tools can understand your app before they edit it. Routes, modules, config, entry point, and project structure become explicit context instead of hidden assumptions.
       </p>
       <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
         <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
@@ -82,7 +82,7 @@ When the assistant has no map, it guesses. When it guesses, you debug.
 
 ## How Leaf fixes this
 
-Leaf V gives AI tools a reliable map of your app. A fresh project includes a `.leaf/context.md` file, and the Leaf CLI can regenerate project context whenever the app changes.
+Leaf 5 gives AI tools a reliable map of your app. A fresh project includes a `.leaf/context.md` file, and the Leaf CLI can regenerate project context whenever the app changes.
 
 <div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
   <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
@@ -199,4 +199,4 @@ The assistant stops acting like autocomplete and starts acting like a teammate w
 
 ## This is just the beginning
 
-Leaf is not adding AI as a decoration. Leaf V is shaping the framework, CLI, docs, and project structure around a future where humans and AI build software together.
+Leaf is not adding AI as a decoration. Leaf 5 is shaping the framework, CLI, docs, and project structure around a future where humans and AI build software together.

@@ -1,10 +1,10 @@
 ---
-title: "Why Leaf V?"
+title: "Why Leaf 5?"
 next: false
 prev: false
 ---
 
-# Why Leaf V?
+# Why Leaf 5?
 
 <!-- markdownlint-disable no-inline-html -->
 
@@ -16,7 +16,7 @@ prev: false
         Software development changed. Frameworks need to change with it.
       </div>
       <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">
-        Leaf V gives people and AI tools the same clear map of an application: predictable structure, small APIs, explicit modules, and project context that stays readable as the product grows.
+        Leaf 5 gives people and AI tools the same clear map of an application: predictable structure, small APIs, explicit modules, and project context that stays readable as the product grows.
       </p>
       <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
         <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
@@ -25,7 +25,7 @@ prev: false
             <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
           </div>
-          <span class="font-mono text-xs text-neutral-500">a Leaf V project</span>
+          <span class="font-mono text-xs text-neutral-500">a Leaf 5 project</span>
         </div>
         <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
           <div><span class="text-neutral-500">$</span> leaf create my-product</div>
@@ -92,7 +92,7 @@ That guesswork creates duplicate abstractions, misplaced files, inconsistent API
     </div>
     <div>
       <div class="border-b border-black/10 bg-neutral-50 px-5 py-4 dark:border-white/10 dark:bg-white/[0.03]">
-        <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">With Leaf V</p>
+        <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">With Leaf 5</p>
       </div>
       <div class="divide-y divide-black/5 px-5 dark:divide-white/5">
         <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
@@ -114,7 +114,7 @@ That guesswork creates duplicate abstractions, misplaced files, inconsistent API
 
 ## AI-native does not mean AI-dependent
 
-Leaf V is still PHP. You can write every line yourself, use an assistant for individual tasks, or let an agent handle larger features.
+Leaf 5 is still PHP. You can write every line yourself, use an assistant for individual tasks, or let an agent handle larger features.
 
 AI-native means the framework is designed to remain understandable in all three cases.
 
@@ -209,7 +209,7 @@ It does not require every possible layer on day one.
 
 ## Your frontend stays yours
 
-Leaf V does not turn an AI-friendly backend into a forced full-stack platform.
+Leaf 5 does not turn an AI-friendly backend into a forced full-stack platform.
 
 Use Blade or BareUI for server-rendered pages. Use Inertia with React, Vue, or Svelte. Build a JSON API for mobile apps, independent frontends, integrations, or agent workflows.
 
@@ -221,7 +221,7 @@ The frontend choice becomes part of the project context, so generated UI work ca
 
 ## Different from both extremes
 
-Leaf V is not trying to be the biggest PHP ecosystem or the smallest possible router.
+Leaf 5 is not trying to be the biggest PHP ecosystem or the smallest possible router.
 
 <div class="not-prose my-8 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
   <div class="grid border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400 md:grid-cols-[160px_1fr_1fr]">
@@ -240,15 +240,15 @@ Leaf V is not trying to be the biggest PHP ecosystem or the smallest possible ro
     <span class="text-neutral-600 dark:text-neutral-400">You define more of the application map yourself.</span>
   </div>
   <div class="grid gap-2 px-4 py-4 text-sm md:grid-cols-[160px_1fr_1fr]">
-    <span class="font-semibold text-[var(--vp-c-brand-1)]">Leaf V</span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">Leaf 5</span>
     <span class="text-neutral-600 dark:text-neutral-400">Small core, first-party modules, predictable product structure.</span>
     <span class="text-neutral-600 dark:text-neutral-400">Opinionated about clarity, flexible about the stack around it.</span>
   </div>
 </div>
 
-## The Leaf V promise
+## The Leaf 5 promise
 
-Leaf V is built around four ideas:
+Leaf 5 is built around four ideas:
 
 1. **Give the project a readable map.** Humans and AI should understand what exists before changing it.
 2. **Reduce the distance from idea to working software.** Commands, modules, and scaffolds should remove repetitive setup.
@@ -260,7 +260,7 @@ This is not AI added to a PHP framework as a separate feature.
 It is a PHP framework reconsidered for how software is being built now.
 
 <div class="not-prose my-10 overflow-hidden rounded-xl border border-black/10 bg-neutral-950 p-6 text-neutral-50 dark:border-white/10 sm:p-8">
-  <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[#fb923c]">Build with Leaf V</p>
+  <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[#fb923c]">Build with Leaf 5</p>
   <div class="mt-3 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Give your next product a framework you and your tools can reason about.</div>
   <p class="!m-0 !mt-3 max-w-2xl text-sm leading-6 text-neutral-400">Create an app, generate its context, and start working on the product instead of assembling the framework underneath it.</p>
   <div class="mt-6 flex flex-wrap gap-3">

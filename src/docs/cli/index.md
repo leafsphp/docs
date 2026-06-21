@@ -192,7 +192,7 @@ leaf serve --watch
 When running your app, Leaf will automatically try to install missing dependencies if no `vendor` directory is found in the project.
 :::
 
-## AI context
+## AI context <StatusBadge label="New" title="Project context is new in Leaf 5" description="The Leaf CLI can generate a compact map of routes, modules, configuration, entry points, and project structure for AI assistants. Regenerate it as your application changes." meta="Introduced in Leaf 5" />
 
 Leaf CLI can generate a compact map of your project for AI assistants.
 
@@ -220,15 +220,17 @@ This creates `.leaf/context.md`, which describes your routes, installed modules,
   </div>
 </div>
 
-## Scaling a project
+## Scaling a project <StatusBadge label="Beta" tone="beta" title="The app upgrade workflow is still evolving" description="The leaf up command can organize a small Leaf app into MVC structure, but its migration rules and generated output may change while the workflow is tested across more real projects." meta="Command version: 0.1" />
 
-Use `leaf up` when a small app needs to grow into a structured MVC app.
+Not all apps require a full structure from the start. With Leaf, you can start as small as a single index.php file hosting your application. This is great for prototypes, scripts, and small tools, but as your app grows, you may want to organize it into a more structured MVC format. 
+
+We added the `leaf up` command to help you scale your app without switching frameworks or rewriting everything by hand. It can move assets, organize controller-like code, and prepare MVC conventions around the app you already started.
 
 ```bash:no-line-numbers
 leaf up
 ```
 
-The command is designed to move your app forward without switching frameworks or rewriting everything by hand. It can move assets, organize controller-like code, detect database usage, and prepare MVC conventions around the app you already started.
+The first time you run `leaf up`, it will generate a `.leaf/migration.yml` file that describes the changes it will make to your project. You can edit this file to point to different directories or change the structure before running the migration. Once you're ready, run `leaf up` again to apply the changes.
 
 ## Running commands
 

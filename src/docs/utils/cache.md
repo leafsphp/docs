@@ -1,6 +1,6 @@
 <!-- markdownlint-disable no-inline-html -->
 
-# Caching <Badge>New</Badge>
+# Caching
 
 Imagine you have 1,000 users fetching some common data from your application which requires a complex database query. Instead of running that complex query 1,000 times, you can cache the result of that query and serve the cached result to all 1,000 users. This is where caching comes in handy.
 

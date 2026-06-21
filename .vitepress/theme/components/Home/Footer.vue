@@ -16,7 +16,7 @@ import { ui } from './ui';
       <div :class="[ui.section, '!max-w-4xl relative z-10 text-center']">
         <div :class="[ui.badge, 'mx-auto mb-8 w-fit']">
           <span :class="ui.badgeDot" aria-hidden="true" />
-          Leaf V — Available now
+          Leaf 5 — Available now
         </div>
 
         <h2 class="!m-0 !mb-5 !border-0 !p-0 !pt-10 !text-[clamp(2.5rem,6vw,4.5rem)] font-semibold !leading-[1.08] !tracking-[-0.04em] text-balance text-neutral-950 dark:text-neutral-50">
@@ -26,7 +26,7 @@ import { ui } from './ui';
 
         <p :class="[ui.subtitle, '!mx-auto !mb-10 max-w-xl']">
           Clean code. Predictable structure. Easy for humans and AI to understand.
-          Get started with Leaf V and experience a new era of PHP.
+          Get started with Leaf 5 and experience a new era of PHP.
         </p>
 
         <div :class="[ui.actions, 'justify-center']">

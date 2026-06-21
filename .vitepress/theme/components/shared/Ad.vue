@@ -4,7 +4,7 @@
     id="widget"
     :class="{ 'animate-border': showAnimation }">
     <div class="relative">
-      <img src="https://github.com/user-attachments/assets/db120ec2-7092-4b18-b1ec-96c9aab90641"
+      <img src="https://github.com/user-attachments/assets/f9bc3cae-5c34-43df-b138-fcaf28d03cda"
         class="w-full object-cover" alt="Leaf Studio" width="457" height="336">
       <div
         class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

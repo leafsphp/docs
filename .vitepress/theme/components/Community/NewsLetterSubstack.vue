@@ -20,7 +20,7 @@ import { ui } from '../Home/ui';
       </div>
 
       <p :class="[ui.subtitle, '!mt-8 !text-center !text-sm']">
-        Get notes on Leaf V, AI-native PHP, and product-building in your inbox. You can also read our blog posts at
+        Get notes on Leaf 5, AI-native PHP, and product-building in your inbox. You can also read our blog posts at
         <a :class="[ui.link, '!inline-flex']" href="https://blog.leafphp.dev/" target="_blank" rel="noopener">blog.leafphp.dev</a>.
         You may also go social at
         <a :class="[ui.link, '!inline-flex']" href="https://twitter.com/leafphp" target="_blank" rel="noopener">Twitter</a>,

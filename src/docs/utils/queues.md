@@ -165,7 +165,7 @@ The available options are:
 | timeout         | The number of seconds a child process can run before being killed.                            |
 | tries           | The maximum number of times a job may be attempted.                                           |
 
-## Scheduling jobs <Badge>NEW</Badge>
+## Scheduling jobs
 
 Some background tasks need to be run at specific times or intervals, for instance, every week, you get an email report of your app's activity. This is usually done using CRON jobs, but Leaf allows you to schedule jobs directly from your already existing jobs. Let's take an example of sending an application report to the admin every week. First, you create a job that sends the report:
 

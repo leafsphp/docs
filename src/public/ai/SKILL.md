@@ -1,11 +1,11 @@
 ---
 name: leaf-v
-description: Expert guidance for building apps with Leaf V — the next generation of the Leaf PHP framework. Use this skill whenever the user mentions Leaf V, Leaf PHP v5, `leaf up`, `leaf context`, `leaf install`, Leaf V entry points (Basic App, Web App, API), or is asking Claude to help build, scaffold, debug, or extend a Leaf V project. Also trigger when the user pastes a `.leaf/context.md` file or asks Claude to act as a Leaf V assistant. This skill makes Claude a first-class Leaf V developer — use it proactively anytime Leaf V is in scope.
+description: Expert guidance for building apps with Leaf 5 — the next generation of the Leaf PHP framework. Use this skill whenever the user mentions Leaf 5, Leaf PHP v5, `leaf up`, `leaf context`, `leaf install`, Leaf 5 entry points (Basic App, Web App, API), or is asking Claude to help build, scaffold, debug, or extend a Leaf 5 project. Also trigger when the user pastes a `.leaf/context.md` file or asks Claude to act as a Leaf 5 assistant. This skill makes Claude a first-class Leaf 5 developer — use it proactively anytime Leaf 5 is in scope.
 ---
 
-# Leaf V Developer Skill
+# Leaf 5 Developer Skill
 
-Leaf V is the next generation of Leaf PHP — not just a framework update, but a new way of building apps. The core idea: **you choose a starting point, not a framework tier.** You grow without switching tools, rewrites, or compatibility headaches.
+Leaf 5 is the next generation of Leaf PHP — not just a framework update, but a new way of building apps. The core idea: **you choose a starting point, not a framework tier.** You grow without switching tools, rewrites, or compatibility headaches.
 
 ## Core Philosophy
 
@@ -168,7 +168,7 @@ Produces a minified map of your project: routes, modules, config, structure.
 
 `.leaf/context.md` stays updated as your app evolves (re-run anytime).
 
-> Confirmed for Leaf V, will be ready before Alpha.
+> Confirmed for Leaf 5, will be ready before Alpha.
 
 ---
 
@@ -209,7 +209,7 @@ Read the relevant file before generating code for that area:
 
 ---
 
-## When Helping a User Build with Leaf V
+## When Helping a User Build with Leaf 5
 
 1. **Read `.leaf/context.md` first** if shared — reveals entry point, routes, installed modules
 2. **Check the reference file** for the API area before writing code
@@ -222,7 +222,7 @@ Read the relevant file before generating code for that area:
 
 ## Notes for Claude
 
-- Leaf V is **pre-release** (not publicly available as of mid-2025)
+- Leaf 5 is the current major generation of Leaf PHP.
 - Creator: **mychidarko** (Michael Darko), founder of Leaf PHP
 - Backwards-compatible with Leaf 4 patterns where possible
 - If asked about undocumented features, ask the user — especially if talking to the creator

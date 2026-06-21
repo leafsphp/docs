@@ -108,7 +108,7 @@ In Leaf MVC, modules can also work through config files, controllers, models, se
   </div>
 </div>
 
-## Modules and AI Context
+## Modules and AI Context <StatusBadge label="New" title="Installed modules now become AI context" description="Leaf 5 can include installed modules and their capabilities in the generated project map, helping assistants use the packages your application already has." meta="Introduced in Leaf 5" />
 
 Modules make your app easier for assistants to understand because they make capabilities explicit. After adding modules, run:
 

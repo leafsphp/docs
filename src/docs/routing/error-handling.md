@@ -130,7 +130,7 @@ That's it! Leaf will no longer log errors or exceptions for your app.
 
 :::
 
-## Rescue Helper <Badge>New</Badge>
+## Rescue Helper
 
 Leaf provides an elegant way to handle exceptions using the `rescue()` function. This function automically catches any exceptions thrown within the provided callback and logs them if logging is enabled, and then returns a default value. This way, you can use try-catch with a more inline syntax.
 
