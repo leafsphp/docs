@@ -64,9 +64,6 @@ onMounted(() => {
         <a href="/docs/why-leaf-v" :class="[ui.btn, ui.btnGhost]">
           <span>See why Leaf V</span>
         </a>
-        <a href="/docs/ai" :class="[ui.btn, ui.btnGhost]">
-          <span>AI in Leaf</span>
-        </a>
       </div>
 
       <div class="mt-16 sm:mt-20">
