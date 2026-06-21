@@ -676,6 +676,51 @@ html.dark .status-badge-footer {
   line-height: 20px;
 }
 
+.docs-path-list {
+  display: grid;
+  gap: 9px;
+  margin: 18px 0 0 !important;
+  padding: 0 !important;
+  color: #666 !important;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.docs-path-list li {
+  position: relative;
+  margin: 0 !important;
+  padding-left: 14px;
+  list-style: none !important;
+}
+
+.docs-path-list li::before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #a3a3a3;
+  content: '';
+}
+
+.docs-path-card--without-context {
+  background: #f7f7f6 !important;
+}
+
+.docs-path-card--with-leaf {
+  background: #fff4ec !important;
+}
+
+.docs-path-card--with-leaf .docs-path-index {
+  color: var(--vp-c-brand-1) !important;
+}
+
+.docs-path-card--with-leaf .docs-path-list li::before {
+  background: var(--vp-c-brand-1);
+}
+
 .docs-path-action {
   display: flex;
   align-items: center;
@@ -729,6 +774,20 @@ html.dark .docs-path-description {
   color: #a3a3a3 !important;
 }
 
+html.dark .docs-path-list {
+  color: #a3a3a3 !important;
+}
+
+html.dark .docs-path-card--without-context,
+html.dark .docs-path-card--without-context:hover {
+  background: #171717 !important;
+}
+
+html.dark .docs-path-card--with-leaf,
+html.dark .docs-path-card--with-leaf:hover {
+  background: #291a12 !important;
+}
+
 html.dark .docs-path-action {
   color: #e5e5e5 !important;
 }
@@ -753,6 +812,31 @@ html.dark .docs-path-action {
 
   html.dark .docs-path-card {
     border-right-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .docs-paths--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .docs-paths--four .docs-path-card {
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .docs-paths--four .docs-path-card:nth-child(odd) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .docs-paths--four .docs-path-card:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
+  html.dark .docs-paths--four .docs-path-card:nth-child(odd) {
+    border-right-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  html.dark .docs-paths--four .docs-path-card:nth-child(-n + 2) {
+    border-bottom-color: rgba(255, 255, 255, 0.12) !important;
   }
 }
 

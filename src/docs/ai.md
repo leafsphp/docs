@@ -57,23 +57,25 @@ prev: false
 
 AI does not usually fail because it cannot write code. It fails because the app gives it poor context.
 
-<div class="not-prose my-6 grid gap-4 md:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Without context</p>
-    <ul class="m-0 space-y-2 p-0 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-      <li class="list-none">Unclear file locations</li>
-      <li class="list-none">Scattered configuration</li>
-      <li class="list-none">Missing module information</li>
-      <li class="list-none">Hallucinated framework patterns</li>
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static docs-path-card--without-context">
+    <span class="docs-path-index">01 / Without context</span>
+    <strong class="docs-path-title">AI has to guess</strong>
+    <ul class="docs-path-list">
+      <li>Unclear file locations</li>
+      <li>Scattered configuration</li>
+      <li>Missing module information</li>
+      <li>Hallucinated framework patterns</li>
     </ul>
   </div>
-  <div class="rounded-lg border border-[color-mix(in_srgb,var(--vp-c-brand-1)_35%,rgba(0,0,0,0.1))] bg-[color-mix(in_srgb,var(--vp-c-brand-1)_7%,white)] p-5 dark:border-[color-mix(in_srgb,var(--vp-c-brand-1)_35%,rgba(255,255,255,0.1))] dark:bg-[color-mix(in_srgb,var(--vp-c-brand-1)_12%,transparent)]">
-    <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">With Leaf</p>
-    <ul class="m-0 space-y-2 p-0 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
-      <li class="list-none">Readable app structure</li>
-      <li class="list-none">Known entry point</li>
-      <li class="list-none">Installed modules and references</li>
-      <li class="list-none">A project map AI can follow</li>
+  <div class="docs-path-card docs-path-card--static docs-path-card--with-leaf">
+    <span class="docs-path-index">02 / With Leaf</span>
+    <strong class="docs-path-title">AI gets the map</strong>
+    <ul class="docs-path-list">
+      <li>Readable app structure</li>
+      <li>Known entry point</li>
+      <li>Installed modules and references</li>
+      <li>A project map AI can follow</li>
     </ul>
   </div>
 </div>
@@ -84,22 +86,26 @@ When the assistant has no map, it guesses. When it guesses, you debug.
 
 Leaf 5 gives AI tools a reliable map of your app. A fresh project includes a `.leaf/context.md` file, and the Leaf CLI can regenerate project context whenever the app changes.
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Entry point</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Basic app, MVC app, API app, or console app. AI knows what kind of Leaf project it is editing.</p>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / App shape</span>
+    <strong class="docs-path-title">Entry point</strong>
+    <span class="docs-path-description">Basic app, MVC app, API app, or console app. AI knows what kind of Leaf project it is editing.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Routes and structure</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Routes, controllers, models, views, public assets, and app folders are easy to inspect.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Code map</span>
+    <strong class="docs-path-title">Routes and structure</strong>
+    <span class="docs-path-description">Routes, controllers, models, views, public assets, and app folders are easy to inspect.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Modules and config</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Installed packages and configuration are part of the context, so AI uses what already exists.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Capabilities</span>
+    <strong class="docs-path-title">Modules and config</strong>
+    <span class="docs-path-description">Installed packages and configuration are part of the context, so AI uses what already exists.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Project state</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Regenerate context as the app evolves so assistants work from the latest map.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Freshness</span>
+    <strong class="docs-path-title">Project state</strong>
+    <span class="docs-path-description">Regenerate context as the app evolves so assistants work from the latest map.</span>
   </div>
 </div>
 
@@ -166,22 +172,26 @@ This gives assistants a stable path for new controllers, models, routes, views, 
 
 AI-assisted Leaf work is meant for actual product features.
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Authentication</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install auth, add protected routes, scaffold login, and wire sessions or JWT.</p>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Access</span>
+    <strong class="docs-path-title">Authentication</strong>
+    <span class="docs-path-description">Install auth, add protected routes, scaffold login, and wire sessions or JWT.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Dashboards</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Generate controllers, models, views, and API responses around your existing app structure.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Product UI</span>
+    <strong class="docs-path-title">Dashboards</strong>
+    <span class="docs-path-description">Generate controllers, models, views, and API responses around your existing app structure.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Billing flows</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Add Stripe, Paystack, webhooks, and database records without losing project conventions.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Payments</span>
+    <strong class="docs-path-title">Billing flows</strong>
+    <span class="docs-path-description">Add Stripe, Paystack, webhooks, and database records without losing project conventions.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">APIs</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Create routes, validation, response helpers, middleware, and clean JSON endpoints.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Integrations</span>
+    <strong class="docs-path-title">APIs</strong>
+    <span class="docs-path-description">Create routes, validation, response helpers, middleware, and clean JSON endpoints.</span>
   </div>
 </div>
 

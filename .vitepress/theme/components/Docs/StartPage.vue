@@ -56,10 +56,11 @@
 
   <p>Leaf is designed to stay light while giving you production-ready pieces as soon as you need them.</p>
 
-  <div class="docs-start not-prose my-6 grid gap-3 sm:grid-cols-2">
-    <div v-for="item in features" :key="item.title" class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-      <p class="m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">{{ item.title }}</p>
-      <p class="mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{{ item.description }}</p>
+  <div class="docs-start docs-paths docs-paths--four not-prose my-6">
+    <div v-for="(item, index) in features" :key="item.title" class="docs-path-card docs-path-card--static">
+      <span class="docs-path-index">0{{ index + 1 }} / {{ item.kicker }}</span>
+      <strong class="docs-path-title">{{ item.title }}</strong>
+      <span class="docs-path-description">{{ item.description }}</span>
     </div>
   </div>
 
@@ -119,18 +120,22 @@
 <script setup>
 const features = [
   {
+    kicker: 'Request flow',
     title: 'Routing and middleware',
     description: 'Clean endpoints, groups, dynamic routes, and request flow without framework noise.',
   },
   {
+    kicker: 'Protection',
     title: 'Auth, sessions, and security',
     description: 'Login, signup, JWT, CSRF, headers, encryption, and protected routes are ready when you are.',
   },
   {
+    kicker: 'Data',
     title: 'Database tools',
     description: 'Use the query builder, models, Redis, files, validation, and migrations around your own app shape.',
   },
   {
+    kicker: 'AI context',
     title: 'Agent-friendly context',
     description: 'Leaf keeps conventions visible so prompts become implementation, not a guessing game.',
   },

@@ -192,18 +192,21 @@ Leaf MVC gives larger applications predictable places for routes, controllers, m
 
 It does not require every possible layer on day one.
 
-<div class="not-prose my-8 grid gap-4 md:grid-cols-3">
-  <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Clear ownership</p>
-    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Application code has an obvious home, which makes features easier to locate and change.</p>
+<div class="docs-paths not-prose my-8">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Ownership</span>
+    <strong class="docs-path-title">Clear ownership</strong>
+    <span class="docs-path-description">Application code has an obvious home, which makes features easier to locate and change.</span>
   </div>
-  <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Feature scaffolds</p>
-    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Generate working feature shapes, then refine them around the actual product.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Momentum</span>
+    <strong class="docs-path-title">Feature scaffolds</strong>
+    <span class="docs-path-description">Generate working feature shapes, then refine them around the actual product.</span>
   </div>
-  <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">On-demand config</p>
-    <p class="!m-0 !mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start with sensible defaults and publish configuration only when you need control.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Control</span>
+    <strong class="docs-path-title">On-demand config</strong>
+    <span class="docs-path-description">Start with sensible defaults and publish configuration only when you need control.</span>
   </div>
 </div>
 

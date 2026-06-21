@@ -74,14 +74,16 @@ Verify the install by running:
 leaf
 ```
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Global command</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">The <code>leaf</code> command becomes available anywhere on your machine.</p>
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Availability</span>
+    <strong class="docs-path-title">Global command</strong>
+    <span class="docs-path-description">The <code>leaf</code> command becomes available anywhere on your machine.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Composer-powered</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Leaf CLI uses Composer underneath, so it fits naturally into PHP workflows.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Ecosystem</span>
+    <strong class="docs-path-title">Composer-powered</strong>
+    <span class="docs-path-description">Leaf CLI uses Composer underneath, so it fits naturally into PHP workflows.</span>
   </div>
 </div>
 

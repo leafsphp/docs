@@ -64,14 +64,16 @@ You can also install multiple modules at once:
 leaf install auth db mail
 ```
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Leaf CLI</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Best for Leaf projects. Short names work for first-party modules, and the command keeps the workflow consistent.</p>
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Leaf workflow</span>
+    <strong class="docs-path-title">Leaf CLI</strong>
+    <span class="docs-path-description">Best for Leaf projects. Short names work for first-party modules, and the command keeps the workflow consistent.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Composer</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Best when you want the raw PHP package manager flow or are installing modules outside a Leaf app.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / PHP workflow</span>
+    <strong class="docs-path-title">Composer</strong>
+    <span class="docs-path-description">Best when you want the raw PHP package manager flow or are installing modules outside a Leaf app.</span>
   </div>
 </div>
 
@@ -89,22 +91,26 @@ In Leaf MVC, modules can also work through config files, controllers, models, se
 
 ## Common Module Groups
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Product basics</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Auth, sessions, cookies, validation, CSRF, CORS, request, and response helpers.</p>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Foundation</span>
+    <strong class="docs-path-title">Product basics</strong>
+    <span class="docs-path-description">Auth, sessions, cookies, validation, CSRF, CORS, request, and response helpers.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Data and state</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Database, Redis, cache, queues, files, sitemaps, and storage integrations.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Storage</span>
+    <strong class="docs-path-title">Data and state</strong>
+    <span class="docs-path-description">Database, Redis, cache, queues, files, sitemaps, and storage integrations.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Frontend and views</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Blade, BareUI, Inertia, Vite, frontend asset builds, and view rendering.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Interface</span>
+    <strong class="docs-path-title">Frontend and views</strong>
+    <span class="docs-path-description">Blade, BareUI, Inertia, Vite, frontend asset builds, and view rendering.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Production features</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Mail, billing, testing, logging, devtools, encryption, and deployment helpers.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Operations</span>
+    <strong class="docs-path-title">Production features</strong>
+    <span class="docs-path-description">Mail, billing, testing, logging, devtools, encryption, and deployment helpers.</span>
   </div>
 </div>
 

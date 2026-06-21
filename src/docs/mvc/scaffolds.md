@@ -49,22 +49,26 @@
 
 Scaffolds are meant to remove repetitive setup, not hide your code. You run a command, Leaf creates the feature files, and you keep full ownership of what was generated.
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Backend files</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Controllers, routes, models, middleware, schema files, callbacks, and service logic.</p>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Server</span>
+    <strong class="docs-path-title">Backend files</strong>
+    <span class="docs-path-description">Controllers, routes, models, middleware, schema files, callbacks, and service logic.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Frontend pieces</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Views, pages, components, forms, dashboard screens, and layout starting points.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Interface</span>
+    <strong class="docs-path-title">Frontend pieces</strong>
+    <span class="docs-path-description">Views, pages, components, forms, dashboard screens, and layout starting points.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">App conventions</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Generated files land where Leaf MVC expects them, so the project stays predictable.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Structure</span>
+    <strong class="docs-path-title">App conventions</strong>
+    <span class="docs-path-description">Generated files land where Leaf MVC expects them, so the project stays predictable.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI context</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">After scaffolding, run <code>leaf context</code> so assistants understand the new feature map.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Context</span>
+    <strong class="docs-path-title">AI context</strong>
+    <span class="docs-path-description">After scaffolding, run <code>leaf context</code> so assistants understand the new feature map.</span>
   </div>
 </div>
 
@@ -123,14 +127,16 @@ leaf scaffold:subscriptions
 
 It requires [Leaf Billing](/docs/utils/billing) to be installed.
 
-<div class="not-prose my-6 grid gap-3 sm:grid-cols-2">
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Frontend</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Pricing component and subscription UI in whatever frontend setup you are using.</p>
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Customer UI</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">Pricing component and subscription UI in whatever frontend setup you are using.</span>
   </div>
-  <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-    <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Backend</p>
-    <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Subscription controllers, cancellation flow, Stripe callbacks, routes, models, schema, and config.</p>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Billing logic</span>
+    <strong class="docs-path-title">Backend</strong>
+    <span class="docs-path-description">Subscription controllers, cancellation flow, Stripe callbacks, routes, models, schema, and config.</span>
   </div>
 </div>
 

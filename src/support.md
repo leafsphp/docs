@@ -29,7 +29,7 @@ We’ve helped developers:
 
 Leaf has grown from a small idea into a framework powering apps, businesses, and side projects around the world. And this is just the beginning.
 
-![leaf](https://github.com/user-attachments/assets/cf1c739f-7850-4567-88af-215eee8611fb)
+![leaf](/leaf5-banner.png)
 
 Now, we’re preparing to take Leaf to the next level. In the coming year, we will:
 
@@ -51,11 +51,11 @@ Michael from Leaf
 
 ## How You Can Support
 
-💚 Sponsor on GitHub or OpenCollective
+🧡 Sponsor on GitHub or OpenCollective
 
 Back Leaf through [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [OpenCollective](https://opencollective.com/leaf). Every contribution — one-time or recurring — fuels development, community events, and new features.
 
-💚 Crypto Support
+🧡 Crypto Support
 Prefer crypto? Send USDT (TRC20) to:
 `TK6d2w4EqSDsf2xB2SLcEkfUt3vxADtFmp`
 
@@ -77,7 +77,7 @@ Sponsoring Leaf isn’t just giving back — it’s investing in the PHP ecosyst
 
 ## Our Sponsors
 
-We are grateful to all our sponsors, both past and present for their generous support 💚
+We are grateful to all our sponsors, both past and present for their generous support 🧡
 
 <SponsorGroup group="sponsor" class="w-full" />
 
