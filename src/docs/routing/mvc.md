@@ -31,7 +31,7 @@ prev: false
         </div>
         <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
           <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">AI map</p>
-          <p class="!m-0 !mt-1 text-sm text-neutral-600 dark:text-neutral-400">Easy to regenerate context.</p>
+          <p class="!m-0 !mt-1 text-sm text-neutral-600 dark:text-neutral-400">Easy for agents to inspect.</p>
         </div>
       </div>
     </div>

@@ -58,8 +58,8 @@ const generatedFiles = [
             </button>
           </div>
           <p class="!m-0 mt-5 text-sm leading-6 text-neutral-500 dark:text-neutral-400">
-            Each prompt starts with Leaf's project context, so the agent sees routes, modules, conventions, and the
-            shape of the app before it writes code.
+            With the agent inside your project, each prompt starts from shared context plus the live codebase. Useful
+            structural changes sync back when the work is done.
           </p>
         </div>
 

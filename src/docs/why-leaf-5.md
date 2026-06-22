@@ -30,7 +30,6 @@ prev: false
         <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
           <div><span class="text-neutral-500">$</span> leaf create my-product</div>
           <div><span class="text-neutral-500">$</span> cd my-product</div>
-          <div><span class="text-neutral-500">$</span> leaf context</div>
           <div><span class="text-neutral-500">$</span> leaf serve</div>
         </div>
       </div>
@@ -120,13 +119,15 @@ AI-native means the framework is designed to remain understandable in all three 
 
 ### One map for people and agents
 
-Run `leaf context` to generate a compact description of your project:
+Leaf projects keep `.leaf/context.md` as shared working memory for agents. An agent inside the project reads that map alongside the filesystem, then writes useful structural changes back so later sessions inherit what it learned. Leaf MVC is AI-ready without extra setup, and projects created with Leaf CLI include this context from the start.
+
+When an external assistant cannot access the project, generate a compact description of that shared context:
 
 ```bash:no-line-numbers
 leaf context
 ```
 
-The generated `.leaf/context.md` can describe the app entry point, installed modules, routes, configuration, structure, and conventions. It gives an assistant useful project knowledge before it starts editing.
+The command prints a minified handoff describing the app entry point, installed modules, routes, configuration, structure, and conventions. Paste the output into the external assistant before it starts editing.
 
 The same clarity helps a developer joining the codebase. There is less hidden framework behavior to memorize and less archaeology before making a change.
 
@@ -265,7 +266,7 @@ It is a PHP framework reconsidered for how software is being built now.
 <div class="not-prose my-10 overflow-hidden rounded-xl border border-black/10 bg-neutral-950 p-6 text-neutral-50 dark:border-white/10 sm:p-8">
   <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[#fb923c]">Build with Leaf 5</p>
   <div class="mt-3 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Give your next product a framework you and your tools can reason about.</div>
-  <p class="!m-0 !mt-3 max-w-2xl text-sm leading-6 text-neutral-400">Create an app, generate its context, and start working on the product instead of assembling the framework underneath it.</p>
+  <p class="!m-0 !mt-3 max-w-2xl text-sm leading-6 text-neutral-400">Create an app, open your agent in the project, and start working on the product instead of assembling the framework underneath it.</p>
   <div class="mt-6 flex flex-wrap gap-3">
     <a class="inline-flex h-10 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-neutral-950 no-underline transition-colors hover:bg-neutral-200" href="/docs/">Get started</a>
     <a class="inline-flex h-10 items-center justify-center rounded-lg border border-white/15 px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-white/10" href="/docs/ai">Explore AI in Leaf</a>

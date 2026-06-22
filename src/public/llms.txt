@@ -664,16 +664,20 @@ Access anywhere: `_env('KEY', 'default')`
 
 ---
 
-## leaf context (AI-native feature)
+## AI-native shared context
+
+Leaf projects use `.leaf/context.md` as shared working memory. Agents running inside a project should read it alongside the filesystem, then update useful project knowledge when their work is complete. Leaf MVC and projects created through Leaf CLI require no extra AI setup.
+
+When an agent cannot access the project, the user can run:
 
 ```bash
-leaf context   # generates .leaf/context.md
+leaf context   # prints a compact context handoff
 ```
 
-When a user shares `.leaf/context.md`, read it first. It tells you:
+The pasted output tells you:
 - Which entry point they're using
 - Installed modules
 - Route definitions
 - App structure
 
-Use it to generate accurate, project-specific code instead of generic boilerplate.
+Use it to generate accurate, project-specific code instead of generic boilerplate. The command output is a minified handoff derived from the shared context, not the two-way `.leaf/context.md` itself.

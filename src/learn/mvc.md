@@ -63,27 +63,13 @@ Out of the box, you can build:
 No wiring tools together.
 No figuring out “what goes where.”
 
-## Your app stays in sync with AI
+## Your app is ready for AI
 
-Leaf maintains a shared context:
-
-```bash:no-line-numbers
-.leaf/context.md
-```
-
-So whether it’s you, your team, or AI — everyone is working with the same understanding of your app.
+Leaf MVC uses `.leaf/context.md` as shared project memory for agents. An agent opened in the project reads that context alongside predictable routes, controllers, models, views, configuration, and modules, then syncs useful changes back. There is no AI setup step or context command required.
 
 ## Tell AI what you want. It builds it
 
-You can always run prompts to make changes to your app locally, but you can also share your application context with AI agents like ChatGPT and let them make changes for you.
-
-Run:
-
-```bash:no-line-numbers
-leaf context
-```
-
-Then tell your AI:
+Open your agent in the project and tell it:
 
 > “Build a SaaS dashboard with teams and billing”
 >
@@ -91,11 +77,13 @@ Then tell your AI:
 >
 > “Create an admin panel”
 
-Leaf gives AI everything it needs to understand your app.
+Leaf MVC gives the agent everything it needs to understand your app.
 
 No long prompts.
 No broken code.
 No guessing.
+
+Using an external assistant without project access? Run `leaf context` and paste its compact output into the conversation.
 
 ## Project Structure
 

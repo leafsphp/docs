@@ -152,21 +152,31 @@ What it does automatically:
 
 ---
 
-## AI-Native: `leaf context`
+## AI-Native shared context
+
+Leaf projects use `.leaf/context.md` as shared working memory. When you are running inside the project:
+
+1. Read `.leaf/context.md` before making changes.
+2. Verify it against the live filesystem.
+3. Update useful project knowledge in `.leaf/context.md` when the work is complete.
+
+No setup command is required for Leaf MVC or projects created through Leaf CLI.
+
+For an external assistant without access to the project, use:
 
 ```bash
-leaf context    # generates .leaf/context.md
+leaf context    # prints a compact context handoff
 ```
 
-Produces a minified map of your project: routes, modules, config, structure.
+This produces a minified view of the shared project context: routes, modules, config, structure, and conventions.
 
-**Workflow:**
+**External workflow:**
 1. Run `leaf context`
-2. Paste `.leaf/context.md` into your AI assistant
+2. Paste the command output into your AI assistant
 3. Say what you want: *"Add billing"*, *"Create a dashboard"*
 4. AI has real context — stops guessing, builds correctly
 
-`.leaf/context.md` stays updated as your app evolves (re-run anytime).
+The command output is a portable handoff. It is not the same as the two-way `.leaf/context.md` used by agents inside the project.
 
 > Confirmed for Leaf 5, will be ready before Alpha.
 

@@ -16,7 +16,9 @@ const isOpen = ref(false);
 const copied = ref(false);
 const currentUrl = ref('');
 
-const isDocsPage = computed(() => route.path.startsWith('/docs'));
+const isDocsPage = computed(
+  () => route.path.startsWith('/docs') || route.path.startsWith('/learn'),
+);
 const prompt = computed(
   () => `Read ${currentUrl.value}. I want to ask questions about it.`,
 );

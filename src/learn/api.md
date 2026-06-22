@@ -56,15 +56,11 @@ Out of the box, you can build:
 
 No wiring. No guessing about structure.
 
-## Your API stays in sync with AI
+## Your API is ready for AI
 
-Leaf maintains a shared context of your app:
+Leaf MVC gives agents shared project memory out of the box. Open an agent in the project and it reads `.leaf/context.md` alongside your routes, controllers, models, and database files, then syncs useful structural changes back into the context.
 
-```bash:no-line-numbers
-leaf context
-```
-
-Share this with your AI and let it build endpoints for you. Tell it:
+Tell it:
 
 > "Add a stripe webhook endpoint"
 >
@@ -72,7 +68,9 @@ Share this with your AI and let it build endpoints for you. Tell it:
 >
 > "Build a todo list API"
 
-No context switching. No broken code. Just working APIs.
+No AI setup or context command is required.
+
+If you use an external assistant without access to the project folder, run `leaf context` and paste the compact output into your conversation.
 
 ## Project Structure
 

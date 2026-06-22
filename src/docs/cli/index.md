@@ -15,7 +15,7 @@ prev: false
         Create, run, extend, and explain your Leaf app from one CLI.
       </div>
       <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">
-        Leaf CLI is the fastest way to start a Leaf project, run it locally, install first-party modules, scaffold frontend tooling, and generate AI-readable context for your app.
+        Leaf CLI is the fastest way to start an AI-ready Leaf project, run it locally, install first-party modules, scaffold frontend tooling, and share compact context with external assistants.
       </p>
       <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
         <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
@@ -46,8 +46,8 @@ prev: false
           <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install auth, db, mail, queues, billing, and other Leaf packages quickly.</p>
         </div>
         <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI context</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Generate a project map assistants can use before making changes.</p>
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI workflow</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start AI-ready, with portable context export when an assistant cannot access the project.</p>
         </div>
       </div>
     </div>
@@ -194,15 +194,17 @@ leaf serve --watch
 When running your app, Leaf will automatically try to install missing dependencies if no `vendor` directory is found in the project.
 :::
 
-## AI context <StatusBadge label="New" title="Project context is new in Leaf 5" description="The Leaf CLI can generate a compact map of routes, modules, configuration, entry points, and project structure for AI assistants. Regenerate it as your application changes." meta="Introduced in Leaf 5" />
+## Sharing AI context <StatusBadge label="New" title="Portable project context arrived in Leaf 5" description="Leaf CLI can produce a compact handoff for assistants that cannot enter your project directly." meta="Introduced in Leaf 5" />
 
-Leaf CLI can generate a compact map of your project for AI assistants.
+Agents running inside your project use `.leaf/context.md` as shared project memory. They read it alongside the filesystem and sync useful changes back when they finish, so the next agent starts with the latest map. Leaf MVC and projects created through Leaf CLI need no extra AI configuration.
+
+Use `leaf context` only when an external assistant cannot access the project:
 
 ```bash:no-line-numbers
 leaf context
 ```
 
-This creates `.leaf/context.md`, which describes your routes, installed modules, project structure, and configuration. Attach it to your assistant before asking for larger changes.
+This prints a compact, minified version of the shared context. Paste that output into the external assistant before asking for larger changes. The output is a portable handoff, not a replacement for the two-way `.leaf/context.md` used inside the project.
 
 <div class="not-prose my-6 grid gap-4 md:grid-cols-[1fr_260px]">
   <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
@@ -312,7 +314,7 @@ Use `view:install` to set up a view engine or frontend integration, and `view:bu
   </div>
   <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
     <code>leaf context</code>
-    <span class="text-neutral-600 dark:text-neutral-400">Generate AI-readable project context.</span>
+    <span class="text-neutral-600 dark:text-neutral-400">Print compact context for an external assistant.</span>
   </div>
   <div class="grid grid-cols-[160px_1fr] border-b border-black/5 px-4 py-3 text-sm dark:border-white/5">
     <code>leaf up</code>

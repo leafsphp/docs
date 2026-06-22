@@ -103,4 +103,4 @@ Modern app interfaces often use React, Vue, or Svelte. Leaf integrates with thes
 
 ## AI context
 
-Frontend choices are part of your app's context. After installing a view engine, Vite, Tailwind, or Inertia, run `leaf context` so assistants know which UI stack they should generate for.
+Frontend choices are part of Leaf's shared project context. Agents inside the project read `.leaf/context.md` alongside the filesystem, then keep that map aligned when Blade, BareUI, Vite, Tailwind, or Inertia changes. Run `leaf context` only to print a compact handoff for an external assistant without project access.

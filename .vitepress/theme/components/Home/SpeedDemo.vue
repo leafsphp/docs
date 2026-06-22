@@ -34,7 +34,7 @@ const steps = [
 
 const metrics = [
   { value: '~30s', label: 'to scaffold a project' },
-  { value: '1', label: 'context map for AI' },
+  { value: '1', label: 'shared agent context' },
   { value: '0', label: 'extra config for AI context' },
   { value: '∞', label: 'hours saved per project' },
 ];

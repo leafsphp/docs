@@ -68,7 +68,7 @@ Scaffolds are meant to remove repetitive setup, not hide your code. You run a co
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">04 / Context</span>
     <strong class="docs-path-title">AI context</strong>
-    <span class="docs-path-description">After scaffolding, run <code>leaf context</code> so assistants understand the new feature map.</span>
+    <span class="docs-path-description">Agents inspect the generated feature and sync its new structure into Leaf's shared project context.</span>
   </div>
 </div>
 
@@ -167,9 +167,10 @@ Ask your assistant:
 Recommended workflow:
 
 1. Run or ask your assistant to run the scaffold command.
-2. Run `leaf context` after files are generated.
-3. Ask for the product-specific changes.
-4. Review the generated routes, controllers, models, and views.
+2. Ask for the product-specific changes.
+3. Review the generated routes, controllers, models, and views.
+
+If the assistant cannot access the project folder, run `leaf context` after scaffolding and paste the compact output into your conversation.
 
 ## More coming soon
 

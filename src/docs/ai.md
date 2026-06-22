@@ -24,12 +24,12 @@ prev: false
             <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
           </div>
-          <span class="font-mono text-xs text-neutral-500">leaf context</span>
+          <span class="font-mono text-xs text-neutral-500">agent in project</span>
         </div>
         <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div><span class="text-neutral-500">$</span> leaf context</div>
-          <div class="text-neutral-400">generates .leaf/context.md</div>
-          <div class="text-neutral-400">maps routes, modules, config, and structure</div>
+          <div><span class="text-neutral-500">$</span> codex .</div>
+          <div class="text-neutral-400">reads .leaf/context.md + the project</div>
+          <div class="text-neutral-400">syncs new project knowledge back when done</div>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@ When the assistant has no map, it guesses. When it guesses, you debug.
 
 ## How Leaf fixes this
 
-Leaf 5 gives AI tools a reliable map of your app. A fresh project includes a `.leaf/context.md` file, and the Leaf CLI can regenerate project context whenever the app changes.
+Leaf 5 gives AI tools a reliable, shared map of your app. Projects created with Leaf CLI are AI-ready immediately, and Leaf MVC needs no extra AI configuration. An agent working inside the project reads `.leaf/context.md` alongside the filesystem, then updates that shared context as the app changes.
 
 <div class="docs-paths docs-paths--four not-prose my-6">
   <div class="docs-path-card docs-path-card--static">
@@ -104,14 +104,14 @@ Leaf 5 gives AI tools a reliable map of your app. A fresh project includes a `.l
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">04 / Freshness</span>
-    <strong class="docs-path-title">Project state</strong>
-    <span class="docs-path-description">Regenerate context as the app evolves so assistants work from the latest map.</span>
+    <strong class="docs-path-title">Two-way context sync</strong>
+    <span class="docs-path-description">Agents start from shared project memory and write useful changes back for the next session.</span>
   </div>
 </div>
 
 ## Instant project understanding
 
-Instead of explaining your app from scratch, give your assistant the context file and ask for the feature you want.
+Open an agent in the project and ask for the feature you want. It starts with Leaf's shared context, verifies that map against the live codebase, and keeps the context useful as it works.
 
 <div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
   <div class="grid md:grid-cols-[1fr_260px]">
@@ -121,17 +121,17 @@ Instead of explaining your app from scratch, give your assistant the context fil
         Add a Stripe webhook, validate the payload, store the event, and return the correct response.
       </div>
       <p class="!m-0 !mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-        With Leaf context attached, the assistant can see your routes, modules, conventions, and app structure before writing the webhook.
+        The agent reads the shared context and the project itself before writing the webhook, then records useful structural changes for the next agent.
       </p>
     </div>
     <div class="bg-neutral-50 p-5 dark:bg-white/[0.03]">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Attached context</p>
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Shared project memory</p>
       <div class="space-y-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
-        <div>.leaf/context.md</div>
+        <div>context: .leaf/context.md</div>
+        <div>sync: read + write</div>
         <div>routes: known</div>
         <div>modules: known</div>
-        <div>entry: mvc-api</div>
-        <div>patterns: Leaf</div>
+        <div>filesystem: available</div>
       </div>
     </div>
   </div>
@@ -139,15 +139,15 @@ Instead of explaining your app from scratch, give your assistant the context fil
 
 That means fewer invented files, fewer mismatched APIs, and less cleanup after generation.
 
-## Accurate context, always
+## When to use `leaf context`
 
-Run `leaf context` when you want a fresh, minified map of your project.
+You do not need this command to make AI features work. Use it when the assistant cannot access your project folder, such as a web chat or another external tool.
 
 ```bash:no-line-numbers
 leaf context
 ```
 
-The command generates `.leaf/context.md`, which you can paste into ChatGPT, Claude, Codex, or any assistant you use. It is especially useful before asking for a larger change, like adding a new module, wiring a frontend flow, or refactoring routes.
+The command prints a compact, minified handoff derived from `.leaf/context.md`. Copy that output into the external assistant so it receives the important project map without direct access to the shared file. It does not replace the two-way context used by agents working inside the project.
 
 ## Predictable structure means better output
 
@@ -161,9 +161,7 @@ my-app/
 │   ├── models/
 │   ├── routes/
 │   └── views/
-├── public/
-└── .leaf/
-    └── context.md
+└── public/
 ```
 
 This gives assistants a stable path for new controllers, models, routes, views, services, and modules.
@@ -199,11 +197,12 @@ AI-assisted Leaf work is meant for actual product features.
 
 The Leaf AI workflow is simple:
 
-1. Build or update your Leaf app.
-2. Run `leaf context`.
-3. Attach `.leaf/context.md` to your assistant.
-4. Describe the feature you want.
-5. Review, run, and keep the context updated.
+1. Open an agent in your Leaf project.
+2. Describe the feature you want.
+3. Let the agent read the shared context and verify it against the current project.
+4. Review and run the changes while the agent syncs useful project knowledge back.
+
+For an external assistant without project access, run `leaf context` and paste the compact output into your conversation first.
 
 The assistant stops acting like autocomplete and starts acting like a teammate with project memory.
 

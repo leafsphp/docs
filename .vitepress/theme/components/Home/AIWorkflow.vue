@@ -21,18 +21,18 @@ const layers = [
   {
     label: '03',
     eyebrow: 'Sync',
-    title: 'Context updates as code changes',
+    title: 'Context moves both ways',
     accent: 'bg-[linear-gradient(90deg,#34d399,#60a5fa)]',
     description:
-      'Leaf can refresh the project map after changes, keeping assistants aligned with the app you are actually building.',
+      'Agents read shared project memory alongside the code, then write useful changes back so the next session starts informed.',
   },
 ];
 
 const agentLoop = [
-  'reads the project map before writing code',
+  'reads .leaf/context.md before writing code',
   'finds the right routes, modules, and services',
   'generates code that matches local patterns',
-  'updates context so the next prompt starts informed',
+  'syncs useful project changes back into context',
 ];
 </script>
 
@@ -100,16 +100,16 @@ const agentLoop = [
                 </button>
               </div>
               <div class="mt-2 flex items-center justify-between px-1 text-[0.7rem] text-neutral-400 dark:text-neutral-500">
-                <span>Leaf context attached</span>
-                <span>.leaf/context.md</span>
+                <span>Shared context connected</span>
+                <span>two-way sync</span>
               </div>
             </div>
           </div>
           <div class="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-black/[0.08] bg-black/[0.08] dark:border-white/[0.08] dark:bg-white/[0.08] max-[900px]:grid-cols-1" aria-label="What Leaf gives AI">
-            <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">reads .leaf/context.md</span>
+            <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">reads shared project memory</span>
             <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">finds routes and modules</span>
             <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">uses app conventions</span>
-            <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">updates context after changes</span>
+            <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">writes project knowledge back</span>
           </div>
         </div>
 

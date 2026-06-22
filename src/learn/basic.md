@@ -3,378 +3,204 @@ next: false
 prev: false
 ---
 
-# Start simple. Ship fast
+# Start simple. Ship fast.
 
 <!-- markdownlint-disable no-inline-html -->
 
-<script setup>
-import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
-</script>
-
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-purple-500 to-indigo-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <p class="font-medium text-violet-100 text-shadow mb-4">
-                    You don’t need setup. You don’t need config. You already have a working app.
-                </p>
-            </div>
-            <!-- <div
-                class="relative md:pl-6 xl:pl-8 hidden sm:block"
-            >
-                Hello
-            </div> -->
+<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid lg:grid-cols-[1fr_300px]">
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 lg:border-b-0 lg:border-r">
+      <h2 class="!m-0 !mt-0 !border-0 !p-0 text-2xl font-semibold text-neutral-950 dark:text-neutral-50 md:text-3xl">A working PHP app before the idea gets cold.</h2>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Start with routing and HTTP helpers, then add only what the product asks for. The project stays readable to you, your team, and your AI tools from the first file.</p>
+      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span><span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span><span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span></div>
+          <span class="font-mono text-xs text-neutral-500">terminal</span>
         </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 hidden sm:block"
-            style="
-                background: linear-gradient(
-                    to top,
-                    rgb(135, 94, 245),
-                    rgba(135, 94, 245, 0)
-                );
-            "
-        ></div>
+        <div class="p-5 font-mono text-sm leading-7 text-neutral-100"><div><span class="text-neutral-500">$</span> leaf create my-app --lite</div><div><span class="text-neutral-500">$</span> cd my-app</div><div><span class="text-neutral-500">$</span> leaf serve</div></div>
+      </div>
     </div>
-</section>
+    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
+      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">You begin with</p>
+      <div class="mt-6 space-y-6">
+        <div><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">One clear entry point</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">No directory tour before you can respond to a request.</span></div>
+        <div><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">Routing and HTTP</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">The essentials for pages, APIs, webhooks, and small tools.</span></div>
+        <div><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">A path to grow</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install modules or move into MVC without changing ecosystems.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-Leaf can be as minimal or as structured as you need. Start with a lightweight core for small tools and experiments, and scale up whenever you’re ready.
+Open `http://localhost:5500`. Your app is live.
 
-```bash:no-line-numbers
-leaf create my-app --lite
-cd my-app
-leaf serve
+## The smallest useful Leaf app
+
+A lite project starts with enough structure to handle real requests without putting a framework ceremony between you and the product.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+app()->get('/', function () {
+    response()->json(['message' => 'Hello from Leaf']);
+});
+
+app()->run();
 ```
 
-Open your browser → `http://localhost:5500`
+<div class="docs-paths not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Route</span>
+    <strong class="docs-path-title">Match the request</strong>
+    <span class="docs-path-description">Connect an HTTP method and URL to the behavior your application needs.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Logic</span>
+    <strong class="docs-path-title">Write the useful part</strong>
+    <span class="docs-path-description">Keep the first version close to the request, then extract structure as complexity earns it.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Response</span>
+    <strong class="docs-path-title">Return clean output</strong>
+    <span class="docs-path-description">Send JSON, HTML, redirects, downloads, or any response the client expects.</span>
+  </div>
+</div>
 
-You’re live.
+## Build with an assistant that knows the app
 
-## A real micro-framework (without the pain)
+This app was created with Leaf CLI, so `.leaf/context.md` is already available as shared project memory. A local agent reads it alongside the filesystem and syncs useful changes back when it finishes. No context command is required.
 
-You start with:
-
-- 🌐 Routing
-- 🧰 HTTP helpers (requests, responses)
-
-That’s it.
-
-No heavy framework.
-No unnecessary features.
-
-## Built for AI-assisted development
-
-Leaf is designed to be AI-native, talk to your AI assistant and keep building without context switching. Just tell your AI what you want to build, and it will install the necessary packages and scaffold the code for you.
-
-Tell your AI:
-
-“Add a Stripe webhook”
-
-And it has everything it needs:
-
-- your routes
-- your structure
-- your conventions
-
-No broken code. No hallucinated patterns.
-
-You can also generate a complete, minified map of your project — ready to paste into ChatGPT or any AI assistant.
+If you are using an external assistant that cannot access the folder, print a compact project handoff:
 
 ```bash:no-line-numbers
 leaf context
 ```
 
-No explaining your codebase.
-No guessing.
-Just accurate context, instantly.
+<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid md:grid-cols-[1fr_240px]">
+    <div class="border-b border-black/10 p-5 dark:border-white/10 md:border-b-0 md:border-r">
+      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Your prompt</p>
+      <div class="mt-4 rounded-lg border border-black/10 bg-neutral-50 p-4 text-sm font-medium leading-6 text-neutral-800 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-200">Add a Stripe webhook, validate the event, and store successful payments.</div>
+      <p class="!m-0 !mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Local agent: shared context and filesystem access stay in sync. External assistant: paste the output of <code>leaf context</code> so it receives the compact project map.</p>
+    </div>
+    <div class="bg-neutral-50 p-5 dark:bg-white/[0.03]">
+      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">AI sees</p>
+      <div class="mt-4 space-y-2 font-mono text-sm leading-6 text-neutral-600 dark:text-neutral-400"><div>entry: lite</div><div>routes: known</div><div>modules: known</div><div>patterns: Leaf</div></div>
+    </div>
+  </div>
+</div>
 
-## Need more? Add it instantly
+The goal is not more generated code. It is fewer invented patterns and changes that fit the application you already have.
 
-Want to go old-school and wire things together yourself? No problem. Just install the modules you need:
+## Add capabilities when the product asks
+
+Leaf modules add focused features without replacing your starting point.
 
 ```bash:no-line-numbers
-leaf install auth
-leaf install db
-leaf install mail
-leaf install <module-name>
+leaf install auth db mail
 ```
 
-That’s authentication, database, and email — ready to use.
+<div class="docs-paths not-prose my-6">
+  <a class="docs-path-card" href="/docs/auth/">
+    <span class="docs-path-index">01 / Users</span>
+    <strong class="docs-path-title">Authentication</strong>
+    <span class="docs-path-description">Login, registration, sessions, JWT, user records, and protected routes.</span>
+    <span class="docs-path-action">Explore auth <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/database/">
+    <span class="docs-path-index">02 / Data</span>
+    <strong class="docs-path-title">Database</strong>
+    <span class="docs-path-description">Fluent queries, models, schema files, Redis, and application state.</span>
+    <span class="docs-path-action">Explore data <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/utils/mail/">
+    <span class="docs-path-index">03 / Communication</span>
+    <strong class="docs-path-title">Mail</strong>
+    <span class="docs-path-description">Send transactional messages through a small API with provider flexibility.</span>
+    <span class="docs-path-action">Explore mail <span aria-hidden="true">&rarr;</span></span>
+  </a>
+</div>
 
-No package hunting.
-No glue code.
-No “does this library work with that one?”
-
-## Build something real in seconds
-
-Once installed, everything works immediately:
+Once installed, modules use the same concise Leaf style:
 
 ```php
-auth()->login([
-  'email' => 'm@example.com',
-  'password' => 'password'
-]);
+auth()->login($credentials);
 
-...
+$user = db()
+    ->select('users')
+    ->where('email', $email)
+    ->first();
 
-$cachedData = cache('queries.complexQuery');
-
-...
-
-$session = billing()->charge([
-    'currency' => 'USD',
-    'description' => 'Purchase of items in cart',
-    'metadata' => [
-        'cart_id' => $cartId,
-        'items' => $cart->items(),
-    ]
-]);
-
-response()->redirect($session->url());
+mailer()
+    ->to($user->email)
+    ->send('welcome');
 ```
-
-No manual setup.
-No configuration maze.
-Everything just works!
 
 ## Grow at your own pace
 
-Start small:
+You do not need to predict the final architecture on day one. Choose the amount of structure the product needs now.
 
-- Simple routes
-- Lightweight APIs
-- Tiny tools
+<div class="docs-paths not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Lite</span>
+    <strong class="docs-path-title">Prove the idea</strong>
+    <span class="docs-path-description">Use a small entry point for scripts, experiments, webhooks, APIs, and focused tools.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Modules</span>
+    <strong class="docs-path-title">Add capabilities</strong>
+    <span class="docs-path-description">Bring in authentication, data, mail, billing, queues, or caching as requirements appear.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / MVC</span>
+    <strong class="docs-path-title">Organize the product</strong>
+    <span class="docs-path-description">Move into controllers, models, views, services, and conventions when the team or app needs them.</span>
+  </div>
+</div>
 
-Then scale up:
+All three stages stay inside Leaf, so growth does not require a framework rewrite.
 
-- Build full products
-- Add payments, caching, ...
-- Integrate with third-party services
+## Deploy anywhere PHP runs
 
-All without changing frameworks.
+Leaf has no private runtime or hosting lock-in. Deploy to a VPS, shared hosting, containers, or a managed PHP platform using the same application you built locally.
 
-## Deploying your app
-
-After building your app, you need to deploy it so your users can access it. Leaf runs wherever PHP runs, so you can deploy your app to a server using a service like [Heroku](/learn/deployment/heroku/), [Fly.io](/learn/deployment/flyio/), [DigitalOcean](/learn/deployment/digitalocean/), or even a shared hosting service like [Sevalla](/learn/deployment/sevalla/).
-
-<div class="my-4 md:my-10">
-    <div
-        class="grid grid-cols-[auto_1fr_auto] gap-3 gap-y-6 rounded-xl p-6 ring-1 ring-gray-950/10 dark:ring-white/10"
-    >
-        <div>
-            <svg
-                width="22"
-                height="28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <circle
-                    class="fill-gray-950/5 dark:fill-white/5"
-                    cx="11"
-                    cy="14"
-                    r="11"
-                ></circle>
-                <circle
-                    class="stroke-gray-950/25 dark:stroke-white/25"
-                    cx="11"
-                    cy="14"
-                    r="10.5"
-                ></circle>
-                <path
-                    class="stroke-gray-950 dark:stroke-white"
-                    d="m12.5 19-1.011.337a1 1 0 0 1-1.253-1.3l1.528-4.074a1 1 0 0 0-1.253-1.3L9.5 13"
-                    stroke-linecap="round"
-                ></path>
-                <path
-                    class="stroke-gray-950 dark:stroke-white"
-                    d="M12 9a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
-                ></path>
-            </svg>
-        </div>
-        <div class="col-span-2 xl:col-span-1">
-            <span class="prose"
-                ><strong class="font-semibold text-gray-950 dark:text-white"
-                    >Want more structure?</strong
-                >
-                  This setup is great for simple applications or experimenting, but if you’re building something larger, consider using <a
-                    href="/learn/mvc"
-                    >Leaf MVC</a>  for a more structured approach with built-in conventions for bigger applications.
-                </span>
-        </div>
-    </div>
+<div class="not-prose my-6 flex flex-col gap-4 rounded-xl border border-black/10 bg-neutral-50 p-5 dark:border-white/10 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">When structure becomes useful</p>
+    <strong class="mt-2 block text-base font-semibold text-neutral-950 dark:text-neutral-50">The same project can grow into Leaf MVC.</strong>
+    <span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">Keep the ecosystem, add the application map.</span>
+  </div>
+  <a href="/learn/mvc" class="!m-0 inline-flex shrink-0 items-center gap-2 text-sm font-semibold !text-[var(--vp-c-brand-1)] !no-underline">Continue to MVC <span aria-hidden="true">&rarr;</span></a>
 </div>
 
 ## What to read next
 
-Now that you have built a simple pre-launch page, the next step is to get you familiar with the basics of building a full-stack application with Leaf. So you can build and launch your next big idea _fast_.
+Choose the part of the stack your next feature needs.
 
-<ul
-    class="!mt-10 grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-2 xl:gap-y-10 !pl-0"
->
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:150%] rounded-full h-full bg-center bg-no-repeat bg-pink-100 dark:bg-pink-200"
-                style="
-                    background-image: url(/images/illustrations/Feature-Flags-5.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/routing/"
-                    >Routing<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn more about routing in Leaf MVC, dynamic routes, middleware and more.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:350%] rounded-full h-full bg-green-100 dark:bg-green-200 bg-center bg-no-repeat"
-                style="
-                    background-image: url(/images/illustrations/Heading-2.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/http/request"
-                    >Handling Requests<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn how to process incoming requests, handle form submissions, and more.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:120%] rounded-full h-full bg-purple-100 dark:bg-purple-200 bg-center bg-no-repeat"
-                style="
-                    background-image: url(/images/illustrations/db.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/database/"
-                    >Using Databases<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn how to build queries, build relationships, and interact with your database programmatically.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:400%] rounded-full h-full bg-yellow-100 dark:bg-yellow-200 bg-center bg-no-repeat"
-                style="
-                    background-image: url(/images/illustrations/Stats-2.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/frontend/"
-                    >Frontend<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn about SSR, SPA, and how to use Leaf with your favorite frontend framework.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-</ul>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <a class="docs-path-card" href="/docs/routing/">
+    <span class="docs-path-index">01 / Request map</span>
+    <strong class="docs-path-title">Routing</strong>
+    <span class="docs-path-description">Methods, groups, dynamic routes, middleware, redirects, and named routes.</span>
+    <span class="docs-path-action">Open routing <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/http/request">
+    <span class="docs-path-index">02 / Input</span>
+    <strong class="docs-path-title">Requests</strong>
+    <span class="docs-path-description">Read input, validate payloads, process forms, files, headers, and request data.</span>
+    <span class="docs-path-action">Open requests <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/database/">
+    <span class="docs-path-index">03 / Persistence</span>
+    <strong class="docs-path-title">Database</strong>
+    <span class="docs-path-description">Build queries, model records, define schemas, and manage application data.</span>
+    <span class="docs-path-action">Open database <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/frontend/">
+    <span class="docs-path-index">04 / Interface</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">Use Blade, BareUI, Inertia, Vite, Tailwind, React, Vue, or Svelte.</span>
+    <span class="docs-path-action">Open frontend <span aria-hidden="true">&rarr;</span></span>
+  </a>
+</div>
