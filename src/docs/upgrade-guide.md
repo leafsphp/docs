@@ -58,12 +58,14 @@ If any of your routes contain regex syntax like `(...)`, `\d`, or `?` outside of
 
 ### Route matching order
 
-Routes are matched in the order they are registered. If you have overlapping routes, register the more specific one first:
+Exact routes now always win over dynamic ones, regardless of registration order — so `/users/new` matches its own route even if `/users/{id}` was registered first:
 
 ```php
-app()->get('/users/new', $newHandler);    // register this first
-app()->get('/users/{id}', $userHandler);  // then the catch-all
+app()->get('/users/{id}', $userHandler);  // order no longer matters here
+app()->get('/users/new', $newHandler);    // exact match still wins
 ```
+
+When two *dynamic* routes overlap, the one registered first wins — declare more specific dynamic routes before broader ones.
 
 ## Debug output follows your environment <Badge type="warning" text="BEHAVIOR CHANGE" />
 
