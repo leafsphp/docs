@@ -242,34 +242,34 @@ Product story is the point, but performance is still part of the promise. Leaf 5
   </div>
   <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] md:items-center">
     <span class="font-semibold text-neutral-950 dark:text-neutral-50">100 routes</span>
-    <span class="font-semibold text-[var(--vp-c-brand-1)]">22.39ms</span>
-    <span class="text-neutral-600 dark:text-neutral-400">78.14ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 3.5x faster</span></span>
-    <span class="text-neutral-600 dark:text-neutral-400">216.35ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 9.7x faster</span></span>
-    <span class="text-neutral-600 dark:text-neutral-400">19.00ms <span class="text-xs text-neutral-400">Slim is slightly faster</span></span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">6.48ms</span>
+    <span class="text-neutral-600 dark:text-neutral-400">92.06ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 14.2x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">192.69ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 29.8x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">10.81ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 1.7x faster</span></span>
   </div>
   <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] md:items-center">
     <span class="font-semibold text-neutral-950 dark:text-neutral-50">500 routes</span>
-    <span class="font-semibold text-[var(--vp-c-brand-1)]">19.52ms</span>
-    <span class="text-neutral-600 dark:text-neutral-400">323.87ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 16.6x faster</span></span>
-    <span class="text-neutral-600 dark:text-neutral-400">1,062.39ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 54.4x faster</span></span>
-    <span class="text-neutral-600 dark:text-neutral-400">55.48ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 2.8x faster</span></span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">6.29ms</span>
+    <span class="text-neutral-600 dark:text-neutral-400">257.59ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 40.9x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">531.60ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 84.5x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">11.16ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 1.8x faster</span></span>
   </div>
   <div class="grid gap-2 px-4 py-4 text-sm md:grid-cols-[1fr_1fr_1fr_1fr_1fr] md:items-center">
     <span class="font-semibold text-neutral-950 dark:text-neutral-50">1,000 routes</span>
-    <span class="font-semibold text-[var(--vp-c-brand-1)]">19.06ms</span>
-    <span class="text-neutral-600 dark:text-neutral-400">631.97ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 33.2x faster</span></span>
-    <span class="text-neutral-600 dark:text-neutral-400">2,154.84ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 113x faster</span></span>
-    <span class="text-neutral-600 dark:text-neutral-400">112.37ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 5.9x faster</span></span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">6.51ms</span>
+    <span class="text-neutral-600 dark:text-neutral-400">477.13ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 73.3x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">953.34ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 146.5x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">11.48ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 1.8x faster</span></span>
   </div>
 </div>
 
-This benchmark compares route lookup or dispatch overhead, not full application throughput. The Leaf numbers use a mixed route table with static and dynamic routes, averaged over five local runs. The Laravel column uses Illuminate Routing, the same routing layer used inside Laravel, not a full application boot. Symfony uses `symfony/routing`. Slim uses the Slim 4 dispatch path backed by FastRoute.
+This benchmark compares route lookup or dispatch overhead, not full application throughput: 10,000 lookups against a mixed static/dynamic route table, alternating exact and parameterized hits, averaged over five runs on PHP 8.2. Every framework resolves the same URIs — request objects for the Laravel column are pre-built outside the timed loop, so each column measures routing work only. The Laravel column uses Illuminate Routing, the same routing layer used inside Laravel, not a full application boot. Symfony uses the `symfony/routing` UrlMatcher. Slim uses the Slim 4 dispatch path backed by FastRoute.
 
 <div class="docs-paths not-prose my-8">
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">01 / Route matching</span>
-    <strong class="docs-path-title">Up to about 22x faster in larger route tables.</strong>
-    <span class="docs-path-description">Leaf now indexes exact routes and buckets dynamic routes by method and first segment, so common requests avoid scanning the whole route list.</span>
+    <strong class="docs-path-title">Route lookups stay flat as your app grows.</strong>
+    <span class="docs-path-description">Leaf indexes exact routes and buckets dynamic routes by method and first segment. Exact matches resolve straight from the index in a fraction of a microsecond without touching a single pattern, dynamic requests only scan their own bucket — and lookup cost stays constant from 100 to 1,000 routes.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Env reads</span>
