@@ -94,38 +94,42 @@ app()->get('/movies/{foo}/photos/{bar}', function ($movieId, $photoId) {
     echo 'Movie #' . $movieId . ', photo #' . $photoId;
 });
 
-// Regex
-app()->get('/movies/(\d+)/photos/(\d+)', function ($movieId, $photoId) {
+// Constraint: placeholder must match the regex after the colon
+app()->get('/movies/{id:[0-9]+}/photos/{photoId:[0-9]+}', function ($movieId, $photoId) {
     echo 'Movie #' . $movieId . ', photo #' . $photoId;
 });
 ```
 
-## Optional Sub-patterns
+> Raw regex patterns like `/movies/(\d+)` are NOT supported in Leaf 5 — patterns without `{}` placeholders are treated as literal paths. Always use named placeholders.
+
+## Optional Parameters
 
 ```php
-// /post/1 and /post/1/edit both match
-app()->get('/post/{id}(/edit)?', function ($post, $edit = null) {
-    echo 'Post';
-    if ($edit) echo ' — editing';
+// /posts and /posts/1 both match — give optional params a default value
+app()->get('/posts/{id?}', function ($id = null) {
+    echo $id ? 'Post #' . $id : 'All posts';
 });
-```
 
-> The leading `/` of the optional part must be **inside** the sub-pattern.
+// Optional + constraint: ? goes after the name, before the constraint
+app()->get('/posts/{id?:[0-9]+}', function ($id = null) {
+    echo $id ? 'Post #' . $id : 'All posts';
+});
 
-### Regex optional sub-patterns
-
-```php
-// Matches /blog, /blog/2024, /blog/2024/01, /blog/2024/01/15, /blog/2024/01/15/slug
-app()->get('/blog(/\d+)?(/\d+)?(/\d+)?(/[a-z0-9_-]+)?', function (
-    $year = null, $month = null, $day = null, $slug = null
+// Chained optionals
+// Matches /blog, /blog/2024, /blog/2024/01, /blog/2024/01/slug
+app()->get('/blog/{year?:[0-9]{4}}/{month?:[0-9]{2}}/{slug?}', function (
+    $year = null, $month = null, $slug = null
 ) {
     if (!$year)  { echo 'Blog overview'; return; }
     if (!$month) { echo 'Year overview'; return; }
-    if (!$day)   { echo 'Month overview'; return; }
-    if (!$slug)  { echo 'Day overview'; return; }
+    if (!$slug)  { echo 'Month overview'; return; }
     echo 'Post: ' . htmlentities($slug);
 });
 ```
+
+## Matching Order
+
+Exact routes always beat dynamic routes regardless of registration order (`/users/new` wins over `/users/{id}`). Between overlapping dynamic routes, the one registered first wins — register more specific dynamic routes before broader ones.
 
 ### Nested (successive) optional sub-patterns
 
