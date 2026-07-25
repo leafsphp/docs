@@ -10,6 +10,14 @@ const sidebar = [
         text: 'AI in Leaf <span class="badge new">New</span>',
         link: '/docs/ai',
       },
+      {
+        text: 'Why Leaf 5',
+        link: '/docs/why-leaf-5',
+      },
+      {
+        text: 'Upgrading to Leaf 5',
+        link: '/docs/upgrade-guide',
+      },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
       { text: 'Modules', link: '/docs/modules' },
       { text: 'App Scaffolding', link: '/docs/mvc/scaffolds' },

@@ -58,7 +58,7 @@ No wiring. No guessing about structure.
 
 ## Your API is ready for AI
 
-Leaf MVC gives agents shared project memory out of the box. Open an agent in the project and it reads `.leaf/context.md` alongside your routes, controllers, models, and database files, then syncs useful structural changes back into the context.
+Leaf MVC gives agents shared project memory out of the box. Open an agent in the project and it reads `.leaf/CONTEXT.md` alongside your routes, controllers, models, and database files, then syncs useful structural changes back into the context.
 
 Tell it:
 

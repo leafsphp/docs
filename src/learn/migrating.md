@@ -41,11 +41,11 @@ Slim and Leaf are both micro-frameworks, so the migration process is relatively 
 ::: code-group
 
 ```bash:no-line-numbers [Leaf CLI]
-leaf install leaf@v4.0-beta
+leaf install leaf@5.0
 ```
 
 ```bash:no-line-numbers [Composer]
-composer require leafs/leaf:4.0-beta
+composer require leafs/leaf:^5.0
 ```
 
 :::

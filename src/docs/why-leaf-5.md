@@ -9,117 +9,187 @@ prev: false
 <!-- markdownlint-disable no-inline-html -->
 
 <div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid 2xl:grid-cols-[1fr_320px]">
+  <div class="grid 2xl:grid-cols-[1fr_340px]">
     <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">AI-native PHP</p>
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Product-first PHP</p>
       <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">
-        Software development changed. Frameworks need to change with it.
+        Build the first version like it is meant to survive.
       </div>
       <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">
-        Leaf 5 gives people and AI tools the same clear map of an application: predictable structure, small APIs, explicit modules, and project context that stays readable as the product grows.
+        Leaf 5 is built for founders, solo builders, agencies, and small teams who need to ship real product features quickly without choosing between a tiny router they must assemble themselves and a full-stack framework that brings more machinery than the product needs.
       </p>
-      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
-        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
-          </div>
-          <span class="font-mono text-xs text-neutral-500">a Leaf 5 project</span>
-        </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div><span class="text-neutral-500">$</span> leaf create my-product</div>
-          <div><span class="text-neutral-500">$</span> cd my-product</div>
-          <div><span class="text-neutral-500">$</span> leaf serve</div>
-        </div>
-      </div>
     </div>
     <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">The shift</p>
-      <div class="grid gap-3 md:grid-cols-3 2xl:grid-cols-1">
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">The startup pitch</p>
+      <div class="space-y-3">
         <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">From typing to directing</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Developers increasingly describe, review, and refine features alongside writing code.</p>
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Ship fast without making throwaway software.</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start with the product path, not a disposable experiment.</p>
         </div>
         <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">From hidden to explicit</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Routes, modules, structure, and conventions should be easy to inspect.</p>
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Grow without a rewrite.</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Move from small app to MVC, modules, queues, billing, and frontend tooling as the app becomes real.</p>
         </div>
         <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">From setup to product</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Framework work should not consume the time meant for product work.</p>
+          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Use AI for real product work.</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Agents get project context, modules, routes, conventions, and structure before they touch code.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-## The bottleneck is no longer writing code
+## Why Leaf exists
 
-AI can produce a controller, authentication flow, dashboard, API, or billing integration quickly. The difficult part is making that code belong in your application.
+Most products do not fail because the router is slow. They fail because the team spends too much time on everything around the product:
 
-Without a reliable map, an assistant has to guess:
+- choosing the framework shape too early;
+- wiring auth, sessions, validation, mail, files, queues, payments, and frontend tooling by hand;
+- explaining the same codebase to every new contributor or AI session;
+- carrying framework layers that made sense for a larger company but not for this product yet;
+- rebuilding the early version once customers start depending on it.
 
-- which packages are already installed;
-- where routes, controllers, models, and views live;
-- which frontend stack the project uses;
-- how authentication and database access are configured;
-- which conventions new code should follow.
+Leaf 5 is designed around a different path: **ship the real thing early, then add structure as the product proves it needs structure.**
 
-That guesswork creates duplicate abstractions, misplaced files, inconsistent APIs, and code that works once but becomes difficult to maintain.
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Start</span>
+    <strong class="docs-path-title">One route can be enough.</strong>
+    <span class="docs-path-description">Build a landing page, API, webhook, internal tool, or first customer workflow without creating a full application skeleton first.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Add</span>
+    <strong class="docs-path-title">Install product capabilities.</strong>
+    <span class="docs-path-description">Add auth, database, mail, queues, billing, files, cache, validation, or frontend tooling when the product actually needs them.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Grow</span>
+    <strong class="docs-path-title">Move into structure.</strong>
+    <span class="docs-path-description">Use Leaf MVC when the product needs controllers, models, views, routes, config, jobs, and a clearer app map.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Scale work</span>
+    <strong class="docs-path-title">Let agents help safely.</strong>
+    <span class="docs-path-description">Leaf's shared project context helps AI assistants understand what exists, where code belongs, and which conventions to follow.</span>
+  </div>
+</div>
+
+## What Leaf is really competing with
+
+Leaf is not only competing with Laravel, Symfony, and Slim. It is competing with the moment where an early product starts working, users show up, and the codebase needs to become more serious without slowing you down.
 
 <div class="not-prose my-8 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid md:grid-cols-2">
-    <div class="border-b border-black/10 dark:border-white/10 md:border-b-0 md:border-r">
-      <div class="border-b border-black/10 bg-neutral-50 px-5 py-4 dark:border-white/10 dark:bg-white/[0.03]">
-        <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Without a project map</p>
-      </div>
-      <div class="divide-y divide-black/5 px-5 dark:divide-white/5">
-        <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-300 dark:bg-neutral-700"></span>
-          <span>The assistant invents a project structure.</span>
-        </div>
-        <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-300 dark:bg-neutral-700"></span>
-          <span>Generated features use different patterns.</span>
-        </div>
-        <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-300 dark:bg-neutral-700"></span>
-          <span>Every prompt needs more explanation.</span>
-        </div>
-      </div>
+  <div class="grid md:grid-cols-3">
+    <div class="border-b border-black/10 p-5 dark:border-white/10 md:border-b-0 md:border-r">
+      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">The tiny-router path</p>
+      <div class="mt-4 text-xl font-semibold tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">Fast start, product assembly later.</div>
+      <p class="!m-0 !mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">You get speed and freedom, then spend product time choosing auth, database patterns, validation, mail, queues, views, config, and project structure.</p>
     </div>
-    <div>
-      <div class="border-b border-black/10 bg-neutral-50 px-5 py-4 dark:border-white/10 dark:bg-white/[0.03]">
-        <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">With Leaf 5</p>
-      </div>
-      <div class="divide-y divide-black/5 px-5 dark:divide-white/5">
-        <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--vp-c-brand-1)]"></span>
-          <span>The project exposes its structure and capabilities.</span>
-        </div>
-        <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--vp-c-brand-1)]"></span>
-          <span>New features follow existing Leaf conventions.</span>
-        </div>
-        <div class="flex gap-3 py-4 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--vp-c-brand-1)]"></span>
-          <span>Context can be regenerated as the app changes.</span>
-        </div>
-      </div>
+    <div class="border-b border-black/10 p-5 dark:border-white/10 md:border-b-0 md:border-r">
+      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">The heavy-framework path</p>
+      <div class="mt-4 text-xl font-semibold tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">Serious from day one, heavier from day one.</div>
+      <p class="!m-0 !mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">You get a huge ecosystem and strong conventions, but the first version inherits more concepts, more ceremony, and more runtime surface.</p>
+    </div>
+    <div class="p-5">
+      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">The Leaf path</p>
+      <div class="mt-4 text-xl font-semibold tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">Small first, product-ready when it counts.</div>
+      <p class="!m-0 !mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start lean, add first-party product modules, move into MVC when useful, and keep the app readable to humans and agents as it grows.</p>
     </div>
   </div>
 </div>
 
-## AI-native does not mean AI-dependent
+## Product surface
 
-Leaf 5 is still PHP. You can write every line yourself, use an assistant for individual tasks, or let an agent handle larger features.
+The pitch is not that Leaf has every feature Laravel has. It does not. The pitch is that Leaf covers the product surface many early products actually need without forcing the full-stack framework commitment up front.
 
-AI-native means the framework is designed to remain understandable in all three cases.
+<div class="not-prose my-8 overflow-x-auto rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="min-w-[880px]">
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400">
+      <span>Product need</span>
+      <span class="text-[var(--vp-c-brand-1)]">Leaf 5</span>
+      <span>Laravel</span>
+      <span>Symfony</span>
+      <span>Slim</span>
+    </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">First version</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Lite app, API app, MVC app, or console app. Start as small as the idea.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Full app structure from the beginning.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Highly capable, more configuration-oriented.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Minimal app; you design the product shape.</span>
+    </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">Auth and accounts</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Install auth, JWT or session mode, protected routes, signup, login, roles, permissions.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Deep official auth ecosystem.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Powerful security component and authorization tools.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Bring an auth library or build middleware.</span>
+    </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">Data layer</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Query builder, models, schema files, migrations, seeds, Redis, multi-DB support.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Eloquent, migrations, seeders, Redis, queues.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Doctrine-centered workflow with rich mapping.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Bring Doctrine, Eloquent, Cycle, or your own layer.</span>
+    </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">UI and clients</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Blade, BareUI, Inertia, Vite, Tailwind, React, Vue, Svelte, JSON APIs.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Blade, Livewire, Inertia, Vite, starter kits.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Twig, AssetMapper, Symfony UX, Encore.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Choose your own templating and frontend stack.</span>
+    </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">Revenue features</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Billing, mail, webhooks, queues, jobs, file storage, cache, fetch, sitemaps.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Very strong official and community package ecosystem.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Broad component and bundle ecosystem.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Mostly external packages and custom integration work.</span>
+    </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] px-4 py-4 text-sm">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">AI-assisted product work</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Agents use shared project context plus the filesystem, then write useful changes back for the next session.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Strong conventions and Laravel Boost for agent tooling.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Symfony has AI tooling, but shared app memory is not the default app contract.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Depends entirely on your chosen tools and project conventions.</span>
+    </div>
+  </div>
+</div>
+
+## AI is not the feature. Product leverage is.
+
+Leaf's AI story is not "we added a chatbot to the docs." It is more practical than that:
+
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Auth</span>
+    <strong class="docs-path-title">Add login without losing the app shape.</strong>
+    <span class="docs-path-description">An agent can inspect the shared context, see installed modules, find the routes and views, then add the auth flow where it belongs.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Billing</span>
+    <strong class="docs-path-title">Wire payments into real code.</strong>
+    <span class="docs-path-description">Billing work touches routes, webhooks, models, config, mail, and security. Leaf context gives the agent the map before it makes those changes.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Dashboards</span>
+    <strong class="docs-path-title">Build product screens with the chosen stack.</strong>
+    <span class="docs-path-description">If the app uses Blade, Inertia, React, Vue, Svelte, or APIs, the frontend choice is part of the project map.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Maintenance</span>
+    <strong class="docs-path-title">The next session starts warmer.</strong>
+    <span class="docs-path-description">Agents inside the project can read and update <code>.leaf/CONTEXT.md</code>, so useful structural knowledge survives beyond one prompt.</span>
+  </div>
+</div>
+
+This matters because founder-speed is not only typing speed. It is the ability to ask for a feature and get code that belongs in the product.
 
 ### One map for people and agents
 
-Leaf projects keep `.leaf/context.md` as shared working memory for agents. An agent inside the project reads that map alongside the filesystem, then writes useful structural changes back so later sessions inherit what it learned. Leaf MVC is AI-ready without extra setup, and projects created with Leaf CLI include this context from the start.
+Leaf 5 is still PHP. You can write every line yourself, use an assistant for individual tasks, or let an agent handle larger features. AI-native means the framework is designed to remain understandable in all three cases.
+
+Leaf projects keep `.leaf/CONTEXT.md` as shared working memory for agents. An agent inside the project reads that map alongside the filesystem, then writes useful structural changes back so later sessions inherit what it learned. Leaf MVC is AI-ready without extra setup, and projects created with Leaf CLI include this context from the start.
 
 When an external assistant cannot access the project, generate a compact description of that shared context:
 
@@ -131,144 +201,104 @@ The command prints a minified handoff describing the app entry point, installed 
 
 The same clarity helps a developer joining the codebase. There is less hidden framework behavior to memorize and less archaeology before making a change.
 
-### Predictable APIs
+## What changes for users?
 
-Leaf modules follow familiar patterns. Requests, responses, authentication, databases, mail, queues, security, and other capabilities feel like parts of the same system.
+Most new Leaf 5 apps feel the same when you are building locally: you still create routes, run the app, see helpful errors, and ship PHP. The difference is that Leaf carries better defaults and a clearer project map underneath.
 
-```php
-app()->post('/sessions', function () {
-    $authenticated = auth()->login(request()->get([
-        'email',
-        'password',
-    ]));
-
-    return $authenticated
-        ? response()->json(auth()->data())
-        : response()->json(auth()->errors(), 422);
-});
-```
-
-An assistant has fewer competing patterns to choose from, and a developer has fewer framework-specific layers to trace.
-
-## Start small without choosing a dead end
-
-A small idea should not require a full application skeleton. A growing product should not require a framework migration.
-
-Leaf lets the project shape follow the product:
-
-<div class="not-prose my-8 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400 md:grid-cols-[140px_1fr_180px]">
-    <span>Shape</span>
-    <span>Use it for</span>
-    <span>Command</span>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Local development</span>
+    <strong class="docs-path-title">Helpful errors stay on.</strong>
+    <span class="docs-path-description">Leaf keeps debug output available outside production so mistakes are easy to understand while you build.</span>
   </div>
-  <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[140px_1fr_180px] md:items-center">
-    <span class="font-semibold text-neutral-950 dark:text-neutral-50">Lite</span>
-    <span class="text-neutral-600 dark:text-neutral-400">Small tools, prototypes, APIs, and focused services.</span>
-    <code>leaf create --lite</code>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Production</span>
+    <strong class="docs-path-title">Debug output gets quiet.</strong>
+    <span class="docs-path-description">When <code>APP_ENV=production</code>, Leaf turns detailed debug output off unless you explicitly override it.</span>
   </div>
-  <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[140px_1fr_180px] md:items-center">
-    <span class="font-semibold text-neutral-950 dark:text-neutral-50">MVC</span>
-    <span class="text-neutral-600 dark:text-neutral-400">Structured products with controllers, models, views, and teams.</span>
-    <code>leaf create --mvc</code>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / AI workflow</span>
+    <strong class="docs-path-title">Context is built in.</strong>
+    <span class="docs-path-description">Leaf CLI and Leaf MVC projects keep shared project context so agents can understand the app before changing it.</span>
   </div>
-  <div class="grid gap-2 px-4 py-4 text-sm md:grid-cols-[140px_1fr_180px] md:items-center">
-    <span class="font-semibold text-neutral-950 dark:text-neutral-50">Growing</span>
-    <span class="text-neutral-600 dark:text-neutral-400">Move an existing app toward MVC structure without restarting.</span>
-    <code>leaf up</code>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">04 / Core</span>
+    <strong class="docs-path-title">Less experimental surface.</strong>
+    <span class="docs-path-description">The core focuses on stable HTTP, routing, config, and app behavior. Experimental server features live outside the core path.</span>
   </div>
 </div>
 
-Install capabilities as the product needs them:
+## The numbers still matter
 
-```bash:no-line-numbers
-leaf install auth db mail queue
-```
+Product story is the point, but performance is still part of the promise. Leaf 5 keeps the framework overhead low so your product gets more of the request budget.
 
-This keeps the initial surface area small while preserving a path to a structured application.
+<div class="not-prose my-8 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400 md:grid-cols-[1fr_1fr_1fr_1fr_1fr]">
+    <span>Routes</span>
+    <span class="text-[var(--vp-c-brand-1)]">Leaf 5</span>
+    <span>Symfony Routing</span>
+    <span>Laravel routing</span>
+    <span>Slim dispatch</span>
+  </div>
+  <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] md:items-center">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">100 routes</span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">22.39ms</span>
+    <span class="text-neutral-600 dark:text-neutral-400">78.14ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 3.5x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">216.35ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 9.7x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">19.00ms <span class="text-xs text-neutral-400">Slim is slightly faster</span></span>
+  </div>
+  <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] md:items-center">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">500 routes</span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">19.52ms</span>
+    <span class="text-neutral-600 dark:text-neutral-400">323.87ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 16.6x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">1,062.39ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 54.4x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">55.48ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 2.8x faster</span></span>
+  </div>
+  <div class="grid gap-2 px-4 py-4 text-sm md:grid-cols-[1fr_1fr_1fr_1fr_1fr] md:items-center">
+    <span class="font-semibold text-neutral-950 dark:text-neutral-50">1,000 routes</span>
+    <span class="font-semibold text-[var(--vp-c-brand-1)]">19.06ms</span>
+    <span class="text-neutral-600 dark:text-neutral-400">631.97ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 33.2x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">2,154.84ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 113x faster</span></span>
+    <span class="text-neutral-600 dark:text-neutral-400">112.37ms <span class="text-xs text-emerald-600 dark:text-emerald-400">Leaf is 5.9x faster</span></span>
+  </div>
+</div>
 
-## Structure without ceremony
-
-Leaf MVC gives larger applications predictable places for routes, controllers, models, views, jobs, mailers, middleware, and configuration.
-
-It does not require every possible layer on day one.
+This benchmark compares route lookup or dispatch overhead, not full application throughput. The Leaf numbers use a mixed route table with static and dynamic routes, averaged over five local runs. The Laravel column uses Illuminate Routing, the same routing layer used inside Laravel, not a full application boot. Symfony uses `symfony/routing`. Slim uses the Slim 4 dispatch path backed by FastRoute.
 
 <div class="docs-paths not-prose my-8">
   <div class="docs-path-card docs-path-card--static">
-    <span class="docs-path-index">01 / Ownership</span>
-    <strong class="docs-path-title">Clear ownership</strong>
-    <span class="docs-path-description">Application code has an obvious home, which makes features easier to locate and change.</span>
+    <span class="docs-path-index">01 / Route matching</span>
+    <strong class="docs-path-title">Up to about 22x faster in larger route tables.</strong>
+    <span class="docs-path-description">Leaf now indexes exact routes and buckets dynamic routes by method and first segment, so common requests avoid scanning the whole route list.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
-    <span class="docs-path-index">02 / Momentum</span>
-    <strong class="docs-path-title">Feature scaffolds</strong>
-    <span class="docs-path-description">Generate working feature shapes, then refine them around the actual product.</span>
+    <span class="docs-path-index">02 / Env reads</span>
+    <strong class="docs-path-title">About 41x faster on repeated reads.</strong>
+    <span class="docs-path-description">A one-million-read microbenchmark dropped from about 2.9 seconds to 70ms.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
-    <span class="docs-path-index">03 / Control</span>
-    <strong class="docs-path-title">On-demand config</strong>
-    <span class="docs-path-description">Start with sensible defaults and publish configuration only when you need control.</span>
+    <span class="docs-path-index">03 / URI parsing</span>
+    <strong class="docs-path-title">About 4.4x faster per request.</strong>
+    <span class="docs-path-description">The current path is parsed once and reused during the request lifecycle.</span>
   </div>
 </div>
 
-## Your frontend stays yours
+## The honest trade-off
 
-Leaf 5 does not turn an AI-friendly backend into a forced full-stack platform.
+Choose Laravel when you want the largest PHP product ecosystem and you are happy to adopt its full application model.
 
-Use Blade or BareUI for server-rendered pages. Use Inertia with React, Vue, or Svelte. Build a JSON API for mobile apps, independent frontends, integrations, or agent workflows.
+Choose Symfony when you need deep architecture control, mature components, and enterprise-grade composition.
 
-```bash:no-line-numbers
-leaf view:install
-```
+Choose Slim when you want the smallest possible HTTP layer and you are comfortable assembling the rest of the product stack yourself.
 
-The frontend choice becomes part of the project context, so generated UI work can follow the stack the application already uses.
-
-## Different from both extremes
-
-Leaf 5 is not trying to be the biggest PHP ecosystem or the smallest possible router.
-
-<div class="not-prose my-8 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400 md:grid-cols-[160px_1fr_1fr]">
-    <span>Approach</span>
-    <span>Strength</span>
-    <span>Trade-off</span>
-  </div>
-  <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[160px_1fr_1fr]">
-    <span class="font-semibold text-neutral-950 dark:text-neutral-50">Large framework</span>
-    <span class="text-neutral-600 dark:text-neutral-400">Deep ecosystem and strong conventions.</span>
-    <span class="text-neutral-600 dark:text-neutral-400">More framework surface area and ceremony to carry.</span>
-  </div>
-  <div class="grid gap-2 border-b border-black/5 px-4 py-4 text-sm dark:border-white/5 md:grid-cols-[160px_1fr_1fr]">
-    <span class="font-semibold text-neutral-950 dark:text-neutral-50">Micro-framework</span>
-    <span class="text-neutral-600 dark:text-neutral-400">A tiny core with maximum assembly freedom.</span>
-    <span class="text-neutral-600 dark:text-neutral-400">You define more of the application map yourself.</span>
-  </div>
-  <div class="grid gap-2 px-4 py-4 text-sm md:grid-cols-[160px_1fr_1fr]">
-    <span class="font-semibold text-[var(--vp-c-brand-1)]">Leaf 5</span>
-    <span class="text-neutral-600 dark:text-neutral-400">Small core, first-party modules, predictable product structure.</span>
-    <span class="text-neutral-600 dark:text-neutral-400">Opinionated about clarity, flexible about the stack around it.</span>
-  </div>
-</div>
-
-## The Leaf 5 promise
-
-Leaf 5 is built around four ideas:
-
-1. **Give the project a readable map.** Humans and AI should understand what exists before changing it.
-2. **Reduce the distance from idea to working software.** Commands, modules, and scaffolds should remove repetitive setup.
-3. **Let structure grow with the product.** Start with a small app and add organization without switching ecosystems.
-4. **Keep the result understandable.** Generated code should still look like code you would confidently maintain.
-
-This is not AI added to a PHP framework as a separate feature.
-
-It is a PHP framework reconsidered for how software is being built now.
+Choose Leaf when you want to get a real PHP product into users' hands quickly, keep the app small enough to understand, and still have a path to auth, data, frontend, jobs, billing, deployment, and AI-assisted maintenance as the product grows.
 
 <div class="not-prose my-10 overflow-hidden rounded-xl border border-black/10 bg-neutral-950 p-6 text-neutral-50 dark:border-white/10 sm:p-8">
-  <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[#fb923c]">Build with Leaf 5</p>
-  <div class="mt-3 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Give your next product a framework you and your tools can reason about.</div>
-  <p class="!m-0 !mt-3 max-w-2xl text-sm leading-6 text-neutral-400">Create an app, open your agent in the project, and start working on the product instead of assembling the framework underneath it.</p>
+  <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-[#fb923c]">Build the product</p>
+  <div class="mt-3 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Leaf is for the part after the idea gets real.</div>
+  <p class="!m-0 !mt-3 max-w-2xl text-sm leading-6 text-neutral-400">Start small, ship the first version, add the pieces users force you to care about, and keep the codebase clear enough for you, your team, and your agents to keep moving.</p>
   <div class="mt-6 flex flex-wrap gap-3">
-    <a class="inline-flex h-10 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-neutral-950 no-underline transition-colors hover:bg-neutral-200" href="/docs/">Get started</a>
-    <a class="inline-flex h-10 items-center justify-center rounded-lg border border-white/15 px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-white/10" href="/docs/ai">Explore AI in Leaf</a>
+    <a class="inline-flex h-10 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-neutral-950 no-underline transition-colors hover:bg-neutral-200" href="/docs/">Start building</a>
+    <a class="inline-flex h-10 items-center justify-center rounded-lg border border-white/15 px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-white/10" href="/docs/ai">AI in Leaf</a>
   </div>
 </div>

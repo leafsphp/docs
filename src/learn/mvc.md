@@ -65,7 +65,7 @@ No figuring out “what goes where.”
 
 ## Your app is ready for AI
 
-Leaf MVC uses `.leaf/context.md` as shared project memory for agents. An agent opened in the project reads that context alongside predictable routes, controllers, models, views, configuration, and modules, then syncs useful changes back. There is no AI setup step or context command required.
+Leaf MVC uses `.leaf/CONTEXT.md` as shared project memory for agents. An agent opened in the project reads that context alongside predictable routes, controllers, models, views, configuration, and modules, then syncs useful changes back. There is no AI setup step or context command required.
 
 ## Tell AI what you want. It builds it
 

@@ -169,11 +169,3 @@ app()->get('/login', ['middleware' => 'auth.guest', function () {
 ```
 
 You only need to define the custom middleware if the default behavior of the `auth.required` and `auth.guest` middleware does not meet your requirements.
-
-## Session Guards <Badge type="danger" text="DEPRECATED" />
-
-The previous version of Leaf Auth had a feature called session guards. This feature has been deprecated in the latest version of Leaf Auth. If you were using session guards in your app, you can switch to the new middleware system to protect your routes.
-
-The middleware system is more flexible and allows you to define more complex authentication logic using the middleware callback functions.
-
-You can also use the middleware system to protect routes for both logged in and guest users, which is essentially what session guards were used for.

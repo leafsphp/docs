@@ -103,4 +103,4 @@ Modern app interfaces often use React, Vue, or Svelte. Leaf integrates with thes
 
 ## AI context
 
-Frontend choices are part of Leaf's shared project context. Agents inside the project read `.leaf/context.md` alongside the filesystem, then keep that map aligned when Blade, BareUI, Vite, Tailwind, or Inertia changes. Run `leaf context` only to print a compact handoff for an external assistant without project access.
+Frontend choices are part of Leaf's shared project context. Agents inside the project read `.leaf/CONTEXT.md` alongside the filesystem, then keep that map aligned when Blade, BareUI, Vite, Tailwind, or Inertia changes. Run `leaf context` only to print a compact handoff for an external assistant without project access.

@@ -116,7 +116,7 @@ In Leaf MVC, modules can also work through config files, controllers, models, se
 
 ## Modules and AI Context <StatusBadge label="New" title="Installed modules stay visible to agents" description="Leaf keeps module capabilities in shared project context and can produce a compact handoff for external assistants." meta="Introduced in Leaf 5" />
 
-Modules make your app easier for assistants to understand because installed packages and their configuration are recorded in `.leaf/context.md`. Agents inside the project read that shared memory alongside the filesystem and keep it aligned as the app changes.
+Modules make your app easier for assistants to understand because installed packages and their configuration are recorded in `.leaf/CONTEXT.md`. Agents inside the project read that shared memory alongside the filesystem and keep it aligned as the app changes.
 
 If you are sharing the app with an external assistant that cannot access the folder, generate a compact handoff after adding modules:
 

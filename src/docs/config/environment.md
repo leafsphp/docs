@@ -60,6 +60,24 @@ app()->config([
 
 You can also set the application mode using the `APP_ENV` environment variable. If Leaf detects that the `APP_ENV` environment variable is set, it will automatically set the application mode to the value of the `APP_ENV` variable.
 
+## Debug behavior in Leaf 5
+
+Leaf 5 treats debug mode as environment-aware unless you explicitly configure it. In development, detailed debug output stays available so you can understand errors quickly. In production, Leaf turns detailed debug output off by default so stack traces, file paths, request details, and other internals are not shown to users.
+
+```txt:no-line-numbers
+APP_ENV=production
+```
+
+You can still override this manually when you need to:
+
+```php:no-line-numbers
+app()->config([
+  'debug' => false
+]);
+```
+
+For production issues, prefer logging over turning debug output back on. Debug screens are useful while building, but they can expose sensitive application details when a public app breaks.
+
 ## Using Application Modes
 
 You can also tell Leaf to run a specific script when the application mode matches a given mode. This is done using the `script()` method. The `script()` method accepts two arguments: the mode and a callable.

@@ -20,7 +20,7 @@ Which is why we recommend that you always turn off error reporting in production
 
 ## Disabling Error Reporting
 
-While Leaf's detailed error reporting is super useful during development, it's not something you want to use in production, as it can expose sensitive information about your application. You can disable error reporting by setting the `debug` config to `false` or by setting the `APP_DEBUG` environment variable to `false` in Leaf MVC.
+While Leaf's detailed error reporting is super useful during development, it's not something you want to use in production, as it can expose sensitive information about your application. In Leaf 5, setting `APP_ENV=production` turns detailed debug output off by default. You can also disable error reporting explicitly by setting the `debug` config to `false` or by setting the `APP_DEBUG` environment variable to `false` in Leaf MVC.
 
 ::: code-group
 
@@ -52,16 +52,16 @@ Logs are records of events in your application. They capture significant things 
 
 ```log{4-5}
 [2021-03-31 22:44:53]
-ERROR - ErrorException: Trying to access array offset on value of type int in /home/mychi/Projects/leafphp/leaf/src/Experimental/Cache.php:83
+ERROR - ErrorException: Trying to access array offset on value of type int in /home/mychi/Projects/leafphp/app/controllers/OrdersController.php:83
 Stack trace:
-#0 /home/mychi/Projects/leafphp/leaf/src/Experimental/Cache.php(83): Leaf\Exception\General::handleErrors()
-#1 /home/mychi/Projects/leafphp/leaf/test/index.php(45): Leaf\Experimental\Cache::get()
+#0 /home/mychi/Projects/leafphp/app/controllers/OrdersController.php(83): Leaf\Exception\General::handleErrors()
+#1 /home/mychi/Projects/leafphp/app/routes/index.php(45): App\Controllers\OrdersController->show()
 #2 [internal function]: {closure}()
-#3 /home/mychi/Projects/leafphp/leaf/src/Router.php(337): call_user_func_array()
-#4 /home/mychi/Projects/leafphp/leaf/src/Router.php(392): Leaf\Router::invoke()
-#5 /home/mychi/Projects/leafphp/leaf/src/Router.php(443): Leaf\Router::handle()
-#6 /home/mychi/Projects/leafphp/leaf/src/App.php(863): Leaf\Router::run()
-#7 /home/mychi/Projects/leafphp/leaf/test/index.php(52): Leaf\App->run()
+#3 /home/mychi/Projects/leafphp/vendor/leafs/leaf/src/Router.php(337): call_user_func_array()
+#4 /home/mychi/Projects/leafphp/vendor/leafs/leaf/src/Router.php(392): Leaf\Router::invoke()
+#5 /home/mychi/Projects/leafphp/vendor/leafs/leaf/src/Router.php(443): Leaf\Router::handle()
+#6 /home/mychi/Projects/leafphp/vendor/leafs/leaf/src/App.php(863): Leaf\Router::run()
+#7 /home/mychi/Projects/leafphp/public/index.php(52): Leaf\App->run()
 #8 {main}
 ```
 

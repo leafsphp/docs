@@ -19,7 +19,7 @@
         </div>
         <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
           <div><span class="text-neutral-500">$</span> leaf install auth</div>
-          <div class="text-neutral-400">login, signup, sessions, JWT, guards</div>
+          <div class="text-neutral-400">login, signup, sessions, JWT, middleware</div>
         </div>
       </div>
     </div>

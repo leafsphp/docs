@@ -28,7 +28,7 @@ prev: false
         </div>
         <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
           <div><span class="text-neutral-500">$</span> codex .</div>
-          <div class="text-neutral-400">reads .leaf/context.md + the project</div>
+          <div class="text-neutral-400">reads .leaf/CONTEXT.md + the project</div>
           <div class="text-neutral-400">syncs new project knowledge back when done</div>
         </div>
       </div>
@@ -84,7 +84,7 @@ When the assistant has no map, it guesses. When it guesses, you debug.
 
 ## How Leaf fixes this
 
-Leaf 5 gives AI tools a reliable, shared map of your app. Projects created with Leaf CLI are AI-ready immediately, and Leaf MVC needs no extra AI configuration. An agent working inside the project reads `.leaf/context.md` alongside the filesystem, then updates that shared context as the app changes.
+Leaf 5 gives AI tools a reliable, shared map of your app. Projects created with Leaf CLI are AI-ready immediately, and Leaf MVC needs no extra AI configuration. An agent working inside the project reads `.leaf/CONTEXT.md` alongside the filesystem, then updates that shared context as the app changes.
 
 <div class="docs-paths docs-paths--four not-prose my-6">
   <div class="docs-path-card docs-path-card--static">
@@ -127,7 +127,7 @@ Open an agent in the project and ask for the feature you want. It starts with Le
     <div class="bg-neutral-50 p-5 dark:bg-white/[0.03]">
       <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Shared project memory</p>
       <div class="space-y-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
-        <div>context: .leaf/context.md</div>
+        <div>context: .leaf/CONTEXT.md</div>
         <div>sync: read + write</div>
         <div>routes: known</div>
         <div>modules: known</div>
@@ -147,7 +147,7 @@ You do not need this command to make AI features work. Use it when the assistant
 leaf context
 ```
 
-The command prints a compact, minified handoff derived from `.leaf/context.md`. Copy that output into the external assistant so it receives the important project map without direct access to the shared file. It does not replace the two-way context used by agents working inside the project.
+The command prints a compact, minified handoff derived from `.leaf/CONTEXT.md`. Copy that output into the external assistant so it receives the important project map without direct access to the shared file. It does not replace the two-way context used by agents working inside the project.
 
 ## Predictable structure means better output
 

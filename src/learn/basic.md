@@ -69,7 +69,7 @@ app()->run();
 
 ## Build with an assistant that knows the app
 
-This app was created with Leaf CLI, so `.leaf/context.md` is already available as shared project memory. A local agent reads it alongside the filesystem and syncs useful changes back when it finishes. No context command is required.
+This app was created with Leaf CLI, so `.leaf/CONTEXT.md` is already available as shared project memory. A local agent reads it alongside the filesystem and syncs useful changes back when it finishes. No context command is required.
 
 If you are using an external assistant that cannot access the folder, print a compact project handoff:
 

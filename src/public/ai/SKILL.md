@@ -1,6 +1,6 @@
 ---
 name: leaf-v
-description: Expert guidance for building apps with Leaf 5 — the next generation of the Leaf PHP framework. Use this skill whenever the user mentions Leaf 5, Leaf PHP v5, `leaf up`, `leaf context`, `leaf install`, Leaf 5 entry points (Basic App, Web App, API), or is asking Claude to help build, scaffold, debug, or extend a Leaf 5 project. Also trigger when the user pastes a `.leaf/context.md` file or asks Claude to act as a Leaf 5 assistant. This skill makes Claude a first-class Leaf 5 developer — use it proactively anytime Leaf 5 is in scope.
+description: Expert guidance for building apps with Leaf 5 — the next generation of the Leaf PHP framework. Use this skill whenever the user mentions Leaf 5, Leaf PHP v5, `leaf up`, `leaf context`, `leaf install`, Leaf 5 entry points (Basic App, Web App, API), or is asking Claude to help build, scaffold, debug, or extend a Leaf 5 project. Also trigger when the user pastes a `.leaf/CONTEXT.md` file or asks Claude to act as a Leaf 5 assistant. This skill makes Claude a first-class Leaf 5 developer — use it proactively anytime Leaf 5 is in scope.
 ---
 
 # Leaf 5 Developer Skill
@@ -53,7 +53,7 @@ my-app/
 ├── index.php
 ├── vendor/
 └── .leaf/
-    └── context.md
+    └── CONTEXT.md
 ```
 
 ### Web App (`--mvc`)
@@ -68,7 +68,7 @@ my-app/
 ├── public/
 ├── vendor/
 └── .leaf/
-    └── context.md
+    └── CONTEXT.md
 ```
 
 ### API (`--api`)
@@ -82,7 +82,7 @@ my-app/
 ├── public/
 ├── vendor/
 └── .leaf/
-    └── context.md
+    └── CONTEXT.md
 ```
 
 > No `leaf.config.php`, no bloat. Much lighter than Laravel by design.
@@ -154,11 +154,11 @@ What it does automatically:
 
 ## AI-Native shared context
 
-Leaf projects use `.leaf/context.md` as shared working memory. When you are running inside the project:
+Leaf projects use `.leaf/CONTEXT.md` as shared working memory. When you are running inside the project:
 
-1. Read `.leaf/context.md` before making changes.
+1. Read `.leaf/CONTEXT.md` before making changes.
 2. Verify it against the live filesystem.
-3. Update useful project knowledge in `.leaf/context.md` when the work is complete.
+3. Update useful project knowledge in `.leaf/CONTEXT.md` when the work is complete.
 
 No setup command is required for Leaf MVC or projects created through Leaf CLI.
 
@@ -176,7 +176,7 @@ This produces a minified view of the shared project context: routes, modules, co
 3. Say what you want: *"Add billing"*, *"Create a dashboard"*
 4. AI has real context — stops guessing, builds correctly
 
-The command output is a portable handoff. It is not the same as the two-way `.leaf/context.md` used by agents inside the project.
+The command output is a portable handoff. It is not the same as the two-way `.leaf/CONTEXT.md` used by agents inside the project.
 
 > Confirmed for Leaf 5, will be ready before Alpha.
 
@@ -221,7 +221,7 @@ Read the relevant file before generating code for that area:
 
 ## When Helping a User Build with Leaf 5
 
-1. **Read `.leaf/context.md` first** if shared — reveals entry point, routes, installed modules
+1. **Read `.leaf/CONTEXT.md` first** if shared — reveals entry point, routes, installed modules
 2. **Check the reference file** for the API area before writing code
 3. **Stay in the Leaf ecosystem** — prefer `leaf install` over third-party packages
 4. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked

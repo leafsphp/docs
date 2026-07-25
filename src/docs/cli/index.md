@@ -196,7 +196,7 @@ When running your app, Leaf will automatically try to install missing dependenci
 
 ## Sharing AI context <StatusBadge label="New" title="Portable project context arrived in Leaf 5" description="Leaf CLI can produce a compact handoff for assistants that cannot enter your project directly." meta="Introduced in Leaf 5" />
 
-Agents running inside your project use `.leaf/context.md` as shared project memory. They read it alongside the filesystem and sync useful changes back when they finish, so the next agent starts with the latest map. Leaf MVC and projects created through Leaf CLI need no extra AI configuration.
+Agents running inside your project use `.leaf/CONTEXT.md` as shared project memory. They read it alongside the filesystem and sync useful changes back when they finish, so the next agent starts with the latest map. Leaf MVC and projects created through Leaf CLI need no extra AI configuration.
 
 Use `leaf context` only when an external assistant cannot access the project:
 
@@ -204,7 +204,7 @@ Use `leaf context` only when an external assistant cannot access the project:
 leaf context
 ```
 
-This prints a compact, minified version of the shared context. Paste that output into the external assistant before asking for larger changes. The output is a portable handoff, not a replacement for the two-way `.leaf/context.md` used inside the project.
+This prints a compact, minified version of the shared context. Paste that output into the external assistant before asking for larger changes. The output is a portable handoff, not a replacement for the two-way `.leaf/CONTEXT.md` used inside the project.
 
 <div class="not-prose my-6 grid gap-4 md:grid-cols-[1fr_260px]">
   <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
