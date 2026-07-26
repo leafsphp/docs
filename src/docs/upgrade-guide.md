@@ -71,7 +71,7 @@ When two *dynamic* routes overlap, the one registered first wins — declare mor
 
 In Leaf 5, detailed error pages are tied to your app environment. When `APP_ENV=production`, debug output is off by default and users see a clean error page instead of a stack trace. In development you get the full debug experience with no configuration.
 
-Prefer [logging](/docs/utils/testing) over re-enabling debug output in production. See [Application Env](/docs/config/environment) and [Error Handling](/docs/routing/error-handling) for details.
+Prefer logging over re-enabling debug output in production. See [Application Env](/docs/config/environment) and [Error Handling](/docs/routing/error-handling) for details.
 
 ## Swoole integration is now standalone
 
