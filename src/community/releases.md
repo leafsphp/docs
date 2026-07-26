@@ -41,33 +41,24 @@ You can find the latest stable release of Leaf on our [GitHub page](https://gith
 
 <script setup>
   if (typeof window !== "undefined") {
-    fetch("https://api.github.com/repos/leafsphp/leaf/releases/latest")
-    .then(res => res.json())
-    .then(data => {
-      // get item with class language-md
-      document.querySelector(".language-markdown").childNodes.item(2).innerHTML = `<code># ${data.name}</code>\n<code>${data.body}</code>`;
-      // innerHTML = ` - ${new Date(data.published_at).toLocaleDateString()} ${data.body}`;
+    // fill each release block from GitHub: [repo, block index]
+    [["leafsphp/leaf", 0], ["leafsphp/leafMVC", 1]].forEach(([repo, index]) => {
+      fetch(`https://api.github.com/repos/${repo}/releases/latest`)
+        .then((res) => res.json())
+        .then((data) => {
+          const block = document.querySelectorAll(".language-markdown")[index];
+
+          if (block && data.name) {
+            block.childNodes.item(2).innerHTML = `<code># ${data.name}</code>\n<code>${data.body}</code>`;
+          }
+        });
     });
   }
 </script>
 
 ## Latest Leaf MVC Release
 
-The latest stable release of Leaf MVC can be found on the Leaf MVC GitHub releases page
+The latest stable release of Leaf MVC can be found on the [Leaf MVC GitHub releases page](https://github.com/leafsphp/leafMVC/releases/latest)
 
-```markdown
-## v3.4 - 25 August 2024
-
-### Added
-
-- Added CSRF config file by @ibnsultan
-- Added `SESSION_REDIRECT_ON_REGISTER` auth config
-
-### Changed
-
-- Switched internals to new Leaf config API
-
-### Removed
-
-- Discontinued custom public and assets paths
+```markdown:no-line-numbers
 ```
