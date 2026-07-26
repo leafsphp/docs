@@ -8,13 +8,15 @@ defineProps<{
 }>();
 
 const el = ref<HTMLElement>();
-const { height } = useElementSize(el);
+// border-box: the layout offset must match the banner's full rendered height,
+// padding included — content-box height leaves a see-through gap above the nav
+const { height } = useElementSize(el, undefined, { box: 'border-box' });
 
 watchEffect(() => {
   if (height.value) {
     document.documentElement.style.setProperty(
       '--vp-layout-top-height',
-      `${height.value + 16}px`
+      `${height.value}px`
     );
   }
 });

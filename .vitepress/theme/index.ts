@@ -29,12 +29,18 @@ export default {
       'aside-ads-before': () =>
         h(defineAsyncComponent(() => import('./components/shared/Ad.vue'))),
       // h(defineAsyncComponent(() => import('./components/shared/GPTLink.vue'))),
-      'sidebar-nav-before': () =>
+      'sidebar-nav-before': () => [
+        h(
+          defineAsyncComponent(
+            () => import('./components/shared/SidebarSearch.vue'),
+          ),
+        ),
         h(
           defineAsyncComponent(
             () => import('./components/shared/SidebarLinks.vue'),
           ),
         ),
+      ],
     });
   },
 };
