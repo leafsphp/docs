@@ -11,11 +11,11 @@ const sidebar = [
         link: '/docs/ai',
       },
       {
-        text: 'Why Leaf 5',
+        text: 'Why Leaf 5 <span class="badge new">New</span>',
         link: '/docs/why-leaf-5',
       },
       {
-        text: 'Upgrading to Leaf 5',
+        text: 'Upgrading to Leaf 5 <span class="badge new">New</span>',
         link: '/docs/upgrade-guide',
       },
       // { text: 'Functional Mode', link: '/docs/config/functional-mode' },
@@ -72,7 +72,10 @@ const sidebar = [
       // { text: 'Debugging', link: '/docs/routing/error-handling' },
       // { text: 'Leaf Devtools', link: '/docs/utils/devtools' },
       // { text: 'Deployment', link: '/docs/config/deployment' },
-      { text: 'Testing/Linting', link: '/docs/utils/testing' },
+      {
+        text: 'Testing & Code Quality <span class="badge new">New</span>',
+        link: '/docs/utils/testing',
+      },
     ],
   },
   {
