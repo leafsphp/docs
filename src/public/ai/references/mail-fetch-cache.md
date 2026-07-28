@@ -146,6 +146,7 @@ $res = fetch()->post('https://api.example.com/posts', [
 fetch()->put($url, $data);
 fetch()->patch($url, $data);
 fetch()->delete($url);
+fetch()->head($url);
 fetch()->options($url);
 
 response()->json($res->data);
@@ -176,19 +177,19 @@ $res = fetch()->post('/posts', [...]);
 |---|---|---|
 | `url` | — | Request URL |
 | `method` | `'GET'` | HTTP method |
+| `baseUrl` | `''` | Prepended to `url` unless `url` is absolute |
 | `headers` | `[]` | Custom headers |
-| `params` | `[]` | URL query parameters |
-| `data` | `[]` | Request body (PUT/POST/PATCH/DELETE) |
-| `timeout` | `0` | Timeout in ms (0 = no timeout) |
-| `withCredentials` | `false` | Send cross-site credentials |
-| `auth` | `[]` | HTTP Basic auth: `['username', 'password']` |
-| `responseType` | `'json'` | `arraybuffer`, `document`, `json`, `text`, `stream` |
-| `responseEncoding` | `'utf8'` | Response decoding (Node only) |
+| `params` | `[]` | URL query parameters (appended for any method) |
+| `data` | `[]` | Request body, JSON-encoded by default; form-encoded with a `application/x-www-form-urlencoded` Content-Type header; becomes query params on GET |
+| `timeout` | `0` | Timeout in seconds (0 = no timeout) |
+| `auth` | `[]` | HTTP Basic auth: `['username' => ..., 'password' => ...]` |
 | `maxRedirects` | `5` | Max redirects (0 = none) |
 | `rawResponse` | `false` | Skip JSON parsing |
 | `verifyHost` | `true` | SSL host verification |
 | `verifyPeer` | `true` | SSL peer verification |
-| `curl` | `[]` | Additional CURL options |
+| `curl` | `[]` | Additional curl options, applied last so they win |
+
+Non-2xx statuses return normally (check `$res->status`); only network-level failures (unreachable host, timeout) throw `\Exception`. Response header names are lower cased. Non-JSON bodies are returned as the raw string. `Fetch::config([...])` updates defaults app-wide.
 
 ---
 

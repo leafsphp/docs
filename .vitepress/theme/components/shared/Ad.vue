@@ -1,6 +1,6 @@
 <template>
   <a href="https://thecreativeleaf.com" target="_blank"
-    class="group block rounded-xl overflow-visible mt-5 ![text-decoration:none] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--vp-c-brand)]/10"
+    class="group block rounded-none overflow-visible mt-5 ![text-decoration:none] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--vp-c-brand)]/10"
     id="widget"
     :class="{ 'animate-border': showAnimation }">
     <div class="relative">

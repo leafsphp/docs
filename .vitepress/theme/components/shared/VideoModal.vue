@@ -67,8 +67,8 @@ const {
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
             <DialogPanel
-              class="w-[90vw] max-w-[1280px] p-2 h-[90vh] transform overflow-hidden rounded-2xl bg-[var(--vp-c-bg)] text-left align-middle shadow-xl transition-all">
-              <iframe :src="videoUrl" class="w-full h-full rounded-xl" frameborder="0" webkitallowfullscreen
+              class="w-[90vw] max-w-[1280px] p-2 h-[90vh] transform overflow-hidden rounded-none bg-[var(--vp-c-bg)] text-left align-middle shadow-xl transition-all">
+              <iframe :src="videoUrl" class="w-full h-full rounded-none" frameborder="0" webkitallowfullscreen
                 mozallowfullscreen allowfullscreen allow="autoplay"></iframe>
             </DialogPanel>
           </TransitionChild>

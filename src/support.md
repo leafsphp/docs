@@ -10,6 +10,7 @@ lastUpdated: false
 
 <script setup>
 import SponsorGroup from '@theme/components/shared/SponsorGroup.vue'
+import EcosystemCards from '@theme/components/shared/EcosystemCards.vue'
 </script>
 
 # Let’s Shape the Future of PHP 🧡
@@ -60,6 +61,12 @@ Prefer crypto? Send USDT (TRC20) to:
 `TK6d2w4EqSDsf2xB2SLcEkfUt3vxADtFmp`
 
 <!-- <iframe src="https://opencollective.com/embed/leaf/donate" style="width: 100%; min-height: 100vh;"></iframe> -->
+
+## What Your Support Powers
+
+Supporting Leaf doesn't just fund the framework — it keeps a whole family of tools free, maintained, and moving forward:
+
+<EcosystemCards />
 
 ## Businesses Using Leaf
 

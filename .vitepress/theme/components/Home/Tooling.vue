@@ -49,7 +49,7 @@ const tab = ref(properties[0].title);
             :class="tab !== item.title
               ? 'border-transparent text-neutral-500 hover:bg-white hover:text-neutral-950 dark:text-neutral-400 dark:hover:bg-white/[0.04] dark:hover:text-neutral-50'
               : 'border-[var(--vp-c-brand-1)] bg-[color-mix(in_srgb,var(--vp-c-brand-1)_10%,white)] text-neutral-950 dark:bg-[color-mix(in_srgb,var(--vp-c-brand-1)_16%,transparent)] dark:text-neutral-50'"
-            class="group flex min-w-[220px] flex-1 flex-col rounded-lg px-4 py-4 text-left transition-colors duration-200 lg:min-w-0"
+            class="group flex min-w-[220px] flex-1 flex-col rounded-none px-4 py-4 text-left transition-colors duration-200 lg:min-w-0"
             @click.prevent="tab = item.title"
           >
             <span class="text-sm font-semibold tracking-[-0.01em]">{{ item.title }}</span>

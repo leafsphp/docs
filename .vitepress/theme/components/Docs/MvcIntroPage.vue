@@ -1,6 +1,6 @@
 <template>
   <div v-if="section === 'hero'"
-    class="mvc-intro not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+    class="mvc-intro not-prose mt-6 overflow-hidden rounded-none border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
     <div class="grid lg:grid-cols-[1fr_320px]">
       <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 lg:border-b-0 lg:border-r">
         <p class="mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Leaf MVC</p>
@@ -14,7 +14,7 @@
 
         <div class="mt-10 grid gap-3 sm:grid-cols-2">
           <div v-for="item in heroStats" :key="item.label"
-            class="rounded-lg border border-black/10 bg-neutral-50 p-4 dark:border-white/10 dark:bg-white/[0.03]">
+            class="rounded-none border border-black/10 bg-neutral-50 p-4 dark:border-white/10 dark:bg-white/[0.03]">
             <p class="text-xl font-semibold text-neutral-950 dark:text-neutral-50">{{ item.value }}</p>
             <p class="mt-1 text-xs font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">{{
               item.label }}</p>
@@ -27,7 +27,7 @@
           for</p>
         <div class="space-y-4">
           <div v-for="item in bestFor" :key="item.title"
-            class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+            class="rounded-none border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
             <p class="text-sm font-semibold text-neutral-950 dark:text-neutral-50">{{ item.title }}</p>
             <p class="mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{{ item.description }}</p>
           </div>
@@ -45,7 +45,7 @@
   </div>
 
   <div v-else-if="section === 'flow'"
-    class="mvc-intro not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+    class="mvc-intro not-prose my-6 overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
     <div class="p-5 md:p-6">
       <p data-v-6ed0dfc5=""
         class="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Request flow
@@ -110,7 +110,7 @@
   </div>
 
   <div v-else-if="section === 'tree'" class="mvc-intro not-prose my-6 grid gap-4 md:grid-cols-[1fr_280px]">
-    <div class="overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+    <div class="overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
       <div class="border-b border-black/10 bg-neutral-50 px-4 py-3 dark:border-white/10 dark:bg-white/[0.03]">
         <p class="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Default
           starter</p>
@@ -128,7 +128,7 @@
 
     <div class="space-y-3">
       <div v-for="item in folders" :key="item.title"
-        class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+        class="rounded-none border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
         <p class="text-sm font-semibold text-neutral-950 dark:text-neutral-50">{{ item.title }}</p>
         <p class="mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{{ item.description }}</p>
       </div>
@@ -137,11 +137,11 @@
 
   <div v-else-if="section === 'config'" class="mvc-intro not-prose my-6 grid gap-4 md:grid-cols-[280px_1fr]">
     <div
-      class="rounded-xl border border-black/10 bg-neutral-950 p-5 font-mono text-sm leading-7 text-neutral-100 dark:border-white/10">
+      class="rounded-none border border-black/10 bg-neutral-950 p-5 font-mono text-sm leading-7 text-neutral-100 dark:border-white/10">
       <div><span class="text-neutral-500">$</span> leaf config:publish</div>
       <div><span class="text-neutral-500">$</span> leaf config:publish &lt;config-file&gt;</div>
     </div>
-    <div class="overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+    <div class="overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
       <div
         class="grid grid-cols-2 border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400">
         <span>Config</span>

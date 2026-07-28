@@ -160,7 +160,7 @@ onBeforeUnmount(() => {
   gap: 7px;
   padding: 7px 11px;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 7px;
+  border-radius: 0;
   background: #fff;
   color: #262626;
   font-family: inherit;
@@ -194,7 +194,7 @@ onBeforeUnmount(() => {
   width: min(280px, calc(100vw - 32px));
   padding: 8px;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 10px;
+  border-radius: 0;
   background: #fff;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
 }
@@ -220,7 +220,7 @@ onBeforeUnmount(() => {
   gap: 9px;
   padding: 7px 9px !important;
   border: 0 !important;
-  border-radius: 6px !important;
+  border-radius: 0;
   background: transparent !important;
   color: #262626 !important;
   font-family: inherit;
@@ -243,7 +243,7 @@ onBeforeUnmount(() => {
   height: 28px;
   place-items: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
+  border-radius: 0;
   color: #525252;
 }
 

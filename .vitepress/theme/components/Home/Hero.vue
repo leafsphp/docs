@@ -105,7 +105,7 @@ onMounted(() => {
               src="https://www.youtube.com/embed/wvDELSI7fHg?si=SJNoV_HMcjeRWoI8"
               title="YouTube video player"
               frameborder="0"
-              class="aspect-video w-full rounded-lg border border-black/[0.08] bg-neutral-100 dark:border-white/[0.08] dark:bg-white/[0.03]"
+              class="aspect-video w-full rounded-none border border-black/[0.08] bg-neutral-100 dark:border-white/[0.08] dark:bg-white/[0.03]"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen

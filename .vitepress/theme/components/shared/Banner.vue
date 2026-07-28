@@ -85,8 +85,17 @@ html {
   z-index: var(--vp-z-index-layout-top);
   min-height: 40px;
   padding: 6px 48px;
-  background: var(--vp-c-banner);
-  color: #fff;
+  background: var(--vp-c-bg-alt);
+  background-image: repeating-linear-gradient(
+    315deg,
+    rgba(232, 117, 58, 0.05) 0,
+    rgba(232, 117, 58, 0.05) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 9px 9px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,37 +122,48 @@ html {
 }
 
 .banner-kicker {
-  font-weight: 700;
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--vp-c-brand-1);
+}
+
+.banner-kicker::before {
+  content: '// ';
+  color: var(--vp-c-text-3);
 }
 
 .banner-detail {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--vp-c-text-2);
+  font-size: 13px;
 }
 
 .banner-divider {
-  color: rgba(255, 255, 255, 0.36);
+  color: var(--vp-c-text-3);
 }
 
 .banner-link {
   display: inline-flex;
-  height: 28px;
+  height: 26px;
   flex-shrink: 0;
   align-items: center;
   gap: 6px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 32%, transparent);
+  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
   padding: 0 10px 0 12px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  font-size: 12px;
+  font-weight: 600;
   line-height: 1;
   text-decoration: none;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .banner-link:hover {
-  border-color: rgba(255, 255, 255, 0.38);
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--vp-c-brand-1) 18%, transparent);
   text-decoration: none;
 }
 
@@ -167,14 +187,14 @@ html {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--vp-c-text-2);
   transform: translateY(-50%);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .banner-close:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: color-mix(in srgb, var(--vp-c-text-1) 8%, transparent);
+  color: var(--vp-c-text-1);
 }
 
 .banner-close svg {

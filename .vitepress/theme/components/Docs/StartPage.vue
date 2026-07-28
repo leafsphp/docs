@@ -1,5 +1,5 @@
 <template>
-  <div class="docs-start not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="docs-start not-prose mt-6 overflow-hidden rounded-none border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
     <div class="grid lg:grid-cols-[1fr_320px]">
       <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 lg:border-b-0 lg:border-r">
         <p class="mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Get started</p>
@@ -10,7 +10,7 @@
           Leaf gives you the clean starting point first: routing, structure, helpers, and a project shape that stays readable for you, your team, and your AI tools.
         </p>
 
-        <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
+        <div class="mt-6 overflow-hidden rounded-none border border-black/10 bg-neutral-950 dark:border-white/10">
           <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
             <div class="flex items-center gap-2">
               <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
@@ -88,11 +88,11 @@
   <p>And when you need more, install only what the project needs:</p>
 
   <div class="docs-start not-prose my-6 grid gap-3 sm:grid-cols-2">
-    <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <div class="rounded-none border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
       <p class="m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Leaf CLI</p>
       <code class="mt-3 block rounded-md bg-neutral-950 px-3 py-2 font-mono text-sm text-neutral-100">leaf install &lt;package-name&gt;</code>
     </div>
-    <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
+    <div class="rounded-none border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
       <p class="m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Composer</p>
       <code class="mt-3 block rounded-md bg-neutral-950 px-3 py-2 font-mono text-sm text-neutral-100">composer require leafs/&lt;package-name&gt;</code>
     </div>

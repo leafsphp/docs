@@ -148,19 +148,62 @@ body {
 
 .VPNavBar.home {
   @apply bg-opacity-80 backdrop-blur-md transition-colors duration-300 !bg-white/80 dark:!bg-[#0a0807]/80;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 html.dark .VPNavBar.home {
-  border-bottom-color: rgba(255, 255, 255, 0.06);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .VPNavBar.home .wrapper {
-  @apply max-sm:!px-0;
+  @apply max-sm:!px-0 !px-0;
 }
 
+/* the guide rails run through the nav: same 82rem container as .home-shell */
 .VPNavBar.home .container {
-  @apply !max-w-none;
+  @apply !max-w-[82rem];
+}
+
+@media (min-width: 960px) {
+  .VPNavBar.home .container {
+    padding-left: 16px;
+    padding-right: 16px;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  html.dark .VPNavBar.home .container {
+    border-left-color: rgba(255, 255, 255, 0.08);
+    border-right-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* modern nav links: smaller, tighter, quiet until hovered */
+.VPNavBarMenuLink,
+.VPNavBarMenu .VPFlyout .button {
+  font-size: 13px !important;
+  letter-spacing: -0.01em;
+}
+
+/* the support link becomes a brand chip instead of shouting in caps */
+.VPNavBarMenuLink[href="/support/"] {
+  align-self: center;
+  height: 26px !important;
+  margin-left: 6px;
+  padding: 0 12px !important;
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 32%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
+  color: var(--vp-c-brand-1) !important;
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px !important;
+  letter-spacing: 0.06em;
+  line-height: 24px !important;
+  white-space: nowrap;
+}
+
+.VPNavBarMenuLink[href="/support/"]:hover {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 18%, transparent);
 }
 
 .VPSidebar .group,
@@ -1652,4 +1695,40 @@ html.dark ::-webkit-scrollbar-thumb {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(212, 101, 46, 0.45);
+}
+
+/* ------------------------------------------------------------------ */
+/* Squared corners: the family design system uses 0px radius on       */
+/* surfaces. Pills/chips (rounded-full) and avatars keep their shape. */
+/* ------------------------------------------------------------------ */
+
+.vp-doc div[class*='language-'],
+.vp-code-group .tabs,
+.vp-doc [class*='language-'] > button.copy,
+.vp-doc [class*='language-'] > button.copy.copied,
+.vp-doc [class*='language-'] > button.copy:hover.copied,
+.vp-doc [class*='language-'] > button.copy.copied::before,
+.vp-doc [class*='language-'] > button.copy:hover.copied::before,
+.vp-doc .custom-block,
+.vp-doc :not(pre) > code,
+.vp-doc kbd,
+.vp-doc table,
+.vp-doc th,
+.vp-doc td,
+.docs-paths,
+.docs-section-card ul,
+.VPSidebarItem .link,
+.sidebar-search,
+.VPFlyout .menu,
+.VPLocalSearchBox .shell,
+.VPTeamMembersItem.small .profile,
+.vp-code-group,
+.tabs {
+  border-radius: 0 !important;
+}
+
+/* catch-all for tailwind radius utilities used inside doc content and
+   one-off components — pills (rounded-full) keep their shape */
+.VPContent :is(.rounded, .rounded-sm, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, [class*='rounded-[']) {
+  border-radius: 0 !important;
 }

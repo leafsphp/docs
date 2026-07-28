@@ -15,7 +15,7 @@ import { ui } from '../Home/ui';
           frameborder="0"
           scrolling="no"
           title="Leaf newsletter"
-          class="block w-full rounded-lg border-0 bg-neutral-100 dark:bg-white/[0.03]"
+          class="block w-full rounded-none border-0 bg-neutral-100 dark:bg-white/[0.03]"
         />
       </div>
 

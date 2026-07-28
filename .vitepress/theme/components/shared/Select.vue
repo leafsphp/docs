@@ -2,7 +2,7 @@
   <Listbox v-model="selectedItem">
     <div class="relative w-full">
       <ListboxButton
-        class="w-full flex items-center bg-[var(--vp-c-bg-alt)] cursor-default rounded-lg py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+        class="w-full flex items-center bg-[var(--vp-c-bg-alt)] cursor-default rounded-none py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
         <span class="pointer-events-none inset-y-0 right-0 flex items-center pr-2">
           <ChevronsUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
         </span>

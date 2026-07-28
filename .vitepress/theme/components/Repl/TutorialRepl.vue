@@ -179,11 +179,11 @@ updateExample();
       <div class="sticky flex items-center gap-2 mt-4 top-0 bg-[var(--vp-c-bg)] py-4 z-10">
         <Select :items="allSteps" :currentStepIndex="currentStepIndex" :totalSteps="totalSteps" />
         <div class="flex items-center gap-1">
-          <Button as="a" class="!h-[50px] rounded-xl" v-if="prevStep" :href="`#${prevStep}`">
+          <Button as="a" class="!h-[50px] rounded-none" v-if="prevStep" :href="`#${prevStep}`">
             <ArrowLeft :size="16" />
             <!-- <span>Prev</span> -->
           </Button>
-          <Button as="a" class="!h-[50px] rounded-xl" v-if="nextStep" :href="`#${nextStep}`">
+          <Button as="a" class="!h-[50px] rounded-none" v-if="nextStep" :href="`#${nextStep}`">
             <!-- <span>Next</span> -->
             <ArrowRight :size="16" />
           </Button>

@@ -77,8 +77,8 @@ const agentLoop = [
           <p :class="ui.codeLabel">AI composer</p>
           <div class="mt-4 grid gap-2.5">
             <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400">Ask your agent</span>
-            <div class="rounded-xl border border-black/[0.08] bg-neutral-50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.08] dark:bg-black/20 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <div class="flex cursor-pointer items-start gap-3 rounded-lg bg-white px-3 py-3 ring-1 ring-transparent transition duration-300 hover:ring-[var(--vp-c-brand-1)]/30 dark:bg-white/[0.03]">
+            <div class="rounded-none border border-black/[0.08] bg-neutral-50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.08] dark:bg-black/20 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+              <div class="flex cursor-pointer items-start gap-3 rounded-none bg-white px-3 py-3 ring-1 ring-transparent transition duration-300 hover:ring-[var(--vp-c-brand-1)]/30 dark:bg-white/[0.03]">
                 <div class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-black/[0.08] bg-white text-[var(--vp-c-brand-1)] dark:border-white/[0.08] dark:bg-white/[0.04]">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M12 3l1.45 4.55L18 9l-4.55 1.45L12 15l-1.45-4.55L6 9l4.55-1.45L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
@@ -105,7 +105,7 @@ const agentLoop = [
               </div>
             </div>
           </div>
-          <div class="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-black/[0.08] bg-black/[0.08] dark:border-white/[0.08] dark:bg-white/[0.08] max-[900px]:grid-cols-1" aria-label="What Leaf gives AI">
+          <div class="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-none border border-black/[0.08] bg-black/[0.08] dark:border-white/[0.08] dark:bg-white/[0.08] max-[900px]:grid-cols-1" aria-label="What Leaf gives AI">
             <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">reads shared project memory</span>
             <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">finds routes and modules</span>
             <span class="bg-white px-3.5 py-3 text-[0.84rem] leading-[1.4] text-neutral-500 dark:bg-[#111] dark:text-neutral-400">uses app conventions</span>

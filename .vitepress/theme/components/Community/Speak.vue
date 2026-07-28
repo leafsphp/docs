@@ -63,7 +63,7 @@
             class="flex items-start gap-4 p-6 md:p-8"
             :class="i < perks.length - 1 ? 'border-b border-black/[0.08] dark:border-white/[0.08]' : ''"
           >
-            <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-black/[0.08] bg-neutral-100 text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-neutral-400">
+            <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-none border border-black/[0.08] bg-neutral-100 text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-neutral-400">
               <span class="text-sm" aria-hidden="true">{{ item.icon }}</span>
             </div>
             <div>

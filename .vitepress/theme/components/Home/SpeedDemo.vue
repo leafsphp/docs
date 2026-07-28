@@ -68,7 +68,7 @@ const metrics = [
           <h3 class="!m-0 !mb-2.5 text-lg font-semibold leading-[1.35] tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">{{ step.title }}</h3>
           <p class="!m-0 mb-6 flex-1 text-[0.9375rem] leading-[1.6] text-neutral-500 dark:text-neutral-400">{{ step.description }}</p>
 
-          <div class="mt-auto rounded-lg border border-black/[0.08] bg-neutral-100 px-4 py-3 font-mono text-[0.8125rem] leading-normal text-neutral-900 transition-colors group-hover:border-[var(--vp-c-brand-1)]/30 dark:border-white/[0.08] dark:bg-black/40 dark:text-neutral-200" aria-hidden="true">
+          <div class="mt-auto rounded-none border border-black/[0.08] bg-neutral-100 px-4 py-3 font-mono text-[0.8125rem] leading-normal text-neutral-900 transition-colors group-hover:border-[var(--vp-c-brand-1)]/30 dark:border-white/[0.08] dark:bg-black/40 dark:text-neutral-200" aria-hidden="true">
             <template v-if="step.snippet.parts">
               <span
                 v-for="(part, i) in step.snippet.parts"

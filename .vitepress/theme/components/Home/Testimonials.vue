@@ -1,17 +1,13 @@
 <template>
   <div :class="[ui.band, 'hidden sm:block']">
-    <section :class="[ui.bandInner, '!max-w-none !px-4 sm:!px-6']">
+    <section :class="ui.bandInner">
       <header :class="ui.header">
         <p :class="ui.eyebrow">Community</p>
         <h2 :class="ui.title">
           Trusted by people building <span :class="ui.accent">real products</span>
         </h2>
         <p :class="ui.subtitle">
-          <span :class="[ui.badge, 'inline-flex !mb-0']">
-            <span :class="ui.badgeDot" />
-            AI-ready Leaf 5
-          </span>
-          testimonials below
+          Real feedback from people shipping on Leaf — including early Leaf 5 adopters.
         </p>
       </header>
 
@@ -45,7 +41,7 @@
         </div>
       </div>
 
-      <div class="mx-auto max-w-3xl pt-16 text-center">
+      <figure class="mx-auto max-w-3xl pt-16 text-center">
         <blockquote class="!m-0 !mb-6 !border-0 !p-0">
           <p class="!text-[clamp(1.375rem,3vw,1.75rem)] font-medium leading-[1.45] tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">
             <span class="text-neutral-500 dark:text-neutral-400">"</span>I just want things to work, and still make sense to me and my tools
@@ -62,7 +58,7 @@
           <div>Michael Darko</div>
           <small class="text-[0.8125rem] font-normal text-neutral-500 dark:text-neutral-400">Creator of Leaf PHP</small>
         </figcaption>
-      </div>
+      </figure>
     </section>
   </div>
 </template>

@@ -31,7 +31,7 @@ class CachePurgeCommand extends Command
 {
     protected $signature = 'cache:purge
         {argument? : argument description}
-        {--o|option? : option description}';
+        {--o|option= : option description}';
     protected $description = 'cache:purge command\'s description';
     protected $help = 'cache:purge command\'s help';
 
@@ -123,16 +123,16 @@ Command options are also known as flags or switches, and they are additional par
 leaf example --option1 --option2 valueForOption2 -o valueForOption3
 ```
 
-To add an option to your command, you need to add it to the `protected $signature` property of your command class. You can define whether the option is required or optional by adding a `?` at the end of the option name. You can also define a shortcut for the option by adding it before the option name, separated by a `|`.
+To add an option to your command, you need to add it to the `protected $signature` property of your command class. Options are always optional — what changes is whether they act as a simple on/off switch or expect a value. You can also define a shortcut for an option by adding it before the option name, separated by a `|`.
 
 ```php
 protected $signature = 'example
-    {--option1 : option1 description}
-    {--option2? : option2 description}
-    {--o|option3? : option3 description}';
+    {--option1 : a switch, false unless passed}
+    {--option2= : an option that expects a value}
+    {--o|option3=leaf : an option with a shortcut and a default value}';
 ```
 
-In this case, `option1` is required, `option2` is optional, and `option3` is optional with a shortcut of `o`. A user could run the command like this:
+In this case, `option1` is a boolean switch (`option('option1')` returns `false` unless the user passes `--option1`), `option2` expects a value, and `option3` expects a value, defaults to `leaf`, and has a shortcut of `o`. A user could run the command like this:
 
 ```bash:no-line-numbers
 leaf example --option1 --option2 valueForOption2 -o valueForOption3
