@@ -251,9 +251,12 @@ seeds:
   count: 10
   data:
     name: '@faker.name'
-    email: '@faker.email'
-    password: '$2y$10$hashedpassword'
+    email: '@faker.unique.safeEmail'
+    age: '@faker.numberBetween(18, 65)'
+    password: '@hash("password")'
 ```
+
+- Seed `@` tokens mirror the PHP call exactly: any Faker formatter/modifier with typed JSON args (`@faker.randomElement(["a", "b"])`), `@tick.subtract(30, "day").format("YYYY-MM-DD")`, `@randomString(32)`, `@hash("secret")`. Optional `locale: fr_FR` under `seeds` for locale-aware data. Non-token strings pass through unchanged.
 
 **Critical schema rules:**
 - **Never manually add `id`, `created_at`, or `updated_at`** - they are auto-added to every table.
@@ -262,11 +265,14 @@ seeds:
 - **Never manually add foreign key columns** (e.g. `user_id`). Use the `relationships` key instead - `- User` automatically generates `user_id`. Adding it manually in `columns` as well will cause a duplicate column error.
 
 ```bash
-leaf db:migrate      # apply all schema files
-leaf db:rollback     # undo last migration
+leaf db:migrate      # apply all schema files (diffs against last applied state)
+leaf db:rollback     # undo last version (--step=N for more)
 leaf db:seed         # run seeders
 leaf db:reset        # rollback all + re-migrate
 ```
+
+- Applied-state history lives in a `leaf_schema_history` table in the database itself (per environment, per connection). v4 `storage/database` snapshots are imported automatically on first migrate.
+- `db:rollback` changes the database only - schema files are left untouched and become "ahead"; run `db:migrate` to re-apply or edit them to match.
 
 ### Query Builder - `db()`
 

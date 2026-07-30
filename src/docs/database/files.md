@@ -61,7 +61,9 @@ Breaking this file down, there are three main sections:
 
 - `seeds`: This is used to set the seeders of the table. The available properties are:
   - `count`: This is used to set the number of seeds to generate.
-  <!-- - `data`: This is used to set the data of the seeds. The key is the column name and the value is the value of the column. You can use `@faker.[value]` to generate fake data for the column. You can also use `{{ [value] }}` to use PHP code, but this is a separate PHP thread which means you can't use variables from the current scope. -->
+  - `data`: The values to seed, as column/value pairs (or a list of rows). Values support `@` tokens like `@faker.numberBetween(18, 65)` and `@hash("password")` — see [Using factories](#using-factories-for-generating-fake-data).
+  - `locale`: The Faker locale used for generated data, e.g. `fr_FR`.
+  - `model`: Seed from a model's static `__seeder()` method instead of inline data.
   - `truncate`: This is used to truncate the table before seeding.
 
 - `relationships`: This is used to set the relationships of the table. The value is an array of models the table is related to. This is used to generate foreign keys for the table.
@@ -313,6 +315,8 @@ We are working on adding more properties/modifiers to the columns, just to make 
 
 Migration histories keep track of changes to your database, making it easy to roll back if needed. Unlike other frameworks, **Leaf MVC handles this automatically**—no need to manually create migrations just to track history.
 
+The history itself lives in your database, in a small `leaf_schema_history` table that Leaf manages for you. Every environment tracks the state that was actually applied to *its* database, so staging, production and every developer's machine each diff against their own reality—no shared files to keep in sync. (Apps upgrading from Leaf 4 are migrated automatically: the old `storage/database` snapshots are imported into the history table on your first `db:migrate`.)
+
 ```yml [users.yml]
 columns:
   name: string
@@ -346,10 +350,14 @@ leaf db:rollback users
 Rolling back is like hitting "undo" on your database: It reverts the last migration, letting you step back through changes one at a time. Sometimes, you might need to revert multiple steps at a time, so you can use the `--steps` option to specify how many steps to roll back:
 
 ```bash:no-line-numbers
-leaf db:rollback --steps=3
+leaf db:rollback --step=3
 ```
 
-This command will roll back the last three migrations made to your database.
+This command will roll back the last three versions applied to your database.
+
+::: info Your schema files stay put
+Rolling back changes your *database*, not your schema files—they stay exactly as you wrote them, which means they are now ahead of the database. Run `leaf db:migrate` to re-apply them, or edit them to match the rolled-back state if the rollback is meant to stick.
+:::
 
 ------
 
@@ -394,10 +402,10 @@ seeds:
   data:
     - name: 'Example User'
       email: 'example@example.com'
-      password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+      password: '@hash("password")'
     - name: 'Another User'
       email: 'another@example.com'
-      password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+      password: '@hash("password")'
 ```
 
 In this example, we create a seeder that seeds the `users` table with two example users. We are passing an array of seeds to the `data` key, each seed being a key value pair of column name and value.
@@ -410,7 +418,7 @@ seeds:
   data:
     name: 'Example User'
     email: 'example@example.com'
-    password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+    password: '@hash("password")'
 ```
 
 After creating your seeder, you can run your seeders using the `db:seed` command:
@@ -423,18 +431,42 @@ This will generate 10 seeds for the `users` table with the same data which is no
 
 ## Using factories for generating fake data
 
-In Leaf MVC, factories and seeders are the same thing as we believe this confusion is unnecessary. If you want to generate fake data for your seeders, you can add `@faker.[value]` as the value of a column in your seeder. Here's an example:
+In Leaf MVC, factories and seeders are the same thing as we believe this confusion is unnecessary. To generate fake data, use `@` tokens as column values. A token is written exactly like the PHP call it stands for, so anything [Faker](https://fakerphp.org) can do, your YAML can do:
 
-```yml{4,5} [users.yml]
+```yml{4-9} [users.yml]
 seeds:
   count: 10
   data:
     name: '@faker.name'
-    email: '@faker.email'
-    password: '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+    email: '@faker.unique.safeEmail'
+    age: '@faker.numberBetween(18, 65)'
+    plan: '@faker.randomElement(["free", "pro", "scale"])'
+    api_token: '@randomString(32)'
+    password: '@hash("password")'
 ```
 
-In this example, we're generating 10 fake records for the `users` table.
+Arguments are parsed with real types—numbers stay numbers, booleans stay booleans, and arrays are arrays—and chaining works the way it does in PHP, so Faker modifiers like `unique` behave correctly across all generated rows. Anything that isn't a recognised token (like a plain string that happens to contain `@`) is passed through untouched.
+
+The available roots are:
+
+- `@faker.*` — any [Faker formatter or modifier](https://fakerphp.org/formatters/), with arguments: `@faker.realText(120)`, `@faker.optional(0.5).phoneNumber`
+- `@tick.*` — date values via [Tick](/docs/utils/date): `@tick.subtract(30, "day").format("YYYY-MM-DD")`
+- `@randomString(length)` — a random string, 10 characters if no length is given
+- `@hash("value")` — a bcrypt hash of the given value, perfect for passwords
+
+Faker can also generate locale-aware data—set a locale for the whole seed run:
+
+```yml{2} [users.yml]
+seeds:
+  count: 10
+  locale: fr_FR
+  data:
+    name: '@faker.name'
+```
+
+::: details Upgrading from Leaf 4?
+The old colon syntax (`@faker.date:Y-m-d`, `@randomString:16`) still works, so existing schema files keep seeding without changes—but the call syntax above is the one documented and recommended going forward.
+:::
 
 After adding your seeds, you can run your seeders using the `db:seed` command:
 

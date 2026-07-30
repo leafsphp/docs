@@ -1,6 +1,6 @@
 <!-- markdownlint-disable no-inline-html -->
 
-# Docker + Leaf <StatusBadge label="WIP" tone="wip" title="Container builds are pending final Leaf 5 validation" description="These examples match Leaf 5's project structure — the public/ entry point, leaf serve, and CLI flow are unchanged — but the container images haven't been rebuilt against a tagged v5 release yet. Expect no surprises; verified images land with the release." meta="Docs target: Leaf 5" href="#using-the-leaf-cli" link-text="Review the guide" />
+# Docker + Leaf
 
 <section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
   <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
@@ -31,14 +31,7 @@ The easiest way to get started with Docker in your Leaf applications is to use t
 leaf create my-app --docker
 ```
 
-It also works with the `--custom` option and the `gui` command:
-
-```bash:no-line-numbers
-leaf create my-app --custom # or
-leaf gui
-```
-
-Either one of these commands will ask you if you want to use Docker in your project. Once you confirm, Leaf will set up a new Leaf application with Docker support. Although your app is dockerized, Leaf CLI still allows you to use the `serve` command to start your application. This command will automatically start your application using Docker instead of the built-in server.
+If you leave the flag off, `leaf create` will also ask whether you want Docker during the interactive prompts. Either way, Leaf sets your application up with Docker support: for MVC and API apps the web server is pointed at `public/`, and for Lite apps sensitive files (`.env`, composer manifests) are blocked from being served. Although your app is dockerized, Leaf CLI still lets you use the `serve` command — it will automatically start your application using Docker instead of the built-in server.
 
 ```bash:no-line-numbers
 leaf serve
@@ -133,11 +126,9 @@ CMD ["php-fpm"]
 The `docker-compose.yml` file is used to define and run multi-container Docker applications. You can use this file to define your application's services, networks, and volumes. Create a `docker-compose.yml` file in the root of your project and add the following content:
 
 ```yml
-version: '3.1'
 services:
   application:
     build: ./docker
-    image: leafphp/docker
     ports:
       - '8080:80'
     volumes:
@@ -153,13 +144,22 @@ The final piece of the puzzle is the server configuration file. You can use the 
 ```apache [Apache - 000-default.conf]
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
+    # for MVC/API apps use /var/www/public; /var/www is for lite apps only
     DocumentRoot /var/www
 
     <Directory /var/www>
-        Options Indexes FollowSymLinks
+        Options FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
+
+    # never serve dotfiles (.env, .git, ...) or tooling manifests
+    <FilesMatch "^(\..*|composer\.(json|lock)|alchemy\.yml|package(-lock)?\.json)$">
+        Require all denied
+    </FilesMatch>
+    <DirectoryMatch "/\.">
+        Require all denied
+    </DirectoryMatch>
 </VirtualHost>
 ```
 
