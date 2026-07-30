@@ -18,7 +18,7 @@
   </div>
 </section>
 
-Blade is Laravel's templating engine for creating dynamic views. Leaf Blade is an adaptation that allows you to use Blade templates in Leaf PHP projects powered by [jenssegers/blade](https://github.com/jenssegers/blade).
+Blade is Laravel's templating engine for creating dynamic views. Leaf Blade is an adaptation that allows you to use Blade templates in Leaf PHP projects, with extra directives built for the Leaf ecosystem.
 
 ## Setting Up
 
@@ -212,7 +212,7 @@ This will render the `hello.blade.php` view and pass in a variable called `name`
 
 ## Directives included in Leaf Blade
 
-Although Leaf Blade is just an adaptation of the original Blade package, it comes pre-packaged with some original Blade directives remodelled to work with Leaf and a few custom directives to make your life easier. You can find all common Blade directives in the [Blade documentation](https://laravel.com/docs/11.x/blade#blade-directives).
+Although Leaf Blade is just an adaptation of the original Blade package, it comes pre-packaged with some original Blade directives remodelled to work with Leaf and a few custom directives to make your life easier. You can find all common Blade directives in the [Blade documentation](https://laravel.com/docs/12.x/blade#blade-directives).
 
 Here are some of the directives you can use in your Blade views:
 
@@ -535,4 +535,4 @@ This will output the current date in the format `DD MM YYYY`. You can define as 
 
 ## Conclusion
 
-This is just the beginning of what you can do with Blade. Blade is a powerful templating engine that allows you to create dynamic views with ease. You can use Blade to create complex views with loops, conditions, and even include other views. As this is just an adapter for the original Blade package, you can check out the [Blade documentation](https://laravel.com/docs/8.x/blade) for more information on what you can do with Blade.
+This is just the beginning of what you can do with Blade. Blade is a powerful templating engine that allows you to create dynamic views with ease. You can use Blade to create complex views with loops, conditions, and even include other views. As this is just an adapter for the original Blade package, you can check out the [Blade documentation](https://laravel.com/docs/12.x/blade) for more information on what you can do with Blade.

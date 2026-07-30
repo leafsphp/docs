@@ -159,6 +159,178 @@ Inertia::share('specialFlashMessage', fn () => flash()->display('specialFlashMes
 
 Using a function to share data is useful when you want to share dynamic data, because the function won't be executed until the data is actually needed, so if you share something like a flash message which can only be read once, it won't be lost.
 
+## Optional Props <Badge text="New" type="tip" />
+
+Some props are expensive to compute and not needed on every visit. You can wrap them in `Inertia::optional()` so they are skipped entirely on the first page load, and only evaluated when your frontend explicitly asks for them in a [partial reload](https://inertiajs.com/partial-reloads):
+
+```php
+use Leaf\Inertia;
+
+response()->inertia('users/index', [
+    'users' => User::all(),
+    'stats' => Inertia::optional(fn () => Stats::expensiveCalculation()),
+]);
+```
+
+On the client, you request an optional prop by name:
+
+```js
+router.reload({ only: ['stats'] });
+```
+
+Partial reloads also work the other way. Your frontend can pass `except` instead of `only` to refresh everything but a couple of props, and Leaf will handle both automatically.
+
+::: details Migrating from Inertia::lazy()
+`Inertia::lazy()` still works, but it's deprecated in favour of `Inertia::optional()`, which is the name the official Inertia adapters settled on.
+:::
+
+## Deferred Props <Badge text="New" type="tip" />
+
+Deferred props take optional props one step further: instead of waiting for you to manually reload, Inertia fetches them automatically right after the page first renders. Your page shows up instantly, and the heavy data streams in behind it:
+
+```php
+use Leaf\Inertia;
+
+response()->inertia('dashboard', [
+    'user' => auth()->user(),
+    'stats' => Inertia::defer(fn () => Stats::expensiveCalculation()),
+]);
+```
+
+On the frontend, the `Deferred` component lets you show a placeholder while the data loads:
+
+::: code-group
+
+```jsx [React]
+import { Deferred } from '@inertiajs/react';
+
+<Deferred data="stats" fallback={<div>Loading...</div>}>
+  <Stats />
+</Deferred>
+```
+
+```vue [Vue]
+<script setup>
+import { Deferred } from '@inertiajs/vue3';
+</script>
+
+<template>
+  <Deferred data="stats">
+    <template #fallback>Loading...</template>
+    <Stats />
+  </Deferred>
+</template>
+```
+
+```svelte [Svelte]
+<script>
+  import { Deferred } from '@inertiajs/svelte';
+</script>
+
+<Deferred data="stats">
+  {#snippet fallback()}
+    Loading...
+  {/snippet}
+  <Stats />
+</Deferred>
+```
+
+:::
+
+If you have multiple deferred props, they are all fetched together in one follow-up request. You can split them into separate parallel requests by giving them groups:
+
+```php
+response()->inertia('dashboard', [
+    'stats' => Inertia::defer(fn () => Stats::expensiveCalculation()),
+    'teams' => Inertia::defer(fn () => Team::all(), 'secondary'),
+    'projects' => Inertia::defer(fn () => Project::all(), 'secondary'),
+]);
+```
+
+Here `stats` loads in one request while `teams` and `projects` load together in another.
+
+## Merging Props <Badge text="New" type="tip" />
+
+By default, a new page visit overwrites props completely. For things like infinite scroll or "load more" buttons, you want new data appended to what's already on the client instead. Wrap the prop in `Inertia::merge()`:
+
+```php
+use Leaf\Inertia;
+
+response()->inertia('posts/index', [
+    'posts' => Inertia::merge(fn () => Post::paginate(request()->get('page'))),
+]);
+```
+
+Now every reload appends the new posts to the existing list on the client. For nested structures you can use `Inertia::deepMerge()`, and if you're merging arrays of objects, `matchOn()` tells Inertia how to recognise existing items so they're updated in place instead of duplicated:
+
+```php
+response()->inertia('users/index', [
+    'users' => Inertia::merge(fn () => User::paginate())->matchOn('id'),
+]);
+```
+
+When you need to start over, for example after applying a new filter, reset the prop from the client and it will be replaced instead of merged:
+
+```js
+router.reload({ reset: ['users'] });
+```
+
+## Always Props <Badge text="New" type="tip" />
+
+Partial reloads only send the props your frontend asks for, but some props should be in every response no matter what, like validation errors or a permission check. Wrap them in `Inertia::always()`:
+
+```php
+use Leaf\Inertia;
+
+Inertia::share('errors', Inertia::always(fn () => flash()->display('errors') ?? []));
+```
+
+An always prop survives both `only` and `except` filters, so your frontend can rely on it being present in every response.
+
+## History Encryption <Badge text="New" type="tip" />
+
+Inertia stores page data in the browser's history state, which means sensitive data can be read back with the back button even after logging out. You can tell Inertia to encrypt the history entry for sensitive pages:
+
+```php
+use Leaf\Inertia;
+
+Inertia::encryptHistory();
+
+response()->inertia('billing/settings', [...]);
+```
+
+When a user logs out, clear the history so earlier pages can no longer be decrypted:
+
+```php
+Inertia::clearHistory();
+
+response()->redirect('/login', 303);
+```
+
+## Asset Versioning <Badge text="New" type="tip" />
+
+Inertia uses an asset version to know when your compiled assets have changed, so it can force a full page reload instead of serving a stale page. Leaf calculates one for you automatically from your root view, but you can set your own, for example from your Vite manifest:
+
+```php
+use Leaf\Inertia;
+
+Inertia::version(fn () => \Leaf\Vite::manifestHash());
+```
+
+When the client's version no longer matches, Leaf responds with a `409 Conflict` that tells Inertia to do a fresh full-page visit.
+
+## External Redirects <Badge text="New" type="tip" />
+
+Redirecting an Inertia request to an external site (or any non-Inertia page) needs a special response, since Inertia normally expects JSON back. `Inertia::location()` handles both cases for you:
+
+```php
+use Leaf\Inertia;
+
+Inertia::location('https://checkout.stripe.com/session/...');
+```
+
+Inertia requests get a `409` with an `X-Inertia-Location` header, which makes the client do a full browser visit; regular requests get a normal redirect.
+
 ## Generating Inertia Views
 
 Once you set up your preferred frontend framework using the `view:install` command, Leaf MVC automatically reconfigures the framework to work primarily with your tooling. So you can generate a new inertia view using the `g:template` command.
