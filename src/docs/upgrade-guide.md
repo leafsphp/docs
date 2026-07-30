@@ -81,6 +81,10 @@ Prefer logging over re-enabling debug output in production. See [Application Env
 
 Related: Leaf 5 adds `Leaf\Router::reset()`, which clears all router state. If you run Leaf inside a long-running worker or your test suite boots the app multiple times, call it between requests/tests.
 
+## Leaf UI is sunset
+
+Leaf UI (reactive PHP components) is retired in Leaf 5. Published packages stay on Packagist so existing apps keep running, but the project is archived and receives no updates. See [Sunsetting Leaf UI](/docs/leaf-ui) for the reasoning and migration paths (Blade, scaffolds, Inertia + React/Vue/Svelte).
+
 ## Environment reads are cached
 
 `_env()` now parses your environment once and caches it for the rest of the request (this is part of why env reads are dramatically faster in v5). If your code changes environment values at runtime with `putenv()` and expects `_env()` to pick them up, that no longer happens — read runtime values with `getenv()` directly instead.
