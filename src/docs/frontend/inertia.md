@@ -154,9 +154,7 @@ use Leaf\Inertia;
 
 Inertia::share('appName', 'Some constant value');
 Inertia::share('someDeferredValue', fn() => asyncData()->get() ?? null);
-Inertia::share('specialFlashMessage', function () {
-    return flash()->display('specialFlashMessage') ?? null;
-});
+Inertia::share('specialFlashMessage', fn () => flash()->display('specialFlashMessage') ?? null);
 ```
 
 Using a function to share data is useful when you want to share dynamic data, because the function won't be executed until the data is actually needed, so if you share something like a flash message which can only be read once, it won't be lost.

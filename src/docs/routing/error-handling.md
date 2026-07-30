@@ -235,7 +235,5 @@ app()->setDown(function () {
 You can use this method to display a custom html page or any other content you want to show users when your application is in down mode.
 
 ```php
-app()->setDown(function () {
-  response()->page('./down.html');
-});
+app()->setDown(fn () => response()->page('./down.html'));
 ```

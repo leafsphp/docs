@@ -12,9 +12,7 @@ Registering a dependency means adding the dependency to the container so you can
 - A function that returns the dependency
 
 ```php
-app()->register('something', function ($c) {
-  return new Something();
-});
+app()->register('something', fn ($c) => new Something());
 ```
 
 In the example above, we set the `something` property on our app using Leaf's `register()` method. The `something` property will return an instance of the `Something` class.
@@ -37,11 +35,7 @@ In the example above, we access the `something` dependency by calling it as a pr
 If the dependency is a class, you can call its methods directly. If it is a function, you can call it directly.
 
 ```php
-app()->register('something', function ($c) {
-  return function () {
-    return 'Hello World!';
-  };
-});
+app()->register('something', fn ($c) => fn () => 'Hello World!');
 
 $something = app()->something();
 ```

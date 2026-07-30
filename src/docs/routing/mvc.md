@@ -154,20 +154,16 @@ You can then redirect to this route using the route name by passing an array wit
 response()->redirect(['home']);
 ```
 
-If you want to get details about a route using its name, you can use the `route()` method.
+Resource routes name themselves automatically — `app()->resource('/users', 'UsersController')` registers `users.index`, `users.show`, `users.edit` and friends, and group names prefix them (`admin.users.index`). See [named groups](/docs/routing/route-groups#named-groups).
+
+To build a URL from a route name — for links, redirects, or anywhere you'd otherwise hardcode a path — use the `route()` method. Parameters fill in the route's placeholders:
 
 ```php:no-line-numbers
-$route = app()->route($routeName);
+$url = app()->route('home');                     // /home
+$url = app()->route('users.show', ['id' => 5]);  // /users/5
 ```
 
-This will return an array containing the following information:
-
-- `pattern`: The route pattern
-- `path`: The route path
-- `name`: The route name
-- `method`: The route method
-- `handler`: The route handler
-- Any other route options
+(If you need the full details of the *current* route — pattern, name, method, handler — that's `getRoute()`, shown below.)
 
 ## Getting the current route
 
@@ -220,9 +216,7 @@ If you need to set up custom error responses, you can do so in the `app/routes/i
 | you set will be called when a 404 error is encountered
 |
 */
-app()->set404(function () {
-  response()->json('Resource not found', 404, true);
-});
+app()->set404(fn () => response()->json('Resource not found', 404, true));
 
 /*
 |--------------------------------------------------------------------------
@@ -234,9 +228,7 @@ app()->set404(function () {
 | you set will be called when a 500 error is encountered
 |
 */
-app()->setErrorHandler(function () {
-  response()->json('An error occurred, our team has been notified', 500, true);
-});
+app()->setErrorHandler(fn () => response()->json('An error occurred, our team has been notified', 500, true));
 ```
 
 ## What to read next

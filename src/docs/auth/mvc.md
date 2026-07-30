@@ -109,9 +109,7 @@ return [
     | You can set your own implementation instead of Password::hash
     |
     */
-    'password.encode' => function ($password) {
-        return Password::hash($password);
-    },
+    'password.encode' => fn ($password) => Password::hash($password),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,9 +122,7 @@ return [
     | You can add your own implementation instead of Password::verify
     |
     */
-    'password.verify' => function ($password, $hashedPassword) {
-        return Password::verify($password, $hashedPassword);
-    },
+    'password.verify' => fn ($password, $hashedPassword) => Password::verify($password, $hashedPassword),
 
     /*
     |--------------------------------------------------------------------------

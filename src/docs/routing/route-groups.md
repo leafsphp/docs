@@ -64,21 +64,45 @@ $middleware = function () {
 };
 
 app()->group('/user', ['middleware' => $middleware, function () {
-  app()->get('/', function () {
-    response()->markup('no user id');
-  });
+  app()->get('/', fn () => response()->markup('no user id'));
 
-  app()->get('/(\d+)', function ($id) {
-    response()->markup("user $id");
-  });
+  app()->get('/(\d+)', fn ($id) => response()->markup("user $id"));
 }]);
+```
+
+## Named groups <Badge type="tip" text="NEW" />
+
+Groups can carry a `name` that prefixes every named route inside them — so related routes share a clean, hierarchical naming scheme:
+
+```php
+app()->group('/admin', ['name' => 'admin', function () {
+  app()->get('/dashboard', ['name' => 'dashboard', 'AdminController@dashboard']);
+
+  app()->group('/reports', ['name' => 'reports', function () {
+    app()->get('/{id}', ['name' => 'show', 'ReportsController@show']);
+  }]);
+}]);
+
+app()->route('admin.dashboard');            // /admin/dashboard
+app()->route('admin.reports.show', ['id' => 9]); // /admin/reports/9
+```
+
+Resource routes name themselves automatically (`users.index`, `users.show`, `users.edit`, ...), and those names compose with group names too:
+
+```php
+app()->group('/admin', ['name' => 'admin', function () {
+  app()->resource('/users', 'UsersController');
+}]);
+
+app()->route('admin.users.index');           // /admin/users
+app()->route('admin.users.edit', ['id' => 3]); // /admin/users/3/edit
 ```
 
 ## Subfolder Support
 
-Leaf will run in any subfolder you place it into without a need for any adjustments to your code. You can freely move your entry script `index.php` around, and the router will automatically adapt itself to work relatively from the current folder's path by mounting all routes onto that base path.
+Leaf runs in any subfolder without adjustments to your code: when your app is deployed under `/subdir/` and requests actually arrive as `/subdir/...`, the router detects that base path and mounts your routes onto it automatically. Detection is honest about context — if the request URLs don't live under your script's folder (like with `php -S` or the CLI), nothing is stripped, so local development never eats URI segments.
 
-While this is okay for most cases, there are very rare cases when you might want to disable this feature. This is possible by manually overriding the base path using `setBasePath()`.
+If you want full control, override detection manually with `setBasePath()` — including `setBasePath('')` for "no base path at all":
 
 ```php
 // Override auto base path detection

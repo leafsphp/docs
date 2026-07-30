@@ -32,13 +32,10 @@ Just like other Leaf modules, you can use the cache module right away by calling
 $dataFromDatabase = cache(
     'queries.complexQuery', // Unique cache key for this data
     60 * 60, // Cache duration in seconds (1 hour)
-    function() {
-        // Simulate a complex database query
-        return db()
-          ->select('complex_table')
-          ->where('some_column', 'some_value')
-          ->get();
-    }
+    fn () => db() // Simulate a complex database query
+      ->select('complex_table')
+      ->where('some_column', 'some_value')
+      ->get()
 );
 ```
 
@@ -69,9 +66,7 @@ In this example, we're using the `put()` method to store new data in the cache w
 Although caching is typically temporary, there might be scenarios where you want to save certain data permanently in the cache. You can achieve this by using the `cache()` helper function without a duration parameter.
 
 ```php:no-line-numbers
-cache('settings.siteConfig', function() {
-    return db()->select('settings')->get();
-});
+cache('settings.siteConfig', fn () => db()->select('settings')->get());
 ```
 
 ## Getting Cache Data

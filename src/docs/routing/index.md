@@ -180,11 +180,9 @@ Leaf displays a default 404 screen when it can't find a page that a user wants t
 You can customize the 404 page using Leaf's `set404()` method.
 
 ```php
-app()->set404(function () {
-  response()->json([
-    "error" => "Page not found"
-  ]);
-});
+app()->set404(fn () => response()->json([
+  "error" => "Page not found"
+]));
 ```
 
 Once this is set, Leaf will automatically use your custom 404 page when a user tries to access a page that doesn't exist in your app.
@@ -207,20 +205,16 @@ You can then redirect to this route using the route name by passing an array wit
 response()->redirect(['home']);
 ```
 
-If you want to get details about a route using its name, you can use the `route()` method.
+Route groups can carry a `name` too — it prefixes every named route inside (`admin` + `dashboard` → `admin.dashboard`), and resource routes name themselves automatically. See [named groups](/docs/routing/route-groups#named-groups).
+
+To build a URL from a route name — for links, redirects, or anywhere you'd otherwise hardcode a path — use the `route()` method. Parameters fill in the route's placeholders:
 
 ```php:no-line-numbers
-$route = app()->route($routeName);
+$url = app()->route('home');                     // /home
+$url = app()->route('users.show', ['id' => 5]);  // /users/5
 ```
 
-This will return an array containing the following information:
-
-- `pattern`: The route pattern
-- `path`: The route path
-- `name`: The route name
-- `method`: The route method
-- `handler`: The route handler
-- Any other route options
+(If you need the full details of the *current* route — pattern, name, method, handler — that's `getRoute()`, shown below.)
 
 ## Getting the current route
 

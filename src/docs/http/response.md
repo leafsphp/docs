@@ -176,10 +176,11 @@ If you pass a string as the first parameter, Leaf will automatically convert it 
 
 ## Templating
 
-Leaf has support for a wide range of templating engines plus any other templating engine you might want to use. Once you have a view engine installed and set up, you can use the `view()` or `render()` method to render views. This method accepts 2 parameters:
+Leaf has support for a wide range of templating engines plus any other templating engine you might want to use. Once you have a view engine installed and set up, you can use the `view()` or `render()` method to render views. This method accepts 3 parameters:
 
 - the name of the view to render
 - an array of data to pass to the view
+- an optional HTTP status code (defaults to 200) — perfect for error pages
 
 ::: code-group
 
@@ -191,6 +192,8 @@ response()->view('home', [
 response()->render('home', [
   'name' => 'Michael'
 ]);
+
+response()->render('errors.404', [], 404); // render with a status code
 ```
 
 ```php:no-line-numbers [Leaf Instance]
@@ -255,6 +258,14 @@ $app->response()->download('path/to/file.pdf', 'new-filename.pdf', 200);
 ```
 
 :::
+
+Downloads are streamed in chunks, so memory stays flat no matter the file size — a 5GB file doesn't need 5GB of memory. Downloads also honor HTTP `Range` requests automatically <Badge type="tip" text="NEW" />: browsers and download managers can pause/resume and fetch files in parallel segments, and Leaf answers with proper `206 Partial Content` responses. You don't have to do anything — it's on for every download:
+
+```bash:no-line-numbers
+# a client resuming an interrupted download from byte 1000000
+curl -H "Range: bytes=1000000-" https://yourapp.com/files/report.zip
+# → 206 Partial Content, Content-Range: bytes 1000000-4999999/5000000
+```
 
 ### No content responses
 

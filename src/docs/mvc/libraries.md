@@ -35,7 +35,7 @@ To create a library, simply create a new file in the `lib` folder. For example, 
 namespace MyRandom\Name\Space;
 
 class Math {
-  public static function add($a, $b) {
+  public static function add(int $a, int $b): int {
     return $a + $b;
   }
 }
@@ -69,7 +69,7 @@ As mentioned above, libraries can be just about anything. They are completely ba
 
 namespace Lib;
 
-function add($a, $b) {
+function add(int $a, int $b): int {
   return $a + $b;
 }
 ```

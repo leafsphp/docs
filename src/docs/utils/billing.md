@@ -612,9 +612,7 @@ You can use these middlewares in your routes like this:
 ```php [_some-route.php]
 app()->get('/protected', [
     'middleware' => 'billing.subscribed',
-    function() {
-        return 'You are subscribed';
-    }
+    fn () => 'You are subscribed'
 ]);
 
 app()->get('/protected', [
@@ -636,9 +634,7 @@ And then you can use the middleware like this:
 ```php [_some-route.php]
 app()->get('/protected', [
     'middleware' => 'billing.subscribed',
-    function() {
-        return 'You are subscribed';
-    }
+    fn () => 'You are subscribed'
 ]);
 ```
 

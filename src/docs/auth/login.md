@@ -256,9 +256,7 @@ Password verification is done to check if a password matches the hashed password
 ```php
 auth()->config('password.verify', false); // turn off verification
 
-auth()->config('password.verify', function ($password, $hash) {
-  return Password::verify($password, $hash);
-});
+auth()->config('password.verify', fn ($password, $hash) => Password::verify($password, $hash));
 ```
 
 These are the available options you can pass to `password.verify`:

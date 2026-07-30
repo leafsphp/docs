@@ -110,6 +110,14 @@ Every time you call the `body()` method, Leaf will sanitize the data in the requ
 $data = request()->body(false);
 ```
 
+If you prefer working with objects instead of arrays — say you're passing request data straight into typed code — `object()` returns the same data as an object, nested structures included (lists stay arrays). It takes the same sanitization parameter as `body()`:
+
+```php:no-line-numbers
+$data = request()->object();
+
+// $data->name, $data->profile->city, ...
+```
+
 ## Request type specific methods
 
 We mentioned earlier that there are different types of HTTP requests, such as `GET`, `POST`, `PUT`, `DELETE`, and more. Leaf provides methods that you can use to access data specific to each type of request. We'll cover the most common ones here.

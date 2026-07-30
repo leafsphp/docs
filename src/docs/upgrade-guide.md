@@ -10,7 +10,9 @@ This guide covers moving an existing Leaf 4 app to Leaf 5. Most apps will upgrad
 
 ## Updating your dependencies
 
-Update your Leaf packages to their v5 versions:
+Leaf 5 requires **PHP 8.2 or newer** — the same floor as Laravel 11+ and Symfony 7, and the oldest PHP still receiving security fixes. Check with `php -v` before upgrading.
+
+Then update your Leaf packages to their v5 versions:
 
 ::: code-group
 
@@ -92,6 +94,9 @@ Not required for upgrading, but worth adopting once you're on v5:
 - **[Multiple database connections](/docs/database/)** — `db()->addConnections([...])` and `db('analytics')->select(...)`.
 - **[Scaffolds](/docs/mvc/scaffolds)** — auth, landing pages, subscriptions, and waitlists as editable starting points.
 - **[Console apps with Seedling](/docs/seedling/)** — the Leaf MVC experience for CLI applications.
+- **[Named route groups](/docs/routing/route-groups#named-groups)** — group names cascade (`admin.users.index`), and resource routes name themselves.
+- **Group middleware runs on dynamic routes** — a long-standing bug where middleware (including `auth.required`) was silently skipped for `/{id}`-style routes inside groups whenever a global middleware existed is fixed. If routes suddenly enforce auth they previously skipped, that's the fix working.
+- **Smarter base path detection** — subfolder detection only strips URL prefixes when requests actually live under your script's folder, so `php -S` and CLI runs no longer 404 or lose URI segments.
 
 ## Coming from Leaf 3
 

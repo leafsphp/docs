@@ -492,9 +492,7 @@ The `@submit` directive allows you to wrap an item with a form that submits when
 Blade allows you to define custom directives using the `directive()` method. When the Blade compiler encounters the custom directive, it will call the provided callback with the expression that the directive contains. The callback is free to return the value of its contents however you like:
 
 ```php
-app()->blade()->directive('datetime', function ($expression) {
-    return "<?php echo tick({$expression})->format('DD MM YYYY'); ?>";
-});
+app()->blade()->directive('datetime', fn ($expression) => "<?php echo tick({$expression})->format('DD MM YYYY'); ?>");
 ```
 
 ::: details Extending blade in Leaf MVC
@@ -521,9 +519,7 @@ After that, you can add your custom directives to the `config/view.php` file. He
     |
     */
     'extend' => function (\Leaf\Blade $engine) {
-        $engine->directive('datetime', function ($expression) {
-            return "<?php echo tick({$expression})->format('DD MM YYYY'); ?>";
-        });
+        $engine->directive('datetime', fn ($expression) => "<?php echo tick({$expression})->format('DD MM YYYY'); ?>");
     },
 ```
 

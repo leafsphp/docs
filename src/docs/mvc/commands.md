@@ -356,9 +356,7 @@ $answers = sprout()->prompt([
         'message' => 'What is your name?',
     ],
     [
-        'type' => function ($answers) {
-            return strtolower($answers['username']) === 'admin' ? null : 'confirm';
-        },
+        'type' => fn ($answers) => strtolower($answers['username']) === 'admin' ? null : 'confirm',
         'name' => 'userConfirm',
         'message' => 'Are you above 18?',
     ],

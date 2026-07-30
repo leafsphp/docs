@@ -82,9 +82,7 @@ If you don't provide the file content, Leaf will create an empty file for you.
 ```php
 storage()->createFile('path/to/file.txt');
 
-storage()->createFile('path/to/file.txt', function () {
-  return 'Hello, world!';
-});
+storage()->createFile('path/to/file.txt', fn () => 'Hello, world!');
 
 storage()->createFile('path/to/file.txt', 'Hello, world!', [
   'overwrite' => true
@@ -113,6 +111,28 @@ $content = storage()->read('path/to/file.txt');
 echo $content;
 ```
 
+### Reading part of a file <Badge type="tip" text="NEW" />
+
+For big files you often don't want the whole thing — just a slice. `readRange()` reads an exact byte window without loading the rest of the file:
+
+```php
+$firstKb = storage()->readRange('video.mp4', 0, 1024); // first 1KB
+$middle = storage()->readRange('video.mp4', 500, 100); // 100 bytes from byte 500
+$tail = storage()->readRange('logs/app.log', -2048);   // last 2KB
+```
+
+### Streaming large files <Badge type="tip" text="NEW" />
+
+Serving a 5GB download shouldn't need 5GB of memory. `chunks()` streams a file piece by piece — memory stays flat no matter the file size, which is exactly what you want for large downloads or HTTP range responses:
+
+```php
+foreach (storage()->chunks('backup.zip', 1024 * 1024) as $chunk) {
+    echo $chunk; // one 1MB piece at a time
+}
+```
+
+You can stream just a window of the file too — `chunks($path, $chunkSize, $start, $length)` — which pairs naturally with the HTTP `Range` header for resumable and multi-threaded downloads.
+
 ### Updating Files
 
 You can update files using the `writeFile()` method. It takes in the file path and the content to set or a function that returns the file content.
@@ -120,17 +140,13 @@ You can update files using the `writeFile()` method. It takes in the file path a
 ```php
 storage()->writeFile('path/to/file.txt', 'Hello, world!');
 
-storage()->writeFile('path/to/file.txt', function () {
-  return 'Hello, world!';
-});
+storage()->writeFile('path/to/file.txt', fn () => 'Hello, world!');
 ```
 
 If the file is a readable file, the `writeFile()` method will provide the current content of the file to the function.
 
 ```php
-storage()->writeFile('path/to/file.txt', function ($content) {
-  return $content . ' Hello, world!';
-});
+storage()->writeFile('path/to/file.txt', fn ($content) => $content . ' Hello, world!');
 ```
 
 ### Getting File Information
@@ -230,6 +246,18 @@ if ($uploaded) {
   echo $uploaded['url']; // file url -> http://yourapp.com/path/to/uploads/file.txt
 }
 ```
+
+### Uploading a file you already have <Badge type="tip" text="NEW" />
+
+`upload()` isn't only for request files — you can hand it a plain path and Leaf will place a **copy** in the destination (your original file stays where it is). Handy for CLI tools, queued jobs, or shipping generated files into your uploads/bucket:
+
+```php
+$uploaded = storage()->upload('/path/to/report.pdf', 'path/to/uploads');
+
+echo $uploaded['name']; // report.pdf
+```
+
+All the same config options apply — `validate`, `allowedTypes`, `overwrite`, `rename` and friends.
 
 ## Uploading multiple files
 
@@ -378,10 +406,11 @@ $phpFiles = storage()->list('path/to/folder', '*.php');
 If you need to do more complex filtering, you can pass a function as the second parameter to the `list()` method.
 
 ```php
-$contents = storage()->list('path/to/folder', function ($file) {
-  // if true, the file will be included in the results
-  return storage()->isFile($file) && storage()->extension($file) === 'php';
-});
+// if the callback returns true, the file will be included in the results
+$contents = storage()->list(
+  'path/to/folder',
+  fn ($file) => storage()->isFile($file) && storage()->extension($file) === 'php'
+);
 ```
 
 <!-- ## Working with Cloud Storage -->
@@ -506,7 +535,7 @@ if ($moved) {
 
 ## Symlinks/Shortcuts
 
-Symlinks are shortcuts to files or folders. They allow you to access a file or folder from a different location. Leaf provides a simple way to create symlinks using the `symlink()` method. It takes in 2 parameters:
+Symlinks are shortcuts to files or folders. They allow you to access a file or folder from a different location. Leaf provides a simple way to create symlinks using the `link()` method. It takes in 2 parameters:
 
 - the target file/folder path
 - the symlink path

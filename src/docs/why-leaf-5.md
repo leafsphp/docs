@@ -146,6 +146,13 @@ The pitch is not that Leaf has every feature Laravel has. It does not. The pitch
       <span class="text-neutral-600 dark:text-neutral-400">Broad component and bundle ecosystem.</span>
       <span class="text-neutral-600 dark:text-neutral-400">Mostly external packages and custom integration work.</span>
     </div>
+    <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
+      <span class="font-semibold text-neutral-950 dark:text-neutral-50">Testing, code quality and CI</span>
+      <span class="text-neutral-600 dark:text-neutral-400">One <code>alchemy.yml</code> drives Pest/PHPUnit, code style, Rector, PHPStan and CI for GitHub, GitLab or CircleCI — engines install on first use.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Pint, Pest/PHPUnit and CI configured per tool, each with its own file.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Mature per-tool configs; you assemble the pipeline.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">Bring and wire each QA tool yourself.</span>
+    </div>
     <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] px-4 py-4 text-sm">
       <span class="font-semibold text-neutral-950 dark:text-neutral-50">AI-assisted product work</span>
       <span class="text-neutral-600 dark:text-neutral-400">Agents use shared project context plus the filesystem, then write useful changes back for the next session.</span>

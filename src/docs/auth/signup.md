@@ -204,10 +204,7 @@ Leaf allows you to customize how user passwords should be encoded before they ar
 ```php
 auth()->config('password.encode', false); // turn off encoding
 
-auth()->config('password.encode', function ($password) {
-  // return the encoded password
-  return Password::hash($password);
-});
+auth()->config('password.encode', fn ($password) => Password::hash($password));
 ```
 
 These are the available options you can pass to `password.encode`:

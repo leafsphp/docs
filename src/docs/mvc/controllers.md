@@ -98,7 +98,7 @@ In the example above, we passed in a middleware called `auth` to the route as a 
 
 Leaf makes it super easy to set up routes for common actions like creating, reading, updating, and deleting data (also known as CRUD operations). Instead of manually setting up each route, you can use resource controllers to do it all in one line of code!
 
-To get started, you can generate a resource controller using the Aloe CLI:
+To get started, you can generate a resource controller using the MVC console:
 
 ```bash:no-line-numbers
 leaf g:controller photos --resource
@@ -169,7 +169,7 @@ This will automatically set up all the routes you need for CRUD operations on th
 
 ## API Resource Controllers
 
-API resource controllers are similar to resource controllers, but they return JSON responses instead of HTML which means that the `create` and `edit` methods are not included. You can generate an API resource controller using the Aloe CLI:
+API resource controllers are similar to resource controllers, but they return JSON responses instead of HTML which means that the `create` and `edit` methods are not included. You can generate an API resource controller using the MVC console:
 
 ```bash:no-line-numbers
 leaf g:controller photos --api

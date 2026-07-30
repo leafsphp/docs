@@ -459,7 +459,7 @@ namespace App\Models;
 
 class User extends Model
 {
-  public static function __seeder()
+  public static function __seeder(): array
   {
     return [
       'name' => fake()->name(),

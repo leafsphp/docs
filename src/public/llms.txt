@@ -8,6 +8,8 @@
 
 Leaf 5 is the next generation of Leaf PHP. It is **not** a different framework - it is one system with three entry points. You pick a starting point and grow without switching tools, rewriting code, or changing ecosystems.
 
+**Requires PHP 8.2+** — framework, modules, and tooling (Alchemy, Sprout) alike.
+
 ---
 
 ## Entry Points (Critical - get this right first)
@@ -105,9 +107,18 @@ app()->group('/admin', ['middleware' => 'auth.required', function () {
     app()->get('/users', 'AdminController@users');
 }]);
 
-// Resource routes
+// Resource routes (auto-named: photos.index, photos.show, photos.edit, ...)
 app()->resource('/photos', 'PhotosController');
 app()->apiResource('/photos', 'PhotosController');
+
+// Named groups: group name prefixes every named route inside (nested groups compose)
+app()->group('/admin', ['name' => 'admin', function () {
+    app()->get('/dashboard', ['name' => 'dashboard', 'AdminController@dashboard']); // -> admin.dashboard
+    app()->resource('/users', 'UsersController'); // -> admin.users.index, admin.users.show, ...
+}]);
+
+// URL from a route name
+app()->route('admin.users.show', ['id' => 5]); // /admin/users/5
 
 // Match multiple methods
 app()->match('GET|POST', '/path', function () { /* ... */ });
@@ -316,6 +327,7 @@ $val  = request()->get('field');
 $data = request()->get(['name', 'email']);
 $data = request()->get('field', false);   // disable sanitization
 $body = request()->body();
+$data = request()->object();              // body as an object: $data->name, $data->meta->tag
 
 // Type-specific
 request()->query('name');       // URL params only
@@ -371,7 +383,12 @@ response()->redirect('https://external.com');
 
 // Views (MVC)
 response()->render('posts.index', ['posts' => $posts]);   // Blade / BareUI
+response()->render('errors.404', [], 404);                // render with an HTTP status code
 response()->inertia('Posts/Index', ['posts' => $posts]);  // Inertia
+
+// Downloads: streamed in chunks (flat memory for any size) and HTTP Range
+// requests (pause/resume, parallel segments) are handled automatically
+response()->download('storage/exports/report.zip', 'report.zip');
 
 // view() shorthand - usable directly (e.g. in route index.php)
 view('404');
@@ -639,6 +656,69 @@ BILLING_PROVIDER=stripe
 ```
 
 Access anywhere: `_env('KEY', 'default')`
+
+---
+
+## Testing & Code Quality (Alchemy)
+
+Alchemy replaces phpunit.xml, php-cs-fixer, rector, phpstan configs and hand-written CI with a single `alchemy.yml`. Install with `leaf install alchemy --dev` (or composer), then `./vendor/bin/alchemy init`. Tools install lazily — pest arrives on the first `composer run test`, phpstan on the first `composer run analyse`, never before.
+
+Commands (wired into composer scripts by init): `composer run test | lint | fmt | refactor | analyse | ci`, and `composer run alchemy` (= `alchemy all`) runs everything present in alchemy.yml. `lint` and `refactor -- --check` only report; `fmt` and `refactor` rewrite. `alchemy eject` exports real config files (no lock-in). `alchemy switch gitlab|circleci|github|pest|phpunit` swaps CI provider or test engine.
+
+Full config surface:
+
+```yaml
+app: # your code dirs — shared by coverage, lint, refactor, analyse
+  - src
+
+tests:
+  engine: pest # or phpunit; parallel uses pest --parallel or paratest
+  parallel: true
+  flags: [tia] # standing engine flags, any pest/phpunit option (pest 5: tia, shard=1/4, ...)
+  paths: [tests]
+  files: ['*.test.php']
+  suites: # named suites with per-suite paths/files/exclude
+    Unit: { paths: [tests/unit] }
+  config: { stopOnFailure: true } # any phpunit.xml attribute, verbatim
+  env: { APP_ENV: testing }
+  ini: { memory_limit: 512M }
+  coverage: { exclude: [src/legacy] }
+
+lint:
+  preset: PSR12
+  risky: false
+  rules: { single_quote: true } # any php-cs-fixer rule
+  autofix: true # CI commits style fixes instead of failing (GitHub only)
+
+analyse:
+  level: 6 # phpstan 0-10
+  baseline: phpstan-baseline.neon # root baseline auto-included anyway
+  ignore: ['#pattern#']
+  # ANY other key passes through to phpstan verbatim (includes, excludePaths, ...)
+  # pest projects: when analyse paths cover the tests, alchemy auto-installs and wires
+  # pestphp/pest-plugin-phpstan (pest 5 / PHP 8.4) so pest syntax analyses cleanly
+
+refactor: # rector — only runs when this section exists (it rewrites code)
+  php: '8.2' # upgrade sets (true = read composer.json)
+  sets: [dead-code, code-quality, type-declarations] # all 20 rector prepared sets, kebab-cased
+  skip: [src/legacy]
+  import-names: true
+  fluent-new-line: true
+
+actions: # CI generation via `composer run ci`
+  provider: github # or gitlab, circleci, or a list
+  run: [lint, tests, analyse, refactor]
+  os: [ubuntu-latest]
+  php: { extensions: 'json, zip', versions: ['8.3'] }
+  events: [push, pull_request]
+```
+
+Key rules:
+- **A section's value can be a filename instead of a map** — `tests: phpunit.xml` or `analyse: phpstan.dist.neon` pins that tool to the user's own config file, run as-is. Map = alchemy-managed (config generated fresh per run inside `.alchemy/`, discarded after the run — only engine caches persist; project root never written).
+- `alchemy init` asks port-or-keep for each existing tool config it finds (`--port`/`--keep` to answer non-interactively); it can port phpunit.xml, php-cs-fixer configs, phpstan neon files and rector.php into alchemy.yml.
+- A tool with no section but a matching config file in the project still runs on that file (safety net).
+- Generated CI files carry a `# Generated by Leaf Alchemy` header and regenerate on every run; remove the header to take ownership of a file.
+- Do NOT commit or hand-edit anything inside `.alchemy/` — it holds per-run generated configs (deleted after each run) and engine caches, and is gitignored.
 
 ---
 

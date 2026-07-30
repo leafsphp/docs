@@ -15,7 +15,7 @@ namespace App\Services;
 
 class StatsService
 {
-    public function getDashboardData()
+    public function getDashboardData(): array
     {
         return [
             'users' => 1500,

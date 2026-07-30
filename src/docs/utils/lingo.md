@@ -46,13 +46,9 @@ In Blade templates, use it the same way:
 By default, Lingo uses routes for the translation strategy which means that if you have routes like this in your Leaf app:
 
 ```php
-app()->get('/home', function() {
-    return response()->render('home');
-});
+app()->get('/home', fn () => response()->render('home'));
 
-app()->get('/about', function() {
-    return response()->render('about');
-});
+app()->get('/about', fn () => response()->render('about'));
 ```
 
 Lingo automatically creates routes for each language:

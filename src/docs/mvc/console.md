@@ -2,315 +2,147 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-Leaf MVC includes a powerful command-line tool called Aloe to help you manage your application from the terminal. With Aloe, you can scaffold projects, manage databases, and handle various app tasks efficiently, all with simple commands. To get started and see the list of all available commands, just run:
+Leaf MVC ships with a built-in console for managing your application from the terminal — generators, scaffolds, database commands, and app utilities, all through the `leaf` file in your project root. It's powered by [Sprout](https://seedling.leafphp.dev), Leaf's console engine, and there's nothing to install: every Leaf MVC app has it from the first `leaf create`.
+
+To see every command available in your app, run:
 
 ```bash:no-line-numbers
 php leaf list
 ```
 
-::: details Missing commands?
-
-If you get errors from commands which you saw in the documentation, you are probably running an older version of the Leaf MVC console. We add more handy commands regularly, but as the console does not automatically update, you may run into the missing command error. To fix that problem, you need to install the latest version of Aloe:
-
-::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf install aloe@v4.0-beta
-leaf install mvc-core@v4.0-beta
-```
-
-```bash:no-line-numbers [Composer]
-composer require leafs/aloe:v4.0-beta
-composer require leafs/mvc-core:v4.0-beta
-```
-
+::: info Coming from Leaf 4?
+Earlier Leaf MVC versions used a separate console package called Aloe. Aloe is retired in Leaf 5 — the console is now part of MVC core itself, so there's no extra dependency to install or update. Your muscle memory survives: the command names (`g:controller`, `db:migrate`, `scaffold:auth`, …) are the same.
 :::
 
-## Aloe vs. Leaf CLI: What's the Difference?
+## The console vs. Leaf CLI
 
-Before diving in, it’s important to know that Aloe is different from Leaf CLI.
+Two different tools, two different jobs:
 
-Leaf CLI is a general tool used for creating and managing any Leaf application. It's installed globally and works across different Leaf apps, including Leaf MVC.
+- **Leaf CLI** (`leaf` installed globally) creates and manages projects from anywhere: `leaf create`, `leaf install`, `leaf serve`.
+- **The MVC console** (`php leaf` inside a project) manages *this* app: generating files, running migrations, scaffolding features.
 
-Aloe is more specific. It's used only in the root directory of your Leaf MVC apps. Aloe has commands that are specifically designed for managing Leaf MVC projects.
+Inside a Leaf MVC project, the global CLI hands commands it doesn't know over to your app's console — so `leaf g:controller Posts` and `php leaf g:controller Posts` do the same thing.
 
-## Aloe Command Categories
+## Generators
 
-Aloe commands are divided into six groups to help with different parts of your development process:
-
-- App Commands: Manage your app's state and dependencies.
-- Scaffold Commands: Create files and structures in your app.
-- Generate Commands: Quickly create controllers, models, and more.
-- Delete Commands: Remove unwanted files.
-- Database Commands: Manage your app’s database.
-- View Commands: Build and serve your frontend.
-
-### App Commands
-
-- Serve
-
-  To run your app, use the serve command, which starts a development server. It’s similar to running php -S localhost:[PORT], but with some added setup specific to Leaf.
-
-  ```bash:no-line-numbers
-  leaf serve
-  ```
-
-  You can also specify a custom port:
-
-  ```bash:no-line-numbers
-  leaf serve --port=8000
-  ```
-
-- Interact
-
-  If you want to interact with your app directly in the terminal, use interact. This opens a REPL (Read-Eval-Print Loop) powered by PsySH.
-
-  ```bash:no-line-numbers
-  php leaf interact
-  ```
-
-- Maintenance Mode
-
-  Sometimes you need to take your app down for maintenance. Use app:down to put your app in maintenance mode (it will return a 503 status), and app:up to bring it back online.
-
-  ```bash:no-line-numbers
-  leaf app:down
-  leaf app:up
-  ```
-
-### Scaffold Commands
-
-These commands help you quickly create files and structure your app.
-
-- Scaffold Authentication
-
-  Need basic user authentication? Use the auth:scaffold command to automatically generate everything you need for login and registration (routes, models, controllers, views, etc.).
-
-  ```bash:no-line-numbers
-  leaf auth:scaffold
-  ```
-
-  For a Leaf MVC app: generates full login and registration views and controllers. You can force it to generate API files using `--api`.
-
-  ```bash:no-line-numbers
-  leaf auth:scaffold --api
-  ```
-
-- Mail Setup
-
-  To set up mailing for your app, run:
-
-  ```bash:no-line-numbers
-  leaf mail:setup
-  ```
-
-  This installs the Leaf Mail package and sets up the necessary configuration files.
-
-### Generate Commands
-
-These commands are used to generate files for your project, saving you time by automating tasks like creating controllers, models, schema files, etc.
-
-- Create a Controller
-
-  To generate a new controller, use:
-
-  ```bash:no-line-numbers
-  leaf g:controller [name]
-  ```
-
-  You can add a resource route (for standard CRUD operations) with:
-
-  ```bash:no-line-numbers
-  leaf g:controller [name] --resource
-  ```
-
-  You can also create a controller with a model or schema file:
-
-  ```bash:no-line-numbers
-  leaf g:controller [name] --model
-  leaf g:controller [name] --all # or -a to generate everything
-  ```
-
-- Create a Model
-
-  Need a model for your database? Generate one with:
-
-  ```bash:no-line-numbers
-  leaf g:model [name]
-  ```
-
-<!-- To create a model with a migration, use:
+Create app files with the right structure and namespaces in one command:
 
 ```bash:no-line-numbers
-leaf g:model [name] --migration
-``` -->
-
-- Other Generate Commands
-
-  - Factory: leaf g:factory [name]
-  - Helper: leaf g:helper [name]
-  - Mailer: leaf g:mailer [name]
-  - Schema file: leaf g:schema [name]
-  - Seed: leaf g:seed [name]
-  - View Template: leaf g:template [name] --type=[blade|jsx|vue|html]
-
-### Delete Commands
-
-These are the reverse of generate commands—use them to delete files.
-
-- Delete Controller: leaf d:controller [name]
-- Delete Model: leaf d:model [name]
-- Delete Schema: leaf d:schema [name]
-- Delete Seed: leaf d:seed [name]
-
-### Database Commands
-
-Leaf MVC makes database management easy with these commands.
-
-- Create a Database
-
-  To create a new database from the credentials in your .env file, use:
-
-  ```bash:no-line-numbers
-  leaf db:install
-  ```
-
-- Migrate Database
-
-  To migrate your db using your schema files, run:
-
-  ```bash:no-line-numbers
-  leaf db:migrate
-  ```
-
-- Reset Database
-
-  This command rolls back, migrates, and seeds your database in one go:
-
-  ```bash:no-line-numbers
-  leaf db:reset
-  ```
-
-  You can skip the seeding step if you want:
-
-  ```bash:no-line-numbers
-  leaf db:reset --noSeed
-  ```
-
-- Rollback Database
-
-  If you need to undo recent changes, you can roll back your migrations with:
-
-  ```bash:no-line-numbers
-  leaf db:rollback
-  ```
-
-  You can also rollback a specific number of migrations using the --step flag:
-
-  ```bash:no-line-numbers
-  leaf db:rollback --step=2
-  ```
-
-- Seed Database
-
-  To populate your database with dummy data, use:
-
-  ```bash:no-line-numbers
-  leaf db:seed
-  ```
-
-### View Commands
-
-These commands handle your frontend setup, building, and serving.
-
-- Build Your Frontend
-
-  When you’re ready to compile your frontend for production, run:
-
-  ```bash:no-line-numbers
-  leaf view:build
-  ```
-
-- Serve Your Frontend
-
-  To start your frontend development server, use:
-
-  ```bash:no-line-numbers
-  leaf view:serve
-  ```
-
-- Viewing All Commands
-
-  You can always view the full list of Aloe commands by running:
-
-  ```bash:no-line-numbers
-  leaf list
-  ```
-
-  This will display all available commands for your version of Leaf MVC.
-
-  With this guide, you should be ready to take full advantage of Aloe and streamline your Leaf MVC app development. Happy coding! 😊
-
-## Command List
-
-This is a list of every command available in Aloe. To view this list from your terminal, run `leaf list`.
-
-```bash:no-line-numbers
-Leaf MVC v4.x-BETA
-
-Usage:
-  command [options] [arguments]
-
-Options:
-  -h, --help            Display help for the given command. When no command is given display help for the list command
-  -q, --quiet           Do not output any message
-  -V, --version         Display this application version
-      --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
-  -n, --no-interaction  Do not ask any interactive question
-  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
-
-Available commands:
-  completion        Dump the shell completion script
-  help              Display help for a command
-  interact          Interact with your application
-  link              Create a symbolic link for the storage directory
-  list              List commands
-  serve             Start the leaf development server
- app
-  app:down          Place app in maintainance mode
-  app:up            Remove app from maintainance mode
- config
-  config:lib        Setup Leaf MVC to use external libraries
-  config:publish    Publish config files to your project
- d
-  d:command         Delete a console command
-  d:controller      Delete a controller
-  d:model           Delete a model
- db
-  db:migrate        Migrate your db schema files
-  db:reset          Reset migration history + db tables
-  db:rollback       Rollback database to a previous state
-  db:seed           Seed the database with records
- devtools
-  devtools:install  Install the Leaf PHP devtools
- env
-  env:generate      Generate .env file
- g
-  g:command         Create a new console command
-  g:controller      Create a new controller class
-  g:helper          Create a new helper class
-  g:mailer          Create a new mailer
-  g:middleware      Create a new application middleware
-  g:model           Create a new model class
-  g:schema          Create a new schema file
-  g:template        [g:view] Create a new view file
- key
-  key:generate      Generate/Regenerate your app key
- scaffold
-  scaffold:auth     Scaffold basic app authentication
-  scaffold:mail     Install leaf mail and setup mail config
- view
-  view:build        Run your frontend dev server
-  view:dev          [view:serve] Run your frontend dev server
-  view:install      Run a script in your composer.json
+php leaf g:controller Posts              # controller
+php leaf g:controller Posts -m           # controller + model
+php leaf g:controller Posts -a           # controller + model + schema
+php leaf g:controller Posts --resource   # full CRUD controller
+php leaf g:model Post                    # model
+php leaf g:schema posts                  # schema YAML file
+php leaf g:middleware LogRequest         # middleware class
+php leaf g:mailer Welcome                # mailer class
+php leaf g:job SendEmail                 # queue job
+php leaf g:route posts                   # route partial in app/routes
+php leaf g:template home                 # view file
+php leaf g:helper Format                 # helper class
 ```
+
+Some generators come with the modules that power them: `g:model` and `g:schema` arrive with the db/schema module, `g:job` with the queue module. They register themselves automatically when the module is installed — `php leaf list` always shows what your app can do right now.
+
+Made a mess? Every generator has a matching delete command: `d:controller`, `d:model`, `d:schema`, `d:job`.
+
+## Scaffolds
+
+Scaffolds generate complete features, not single files:
+
+```bash:no-line-numbers
+php leaf scaffold:auth           # full authentication: signup, login, protected routes
+php leaf scaffold:landing-page   # landing page for your app
+php leaf scaffold:waitlist       # waitlist capture
+php leaf scaffold:mail           # leaf mail + config
+php leaf scaffold:shadcn         # shadcn/ui for your React frontend
+```
+
+## Database
+
+Your schema lives in YAML files under `app/database/` (one per table), and these commands move it into your database:
+
+```bash:no-line-numbers
+php leaf db:migrate     # apply your schema files
+php leaf db:seed        # seed the database with records
+php leaf db:rollback    # roll back to a previous state
+php leaf db:reset       # reset migration history + tables
+php leaf db:drop        # drop tables and reset migration history
+```
+
+See [Database](/docs/database/) for how schema files work.
+
+## App utilities
+
+```bash:no-line-numbers
+php leaf serve             # start the development server
+php leaf app:down          # put the app in maintenance mode
+php leaf app:up            # bring it back
+php leaf env:generate      # generate a .env file
+php leaf env:set KEY=val   # set an environment variable
+php leaf key:generate      # generate/regenerate your app key
+php leaf link              # symlink the storage directory
+php leaf config:publish    # publish config files to your project
+php leaf interact          # interact with your app in a REPL-style session
+php leaf devtools:install  # install Leaf devtools
+```
+
+## Frontend
+
+When your app has a frontend setup, the console proxies your asset tooling so you never leave one terminal:
+
+```bash:no-line-numbers
+php leaf view:install    # install frontend scaffolding
+php leaf view:dev        # run your frontend dev command
+php leaf view:build      # run your frontend build command
+```
+
+## Queues
+
+With the queue module installed:
+
+```bash:no-line-numbers
+php leaf queue:work      # start your queue worker
+```
+
+## Writing your own commands
+
+Your app's own commands live in `app/console/` (autoloaded under `App\Console`). A command is a small Sprout class — a `signature`, a `description`, and a `handle()` method — and it appears in `php leaf list` alongside the built-ins:
+
+```php
+<?php
+
+namespace App\Console;
+
+use Leaf\Sprout\Command;
+
+class SendReportsCommand extends Command
+{
+    protected $signature = 'send-weekly-reports
+        {team? : Only send for this team}
+        {--dry-run : Preview without sending}';
+    protected $description = 'Send the weekly report emails';
+
+    protected function handle(): int
+    {
+        $team = $this->argument('team') ?? 'everyone';
+
+        if ($this->option('dry-run')) {
+            $this->info("Would send reports for: $team");
+
+            return 0;
+        }
+
+        // your app's models, helpers and lib/ functions are all available here
+        $this->info("Reports sent for: $team");
+
+        return 0;
+    }
+}
+```
+
+```bash:no-line-numbers
+php leaf send-weekly-reports design --dry-run
+```
+
+Command names take dashes and namespaces freely (`send-weekly-reports`, `reports:send-weekly`), and everything your app loads — models, helpers, `lib/` functions — is available inside `handle()`. See the [Seedling docs](https://seedling.leafphp.dev) for the full command-writing guide.

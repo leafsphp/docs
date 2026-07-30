@@ -76,7 +76,7 @@ class SendEmailJob extends Job
      * Handle the job.
      * @return void
      */
-    public function handle($userId)
+    public function handle($userId): void
     {
        UserMailer::welcome($userId)->send();
     }
@@ -146,7 +146,7 @@ class SendEmailJob extends Job
      * Handle the job.
      * @return void
      */
-    public function handle($userId)
+    public function handle($userId): void
     {
        UserMailer::welcome($userId)->send();
     }
@@ -183,7 +183,7 @@ class SendAppReportJob extends Job
      * Handle the job.
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
        AdminMailer::applicationReport()->send();
     }
@@ -206,7 +206,7 @@ class SendAppReportJob extends Job
      * Handle the job.
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
        AdminMailer::applicationReport()->send();
     }
@@ -256,7 +256,7 @@ class ProcessPodcastBatch extends Batch
      * Handle the batch.
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->add([
             ProcessPodcastJob::with('file1.mp3'),
@@ -371,7 +371,7 @@ class SendEmailJob extends Job
      * Handle the job.
      * @return void
      */
-    public function handle($userId)
+    public function handle($userId): void
     {
        UserMailer::welcome($userId)->send();
     }

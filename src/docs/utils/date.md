@@ -71,7 +71,7 @@ tick()->date(); // gets day of current month
 tick()->date(1); // returns new tick object
 
 tick()->hour(); // gets current hour
-newDate = tick()->hour(12); // returns new tick object
+$newDate = tick()->hour(12); // returns new tick object
 
 tick()->minute(); // gets current minute
 tick()->minute(59); // returns new tick object

@@ -192,30 +192,22 @@ To use the middleware, you can pass the middleware as an array to the route. Her
 ```php
 app()->get('/admin', [
   'middleware' => 'is:admin|user|organizer',
-  function () {
-    return 'Admin Page';
-  }
+  fn () => 'Admin Page'
 ]);
 
 app()->get('/user/{user}', [
   'middleware' => 'can:view user|create user',
-  function () {
-    return 'User Page';
-  }
+  fn () => 'User Page'
 ]);
 
 app()->get('/guest', [
   'middleware' => 'isNot:admin',
-  function () {
-    return 'Guest Page';
-  }
+  fn () => 'Guest Page'
 ]);
 
 app()->get('/no-access', [
   'middleware' => 'cannot:view user|create user',
-  function () {
-    return 'No Access Page';
-  }
+  fn () => 'No Access Page'
 ]);
 ```
 
