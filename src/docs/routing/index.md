@@ -189,7 +189,9 @@ Once this is set, Leaf will automatically use your custom 404 page when a user t
 
 ## Named routes
 
-In big applications, you might have to reference a route over and over again. When you change the route URL, you'll have to change it everywhere you referenced it. To avoid this, you can name your routes and reference them by their name. This will save you a lot of time and prevent errors.
+In big applications, you might have to reference a route over and over again. When you change the route URL, you'll have to change it everywhere you referenced it.
+
+To avoid this, you can name your routes and reference them by their name. This will save you a lot of time and prevent errors.
 
 Leaf router allows you name routes by using route params. They allow you add extra options to your routes like a route name, middleware, etc. You can set route options by passing an array with configuration options as the second argument to the whatever route you are working on.
 
@@ -205,16 +207,16 @@ You can then redirect to this route using the route name by passing an array wit
 response()->redirect(['home']);
 ```
 
-Route groups can carry a `name` too — it prefixes every named route inside (`admin` + `dashboard` → `admin.dashboard`), and resource routes name themselves automatically. See [named groups](/docs/routing/route-groups#named-groups).
+Route groups can carry a `name` too, which prefixes every named route inside (`admin` + `dashboard` → `admin.dashboard`), and resource routes name themselves automatically. See [named groups](/docs/routing/route-groups#named-groups).
 
-To build a URL from a route name — for links, redirects, or anywhere you'd otherwise hardcode a path — use the `route()` method. Parameters fill in the route's placeholders:
+To build a URL from a route name (for links, redirects, or anywhere you'd otherwise hardcode a path), use the `route()` method. Parameters fill in the route's placeholders:
 
 ```php:no-line-numbers
 $url = app()->route('home');                     // /home
 $url = app()->route('users.show', ['id' => 5]);  // /users/5
 ```
 
-(If you need the full details of the *current* route — pattern, name, method, handler — that's `getRoute()`, shown below.)
+(If you need the full details of the *current* route, like its pattern, name, method, and handler, that's `getRoute()`, shown below.)
 
 ## Getting the current route
 

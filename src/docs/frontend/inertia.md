@@ -566,4 +566,4 @@ While deployment is pretty much the same as deploying a regular Leaf app, you'll
 
 ## Conclusion
 
-Inertia is the perfect replacement for Blade views in Leaf MVC, and actually allows you build more powerful applications with the tons of available JavaScript libraries out there. It's a great way to build full-stack apps, supercharged by Leaf 🧡
+Inertia is a great replacement for Blade views in Leaf MVC, and it opens up the whole JavaScript ecosystem to your app. It's a lovely way to build full-stack apps with Leaf 🧡

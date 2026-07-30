@@ -1,6 +1,6 @@
 # Seedling
 
-Seedling is a variation of Leaf MVC optimized for building console applications. It provides a lightweight framework that simplifies the development of command-line tools by leveraging the core principles of Leaf MVC while adapting them to the console environment.
+Seedling is a variation of Leaf MVC built for console applications. It takes the ideas behind Leaf MVC and adapts them to the terminal, so you can build command-line tools with the same structure you already know.
 
 It is built on [Leaf Sprout](/docs/mvc/commands), which allows you to create commands using a simple, familiar structure:
 

@@ -1,6 +1,8 @@
 # Session
 
-Normally, when you visit a website, each time you click on something, the website treats it like a new visit. This is because HTTP is stateless. This means that the website doesn't remember anything about you and other users from one request to the next. This is where sessions come in.
+Normally, when you visit a website, each time you click on something, the website treats it like a new visit. This is because HTTP is stateless.
+
+This means that the website doesn't remember anything about you and other users from one request to the next. This is where sessions come in.
 
 Sessions fix this problem by allowing the website to "remember" things about you, like if you're logged in or what's in your shopping cart.
 

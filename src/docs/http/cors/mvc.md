@@ -221,7 +221,7 @@ The default configuration is the equivalent of:
 
 ## What to read next
 
-CORS is a very important part of web development, especially when you're working with APIs. Just as this module improves your experience with Leaf, there are other modules that can help you build better apps with Leaf:
+Now that CORS is handled, here are a few other parts of Leaf and Leaf MVC worth a look:
 
 <ul
     class="!mt-10 grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-2 xl:gap-y-10 !pl-0"

@@ -162,7 +162,7 @@ Once the data is read using `request()->next()`, it is removed from the request 
 
 ## Middleware with MVC
 
-We've crafted a specialized guide for routing in Leaf MVC. While it's similar to the base middleware in Leaf, it's more detailed and tailored for Leaf MVC.
+There's a separate guide for middleware in Leaf MVC. It covers the same ideas, with more detail and MVC-specific examples.
 
 <div class="not-prose my-6 rounded-lg border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-900/60">
   <a class="text-sm font-semibold text-[var(--vp-c-brand-1)] no-underline" href="/docs/routing/middleware/mvc">Go to MVC middleware -&gt;</a>

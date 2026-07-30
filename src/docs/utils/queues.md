@@ -30,7 +30,7 @@ Leaf queues have three parts:
 - the job (task to run eg: sending emails)
 - the worker (processes jobs eg: terminal process)
 
-You write your tasks as jobs, dispatch them to a queue so they can be processed later, and run a worker to process the jobs in the background. That way, your app stays fast and responsive while handling heavy tasks in the background. This might sound complicated, but Leaf makes it super easy to get started.
+You write your tasks as jobs, dispatch them to a queue so they can be processed later, and run a worker to process the jobs in the background. This might sound complicated, but Leaf makes it super easy to get started.
 
 ## Installation
 
@@ -48,7 +48,7 @@ composer require leafs/queue
 
 :::
 
-By default, Leaf MVC uses your database as the queue backend, storing jobs in a `leaf_php_jobs` table. If you're fine with these defaults, just restart your server—Leaf will detect the queue setup and automatically start processing jobs alongside the PHP and Vite servers.
+By default, Leaf MVC uses your database as the queue backend, storing jobs in a `leaf_php_jobs` table. If you're fine with these defaults, just restart your server, and Leaf will detect the queue setup and automatically start processing jobs alongside the PHP and Vite servers.
 
 ## Creating a job
 
@@ -117,7 +117,9 @@ After dispatching the job, you need a worker to run all jobs in the queue.
 
 ## Starting a worker
 
-Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed. Leaf will automatically start a worker for you when you start the PHP server using `leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
+Workers are the final piece of the puzzle. A worker is a process that runs in the background and processes jobs from the queue. Without a worker running, your jobs will just sit in the queue without being processed.
+
+Leaf will automatically start a worker for you when you start the PHP server using `leaf serve`. However, if you want to start a worker manually, you can use the `queue:work` command:
 
 ```bash:no-line-numbers
 leaf queue:work
@@ -167,7 +169,9 @@ The available options are:
 
 ## Scheduling jobs
 
-Some background tasks need to be run at specific times or intervals, for instance, every week, you get an email report of your app's activity. This is usually done using CRON jobs, but Leaf allows you to schedule jobs directly from your already existing jobs. Let's take an example of sending an application report to the admin every week. First, you create a job that sends the report:
+Some background tasks need to be run at specific times or intervals, for instance, every week, you get an email report of your app's activity. This is usually done using CRON jobs, but Leaf allows you to schedule jobs directly from your already existing jobs.
+
+Let's take an example of sending an application report to the admin every week. First, you create a job that sends the report:
 
 ```php
 <?php

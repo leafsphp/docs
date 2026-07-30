@@ -4,7 +4,7 @@
 
 Vite is a modern build tool for frontend applications. It aims to provide a faster and leaner development experience for modern web projects.
 
-Leaf provides a Vite integration which you can use to seamlessly bundle your CSS and JS assets. This allows you to have more complex frontend setups without the need for extra configuration.
+Leaf provides a Vite integration which you can use to bundle your CSS and JS assets. This allows you to have more complex frontend setups without the need for extra configuration.
 
 ::: details New to bundling?
 

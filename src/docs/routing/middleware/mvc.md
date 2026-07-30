@@ -151,7 +151,9 @@ Once the data is read using `request()->next()`, it is removed from the request 
 
 ## Controller Middleware
 
-The middleware we have seen so far is applied to routes, which is great for most use-cases. However, there are times when you may want to apply middleware to one or more controller methods, instead of individual routes. This is especially useful when you have an application which has both web and API routes, and you want to apply different middleware to each. To use this, find the controller you want to add middleware to, and add a `__middleware` method to it:
+The middleware we have seen so far is applied to routes, which is great for most use-cases. However, there are times when you may want to apply middleware to one or more controller methods, instead of individual routes. This is especially useful when you have an application which has both web and API routes, and you want to apply different middleware to each.
+
+To use this, find the controller you want to add middleware to, and add a `__middleware` method to it:
 
 ```php
 <?php
@@ -187,7 +189,7 @@ Unlike the route middleware, the controller middleware returns a boolean value. 
 
 ## What to read next
 
-Middleware is a powerful tool that can help you control the flow of requests in your application, but Leaf already has a lot of functionality built-in that you might not need to write your own middleware for. Check out some of the other features of Leaf & Leaf MVC:
+Middleware helps you control the flow of requests in your application, but Leaf already has a lot of functionality built-in that you might not need to write your own middleware for. Check out some of the other features of Leaf & Leaf MVC:
 
 <ul
     class="!mt-10 grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-2 xl:gap-y-10 !pl-0"

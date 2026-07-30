@@ -37,9 +37,7 @@ import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
     </div>
 </section>
 
-Leaf gives you everything you need to go from idea → working app → real users.
-
-No lengthy configuration. No assembly. No wasted time.
+Leaf gives you everything you need to go from idea → working app → real users, with no lengthy configuration or assembly along the way.
 
 ```bash:no-line-numbers
 leaf create my-app --mvc
@@ -47,8 +45,7 @@ cd my-app
 leaf serve
 ```
 
-You’re not starting from scratch.
-You’re starting with a product foundation.
+Instead of a blank folder, you get a product foundation from day one.
 
 ## Start with a real app, not a blank page
 
@@ -60,8 +57,7 @@ Out of the box, you can build:
 - 💳 Payments, subscriptions, billing
 - 🌐 APIs for mobile or frontend apps
 
-No wiring tools together.
-No figuring out “what goes where.”
+There's no wiring tools together or figuring out what goes where.
 
 ## Your app is ready for AI
 
@@ -77,11 +73,7 @@ Open your agent in the project and tell it:
 >
 > “Create an admin panel”
 
-Leaf MVC gives the agent everything it needs to understand your app.
-
-No long prompts.
-No broken code.
-No guessing.
+Leaf MVC gives the agent everything it needs to understand your app, so you can skip the long prompts and the guessing.
 
 Using an external assistant without project access? Run `leaf context` and paste its compact output into the conversation.
 

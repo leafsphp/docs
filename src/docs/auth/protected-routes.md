@@ -8,7 +8,9 @@ There are usually parts of your application that you want to be available to onl
 
 The `user()` method is a way to check if a user is logged in. It returns the currently logged in user if an authenticated user is found and `null` if a user is not logged in.
 
-This works for both session and token based authentication. In case of token based authentication, Leaf Auth will also check if the token is valid. If it is, the user is returned, if not, `null` is returned. You can get the reason for the authentication failure by calling the `errors()` method.
+This works for both session and token based authentication. In case of token based authentication, Leaf Auth will also check if the token is valid.
+
+If it is, the user is returned, if not, `null` is returned. You can get the reason for the authentication failure by calling the `errors()` method.
 
 ```php{1,7}
 $user = auth()->user();

@@ -2,7 +2,7 @@
 
 We usually recommend abstracting repetitive code into helpers, but sometimes you need logic that doesn’t quite fit into a controller, model, or helper. That’s where custom libraries come in.
 
-Say you need a function to calculate the distance between two points on a map. Instead of scattering this logic across your app, you can create a reusable library and use it anywhere—in controllers, helpers, or views.
+Say you need a function to calculate the distance between two points on a map. Instead of scattering this logic across your app, you can create a reusable library and use it anywhere: in controllers, helpers, or views.
 
 Custom libraries aren’t stored in the `app` folder because Leaf MVC doesn’t autoload them by default. Instead, store them in the `lib` folder, and Leaf will pick them up. This allows flexibility, especially when working with libraries that don’t follow an autoloadable structure and need to be required manually.
 
@@ -93,7 +93,9 @@ class HomeController extends Controller {
 
 ## Using a non-autoloadable library
 
-Some older libraries may not follow the autoloadable structure but are linked together using `require` statements. You can still use these libraries in your Leaf MVC application. To use such a library, you need to add it's index file to the `lib` folder and require any other files it needs in the index file. For example, let's say you have a library called `MyLibrary` that has the following structure:
+Some older libraries may not follow the autoloadable structure but are linked together using `require` statements. You can still use these libraries in your Leaf MVC application.
+
+To use such a library, you need to add it's index file to the `lib` folder and require any other files it needs in the index file. For example, let's say you have a library called `MyLibrary` that has the following structure:
 
 ```bash:no-line-numbers
 MyLibrary/

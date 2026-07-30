@@ -151,7 +151,11 @@ This will send a POST request to `/submit` with the CSRF token in the `X-CSRF-To
 
 ## Displaying the generated token
 
-The CSRF module also provides a `token()` method that returns the CSRF token. You can use this method to display the token in your views or to send the token to your frontend. Be careful not to expose the token to the public, as it can be used to bypass CSRF protection.
+The CSRF module also provides a `token()` method that returns the CSRF token. You can use this method to display the token in your views or to send the token to your frontend.
+
+::: warning Keep your token private
+Be careful not to expose the token to the public, as it can be used to bypass CSRF protection.
+:::
 
 ```php:no-line-numbers
 $csrfToken = csrf()->token();

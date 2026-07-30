@@ -80,7 +80,7 @@ AI does not usually fail because it cannot write code. It fails because the app 
   </div>
 </div>
 
-When the assistant has no map, it guesses. When it guesses, you debug.
+Without a map, the assistant guesses, and you end up debugging the guesses.
 
 ## How Leaf fixes this
 
@@ -204,8 +204,8 @@ The Leaf AI workflow is simple:
 
 For an external assistant without project access, run `leaf context` and paste the compact output into your conversation first.
 
-The assistant stops acting like autocomplete and starts acting like a teammate with project memory.
+With project memory in the loop, the assistant works more like a teammate than autocomplete.
 
-## This is just the beginning
+## Where this is going
 
-Leaf is not adding AI as a decoration. Leaf 5 is shaping the framework, CLI, docs, and project structure around a future where humans and AI build software together.
+AI in Leaf is not a bolt-on. Leaf 5 shapes the framework, CLI, docs, and project structure around a future where humans and AI build software together.

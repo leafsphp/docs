@@ -148,7 +148,7 @@ The pitch is not that Leaf has every feature Laravel has. It does not. The pitch
     </div>
     <div class="grid grid-cols-[1.15fr_1.15fr_1fr_1fr_1fr] border-b border-black/5 px-4 py-4 text-sm dark:border-white/5">
       <span class="font-semibold text-neutral-950 dark:text-neutral-50">Testing, code quality and CI</span>
-      <span class="text-neutral-600 dark:text-neutral-400">One <code>alchemy.yml</code> drives Pest/PHPUnit, code style, Rector, PHPStan and CI for GitHub, GitLab or CircleCI — engines install on first use.</span>
+      <span class="text-neutral-600 dark:text-neutral-400">One <code>alchemy.yml</code> drives Pest/PHPUnit, code style, Rector, PHPStan and CI for GitHub, GitLab or CircleCI; engines install on first use.</span>
       <span class="text-neutral-600 dark:text-neutral-400">Pint, Pest/PHPUnit and CI configured per tool, each with its own file.</span>
       <span class="text-neutral-600 dark:text-neutral-400">Mature per-tool configs; you assemble the pipeline.</span>
       <span class="text-neutral-600 dark:text-neutral-400">Bring and wire each QA tool yourself.</span>
@@ -163,9 +163,9 @@ The pitch is not that Leaf has every feature Laravel has. It does not. The pitch
   </div>
 </div>
 
-## AI is not the feature. Product leverage is.
+## AI as product leverage
 
-Leaf's AI story is not "we added a chatbot to the docs." It is more practical than that:
+Leaf's AI features are aimed at day-to-day product work, not a chatbot in the docs:
 
 <div class="docs-paths docs-paths--four not-prose my-6">
   <div class="docs-path-card docs-path-card--static">
@@ -270,13 +270,15 @@ Product story is the point, but performance is still part of the promise. Leaf 5
   </div>
 </div>
 
-This benchmark compares route lookup or dispatch overhead, not full application throughput: 10,000 lookups against a mixed static/dynamic route table, alternating exact and parameterized hits, averaged over five runs on PHP 8.2. Every framework resolves the same URIs — request objects for the Laravel column are pre-built outside the timed loop, so each column measures routing work only. The Laravel column uses Illuminate Routing, the same routing layer used inside Laravel, not a full application boot. Symfony uses the `symfony/routing` UrlMatcher. Slim uses the Slim 4 dispatch path backed by FastRoute.
+This benchmark compares route lookup or dispatch overhead, not full application throughput: 10,000 lookups against a mixed static/dynamic route table, alternating exact and parameterized hits, averaged over five runs on PHP 8.2. Every framework resolves the same URIs.
+
+Request objects for the Laravel column are pre-built outside the timed loop, so each column measures routing work only. The Laravel column uses Illuminate Routing, the same routing layer used inside Laravel, not a full application boot. Symfony uses the `symfony/routing` UrlMatcher. Slim uses the Slim 4 dispatch path backed by FastRoute.
 
 <div class="docs-paths not-prose my-8">
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">01 / Route matching</span>
     <strong class="docs-path-title">Route lookups stay flat as your app grows.</strong>
-    <span class="docs-path-description">Leaf indexes exact routes and buckets dynamic routes by method and first segment. Exact matches resolve straight from the index in a fraction of a microsecond without touching a single pattern, dynamic requests only scan their own bucket — and lookup cost stays constant from 100 to 1,000 routes.</span>
+    <span class="docs-path-description">Leaf indexes exact routes and buckets dynamic routes by method and first segment. Exact matches resolve straight from the index in a fraction of a microsecond without touching a single pattern, dynamic requests only scan their own bucket, and lookup cost stays constant from 100 to 1,000 routes.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Env reads</span>

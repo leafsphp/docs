@@ -72,7 +72,7 @@ app()->group('/user', ['middleware' => $middleware, function () {
 
 ## Named groups <Badge type="tip" text="NEW" />
 
-Groups can carry a `name` that prefixes every named route inside them — so related routes share a clean, hierarchical naming scheme:
+Groups can carry a `name` that prefixes every named route inside them, so related routes share a hierarchical naming scheme:
 
 ```php
 app()->group('/admin', ['name' => 'admin', function () {
@@ -100,9 +100,9 @@ app()->route('admin.users.edit', ['id' => 3]); // /admin/users/3/edit
 
 ## Subfolder Support
 
-Leaf runs in any subfolder without adjustments to your code: when your app is deployed under `/subdir/` and requests actually arrive as `/subdir/...`, the router detects that base path and mounts your routes onto it automatically. Detection is honest about context — if the request URLs don't live under your script's folder (like with `php -S` or the CLI), nothing is stripped, so local development never eats URI segments.
+Leaf runs in any subfolder without adjustments to your code: when your app is deployed under `/subdir/` and requests actually arrive as `/subdir/...`, the router detects that base path and mounts your routes onto it automatically. Detection is honest about context: if the request URLs don't live under your script's folder (like with `php -S` or the CLI), nothing is stripped, so local development never eats URI segments.
 
-If you want full control, override detection manually with `setBasePath()` — including `setBasePath('')` for "no base path at all":
+If you want full control, override detection manually with `setBasePath()`, including `setBasePath('')` for "no base path at all":
 
 ```php
 // Override auto base path detection

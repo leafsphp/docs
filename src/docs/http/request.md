@@ -44,7 +44,9 @@ $item = $app->request()->get('item');
 
 :::
 
-The `get()` method works for all types of request data, including query parameters, form data, files, and JSON data so there's no need to worry about the type of data you're working with. You can also get multiple values at once by passing an array of keys to the `get()` method. This is especially useful when you're working with form data or JSON data where users can send any random data they want. In such cases, you can use the `get()` method to get only the data you're interested in.
+The `get()` method works for all types of request data, including query parameters, form data, files, and JSON data so there's no need to worry about the type of data you're working with.
+
+You can also get multiple values at once by passing an array of keys to the `get()` method. This is especially useful when you're working with form data or JSON data where users can send any random data they want. In such cases, you can use the `get()` method to get only the data you're interested in.
 
 ```php:no-line-numbers
 $data = request()->get(['name', 'email']);
@@ -54,7 +56,9 @@ $data = request()->get(['name', 'email']);
 
 ### Data Sanitization
 
-Leaf automatically sanitizes all data coming into your application. This means that you don't have to worry about users sending malicious data to your application since Leaf will automatically clean it up for you. This lets you focus on building your application without worrying about security. There are some cases where you might want to disable this behavior, such as when you're working with raw data or when you're building an API that needs to accept any kind of data. In such cases, you can disable data sanitization by passing `false` as a second parameter to the `get()` method.
+Leaf automatically sanitizes all data coming into your application. This means that you don't have to worry about users sending malicious data to your application since Leaf will automatically clean it up for you. This lets you focus on building your application without worrying about security.
+
+There are some cases where you might want to disable this behavior, such as when you're working with raw data or when you're building an API that needs to accept any kind of data. In such cases, you can disable data sanitization by passing `false` as a second parameter to the `get()` method.
 
 ```php:no-line-numbers
 $data = request()->get('data', false);
@@ -110,7 +114,7 @@ Every time you call the `body()` method, Leaf will sanitize the data in the requ
 $data = request()->body(false);
 ```
 
-If you prefer working with objects instead of arrays — say you're passing request data straight into typed code — `object()` returns the same data as an object, nested structures included (lists stay arrays). It takes the same sanitization parameter as `body()`:
+If you prefer working with objects instead of arrays (say you're passing request data straight into typed code), `object()` returns the same data as an object, nested structures included (lists stay arrays). It takes the same sanitization parameter as `body()`:
 
 ```php:no-line-numbers
 $data = request()->object();
@@ -124,7 +128,9 @@ We mentioned earlier that there are different types of HTTP requests, such as `G
 
 ### GET requests
 
-GET requests are the most common type of request and are used to access web pages, images, and other resources. Unlike other types of requests, GET requests send data in the URL as query parameters. You've probably seen URLs like `https://example.com/route?name=John&age=25`. In this case, the query parameters are `name` and `age`. We can get these query parameters using the `query()` method. It takes in 2 parameters:
+GET requests are the most common type of request and are used to access web pages, images, and other resources. Unlike other types of requests, GET requests send data in the URL as query parameters. You've probably seen URLs like `https://example.com/route?name=John&age=25`. In this case, the query parameters are `name` and `age`.
+
+We can get these query parameters using the `query()` method. It takes in 2 parameters:
 
 - The key of the query parameter
 - A default value to return if the query parameter doesn't exist (optional)
@@ -158,7 +164,9 @@ $file = request()->files('file');
 
 ## Saving files from the request
 
-When a user uploads a file to your application, like a profile picture, you can save the file to your server for later use. In Leaf, there's an `upload()` on Leaf's request object that helps you easily manage file uploads. This method lets you move the file to the correct folder on your server, ensuring it's stored properly. It takes in 3 parameters:
+When a user uploads a file to your application, like a profile picture, you can save the file to your server for later use. In Leaf, there's an `upload()` on Leaf's request object that helps you easily manage file uploads.
+
+This method lets you move the file to the correct folder on your server, ensuring it's stored properly. It takes in 3 parameters:
 
 - The name of the file in the request
 - The directory to save the file to
@@ -220,7 +228,9 @@ $contentType = request()->headers(
 
 ## Validating Request Data
 
-When building user-facing applications, there's no guarantee that users will always send the correct data to your application. In most cases, users will send incorrect data, either by mistake or on purpose. This can lead to errors in your application and can even expose your application to security vulnerabilities. To prevent this, you can use Leaf's built-in validation library to validate the data coming into your application. Let's see how it works:
+When building user-facing applications, there's no guarantee that users will always send the correct data to your application. In most cases, users will send incorrect data, either by mistake or on purpose. This can lead to errors in your application and can even expose your application to security vulnerabilities.
+
+To prevent this, you can use Leaf's built-in validation library to validate the data coming into your application. Let's see how it works:
 
 ```php{2-6}
 app()->post('/example/register', function() {
@@ -236,7 +246,9 @@ app()->post('/example/register', function() {
 });
 ```
 
-In the example above, we're validating the data coming into our application. We're checking if the `name` field is a text, if the `email` field is a valid email, and if the `password` field is at least 8 characters long. If any of these validations fail, the `validate()` method will return `false` and you can get the errors using the `errors()` method. You can find the full list of validation rules [here](/docs/data/validation).
+In the example above, we're validating the data coming into our application. We're checking if the `name` field is a text, if the `email` field is a valid email, and if the `password` field is at least 8 characters long.
+
+If any of these validations fail, the `validate()` method will return `false` and you can get the errors using the `errors()` method. You can find the full list of validation rules [here](/docs/data/validation).
 
 ## Client IP & Geo Location
 
@@ -273,7 +285,7 @@ $location = request()->getUserLocation();
 //  'continentCode' => 'NA',
 ```
 
-Keep in mind that the free tier of the ip-api service has a limit of 45 requests per minute from an IP address, you can check out other implementations for more robust solutions.
+Keep in mind that the free tier of the ip-api service has a limit of 45 requests per minute from an IP address, so you may want a paid or self-hosted alternative if you need more.
 
 ### Pass in a custom IP
 

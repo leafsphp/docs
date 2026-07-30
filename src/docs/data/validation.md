@@ -136,7 +136,9 @@ Leaf Form comes with a number of built-in rules that you can use to validate dat
 
 ## Optional Fields
 
-Unlike other validation libraries, Leaf expects all incoming data to be present. This is because we believe that all incoming data should be validated. However, we understand that there are cases where you might want to make a field optional. You can do this by adding the `optional` rule to the field.
+Unlike other validation libraries, Leaf expects all incoming data to be present. This is because we believe that all incoming data should be validated.
+
+However, we understand that there are cases where you might want to make a field optional. You can do this by adding the `optional` rule to the field.
 
 ```php{4}
 $validatedData = request()->validate([

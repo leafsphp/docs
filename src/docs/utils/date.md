@@ -2,7 +2,7 @@
 
 Working with PHP dates can be challenging due to various date formats, handling different time zones, and tricky date calculations which are actually quite common. These issues can lead to inconsistencies if not managed carefully, and can be a source of bugs in your application.
 
-Leaf provides a minimalistic module that provides a simple and clean API for working with dates in PHP. It is 100% compatible with PHP's native `DateTime` class, but offers a more fluent and expressive API inspired by Day.js.
+Tick is Leaf's small date module with a simple, clean API for working with dates in PHP. It is 100% compatible with PHP's native `DateTime` class, but offers a more fluent API inspired by Day.js.
 
 ```php:no-line-numbers
 tick()->now(); // get the current timestamp
@@ -223,7 +223,7 @@ tick('2019-01-25')->format('[YYYYescape] YYYY-MM-DDTHH:mm:ssZ[Z]');
 // 'YYYYescape 2019-01-25T00:00:000Z'
 ```
 
-YYYYescape got ignored instead of turning into a year. This is powerful, especially when you want to include some text in your date format.
+YYYYescape got ignored instead of turning into a year, which is handy when you want to include some text in your date format.
 
 ## Time from now
 

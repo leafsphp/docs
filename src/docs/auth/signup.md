@@ -21,7 +21,7 @@
   </div>
 </section>
 
-Leaf Auth provides a flexible and secure signup system that works for both token-based and session-based authentication. It provides a unified way to create and authenticate users in your web apps and APIs.
+Leaf Auth lets you create and authenticate users in one step, and it works the same whether you're using token-based or session-based authentication.
 
 ## Database Pre-requisites
 

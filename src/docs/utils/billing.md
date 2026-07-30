@@ -1,6 +1,6 @@
 # Payments/Billing <Badge text="BETA - MVC Only" type="warning"/>
 
-Leaf MVC’s billing system helps makers move faster by handling payments and subscriptions out of the box. With built-in Stripe/PayStack support—and more providers like Lemonsqueezy coming soon—you can set up one-time payments or recurring subscriptions in just a few minutes. That means less time worrying about billing and more time building.
+Leaf MVC’s billing system handles payments and subscriptions out of the box. With built-in Stripe/PayStack support (and more providers like Lemonsqueezy coming soon), you can set up one-time payments or recurring subscriptions in a few minutes and get back to building your app.
 
 ## Setting up
 
@@ -46,7 +46,7 @@ You only need to install the module for the billing provider you intend to use, 
 
 ## Billing on-the-fly
 
-Billing on-the-fly is the fastest way to charge customers—ideal for one-time payments, donations, or services. Just generate a payment link with Leaf Billing, and we’ll handle the rest. You can do this using the `billing()` helper in your controller.
+Billing on-the-fly is the fastest way to charge customers, ideal for one-time payments and donations. Just generate a payment link with Leaf Billing, and we’ll handle the rest. You can do this using the `billing()` helper in your controller.
 
 ::: code-group
 
@@ -99,7 +99,7 @@ public function handleCartPurchase($cartId) {
 
 :::
 
-Leaf takes care of the entire payment session for you—automatically tracking the user (if available), any metadata you provide, and the payment status, keeping your code clean and focused on your app.
+Leaf takes care of the entire payment session for you: it automatically tracks the user (if available), any metadata you provide, and the payment status, so your code stays focused on your app.
 
 This is a list of the parameters you can pass to the `charge()` method:
 
@@ -172,7 +172,7 @@ class CallbacksController extends Controller
 
 ## Billing with subscriptions <Badge text="Stripe Only" type="warning"/>
 
-Unlike one-time payments, subscriptions require a more structured setup—but Leaf Billing makes it effortless. Just run the `scaffold:subscriptions` command to instantly generate everything you need: billing config, controllers, routes, and views. You'll be up and running with subscriptions in minutes.
+Unlike one-time payments, subscriptions need a more structured setup, but Leaf Billing does most of it for you. Run the `scaffold:subscriptions` command to generate everything you need: billing config, controllers, routes, and views.
 
 ```bash:no-line-numbers
 leaf scaffold:subscriptions
@@ -247,7 +247,7 @@ You can use the following keys:
 | `discount`    | The discount percentage                 | `true`   |
 | `features`    | An array of features for the tier       | `true`   |
 
-You can set different prices for various durations—`monthly`, `yearly`, `quarterly`, `weekly`, or even `daily` in the format `price.monthly`, `price.yearly`, etc.
+You can set different prices for various durations (`monthly`, `yearly`, `quarterly`, `weekly`, or even `daily`) in the format `price.monthly`, `price.yearly`, etc.
 
 Once you've set up your billing tiers like the example above, you just need to publish them on Stripe. You can do that by running the following command:
 
@@ -259,7 +259,7 @@ That's it! We can now let users subscribe to our plans.
 
 ## Displaying your plans
 
-The `scaffold:subscriptions` command also generates a pricing component tailored to your chosen view engine—Blade, React, Vue, or Svelte. You can display your plans with just one line of code. The component is fully customizable, so you can tweak the design to match your app’s look and feel seamlessly.
+The `scaffold:subscriptions` command also generates a pricing component tailored to your chosen view engine: Blade, React, Vue, or Svelte. You can display your plans with one line of code, and the component is fully customizable, so you can tweak the design to match your app’s look and feel.
 
 ::: code-group
 
@@ -299,11 +299,11 @@ import Pricing from '@/components/billing/pricing.svelte';
 
 Clicking the "Subscribe" button takes users to the billing provider’s checkout page, where they can enter their payment details. After completing the payment, they’ll be redirected back to your application's callback automatically.
 
-Leaf handles most of the subscription logic out of the box, but since every app is different, you may need to tweak the generated files—especially the webhook handlers—to fit your specific use case.
+Leaf handles most of the subscription logic out of the box, but since every app is different, you may need to tweak the generated files (especially the webhook handlers) to fit your specific use case.
 
 ## Billing Events/Webhooks
 
-Once you’ve charged a customer—especially for a subscription—you’ll want to track their payment status. The best way to do this is through webhooks. When you run the `scaffold:subscriptions` command, Leaf Billing automatically generates a webhook controller that listens for events from your billing provider and handles them for you.
+Once you’ve charged a customer, especially for a subscription, you’ll want to track their payment status. The best way to do this is through webhooks. When you run the `scaffold:subscriptions` command, Leaf Billing automatically generates a webhook controller that listens for events from your billing provider and handles them for you.
 
 ```php:no-line-numbers [WebhooksController.php]
 <?php

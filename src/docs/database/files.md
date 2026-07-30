@@ -61,7 +61,7 @@ Breaking this file down, there are three main sections:
 
 - `seeds`: This is used to set the seeders of the table. The available properties are:
   - `count`: This is used to set the number of seeds to generate.
-  - `data`: The values to seed, as column/value pairs (or a list of rows). Values support `@` tokens like `@faker.numberBetween(18, 65)` and `@hash("password")` — see [Using factories](#using-factories-for-generating-fake-data).
+  - `data`: The values to seed, as column/value pairs (or a list of rows). Values support `@` tokens like `@faker.numberBetween(18, 65)` and `@hash("password")`. See [Using factories](#using-factories-for-generating-fake-data).
   - `locale`: The Faker locale used for generated data, e.g. `fr_FR`.
   - `model`: Seed from a model's static `__seeder()` method instead of inline data.
   - `truncate`: This is used to truncate the table before seeding.
@@ -70,7 +70,7 @@ Breaking this file down, there are three main sections:
 
 ## Applying schema files
 
-Each schema file represents a single database table—just name the file after the table you’re creating. Inside, define your table structure under the `columns` key. Leaf takes care of the rest. No need for separate migration files or extra setup—just one clear, structured file for everything your table needs. Here's an example:
+Each schema file represents a single database table, so name the file after the table you’re creating. Inside, define your table structure under the `columns` key and Leaf takes care of the rest. There are no separate migration files or extra setup, just one file for everything your table needs. Here's an example:
 
 ```yml [users.yml]
 columns:
@@ -97,7 +97,9 @@ leaf db:migrate users
 
 ## Database schema defaults
 
-Schema Files come with smart defaults to make setup faster. Every table automatically includes an auto-incrementing `id` and `created_at`/`updated_at` timestamps—no need to add them manually. Want to change that? Use the `increments` and `timestamps` keys to disable them. Here's an example:
+Schema Files come with smart defaults to make setup faster. Every table automatically includes an auto-incrementing `id` and `created_at`/`updated_at` timestamps, so you don't need to add them manually.
+
+Want to change that? Use the `increments` and `timestamps` keys to disable them. Here's an example:
 
 ```yml:no-line-numbers [posts.yml]
 increments: false # this will remove the auto-incrementing id column
@@ -305,7 +307,9 @@ columns:
     default: 'John Doe'
 ```
 
-When defining columns, it’s good to be mindful—some properties can affect performance or behave differently across databases. For example, setting a column as `unique` adds an index, which can slow down inserts and updates on large tables. And properties like `comment` aren’t supported in SQLite, which could lead to unexpected behavior. Leaf gives you the flexibility—you just want to use it wisely.
+When defining columns, keep in mind that some properties can affect performance or behave differently across databases.
+
+For example, setting a column as `unique` adds an index, which can slow down inserts and updates on large tables. And properties like `comment` aren’t supported in SQLite, which could lead to unexpected behavior. Leaf gives you the flexibility; you just want to use it wisely.
 
 ::: tip Missing some functionality?
 We are working on adding more properties/modifiers to the columns, just to make it easier to work with your database. If you have any suggestions, please let us know.
@@ -313,9 +317,9 @@ We are working on adding more properties/modifiers to the columns, just to make 
 
 ## Migration histories
 
-Migration histories keep track of changes to your database, making it easy to roll back if needed. Unlike other frameworks, **Leaf MVC handles this automatically**—no need to manually create migrations just to track history.
+Migration histories keep track of changes to your database, making it easy to roll back if needed. Unlike other frameworks, **Leaf MVC handles this automatically**: you don't need to create migrations just to track history.
 
-The history itself lives in your database, in a small `leaf_schema_history` table that Leaf manages for you. Every environment tracks the state that was actually applied to *its* database, so staging, production and every developer's machine each diff against their own reality—no shared files to keep in sync. (Apps upgrading from Leaf 4 are migrated automatically: the old `storage/database` snapshots are imported into the history table on your first `db:migrate`.)
+The history itself lives in your database, in a small `leaf_schema_history` table that Leaf manages for you. Every environment tracks the state that was actually applied to *its* database, so staging, production and every developer's machine each diff against their own reality, with no shared files to keep in sync. (Apps upgrading from Leaf 4 are migrated automatically: the old `storage/database` snapshots are imported into the history table on your first `db:migrate`.)
 
 ```yml [users.yml]
 columns:
@@ -356,7 +360,7 @@ leaf db:rollback --step=3
 This command will roll back the last three versions applied to your database.
 
 ::: info Your schema files stay put
-Rolling back changes your *database*, not your schema files—they stay exactly as you wrote them, which means they are now ahead of the database. Run `leaf db:migrate` to re-apply them, or edit them to match the rolled-back state if the rollback is meant to stick.
+Rolling back changes your *database*, not your schema files. They stay exactly as you wrote them, which means they are now ahead of the database. Run `leaf db:migrate` to re-apply them, or edit them to match the rolled-back state if the rollback is meant to stick.
 :::
 
 ------
@@ -393,7 +397,7 @@ leaf db:drop users
 
 ## Seeding your database
 
-Database seeds let you pre-populate your database with initial data—whether it's default settings, test data, or sample records. Instead of manually adding entries, you can use seeders to automate this process.
+Database seeds let you pre-populate your database with initial data, whether that's default settings, test data, or sample records. Instead of manually adding entries, you can use seeders to automate this process.
 
 In Leaf MVC, you can define seeders directly in your Schema Files under the `seeds` key. This keeps everything in one place, making it easier to manage your database setup. Here's an example of a seeder:
 
@@ -445,16 +449,16 @@ seeds:
     password: '@hash("password")'
 ```
 
-Arguments are parsed with real types—numbers stay numbers, booleans stay booleans, and arrays are arrays—and chaining works the way it does in PHP, so Faker modifiers like `unique` behave correctly across all generated rows. Anything that isn't a recognised token (like a plain string that happens to contain `@`) is passed through untouched.
+Arguments are parsed with real types (numbers stay numbers, booleans stay booleans, arrays are arrays), and chaining works the way it does in PHP, so Faker modifiers like `unique` behave correctly across all generated rows. Anything that isn't a recognised token (like a plain string that happens to contain `@`) is passed through untouched.
 
 The available roots are:
 
-- `@faker.*` — any [Faker formatter or modifier](https://fakerphp.org/formatters/), with arguments: `@faker.realText(120)`, `@faker.optional(0.5).phoneNumber`
-- `@tick.*` — date values via [Tick](/docs/utils/date): `@tick.subtract(30, "day").format("YYYY-MM-DD")`
-- `@randomString(length)` — a random string, 10 characters if no length is given
-- `@hash("value")` — a bcrypt hash of the given value, perfect for passwords
+- `@faker.*`: any [Faker formatter or modifier](https://fakerphp.org/formatters/), with arguments: `@faker.realText(120)`, `@faker.optional(0.5).phoneNumber`
+- `@tick.*`: date values via [Tick](/docs/utils/date), like `@tick.subtract(30, "day").format("YYYY-MM-DD")`
+- `@randomString(length)`: a random string, 10 characters if no length is given
+- `@hash("value")`: a bcrypt hash of the given value, perfect for passwords
 
-Faker can also generate locale-aware data—set a locale for the whole seed run:
+Faker can also generate locale-aware data. Set a locale for the whole seed run:
 
 ```yml{2} [users.yml]
 seeds:
@@ -465,7 +469,7 @@ seeds:
 ```
 
 ::: details Upgrading from Leaf 4?
-The old colon syntax (`@faker.date:Y-m-d`, `@randomString:16`) still works, so existing schema files keep seeding without changes—but the call syntax above is the one documented and recommended going forward.
+The old colon syntax (`@faker.date:Y-m-d`, `@randomString:16`) still works, so existing schema files keep seeding without changes. That said, the call syntax above is the one documented and recommended going forward.
 :::
 
 After adding your seeds, you can run your seeders using the `db:seed` command:
@@ -482,7 +486,9 @@ leaf db:seed users
 
 ## Writing custom seeders
 
-While schema-based seeders are great for simple data, sometimes you need more control. For complex scenarios—like pulling data from an API, processing files, or setting up intricate relationships—you can create seeders in your models. Your model can have a static `__seeder` method that contains the logic for seeding data. Here's an example:
+While schema-based seeders are great for simple data, sometimes you need more control. For complex scenarios like pulling data from an API, processing files, or setting up relationships between records, you can create seeders in your models.
+
+Your model can have a static `__seeder` method that contains the logic for seeding data. Here's an example:
 
 ```php [User.php]
 <?php

@@ -58,7 +58,7 @@ app()->get('/posts/{id?}', function ($id = null) {
 });
 ```
 
-This route responds to both `/posts` and `/posts/42`. When the optional parameter is missing, your handler receives nothing for it — so give the argument a default value like `$id = null` above.
+This route responds to both `/posts` and `/posts/42`. When the optional parameter is missing, your handler receives nothing for it, so give the argument a default value like `$id = null` above.
 
 You can chain optional parameters to handle whole URL families with one route:
 
@@ -73,11 +73,11 @@ app()->get('/blog/{year?}/{month?}/{slug?}', function ($year = null, $month = nu
 });
 ```
 
-This responds to `/blog`, `/blog/2026`, `/blog/2026/07`, and `/blog/2026/07/my-post`. It is a powerful way to reduce the number of routes you define, though separate routes are often easier to read once the handler starts branching heavily.
+This responds to `/blog`, `/blog/2026`, `/blog/2026/07`, and `/blog/2026/07/my-post`. It cuts down the number of routes you define, though separate routes are often easier to read once the handler starts branching heavily.
 
 ## Constraints
 
-By default a placeholder matches anything in its URL segment. Adding a constraint after a colon restricts what the placeholder accepts — the constraint is a regular expression that must match the whole value.
+By default a placeholder matches anything in its URL segment. Adding a constraint after a colon restricts what the placeholder accepts. The constraint is a regular expression that must match the whole value.
 
 ```php
 app()->get('/movies/{id:[0-9]+}', function ($id) {
@@ -94,12 +94,14 @@ Here are a few common constraints to get you started:
 - `{year:[0-9]{4}}` = exactly 4 digits
 - `{username:\w+}` = one or more word characters (a-z 0-9 _)
 
-Using quantifiers like `{4}` lets you require exact formats — `/blog/{year:[0-9]{4}}/{month:[0-9]{2}}` responds to `/blog/2026/07` but not `/blog/17819090091/07`. You can read more about quantifiers in the [PHP documentation](https://www.php.net/manual/en/regexp.reference.repetition.php).
+Using quantifiers like `{4}` lets you require exact formats: `/blog/{year:[0-9]{4}}/{month:[0-9]{2}}` responds to `/blog/2026/07` but not `/blog/17819090091/07`. You can read more about quantifiers in the [PHP documentation](https://www.php.net/manual/en/regexp.reference.repetition.php).
 
 ## How routes are matched
 
-Exact routes always win over dynamic ones. If both `/users/new` and `/users/{id}` are registered, a request to `/users/new` runs the exact route no matter which was registered first — and exact matches are resolved from an index without touching any patterns at all. When two dynamic routes could match the same URL, the one registered first wins, so declare your more specific dynamic routes before broader ones.
+Exact routes always win over dynamic ones. If both `/users/new` and `/users/{id}` are registered, a request to `/users/new` runs the exact route no matter which was registered first. Exact matches are resolved from an index without touching any patterns at all.
+
+When two dynamic routes could match the same URL, the one registered first wins, so declare your more specific dynamic routes before broader ones.
 
 ::: warning Coming from Leaf 3 or 4?
-Older versions of Leaf allowed raw regular expressions as route patterns, like `/movies/(\d+)` or `/post/{id}(/edit)?`. These are no longer supported — patterns without `{}` placeholders are treated as literal paths. Rewrite them with placeholders, optional parameters, and constraints; the [upgrade guide](/docs/upgrade-guide) has side-by-side examples.
+Older versions of Leaf allowed raw regular expressions as route patterns, like `/movies/(\d+)` or `/post/{id}(/edit)?`. These are no longer supported: patterns without `{}` placeholders are treated as literal paths. Rewrite them with placeholders, optional parameters, and constraints; the [upgrade guide](/docs/upgrade-guide) has side-by-side examples.
 :::

@@ -2,7 +2,7 @@
 
 A Dependency Injection (DI) Container is like a helper that organizes how different parts of your app work together. Instead of manually creating objects and initializing classes when one part of your app needs another, the container automatically retrieves them for you.
 
-Leaf comes with a lightweight service container that simplifies managing dependencies in your app. You can register classes and dependencies with the container and they will be available from anywhere in your app. While it is not a full-fledged dependency injection container, it is powerful enough to handle most of your application's needs.
+Leaf comes with a lightweight service container that simplifies managing dependencies in your app. You can register classes and dependencies with the container and they will be available from anywhere in your app. It is not a full-fledged dependency injection container, but it covers what most apps need.
 
 ## Registering Dependencies
 

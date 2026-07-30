@@ -218,9 +218,7 @@ In the example above:
 - The `/guest` route can only be accessed by users who do not have the `admin` role.
 - The `/no-access` route can only be accessed by users who do not have the `view user` or `create user` permissions.
 
-By default, Leaf Auth will show a 404 page if the user does not have the required role or permission to access the route. You can customize this behavior by manually telling Leaf Auth what to do when a user does not have the required role or permission using the `middleware()` method on the `Auth` class. Here's an example:
-
-To use the your selected middleware, you need to tell Leaf Auth what should happen if the role or permission validation fails. You can do this using the `middleware()` method on the `Auth` class. Here's an example:
+By default, Leaf Auth will show a 404 page if the user does not have the required role or permission to access the route. You can customize this behavior by telling Leaf Auth what to do when the role or permission validation fails, using the `middleware()` method on the `Auth` class. Here's an example:
 
 ```php
 auth()->middleware('is', function () {

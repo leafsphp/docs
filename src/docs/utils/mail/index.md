@@ -126,7 +126,9 @@ mailer()->connect([
 
 ## Writing mails
 
-Once we have all the annoying stuff out of the way, we can now write our emails. This involves creating a new mail and then sending it when you're ready. At it's core, a mail is just a class call to the `mail()->create()` method. This method takes in the name of the mail you want to create and returns a new mail object.
+Once we have all the annoying stuff out of the way, we can now write our emails. This involves creating a new mail and then sending it when you're ready.
+
+At it's core, a mail is just a class call to the `mail()->create()` method. This method takes in the name of the mail you want to create and returns a new mail object.
 
 ```php
 mailer()->create([

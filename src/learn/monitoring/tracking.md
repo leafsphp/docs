@@ -44,7 +44,9 @@ composer require mixpanel/mixpanel-php
 
 :::
 
-Next, you can initialize the Mixpanel SDK in your Leaf MVC application. You can do this in the `app/routes/index.php` file, where you can set up the Mixpanel client with your project token. We're using this file because it's loaded before any routes are defined, ensuring that the Mixpanel client is available throughout your application. Think of it like a service provider in other frameworks.
+Next, you can initialize the Mixpanel SDK in your Leaf MVC application. You can do this in the `app/routes/index.php` file, where you can set up the Mixpanel client with your project token.
+
+We're using this file because it's loaded before any routes are defined, ensuring that the Mixpanel client is available throughout your application. Think of it like a service provider in other frameworks.
 
 ```php:no-line-numbers [app/routes/index.php]
 app()->register('mixpanel', fn () => Mixpanel::getInstance(

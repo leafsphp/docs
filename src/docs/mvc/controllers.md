@@ -5,7 +5,9 @@ prev: false
 
 # Controllers
 
-When building a web app with Leaf, you need to define routes—these are the paths that users visit in your app. For example, `/login` or `/signup`. Normally, you can just tell Leaf what to do when someone visits a route by passing it a function (a piece of code that runs when someone visits the route). This works fine if your app is small. Here's an example:
+When building a web app with Leaf, you need to define routes: the paths that users visit in your app. For example, `/login` or `/signup`.
+
+Normally, you can just tell Leaf what to do when someone visits a route by passing it a function (a piece of code that runs when someone visits the route). This works fine if your app is small. Here's an example:
 
 ```php
 app()->get('/login', function () {
@@ -17,7 +19,9 @@ This is okay for simple apps, but as your app grows, it can get messy. You don�
 
 ## What are controllers?
 
-Controllers are classes that contain methods (functions) that handle requests to your app. When a request comes into your app, Leaf calls the method in the controller that matches the route. This keeps your route definitions clean, and let's you neatly organize your logic so you don't mix your application logic with any other code. Leaf MVC includes a really handy command that you can use to create controllers:
+Controllers are classes that contain methods (functions) that handle requests to your app. When a request comes into your app, Leaf calls the method in the controller that matches the route. This keeps your route definitions clean, and let's you neatly organize your logic so you don't mix your application logic with any other code.
+
+Leaf MVC includes a really handy command that you can use to create controllers:
 
 ```bash
 leaf g:controller <controller-name>
@@ -68,7 +72,7 @@ Notice that we didn't pass a function to the route definition. Instead, we passe
 ## Why Use Controllers?
 
 - Organization: Keeps your route definitions and logic separate, making your code easier to understand.
-- Scalability: As your app grows, you won’t have one big file with all your logic—it will be split up into small, manageable pieces.
+- Scalability: As your app grows, you won’t have one big file with all your logic; it will be split up into small, manageable pieces.
 - Reusability: You can reuse controller methods for multiple routes if needed.
 
 ## Outputting Views
@@ -86,7 +90,9 @@ You can find the views documentation [here](/docs/frontend/)
 
 ## Route Parameters
 
-When you're building web apps, sometimes you need extra functionality when someone visits a route. For example, maybe only logged-in users should be able to see certain pages. To manage this, Leaf lets you add route parameters like middleware to your routes. This feature also works for controllers and uses the same syntax as function route handlers. Here's an example:
+When you're building web apps, sometimes you need extra functionality when someone visits a route. For example, maybe only logged-in users should be able to see certain pages.
+
+To manage this, Leaf lets you add route parameters like middleware to your routes. This feature also works for controllers and uses the same syntax as function route handlers. Here's an example:
 
 ```php:no-line-numbers
 app()->get('/users', ['middleware' => 'auth', 'UsersController@index']);

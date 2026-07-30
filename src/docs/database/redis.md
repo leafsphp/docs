@@ -32,7 +32,9 @@ Redis stores data in memory, which makes it useful for fast, temporary, or frequ
   Leaf Redis is currently supported in Leaf MVC. Core support is planned, but MVC apps can use it today.
 </div>
 
-To get started with Leaf Redis, you need to have Redis installed on your machine. You can install Redis PHP extension by following the instructions [here](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md), however, if you can't install the extension, you can use the [Predis](https://github.com/predis/predis) composer package. Leaf Redis supports both the Redis PHP extension and Predis, and will automatically detect which one you have installed and work with it.
+To get started with Leaf Redis, you need to have Redis installed on your machine. You can install Redis PHP extension by following the instructions [here](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md), however, if you can't install the extension, you can use the [Predis](https://github.com/predis/predis) composer package.
+
+Leaf Redis supports both the Redis PHP extension and Predis, and will automatically detect which one you have installed and work with it.
 
 After that, we can install Leaf Redis through composer or the leaf cli.
 
@@ -52,7 +54,9 @@ From there, restart your server and Leaf will automatically detect the Redis pac
 
 ## Connecting to Redis
 
-Just like a normal data store, we need to initialize a connection to Redis before we can start using it. By default, Leaf MVC connects to `127.0.0.1` on port `6379`, which is also the default Redis configuration. So, if you're using the default configuration, then you don't need to do any setup. You can just jump into your application and start using Redis.
+Just like a normal data store, we need to initialize a connection to Redis before we can start using it.
+
+By default, Leaf MVC connects to `127.0.0.1` on port `6379`, which is also the default Redis configuration. So, if you're using the default configuration, then you don't need to do any setup. You can just jump into your application and start using Redis.
 
 ## Ping Pong
 

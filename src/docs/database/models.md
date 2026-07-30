@@ -5,7 +5,7 @@ A model is a class that represents your app’s data, acting as a bridge between
 ## Why use models?
 
 - Organization – Keeps database logic separate from your views and controllers, making your app cleaner and easier to maintain.
-- Reusability – Define once, use anywhere—no need to repeat database code.
+- Reusability – Define once, use anywhere, without repeating database code.
 - Consistency – Enforces a structured way of interacting with data, reducing errors.
 
 Each model maps to a database table, keeping your data structured and easy to manage.
@@ -35,7 +35,7 @@ You may find the initial model class to be empty, which is fine. Leaf MVC handle
 
 ## Retrieving Model data
 
-Once you have created a model and its associated database table, you are ready to start retrieving data from your database. Every model you create inherits a powerful query builder allowing you to fluently query the database table associated with the model. For example:
+Once you have created a model and its associated database table, you are ready to start retrieving data from your database. Every model you create inherits a query builder that lets you fluently query the database table associated with the model. For example:
 
 ```php
 $flights = Flight::all();
@@ -137,7 +137,9 @@ $flight->delete(); // Delete the flight
 
 ### Soft deletes
 
-A soft delete marks a record as deleted without actually removing it from the database. Instead, a `deleted_at` timestamp is set, and the record is hidden from query results. The data is still in the database, allowing you to restore it later if needed. To get started with soft deletes, head over to your [schema file](/docs/database/files) and turn on soft deletes by adding a `softDeletes` option:
+A soft delete marks a record as deleted without actually removing it from the database. Instead, a `deleted_at` timestamp is set, and the record is hidden from query results. The data is still in the database, allowing you to restore it later if needed.
+
+To get started with soft deletes, head over to your [schema file](/docs/database/files) and turn on soft deletes by adding a `softDeletes` option:
 
 ```yaml
 softDeletes: true // [!code ++]

@@ -97,7 +97,7 @@ Be cautious when using the `flush()` method, as it will remove all cached data, 
 
 ## Choosing what to Cache
 
-Leaf's `cache()` function provides a simple and effective way to implement caching in your application without thinking about the complexities of cache management. By using caching wisely, you can significantly improve the performance of your application and provide a better experience for your users. Remember to choose appropriate cache keys and durations based on the nature of the data being cached, and always consider the trade-offs between data freshness and performance.
+Choose your cache keys and durations based on the nature of the data being cached, and keep the trade-off between data freshness and performance in mind.
 
 For instance, your heaviest queries or computations might include data that changes frequently, so you might want to cache them for shorter durations than more static data. Always analyze your application's specific needs and avoid falling into the trap of over-caching due to "believe me, caching is good" mentality.
 

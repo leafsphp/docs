@@ -63,7 +63,9 @@ This will insert a new user with the username "mychi" into the users table.
 
 ## Making values unique
 
-A unique column does not allow duplicate values. Eg. you can't have two users with the same email address in a lot of applications. You'll usually get an error if you try to insert a duplicate value into a unique column. Leaf DB provides a `unique()` helper that makes sure the value you're trying to insert is unique.
+A unique column does not allow duplicate values. Eg. you can't have two users with the same email address in a lot of applications. You'll usually get an error if you try to insert a duplicate value into a unique column.
+
+Leaf DB provides a `unique()` helper that makes sure the value you're trying to insert is unique.
 
 ```php{8}
 db()

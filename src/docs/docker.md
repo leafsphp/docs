@@ -19,9 +19,9 @@
   </div>
 </section>
 
-Docker allows developers to package their applications and dependencies into lightweight and portable containers. This guide walks through setting up your Leaf application with Docker from scratch.
+Docker lets you package your application and its dependencies into lightweight, portable containers. This page covers setting up a Leaf application with Docker from scratch.
 
-This guide will walk you through how to set up your Leaf application using Docker from scratch. To get started, you need to install [Docker Desktop](https://www.docker.com/products/docker-desktop/). After this, you can either use the Leaf CLI or manually create your application.
+First, install [Docker Desktop](https://www.docker.com/products/docker-desktop/). After that, you can either use the Leaf CLI or set your application up manually.
 
 ## Using the Leaf CLI
 
@@ -31,7 +31,9 @@ The easiest way to get started with Docker in your Leaf applications is to use t
 leaf create my-app --docker
 ```
 
-If you leave the flag off, `leaf create` will also ask whether you want Docker during the interactive prompts. Either way, Leaf sets your application up with Docker support: for MVC and API apps the web server is pointed at `public/`, and for Lite apps sensitive files (`.env`, composer manifests) are blocked from being served. Although your app is dockerized, Leaf CLI still lets you use the `serve` command — it will automatically start your application using Docker instead of the built-in server.
+If you leave the flag off, `leaf create` will also ask whether you want Docker during the interactive prompts. Either way, Leaf sets your application up with Docker support: for MVC and API apps the web server is pointed at `public/`, and for Lite apps sensitive files (`.env`, composer manifests) are blocked from being served.
+
+Although your app is dockerized, Leaf CLI still lets you use the `serve` command — it will automatically start your application using Docker instead of the built-in server.
 
 ```bash:no-line-numbers
 leaf serve
@@ -39,7 +41,9 @@ leaf serve
 
 ## Adding Docker to existing projects
 
-If you already have an existing Leaf application and you want to add Docker support to it, you will need to do so manually. We have provided a sample below that you can use as a reference. This section requires you to have a basic understanding of Docker and how it works and interacts with your application. We recommend checking out the [Docker documentation](https://docs.docker.com/) if you are new to Docker.
+If you already have an existing Leaf application and you want to add Docker support to it, you will need to do so manually. We have provided a sample below that you can use as a reference.
+
+This section requires you to have a basic understanding of Docker and how it works and interacts with your application. We recommend checking out the [Docker documentation](https://docs.docker.com/) if you are new to Docker.
 
 We have provided two examples below, one for Apache and one for Nginx. You can choose the one that best suits your needs.
 

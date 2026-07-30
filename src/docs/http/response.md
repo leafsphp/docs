@@ -20,7 +20,9 @@ In the above example, the response is a JSON object with a message key and a val
 - Headers: `Server: nginx/1.14.0 (Ubuntu)`, `Content-Type: application/json; charset=UTF-8`, `Content-Length: 27`, `Connection: keep-alive`
 - Body: `{"message":"Hello, world!"}`
 
-This is true for all responses. They all have a status line, headers, and a body. The status line tells the client if the request was successful or not. The headers provide additional information about the response. The body contains the actual data that the client requested.
+This is true for all responses. They all have a status line, headers, and a body.
+
+The status line tells the client if the request was successful or not. The headers provide additional information about the response. The body contains the actual data that the client requested.
 
 ## Creating Responses
 
@@ -149,7 +151,9 @@ $app->response()->page('path/to/file.html');
 
 ## Error responses
 
-During production development, you most likely would not want to throw exceptions to the user. Instead, you would want to return a nice error message. Leaf provides a simple way to do this using the `exit()` or `die()` method. This method outputs an error message and exits your application immediately so that nothing else is executed. It takes in 2 parameters:
+During production development, you most likely would not want to throw exceptions to the user. Instead, you would want to return a nice error message. Leaf provides a simple way to do this using the `exit()` or `die()` method.
+
+This method outputs an error message and exits your application immediately so that nothing else is executed. It takes in 2 parameters:
 
 - the error message to output
 - an optional status code (defaults to 500/Internal Server Error)
@@ -180,7 +184,7 @@ Leaf has support for a wide range of templating engines plus any other templatin
 
 - the name of the view to render
 - an array of data to pass to the view
-- an optional HTTP status code (defaults to 200) — perfect for error pages
+- an optional HTTP status code (defaults to 200), handy for error pages
 
 ::: code-group
 
@@ -259,7 +263,7 @@ $app->response()->download('path/to/file.pdf', 'new-filename.pdf', 200);
 
 :::
 
-Downloads are streamed in chunks, so memory stays flat no matter the file size — a 5GB file doesn't need 5GB of memory. Downloads also honor HTTP `Range` requests automatically <Badge type="tip" text="NEW" />: browsers and download managers can pause/resume and fetch files in parallel segments, and Leaf answers with proper `206 Partial Content` responses. You don't have to do anything — it's on for every download:
+Downloads are streamed in chunks, so memory stays flat no matter the file size: a 5GB file doesn't need 5GB of memory. Downloads also honor HTTP `Range` requests automatically <Badge type="tip" text="NEW" />: browsers and download managers can pause/resume and fetch files in parallel segments, and Leaf answers with proper `206 Partial Content` responses. You don't have to do anything — it's on for every download:
 
 ```bash:no-line-numbers
 # a client resuming an interrupted download from byte 1000000

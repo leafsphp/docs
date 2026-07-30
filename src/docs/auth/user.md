@@ -127,7 +127,9 @@ $posts = auth()->user()->posts()->get();
 // SELECT * FROM posts WHERE user_id = $current_user_id
 ```
 
-If you want to relate a user to a different table, you can do this by calling whatever table your user is related to as a method on the user object. For instance, if you want to grab all user posts from the `posts` table, you can call the `posts()` method on the user object. If you want to grab all user transactions from the `transactions` table, you can call the `transactions()` method on the user object. Once you call the method, it will return a Leaf DB instance which has already been filtered by the user's ID.
+If you want to relate a user to a different table, you can do this by calling whatever table your user is related to as a method on the user object. For instance, if you want to grab all user posts from the `posts` table, you can call the `posts()` method on the user object. If you want to grab all user transactions from the `transactions` table, you can call the `transactions()` method on the user object.
+
+Once you call the method, it will return a Leaf DB instance which has already been filtered by the user's ID.
 
 ```php
 $purchases = auth()->user()->purchases();

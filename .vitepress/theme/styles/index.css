@@ -1163,6 +1163,47 @@ html.dark .vp-doc li {
   border-top: 1px solid var(--vp-c-divider);
 }
 
+/* --- Reading rhythm ---
+   docs pages are dense with code and config; extra air between blocks is
+   what keeps them from reading as a wall */
+.vp-doc p {
+  margin: 20px 0;
+}
+
+.vp-doc h1 + p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.vp-doc h2 {
+  margin-bottom: 20px;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: 20px 0;
+}
+
+.vp-doc li + li {
+  margin-top: 8px;
+}
+
+.vp-doc li > p {
+  margin: 6px 0;
+}
+
+.vp-doc div[class*='language-'] {
+  margin: 26px 0;
+}
+
+.vp-doc .custom-block {
+  margin: 26px 0;
+}
+
+.vp-doc table {
+  margin: 26px 0;
+}
+
 /* --- Links --- */
 .vp-doc a:not(.header-anchor):not(.docs-path-card):not(.pager-link) {
   text-decoration-color: rgba(212, 101, 46, 0.35);
@@ -1174,10 +1215,12 @@ html.dark .vp-doc li {
   text-decoration-color: currentColor;
 }
 
-/* --- Inline code chips --- */
+/* --- Inline code chips ---
+   quiet enough that a code-dense sentence still reads as a sentence: tint
+   only, no border pulling every chip forward */
 .vp-doc :not(pre) > code {
-  padding: 2px 6px;
-  border: 1px solid var(--leaf-tint-border);
+  padding: 2px 5px;
+  border: none;
   border-radius: 6px;
   background: var(--leaf-tint);
   font-size: 0.85em;

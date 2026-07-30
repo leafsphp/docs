@@ -48,7 +48,9 @@ We understand that you might want to enable debugging in production for some rea
 
 ## Logging
 
-Logs are records of events in your application. They capture significant things like errors, requests, or user actions, helping you track your app's behavior. Log files are essential for debugging and understanding production issues. A typical log file looks like this:
+Logs are records of events in your application. They capture significant things like errors, requests, or user actions, helping you track your app's behavior.
+
+Log files are essential for debugging and understanding production issues. A typical log file looks like this:
 
 ```log{4-5}
 [2021-03-31 22:44:53]
@@ -132,7 +134,7 @@ That's it! Leaf will no longer log errors or exceptions for your app.
 
 ## Rescue Helper
 
-Leaf provides an elegant way to handle exceptions using the `rescue()` function. This function automically catches any exceptions thrown within the provided callback and logs them if logging is enabled, and then returns a default value. This way, you can use try-catch with a more inline syntax.
+Leaf provides a shorter way to handle exceptions using the `rescue()` function. This function automatically catches any exceptions thrown within the provided callback and logs them if logging is enabled, and then returns a default value. This way, you can use try-catch with a more inline syntax.
 
 ```php
 $someRiskyOperation = function () {
@@ -154,7 +156,7 @@ In this case, if the callback throws an exception, it will be caught and logged 
 
 ## Leaf DevTools <Badge type="warning" text="BETA" />
 
-Leaf provides DevTools to give you more insight into your app than you can get from the error page. It has a beautiful and intuitive interface that give you information about your Leaf application, and a light-weight library that you can use to interact with the devtools frontend.
+Leaf provides DevTools to give you more insight into your app than you can get from the error page. It comes with an interface that shows you information about your Leaf application, and a light-weight library that you can use to interact with the devtools frontend.
 
 <img src="https://user-images.githubusercontent.com/26604242/235434208-82ccdd87-6289-43fd-b93b-5fa09e6acd20.jpg" alt="Error Page" width="100%" class="border border-gray-500 rounded-lg">
 
@@ -188,7 +190,9 @@ From there, you can access the DevTools by visiting `<your-app-url>/leafDevTools
 
 ### Server Debug Logs
 
-When working with JavaScript, you can use `console.log` to log information to the console. In PHP, you can use `echo` or `var_dump` to log information to the browser. However, this can be a bit cumbersome, especially when you're working with APIs or other server-side code. Leaf provides a `log` function that you can use to log information to the server. This is useful for debugging your app in a non-invaisive way.
+When working with JavaScript, you can use `console.log` to log information to the console. In PHP, you can use `echo` or `var_dump` to log information to the browser. However, this can be a bit cumbersome, especially when you're working with APIs or other server-side code.
+
+Leaf provides a `log` function that you can use to log information to the server. This is useful for debugging your app in a non-invaisive way.
 
 ```php
 \Leaf\DevTools::console('This data should be logged in the console');
@@ -208,7 +212,9 @@ These will output different colored messages in the console:
 
 <img src="https://github.com/leafsphp/devtools/assets/26604242/195e15b1-d063-4cf2-a817-5a60e8ba184d" alt="Console page" width="100%" class="border border-gray-500 rounded-lg">
 
-***Leaf will only allow access to the DevTools when the app is in a development environment, but not every hosting provider sets the environment to `production` automatically. To be safe, we recommend uninstalling the DevTools module before deploying your app.***
+::: warning Uninstall DevTools before deploying
+Leaf will only allow access to the DevTools when the app is in a development environment, but not every hosting provider sets the environment to `production` automatically. To be safe, we recommend uninstalling the DevTools module before deploying your app.
+:::
 
 ## Maintenance Mode
 

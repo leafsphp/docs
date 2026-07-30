@@ -24,7 +24,7 @@
   </div>
 </section>
 
-Leaf Auth provides a flexible and secure login system that works for both token-based and session-based authentication. It provides a unified way to authenticate users in your web apps and APIs.
+Leaf Auth handles login the same way whether you're using tokens or sessions, so your web apps and APIs can share one authentication flow.
 
 ## Signing a user in
 

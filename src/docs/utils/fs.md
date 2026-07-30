@@ -3,7 +3,7 @@
 
 # File Storage System
 
-A file storage system is a system used to store and manage files. It's a crucial part of most applications, as it helps you create, read, update, store and delete files effectively. Leaf provides a simple and easy-to-use file storage system that allows you to work with files on your server or in the cloud.
+Most applications need to create, read, update, store and delete files at some point. Leaf provides a simple file storage system for working with files on your server or in the cloud.
 
 ## Installation
 
@@ -25,7 +25,9 @@ That's it! You can now use the `storage()`/`path()` functions from anywhere in y
 
 ## Working with file paths
 
-File paths are the locations of files on your server. They help you locate and interact with files effectively. While they are essential for working with files, they can be a bit tricky to work with. Leaf provides a simple way to work with file paths using the `path()` function.
+File paths are the locations of files on your server. They help you locate and interact with files effectively. While they are essential for working with files, they can be a bit tricky to work with.
+
+Leaf provides a simple way to work with file paths using the `path()` function.
 
 ### Getting information out of a path
 
@@ -65,7 +67,7 @@ echo $path; // path/to/file.txt
 
 ## Working with Files
 
-Working with files is a crucial part of most applications. Leaf provides a simple and easy-to-use file system that allows you to create, read, update, and delete files effectively using the `storage()` function.
+You can create, read, update, and delete files using the `storage()` function.
 
 ### Creating Files
 
@@ -123,7 +125,7 @@ $tail = storage()->readRange('logs/app.log', -2048);   // last 2KB
 
 ### Streaming large files <Badge type="tip" text="NEW" />
 
-Serving a 5GB download shouldn't need 5GB of memory. `chunks()` streams a file piece by piece — memory stays flat no matter the file size, which is exactly what you want for large downloads or HTTP range responses:
+Serving a 5GB download shouldn't need 5GB of memory. `chunks()` streams a file piece by piece, so memory stays flat no matter the file size. That's exactly what you want for large downloads or HTTP range responses:
 
 ```php
 foreach (storage()->chunks('backup.zip', 1024 * 1024) as $chunk) {
@@ -131,7 +133,7 @@ foreach (storage()->chunks('backup.zip', 1024 * 1024) as $chunk) {
 }
 ```
 
-You can stream just a window of the file too — `chunks($path, $chunkSize, $start, $length)` — which pairs naturally with the HTTP `Range` header for resumable and multi-threaded downloads.
+You can stream just a window of the file too with `chunks($path, $chunkSize, $start, $length)`, which pairs naturally with the HTTP `Range` header for resumable and multi-threaded downloads.
 
 ### Updating Files
 
@@ -184,7 +186,7 @@ if ($uploaded) {
 
 The `upload()` method automatically grabs the file from the request, so you don't have to worry about all of that.
 
-One amazing thing about the `upload()` method is that it can detect the file type and automatically handle any associated configuration. If you need to customize the upload configuration, you can pass an array of configuration options as the third parameter.
+The `upload()` method can also detect the file type and automatically handle any associated configuration. If you need to customize the upload configuration, you can pass an array of configuration options as the third parameter.
 
 ```php
 $uploaded = request()->upload('fileToUpload', 'path/to/uploads', [
@@ -249,7 +251,7 @@ if ($uploaded) {
 
 ### Uploading a file you already have <Badge type="tip" text="NEW" />
 
-`upload()` isn't only for request files — you can hand it a plain path and Leaf will place a **copy** in the destination (your original file stays where it is). Handy for CLI tools, queued jobs, or shipping generated files into your uploads/bucket:
+`upload()` isn't only for request files: you can hand it a plain path and Leaf will place a **copy** in the destination (your original file stays where it is). Handy for CLI tools, queued jobs, or shipping generated files into your uploads/bucket:
 
 ```php
 $uploaded = storage()->upload('/path/to/report.pdf', 'path/to/uploads');
@@ -257,7 +259,7 @@ $uploaded = storage()->upload('/path/to/report.pdf', 'path/to/uploads');
 echo $uploaded['name']; // report.pdf
 ```
 
-All the same config options apply — `validate`, `allowedTypes`, `overwrite`, `rename` and friends.
+All the same config options apply: `validate`, `allowedTypes`, `overwrite`, `rename` and friends.
 
 ## Uploading multiple files
 
@@ -355,7 +357,7 @@ We are working on a 100% interchangeable API for local and cloud storage, so you
 
 ## Working with Folders
 
-Working with folders is an essential part of most applications. Leaf provides a simple and easy-to-use file system that allows you to create, read, update, and delete folders effectively using the `storage()` function.
+You can create, read, update, and delete folders with the `storage()` function too.
 
 ### Creating Folders
 

@@ -1,6 +1,8 @@
 # Mailing with Leaf MVC
 
-Leaf MVC provides a simple and easy-to-use interface for sending emails in PHP. You create mailers, write your email content, and send your emails. To get started with mailing in Leaf MVC, you need to install the Leaf Mail package. You can do this using the Leaf CLI:
+Leaf MVC provides a simple and easy-to-use interface for sending emails in PHP. You create mailers, write your email content, and send your emails.
+
+To get started with mailing in Leaf MVC, you need to install the Leaf Mail package. You can do this using the Leaf CLI:
 
 ::: code-group
 
@@ -36,7 +38,7 @@ That's it! Leaf Mail will automatically connect to your mail server when you sen
 
 ## Writing Emails
 
-In Leaf MVC, emails are handled through **mailers**—dedicated classes that keep your email logic clean and structured. Instead of mixing email-sending code throughout your app, mailers centralize everything in one place. For example, a `WelcomeMailer` can manage all welcome emails, with separate methods for different messages. With the MVC console, you can generate mailers instantly, making it easy to manage and scale email functionality while keeping your code simple and maintainable..
+In Leaf MVC, emails are handled through **mailers**: dedicated classes that hold your email logic in one place instead of scattering send calls through your app. A `WelcomeMailer` can own every welcome email, with a method per message. The MVC console generates mailers for you.
 
 ```bash:no-line-numbers
 leaf g:mailer welcome

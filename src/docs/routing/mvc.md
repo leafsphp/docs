@@ -40,9 +40,9 @@ prev: false
 
 ## Route partials
 
-In Leaf MVC, all routes are defined in partials within the app/routes directory. Partials are simple PHP files prefixed with `_`, like `_auth.php` or `_api.php`. There’s no special syntax—just a clean, structured way to keep your code organized as your app or API scales.
+In Leaf MVC, all routes are defined in partials within the app/routes directory. Partials are simple PHP files prefixed with `_`, like `_auth.php` or `_api.php`. There’s no special syntax, just a simple way to keep your code organized as your app or API grows.
 
-To add a new route, simply place it in the relevant partial or create a new one if it doesn’t fit into an existing group. This keeps your routing intuitive and easy to manage.
+To add a new route, place it in the relevant partial, or create a new one if it doesn’t fit into an existing group.
 
 <div class="not-prose my-6 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
   Prefer one file? You can still define everything in <code>app/routes/index.php</code>. Partials are there when your app needs a cleaner map, not because Leaf forces a folder ritual.
@@ -142,7 +142,7 @@ app()->view('/home', 'home');
 
 ## Named routes
 
-In larger applications, managing routes efficiently is key. Leaf lets you name routes, so you can reference them by name instead of hardcoding URLs, making updates easier. You can also define options like middleware using an array as the second argument when setting up a route, keeping your code flexible and maintainable.
+Leaf lets you name routes, so you can reference them by name instead of hardcoding URLs. When a URL changes, you only update it in one place. You can also define options like middleware using an array as the second argument when setting up a route.
 
 ```php:no-line-numbers
 app()->get('/home', ['name' => 'home', 'HomeController@index']);
@@ -154,16 +154,16 @@ You can then redirect to this route using the route name by passing an array wit
 response()->redirect(['home']);
 ```
 
-Resource routes name themselves automatically — `app()->resource('/users', 'UsersController')` registers `users.index`, `users.show`, `users.edit` and friends, and group names prefix them (`admin.users.index`). See [named groups](/docs/routing/route-groups#named-groups).
+Resource routes name themselves automatically: `app()->resource('/users', 'UsersController')` registers `users.index`, `users.show`, `users.edit` and friends, and group names prefix them (`admin.users.index`). See [named groups](/docs/routing/route-groups#named-groups).
 
-To build a URL from a route name — for links, redirects, or anywhere you'd otherwise hardcode a path — use the `route()` method. Parameters fill in the route's placeholders:
+To build a URL from a route name (for links, redirects, or anywhere you'd otherwise hardcode a path), use the `route()` method. Parameters fill in the route's placeholders:
 
 ```php:no-line-numbers
 $url = app()->route('home');                     // /home
 $url = app()->route('users.show', ['id' => 5]);  // /users/5
 ```
 
-(If you need the full details of the *current* route — pattern, name, method, handler — that's `getRoute()`, shown below.)
+(If you need the full details of the *current* route, like its pattern, name, method, and handler, that's `getRoute()`, shown below.)
 
 ## Getting the current route
 

@@ -60,7 +60,9 @@ Lingo automatically creates routes for each language:
 /fr/about
 ```
 
-The routes are generated based on your translation files. If you have `de.yml` and `fr.yml`, Lingo creates routes for `/de/*` and `/fr/*`. It also redirects requests to base paths (like `/home`) to the default language route (e.g., `/en/home`). Set your default language in `.env` with `APP_LOCALE=...`.
+The routes are generated based on your translation files. If you have `de.yml` and `fr.yml`, Lingo creates routes for `/de/*` and `/fr/*`.
+
+It also redirects requests to base paths (like `/home`) to the default language route (e.g., `/en/home`). Set your default language in `.env` with `APP_LOCALE=...`.
 
 ### Header Mode <Badge type="warning">Experimental</Badge>
 
@@ -86,7 +88,9 @@ LOCALES_STRATEGY=session
 
 ## Switching Locales
 
-Lingo uses the same approach for switching locales across all modes. Use the `lingo()->setCurrentLocale()` method to create a route that handles locale switching. The method switches the current locale based on your configured strategy (routes or session). In header mode, this method has no effect since the locale is determined by the `Accept-Language` header.
+Lingo uses the same approach for switching locales across all modes. Use the `lingo()->setCurrentLocale()` method to create a route that handles locale switching. The method switches the current locale based on your configured strategy (routes or session).
+
+In header mode, this method has no effect since the locale is determined by the `Accept-Language` header.
 
 Here is an example of how to create a route for switching locales:
 
@@ -203,7 +207,7 @@ app()->get('/contact', [
 ]);
 ```
 
-This is useful for routes that shouldn't be localized, like API endpoints or routes that should be language-independent.r
+This is useful for routes that shouldn't be localized, like API endpoints or routes that should be language-independent.
 
 ## Lingo URL <Badge>Router Mode Only</Badge>
 

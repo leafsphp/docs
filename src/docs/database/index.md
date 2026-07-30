@@ -53,7 +53,7 @@ composer require leafs/db
 
 ## Leaf MVC + DB
 
-Leaf's DB module is great for building simple queries, especially when you are using Leaf as a micro-framework. However, if you are building a full-fledged application using Leaf MVC, you can take advantage of the powerful models and schema files which make it easy to interact with your database.
+Leaf's DB module is great for building simple queries, especially when you are using Leaf as a micro-framework. However, if you are building a full-fledged application using Leaf MVC, you can take advantage of models and schema files, which make it easy to interact with your database.
 
 Leaf MVC configures everything for you out of the box, so you just need to define your database schema using the schema files and create models to represent your database tables. You can then use the models to perform CRUD operations on your database without writing any SQL queries.
 

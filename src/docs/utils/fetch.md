@@ -1,8 +1,8 @@
 # Leaf Fetch
 
-When building your applications, you will probably end up needing to call APIs or fetch data from external sources. Leaf provides a simple and easy way to do this using Fetch. Fetch provides a clean and modern interface for making network requests in PHP, inspired by JavaScript's Fetch API and Axios.
+When building your applications, you will probably end up needing to call APIs or fetch data from external sources. Leaf gives you a simple way to do this with Fetch, a clean interface for making network requests in PHP, inspired by JavaScript's Fetch API and Axios.
 
-Fetch is completely framework-agnostic, so while it feels right at home in a Leaf app, you can use it in Laravel, Symfony, WordPress, or plain PHP — the only requirement is the curl extension.
+Fetch is completely framework-agnostic, so while it feels right at home in a Leaf app, you can use it in Laravel, Symfony, WordPress, or plain PHP. The only requirement is the curl extension.
 
 ## Setting Up
 
@@ -24,7 +24,7 @@ Once installed, you can start using Fetch in your application.
 
 ## Making Requests
 
-The quickest way to make a request is to pass a URL straight to the `fetch()` function — a URL on its own is a GET request:
+The quickest way to make a request is to pass a URL straight to the `fetch()` function. A URL on its own is a GET request:
 
 ```php:no-line-numbers
 $res = fetch('https://jsonplaceholder.typicode.com/todos/');
@@ -87,7 +87,7 @@ response()->json($res->data);
 
 ## Query Parameters
 
-On GET requests, anything you pass as `data` is automatically appended to the URL as query parameters — nested arrays included:
+On GET requests, anything you pass as `data` is automatically appended to the URL as query parameters, nested arrays included:
 
 ```php
 // requests /posts?page=2&tags[0]=php
@@ -154,7 +154,7 @@ $response = fetch()->post('/posts', [
 ]);
 ```
 
-The base URL only applies to relative URLs — if you pass a full `http://` or `https://` URL, it is used as-is, so you can still call other services without unsetting your base URL.
+The base URL only applies to relative URLs: if you pass a full `http://` or `https://` URL, it is used as-is, so you can still call other services without unsetting your base URL.
 
 ## Authentication
 
@@ -180,10 +180,10 @@ fetch([
 
 Every request returns a response object with four properties:
 
-- `$response->data` — the response body. JSON responses are decoded for you; anything that isn't valid JSON is returned as the raw string.
-- `$response->status` — the HTTP status code, e.g. `200` or `404`.
-- `$response->headers` — the response headers as an array. Header names are always lower cased, so you can reliably read `$response->headers['content-type']`.
-- `$response->request` — the full config of the request that produced this response, useful for debugging.
+- `$response->data`: the response body. JSON responses are decoded for you; anything that isn't valid JSON is returned as the raw string.
+- `$response->status`: the HTTP status code, e.g. `200` or `404`.
+- `$response->headers`: the response headers as an array. Header names are always lower cased, so you can reliably read `$response->headers['content-type']`.
+- `$response->request`: the full config of the request that produced this response, useful for debugging.
 
 If you want the untouched response body even for JSON responses, set `rawResponse` to `true` and `data` will always be the raw string:
 
@@ -191,7 +191,7 @@ If you want the untouched response body even for JSON responses, set `rawRespons
 $res = fetch(['url' => '/report.csv', 'rawResponse' => true]);
 ```
 
-Note that Fetch does not throw exceptions for non-2xx status codes — a `404` or `500` still gives you a normal response object, so check `$response->status` when you need to. Fetch only throws an `\Exception` when the request itself fails: an unreachable host, DNS failure or a timeout.
+Note that Fetch does not throw exceptions for non-2xx status codes: a `404` or `500` still gives you a normal response object, so check `$response->status` when you need to. Fetch only throws an `\Exception` when the request itself fails: an unreachable host, DNS failure or a timeout.
 
 ```php
 try {
@@ -220,7 +220,7 @@ Fetch::config([
 
 ## Parameters for Requests
 
-This is the full list of options you can pass to Fetch when making requests — every one of them is honoured:
+This is the full list of options you can pass to Fetch when making requests, and every one of them is honoured:
 
 ```php
 [

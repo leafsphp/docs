@@ -82,7 +82,9 @@ Blade views are a pretty sweet mixture of HTML, PHP, and clean syntax. You can c
 
 :::
 
-This should look pretty familiar if you know HTML (of course you do). The only difference is the <span v-pre>`{{ $name }}`</span> part. This is Blade's way of creating a variable in your view. When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of <span v-pre>`{{ $name }}`</span>. Let's see how you can render this view.
+This should look pretty familiar if you know HTML (of course you do). The only difference is the <span v-pre>`{{ $name }}`</span> part. This is Blade's way of creating a variable in your view.
+
+When you render this view, Blade will allow you pass in a variable called `$name` and it will be displayed in place of <span v-pre>`{{ $name }}`</span>. Let's see how you can render this view.
 
 <!-- <section id="leaf-zero" class="rounded-2xl shadow-md outline outline-gray-100 dark:outline-gray-800 p-4 md:p-10 bg-[var(--vp-c-bg-alt)]">
     <p
@@ -531,8 +533,8 @@ Which allows you to use the following in your blade template:
 Current date: @datetime($date)
 ```
 
-This will output the current date in the format `DD MM YYYY`. You can define as many custom directives as you want to make your Blade views more powerful.
+This will output the current date in the format `DD MM YYYY`. You can define as many custom directives as you need.
 
 ## Conclusion
 
-This is just the beginning of what you can do with Blade. Blade is a powerful templating engine that allows you to create dynamic views with ease. You can use Blade to create complex views with loops, conditions, and even include other views. As this is just an adapter for the original Blade package, you can check out the [Blade documentation](https://laravel.com/docs/12.x/blade) for more information on what you can do with Blade.
+This is just the beginning of what you can do with Blade. You can build complex views with loops, conditions, and even include other views. Since this is just an adapter for the original Blade package, you can check out the [Blade documentation](https://laravel.com/docs/12.x/blade) for everything else Blade can do.

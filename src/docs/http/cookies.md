@@ -47,7 +47,7 @@ The `withCookie()` method takes in 3 parameters:
 
 ## Setting Cookies with Options
 
-`response()->withCookie()` is a simple way to set cookies, but it only works for the most basic use cases. If you need a more powerful way to set cookies, you can use the `set()` method. It takes in 3 parameters:
+`response()->withCookie()` is a simple way to set cookies, but it only works for the most basic use cases. If you need more control over how a cookie is set, you can use the `set()` method. It takes in 3 parameters:
 
 - cookie name
 - cookie value

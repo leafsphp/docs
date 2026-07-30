@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-Leaf MVC ships with a built-in console for managing your application from the terminal — generators, scaffolds, database commands, and app utilities, all through the `leaf` file in your project root. It's powered by [Sprout](https://seedling.leafphp.dev), Leaf's console engine, and there's nothing to install: every Leaf MVC app has it from the first `leaf create`.
+Leaf MVC ships with a built-in console for managing your application from the terminal: generators, scaffolds, database commands, and app utilities, all through the `leaf` file in your project root. It's powered by [Sprout](https://seedling.leafphp.dev), Leaf's console engine, and there's nothing to install: every Leaf MVC app has it from the first `leaf create`.
 
 To see every command available in your app, run:
 
@@ -11,7 +11,7 @@ php leaf list
 ```
 
 ::: info Coming from Leaf 4?
-Earlier Leaf MVC versions used a separate console package called Aloe. Aloe is retired in Leaf 5 — the console is now part of MVC core itself, so there's no extra dependency to install or update. Your muscle memory survives: the command names (`g:controller`, `db:migrate`, `scaffold:auth`, …) are the same.
+Earlier Leaf MVC versions used a separate console package called Aloe. Aloe is retired in Leaf 5. The console is now part of MVC core itself, so there's no extra dependency to install or update. Your muscle memory survives: the command names (`g:controller`, `db:migrate`, `scaffold:auth`, …) are the same.
 :::
 
 ## The console vs. Leaf CLI
@@ -21,7 +21,7 @@ Two different tools, two different jobs:
 - **Leaf CLI** (`leaf` installed globally) creates and manages projects from anywhere: `leaf create`, `leaf install`, `leaf serve`.
 - **The MVC console** (`php leaf` inside a project) manages *this* app: generating files, running migrations, scaffolding features.
 
-Inside a Leaf MVC project, the global CLI hands commands it doesn't know over to your app's console — so `leaf g:controller Posts` and `php leaf g:controller Posts` do the same thing.
+Inside a Leaf MVC project, the global CLI hands commands it doesn't know over to your app's console, so `leaf g:controller Posts` and `php leaf g:controller Posts` do the same thing.
 
 ## Generators
 
@@ -42,7 +42,7 @@ php leaf g:template home                 # view file
 php leaf g:helper Format                 # helper class
 ```
 
-Some generators come with the modules that power them: `g:model` and `g:schema` arrive with the db/schema module, `g:job` with the queue module. They register themselves automatically when the module is installed — `php leaf list` always shows what your app can do right now.
+Some generators come with the modules that power them: `g:model` and `g:schema` arrive with the db/schema module, `g:job` with the queue module. They register themselves automatically when the module is installed, and `php leaf list` always shows what your app can do right now.
 
 Made a mess? Every generator has a matching delete command: `d:controller`, `d:model`, `d:schema`, `d:job`.
 
@@ -107,7 +107,7 @@ php leaf queue:work      # start your queue worker
 
 ## Writing your own commands
 
-Your app's own commands live in `app/console/` (autoloaded under `App\Console`). A command is a small Sprout class — a `signature`, a `description`, and a `handle()` method — and it appears in `php leaf list` alongside the built-ins:
+Your app's own commands live in `app/console/` (autoloaded under `App\Console`). A command is a small Sprout class (a `signature`, a `description`, and a `handle()` method) and it appears in `php leaf list` alongside the built-ins:
 
 ```php
 <?php
@@ -145,4 +145,4 @@ class SendReportsCommand extends Command
 php leaf send-weekly-reports design --dry-run
 ```
 
-Command names take dashes and namespaces freely (`send-weekly-reports`, `reports:send-weekly`), and everything your app loads — models, helpers, `lib/` functions — is available inside `handle()`. See the [Seedling docs](https://seedling.leafphp.dev) for the full command-writing guide.
+Command names take dashes and namespaces freely (`send-weekly-reports`, `reports:send-weekly`), and everything your app loads (models, helpers, `lib/` functions) is available inside `handle()`. See the [Seedling docs](https://seedling.leafphp.dev) for the full command-writing guide.

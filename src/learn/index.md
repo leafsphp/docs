@@ -15,9 +15,9 @@ next: false
 import Button from '@theme/components/shared/Button.vue';
 </script>
 
-Leaf is designed to help you go from idea → working app → real users — without getting stuck in setup or complexity.
+Leaf is designed to help you go from idea → working app → real users, without getting stuck in setup or complexity.
 
-Whether you're building your first tool or your next startup, this is where you start.
+This is where you start, whether it's your first tool or your next startup.
 
 ## Choose your path
 
@@ -148,7 +148,7 @@ This is something we live and die by at Leaf. We believe that every application 
 
 ## Build with AI, not against it
 
-Leaf 5 is designed to work with AI — not fight it.
+Leaf 5 is designed to work with AI, not fight it.
 
 Tell your AI:
 

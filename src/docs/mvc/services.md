@@ -6,7 +6,7 @@ Services let you encapsulate business logic and make it reusable across your app
 
 ## Creating a Service
 
-Services are just plain PHP classes — no base class or interface required. By convention, we keep them in `app/services`, but you can place them anywhere in your project. Let's create our `StatsService` from the earlier example:
+Services are just plain PHP classes, with no base class or interface required. By convention, we keep them in `app/services`, but you can place them anywhere in your project. Let's create our `StatsService` from the earlier example:
 
 ```php
 <?php
@@ -57,11 +57,11 @@ In this version of Leaf, `make()` simply initializes the service class just like
 
 ## Why no dependency Injection?
 
-If you’re coming from frameworks like Laravel, you might expect to inject services through constructors or method injection. While this is powerful, it also adds extra complexity.
+If you’re coming from frameworks like Laravel, you might expect to inject services through constructors or method injection. That approach works, but it adds extra complexity.
 
 In Leaf, almost everything you need is already accessible through global functions, so there’s no need to inject dependencies just to use them. To keep things simple and consistent, Leaf uses make() to resolve services.
 
-Instead of wiring dependencies into constructors, you can simply call a function (`make()`, `cache()`, `response()`, etc.) to get what you need — anywhere in your app.
+Instead of wiring dependencies into constructors, you can simply call a function (`make()`, `cache()`, `response()`, etc.) to get what you need, anywhere in your app.
 
 ## When to Use a Service
 

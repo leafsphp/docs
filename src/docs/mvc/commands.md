@@ -1,10 +1,10 @@
 # Writing Commands
 
-Commands let you automate repetitive tasks—whether it's spinning up a project, running tests, or deploying your app. You can wrap all that logic into reusable commands that you or your team run in a heartbeat.
+Commands let you automate repetitive tasks like spinning up a project, running tests, or deploying your app. You can wrap all that logic into reusable commands that you or your team run in a heartbeat.
 
 ::: details Choosing Seedling over Leaf MVC
 
-If you're focused on building command-line tools rather than full web apps, consider using [Leaf's Seedling](/docs/seedling/) over Leaf MVC. Seedling offers a lightweight, optimized environment solely for CLI workflows — no HTTP or view layers required. It's perfect when your project is all about commands and utilities.
+If you're focused on building command-line tools rather than full web apps, consider using [Leaf's Seedling](/docs/seedling/) over Leaf MVC. Seedling offers a lightweight environment built solely for CLI workflows, with no HTTP or view layers required. It's perfect when your project is all about commands and utilities.
 
 :::
 
@@ -123,7 +123,7 @@ Command options are also known as flags or switches, and they are additional par
 leaf example --option1 --option2 valueForOption2 -o valueForOption3
 ```
 
-To add an option to your command, you need to add it to the `protected $signature` property of your command class. Options are always optional — what changes is whether they act as a simple on/off switch or expect a value. You can also define a shortcut for an option by adding it before the option name, separated by a `|`.
+To add an option to your command, you need to add it to the `protected $signature` property of your command class. Options are always optional; what changes is whether they act as a simple on/off switch or expect a value. You can also define a shortcut for an option by adding it before the option name, separated by a `|`.
 
 ```php
 protected $signature = 'example

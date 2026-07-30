@@ -32,7 +32,7 @@ import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
     </div>
 </section>
 
-APIs are the backbone of modern applications. They serve as the brain behind your mobile apps, frontend interfaces, and third-party integrations. With Leaf, you can build powerful APIs that are fast, secure, and easy to maintain.
+APIs sit behind your mobile apps, frontend interfaces, and third-party integrations. Leaf helps you build them fast, keep them secure, and maintain them without headaches.
 
 ## Getting started
 
@@ -54,7 +54,7 @@ Out of the box, you can build:
 - 💳 Payment webhooks
 - 🌐 Frontend APIs (for React, Vue, Svelte)
 
-No wiring. No guessing about structure.
+There's no wiring to do, and no guessing about structure.
 
 ## Your API is ready for AI
 

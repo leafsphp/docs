@@ -38,7 +38,9 @@ For most use-cases, you would usually push your project to GitHub, then connect 
 
 To get started, you will need to make sure you are logged in to Heroku. You can do this by running `heroku login`. You will be prompted to login in your browser. Once you have logged in, you can proceed.
 
-Heroku uses git to deploy your application, so you will need to initialize git in your repository. You can do this by running `git init` in your project directory. After initializing git, you can add your files to the staging area by running `git add .`. Once you have added your files, you can commit them by running `git commit -m "commit message"`.
+Heroku uses git to deploy your application, so you will need to initialize git in your repository. You can do this by running `git init` in your project directory.
+
+After initializing git, you can add your files to the staging area by running `git add .`. Once you have added your files, you can commit them by running `git commit -m "commit message"`.
 
 ## 3. Deploying your app
 

@@ -21,7 +21,7 @@
 
 You can think of your application's environment as a set of configurations that define how your application behaves in different situations. For example, you may run a local database when developing your app, but will want your app to connect to a remote database when it's in production.
 
-Common environments include `development`, `testing`, and `production`. Leaf already has some pre-programmed bahaviours for these environments, but you can also create your own custom environments. One way to do this is to use environment variables.
+Common environments include `development`, `testing`, and `production`. Leaf already has some pre-programmed behaviours for these environments, but you can also create your own custom environments. One way to do this is to use environment variables.
 
 ## Environment Variables
 

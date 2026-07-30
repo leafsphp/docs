@@ -1,6 +1,6 @@
 # Deployment
 
-Getting your Leaf app live should be as simple as building it. Whether you're deploying to shared hosting, VPS, or platforms like DigitalOcean and Vercel, Leaf makes the process smooth and hassle-free. This guide walks you through setting up your server, configuring URL rewriting, and making sure your app runs efficiently in production.
+Getting your Leaf app live should be as simple as building it. This guide walks you through setting up your server, configuring URL rewriting, and making sure your app runs well in production, whether you're deploying to shared hosting, a VPS, or a platform like DigitalOcean or Vercel.
 
 ## Production Checklist
 
@@ -13,7 +13,7 @@ These are meant to ensure your app runs smoothly in production, without exposing
 
 ## URL Rewriting
 
-URL rewriting maps all requests to a single entry point—usually `index.php`—so Leaf’s router can handle them dynamically. Instead of serving files directly, web servers like Apache and Nginx can be configured to route all traffic through your app, so Leaf can handle requests cleanly and efficiently.
+URL rewriting maps all requests to a single entry point (usually `index.php`) so Leaf’s router can handle them dynamically. Instead of serving files directly, web servers like Apache and Nginx can be configured to route all traffic through your app, so Leaf can handle every request.
 
 ::: code-group
 
@@ -62,7 +62,11 @@ pnpm run build
 
 :::
 
+::: warning Build before you deploy
+
 If you don't build your assets before deploying, you will either have a fully broken app or a CORS error in the case of Inertia.js, so make sure to build your assets before deploying or add it to your deployment script.
+
+:::
 
 ## Deploying Queues/Workers
 
@@ -74,7 +78,9 @@ For smaller applications, you can keep the queue worker running in the backgroun
 php leaf queue:work &
 ```
 
-This command will set up your queue and start a worker to process jobs. Leaf includes safeguards to prevent excessive memory usage, long-running processes, or crashes from failed jobs. However, for larger applications, this setup may not be enough. In such cases, using a process manager like Supervisor is recommended to ensure your workers run smoothly and restart automatically if needed:
+This command will set up your queue and start a worker to process jobs. Leaf includes safeguards to prevent excessive memory usage, long-running processes, or crashes from failed jobs.
+
+However, for larger applications, this setup may not be enough. In such cases, using a process manager like Supervisor is recommended to ensure your workers run smoothly and restart automatically if needed:
 
 ```bash:no-line-numbers
 sudo apt update && sudo apt install supervisor -y

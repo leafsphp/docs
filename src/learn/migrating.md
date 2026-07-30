@@ -8,7 +8,7 @@ Before you go on, we just want to say
 
 ## Why Migrate to Leaf?
 
-Depending on the framework you're coming from, you might have different reasons for migrating to Leaf. Leaf is lightweight, modular, and has a simple API. It offers better performance and flexibility compared to many other frameworks. Leaf also allows you to integrate other libraries seamlessly into your Leaf apps with no conflicts or complexities.
+Depending on the framework you're coming from, you might have different reasons for migrating to Leaf. Leaf is lightweight and modular, with a simple API and better performance and flexibility than many other frameworks. You can also bring other libraries into your Leaf apps without conflicts or complexities.
 
 We are still in the process of creating migration guides for different frameworks. If you have a specific framework you'd like to migrate from, please let us know by creating an issue on our GitHub repository. For now, you can follow the general guide below.
 
@@ -54,7 +54,9 @@ We can start off by swapping out the Slim request and response objects with Leaf
 
 ## Replacing HTTP Interfaces
 
-Now, we can replace Slim's request and response objects with Leaf's. What makes this process easy is that Leaf's request and response objects are not tied to any specific framework. This means you can use them in any PHP application. They use PHP's internal methods which makes them compatible with any PHP application.
+Now, we can replace Slim's request and response objects with Leaf's. What makes this process easy is that Leaf's request and response objects are not tied to any specific framework.
+
+That means you can use them in any PHP application. They use PHP's internal methods which makes them compatible with any PHP application.
 
 ```php
 <?php
@@ -103,7 +105,7 @@ $app->run();
 
 ## Replacing Router Interfaces
 
-We've replaced the request and response objects, but we still need to replace the router. Leaf's router is an extremely powerful and flexible router that can handle any type of route. Since we already installed the `leaf` module, we can start using Leaf's router.
+We've replaced the request and response objects, but we still need to replace the router. Leaf's router is flexible enough to handle any type of route, and since we already installed the `leaf` module, we can start using it right away.
 
 ```php
 <?php

@@ -4,7 +4,7 @@ Leaf MVC comes with a couple of global functions that you can use to access your
 
 ## Loading app paths
 
-Since Leaf MVC comes with a robust structure out of the box, it also comes with quick ways to reference files in these structures. For example, if you want to reference a file in your `public` folder, you can use the `PublicPath()` helper.
+Since Leaf MVC comes with a defined folder structure out of the box, it also comes with quick ways to reference files in these structures. For example, if you want to reference a file in your `public` folder, you can use the `PublicPath()` helper.
 
 ### AppPaths()
 
