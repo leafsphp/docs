@@ -170,7 +170,7 @@ class CallbacksController extends Controller
 
 `billing()->callback()` parses and validates the callback, returning a BillingSession with full payment details. Stripe and PayStack send back different data, but Leaf normalizes it for you, so you can handle the payment result in one place.
 
-## Billing with subscriptions <Badge text="Stripe Only" type="warning"/>
+## Billing with subscriptions <Badge text="Stripe + Paystack" type="tip"/>
 
 Unlike one-time payments, subscriptions need a more structured setup, but Leaf Billing does most of it for you. Run the `scaffold:subscriptions` command to generate everything you need: billing config, controllers, routes, and views.
 
@@ -325,26 +325,41 @@ class WebhooksController extends Controller
         $event = billing()->webhook();
 
         /**
+         * $event->id() - the provider's unique event id (store it to skip redelivered events)
          * $event->type() - to get the event type
          * $event->is() - to check if the event is a specific type
          * $event->tier() - to get the subscription tier (if available)
          * $event->subscription() - to get the current subscription (if available)
          * $event->user() - to get the current user (returns auth()->user() if available)
          * $event->previousSubscriptionTier() - to get the previous subscription tier (if available)
-         * $event->cancelSubscription() - to cancel the subscription in webhook request (if available)
          * $event->activateSubscription() - to activate the new subscription in webhook (if available)
+         * $event->renewSubscription() - to extend the subscription after a successful renewal payment
+         * $event->markSubscriptionPastDue() - to flag the subscription when a renewal payment fails
+         * $event->cancelSubscription() - to cancel the subscription in webhook request (if available)
          */
 
         if ($event->is('invoice.payment_succeeded')) {
             // Payment was successful
 
             if ($event->data()['object']['billing_reason'] === 'subscription_cycle') {
-                // Subscription renewed/charged after trial/cycle
-                // ✅ Give access to your service
+                // Subscription renewed: push end_date a period forward and
+                // clear any past_due state from failed earlier attempts
+                $event->renewSubscription();
             }
 
             // Other payment succeeded events
             // ✅ Give access to your service
+
+            return;
+        }
+
+        if ($event->is('invoice.payment_failed')) {
+            // Renewal payment failed: user enters dunning. Stripe retries the
+            // charge; invoice.payment_succeeded will clear this when it recovers
+            $event->markSubscriptionPastDue();
+
+            // 📧 Maybe email the user to update their card?
+            // billing()->portal() gives them a link to do exactly that
 
             return;
         }
@@ -406,18 +421,21 @@ class WebhooksController extends Controller
 
 Since webhooks are stateless, you can't use the `session()` or `auth()` helpers to retrieve the user who made the payment. This is a common issue with webhooks, as they are designed to be stateless and don't have access to the session or authentication data. However, Leaf Billing automatically parses the webhook payload and provides you with a `BillingEvent` instance, which gives you access to the user who made the payment, the subscription, and all other relevant details.
 
-| Method                       | Description                                                |
-| ---------------------------- | ---------------------------------------------------------- |
-| `type()`                     | Get the event type                                         |
-| `is()`                       | Check if the event is a specific type                      |
-| `tier()`                     | Get the subscription tier (if available)                   |
-| `subscription()`             | Get the current subscription (if available)                |
-| `user()`                     | Get the current user (returns auth()->user() if available) |
-| `previousSubscriptionTier()` | Get the previous subscription tier (if available)          |
-| `cancelSubscription()`       | Cancel the subscription in webhook request (if available)  |
-| `activateSubscription()`     | Activate the new subscription in webhook (if available)    |
-| `data()`                     | Get the raw event data                                     |
-| `metadata()`                 | Get the metadata from the event (if available)             |
+| Method                       | Description                                                                                              |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `id()`                       | The provider's unique event id — store handled ids to make your webhook idempotent against redeliveries  |
+| `type()`                     | Get the event type                                                                                       |
+| `is()`                       | Check if the event is a specific type                                                                    |
+| `tier()`                     | Get the subscription tier (if available)                                                                 |
+| `subscription()`             | Get the current subscription (resolved straight from the database, no auth context needed)               |
+| `user()`                     | Get the current user (returns auth()->user() if available)                                               |
+| `previousSubscriptionTier()` | Get the previous subscription tier (if available)                                                        |
+| `activateSubscription()`     | Activate the new subscription in webhook (if available)                                                  |
+| `renewSubscription()`        | Extend the subscription one billing period after a successful renewal payment (also clears past_due)     |
+| `markSubscriptionPastDue()`  | Flag the subscription as past due when a renewal payment fails (dunning)                                 |
+| `cancelSubscription()`       | Cancel the subscription — keeps access until the paid-for period ends; pass `false` to revoke instantly  |
+| `data()`                     | Get the raw event data                                                                                   |
+| `metadata()`                 | Get the metadata from the event (if available)                                                           |
 
 For more information on billing events, you can check the [Stripe](https://stripe.com/docs/api/events/types) and [PayStack](https://paystack.com/docs/payments/webhooks/#types-of-events) documentation.
 
@@ -446,7 +464,7 @@ You can check the user's billing status directly from the user object, either fr
     <p>You are subscribed to a plan</p>
 @endif
 
-@if (auth()->user()->subscription() === 'Starter')
+@if (auth()->user()->subscription()['name'] === 'Starter')
     <p>You are subscribed to the Starter plan</p>
 @endif
 ```
@@ -520,12 +538,12 @@ In the `config/billing.php` file, you can set a `trialDays` key for each tier. T
 ];
 ```
 
-You can set the trial period for each tier, and the user will be billed after the trial period is over. In your code, you can check if the user is in the trial period by checking the `isOnTrial()` method on the billing instance.
+You can set the trial period for each tier, and the user will be billed after the trial period is over. In your code, you can check if the user is in the trial period by checking the `onTrial()` method on the user object.
 
 ::: code-group
 
 ```blade:no-line-numbers [Blade]
-@if (auth()->user()->isOnTrial())
+@if (auth()->user()->onTrial())
     <p>You are on a trial period</p>
 @endif
 ```
@@ -593,6 +611,82 @@ class User extends Model {
 ```
 
 This way, you can easily check the user's subscription status, plan, and other billing information directly from the user model or any other model you add the `HasBilling` trait to. -->
+
+## Subscription status on the user object <Badge text="New" type="tip" />
+
+Beyond the basic checks, the user object understands the full subscription lifecycle:
+
+| Method                       | Description                                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| `subscription()`             | The user's latest subscription with its tier attached                                           |
+| `hasActiveSubscription()`    | True for active and trialing users, and for cancelled users still inside their paid-for period  |
+| `onTrial()`                  | True while the user's trial is running                                                          |
+| `onGracePeriod()`            | True when the user cancelled but still has access until the period they paid for ends           |
+| `hasPastDueSubscription()`   | True when a renewal payment failed and the subscription is in dunning                           |
+| `cancelSubscription()`       | Cancel — at period end by default, pass `false` to cancel immediately                           |
+| `resumeSubscription()`       | Undo a period-end cancellation while the grace period is still running                          |
+
+## Cancelling and resuming subscriptions <Badge text="New" type="tip" />
+
+When a user cancels, you almost never want to cut access on the spot — they paid for the current period. Leaf cancels at the end of the billing period by default:
+
+```php
+auth()->user()->cancelSubscription(); // keeps access until the period ends
+
+auth()->user()->cancelSubscription(false); // cancels and revokes immediately
+```
+
+Between cancelling and the period actually ending, the user is on a *grace period*: `hasActiveSubscription()` stays true and `onGracePeriod()` tells you they're on the way out — a good moment for a "changed your mind?" banner:
+
+```php
+if (auth()->user()->onGracePeriod()) {
+    // show a resume button instead of the subscribe button
+}
+```
+
+If they do change their mind before the period runs out, resume picks the subscription right back up with no new checkout:
+
+```php
+auth()->user()->resumeSubscription();
+```
+
+::: info Paystack cancellations
+Paystack always cancels at period end — disabling a subscription stops future renewals but access naturally runs to the end of the paid period. Passing `false` only affects your local records.
+:::
+
+## Switching plans <Badge text="New" type="tip" />
+
+Upgrading or downgrading a subscribed user doesn't need a new checkout — `changeSubscription()` swaps the plan on the provider using the payment method already on file:
+
+```php
+billing()->changeSubscription([
+    'id' => $tierId, // or 'name' => 'Pro'
+]);
+```
+
+On Stripe the swap happens in place with proration, so the user is credited for unused time on the old plan. On Paystack (which has no in-place plan swaps) the old subscription is disabled and a new one is created on the new plan using the saved card authorization.
+
+## The customer portal <Badge text="New" type="tip" />
+
+Card expired? User wants their invoices? Instead of building billing management UI, you can send users to your provider's hosted portal:
+
+```php
+app()->get('/billing/portal', function () {
+    response()->redirect(
+        billing()->portal('/dashboard') // where to return the user afterwards
+    );
+});
+```
+
+On Stripe this opens the [Billing Portal](https://docs.stripe.com/customer-management) (update card, view invoices, cancel); on Paystack it opens the subscription management page (update card, cancel). `portal()` returns `null` when there's nothing to manage — e.g. the user has no billing history yet.
+
+## Failed renewal payments <Badge text="New" type="tip" />
+
+When a renewal charge fails, your webhook marks the subscription past due (`invoice.payment_failed` in the generated controller does this already). From there:
+
+- `hasActiveSubscription()` returns false, so gated content locks automatically
+- `hasPastDueSubscription()` lets you show a "payment failed, update your card" notice with a `billing()->portal()` link
+- Your provider retries the charge on its own schedule; when it succeeds, `invoice.payment_succeeded` fires and `$event->renewSubscription()` restores access — nothing else to do
 
 ## Billing Middleware
 

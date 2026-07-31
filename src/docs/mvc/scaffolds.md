@@ -22,6 +22,8 @@
           <div><span class="text-neutral-500">$</span> leaf scaffold:landing-page</div>
           <div><span class="text-neutral-500">$</span> leaf scaffold:subscriptions</div>
           <div><span class="text-neutral-500">$</span> leaf scaffold:waitlist</div>
+          <div><span class="text-neutral-500">$</span> leaf scaffold:blog</div>
+          <div><span class="text-neutral-500">$</span> leaf scaffold:ai</div>
         </div>
       </div>
     </div>
@@ -155,6 +157,79 @@ These will give you:
 - Models and schema files for email collection
 - Waitlist invites and related starting points
 
+## Blog <Badge text="New" type="tip" />
+
+The blog scaffold gives you a markdown-powered blog: write posts as markdown files and Leaf renders them with your frontend setup.
+
+```bash:no-line-numbers
+leaf scaffold:blog
+```
+
+You get:
+
+- Markdown rendering (parsedown is installed for you)
+- Blog index and post pages in Blade, React, Vue, or Svelte — auto-detected from your app
+- Controllers and routes for listing and reading posts
+- A posts folder you publish to by dropping in markdown files
+
+## Contact form <Badge text="New" type="tip" />
+
+A contact form that actually sends mail, wired end to end.
+
+```bash:no-line-numbers
+leaf scaffold:contact
+```
+
+You get:
+
+- A contact page in your frontend setup
+- A controller that validates submissions and sends the message with [Leaf Mail](/docs/utils/mail) (installed for you if missing)
+- Routes wired up and ready to restyle
+
+## Legal pages <Badge text="New" type="tip" />
+
+Every product eventually needs them, and nobody enjoys writing them from a blank file.
+
+```bash:no-line-numbers
+leaf scaffold:legal
+```
+
+You get privacy policy and terms of service pages in your frontend setup, with placeholder copy structured so you (or your lawyer) only fill in the product-specific parts.
+
+## AI chat <Badge text="New" type="tip" />
+
+Scaffold a streaming AI chat powered by Claude — a full chat page with streamed responses, not just an API call.
+
+```bash:no-line-numbers
+leaf scaffold:ai
+```
+
+You get:
+
+- A chat interface in your frontend setup with streaming responses
+- Server routes that proxy to the Anthropic API
+- `ANTHROPIC_API_KEY` added to your `.env` / `.env.example` — drop your key in and visit `/ai`
+
+## Mail setup
+
+Not a feature scaffold, but a shortcut: installs [Leaf Mail](/docs/utils/mail) and generates your mail config in one step.
+
+```bash:no-line-numbers
+leaf scaffold:mail
+```
+
+## shadcn/ui <Badge text="New" type="tip" />
+
+If you're pairing React with your Leaf app, this sets up [shadcn/ui](https://ui.shadcn.com/) so you can install any of its components:
+
+```bash:no-line-numbers
+leaf scaffold:shadcn
+```
+
+```bash:no-line-numbers
+pnpm dlx shadcn@latest add switch
+```
+
 ## AI-assisted scaffolding
 
 Scaffolding pairs naturally with AI because the command gives your assistant a working feature shape to edit instead of asking it to invent every file from scratch.
@@ -176,7 +251,6 @@ If the assistant cannot access the project folder, run `leaf context` after scaf
 
 We are working on scaffolding for more features like:
 
-- Blog
 - Admin panel
 - API dashboard
 - More product starters

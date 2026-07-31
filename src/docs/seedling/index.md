@@ -85,17 +85,25 @@ php leaf greet John --greeting Hi
 
 :::
 
-You can also use this same command structure to run seedling specific tasks, such as database migrations, seeding, and more.
+Installed modules bring their commands along too: add `leafs/schema` and the `db:` commands appear, add `leafs/queue` and `queue:work` shows up, all with no wiring on your part.
 
 This makes it easy to build your application, but if you are distributing it, [check this out](#distribution)
 
 ## Writing commands
 
-All commands are stored in the `app/console` directory, and we've provided a simple example command to get you started. Since Seedling is just like Leaf MVC, you can create commands the same way you would in a Leaf MVC application. You can refer to the [writing commands documentation](/docs/mvc/commands) for more details on how to create and manage your console commands.
+All commands are stored in the `app/console` directory, and we've provided a simple example command to get you started. You can generate new commands from the console:
+
+```bash:no-line-numbers
+php leaf g:command deploy:site
+```
+
+This creates `app/console/DeploySiteCommand.php` with the signature ready to edit. Made a mess? `php leaf d:command deploy:site` deletes it again.
+
+Since Seedling is just like Leaf MVC, commands themselves work the same way they do in a Leaf MVC application: signatures, arguments, options, and interactive prompts via `sprout()->prompt()`. The [writing commands documentation](/docs/mvc/commands) covers all of it.
 
 ## Distribution
 
-If your Seedling application is intended to be distributed as a package or tool, you can set it up to be installed via composer, either in an app or globally. To do this, head over to your `bin` directory and create and rename the file in there to whatever you want your command to be called, for example, `mytool`. This way if your command is installed globally, users can run:
+If your Seedling application is intended to be distributed as a package or tool, you can set it up to be installed via composer, either in an app or globally. Your `bin` directory already contains a file named after your app (Leaf CLI names it for you during `leaf create`). Rename it to whatever you want the command to be called, for example `mytool`. This way if your command is installed globally, users can run:
 
 ```bash:no-line-numbers
 mytool greet John --greeting Hi

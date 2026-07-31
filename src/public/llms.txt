@@ -597,6 +597,35 @@ auth()->middleware('auth.guest', function () {
 
 ---
 
+## Billing (subscriptions — Stripe & Paystack)
+
+Scaffold with `leaf scaffold:subscriptions`, publish tiers with `leaf config:billing`. Cancellations default to period end (user keeps paid-for access — a "grace period").
+
+```php
+// checkout + plan management
+billing()->subscribe(['id' => $tierId]);          // returns Session; redirect to ->url()
+billing()->changeSubscription(['id' => $tierId]); // in-place swap w/ proration (Stripe); disable+recreate (Paystack)
+billing()->portal('/dashboard');                  // hosted manage-billing url (update card, invoices) or null
+
+// user subscription state (grace-period aware)
+auth()->user()->hasActiveSubscription(); // active, trialing, or cancelled-but-inside-paid-period
+auth()->user()->onTrial();
+auth()->user()->onGracePeriod();         // cancelled at period end, access still running
+auth()->user()->hasPastDueSubscription(); // renewal failed, in dunning
+auth()->user()->cancelSubscription();     // at period end; pass false for immediate
+auth()->user()->resumeSubscription();     // undo period-end cancel during grace
+
+// webhooks (stateless — no auth()/session(); Event resolves everything from the db)
+$event = billing()->webhook();            // verifies signature, returns Event
+$event->id();                             // store handled ids for idempotency
+$event->renewSubscription();              // on invoice.payment_succeeded (subscription_cycle)
+$event->markSubscriptionPastDue();        // on invoice.payment_failed
+$event->activateSubscription();           // on subscription create/update
+$event->cancelSubscription();             // keeps grace period; pass false to revoke now
+```
+
+---
+
 ## Sessions & Security
 
 ```php
@@ -656,6 +685,14 @@ leaf g:job SendEmail                 # queue job
 leaf g:template home                 # view file
 leaf scaffold:auth                   # full auth system
 leaf scaffold:subscriptions          # billing/subscriptions
+leaf scaffold:landing-page           # product homepage
+leaf scaffold:waitlist               # waitlist + access middleware
+leaf scaffold:blog                   # markdown blog
+leaf scaffold:contact                # contact form wired to leaf mail
+leaf scaffold:legal                  # privacy policy + terms pages
+leaf scaffold:ai                     # streaming Claude chat (needs ANTHROPIC_API_KEY)
+leaf scaffold:mail                   # install leaf mail + config
+leaf scaffold:shadcn                 # shadcn/ui for react apps
 ```
 
 ---

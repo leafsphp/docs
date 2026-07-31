@@ -56,6 +56,11 @@ php leaf scaffold:landing-page   # landing page for your app
 php leaf scaffold:waitlist       # waitlist capture
 php leaf scaffold:mail           # leaf mail + config
 php leaf scaffold:shadcn         # shadcn/ui for your React frontend
+php leaf scaffold:ai             # streaming AI chat powered by Claude
+php leaf scaffold:blog           # markdown blog with a sample post
+php leaf scaffold:contact        # contact form wired to leaf mail
+php leaf scaffold:legal          # editable privacy + terms pages
+php leaf scaffold:subscriptions  # billing/subscriptions (needs leaf billing)
 ```
 
 ## Database
