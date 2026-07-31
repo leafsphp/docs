@@ -76,6 +76,8 @@ Scaffolds are meant to remove repetitive setup, not hide your code. You run a co
 
 If you are using Claude, Codex, or another assistant, you can ask it to scaffold a feature and then customize the generated files around your product requirements.
 
+Every feature scaffold ships in Blade, React, Vue, and Svelte variants. Leaf detects which one to use from your app's Inertia setup, so scaffolding in a React app generates React pages without any extra flags. To pick a variant yourself, pass `--scaffold react`, `--scaffold vue`, `--scaffold svelte`, or `--scaffold default` for Blade.
+
 ## Authentication
 
 Authentication with Leaf is powered by [Leaf Auth](/docs/auth/), which gives you login, registration, sessions, password hashing, user management, and route protection.
@@ -168,9 +170,9 @@ leaf scaffold:blog
 You get:
 
 - Markdown rendering (parsedown is installed for you)
-- Blog index and post pages in Blade, React, Vue, or Svelte — auto-detected from your app
+- Blog index and post pages in your frontend setup
 - Controllers and routes for listing and reading posts
-- A posts folder you publish to by dropping in markdown files
+- A posts folder (`app/blog`) you publish to by dropping in markdown files with `title`, `date`, and `description` frontmatter
 
 ## Contact form <Badge text="New" type="tip" />
 
@@ -183,8 +185,9 @@ leaf scaffold:contact
 You get:
 
 - A contact page in your frontend setup
-- A controller that validates submissions and sends the message with [Leaf Mail](/docs/utils/mail) (installed for you if missing)
+- A controller that validates submissions and sends the message with [Leaf Mail](/docs/utils/mail) (installed and configured for you if missing)
 - Routes wired up and ready to restyle
+- `CONTACT_EMAIL` added to your `.env` as the delivery inbox, with `MAIL_SENDER_EMAIL` as the fallback
 
 ## Legal pages <Badge text="New" type="tip" />
 
@@ -194,7 +197,7 @@ Every product eventually needs them, and nobody enjoys writing them from a blank
 leaf scaffold:legal
 ```
 
-You get privacy policy and terms of service pages in your frontend setup, with placeholder copy structured so you (or your lawyer) only fill in the product-specific parts.
+You get privacy policy and terms of service pages in your frontend setup, wired to your `APP_NAME` and `CONTACT_EMAIL` env values. The copy has clearly marked EDIT ME sections, so you (or your lawyer) only fill in the product-specific parts.
 
 ## AI chat <Badge text="New" type="tip" />
 
@@ -208,7 +211,7 @@ You get:
 
 - A chat interface in your frontend setup with streaming responses
 - Server routes that proxy to the Anthropic API
-- `ANTHROPIC_API_KEY` added to your `.env` / `.env.example` — drop your key in and visit `/ai`
+- `ANTHROPIC_API_KEY` added to your `.env` / `.env.example`. Drop your key in and visit `/ai`
 
 ## Mail setup
 

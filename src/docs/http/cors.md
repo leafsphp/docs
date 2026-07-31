@@ -75,25 +75,32 @@ app()->cors([
 
 This will only allow users from `http://example.com` and `http://example.org` to access your app using the `GET` and `POST` methods. You can find a list of all available options below.
 
-If you want to allow access to all subdomains of a domain, you can use just the website domain as the origin without the `http://` or `https://`.
+Origins are matched exactly, so each configured origin must be a full origin including the scheme, like `https://example.com`. A bare domain like `example.com` or any other partial value will not match, since substring matching would also let through look-alike origins like `https://example.com.evil.com`.
+
+If you want to allow a whole family of origins, such as every subdomain of a site, you can use a regular expression written as a string:
 
 ```php
 app()->cors([
-  'origin' => 'example.com',
+  'origin' => '/^https:\/\/(.*\.)?example\.com$/',
 ]);
 ```
 
-This will allow `http://example.com`, `https://example.com`, `http://www.example.com`, and `https://some-subdomain.example.com` to access your app. Of course, you can also use a regular expression to match multiple domains. You can find a full list of options below.
+This will allow `https://example.com` and any of its subdomains, like `https://app.example.com`. You can also mix exact origins and regex strings in an array. When a specific origin matches, Leaf reflects the request's origin in the `Access-Control-Allow-Origin` header; with `origin` set to `'*'`, the header is a literal `*`.
+
+::: tip Credentials and origins
+If you set `credentials` to `true`, pair it with explicit origins rather than `'*'`. Browsers reject credentialed responses that allow every origin.
+:::
 
 ## Configuration Options
 
 The `cors()` method takes in an array of options. Here are the available options:
 
 - `origin`: Configures the **Access-Control-Allow-Origin** CORS header. Possible values:
-  * `String` - set `origin` to a specific origin. For example if you set it to `"http://example.com"` only requests from "http://example.com" will be allowed.
-  * `RegExp` - set `origin` to a regular expression pattern which will be used to test the request origin. If it's a match, the request origin will be reflected. For example the pattern `/example\.com$/` will reflect any request that is coming from an origin ending with "example.com".
-  * `Array` - set `origin` to an array of valid origins. Each origin can be a `String` or a `RegExp`. For example `["http://example1.com", /\.example2\.com$/]` will accept any request from "http://example1.com" or from a subdomain of "example2.com".
-  * `Function` - set `origin` to a function implementing some custom logic. The function takes the request origin as the first parameter and a callback (called as `callback(err, origin)`, where `origin` is a non-function value of the `origin` option) as the second.
+  * `String` - set `origin` to a specific origin, including the scheme. For example if you set it to `"https://example.com"` only requests from "https://example.com" will be allowed. Origins are matched exactly; partial values like `"example.com"` will not match.
+  * `Regex string` - set `origin` to a regular expression written as a string, which will be tested against the request origin. If it matches, the request origin will be reflected. For example `'/^https:\/\/(.*\.)?example\.com$/'` will allow "https://example.com" and any of its subdomains.
+  * `Array` - set `origin` to an array of valid origins. Each origin can be an exact origin or a regex string. For example `['https://example1.com', '/^https:\/\/(.*\.)?example2\.com$/']` will accept requests from "https://example1.com" or from "example2.com" and its subdomains.
+
+- `credentials`: Configures the **Access-Control-Allow-Credentials** CORS header. Set to `true` to pass the header, otherwise it is omitted. When enabling credentials, use explicit origins rather than `'*'`, since browsers reject credentialed responses that allow every origin.
 
 - `methods`: Configures the **Access-Control-Allow-Methods** CORS header. Expects a comma-delimited string (ex: 'GET,PUT,POST') or an array (ex: `['GET', 'PUT', 'POST']`).
 
@@ -101,13 +108,11 @@ The `cors()` method takes in an array of options. Here are the available options
 
 - `exposedHeaders`: Configures the **Access-Control-Expose-Headers** CORS header. Expects a comma-delimited string (ex: 'Content-Range,X-Content-Range') or an array (ex: `['Content-Range', 'X-Content-Range']`). If not specified, no custom headers are exposed.
 
-- `credentials`: Configures the **Access-Control-Allow-Credentials** CORS header. Set to `true` to pass the header, otherwise it is omitted.
-
 - `maxAge`: Configures the **Access-Control-Max-Age** CORS header. Set to an integer to pass the header, otherwise it is omitted.
 
 - `preflightContinue`: Pass the CORS preflight response to the next handler.
 
-- `optionsSuccessStatus`: Provides a status code to use for successful `OPTIONS` requests, since some legacy browsers (IE11, various SmartTVs) choke on `204`.
+- `optionsSuccessStatus`: The status code returned for successful preflight `OPTIONS` requests, since some legacy browsers (IE11, various SmartTVs) choke on `204`. Set it to `200` if you need to support those clients.
 
 The default configuration is the equivalent of:
 

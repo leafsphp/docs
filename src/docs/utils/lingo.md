@@ -29,6 +29,16 @@ Once installed, Lingo automatically sets up everything you need for multi-langua
 hero.title: "Bonjour le monde"
 ```
 
+You can also nest your translations instead of writing out full dot keys. Nested maps are flattened automatically, so both styles produce the same keys:
+
+```yaml:no-line-numbers
+# app/locales/fr.yml
+
+hero:
+  title: "Bonjour le monde"
+  subtitle: "Bienvenue sur notre site"
+```
+
 Now you can use the `lingo()` helper function to translate strings in your views or controllers:
 
 ```php:no-line-numbers
@@ -40,6 +50,31 @@ In Blade templates, use it the same way:
 ```blade:no-line-numbers
 <h1>@lingo('hero.title')</h1> <!-- "Bonjour le monde" -->
 ```
+
+## Configuring Lingo
+
+Lingo works out of the box, but you can tweak how it behaves by passing a config array to `lingo()->create()`:
+
+```php
+lingo()->create([
+    'locales.default' => 'en_US',
+    'locales.path' => 'app/locales',
+    'locales.strategy' => 'session',
+]);
+```
+
+::: details All config options
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `locales.default` | `en_US` | The locale used when no other locale can be determined. |
+| `locales.available` | `[]` | Filled automatically from your translation files, one locale per `.yml` file. |
+| `locales.path` | `locales` | The folder containing your translation files. |
+| `locales.strategy` | `router` | How Lingo determines the current locale: `router`, `header`, `session` or `custom`. |
+| `locales.customStrategy` | `null` | The handler class to use when the strategy is set to `custom`. |
+| `locales.cacheKey` | `__lingo.locale__` | The session key used to remember the selected locale in session mode. |
+
+:::
 
 ## Lingo Modes
 
@@ -70,6 +105,8 @@ Use header mode when building an API that needs to support multiple languages vi
 
 For example, a request with `Accept-Language: fr` uses French translations, even though the route isn't prefixed with `/fr`.
 
+Lingo parses the full header, including quality values, so a header like `en-GB,en;q=0.9,fr;q=0.8` is checked in order of preference. `en-GB` maps to `en_GB`, and if there's no exact match Lingo falls back to the plain language file (`en.yml`), then to any regional file for that language (like `en_US.yml`), before settling on your default locale.
+
 To enable header mode, you need to set the following in your `.env` file:
 
 ```env
@@ -78,12 +115,55 @@ LOCALES_STRATEGY=header
 
 ### Session Mode <Badge type="warning">Experimental</Badge>
 
-Use session mode when you want users to switch languages without changing the URL. Lingo stores the selected language in the user's session, so all subsequent requests use that language. Like header mode, session mode doesn't create language-specific routes.
+Use session mode when you want users to switch languages without changing the URL. Lingo stores the selected language in the user's session, so the choice is remembered across requests until they pick another language. Like header mode, session mode doesn't create language-specific routes.
 
 To enable session mode, you need to set the following in your `.env` file:
 
 ```env
 LOCALES_STRATEGY=session
+```
+
+### Custom Strategies <Badge type="warning">Experimental</Badge>
+
+If none of the built-in strategies fit your app, you can write your own. A strategy is a class implementing the `Leaf\Lingo\Handler` interface, which has three methods: `create()` for setup, `setCurrentLocale()` and `getCurrentLocale()`.
+
+```php
+use Leaf\Lingo\Handler;
+
+class SubdomainStrategy implements Handler
+{
+    protected static array $config = [];
+
+    public static function create(array $config): static
+    {
+        static::$config = $config;
+        return new static();
+    }
+
+    public static function setCurrentLocale(string $locale): void
+    {
+        // save the user's selected locale
+    }
+
+    public static function getCurrentLocale(): ?string
+    {
+        // determine the locale, e.g. from a subdomain like fr.example.com
+        $subdomain = explode('.', $_SERVER['HTTP_HOST'] ?? '')[0];
+
+        return in_array($subdomain, static::$config['locales.available'])
+            ? $subdomain
+            : static::$config['locales.default'];
+    }
+}
+```
+
+You can then tell Lingo to use your strategy:
+
+```php
+lingo()->create([
+    'locales.strategy' => 'custom',
+    'locales.customStrategy' => SubdomainStrategy::class,
+]);
 ```
 
 ## Switching Locales

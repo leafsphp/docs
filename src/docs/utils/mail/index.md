@@ -153,8 +153,8 @@ The `create()` method takes in an array of options that you can use to configure
 | senderEmail     | The email of the person sending the mail                                                     | No       |
 | replyToName     | Add a name for your "Reply-To" address                                                       | No       |
 | replyToEmail    | Add a "Reply-To" address                                                                      | No       |
-| cc              | The email of the person you want to carbon copy                                               | No       |
-| bcc             | The email of the person you want to blank carbon copy                                         | No       |
+| cc              | The email(s) to carbon copy. Takes a single address or an array of addresses                  | No       |
+| bcc             | The email(s) to blank carbon copy. Takes a single address or an array of addresses            | No       |
 | isHTML          | A boolean value that determines if your mail is HTML or not                                   | No       |
 | altBody         | This body can be read by mail clients that do not have HTML email capability such as mutt & Eudora. Clients that can read HTML will view the normal Body                       | No       |
 
@@ -173,6 +173,10 @@ $mail = mailer()->create([
 $mail->send();
 ```
 
+You need an active connection before sending: calling `send()` without `connect()` throws an exception telling you to connect first. If the mail server rejects a send, `send()` returns `false` and the error is saved for you to inspect. See [error handling](#error-handling) below.
+
+Leaf Mail is also safe to use in long-running processes like queue workers, since each send starts clean and recipients from earlier sends don't carry over.
+
 ## Adding Attachments
 
 You can add attachments to your mail using the `attach()` method. This method takes in the path to the file you want to attach or an array of paths to multiple files.
@@ -188,6 +192,16 @@ mailer()
     './file1.txt',
     './file2.txt'
   ]);
+```
+
+You can also pass attachments directly in the options when creating the mail, using the `attachments` key:
+
+```php
+mailer()->create([
+  'subject' => 'Leaf Mail Test',
+  'body' => 'This is a test mail from Leaf Mail using gmail',
+  'attachments' => ['./file1.txt', './file2.txt'],
+]);
 ```
 
 ## Setting default values
@@ -209,7 +223,7 @@ Some values like the sender email, and other values are common across all your m
 ]
 ```
 
-This allows you to focus on only the necessary values when creating your mails.
+This allows you to focus on only the necessary values when creating your mails. Any value you pass to `create()` overrides the default, so a mail can set its own `replyToEmail` and `replyToName` while every other mail falls back to the ones from `defaults`.
 
 ```php
 mailer()->create([
@@ -232,12 +246,14 @@ You can enable debugging for your mails using the `debug` option in the mailer c
 
 ## Error Handling
 
-In order not to flood your application with logs and errors, Leaf Mail gathers all errors thrown by the mail server, and saves them internally. You can return all errors with `$mail->errors()`
+In order not to flood your application with logs and errors, Leaf Mail gathers all errors thrown by the mail server, and saves them internally. When a send fails, `send()` returns `false` and you can return all errors with `mailer()->errors()`
 
 ```php
-if (!$mail->send(...)) {
-  return $mail->errors();
+use Leaf\Mail\Mailer;
+
+if (!$mail->send()) {
+  return mailer()->errors();
 }
 ```
 
-Note that these errors are tied to the specific mail object and are only available after the mail has been sent.
+Note that these errors are only available after a send has been attempted.

@@ -46,6 +46,54 @@ tick($date); // create a date from a DateTime object
 
 Tick is versatile and smart enough to handle dates correctly, so you can pass in any valid date string or timestamp and it will work as expected.
 
+You can also pass a timezone as the second argument. Just like day.js, this means the date string is a wall-clock time *in* that timezone — "noon in Tokyo", not "noon on my server converted to Tokyo":
+
+```php:no-line-numbers
+// a user in Tokyo schedules a meeting for noon their time
+$meeting = tick('2026-01-15 12:00:00', 'Asia/Tokyo');
+
+$meeting->format('HH:mm');        // 12:00 — noon on a Tokyo clock
+$meeting->utc()->format('HH:mm'); // 03:00 — the same instant in UTC, ready to store
+```
+
+## Working with timezones <Badge text="New" type="tip" />
+
+Timezones follow the day.js split: a timezone at construction *parses in* that zone (above), while `tz()` on an existing date *converts* the instant to another clock:
+
+```php:no-line-numbers
+// stored in the database as UTC, rendered for a user in New York
+tick($row['starts_at'], 'UTC')
+    ->tz('America/New_York')
+    ->format('MMM D, hh:mm a');
+```
+
+The full timezone API:
+
+```php:no-line-numbers
+tick()->tz('Asia/Tokyo'); // convert to Tokyo time
+tick()->tz();             // get the current timezone name
+tick()->utc();            // convert to UTC
+tick()->utcOffset();      // offset from UTC in minutes (540 for Tokyo, -240 for New York in summer)
+```
+
+Timezone names can be [any supported timezone](https://www.php.net/manual/en/timezones.php), an offset like `+0200`, or an abbreviation like `BST`. Invalid timezones throw an exception.
+
+The typical calendar-app flow is: parse the user's input in *their* timezone, store it in UTC, and convert to each viewer's timezone when rendering:
+
+```php:no-line-numbers
+// saving: user says "12:00" and their profile says Asia/Tokyo
+$startsAt = tick(request()->get('starts_at'), $user->timezone)
+    ->utc()
+    ->format('YYYY-MM-DD HH:mm:ss');
+
+// rendering: another user in Accra views the event
+tick($event['starts_at'], 'UTC')->tz('Africa/Accra')->format('HH:mm');
+```
+
+::: warning Upgrading from Leaf 4
+In earlier versions, `tick($date, $timezone)` *converted* the parsed date to the timezone instead of parsing in it. If you relied on that, move the timezone to a `tz()` call: `tick($date)->tz($timezone)`.
+:::
+
 ## Getting and Setting Dates
 
 Tick provides methods for getting and setting various parts of a date, such as the year, month, day, hour, minute, second, and millisecond. This uses a syntax where the same function can be used to get or set a value.

@@ -24,29 +24,29 @@ From there, you can use any of the Password methods.
 
 ## spice
 
-Just as the name implies, spice adds a little "spice" to users' passwords. They help make even weak passwords a pain for systems to crack by chaining additional characters to the password before encoding or decoding.
+Spice is Leaf's name for a [password pepper](https://en.wikipedia.org/wiki/Pepper_(cryptography)): a secret that lives in your application (not your database) and is mixed into every password before hashing. If an attacker dumps your database — through SQL injection, a stolen backup, or an exposed server — the hashes are useless for offline cracking without the spice, because it was never stored next to them.
 
-A weak password like `password123` when spiced can become `@X$p0#f&password123` without pressing the user to stick to "Your password should contain numbers, letters and ...".
-
-The `spice` method can both be used to set and get the password spice.
-
-This sets the password spice which will be encrypted based on the hash you set:
+Set it once, from an environment variable, when your app boots:
 
 ```php
 use Leaf\Helpers\Password;
 
-Password::spice('#@%7g0!&');
+Password::spice(_env('PASSWORD_SPICE'));
 ```
+
+Once set, every `hash()` and `verify()` call applies it automatically — you don't need to think about it again. Under the hood the password is keyed through HMAC-SHA256 with the spice as the secret before hashing, which is the standard construction for a pepper.
 
 **The next examples will assume you've added `use Leaf\Helpers\Password`**
 
-This returns the password spice:
+You can read the current spice back with `Password::spice()` (no arguments).
 
-```php
-$spice = Password::spice();
-```
+::: warning Set it once, never change it
+Changing the spice invalidates every stored password hash — users would no longer be able to log in. Treat it like an encryption key: generate a long random value, keep it in your `.env` (never commit it), and leave it alone.
+:::
 
-**Spices are automaticatically chained to all password related stuff, so after setting your spice, you don't need to worry about it.**
+::: details Upgrading from Leaf 4
+Older versions of this module chained the spice onto the password as plain text instead of HMAC-ing it. Hashes created that way still verify — `verify()` falls back to the old scheme automatically — and you can migrate them forward with [`needsRehash()`](#password-needsrehash) whenever a user logs in.
+:::
 
 ## `Password::hash()`
 
@@ -62,7 +62,7 @@ $hash = Password::hash('USER_PASSWORD', Password::BCRYPT);
 
 The default encryption hash used if none is provided is `Password::DEFAULT` which is `PASSWORD_DEFAULT`.
 
-Also, the most commonly used hashes, BCRYPT and Argon2 are accessible on the Password Helper object as `Password::BCRYPT` and `Password::ARGON2`.
+Also, the most commonly used hashes, BCRYPT and Argon2 are accessible on the Password Helper object as `Password::BCRYPT` and `Password::ARGON2` (which maps to Argon2**id**, the recommended variant).
 
 The final options array differs based on the hash you're using. See the [password algorithm constants](https://secure.php.net/manual/en/password.constants.php) for documentation on the supported options for each algorithm.
 
@@ -79,6 +79,24 @@ if (Password::verify($password, $hashedPassword)) {
 verify returns true on success and false on failure.
 
 `$hashedPassword` in the following examples refers to the stored hashed password.
+
+## `Password::needsRehash()`
+
+Password hashes go stale: PHP's default algorithm changes over time, you might raise your bcrypt cost, or a hash may still use the legacy spice scheme from Leaf 4. `needsRehash()` tells you when a stored hash should be recreated. The one moment you can do that is right after a successful login, while you're holding the plain password:
+
+```php
+if (Password::verify($password, $user['password'])) {
+    if (Password::needsRehash($password, $user['password'])) {
+        // store a fresh hash for the user
+        $newHash = Password::hash($password);
+        // ... save $newHash to the database
+    }
+
+    // handle user login here
+}
+```
+
+With this in place, your whole user base migrates itself to the newest hashing setup one login at a time — no reset emails, no downtime.
 
 ## argon 2
 
@@ -118,12 +136,12 @@ $hash = Password::bcrypt($password, $options);
 
 The options parameter is optional, but in case you want to set your own options, see the [password algorithm constants](https://secure.php.net/manual/en/password.constants.php) for documentation on the supported options for BCRYPT.
 
-### `brcyptVerify()`
+### `bcryptVerify()`
 
 This method simply checks the validity of an BCRYPT hash.
 
 ```php
-if (Password::brcyptVerify($password, $hashedPassword)) {
+if (Password::bcryptVerify($password, $hashedPassword)) {
     // handle user login here
 }
 ```

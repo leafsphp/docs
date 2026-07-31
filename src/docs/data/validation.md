@@ -80,6 +80,17 @@ It takes in an array of messages where the key is the rule name and the value is
 
 If you want to capitalize the first letter of the placeholder, you just need to capitalize the first letter of the placeholder. For example, `{Field}` will display the field name with the first letter capitalized.
 
+### Per-field messages
+
+Sometimes a global message is too broad. You may want a friendly message for the `min` rule on the password field without changing what `min` says everywhere else. You can do this by prefixing the rule name with the field name and a dot:
+
+```php
+form()->addMessage('password.min', 'Your password should be a little longer');
+form()->addMessage('username.required', 'Pick a username first');
+```
+
+Per-field messages only apply to that field, so `password.min` changes the `min` message for the password field while every other field keeps the global `min` message. Plain rule keys like `'min' => '...'` remain global.
+
 ```php
 request()->validator()->message([
   'required' => '{Field} is required',
@@ -106,7 +117,7 @@ Leaf Form comes with a number of built-in rules that you can use to validate dat
 
 | Rule | Description |
 | --- | --- |
-| `email` | The field under validation must be formatted as an e-mail address. |
+| `email` | The field under validation must be a valid e-mail address. This uses PHP's own email validation, so addresses with any valid TLD are accepted. |
 | `text` | The field under validation must contain only alphabetic characters and spaces. |
 | `textOnly` | The field under validation must contain only alphabetic characters (no-spaces). |
 | `alpha` | The field under validation must contain only alphabetic characters. |
@@ -120,19 +131,33 @@ Leaf Form comes with a number of built-in rules that you can use to validate dat
 | `max` | The field under validation must have a maximum value. |
 | `between` | The field under validation must be between two values in length. |
 | `match` | The field under validation must match a value. |
+| `matchesvalueof` | The field under validation must match the value of another field in the data being validated, e.g. `matchesvalueof<password>`. |
 | `contains` | The field under validation must contain a value. |
 | `in` | The field under validation must be included in a given list of values. |
-| `ip` | The field under validation must be a valid IP address. |
+| `ip` | The field under validation must be a valid IP address (v4 or v6). Octet ranges are checked, so `999.1.1.1` fails. |
 | `ipv4` | The field under validation must be a valid IPv4 address. |
-| `ipv6` | The field under validation must be a valid IPv6 address. |
-| `url` | The field under validation must be a valid URL. |
+| `ipv6` | The field under validation must be a valid IPv6 address, including compressed forms like `::1`. |
+| `url` | The field under validation must be a valid URL, validated with PHP's own URL validation. |
 | `domain` | The field under validation must be a valid domain. |
 | `creditCard` | The field under validation must be a valid credit card number. |
 | `phone` | The field under validation must be a valid phone number. |
 | `uuid` | The field under validation must be a valid UUID. |
 | `slug` | The field under validation must be a valid slug. |
-| `json` | The field under validation must be a valid JSON string. |
+| `json` | The field under validation must be a valid JSON string. The value is actually parsed, so invalid JSON fails no matter how JSON-like it looks. |
 | `regex` | The field under validation must match a given regular expression. |
+
+## Matching another field
+
+A common validation is checking that two fields have the same value, like a password and its confirmation. The `matchesvalueof` rule compares a field against another field in the same data set being validated:
+
+```php
+$validatedData = request()->validate([
+  'password' => 'string|min:8',
+  'confirmPassword' => 'matchesvalueof<password>',
+]);
+```
+
+If `confirmPassword` doesn't have the same value as `password`, validation fails with a clear error message.
 
 ## Optional Fields
 
@@ -147,6 +172,8 @@ $validatedData = request()->validate([
   'description' => 'optional|string|min:8'
 ]);
 ```
+
+Only `null`, an empty string or an empty array count as "missing" here. Falsy values like `false`, `0` and `'0'` are real values, so a checkbox that submits `false` or a quantity of `0` will still be validated normally instead of failing a required check.
 
 ## Passing parameters to rules
 
@@ -165,6 +192,8 @@ request()->validate([
   'bio' => 'between:[18,30]',
 ]);
 ```
+
+Rule names are case-insensitive, so `Min:10` and `min:10` behave the same. The parameters you pass keep their case though, which means `contains<Foo>` looks for `Foo` and not `foo`.
 
 ## Custom Validation Rules
 
@@ -202,6 +231,23 @@ $validatedData = request()->validate([
 ```
 
 :::
+
+Validator functions receive up to four arguments: the value being validated, the rule parameter, the field name and the full set of data being validated. The last one makes cross-field rules possible, like checking that an end date comes after a start date:
+
+```php
+request()->validator()->rule('afterStart', function ($value, $param, $fieldName, array $dataSource) {
+  return strtotime($value) > strtotime($dataSource['start_date'] ?? '');
+}, '{Field} must be after start_date');
+
+...
+
+$validatedData = request()->validate([
+  'start_date' => 'date',
+  'end_date' => 'date|afterStart',
+]);
+```
+
+You only need to declare the arguments you use, so existing rules that take just the value (or the value and parameter) keep working without changes.
 
 ## Validating Indexed Arrays
 

@@ -149,6 +149,34 @@ response = requests.post(url, headers=headers, json=data)
 
 This will send a POST request to `/submit` with the CSRF token in the `X-CSRF-Token` header. The CSRF module will automatically verify the token and allow the request to go through if the token is valid.
 
+## Single-page applications
+
+If your frontend is an SPA, you usually don't need to pass the token around manually. When CSRF protection is enabled, Leaf sets a JavaScript-readable `XSRF-TOKEN` cookie (with `SameSite=Lax`, and marked secure on https). Clients like Axios and Inertia read this cookie automatically and echo it back as an `X-XSRF-TOKEN` header on every request, which Leaf accepts during verification. That means an Axios-based frontend gets CSRF protection with no extra setup.
+
+If you'd rather not have the cookie set, you can turn it off with the `cookie` key in your published config:
+
+```php
+'cookie' => false,
+```
+
+## Rotating tokens
+
+By default, Leaf generates one CSRF token per session and keeps it for the lifetime of that session. This plays nicely with multiple open tabs, since every tab shares the same valid token.
+
+If you want stricter protection, you can make tokens single-use with the `rotate` key in your published config. With rotation on, every verified request throws away the used token and issues a fresh one:
+
+```php
+'rotate' => true,
+```
+
+The trade-off: if a user has a form open in one tab and submits something in another, the first tab's token becomes stale and its submission will fail. Rotation is stricter, but per-session tokens are friendlier for multi-tab apps.
+
+Separately from rotation, you can issue a fresh token yourself with `regenerate()`. We recommend doing this when a user logs in, so the token from the anonymous session doesn't carry over:
+
+```php
+csrf()->regenerate(); // returns the new token
+```
+
 ## Displaying the generated token
 
 The CSRF module also provides a `token()` method that returns the CSRF token. You can use this method to display the token in your views or to send the token to your frontend.
@@ -236,6 +264,32 @@ return [
 
     /*
     |----------------------------------------------------------------
+    | Rotate tokens
+    |----------------------------------------------------------------
+    |
+    | When set to true, tokens become single-use: every verified
+    | request discards the used token and issues a fresh one. The
+    | default (false) keeps one token per session, which is
+    | friendlier for apps with multiple open tabs.
+    |
+    */
+    'rotate' => false,
+
+    /*
+    |----------------------------------------------------------------
+    | SPA cookie
+    |----------------------------------------------------------------
+    |
+    | When enabled, Leaf sets a JS-readable XSRF-TOKEN cookie that
+    | clients like Axios echo back as an X-XSRF-TOKEN header, so
+    | SPAs work without manual token handling. Set to false to
+    | disable the cookie.
+    |
+    */
+    'cookie' => true,
+
+    /*
+    |----------------------------------------------------------------
     | Configure missing token message
     |----------------------------------------------------------------
     |
@@ -274,7 +328,7 @@ return [
 ];
 ```
 
-In this file, you can enable or disable CSRF protection, change the secret key, exclude routes from CSRF protection, and configure the allowed HTTP methods. You can also customize the messages shown when the CSRF token is not found or invalid.
+In this file, you can enable or disable CSRF protection, change the secret key, exclude routes from CSRF protection, turn on token rotation, disable the SPA cookie, and configure the allowed HTTP methods. You can also customize the messages shown when the CSRF token is not found or invalid. Route exceptions can include parameters, so `/webhooks/{service}` will match `/webhooks/stripe` and any other path in that shape.
 
 ## Handling Failed CSRF Verification
 

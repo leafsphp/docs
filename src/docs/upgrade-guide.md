@@ -89,6 +89,21 @@ Leaf UI (reactive PHP components) is retired in Leaf 5. Published packages stay 
 
 `_env()` now parses your environment once and caches it for the rest of the request (this is part of why env reads are dramatically faster in v5). If your code changes environment values at runtime with `putenv()` and expects `_env()` to pick them up, that no longer happens. Read runtime values with `getenv()` directly instead.
 
+## Timezones in `tick()` now parse instead of convert <Badge type="danger" text="BREAKING" />
+
+`tick('2026-01-15 12:00:00', 'Asia/Tokyo')` now means "noon *as experienced in Tokyo*" (day.js semantics) instead of "parse noon in the server timezone, then convert to Tokyo". If you relied on the old conversion behavior, move the timezone to a `tz()` call:
+
+```php
+tick($date, $timezone);       // Leaf 4: converted — Leaf 5: parses IN the timezone
+tick($date)->tz($timezone);   // Leaf 5: converts, same as the old behavior
+```
+
+Single-argument `tick()` calls are unaffected. See [working with timezones](/docs/utils/date#working-with-timezones) for the new API (`tz()`, `utc()`, `utcOffset()`).
+
+## Password spice is now a real pepper <Badge type="warning" text="BEHAVIOR CHANGE" />
+
+`Password::spice()` now keys passwords through HMAC-SHA256 instead of concatenating the spice as text. New hashes use the stronger scheme automatically; hashes created on Leaf 4 still verify through a fallback, and [`Password::needsRehash()`](/docs/data/encryption#password-needsrehash) migrates them forward on login. `Password::ARGON2` now maps to Argon2id (was Argon2i), and the broken `Password::MD5` constant is removed.
+
 ## New in Leaf 5
 
 Not required for upgrading, but worth adopting once you're on v5:

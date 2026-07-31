@@ -372,6 +372,12 @@ if (!$data) {
 }
 ```
 
+**Validation notes (Form module):**
+- Custom rules receive the full validated data set as a 4th argument: `form()->rule('name', function ($value, $param, $field, $data) { ... })`.
+- `matchesvalueof:field` compares against another field within the validated data (e.g. `password_confirmation => 'matchesvalueof:password'`).
+- Per-field error messages use `'field.rule'` keys: `form()->messages(['email.email' => 'Enter a valid email'])`.
+- `form()->submit()` is deprecated - validate, then run your own logic.
+
 ---
 
 ## Response
@@ -626,6 +632,38 @@ $event->cancelSubscription();             // keeps grace period; pass false to r
 
 ---
 
+## Dates (leafs/date — dayjs-style)
+
+```php
+tick();                                    // now
+tick('2026-01-15 12:00:00');               // parse a date string
+tick($str, 'Asia/Tokyo');                  // parse as wall-clock time IN that zone (dayjs semantics)
+tick($utc, 'UTC')->tz('America/New_York'); // tz() CONVERTS an existing instant to another zone
+tick()->utc();                             // convert to UTC (store dates in UTC)
+tick()->utcOffset();                       // minutes from UTC
+tick()->format('YYYY-MM-DD HH:mm:ss');     // dayjs tokens, NOT php date() tokens
+tick()->add(1, 'month')->startOf('day');
+tick($date)->fromNow();                    // "2 hours ago"
+```
+
+Calendar flow: parse in the user's zone → `->utc()` to store → `->tz(viewerZone)` to render.
+
+---
+
+## Redis (leafs/redis)
+
+```php
+redis()->set('key', 'value', 60);   // optional ttl in seconds
+redis()->get('key');                // false if missing
+redis()->increment('hits');         // atomic counters (also decrement)
+redis()->expire('key', 3600); redis()->ttl('key');
+redis()->hSet('user:1', 'name', 'x'); // any other redis command passes through to phpredis/predis
+```
+
+Uses phpredis when the extension is loaded, falls back to predis/predis automatically.
+
+---
+
 ## Sessions & Security
 
 ```php
@@ -640,6 +678,8 @@ app()->csrf();        // Basic app
 // MVC: run `leaf install csrf` - auto-enabled after that
 // In Blade forms: @csrf
 // In JS requests: X-CSRF-Token header
+// 'rotate' => true config makes tokens single-use (opt-in); csrf()->regenerate() issues a fresh token manually
+// SPAs: Leaf sets an XSRF-TOKEN cookie automatically and accepts the X-XSRF-TOKEN header; disable with 'cookie' => false
 
 // XSS - Anchor sanitizes all Leaf input automatically
 // Manual sanitization:
@@ -694,6 +734,17 @@ leaf scaffold:ai                     # streaming Claude chat (needs ANTHROPIC_AP
 leaf scaffold:mail                   # install leaf mail + config
 leaf scaffold:shadcn                 # shadcn/ui for react apps
 ```
+
+Feature scaffolds ship blade/react/vue/svelte variants - auto-detected from the app's inertia setup, or forced with `--scaffold react|vue|svelte|default`.
+
+---
+
+## Module Notes
+
+- **CORS**: allowed origins match exactly or by regex (e.g. `'/^https:\/\/.*\.myapp\.com$/'`) - never by substring.
+- **Sitemap**: set `Sitemap::$maxAge` (seconds) to control how long a generated sitemap is cached before it is rebuilt.
+- **Lingo**: plug in a custom locale-detection strategy (a `Lingo\Handler` subclass) via the `locales.customStrategy` config.
+- **Mail**: `cc` and `bcc` accept arrays of addresses.
 
 ---
 

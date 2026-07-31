@@ -270,6 +270,8 @@ db()->transaction(function ($db) {
 });
 ```
 
+Transactions work on every PDO driver Leaf DB supports, so you can use them the same way on MySQL, SQLite, Postgres, and SQL Server.
+
 If anything in the function fails, Leaf will automatically rollback every change that has been made in the database till that point and return `false`. You can get the associated error using the `errors()` method.
 
 ```php

@@ -128,6 +128,38 @@ fetch('/submit', {
 
 This will send a POST request to `/submit` with the CSRF token in the `X-CSRF-Token` header. The CSRF module will automatically verify the token and allow the request to go through if the token is valid.
 
+## Single-page applications
+
+If you're building an SPA, you usually don't need to pass the token around manually. When CSRF protection is enabled, Leaf sets a JavaScript-readable `XSRF-TOKEN` cookie (with `SameSite=Lax`, and marked secure on https). Clients like Axios and Inertia read this cookie automatically and echo it back as an `X-XSRF-TOKEN` header on every request, which Leaf accepts during verification. In practice, that means an Axios-based frontend gets CSRF protection with zero extra setup.
+
+If you'd rather not have the cookie set, you can turn it off:
+
+```php
+app()->csrf([
+  'cookie' => false,
+]);
+```
+
+## Rotating tokens
+
+By default, Leaf generates one CSRF token per session and keeps it for the lifetime of that session. This plays nicely with multiple open tabs, since every tab shares the same valid token.
+
+If you want stricter protection, you can make tokens single-use. With rotation on, every verified request throws away the used token and issues a fresh one:
+
+```php
+app()->csrf([
+  'rotate' => true,
+]);
+```
+
+The trade-off: if a user has a form open in one tab and submits something in another, the first tab's token becomes stale and its submission will fail. Rotation is stricter, but per-session tokens are friendlier for multi-tab apps.
+
+Separately from rotation, you can issue a fresh token yourself with `regenerate()`. We recommend doing this when a user logs in, so the token from the anonymous session doesn't carry over:
+
+```php
+csrf()->regenerate(); // returns the new token
+```
+
 ## Displaying the generated token
 
 The CSRF module also provides a `token()` method that returns the CSRF token. You can use this method to display the token in your views or to send the token to your frontend.
@@ -161,6 +193,14 @@ You can exclude routes from CSRF protection by passing an array of routes to the
 ```php
 app()->csrf([
   'except' => ['/my-route', '/my-other-route'],
+]);
+```
+
+Routes with parameters work too. An entry like `/webhooks/{service}` will match any request path in that shape, so `/webhooks/stripe` and `/webhooks/paystack` are both excluded.
+
+```php
+app()->csrf([
+  'except' => ['/webhooks/{service}'],
 ]);
 ```
 

@@ -42,6 +42,14 @@ To regenerate your sitemap, you can:
     sitemap()->generate();
     ```
 
+If you'd rather have your sitemap refresh itself on a schedule, you can set a max age in seconds. When the existing `sitemap.xml` is older than this value, Leaf regenerates it on the next request:
+
+```php:no-line-numbers
+\Leaf\Sitemap::$maxAge = 86400; // regenerate after a day
+```
+
+Leaving `$maxAge` unset keeps the default behavior: the sitemap is generated once and only refreshed when you do so manually.
+
 ## Auto Sitemaps
 
 Since sitemaps automatically use your Leaf routes, you can add some config options directly to your routes to customize how they appear in the sitemap. For example:
@@ -58,28 +66,13 @@ app()->get('/about', [
 ]);
 ```
 
-If you have a dynamic route like `/blog/{slug}`, you can also add the sitemap config to the route, you can tell the sitemap generator to replace the `{slug}` parameter with actual values from your model if you have one defined:
+You can pass `changefreq`, `priority` and `lastmod` here. A `lastmod` entry only shows up in the sitemap when you provide one, since guessing a modification date would mislead search engines. `priority` defaults to `0.5`, and an explicit `0` is respected for pages you want crawled last.
 
-```php
-app()->get('/blog/{slug}', [
-    'sitemap' => [
-        'changefreq' => 'weekly',
-        'priority' => 0.8,
-        'model' => \App\Models\Post::class, // or 'posts' if you don't have a model but have a table named 'posts',
-        'parameter' => 'slug', // the parameter in the route to replace with the model value,
-        'exclude' => [
-            'status' => 'draft' // you can also exclude certain items from the sitemap based on model attributes
-        ]
-    ],
-    'BlogController@show'
-]);
-```
-
-This is typically a faster way to generate sitemaps for dynamic routes, as you don't have to manually add a datasource and fetch the data yourself, the sitemap generator will handle it for you. So you will only need to manually add a datasource if you want to do more complex link generation like adding multiple URLs for the same route, or if you want to add URLs that are not defined as routes in your application.
+Dynamic routes like `/blog/{slug}` need real URLs before they can appear in your sitemap. You provide those with a datasource.
 
 ## Datasources
 
-Your application may have dynamic routes, eg: `/blog/{slug}`. To include these routes in your sitemap, you can create a custom datasource that fetches the necessary data from your database and adds it to the sitemap. Here's an example of how to create a custom datasource for a blog:
+Your application may have dynamic routes, eg: `/blog/{slug}`. These routes are left out of your sitemap entirely unless you map them to real URLs, since a raw pattern like `/blog/{slug}` is not a page search engines can visit. To include these routes in your sitemap, you can create a custom datasource that fetches the necessary data from your database and adds it to the sitemap. Here's an example of how to create a custom datasource for a blog:
 
 ```php
 sitemap()->source(function() {

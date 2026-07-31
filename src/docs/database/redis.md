@@ -141,6 +141,42 @@ You can get all keys in Redis using the `keys()` method.
 $keys = redis()->keys();
 ```
 
+## Counters <Badge text="New" type="tip" />
+
+Redis counters are atomic, which makes them perfect for rate limiting, view counts, and quick stats — no read-modify-write races:
+
+```php:no-line-numbers
+redis()->increment('page:views');           // 1
+redis()->increment('page:views', 10);       // 11
+redis()->decrement('page:views', 5);        // 6
+```
+
+Both return the new value after the operation. A missing key starts from 0.
+
+## Key lifetimes <Badge text="New" type="tip" />
+
+You can already set a ttl when writing (`set('key', 'value', 60)`), but you can also manage expiry on existing keys:
+
+```php:no-line-numbers
+redis()->expire('cached:report', 3600); // expire in an hour
+redis()->ttl('cached:report');          // seconds remaining
+```
+
+`ttl()` returns `-1` when the key has no expiry, and `-2` when the key doesn't exist.
+
+## Every other redis command <Badge text="New" type="tip" />
+
+Leaf Redis gives first-class methods to the operations you'll reach for daily, but the whole redis command set is available — any method Leaf doesn't define is passed straight to the underlying client:
+
+```php:no-line-numbers
+redis()->hSet('user:1', 'name', 'Leaf'); // hashes
+redis()->hGet('user:1', 'name');
+redis()->lPush('queue:jobs', $payload);  // lists
+redis()->sAdd('online', $userId);        // sets
+```
+
+These calls go to whichever client is installed (phpredis or Predis), so check the matching client's documentation for exact signatures and return types.
+
 ## Flushing Redis
 
 You can flush all keys in Redis using the `flush()` method.
