@@ -22,7 +22,28 @@ composer require leafs/cache
 
 :::
 
-Once the cache module is installed, you can start using it in your application. For now, Leaf's cache only supports file-based caching, so you don't need to do any configuration.
+Once the cache module is installed, you can start using it in your application. File-based caching is supported out of the box, so you don't need to do any configuration.
+
+::: details Cache configuration
+If you need to change where or how data is cached, you can pass a config array when initializing the cache. Your config is merged over the defaults (and over any `config/cache.php` values in MVC apps):
+
+```php
+(new \Leaf\Cache())->init([
+    'default' => 'file',
+    'stores' => [
+        'file' => [
+            'driver' => 'file',
+            'path' => __DIR__ . '/storage/framework/cache',
+        ],
+    ],
+    'prefix' => 'leaf_cache',
+]);
+```
+
+By default, cached files are saved to `storage/framework/cache`: MVC apps resolve this through `StoragePath('framework/cache')`, and outside MVC it's created under your working directory.
+
+The `default` key picks which store from `stores` is used, and it is resolved through Illuminate's cache manager. The file driver works out of the box; other drivers also resolve through Illuminate but need their own bindings set up before they can be used.
+:::
 
 ## Using the Cache
 
@@ -44,6 +65,8 @@ In the above example, the `cache()` function takes three parameters:
 - **Cache Key**: A unique identifier for the cached data. This can be any string, but it's a good practice to use a descriptive name that reflects the data being cached.
 - **Cache Duration**: The duration (in seconds) for which the data should be cached. In this example, the data will be cached for 1 hour (60 seconds * 60 minutes).
 - **Callback Function**: A closure that contains the logic to fetch the data if it's not already cached. This function will only be executed if the cache is empty or has expired.
+
+Note that only closures are evaluated lazily. If you pass a plain value, it is cached as-is, even if the string happens to match a function name like `'strtolower'`.
 
 ## How it Works
 

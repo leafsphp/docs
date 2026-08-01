@@ -353,6 +353,36 @@ $videoUrl = storage()->createFile(
 );
 ```
 
+Uploads are public by default, but you can pass a `visibility` option to keep a file private, and files uploaded as private stay private:
+
+```php
+storage()->createFile(
+    withBucket('exports/report.csv'),
+    $csvContent,
+    ['visibility' => 'private']
+);
+```
+
+`createFile()` writes to the exact path you give it, so `withBucket('docs/note.txt')` creates `docs/note.txt` in your bucket.
+
+::: details Configuring connections manually
+If you configure a bucket connection yourself instead of using the `.env` values above, the connection expects an `endpoint` key for the bucket URL:
+
+```php
+\Leaf\FS\Bucket::connections([
+    's3' => [
+        'endpoint' => 'https://something.r2.cloudflarestorage.com',
+        'key' => '...',
+        'secret' => '...',
+        'bucket' => 'bucket-name',
+        'region' => 'auto',
+    ],
+]);
+```
+
+A connection missing any of `endpoint`, `key`, `secret` or `bucket` throws an exception that names the missing key.
+:::
+
 We are working on a 100% interchangeable API for local and cloud storage, so you can use `withBucket()` anywhere you would normally use a local path, however, some methods may not be supported yet. We would love to hear your feedback on this feature.
 
 ## Working with Folders

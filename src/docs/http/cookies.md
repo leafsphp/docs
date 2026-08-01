@@ -55,7 +55,7 @@ The `withCookie()` method takes in 3 parameters:
 
 ```php
 cookie()->set('name', 'Fullname', [
-  'expire' => time() + 3600,
+  'expires' => time() + 3600,
   'path' => '/',
   'domain' => 'example.com',
   'secure' => true,
@@ -65,6 +65,38 @@ cookie()->set('name', 'Fullname', [
 ```
 
 The `set()` method allows you to set cookies with more advanced options like expiration time, path, domain, secure, httponly, and samesite which are all optional.
+
+You can also set multiple cookies at once by passing an array of names and values. The options you pass apply to every cookie in the array.
+
+```php
+cookie()->set([
+  'name' => 'Fullname',
+  'age' => 20
+], '', [
+  'path' => '/',
+  'secure' => true
+]);
+```
+
+If you just need a cookie with an expiry time, `simpleCookie()` takes a name, a value and an expiry which can be a timestamp or a `strtotime()`-style string like `'7 days'` or `'1 hour'`. It defaults to 7 days if you don't pass one.
+
+```php:no-line-numbers
+cookie()->simpleCookie('name', 'Fullname', '7 days');
+```
+
+## Setting Cookie Defaults
+
+Instead of repeating options like `path` and `domain` on every cookie, you can set them once with `setDefaults()`. Any option you don't pass to `set()` falls back to these defaults.
+
+```php
+cookie()->setDefaults([
+  'path' => '/',
+  'secure' => true,
+  'httponly' => true
+]);
+```
+
+This matters for deleting cookies too: a cookie is only removed if it's deleted with the same path and domain it was set with, and Leaf uses your configured defaults when deleting. Setting your defaults once (especially `path => '/'`) keeps setting and deleting consistent.
 
 ## Reading Cookies
 
@@ -114,5 +146,5 @@ cookie()->delete('name');
 You may also choose to delete all your cookies, for instance if you detect an authentication or authorization breech in your application. You can do this using the `deleteAll()` method on Leaf cookies.
 
 ```php:no-line-numbers
-cookie()->deteleAll();
+cookie()->deleteAll();
 ```

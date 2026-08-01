@@ -46,7 +46,7 @@ $object = request()->flash('object');
 $array = request()->flash('array');
 ```
 
-The item will be removed from the session after it has been displayed.
+Flash items come back exactly as they were set, without any HTML escaping, so flashed arrays like old form input are returned unchanged. The item will be removed from the session after it has been displayed.
 
 ## Manually removing a flash item
 

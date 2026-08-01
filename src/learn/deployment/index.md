@@ -32,15 +32,27 @@ RewriteRule . index.php [L]
 
 Without this, things like routing, request handling, and error pages won’t work as expected. Make sure to set up URL rewriting correctly on your server to ensure your Leaf app runs smoothly.
 
+## One-command deploys
+
+For Fly.io and Render, Leaf CLI prepares (and where possible runs) the whole deployment for you:
+
+```bash
+php leaf deploy              # deploy to Fly.io
+php leaf deploy --to render  # prepare a Render deployment
+```
+
+The command writes a production Dockerfile plus the provider's config into your project, so the same app deploys the same way anywhere Docker runs. See the guides below for the details of each provider.
+
 ## Deployment Guides
 
 Okay, now let’s get your app live! 🚀
 
 | Provider                                                        | Description                                                |
 | :-------------------------------------------------------------- | :--------------------------------------------------------- |
+| [Fly.io](/learn/deployment/flyio/)              | One-command deploys with `php leaf deploy`                 |
+| [Render](/learn/deployment/render/)             | Free-plan git-based deploys, prepared by the Leaf CLI      |
 | [Digital Ocean](/learn/deployment/digitalocean/) | Deploying LeafMVC projects to a new Digital Ocean droplet  |
 | [Heroku](/learn/deployment/heroku/)              | Deploying a base Leaf project to Heroku using the Leaf CLI |
-| [Fly.io](/learn/deployment/flyio/)              | Deploying a base Leaf application to Fly.io                |
 
 ## Deploying Vite/Inertia Apps
 

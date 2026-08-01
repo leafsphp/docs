@@ -1,58 +1,55 @@
-# Deploying a LeafMVC Application to Fly.io
+# Deploying to Fly.io
 
-::: warning Version support
-Version support. This tutorial assumes use of LeafPHP >= 3.0 and PHP >=7.0.
-:::
-
-## What Are We Building
-
-This experiment will guide you deploying your first LeafMVC / base Leaf application to Fly.io. A majority
-of the same steps apply to Leaf v3 core as well. This guide uses docker to deploy your application.
-You do not need to have docker installed on your local machine to follow this guide. Neither do you
-need to have prior knowledge of docker.
-
-::: details (New to Fly.io?)
-Fly.io transforms containers into micro-VMs that run on their hardware.
-:::
+Fly.io runs your app in small VMs close to your users, and it is the fastest way to get a Leaf app live from your terminal. Leaf CLI handles the whole flow with one command.
 
 ## Prerequisites
 
-This tutorial assumes you have the following:
+- A [Fly.io account](https://fly.io/app/sign-up)
+- The [fly CLI](https://fly.io/docs/flyctl/install/) installed and logged in (`fly auth login`)
 
-- A Leaf application
-- A Fly.io account
-- The [flyctl cli tool](https://fly.io/docs/hands-on/install-flyctl/) installed
+That's it. You don't need Docker installed or any Docker knowledge; Fly builds the image remotely.
 
-## 1. Set up docker in your Leaf application
+## Deploy
 
-You can clone the [Fly.io starter template](https://github.com/cr34t1ve/leaf-fly-io-template) to get started.
-
-```bash
-git clone https://github.com/cr34t1ve/leaf-fly-io-template.git
-```
-
-This template has a `Dockerfile` and a `fly.toml` file already set up for you.
-
-## 2. Deploy your application
-
-Navigate to your application's root directory and run the following command:
+From your app's root directory:
 
 ```bash
-fly deploy
+php leaf deploy
 ```
 
-This command will build your docker image and deploy it to Fly.io.
+On the first run, this:
 
-After setting up your application, you can then run the following to launch your application:
+1. Writes the deployment files into your project (a production `Dockerfile`, `fly.toml` and the server config they need)
+2. Creates the app on Fly and deploys it
+
+Your app name comes from `APP_NAME` in your `.env`, and the region from `APP_PROD_REGION` (defaulting to `iad`). You can override both:
 
 ```bash
-fly launch
+php leaf deploy --name my-unique-app --region lhr
 ```
 
-You can then visit your application at the URL provided.
+::: details App names are global
+Fly app names are unique across all of Fly, not just your account. If your name is taken, the deploy fails with a message telling you to pick another with `--name`.
+:::
 
-## Conclusion
+Running `php leaf deploy` again after the first deploy ships your latest changes to the existing app. The generated Dockerfile also builds your JavaScript assets (Vite, Inertia and friends), so there is no separate build step.
 
-You have successfully deployed your LeafMVC application to Fly.io. You can now scale your application
+## Production secrets
 
-Experiment by **[Desmond Sofua](https://github.com/cr34t1ve)**
+Your `.env` file is never uploaded with your app. After deploying, the CLI lists the keys your app likely needs in production and prints the command to set them:
+
+```bash
+fly secrets set APP_KEY= DB_PASSWORD=
+```
+
+Fill in the values and your app restarts with them available as environment variables.
+
+## Useful follow-ups
+
+```bash
+fly logs        # tail your app's logs
+fly status      # see machine state
+fly scale count 1 --yes   # keep one machine always running
+```
+
+By default, Fly stops machines when idle and starts them on the next request. Keeping one machine running avoids cold starts on low-traffic apps.

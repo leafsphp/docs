@@ -84,6 +84,8 @@ To get session data, you can use the `get()` method. This method takes three par
 - a default value to return if the key doesn't exist
 - a boolean to determine if the data should be sanitized (default is `true`)
 
+Session values are stored exactly as you set them. Sanitization happens on read: `get()` HTML-escapes the returned data by default, and passing `false` as the third parameter returns the raw value instead.
+
 ```php
 $firstName = session()->get('firstName');
 $firstName = session()->get('firstName', 'John');
@@ -175,7 +177,7 @@ You can easily add a new item to the array using the same `set()` method:
 session()->set('user.location', 'Everywhere');
 ```
 
-This will add a location key to the user array in the session. This saves you from having to get the user array, adding the location key, and setting it back to the session.
+This will add a location key to the user array in the session. This saves you from having to get the user array, adding the location key, and setting it back to the session. Dot notation works at any depth, so keys like `user.preferences.notifications.email` are fine too.
 
 It also works for the other methods like `get()`, `has()` and `delete()`.
 

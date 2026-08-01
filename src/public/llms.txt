@@ -664,11 +664,35 @@ Uses phpredis when the extension is loaded, falls back to predis/predis automati
 
 ---
 
+## Errors & Crash Reports (leafs/exception v5 — "Leaf Crash")
+
+Debug mode shows a crash screen with stack + code excerpts + user journey; production shows a clean page while the report still reaches logs/reporters. The journey is recorded automatically: router requests, ALL db/model queries, log lines, cache misses, fetch() HTTP calls, view renders.
+
+```php
+// add your own journey steps (about 1us each, always-on safe)
+crash()->leaveCrumb('coupon applied', 'action', ['total_after' => $total]);
+
+// file a report WITHOUT an exception — for flows that "work" but return wrong data
+crash()->capture('total is 0 but cart has items', [
+    'level' => 'warning',
+    'peeks' => ['order' => $order],   // bounded, redacted variable snapshots
+]);
+
+crash()->span('db: heavy report', fn () => $query->run()); // perf spans, ride on reports
+crash()->reportTo($reporter);   // Reporter interface: log file, webhook, Alchemy Cloud
+```
+
+Secrets (password/token/auth/cookie/card keys) are stripped when reports are built — never rely on hiding them at display time. Query crumbs record prepared SQL only, never bindings.
+
+---
+
 ## Sessions & Security
 
 ```php
 session()->set('key', 'value');
 session()->get('key', 'default');
+session()->get('key', null, false); // third arg false = skip HTML-escaping on read (values are stored raw)
+session()->set('user.prefs.theme', 'dark'); // dot notation nests to any depth (get/has/delete too)
 session()->retrieve('key');   // get and delete (flash value)
 session()->delete('key');
 session()->clear();
@@ -740,11 +764,15 @@ Feature scaffolds ship blade/react/vue/svelte variants - auto-detected from the 
 ---
 
 ## Module Notes
+- Deploy: `php leaf deploy` deploys to Fly.io in one command (scaffold + launch/deploy, secrets hint after); `php leaf deploy --to render` prepares Dockerfile + render.yaml for git-based Render deploys. Flags: --name, --region. Unknown providers exit 1.
 
 - **CORS**: allowed origins match exactly or by regex (e.g. `'/^https:\/\/.*\.myapp\.com$/'`) - never by substring.
 - **Sitemap**: set `Sitemap::$maxAge` (seconds) to control how long a generated sitemap is cached before it is rebuilt.
 - **Lingo**: plug in a custom locale-detection strategy (a `Lingo\Handler` subclass) via the `locales.customStrategy` config.
 - **Mail**: `cc` and `bcc` accept arrays of addresses.
+- **Cache**: `cache()` = store, `cache('key')` = get, `cache('key', ttl, value)` = remember (existing value wins), `cache('key', value)` = store forever. Only closures are lazily evaluated - plain strings are cached literally even if they match a function name.
+- **S3**: uploads accept a `'visibility'` option ('private' stays private; default 'public'); bucket connections are configured with the `'endpoint'` key.
+- **Cookie**: call `Cookie::setDefaults(['path' => '/'])` once - deletion uses the configured path/domain, so defaults keep set and unset consistent. `simpleCookie()` accepts a strtotime string ('7 days') or timestamp expiry.
 
 ---
 

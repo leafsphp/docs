@@ -4,23 +4,60 @@
 
 It's super hard to get everything right the first time, trust us, we know! This could be due to typos, wrong logic, or other unforeseen issues from external services. In such cases, it's important to handle errors gracefully and provide useful feedback to users.
 
-## Error Screens
+## The crash screen
 
-When an error occurs in your Leaf application, you want to make sure that you see a friendly error message with a trace instead of a raw error dump. This error screen gives you some context about the error and what might have caused it.
+When something breaks during development, Leaf shows a crash report instead of a raw error dump. It carries the stack with code excerpts, but also the story around the crash: the request, the signed-in user, and the steps that led there.
 
-<img src="https://github.com/user-attachments/assets/52f044bb-bb9b-4fdd-a3d7-835ac7e1f085" alt="Error Page" width="100%" class="border border-gray-500 rounded-lg">
+<img src="/images/crash/crash-screen.png" alt="Leaf crash screen" width="100%" class="border border-gray-500 rounded-lg">
 
-It also adds information about your application's current context:
+Every report includes:
 
-- Application environment (development, production, etc.)
-- Request information (server data, method, headers, etc.)
-- Files, cookies, session info, and more.
+- The exception, with vendor frames collapsed and code excerpts for every frame
+- A fingerprint that identifies this kind of crash across occurrences
+- Request, app, and signed-in user context
+- The user journey: what the app was doing before it broke
+- One-click actions: copy the report as markdown, open it in Claude or ChatGPT, download it as JSON, replay the request as cURL, or jump to the crash line in your editor
 
-Which is why we recommend that you always turn off error reporting in production, so you don't accidentally leak sensitive information about your application.
+The screen follows your system theme, works with no internet connection, and secrets (passwords, tokens, cookies, card numbers) are stripped before the report is even built, so nothing that renders or ships can leak them.
+
+## The user journey
+
+Leaf records what your app is doing as it runs: requests from the router, every database query (from both `db()` and your models), log lines, cache misses, outgoing HTTP calls from `fetch()`, and view renders. When a crash happens, that trail is right on the report.
+
+<img src="/images/crash/crash-journey.png" alt="User journey and context on the crash screen" width="100%" class="border border-gray-500 rounded-lg">
+
+You can add your own steps for the moments only your code understands:
+
+```php:no-line-numbers
+crash()->leaveCrumb('coupon applied', 'action', ['total_after' => $total]);
+```
+
+Clicking a step on the crash screen expands it in place: the attached data as a collapsible tree, when it happened, and which function recorded it. Recording a step costs about a microsecond, so the journey is always on without slowing your app down.
+
+## Checkpoints: debugging without an exception
+
+Some bugs never throw. The checkout "works" and the total is somehow zero. Drop a checkpoint into the flow and Leaf files a full report, exactly like a crash: stack trace starting at your call site, journey, context, and any variables you want to see.
+
+```php:no-line-numbers
+if ($order['total'] <= 0 && count($order['items']) > 0) {
+    crash()->capture('order total is 0 but cart has items', [
+        'level' => 'warning',
+        'peeks' => ['order' => $order],
+    ]);
+}
+```
+
+`peeks` snapshots variables safely: depth, size, and string limits are applied when the value is captured, and secrets are masked like everywhere else.
+
+## Debugging with AI
+
+The "Open with AI" menu on the crash screen builds a briefing from your project's `.leaf/CONTEXT.md`, the user journey, and the crash itself with code, then opens it in Claude or ChatGPT with one click. You can also copy the prompt or download the whole report as JSON to use with any tool.
+
+This works noticeably better than pasting a stack trace: the journey shows the AI what the user did, not just where the code stopped.
 
 ## Disabling Error Reporting
 
-While Leaf's detailed error reporting is super useful during development, it's not something you want to use in production, as it can expose sensitive information about your application. In Leaf 5, setting `APP_ENV=production` turns detailed debug output off by default. You can also disable error reporting explicitly by setting the `debug` config to `false` or by setting the `APP_DEBUG` environment variable to `false` in Leaf MVC.
+While Leaf's detailed crash screen is super useful during development, it's not something you want in production, as it can expose information about your application. In Leaf 5, setting `APP_ENV=production` turns debug output off by default. You can also disable it explicitly with the `debug` config or the `APP_DEBUG` environment variable in Leaf MVC.
 
 ::: code-group
 
@@ -36,7 +73,7 @@ APP_DEBUG=false
 
 :::
 
-When you set `debug` to `false`, Leaf will automatically turn off error reporting and display a custom error page to users. You can customize this page using Leaf's `setErrorHandler()` method.
+With `debug` off, users see a clean branded error page with no internals, and the full report still goes to your logs and any reporting services you attach. You can replace the page with your own using `setErrorHandler()`:
 
 ```php:no-line-numbers
 app()->setErrorHandler(function () {
