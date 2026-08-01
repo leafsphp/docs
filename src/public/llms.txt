@@ -764,9 +764,9 @@ Feature scaffolds ship blade/react/vue/svelte variants - auto-detected from the 
 ---
 
 ## Module Notes
-- Deploy: `php leaf deploy` deploys to Fly.io in one command (scaffold + launch/deploy, secrets hint after); `php leaf deploy --to render` prepares Dockerfile + render.yaml for git-based Render deploys. Flags: --name, --region. Unknown providers exit 1.
+- Deploy: `php leaf deploy` deploys to Fly.io in one command (scaffold + launch/deploy, secrets hint after); `php leaf deploy --to render` prepares Dockerfile + render.yaml for git-based Render deploys. Flags: --name, --region. Works for both MVC (public/ docroot) and single-file lite apps (app-root docroot, with vendor/composer/.env denied). Unknown providers exit 1.
 
-- **CORS**: allowed origins match exactly or by regex (e.g. `'/^https:\/\/.*\.myapp\.com$/'`) - never by substring.
+- **CORS**: allowed origins must be full origins (scheme included) and match exactly, or be a regex string (e.g. `'/^https:\/\/.*\.myapp\.com$/'`).
 - **Sitemap**: set `Sitemap::$maxAge` (seconds) to control how long a generated sitemap is cached before it is rebuilt.
 - **Lingo**: plug in a custom locale-detection strategy (a `Lingo\Handler` subclass) via the `locales.customStrategy` config.
 - **Mail**: `cc` and `bcc` accept arrays of addresses.

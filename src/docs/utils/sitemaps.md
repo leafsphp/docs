@@ -1,5 +1,5 @@
 <!-- markdownlint-disable no-inline-html -->
-# Sitemap Generator <Badge type="warning">Beta</Badge>
+# Sitemap Generator
 
 Modern search engines can crawl and index your website without any setup, but having a sitemap can help search engines understand your website structure and improve how your pages are discovered and indexed. This is especially important for larger websites with many pages, or for websites that have a lot of dynamic content that may not be easily discoverable by search engines.
 

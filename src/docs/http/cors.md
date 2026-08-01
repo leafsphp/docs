@@ -75,7 +75,7 @@ app()->cors([
 
 This will only allow users from `http://example.com` and `http://example.org` to access your app using the `GET` and `POST` methods. You can find a list of all available options below.
 
-Origins are matched exactly, so each configured origin must be a full origin including the scheme, like `https://example.com`. A bare domain like `example.com` or any other partial value will not match, since substring matching would also let through look-alike origins like `https://example.com.evil.com`.
+Origins are matched exactly, so each configured origin must be a full origin including the scheme, like `https://example.com`. A bare domain like `example.com` or any other partial value will not match. Matching the full origin is what keeps look-alike domains from being treated as yours.
 
 If you want to allow a whole family of origins, such as every subdomain of a site, you can use a regular expression written as a string:
 

@@ -306,7 +306,7 @@ if ($uploaded) {
 }
 ```
 
-## Using S3 or other cloud storage services <StatusBadge label="WIP" tone="wip" title="Cloud storage is being made native to Leaf 5" description="S3-compatible storage works today through the Leaf S3 add-on. We are refining the Leaf 5 integration so local and cloud paths share one predictable API, with less provider-specific setup and broader method support." meta="Status: available, API evolving" href="#working-with-folders" link-text="Continue the guide" />
+## Using S3 or other cloud storage services
 
 Leaf FS now supports using Amazon s3 and other cloud storage services that support the S3 protocol. This allows you to switch from local storage to cloud storage without changing any code. To get started, you need to configure your cloud storage settings in the `.env` file.
 
@@ -383,7 +383,57 @@ If you configure a bucket connection yourself instead of using the `.env` values
 A connection missing any of `endpoint`, `key`, `secret` or `bucket` throws an exception that names the missing key.
 :::
 
-We are working on a 100% interchangeable API for local and cloud storage, so you can use `withBucket()` anywhere you would normally use a local path, however, some methods may not be supported yet. We would love to hear your feedback on this feature.
+### What works with bucket paths
+
+`withBucket()` produces a path you can hand to the same storage methods you already use, so moving a file from local disk to cloud storage is a change of destination rather than a change of code:
+
+```php
+$path = withBucket('reports/q1.csv');
+
+storage()->createFile($path, $csv);
+storage()->exists($path);       // true
+storage()->read($path);         // the csv back
+storage()->write($path, $csv2); // replace it
+storage()->size($path);         // bytes, or pass 'kb', 'mb'
+storage()->lastModified($path); // unix timestamp
+storage()->mimeType($path);
+storage()->delete($path);
+```
+
+`request()->upload()` takes a bucket path as its destination too.
+
+::: details Working with the bucket directly
+`Leaf\FS\Bucket` is available when you want bucket operations without going through a storage path, and it's the only way to reach bucket-side copies, moves and listings:
+
+```php
+use Leaf\FS\Bucket;
+
+Bucket::exists('reports/q1.csv');
+Bucket::read('reports/q1.csv');
+Bucket::write('reports/q1.csv', $csv);
+Bucket::delete('reports/q1.csv');
+Bucket::copy('a.txt', 'b.txt');
+Bucket::move('a.txt', 'archive/a.txt');
+Bucket::size('a.txt');
+Bucket::lastModified('a.txt');
+Bucket::mimeType('a.txt');
+Bucket::list('reports', true);  // recursive
+```
+
+Every method returns `false` (or an empty array for `list()`) instead of throwing when something goes wrong, and the reason lands in `Bucket::errors()`.
+:::
+
+::: details Methods that are still local-only
+Directory operations (`createFolder()`, `listFolder()` and friends), `copy()` and `move()` between a bucket and local disk, and the streaming helpers `chunks()` and `readRange()` still expect local paths. Reach for `Leaf\FS\Bucket` directly if you need bucket-side copies, moves or listings:
+
+```php
+use Leaf\FS\Bucket;
+
+Bucket::copy('a.txt', 'b.txt');
+Bucket::move('a.txt', 'archive/a.txt');
+Bucket::list('reports', true); // recursive
+```
+:::
 
 ## Working with Folders
 
@@ -587,13 +637,4 @@ if ($linked) {
 }
 ```
 
-<!-- ## Working with Streams
 
-Streaming is a way to read and write data from a source or to a destination. Leaf provides a simple way to work with streams using the `stream()` function.
-
-```php
-$stream = storage()->stream('path/to/file.txt');
-
-$stream->write('Hello, world!');
-$stream->read();
-``` -->

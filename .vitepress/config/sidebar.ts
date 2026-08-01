@@ -63,7 +63,7 @@ const sidebar = [
       { text: '<i class="si si-alert"></i>Error Handling', link: '/docs/routing/error-handling' },
       { text: '<i class="si si-box"></i>Dependency Injection', link: '/docs/config/container' },
       // { text: 'Logging', link: '/docs/utils/logging' },
-      { text: '<i class="si si-gauge"></i>Using Swoole', link: '/docs/swoole' },
+      { text: '<i class="si si-gauge"></i>Async PHP (Swoole/ReactPHP)', link: '/docs/swoole' },
       { text: '<i class="si si-container"></i>Using Docker', link: '/docs/docker' },
       // { text: '<i class="si si-alert"></i>Debugging', link: '/docs/routing/error-handling' },
       // { text: 'Leaf Devtools', link: '/docs/utils/devtools' },

@@ -319,7 +319,7 @@ We are working on adding more properties/modifiers to the columns, just to make 
 
 Migration histories keep track of changes to your database, making it easy to roll back if needed. Unlike other frameworks, **Leaf MVC handles this automatically**: you don't need to create migrations just to track history.
 
-The history itself lives in your database, in a small `leaf_schema_history` table that Leaf manages for you. Every environment tracks the state that was actually applied to *its* database, so staging, production and every developer's machine each diff against their own reality, with no shared files to keep in sync. (Apps upgrading from Leaf 4 are migrated automatically: the old `storage/database` snapshots are imported into the history table on your first `db:migrate`.)
+Leaf 5 changed where that history lives. It used to be snapshot files in `storage/database`, which meant your machine, staging and production each trusted their own local copy. It's now a small `leaf_schema_history` table in the database being migrated, so every environment tracks what was actually applied to it. Upgrading takes no work on your part: the first `leaf db:migrate` imports any old snapshots and clears out the directory.
 
 ```yml [users.yml]
 columns:
@@ -360,7 +360,7 @@ leaf db:rollback --step=3
 This command will roll back the last three versions applied to your database.
 
 ::: info Your schema files stay put
-Rolling back changes your *database*, not your schema files. They stay exactly as you wrote them, which means they are now ahead of the database. Run `leaf db:migrate` to re-apply them, or edit them to match the rolled-back state if the rollback is meant to stick.
+Rolling back changes your *database*, not your schema files, so they stay exactly as you wrote them and are now ahead of the database. Run `leaf db:migrate` to re-apply them, or edit them to match the rolled-back state if the rollback is meant to stick. (Leaf 4 swapped the file itself for the older snapshot, so this is worth knowing if you're used to that.)
 :::
 
 ------

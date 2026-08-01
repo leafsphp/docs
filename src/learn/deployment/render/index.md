@@ -20,6 +20,12 @@ This writes two things into your project:
 - A production `Dockerfile` (shared with the Fly setup, it also builds your JavaScript assets)
 - A `render.yaml` blueprint describing your service: docker runtime, free plan and a health check
 
+Render picks its default region unless you choose one (`oregon`, `virginia`, `ohio`, `frankfurt` or `singapore`):
+
+```bash
+php leaf deploy --to render --region frankfurt
+```
+
 Commit and push them:
 
 ```bash

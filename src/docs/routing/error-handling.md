@@ -4,7 +4,7 @@
 
 It's super hard to get everything right the first time, trust us, we know! This could be due to typos, wrong logic, or other unforeseen issues from external services. In such cases, it's important to handle errors gracefully and provide useful feedback to users.
 
-## The crash screen
+## The crash screen <Badge type="tip" text="NEW" />
 
 When something breaks during development, Leaf shows a crash report instead of a raw error dump. It carries the stack with code excerpts, but also the story around the crash: the request, the signed-in user, and the steps that led there.
 
@@ -20,7 +20,7 @@ Every report includes:
 
 The screen follows your system theme, works with no internet connection, and secrets (passwords, tokens, cookies, card numbers) are stripped before the report is even built, so nothing that renders or ships can leak them.
 
-## The user journey
+## The user journey <Badge type="tip" text="NEW" />
 
 Leaf records what your app is doing as it runs: requests from the router, every database query (from both `db()` and your models), log lines, cache misses, outgoing HTTP calls from `fetch()`, and view renders. When a crash happens, that trail is right on the report.
 
@@ -34,7 +34,7 @@ crash()->leaveCrumb('coupon applied', 'action', ['total_after' => $total]);
 
 Clicking a step on the crash screen expands it in place: the attached data as a collapsible tree, when it happened, and which function recorded it. Recording a step costs about a microsecond, so the journey is always on without slowing your app down.
 
-## Checkpoints: debugging without an exception
+## Checkpoints: debugging without an exception <Badge type="tip" text="NEW" />
 
 Some bugs never throw. The checkout "works" and the total is somehow zero. Drop a checkpoint into the flow and Leaf files a full report, exactly like a crash: stack trace starting at your call site, journey, context, and any variables you want to see.
 
@@ -49,7 +49,7 @@ if ($order['total'] <= 0 && count($order['items']) > 0) {
 
 `peeks` snapshots variables safely: depth, size, and string limits are applied when the value is captured, and secrets are masked like everywhere else.
 
-## Debugging with AI
+## Debugging with AI <Badge type="tip" text="NEW" />
 
 The "Open with AI" menu on the crash screen builds a briefing from your project's `.leaf/CONTEXT.md`, the user journey, and the crash itself with code, then opens it in Claude or ChatGPT with one click. You can also copy the prompt or download the whole report as JSON to use with any tool.
 
@@ -171,7 +171,7 @@ That's it! Leaf will no longer log errors or exceptions for your app.
 
 ## Rescue Helper
 
-Leaf provides a shorter way to handle exceptions using the `rescue()` function. This function automatically catches any exceptions thrown within the provided callback and logs them if logging is enabled, and then returns a default value. This way, you can use try-catch with a more inline syntax.
+Leaf provides a shorter way to handle exceptions using the `rescue()` function. It runs your callback, catches anything thrown inside it, reports the exception to Crash, and returns a default value. This way, you can use try-catch with a more inline syntax.
 
 ```php
 $someRiskyOperation = function () {
@@ -181,77 +181,36 @@ $someRiskyOperation = function () {
 $someValue = rescue($someRiskyOperation, 'default value');
 ```
 
-In this example, if `$someRiskyOperation()` throws an exception, the `rescue()` function will catch it, log it if logging is enabled, and return `'default value'` instead. This is particularly useful for handling operations that may fail, such as database queries or API calls, without having to write verbose try-catch blocks, and is still useful even when you don't have to return a value.
+In this example, if `$someRiskyOperation()` throws an exception, `rescue()` catches it and returns `'default value'` instead. This is particularly useful for operations that may fail, such as database queries or API calls, without having to write verbose try-catch blocks, and is still useful even when you don't have to return a value.
 
 ```php
-rescue(function() {
+rescue(function () {
     // Code that may throw an exception
 });
 ```
 
-In this case, if the callback throws an exception, it will be caught and logged if logging is enabled, and no visible error will be shown to the user. This is useful for important operations that you want to attempt, but don't want to disrupt the user experience if they fail. For example, sending an email notification or logging user activity.
+Here the exception is caught and no error reaches the user. This suits work you want to attempt but never let break the page, like sending a notification email or recording activity.
 
-## Leaf DevTools <Badge type="warning" text="BETA" />
-
-Leaf provides DevTools to give you more insight into your app than you can get from the error page. It comes with an interface that shows you information about your Leaf application, and a light-weight library that you can use to interact with the devtools frontend.
-
-<img src="https://user-images.githubusercontent.com/26604242/235434208-82ccdd87-6289-43fd-b93b-5fa09e6acd20.jpg" alt="Error Page" width="100%" class="border border-gray-500 rounded-lg">
-
-To get started with the DevTools, you need to install the Leaf DevTools module:
-
-::: code-group
-
-```bash:no-line-numbers [Leaf CLI]
-leaf install devtools
-```
-
-```bash:no-line-numbers [Composer]
-composer require leafs/devtools
-```
-
-:::
-
-After installing the devtools module, you need to add the hook to your app. This will register the devtools routes and allow your Leaf app to communicate with the DevTools. You can do this by adding this line to your app root.
-
-```php{5}
-<?php
-
-require __DIR__ . "/vendor/autoload.php";
-
-\Leaf\DevTools::install();
-
-...
-```
-
-From there, you can access the DevTools by visiting `<your-app-url>/leafDevTools`. The DevTools will show you information about your app, like the routes, the request and response, and the environment variables. You can also use the DevTools to interact with your app, like making requests to your app and seeing the response.
-
-### Server Debug Logs
-
-When working with JavaScript, you can use `console.log` to log information to the console. In PHP, you can use `echo` or `var_dump` to log information to the browser. However, this can be a bit cumbersome, especially when you're working with APIs or other server-side code.
-
-Leaf provides a `log` function that you can use to log information to the server. This is useful for debugging your app in a non-invaisive way.
+If you need the exception itself to build the fallback, pass a closure as the default:
 
 ```php
-\Leaf\DevTools::console('This data should be logged in the console');
+$user = rescue(
+    fn () => $api->fetchUser($id),
+    fn ($e) => ['name' => 'Unknown', 'error' => $e->getMessage()]
+);
 ```
 
-Adding this line to your code will log the data to the Leaf DevTools console without affecting the output of your app. This allows you to debug your app while going through the normal flow of your app.
+### Rescued exceptions still reach you
+
+A rescued exception is handled, not invisible. Leaf reports it at `warning` level and drops a breadcrumb into [the user journey](#the-user-journey), so it reaches your reporters and shows up as context on the crash page if something else fails later in the same request.
+
+That matters because swallowed exceptions are how bugs hide. The empty catch block that "fixed" a problem in staging is the one you want to see when a real failure happens next to it.
+
+If a particular `rescue()` is noisy and you genuinely don't want it recorded, pass `false` as the third argument:
 
 ```php
-\Leaf\DevTools::console('This data should be logged in the console');
-\Leaf\DevTools::console('This is a warning', 'warn');
-\Leaf\DevTools::console('This is an error', 'error');
-\Leaf\DevTools::console('This is an info message', 'info');
-\Leaf\DevTools::console('This is a debug message', 'log');
+rescue(fn () => $cache->warm(), null, false);
 ```
-
-These will output different colored messages in the console:
-
-<img src="https://github.com/leafsphp/devtools/assets/26604242/195e15b1-d063-4cf2-a817-5a60e8ba184d" alt="Console page" width="100%" class="border border-gray-500 rounded-lg">
-
-::: warning Uninstall DevTools before deploying
-Leaf will only allow access to the DevTools when the app is in a development environment, but not every hosting provider sets the environment to `production` automatically. To be safe, we recommend uninstalling the DevTools module before deploying your app.
-:::
 
 ## Maintenance Mode
 

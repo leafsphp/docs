@@ -7,7 +7,7 @@ Getting your Leaf app live should be as simple as building it. This guide walks 
 Before deploying your app, make sure you’ve covered the following:
 
 - **[Environment Variables](/docs/config/environment)**: Set up your environment variables for production.
-- **[Debug Mode](/docs/routing/error-handling)**: Turn off debug mode and disable Leaf DevTools.
+- **[Debug Mode](/docs/routing/error-handling)**: Turn off debug mode so errors aren't rendered to your users.
 
 These are meant to ensure your app runs smoothly in production, without exposing sensitive information or running unnecessary debugging tools.
 
@@ -41,7 +41,9 @@ php leaf deploy              # deploy to Fly.io
 php leaf deploy --to render  # prepare a Render deployment
 ```
 
-The command writes a production Dockerfile plus the provider's config into your project, so the same app deploys the same way anywhere Docker runs. See the guides below for the details of each provider.
+The command writes a production Dockerfile plus the provider's config into your project. It works for both full Leaf MVC apps and single-file Leaf apps, pointing the web server at the right place for each and keeping your `.env`, `vendor` and composer files out of the browser's reach. Because the Dockerfile is provider-agnostic, you can also take it to any other platform that deploys Docker images.
+
+See the guides below for the details of each provider.
 
 ## Deployment Guides
 

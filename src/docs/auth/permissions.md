@@ -1,4 +1,4 @@
-# Roles and Permissions <Badge type="warning" text="BETA" />
+# Roles and Permissions
 
 <!-- markdownlint-disable no-inline-html -->
 
@@ -117,6 +117,15 @@ if ($success) {
 ```
 
 Once a user has been assigned a role, they can now perform actions that are allowed by that role. For instance, if a user has the `admin` role, they can perform all the actions that the `admin` role has permissions for.
+
+`assign()` returns `true` once the role is saved. Roles have to exist before they can be given out, so assigning one you never registered with `createRoles()` returns `false` and raises an error telling you which role it was, rather than reporting success and leaving the user with nothing:
+
+```php
+$user->assign('admin');   // true
+$user->assign('adminn');  // false, "Cannot assign unknown role(s): adminn"
+```
+
+The same applies to an array: if any role in it is unregistered, nothing is assigned.
 
 ## Checking a User's Role
 

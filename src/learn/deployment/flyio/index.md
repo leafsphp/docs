@@ -34,6 +34,10 @@ Fly app names are unique across all of Fly, not just your account. If your name 
 
 Running `php leaf deploy` again after the first deploy ships your latest changes to the existing app. The generated Dockerfile also builds your JavaScript assets (Vite, Inertia and friends), so there is no separate build step.
 
+::: details Single-file apps work too
+If your app is a single `index.php` at the project root rather than an MVC app with a `public` directory, the generated config serves it from the right place automatically. Your `.env`, `vendor` directory and composer files stay unreachable from the browser either way.
+:::
+
 ## Production secrets
 
 Your `.env` file is never uploaded with your app. After deploying, the CLI lists the keys your app likely needs in production and prints the command to set them:

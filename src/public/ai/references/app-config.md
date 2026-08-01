@@ -34,7 +34,7 @@ In Blade:
 
 ### Production Checklist
 - Set all environment variables for production
-- Turn off debug mode and disable Leaf DevTools
+- Turn off debug mode so errors aren't rendered to your users
 
 ---
 

@@ -453,10 +453,6 @@ Keep the process open and then perform an action in your application that trigge
 
 You can check the user's billing status directly from the user object, either from your controller or your view. The user object is automatically injected into your views, so you can easily check the user's billing status in your views as well. The most basic use-cases are to check if the user is subscribed to a plan or if the user is on a trial period.
 
-<!-- @if (auth()->user()->isSubscribedTo('Starter'))
-    <p>You are subscribed to the Starter plan</p>
-@endif -->
-
 ::: code-group
 
 ```blade:no-line-numbers [Blade]
@@ -464,7 +460,7 @@ You can check the user's billing status directly from the user object, either fr
     <p>You are subscribed to a plan</p>
 @endif
 
-@if (auth()->user()->subscription()['name'] === 'Starter')
+@if (auth()->user()->isSubscribedTo('Starter'))
     <p>You are subscribed to the Starter plan</p>
 @endif
 ```
@@ -693,13 +689,13 @@ When a renewal charge fails, your webhook marks the subscription past due (`invo
 Leaf billing comes with a middleware that you can use to protect your routes based on specific conditions. This is a list of the billing middleware available:
 
 | Middleware                         | Description                                                           |
-| ---------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------- |
+| ---------------------------------- | --------------------------------------------------------------------- |
 | `billing.subscribed`               | Protect a route to only allow subscribed users                        |
 | `billing.subscribed:plan-name`     | Protect a route to only allow users subscribed to a specific plan     |
 | `billing.not-subscribed`           | Protect a route to only allow users who aren't subscribed             |
 | `billing.not-subscribed:plan-name` | Protect a route to only allow users not subscribed to a specific plan |
-| <!--                               | `billing.trial`                                                       | Protect a route to only allow users on a trial period |
-| `billing.not-trial`                | Protect a route to only allow users not on a trial period             | -->                                                   |
+| `billing.trial`                    | Protect a route to only allow users on a trial period                 |
+| `billing.not-trial`                | Protect a route to only allow users not on a trial period             |
 
 You can use these middlewares in your routes like this:
 
@@ -732,21 +728,54 @@ app()->get('/protected', [
 ]);
 ```
 
-<!-- ## Billing Currency
+## Billing Currency
 
-PayStack is only available in Africa, and relies on local currency. Stripe is available globally and supports multiple currencies, so Leaf's billing allows you to set your currency in your `.env` file.
+Your customers are charged in one currency, set per provider in `config/billing.php`. The quickest way to set it is through your `.env`:
 
 ```txt:no-line-numbers
 BILLING_CURRENCY=GHS
+BILLING_CURRENCY_SYMBOL=GH₵
 ```
 
-For your applications, you may need to display a different currency from the actual purchase currency. While we advise against this, you may run into geolocation issues which may make this necessary. Leaf Billing allows you to set up a display currency with your own convertion.
+Paystack works in African currencies while Stripe is global, so if you use both, each connection can override this with its own `STRIPE_CURRENCY` / `PAYSTACK_CURRENCY`.
+
+### Showing a different currency
+
+Sometimes you need to show prices in a currency you don't charge in. We'd generally advise against it, since customers get charged an amount they didn't see, but geolocation and audience expectations sometimes make it necessary. Set a display currency and the rate to convert by:
 
 ```txt:no-line-numbers
 BILLING_CURRENCY_DISPLAY=USD
 BILLING_CURRENCY_DISPLAY_SYMBOL=$
 BILLING_CURRENCY_DISPLAY_CONVERSION=0.07
-``` -->
+```
+
+Every tier then carries both prices, so your pricing page can show one while you charge the other:
+
+```php
+$tier = billing()->tier('price_starter');
+
+$tier['price'];           // 100      charged, in GHS
+$tier['currency'];        // 'ghs'
+$tier['displayPrice'];    // 7        shown, in USD
+$tier['displayCurrency']; // 'usd'
+$tier['formattedPrice'];  // '$7'
+```
+
+The conversion is a fixed rate you control, not a live exchange feed, so update it when your pricing changes. Leave `BILLING_CURRENCY_DISPLAY` unset and prices display in the currency you charge in, which is the safer default.
+
+::: details Formatting amounts yourself
+`Leaf\Billing\Currency` is available anywhere you need to format an amount outside a tier:
+
+```php
+use Leaf\Billing\Currency;
+
+Currency::code();        // 'ghs'      what you charge in
+Currency::symbol();      // 'GH₵'
+Currency::displayCode(); // 'usd'      what you show
+Currency::convert(100);  // 7.0
+Currency::format(100);   // '$7'
+```
+:::
 
 ## Using raw provider instances
 

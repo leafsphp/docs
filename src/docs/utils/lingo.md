@@ -1,5 +1,5 @@
 <!-- markdownlint-disable no-inline-html -->
-# Multi-locale support <Badge type="warning">BETA</Badge>
+# Multi-locale support
 
 English is the most widely used language on the web, but it's far from the only one. Supporting multiple languages helps you reach a global audience. Leaf Lingo provides an official solution for adding multi-language support to your Leaf applications, without restructuring your code or adding middleware.
 
@@ -99,7 +99,7 @@ The routes are generated based on your translation files. If you have `de.yml` a
 
 It also redirects requests to base paths (like `/home`) to the default language route (e.g., `/en/home`). Set your default language in `.env` with `APP_LOCALE=...`.
 
-### Header Mode <Badge type="warning">Experimental</Badge>
+### Header Mode
 
 Use header mode when building an API that needs to support multiple languages via the `Accept-Language` header. In this mode, Lingo doesn't create language-specific routes. Instead, it determines the language from the `Accept-Language` header sent by the client.
 
@@ -113,7 +113,7 @@ To enable header mode, you need to set the following in your `.env` file:
 LOCALES_STRATEGY=header
 ```
 
-### Session Mode <Badge type="warning">Experimental</Badge>
+### Session Mode
 
 Use session mode when you want users to switch languages without changing the URL. Lingo stores the selected language in the user's session, so the choice is remembered across requests until they pick another language. Like header mode, session mode doesn't create language-specific routes.
 
@@ -123,7 +123,7 @@ To enable session mode, you need to set the following in your `.env` file:
 LOCALES_STRATEGY=session
 ```
 
-### Custom Strategies <Badge type="warning">Experimental</Badge>
+### Custom Strategies
 
 If none of the built-in strategies fit your app, you can write your own. A strategy is a class implementing the `Leaf\Lingo\Handler` interface, which has three methods: `create()` for setup, `setCurrentLocale()` and `getCurrentLocale()`.
 

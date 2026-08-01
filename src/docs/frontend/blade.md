@@ -463,7 +463,7 @@ You can use the `@Meta` directive to add SEO meta tags to your Blade views.
 ])
 ``` -->
 
-<!-- ### `@method`
+### `@method`
 
 The `@method` directive generates a hidden input field with the value of the method you specify. This is useful when you want to use methods other than `GET` and `POST` in your forms.
 
@@ -477,13 +477,13 @@ The `@method` directive generates a hidden input field with the value of the met
   @method('DELETE')
   ...
 </form>
-````
+```
 
-### `@submit`
+<!-- ### `@submit`
 
 The `@submit` directive allows you to wrap an item with a form that submits when the item is clicked. This is useful when you want to redirect to a post route when an item is clicked.
 
-````blade:no-line-numbers
+```blade:no-line-numbers
 @submit('DELETE', '/posts/1')
   <button>Delete</button>
 @endsubmit

@@ -89,7 +89,6 @@ php leaf key:generate      # generate/regenerate your app key
 php leaf link              # symlink the storage directory
 php leaf config:publish    # publish config files to your project
 php leaf interact          # interact with your app in a REPL-style session
-php leaf devtools:install  # install Leaf devtools
 ```
 
 ## Frontend
