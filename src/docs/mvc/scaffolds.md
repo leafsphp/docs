@@ -185,7 +185,7 @@ leaf scaffold:contact
 You get:
 
 - A contact page in your frontend setup
-- A controller that validates submissions and sends the message with [Leaf Mail](/docs/utils/mail) (installed and configured for you if missing)
+- A controller that validates submissions and sends the message with [Leaf Mail](/docs/utils/mail/) (installed and configured for you if missing)
 - Routes wired up and ready to restyle
 - `CONTACT_EMAIL` added to your `.env` as the delivery inbox, with `MAIL_SENDER_EMAIL` as the fallback
 
@@ -215,7 +215,7 @@ You get:
 
 ## Mail setup
 
-Not a feature scaffold, but a shortcut: installs [Leaf Mail](/docs/utils/mail) and generates your mail config in one step.
+Not a feature scaffold, but a shortcut: installs [Leaf Mail](/docs/utils/mail/) and generates your mail config in one step.
 
 ```bash:no-line-numbers
 leaf scaffold:mail
