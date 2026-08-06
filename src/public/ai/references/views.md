@@ -55,8 +55,8 @@ response()->render('welcome', ['name' => 'Michael', 'items' => $items]);
 All BareUI templates have access to `$template`:
 
 ```php
-<?php echo $template->render('partials/header'); ?>
-<?php echo $template->render('partials/footer', ['year' => date('Y')]); ?>
+<?php echo $template::render('partials/header'); ?>
+<?php echo $template::render('partials/footer', ['year' => date('Y')]); ?>
 ```
 
 > XSS protection is handled automatically by Leaf Anchor when using Leaf's request functions.

@@ -121,7 +121,6 @@ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc && source ~/.z
 ```bash
 leaf serve                              # localhost:5500
 leaf serve --port=8080
-leaf serve --watch                      # auto-reload (requires Node.js)
 leaf serve /path/to/app
 
 leaf install auth                       # official packages: leafs/ prefix optional
@@ -202,7 +201,7 @@ Read the relevant file before generating code for that area:
 
 | Topic | File |
 |---|---|
-| Routing (methods, groups, dynamic routes, sub-patterns) | `references/routing.md` |
+| Routing (methods, groups, dynamic routes, constraints) | `references/routing.md` |
 | Middleware (closures, classes, `$next`, data passing) | `references/middleware.md` |
 | Request API (get, validate, upload, client info, metadata) | `references/request.md` |
 | Response API (json, views, redirects, headers, cookies) | `references/response.md` |

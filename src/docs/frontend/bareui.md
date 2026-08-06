@@ -198,16 +198,16 @@ As you guessed, any valid PHP code can be used in BareUI templates. This means y
 
 Sub-templates are templates that are included in other templates. This allows you to break your templates into smaller, more manageable pieces that can be reused across multiple templates. This is a great way to keep your templates DRY and avoid repeating yourself.
 
-To include a sub-template in a template, you can use the `$template->render()` method with the name of the sub-template you want to include.
+To include a sub-template in a template, you can use the `$template::render()` method with the name of the sub-template you want to include.
 
 ```blade
 <body>
-    <?php echo $template->render('partials/header'); ?>
+    <?php echo $template::render('partials/header'); ?>
 
     <h1>Welcome to my site</h1>
 
     <?php
-      echo $template->render('partials/footer', [
+      echo $template::render('partials/footer', [
           'year' => date('Y'),
       ]);
     ?>

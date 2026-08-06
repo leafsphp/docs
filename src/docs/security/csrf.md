@@ -226,7 +226,7 @@ If you have an environment file, you can set the secret key there.
 X_CSRF_SECRET=my-new-secret-key
 ```
 
-<!-- Leaf will automatically pick up the secret key from your environment file and use it to encrypt the CSRF token, so you don't have to pass the secret key to the `csrf()` method every time. -->
+Leaf will automatically pick up the secret key from your environment file and use it to encrypt the CSRF token, so you don't have to pass the secret key to the `csrf()` method every time. A secret passed to `csrf()` in code always wins over the one in your environment file.
 
 ## Handling CSRF Failures
 

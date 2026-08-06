@@ -39,8 +39,7 @@ tick(new DateTime('2018-01-01'));     // from DateTime object
 // Getter (no arg) / Setter (with arg) — returns new tick object
 tick()->year();           tick()->year(2018);
 tick()->month();          tick()->month(6);
-tick()->date();           tick()->date(15);       // day of month
-tick()->day();            tick()->day(0);         // day of week (Sun=0)
+tick()->day();            tick()->day(15);        // day of month
 tick()->hour();           tick()->hour(12);
 tick()->minute();         tick()->minute(30);
 tick()->second();         tick()->second(0);

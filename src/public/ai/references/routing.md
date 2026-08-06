@@ -131,15 +131,3 @@ app()->get('/blog/{year?:[0-9]{4}}/{month?:[0-9]{2}}/{slug?}', function (
 
 Exact routes always beat dynamic routes regardless of registration order (`/users/new` wins over `/users/{id}`). Between overlapping dynamic routes, the one registered first wins — register more specific dynamic routes before broader ones.
 
-### Nested (successive) optional sub-patterns
-
-The flat version above allows `/blog/somecrazystring` to match. Fix by nesting:
-
-```php
-// Only structurally valid URLs match — /blog/somecrazystring will NOT
-app()->get('/blog(/\d+(/\d+(/\d+(/[a-z0-9_-]+)?)?)?)?', function (
-    $year = null, $month = null, $day = null, $slug = null
-) {
-    // ...
-});
-```

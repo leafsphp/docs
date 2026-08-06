@@ -184,10 +184,10 @@ You can also serve a project from another directory:
 leaf serve /path/to/your/app
 ```
 
-Use `--watch` during development when you want Leaf to watch for changes:
+Use `--port` when you need the server on a specific port:
 
 ```bash:no-line-numbers
-leaf serve --watch
+leaf serve --port=8080
 ```
 
 ::: info Automatic dependency installation
