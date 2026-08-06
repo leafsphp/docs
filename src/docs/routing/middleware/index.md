@@ -39,8 +39,8 @@ In Leaf, middleware are just functions that are loaded into Leaf. Here's an exam
 
 ```php
 $logRequest = function () {
-  $method = request()->method();
-  $uri = request()->uri();
+  $method = request()->getMethod();
+  $uri = request()->getPath();
 
   echo "[$method] $uri\n";
 }
@@ -56,8 +56,8 @@ Or you can write this together:
 
 ```php
 app()->use(function () {
-  $method = request()->method();
-  $uri = request()->uri();
+  $method = request()->getMethod();
+  $uri = request()->getPath();
 
   echo "[$method] $uri\n";
 });
@@ -71,8 +71,8 @@ Passing middleware as a route option will run the middleware only for that route
 
 ```php
 $middleware = function () {
-  $method = request()->method();
-  $uri = request()->uri();
+  $method = request()->getMethod();
+  $uri = request()->getPath();
 
   echo "[$method] $uri\n";
 };
@@ -100,8 +100,8 @@ It's a bit bulky to write your middleware inline every time you need it. Leaf al
 
 ```php
 app()->registerMiddleware('logRequest', function () {
-  $method = request()->method();
-  $uri = request()->uri();
+  $method = request()->getMethod();
+  $uri = request()->getPath();
 
   echo "[$method] $uri\n";
 });
@@ -138,8 +138,8 @@ It is necessary in some cases to pass data from middleware to the route handler.
 
 ```php{8}
 app()->registerMiddleware('logRequest', function ($next) {
-  $method = request()->method();
-  $uri = request()->uri();
+  $method = request()->getMethod();
+  $uri = request()->getPath();
 
   echo "[$method] $uri\n";
 

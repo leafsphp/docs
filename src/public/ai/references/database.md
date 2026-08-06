@@ -136,8 +136,8 @@ db()->delete('users')->where('id', '1')->execute();
 
 ```php
 // Hide fields from results
-db()->select('users')->hide('password')->all();
-db()->select('users')->where('id', '1')->hide('remember_token', 'reset_q_id')->first();
+db()->select('users')->hidden('password')->all();
+db()->select('users')->where('id', '1')->hidden('remember_token', 'reset_q_id')->first();
 
 // Add computed fields
 db()->select('users')->add('full_name', 'Something Here')->all();

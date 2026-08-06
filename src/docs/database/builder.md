@@ -299,7 +299,7 @@ Sometimes you might want to hide certain columns from the results of a query. Fo
 ```php
 db()
   ->select('users')
-  ->hide('password')
+  ->hidden('password')
   ->all();
 ```
 
@@ -309,7 +309,7 @@ Or on a conditional query:
 db()
   ->select('users')
   ->where('id', '1')
-  ->hide('remember_token', 'reset_q_id')
+  ->hidden('remember_token', 'reset_q_id')
   ->first();
 ```
 

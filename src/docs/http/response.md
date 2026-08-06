@@ -393,7 +393,7 @@ Leaf allows you to set cookies for your response using the `withCookie()` method
 
 ```php
 response()
-  ->withCookie('name', 'Michael', '1 day')
+  ->withCookie('name', 'Michael', time() + 86400)
   ->json('...');
 ```
 

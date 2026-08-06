@@ -112,11 +112,8 @@ tick()->year(); // get the year
 tick()->month(); // gets current month
 tick()->month(0); // returns new tick object
 
-tick()->day(); // gets day of current week
-tick()->day(0); // returns new tick object
-
-tick()->date(); // gets day of current month
-tick()->date(1); // returns new tick object
+tick()->day(); // gets day of current month
+tick()->day(1); // returns new tick object
 
 tick()->hour(); // gets current hour
 $newDate = tick()->hour(12); // returns new tick object

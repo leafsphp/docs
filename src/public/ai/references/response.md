@@ -69,7 +69,7 @@ response()
 ## Cookies & Flash
 
 ```php
-response()->withCookie('name', 'Michael', '1 day')->json('...');
+response()->withCookie('name', 'Michael', time() + 86400)->json('...');
 response()->withoutCookie('name')->json('...');
 response()->withoutCookie(['name', 'other'])->json('...');
 

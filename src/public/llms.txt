@@ -294,7 +294,7 @@ db()->select('users')->where('age', '>', 18)->orderBy('name')->limit(10)->all();
 db()->insert('users')->params(['name' => 'John'])->unique('email')->execute();
 db()->update('users')->params(['name' => 'Jane'])->where('id', 1)->execute();
 db()->delete('users')->where('id', 1)->execute();
-db()->select('users')->hide('password')->all();
+db()->select('users')->hidden('password')->all();
 db()->select('users')->count();
 $id = db()->lastInsertId();
 

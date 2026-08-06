@@ -56,7 +56,7 @@ $mail = mailer()->create([
     'replyToEmail'   => 'support@myapp.com',
     'cc'             => 'cc@example.com',
     'bcc'            => 'bcc@example.com',
-    'isHTML'         => true,
+    'isHtml'         => true,
     'altBody'        => 'Plain text fallback for clients without HTML support.',
 ]);
 

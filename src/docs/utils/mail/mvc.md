@@ -98,7 +98,7 @@ The `create()` method takes in an array of options that you can use to configure
 | replyToEmail    | Add a "Reply-To" address                                                                      | No       |
 | cc              | The email(s) to carbon copy. Takes a single address or an array of addresses                  | No       |
 | bcc             | The email(s) to blank carbon copy. Takes a single address or an array of addresses            | No       |
-| isHTML          | A boolean value that determines if your mail is HTML or not                                   | No       |
+| isHtml          | A boolean value that determines if your mail is HTML or not                                   | No       |
 | altBody         | This body can be read by mail clients that do not have HTML email capability such as mutt & Eudora. Clients that can read HTML will view the normal Body                       | No       |
 
 ## Sending Emails

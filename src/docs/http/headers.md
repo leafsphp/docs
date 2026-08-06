@@ -23,7 +23,7 @@ Note that all headers are automatically sanitized by default. If you want to get
 ::: code-group
 
 ```php:no-line-numbers [Request Class]
-$allHeaders = request()->headers(safeHeaders: false);
+$allHeaders = request()->headers(safeData: false);
 ```
 
 ```php:no-line-numbers [Headers Class]

@@ -50,7 +50,7 @@ $info = request()->upload('profile_pic', './uploads', [
 ```php
 $all         = request()->headers();                    // all headers (sanitized)
 $contentType = request()->headers('Content-Type');      // specific header
-$all         = request()->headers(safeHeaders: false);  // no sanitization
+$all         = request()->headers(safeData: false);  // no sanitization
 $contentType = request()->headers('Content-Type', false);
 ```
 

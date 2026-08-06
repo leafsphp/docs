@@ -15,7 +15,7 @@ AUTH_DB_TABLE=users
 AUTH_DB_ID=id
 AUTH_TIMESTAMPS=true
 AUTH_TIMESTAMPS_FORMAT='YYYY-MM-DD HH:mm:ss'
-AUTH_SESSIONS=true
+AUTH_SESSION=true
 AUTH_TOKEN_SECRET=your-secret
 ```
 
@@ -98,7 +98,7 @@ Leaf uses JWT by default. Switch to sessions:
 
 ```php
 auth()->config('session', true);
-// or AUTH_SESSIONS=true in .env
+// or AUTH_SESSION=true in .env
 ```
 
 With sessions, `login()` starts the session automatically:

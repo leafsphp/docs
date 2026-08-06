@@ -45,8 +45,8 @@ class LogRequestMiddleware extends Middleware
 {
     public function call()
     {
-        $method = request()->method();
-        $uri = request()->uri();
+        $method = request()->getMethod();
+        $uri = request()->getPath();
 
         echo "[$method] $uri\n";
     }
@@ -119,8 +119,8 @@ class LogRequestMiddleware extends Middleware
 {
     public function call($next)
     {
-        $method = request()->method();
-        $uri = request()->uri();
+        $method = request()->getMethod();
+        $uri = request()->getPath();
 
         echo "[$method] $uri\n";
 

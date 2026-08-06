@@ -36,7 +36,7 @@ AUTH_DB_TABLE=users
 AUTH_DB_ID=id
 AUTH_TIMESTAMPS=true
 AUTH_TIMESTAMPS_FORMAT='YYYY-MM-DD HH:mm:ss'
-AUTH_SESSIONS=true
+AUTH_SESSION=true
 ```
 
 These are options for the database table to store users, the primary key of the table, whether to use timestamps and the format of the timestamps, and whether to use sessions. If you need to configure something else, you will need to publish the entire auth config using the MVC CLI:

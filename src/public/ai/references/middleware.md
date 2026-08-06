@@ -5,7 +5,7 @@
 ```php
 // Closure — Basic/Lite style
 app()->use(function () {
-    echo request()->method() . ' ' . request()->uri();
+    echo request()->getMethod() . ' ' . request()->getPath();
 });
 
 // Class — MVC style
@@ -28,7 +28,7 @@ app()->get('/home', ['middleware' => 'auth', function () { /* ... */ }]);
 app()->get('/my-route', ['middleware' => LogRequestMiddleware::class, 'MyController@index']);
 
 // Inline closure
-$mw = function () { echo request()->method(); };
+$mw = function () { echo request()->getMethod(); };
 app()->get('/home', ['middleware' => $mw, function () { echo 'Home'; }]);
 app()->group('/admin', ['middleware' => $mw, function () {
     app()->get('/', function () { echo 'dashboard'; });
@@ -47,8 +47,8 @@ use Leaf\Middleware;
 
 class LogRequestMiddleware extends Middleware {
     public function call() {
-        $method = request()->method();
-        $uri    = request()->uri();
+        $method = request()->getMethod();
+        $uri    = request()->getPath();
         echo "[$method] $uri\n";
     }
 }
@@ -63,7 +63,7 @@ Data is consumed on first read and removed from the request lifecycle.
 
 ```php
 app()->registerMiddleware('logRequest', function ($next) {
-    echo request()->method();
+    echo request()->getMethod();
     response()->next('You can pass any value here');
 });
 
@@ -78,7 +78,7 @@ app()->get('/home', ['middleware' => 'logRequest', function () {
 ```php
 class LogRequestMiddleware extends Middleware {
     public function call($next) {
-        echo request()->method();
+        echo request()->getMethod();
         response()->next('You can pass any value');
     }
 }

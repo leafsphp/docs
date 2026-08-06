@@ -217,7 +217,7 @@ One thing to note is that all headers are sanitized automatically by Leaf. If yo
 
 ```php
 $allHeaders = request()->headers(
-  safeHeaders: false
+  safeData: false
 );
 
 $contentType = request()->headers(
