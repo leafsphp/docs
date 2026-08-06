@@ -208,9 +208,17 @@ app()->csrf([
 Leaf automatically disables CSRF protection in test mode. This is to make it easier to test your app without having to worry about CSRF tokens. If you want to test CSRF protection, you can disable test mode by setting the `APP_ENV` environment variable to `production`.
 :::
 
-## Updating the Encryption Secret
+## The Encryption Secret
 
-Leaf uses a default secret key to encrypt the CSRF token. It is paired together with a random hash to create a unique token for your app. If you want to change the secret key, you can do so by passing a `secret` key to the `csrf()` method.
+Leaf pairs a secret key with a random hash to create a unique token for your app. Out of the box, Leaf derives this secret from your `APP_KEY`, so every app automatically gets its own secret without any setup. The derived value is mixed with a fixed context string, so it is never your raw app key.
+
+If you want to use your own secret instead, you can set it in your environment file:
+
+```txt:no-line-numbers
+X_CSRF_SECRET=my-new-secret-key
+```
+
+Or pass it directly to the `csrf()` method:
 
 ```php
 app()->csrf([
@@ -218,15 +226,7 @@ app()->csrf([
 ]);
 ```
 
-It is not required to change the secret key, but it is recommended to do so if you want to add an extra layer of security to your app.
-
-If you have an environment file, you can set the secret key there.
-
-```txt:no-line-numbers
-X_CSRF_SECRET=my-new-secret-key
-```
-
-Leaf will automatically pick up the secret key from your environment file and use it to encrypt the CSRF token, so you don't have to pass the secret key to the `csrf()` method every time. A secret passed to `csrf()` in code always wins over the one in your environment file.
+A secret passed to `csrf()` in code always wins over the environment, and the environment wins over the derived default. If none of the three exist, Leaf throws an error at startup instead of running CSRF protection without a real secret, and the error tells you exactly how to fix it: generate an `APP_KEY` with `php leaf key:generate`, set `X_CSRF_SECRET`, or pass a `secret` to `csrf()`.
 
 ## Handling CSRF Failures
 

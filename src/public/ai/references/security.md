@@ -323,7 +323,9 @@ app()->csrf([
 
 // MVC — publish config
 // leaf config:publish csrf  →  config/csrf.php
-// X_CSRF_SECRET=my-secret-key  in .env
+// Secret default: derived from APP_KEY automatically.
+// Override: X_CSRF_SECRET=my-secret-key in .env, or 'secret' in config (code wins).
+// No APP_KEY + no secret = RuntimeException at startup. Fix: `php leaf key:generate`
 ```
 
 > CSRF is automatically disabled in test mode (`APP_ENV != production`).

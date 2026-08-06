@@ -703,6 +703,8 @@ app()->csrf();        // Basic app
 // In Blade forms: @csrf
 // In JS requests: X-CSRF-Token header
 // 'rotate' => true config makes tokens single-use (opt-in); csrf()->regenerate() issues a fresh token manually
+// Secret: derived from APP_KEY automatically. Override with X_CSRF_SECRET in .env or 'secret' config (code wins).
+// No APP_KEY and no secret set = startup error. Fix: `php leaf key:generate`
 // SPAs: Leaf sets an XSRF-TOKEN cookie automatically and accepts the X-XSRF-TOKEN header; disable with 'cookie' => false
 
 // XSS - Anchor sanitizes all Leaf input automatically

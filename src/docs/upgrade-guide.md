@@ -199,6 +199,7 @@ New: custom rule callables receive the full data set as a fourth argument (so cr
 ## Security and sessions
 
 - **CSRF tokens use a new format.** Tokens minted before the upgrade won't validate on Leaf 5, so a session holding one needs a single page refresh. There's nothing to configure.
+- **CSRF now requires a real secret.** <Badge type="danger" text="BREAKING" /> Leaf 5 resolves the CSRF secret in order: a `secret` passed to `csrf()`, then `X_CSRF_SECRET` from your `.env`, then a secret derived automatically from your `APP_KEY`. If none of the three exist, the app throws at startup instead of running CSRF protection without one. Most apps need to do nothing — any project with an `APP_KEY` is covered. If you hit the error, run `php leaf key:generate` or set `X_CSRF_SECRET` in your `.env`. The derived secret is mixed with a fixed context string, so it is never your raw app key, and changing your `APP_KEY` invalidates in-flight CSRF tokens (a page refresh mints new ones).
 - **CORS origins are matched exactly, or by regex.** An origin you allow must be written in full, scheme included, and it matches that origin only. For a family of subdomains, pass a regex string instead:
 
   ```php
@@ -211,7 +212,7 @@ New: custom rule callables receive the full data set as a fourth argument (so cr
 - **Cookie deletion uses your configured path and domain.** `unset()` and `delete()` now send the same scope the cookie was set with, so set your defaults once with `Cookie::setDefaults(['path' => '/'])` and both writing and clearing stay consistent.
 - Dot notation works at any depth. v4 truncated `a.b.c` to two levels and warned that nested config could not go deeper.
 
-New: CSRF gains opt-in single-use tokens (`rotate`), `regenerate()`, and an automatic `XSRF-TOKEN` cookie plus `X-XSRF-TOKEN` header so SPA clients need no manual plumbing.
+New: CSRF gains opt-in single-use tokens (`rotate`), `regenerate()`, an automatic `XSRF-TOKEN` cookie plus `X-XSRF-TOKEN` header so SPA clients need no manual plumbing, and a per-app secret derived from your `APP_KEY` with zero configuration.
 
 ## Other modules
 
