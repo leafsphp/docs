@@ -11,7 +11,7 @@ const sidebar = [
       },
       {
         text: '<i class="si si-zap"></i>Why Leaf 5 <span class="badge new">New</span>',
-        link: '/docs/why-leaf-5',
+        link: 'https://blog.leafphp.dev/posts/leaf-5',
       },
       {
         text: '<i class="si si-arrow-up"></i>Upgrading to Leaf 5 <span class="badge new">New</span>',
@@ -149,7 +149,6 @@ const sidebar = [
       { text: '<i class="si si-wind"></i>Tailwind CSS', link: '/docs/frontend/tailwind' },
       { text: '<i class="si si-layout"></i>Bare UI', link: '/docs/frontend/bareui' },
       { text: '<i class="si si-puzzle"></i>Other Engines', link: '/docs/frontend/third-party' },
-      // { text: 'Leaf UI', link: '/docs/frontend/leaf-ui' },
       // {
       //   text: 'Leaf Zero',
       //   collapsible: true,

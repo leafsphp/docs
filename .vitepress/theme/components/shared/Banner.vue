@@ -40,7 +40,7 @@ const dismiss = () => {
         <span class="banner-detail">A product-first PHP framework for the AI era.</span>
       </p>
 
-      <a href="/docs/why-leaf-5" class="banner-link">
+      <a href="https://blog.leafphp.dev/posts/leaf-5" class="banner-link">
         <span class="banner-link-full">Explore what's new</span>
         <span class="banner-link-short">What's new</span>
         <ArrowRight />

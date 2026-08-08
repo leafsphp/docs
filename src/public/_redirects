@@ -23,4 +23,8 @@
 /community/contribute               /community/guide
 /docs/installation                  /docs/
 /docs/debugging                     /docs/routing/error-handling
-/docs/why-leaf-v                    /docs/why-leaf-5
+/docs/why-leaf-v                    https://blog.leafphp.dev/posts/leaf-5 301
+/docs/why-leaf-5                    https://blog.leafphp.dev/posts/leaf-5 301
+/docs/why-leaf-5.html               https://blog.leafphp.dev/posts/leaf-5 301
+/docs/leaf-ui                       https://ui.leafphp.dev 301
+/docs/leaf-ui.html                  https://ui.leafphp.dev 301

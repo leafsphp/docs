@@ -111,7 +111,7 @@ Related: Leaf 5 adds `Leaf\Router::reset()`, which clears all routes, hooks, mid
 
 ## Leaf UI is sunset
 
-Leaf UI (reactive PHP components) is retired in Leaf 5. Published packages stay on Packagist so existing apps keep running, but the project is archived and receives no updates. See [Sunsetting Leaf UI](/docs/leaf-ui) for the reasoning and migration paths (Blade, scaffolds, Inertia + React/Vue/Svelte).
+Leaf UI (reactive PHP components) is retired in Leaf 5. Published packages stay on Packagist so existing apps keep running, but the project is archived and receives no updates. See [Sunsetting Leaf UI](https://ui.leafphp.dev) for the reasoning and migration paths (Blade, scaffolds, Inertia + React/Vue/Svelte).
 
 ## Schema history moved into your database <Badge type="warning" text="BEHAVIOR CHANGE" />
 

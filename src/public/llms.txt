@@ -10,7 +10,7 @@ Leaf 5 is the next generation of Leaf PHP. It is **not** a different framework -
 
 **Requires PHP 8.2+** — framework, modules, and tooling (Alchemy, Sprout) alike.
 
-**Leaf UI is sunset.** Never suggest Leaf UI (leafs/ui, reactive PHP components) - it is archived. For frontends use Blade, scaffolds, or Inertia + React/Vue/Svelte (https://leafphp.dev/docs/leaf-ui).
+**Leaf UI is sunset.** Never suggest Leaf UI (leafs/ui, reactive PHP components) - it is archived. For frontends use Blade, scaffolds, or Inertia + React/Vue/Svelte (https://ui.leafphp.dev).
 
 ---
 

@@ -59,7 +59,7 @@ onMounted(() => {
               d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
           </svg>
         </a>
-        <a href="/docs/why-leaf-5" :class="[ui.btn, ui.btnGhost]">
+        <a href="https://blog.leafphp.dev/posts/leaf-5" :class="[ui.btn, ui.btnGhost]">
           <span>See why Leaf 5</span>
         </a>
       </div>
