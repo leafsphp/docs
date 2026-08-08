@@ -204,7 +204,7 @@ Use `leaf context` only when an external assistant cannot access the project:
 leaf context
 ```
 
-This prints a compact, minified version of the shared context. Paste that output into the external assistant before asking for larger changes. The output is a portable handoff, not a replacement for the two-way `.leaf/CONTEXT.md` used inside the project.
+This scans your project and prints a compact handoff: your actual routes with their handlers and middleware, installed modules, models, schema files, and environment key names (names only, never values), with the shared context appended at the end. Paste that output into the external assistant before asking for larger changes. The output is a portable snapshot, not a replacement for the two-way `.leaf/CONTEXT.md` used inside the project — the two are opposite halves: the file holds goals and decisions, the command generates the mechanical map.
 
 <div class="not-prose my-6 grid gap-4 md:grid-cols-[1fr_260px]">
   <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">

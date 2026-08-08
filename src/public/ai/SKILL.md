@@ -153,13 +153,29 @@ What it does automatically:
 
 ## AI-Native shared context
 
-Leaf projects use `.leaf/CONTEXT.md` as shared working memory. When you are running inside the project:
+Leaf projects use `.leaf/CONTEXT.md` as shared working memory. The file follows the **leaf.context v1** format (marker comment on line 1) so that Claude, Codex, Cursor and every other agent write edits that compose. When you are running inside the project:
 
 1. Read `.leaf/CONTEXT.md` before making changes.
 2. Verify it against the live filesystem.
 3. Update useful project knowledge in `.leaf/CONTEXT.md` when the work is complete.
 
-No setup command is required for Leaf MVC or projects created through Leaf CLI.
+**Format contract (leaf.context v1):**
+
+- Line 1 is the format marker (`<!-- leaf.context v1 -->`). Never remove or edit it.
+- Sections are `##` headings in their existing order. Preserve sections you don't recognize — another agent may own them. Add project-specific sections at the end only.
+- A line wrapped in underscores is a placeholder. If it contains `agent:`, it is an instruction to you: act on it, then replace the line with real content (or delete it).
+- Keep entries one line each where possible so concurrent agents' edits merge cleanly.
+- Never store secrets or tokens; refer to `.env` keys by name only.
+- Never duplicate mechanical info (routes, models, modules, structure) — that lives in code and `leaf context`. The file holds what code cannot say: goals, decisions, reasoning.
+
+**Write-back protocol (after completing work):**
+
+- Recent Changes: add `* YYYY-MM-DD — what changed (key files)`, newest first, five entries max; fold older entries into Known Decisions or delete them.
+- Current Goal: exactly one at a time. When it's done, note it in Recent Changes and replace it — ask the user if the next goal is unknown.
+- Known Decisions: record lasting choices as `* Decision — reasoning.` Always include the why, or the next agent will relitigate it.
+- Keep the file concise: summarize instead of appending, remove outdated lines, reference files instead of copying them.
+
+No setup command is required for Leaf MVC or projects created through Leaf CLI. If a project has no `.leaf/CONTEXT.md`, offer to create one in this format.
 
 For an external assistant without access to the project, use:
 

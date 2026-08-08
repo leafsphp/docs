@@ -139,6 +139,21 @@ Open an agent in the project and ask for the feature you want. It starts with Le
 
 That means fewer invented files, fewer mismatched APIs, and less cleanup after generation.
 
+## The shared context format <Badge type="tip" text="NEW" />
+
+`.leaf/CONTEXT.md` follows a small official format, **leaf.context v1**, so that edits from different assistants compose instead of colliding. What Claude writes today, Cursor can extend tomorrow, and Codex can clean up next week. Every Leaf MVC project ships with the template, and `leaf up` generates it when scaling a lite app.
+
+The format is plain markdown with a handful of rules:
+
+- **The first line is a marker** — `<!-- leaf.context v1 -->` — so tools and agents can recognize the file. It is invisible when rendered and never edited.
+- **Sections are `##` headings** in a stable order: Working With This File, Project Summary, Current Goal, Architecture, External Providers, Coding Conventions, Recent Changes, Known Decisions, Future Ideas. Agents preserve sections they don't recognize and may add project-specific ones at the end.
+- **Placeholders are underscore-wrapped lines.** When one contains `agent:`, it is an instruction to the next assistant — ask the user something, make a choice, then replace the line with the answer. This is how a fresh template bootstraps itself into real project memory.
+- **Entries are single lines** wherever possible, so concurrent edits merge cleanly in git. Recent Changes entries are dated (`* 2026-08-06 — what changed`), capped at five, newest first. Known Decisions always carry their reasoning, because a decision without its why gets relitigated by the next agent.
+- **The file never duplicates the codebase.** Routes, models, modules and structure live in code and in `leaf context`; the shared memory holds only what code cannot say — goals, decisions, and the reasoning behind them. This is what keeps it from rotting.
+- **No secrets, ever.** Environment keys are referenced by name only.
+
+The file also opens with a short "Working With This File" section carrying these same rules, so an assistant that has never seen Leaf before still edits it correctly.
+
 ## When to use `leaf context`
 
 You do not need this command to make AI features work. Use it when the assistant cannot access your project folder, such as a web chat or another external tool.
@@ -147,7 +162,7 @@ You do not need this command to make AI features work. Use it when the assistant
 leaf context
 ```
 
-The command prints a compact, minified handoff derived from `.leaf/CONTEXT.md`. Copy that output into the external assistant so it receives the important project map without direct access to the shared file. It does not replace the two-way context used by agents working inside the project.
+The command is deliberately the opposite half of `.leaf/CONTEXT.md`. The shared file holds what code cannot say — goals, decisions, reasoning — and never duplicates the codebase. `leaf context` scans the codebase and generates the mechanical map the file leaves out: app type, installed modules, actual route registrations with their handlers and middleware, models, schema files, and environment key names (names only — values never leave your machine). It then appends the shared memory, so one paste gives an external assistant both halves. It does not replace the two-way context used by agents working inside the project.
 
 ## Predictable structure means better output
 
