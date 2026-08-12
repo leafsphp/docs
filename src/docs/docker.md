@@ -33,7 +33,7 @@ leaf create my-app --docker
 
 If you leave the flag off, `leaf create` will also ask whether you want Docker during the interactive prompts. Either way, Leaf sets your application up with Docker support: for MVC and API apps the web server is pointed at `public/`, and for Lite apps sensitive files (`.env`, composer manifests) are blocked from being served.
 
-Although your app is dockerized, Leaf CLI still lets you use the `serve` command — it will automatically start your application using Docker instead of the built-in server.
+Although your app is dockerized, Leaf CLI still lets you use the `serve` command, and it will automatically start your application using Docker instead of the built-in server.
 
 ```bash:no-line-numbers
 leaf serve

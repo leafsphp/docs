@@ -201,7 +201,7 @@ You get privacy policy and terms of service pages in your frontend setup, wired 
 
 ## AI chat <Badge text="New" type="tip" />
 
-Scaffold a streaming AI chat powered by Claude — a full chat page with streamed responses, not just an API call.
+Scaffold a streaming AI chat powered by Claude: a full chat page with streamed responses, not just an API call.
 
 ```bash:no-line-numbers
 leaf scaffold:ai

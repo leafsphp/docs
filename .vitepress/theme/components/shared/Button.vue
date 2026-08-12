@@ -7,7 +7,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-[var(--vp-c-brand-1)] hover:bg-[var(--vp-c-brand-2)] rounded-full ![text-decoration:none]',
+        // !text-white: `.vp-doc a` paints anchors brand-colored, which
+        // disappears on the brand background without the override
+        default: 'bg-[var(--vp-c-brand-1)] hover:bg-[var(--vp-c-brand-2)] !text-white rounded-full ![text-decoration:none]',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90 ![text-decoration:none]',
         outline:

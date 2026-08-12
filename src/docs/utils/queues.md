@@ -239,7 +239,7 @@ While this human-readable syntax is great for most use cases, you can also use C
 
 <!-- ## Batching Jobs
 
-You can use batches to to queue multiple jobs in sequence—they will be processed in the order they were dispatched. The key advantage of batching is that it allows you to specify a callback that runs only after all the jobs have been completed. This is useful for cases where you need to perform an action after a set of jobs finishes successfully, such as logging the results or notifying a user when all tasks are done. To create a batch, you can use the `g:job` command:
+You can use batches to queue multiple jobs in sequence, and they will be processed in the order they were dispatched. The key advantage of batching is that it allows you to specify a callback that runs only after all the jobs have been completed. This is useful for cases where you need to perform an action after a set of jobs finishes successfully, such as logging the results or notifying a user when all tasks are done. To create a batch, you can use the `g:job` command:
 
 ```bash:no-line-numbers
 leaf g:job ProcessPodcast --batch

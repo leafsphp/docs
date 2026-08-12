@@ -46,14 +46,14 @@ tick($date); // create a date from a DateTime object
 
 Tick is versatile and smart enough to handle dates correctly, so you can pass in any valid date string or timestamp and it will work as expected.
 
-You can also pass a timezone as the second argument. Just like day.js, this means the date string is a wall-clock time *in* that timezone — "noon in Tokyo", not "noon on my server converted to Tokyo":
+You can also pass a timezone as the second argument. Just like day.js, this means the date string is a wall-clock time *in* that timezone: "noon in Tokyo", not "noon on my server converted to Tokyo":
 
 ```php:no-line-numbers
 // a user in Tokyo schedules a meeting for noon their time
 $meeting = tick('2026-01-15 12:00:00', 'Asia/Tokyo');
 
-$meeting->format('HH:mm');        // 12:00 — noon on a Tokyo clock
-$meeting->utc()->format('HH:mm'); // 03:00 — the same instant in UTC, ready to store
+$meeting->format('HH:mm');        // 12:00, noon on a Tokyo clock
+$meeting->utc()->format('HH:mm'); // 03:00, the same instant in UTC, ready to store
 ```
 
 ## Working with timezones <Badge text="New" type="tip" />

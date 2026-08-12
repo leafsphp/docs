@@ -169,5 +169,5 @@ The command prints a minified view of the shared context, including installed mo
 
 ## Community Modules
 
-Modules created by the Leaf community are welcome here — they're not officially maintained by the Leaf team, but we're happy to list them. Built something? [Open an issue](https://github.com/leafsphp/docs/issues/new) or send a pull request on the documentation repository to add yours.
+Modules created by the Leaf community are welcome here. They're not officially maintained by the Leaf team, but we're happy to list them. Built something? [Open an issue](https://github.com/leafsphp/docs/issues/new) or send a pull request on the documentation repository to add yours.
 

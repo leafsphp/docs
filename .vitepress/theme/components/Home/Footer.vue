@@ -87,6 +87,7 @@ import { ui } from './ui';
             <a href="/community/guide">Community</a>
             <a href="https://hanabira.dev" target="_blank" rel="noopener">Hana JS</a>
             <a href="/support/" class="!text-[var(--vp-c-brand-1)]">Support</a>
+            <a href="https://www.netlify.com" target="_blank" rel="noopener">Deploys by Netlify</a>
           </nav>
         </div>
 

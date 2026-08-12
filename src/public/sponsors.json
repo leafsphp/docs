@@ -17,9 +17,9 @@
       "img": "https://avatars.githubusercontent.com/u/9919?s=200&v=4"
     },
     {
-      "name": "vvviiiooo",
-      "url": "https://www.github.com/vvviiiooo",
-      "img": "https://avatars.githubusercontent.com/u/59196525?v=4"
+      "name": "Claude",
+      "url": "https://claude.com",
+      "img": "https://avatars.githubusercontent.com/u/76263028?s=200&v=4"
     }
   ],
   "pastSponsors": [
@@ -112,6 +112,11 @@
       "name": "Kunule Imbayi",
       "url": "https://opencollective.com/kunule-imbayi",
       "img": "https://images.opencollective.com/kunule-imbayi/avatar.png"
+    },
+    {
+      "name": "Anonymous",
+      "url": "https://opencollective.com/guest-442ddb91",
+      "img": "https://images.opencollective.com/guest-442ddb91/avatar.png"
     }
   ],
   "code": [
@@ -459,6 +464,51 @@
       "name": "fadrian06",
       "url": "https://github.com/fadrian06",
       "img": "https://avatars.githubusercontent.com/u/109766973?v=4"
+    },
+    {
+      "name": "Adrian Galicia",
+      "url": "https://github.com/zehntinel",
+      "img": "https://avatars.githubusercontent.com/u/7310519?v=4"
+    },
+    {
+      "name": "Mischa Kroon",
+      "url": "https://github.com/MischaKr",
+      "img": "https://avatars.githubusercontent.com/u/1812985?v=4"
+    },
+    {
+      "name": "Leonardo Carvalho",
+      "url": "https://github.com/srcarvalho12",
+      "img": "https://avatars.githubusercontent.com/u/134537873?v=4"
+    },
+    {
+      "name": "Magdiel Marquez",
+      "url": "https://github.com/mmagdiel",
+      "img": "https://avatars.githubusercontent.com/u/14327365?v=4"
+    },
+    {
+      "name": "Thiago",
+      "url": "https://github.com/ghosthi",
+      "img": "https://avatars.githubusercontent.com/u/85212306?v=4"
+    },
+    {
+      "name": "Rui Trigo",
+      "url": "https://github.com/ruiwashere",
+      "img": "https://avatars.githubusercontent.com/u/148787540?v=4"
+    },
+    {
+      "name": "Andrea Debernardi",
+      "url": "https://github.com/debba",
+      "img": "https://avatars.githubusercontent.com/u/3198901?v=4"
+    },
+    {
+      "name": "lego290",
+      "url": "https://github.com/lego290",
+      "img": "https://github.com/lego290.png"
+    },
+    {
+      "name": "apfox",
+      "url": "https://github.com/apfox",
+      "img": "https://github.com/apfox.png"
     }
   ]
 }

@@ -4,7 +4,7 @@ Most PHP projects end up with the same pile of QA config: a `phpunit.xml`, a `.p
 
 Alchemy replaces that pile with one file. You describe what you want in `alchemy.yml`, and Alchemy handles the rest: tests with Pest or PHPUnit, code style with PHP CS Fixer, refactoring with Rector, static analysis with PHPStan, and CI pipelines for GitHub Actions, GitLab CI or CircleCI.
 
-Alchemy works in any PHP project, not just Leaf. It detects Laravel, Symfony, Slim, Leaf or a plain composer setup and adapts.
+Alchemy works in any PHP project, not just Leaf. It detects Laravel, Symfony, Slim, Leaf or a plain composer setup and adapts. Coming from Laravel? There's a [dedicated section](#alchemy-in-a-laravel-project) on how Alchemy fits around Pint, Larastan and the rest of your existing setup.
 
 ## How Alchemy works
 
@@ -43,6 +43,8 @@ Then initialize it:
 
 - **Port** translates the config into the yml, suites and rules and all. The original file is parked at `.alchemy/<file>.bak`, so your project root is clean with no extra steps.
 - **Keep** records the file in your `alchemy.yml`, and Alchemy runs that tool from your file, as-is, forever. More on this [below](#using-your-own-config-files).
+
+The file `init` writes covers the whole pipeline: tests, lint, analyse, refactor and CI. That's because a section's presence is what opts a tool in. Don't want one? Delete its section and that tool never runs or installs.
 
 Prefer no prompts? `alchemy init --port` or `--keep` answers for every file at once. Either way, `init` also wires the commands below into your `composer.json`.
 
@@ -171,9 +173,27 @@ lint:
 
 Remember the split: `composer run lint` checks and fails, `composer run fmt` fixes. If you would rather have CI fix style *for* you, set `lint.autofix: true` and the generated GitHub workflow will commit fixes instead of failing (GitHub only).
 
+Just like the tests engine, the linter is swappable. Laravel projects usually already lint with [Pint](https://laravel.com/docs/pint), so `lint` accepts a `provider` key:
+
+```yaml [alchemy.yml]
+lint:
+  provider: pint # phpcsfixer is the default
+  preset: laravel
+```
+
+Pint's rules *are* PHP CS Fixer rules, so your `rules` and `exclude` entries carry over unchanged. Presets map automatically (`PSR12` becomes `psr12`, and so on), and Pint-only keys like `notPath` and `notName` pass through verbatim, so the section is never less expressive than a hand-written `pint.json`. `alchemy init` picks this for you: in a Laravel project it selects Pint with the `laravel` preset, and an existing `pint.json` ports into `alchemy.yml` completely.
+
+Pint's runtime flags work too. Forward anything with `--flags`:
+
+```bash:no-line-numbers
+composer run fmt -- --flags=dirty # only fix files with uncommitted changes
+```
+
+Laravel gets the same treatment on the analysis side: `composer run analyse` in a Laravel project installs [Larastan](https://github.com/larastan/larastan) and wires it in automatically, so PHPStan understands facades, Eloquent and container magic instead of drowning you in false positives.
+
 ## Automated refactoring
 
-Alchemy manages [Rector](https://getrector.com) the same way. Add a `refactor` section and `composer run refactor` installs Rector and applies the refactors you opted into. Because Rector rewrites code, it only runs when this section exists.
+Alchemy manages [Rector](https://getrector.com) the same way, and a fresh `alchemy init` includes a `refactor` section with the safe starter sets (`dead-code`, `code-quality`, plus upgrade sets for your composer.json PHP version). `composer run refactor` installs Rector and applies them. Because Rector rewrites code, it only runs when this section exists. Deleting the section opts out entirely.
 
 ```yaml [alchemy.yml]
 refactor:
@@ -196,7 +216,7 @@ Other keys: `paths` (defaults to your app directories), `import-names: true` (im
 
 ## Static analysis
 
-Add an `analyse` section and PHPStan is installed and configured on your first `composer run analyse`:
+A fresh `alchemy init` includes an `analyse` section (level 5), and PHPStan is installed and configured on your first `composer run analyse`. Tune it however far you want to go:
 
 ```yaml [alchemy.yml]
 analyse:
@@ -256,6 +276,61 @@ Moving CI providers is one command, because everything is generated from the sam
 
 This updates your config, generates the new provider's pipeline, and removes the old provider's files (`--clean`). The same command switches test engines: `alchemy switch phpunit`.
 
+## Alchemy in a Laravel project
+
+Alchemy works in any PHP project, and Laravel is the framework it adapts to most carefully. Laravel already has opinions about QA tooling, and Alchemy's job there is to respect every one of them, then handle the part Laravel doesn't: keeping five tool configs and your CI in sync.
+
+Run `alchemy init` in a project that requires `laravel/framework` and this is the entire file you get, shaped like a Laravel project and not like anyone else's:
+
+```yaml [alchemy.yml]
+app:
+  - app
+
+tests:
+  engine: pest # or phpunit, init picks whichever your project already uses
+
+lint:
+  provider: pint
+  preset: laravel
+
+analyse:
+  level: 5
+
+refactor:
+  php: true # upgrade sets for the PHP version in your composer.json
+  sets:
+    - dead-code
+    - code-quality
+
+actions:
+  run:
+    - lint
+    - tests
+  events:
+    - push
+    - pull_request
+```
+
+That file is the whole pipeline: style, tests, static analysis, refactoring and CI. Don't want one of them? Delete its section and it never runs or installs. CI starts with the two universal jobs; add `analyse` or `refactor` to `actions.run` when you want them gating merges too.
+
+Here is what that means in practice:
+
+**Pint stays your linter.** No preset translation, no switching to PHP CS Fixer. If you have a `pint.json`, `init` ports it completely: rules and excludes carry over as they are, and Pint-only keys like `notPath` and `notName` round-trip verbatim. Prefer to keep the file? Answer "keep" and Alchemy runs Pint from your `pint.json` untouched, forever. Runtime flags work too:
+
+```bash:no-line-numbers
+composer run fmt -- --flags=dirty # only fix files with uncommitted changes
+```
+
+**Your tests stay your tests.** An existing `phpunit.xml` ports into the yml (suites, env values, the `<php>` block) or stays pinned as your own file. Pest projects run Pest. Nothing about how you write tests changes.
+
+**Static analysis actually understands Laravel.** The `analyse` section is in the file from day one, and your first `composer run analyse` installs PHPStan *and* [Larastan](https://github.com/larastan/larastan), wired in automatically. Facades, Eloquent models and container magic analyse cleanly instead of burying you in false positives. A `phpstan-baseline.neon` at your root is respected, so a legacy app can adopt analysis without a wall of day-one errors.
+
+**CI writes itself.** This is the part no Laravel dev enjoys hand-writing. `composer run ci` generates GitHub Actions workflows with a PHP version matrix from the same yml, and switching to GitLab CI or CircleCI is one `provider` line. Set `lint.autofix: true` and CI commits Pint's fixes instead of failing the build.
+
+**And you can leave whenever you want.** `alchemy eject` exports a real `phpunit.xml` and `pint.json`, points your composer scripts straight at the engines, and tells you how to remove Alchemy. Trying it costs nothing.
+
+The short version: everything you already chose stays chosen. Alchemy just collapses the config sprawl around those choices into one file, and generates the CI you were going to copy-paste anyway.
+
 ## Upgrading from Alchemy 4
 
 Alchemy 5 grows from a test/lint setup helper into the full pipeline on this page. **Your existing setup keeps working**: the old commands (`alchemy setup --test`, `--lint`, `--actions`) still exist as aliases, so v4-era composer scripts run unchanged.
@@ -277,6 +352,7 @@ Then use the new commands: `composer run test`, `lint`, `fmt`, `refactor`, `anal
 4. **PHPUnit parallel uses paratest.** `tests.parallel: true` with the phpunit engine used to pass a `--parallel` flag PHPUnit doesn't have. Alchemy 5 installs and runs paratest instead. Pest keeps its built-in parallel mode.
 5. **Your `phpunit.xml` is safe, and never touched.** v4 could overwrite and delete a hand-written `phpunit.xml`. Alchemy 5 generates its config inside `.alchemy/` and discards it after the run. `alchemy init` asks whether to port your config into `alchemy.yml` (the original is parked at `.alchemy/phpunit.xml.bak`) or pin it (`tests: phpunit.xml`) and run from your file forever.
 6. **`config:eject` is now `eject`, and it works.** The old eject command targeted a config format that no longer existed. `alchemy eject` exports a real `phpunit.xml` + `.php-cs-fixer.dist.php` and rewires your composer scripts to call the engines directly.
+7. **Composer scripts work on Windows.** Scripts are written as `@php vendor/bin/alchemy ...`, so the same `composer run test` works on every platform.
 
 ### Unpin your engines
 
@@ -295,7 +371,7 @@ composer require 'pestphp/pest:*' --dev --with-all-dependencies
 | `actions.event` | `actions.events` (old key still read) |
 | `tests.config.xmlnxsi` | `tests.config['xmlns:xsi']` (old key still read) |
 | — | `tests.suites`, `tests.env/ini/const/server`, `tests.coverage.exclude`, `tests.extensions`, `tests.flags` |
-| — | `lint.risky`, `lint.exclude`, `lint.autofix` |
+| — | `lint.provider`, `lint.risky`, `lint.exclude`, `lint.autofix` |
 | — | `refactor.*`, `analyse.*`, `actions.provider` |
 
 ## Leaving Alchemy
@@ -306,4 +382,4 @@ No lock-in means a real exit:
 ./vendor/bin/alchemy eject
 ```
 
-This exports your configuration to a standard `phpunit.xml` and `.php-cs-fixer.dist.php`, points your composer `test`/`lint` scripts directly at the engines, and tells you how to remove Alchemy. Your tests don't change. They were always plain Pest/PHPUnit tests.
+This exports your configuration to a standard `phpunit.xml` and `.php-cs-fixer.dist.php` (or `pint.json` when your provider is Pint), points your composer `test`/`lint` scripts directly at the engines, and tells you how to remove Alchemy. Your tests don't change. They were always plain Pest/PHPUnit tests.

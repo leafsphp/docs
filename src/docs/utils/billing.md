@@ -423,7 +423,7 @@ Since webhooks are stateless, you can't use the `session()` or `auth()` helpers 
 
 | Method                       | Description                                                                                              |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `id()`                       | The provider's unique event id — store handled ids to make your webhook idempotent against redeliveries  |
+| `id()`                       | The provider's unique event id. Store handled ids to make your webhook idempotent against redeliveries   |
 | `type()`                     | Get the event type                                                                                       |
 | `is()`                       | Check if the event is a specific type                                                                    |
 | `tier()`                     | Get the subscription tier (if available)                                                                 |
@@ -433,7 +433,7 @@ Since webhooks are stateless, you can't use the `session()` or `auth()` helpers 
 | `activateSubscription()`     | Activate the new subscription in webhook (if available)                                                  |
 | `renewSubscription()`        | Extend the subscription one billing period after a successful renewal payment (also clears past_due)     |
 | `markSubscriptionPastDue()`  | Flag the subscription as past due when a renewal payment fails (dunning)                                 |
-| `cancelSubscription()`       | Cancel the subscription — keeps access until the paid-for period ends; pass `false` to revoke instantly  |
+| `cancelSubscription()`       | Cancel the subscription, keeping access until the paid-for period ends; pass `false` to revoke instantly |
 | `data()`                     | Get the raw event data                                                                                   |
 | `metadata()`                 | Get the metadata from the event (if available)                                                           |
 
@@ -619,12 +619,12 @@ Beyond the basic checks, the user object understands the full subscription lifec
 | `onTrial()`                  | True while the user's trial is running                                                          |
 | `onGracePeriod()`            | True when the user cancelled but still has access until the period they paid for ends           |
 | `hasPastDueSubscription()`   | True when a renewal payment failed and the subscription is in dunning                           |
-| `cancelSubscription()`       | Cancel — at period end by default, pass `false` to cancel immediately                           |
+| `cancelSubscription()`       | Cancel at period end by default; pass `false` to cancel immediately                             |
 | `resumeSubscription()`       | Undo a period-end cancellation while the grace period is still running                          |
 
 ## Cancelling and resuming subscriptions <Badge text="New" type="tip" />
 
-When a user cancels, you almost never want to cut access on the spot — they paid for the current period. Leaf cancels at the end of the billing period by default:
+When a user cancels, you almost never want to cut access on the spot, because they paid for the current period. Leaf cancels at the end of the billing period by default:
 
 ```php
 auth()->user()->cancelSubscription(); // keeps access until the period ends
@@ -632,7 +632,7 @@ auth()->user()->cancelSubscription(); // keeps access until the period ends
 auth()->user()->cancelSubscription(false); // cancels and revokes immediately
 ```
 
-Between cancelling and the period actually ending, the user is on a *grace period*: `hasActiveSubscription()` stays true and `onGracePeriod()` tells you they're on the way out — a good moment for a "changed your mind?" banner:
+Between cancelling and the period actually ending, the user is on a *grace period*: `hasActiveSubscription()` stays true and `onGracePeriod()` tells you they're on the way out. That's a good moment for a "changed your mind?" banner:
 
 ```php
 if (auth()->user()->onGracePeriod()) {
@@ -647,12 +647,12 @@ auth()->user()->resumeSubscription();
 ```
 
 ::: info Paystack cancellations
-Paystack always cancels at period end — disabling a subscription stops future renewals but access naturally runs to the end of the paid period. Passing `false` only affects your local records.
+Paystack always cancels at period end: disabling a subscription stops future renewals, but access naturally runs to the end of the paid period. Passing `false` only affects your local records.
 :::
 
 ## Switching plans <Badge text="New" type="tip" />
 
-Upgrading or downgrading a subscribed user doesn't need a new checkout — `changeSubscription()` swaps the plan on the provider using the payment method already on file:
+Upgrading or downgrading a subscribed user doesn't need a new checkout. `changeSubscription()` swaps the plan on the provider using the payment method already on file:
 
 ```php
 billing()->changeSubscription([
@@ -674,7 +674,7 @@ app()->get('/billing/portal', function () {
 });
 ```
 
-On Stripe this opens the [Billing Portal](https://docs.stripe.com/customer-management) (update card, view invoices, cancel); on Paystack it opens the subscription management page (update card, cancel). `portal()` returns `null` when there's nothing to manage — e.g. the user has no billing history yet.
+On Stripe this opens the [Billing Portal](https://docs.stripe.com/customer-management) (update card, view invoices, cancel); on Paystack it opens the subscription management page (update card, cancel). `portal()` returns `null` when there's nothing to manage, e.g. the user has no billing history yet.
 
 ## Failed renewal payments <Badge text="New" type="tip" />
 
@@ -682,7 +682,7 @@ When a renewal charge fails, your webhook marks the subscription past due (`invo
 
 - `hasActiveSubscription()` returns false, so gated content locks automatically
 - `hasPastDueSubscription()` lets you show a "payment failed, update your card" notice with a `billing()->portal()` link
-- Your provider retries the charge on its own schedule; when it succeeds, `invoice.payment_succeeded` fires and `$event->renewSubscription()` restores access — nothing else to do
+- Your provider retries the charge on its own schedule; when it succeeds, `invoice.payment_succeeded` fires and `$event->renewSubscription()` restores access. Nothing else to do
 
 ## Billing Middleware
 

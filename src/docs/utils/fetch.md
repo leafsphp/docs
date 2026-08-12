@@ -111,7 +111,7 @@ fetch([
 
 ## Request Bodies
 
-Arrays you pass as `data` on POST, PUT, PATCH and DELETE requests are sent as JSON by default — no `json_encode()` needed:
+Arrays you pass as `data` on POST, PUT, PATCH and DELETE requests are sent as JSON by default, no `json_encode()` needed:
 
 ```php:no-line-numbers
 // sends {"sku":"leaf-tee","qty":2} with your request

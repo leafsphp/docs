@@ -19,6 +19,7 @@ import WallOfFame from '../Community/WallOfFame.vue';
 <template>
   <div class="home-shell">
     <Hero />
+    <Sponsors />
     <AIWorkflow />
     <SpeedDemo />
     <Tooling />
@@ -26,7 +27,6 @@ import WallOfFame from '../Community/WallOfFame.vue';
     <Ecosystem />
     <Testimonials />
     <TryIt />
-    <Sponsors />
     <Community />
     <Blog />
     <Speak />

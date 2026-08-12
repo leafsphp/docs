@@ -32,6 +32,61 @@ composer require leafs/leaf:^5.0
 
 If you are using Leaf MVC, update `leafs/mvc-core` and your other Leaf modules to their v5-compatible versions as well.
 
+## How much work is this, module by module?
+
+Find your modules below before reading anything else. Most of them are in the first two tables.
+
+### Safe to upgrade, nothing to change
+
+These modules only gained fixes and features. Update the version and move on.
+
+| Module | Worth knowing |
+| :-- | :-- |
+| `leafs/bareui` | Nothing to do. |
+| `leafs/fetch` | Nothing to do. |
+| `leafs/logger` | Nothing to do. |
+| `leafs/redis` | Nothing to do. |
+| `leafs/queue` | Nothing to do. |
+| `leafs/mail` | Nothing to do. The mailer resets between sends now, which fixes recipient build-up in queue workers. |
+| `leafs/lingo` | Nothing to do. The session, header and router strategies now behave as documented. |
+| `leafs/sitemap` | Nothing to do. `lastmod` only appears when you provide one. |
+| `leafs/blade` | No code changes. Requires PHP 8.2 and Illuminate `^11\|^12\|^13`. |
+| `leafs/vite` | No code changes, same floor as Blade. `@leafphp/vite-plugin` is now ESM-only (Vite 5+, Node 18+). |
+
+### Minimal changes: skim one section, likely change nothing
+
+These have a behavior change or two worth checking against your code. Most apps read the linked section, confirm it doesn't apply, and upgrade.
+
+| Module | What to check |
+| :-- | :-- |
+| `leafs/leaf` | Nothing for most apps. Real changes only if you wrote [raw regex routes](#raw-regex-routes-are-no-longer-supported), a [custom error handler](#custom-error-handlers-receive-a-crash-report), or used [Eien / `$app->ws()`](#async-support-is-paused-while-eien-is-rebuilt). |
+| `leafs/http` | [Untyped request bodies parse as JSON, and `Headers::set()` no longer forces a 200](#requests-and-responses). |
+| `leafs/db` | [`config('key', $falsyValue)` now sets, and transactions work on every driver](#database). |
+| `leafs/form` | [Validation results can flip](#validation): falsy values are values, and `email`/`url`/`ip`/`json` are real validators now. |
+| `leafs/csrf` | [A real secret is required](#security-and-sessions), and any app with an `APP_KEY` is covered automatically. Pre-upgrade tokens need one page refresh. |
+| `leafs/cors` | [Origins match exactly, or by regex](#security-and-sessions). Review your `origin` list. |
+| `leafs/session` | [Flash output is no longer HTML-escaped](#security-and-sessions). Remove compensating `html_entity_decode()` calls. |
+| `leafs/cookie` | [Deletion uses your configured path and domain](#security-and-sessions). Set defaults once with `Cookie::setDefaults()`. |
+| `leafs/date` | [Two-argument `tick()` parses *in* the timezone](#timezones-in-tick-now-parse-instead-of-convert). Add `->tz()` for the old conversion behavior. |
+| `leafs/password` | [`spice()` is a real pepper now](#password-spice-is-now-a-real-pepper). Old hashes still verify and rehash forward on login; `Password::MD5` is gone. |
+| `leafs/cache` | [Your configured store is honored, and the default path moved](#other-modules) outside Leaf MVC. |
+| `leafs/s3` | [`visibility` is actually applied](#other-modules). Re-check anything you uploaded as "private" through v4. |
+| `leafs/schema` | [History moved into your database](#schema-history-moved-into-your-database). The first `db:migrate` imports old snapshots automatically. |
+| `leafs/inertia` | [Page props now win over shared props, and version mismatches force reloads](#frontend-packages). |
+| `leafs/auth` | [Subscription semantics changed](#leaf-mvc): newest subscription wins, grace periods keep access, cancellation defaults to period end. |
+| `leafs/alchemy` | [Verbs replace flags](#console-commands-and-tooling), though the old flags still work. Re-run `alchemy init` to refresh your composer scripts. |
+| `leafs/mvc-core` | Bump together with core. Structure, configs and paths are unchanged; custom console commands are the one real rewrite (next table). |
+
+### Real changes: set aside time
+
+| What you're using | What it takes |
+| :-- | :-- |
+| Custom Aloe commands | [Aloe is gone](#console-commands-and-tooling); rewrite each command on Sprout's `$signature` + `handle()`. Small per command, but every command needs it. |
+| Eien / `$app->ws()` | [Removed while Eien is rebuilt](#async-support-is-paused-while-eien-is-rebuilt). No drop-in v5 replacement: stay on v4 or run your own async worker. |
+| Leaf UI | [Sunset](https://ui.leafphp.dev). Existing apps keep running on the published packages; migrate to Blade, scaffolds, or Inertia when ready. |
+| Leaf Devtools | Sunset. [Leaf Crash](/docs/routing/error-handling) ships the debugging and insight experience inside the error engine itself. |
+| Custom `BillingProvider` implementations | Add `resumeSubscription()` and the `$atPeriodEnd` argument on `cancelSubscription()`. Details under [Leaf MVC](#leaf-mvc). |
+
 ## The new routing engine
 
 Leaf 5 compiles your routes when they are registered instead of interpreting them with regex on every request. Exact routes are matched instantly from an index, and dynamic routes are bucketed so only relevant candidates are checked. For most apps this is purely a speed upgrade with no code changes: your `{param}` routes work exactly as before.
@@ -128,12 +183,12 @@ See [Schema files](/docs/database/files) for the full picture.
 
 ## Environment reads are cached
 
-`_env()` now parses your environment once and caches it for the rest of the request (this is part of why env reads are dramatically faster in v5). If your code changes environment values at runtime with `putenv()` and expects `_env()` to pick them up, that no longer happens. For that one case, use `_envUncached()` — same signature and value casting as `_env()`, but it reads the environment live on every call (and pays the full cost of doing so every time).
+`_env()` now parses your environment once and caches it for the rest of the request (this is part of why env reads are dramatically faster in v5). If your code changes environment values at runtime with `putenv()` and expects `_env()` to pick them up, that no longer happens. For that one case, use `_envUncached()`. It has the same signature and value casting as `_env()`, but it reads the environment live on every call and pays the full cost of doing so every time.
 
 ```php
 putenv('FEATURE_FLAG=true');
 
-_env('FEATURE_FLAG'); // null — cache was built before putenv()
+_env('FEATURE_FLAG'); // null, the cache was built before putenv()
 _envUncached('FEATURE_FLAG'); // true
 ```
 
@@ -142,7 +197,7 @@ _envUncached('FEATURE_FLAG'); // true
 `tick('2026-01-15 12:00:00', 'Asia/Tokyo')` now means "noon *as experienced in Tokyo*" (day.js semantics) instead of "parse noon in the server timezone, then convert to Tokyo". If you relied on the old conversion behavior, move the timezone to a `tz()` call:
 
 ```php
-tick($date, $timezone);       // Leaf 4: converted — Leaf 5: parses IN the timezone
+tick($date, $timezone);       // Leaf 4 converted; Leaf 5 parses IN the timezone
 tick($date)->tz($timezone);   // Leaf 5: converts, same as the old behavior
 ```
 
@@ -199,7 +254,7 @@ New: custom rule callables receive the full data set as a fourth argument (so cr
 ## Security and sessions
 
 - **CSRF tokens use a new format.** Tokens minted before the upgrade won't validate on Leaf 5, so a session holding one needs a single page refresh. There's nothing to configure.
-- **CSRF now requires a real secret.** <Badge type="danger" text="BREAKING" /> Leaf 5 resolves the CSRF secret in order: a `secret` passed to `csrf()`, then `X_CSRF_SECRET` from your `.env`, then a secret derived automatically from your `APP_KEY`. If none of the three exist, the app throws at startup instead of running CSRF protection without one. Most apps need to do nothing — any project with an `APP_KEY` is covered. If you hit the error, run `php leaf key:generate` or set `X_CSRF_SECRET` in your `.env`. The derived secret is mixed with a fixed context string, so it is never your raw app key, and changing your `APP_KEY` invalidates in-flight CSRF tokens (a page refresh mints new ones).
+- **CSRF now requires a real secret.** <Badge type="danger" text="BREAKING" /> Leaf 5 resolves the CSRF secret in order: a `secret` passed to `csrf()`, then `X_CSRF_SECRET` from your `.env`, then a secret derived automatically from your `APP_KEY`. If none of the three exist, the app throws at startup instead of running CSRF protection without one. Most apps need to do nothing, since any project with an `APP_KEY` is covered. If you hit the error, run `php leaf key:generate` or set `X_CSRF_SECRET` in your `.env`. The derived secret is mixed with a fixed context string, so it is never your raw app key, and changing your `APP_KEY` invalidates in-flight CSRF tokens (a page refresh mints new ones).
 - **CORS origins are matched exactly, or by regex.** An origin you allow must be written in full, scheme included, and it matches that origin only. For a family of subdomains, pass a regex string instead:
 
   ```php

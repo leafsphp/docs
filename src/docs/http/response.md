@@ -263,7 +263,7 @@ $app->response()->download('path/to/file.pdf', 'new-filename.pdf', 200);
 
 :::
 
-Downloads are streamed in chunks, so memory stays flat no matter the file size: a 5GB file doesn't need 5GB of memory. Downloads also honor HTTP `Range` requests automatically <Badge type="tip" text="NEW" />: browsers and download managers can pause/resume and fetch files in parallel segments, and Leaf answers with proper `206 Partial Content` responses. You don't have to do anything — it's on for every download:
+Downloads are streamed in chunks, so memory stays flat no matter the file size: a 5GB file doesn't need 5GB of memory. Downloads also honor HTTP `Range` requests automatically <Badge type="tip" text="NEW" />: browsers and download managers can pause/resume and fetch files in parallel segments, and Leaf answers with proper `206 Partial Content` responses. You don't have to do anything, it's on for every download:
 
 ```bash:no-line-numbers
 # a client resuming an interrupted download from byte 1000000

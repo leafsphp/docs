@@ -143,7 +143,7 @@ $keys = redis()->keys();
 
 ## Counters <Badge text="New" type="tip" />
 
-Redis counters are atomic, which makes them perfect for rate limiting, view counts, and quick stats — no read-modify-write races:
+Redis counters are atomic, which makes them perfect for rate limiting, view counts, and quick stats with no read-modify-write races:
 
 ```php:no-line-numbers
 redis()->increment('page:views');           // 1
@@ -166,7 +166,7 @@ redis()->ttl('cached:report');          // seconds remaining
 
 ## Every other redis command <Badge text="New" type="tip" />
 
-Leaf Redis gives first-class methods to the operations you'll reach for daily, but the whole redis command set is available — any method Leaf doesn't define is passed straight to the underlying client:
+Leaf Redis gives first-class methods to the operations you'll reach for daily, but the whole redis command set is available: any method Leaf doesn't define is passed straight to the underlying client:
 
 ```php:no-line-numbers
 redis()->hSet('user:1', 'name', 'Leaf'); // hashes

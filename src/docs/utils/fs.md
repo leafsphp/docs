@@ -115,7 +115,7 @@ echo $content;
 
 ### Reading part of a file <Badge type="tip" text="NEW" />
 
-For big files you often don't want the whole thing — just a slice. `readRange()` reads an exact byte window without loading the rest of the file:
+For big files you often don't want the whole thing, just a slice. `readRange()` reads an exact byte window without loading the rest of the file:
 
 ```php
 $firstKb = storage()->readRange('video.mp4', 0, 1024); // first 1KB

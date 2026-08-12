@@ -72,7 +72,7 @@ Supporting Leaf doesn't just fund the framework — it keeps a whole family of t
 
 Sponsoring Leaf gives you great exposure to all PHP developers around the world through our website and GitHub project READMEs. In addition, supporting OSS improves the reputation of your brand, and also ensures that Leaf stays healthy and actively maintained.
 
-You can join our [Premium Sponsorship 🍁](https://opencollective.com/leaf/contribute/premium-sponsor-79271) tier which gives you the following perks:
+You can join our [Premium Sponsorship 🍁](/support/premium-sponsorship) tier which gives you the following perks:
 
 - Your logo on our README on GitHub and our website
 - A personalized shoutout on our social media channels & newsletters

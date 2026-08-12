@@ -24,7 +24,7 @@ From there, you can use any of the Password methods.
 
 ## spice
 
-Spice is Leaf's name for a [password pepper](https://en.wikipedia.org/wiki/Pepper_(cryptography)): a secret that lives in your application (not your database) and is mixed into every password before hashing. If an attacker dumps your database — through SQL injection, a stolen backup, or an exposed server — the hashes are useless for offline cracking without the spice, because it was never stored next to them.
+Spice is Leaf's name for a [password pepper](https://en.wikipedia.org/wiki/Pepper_(cryptography)): a secret that lives in your application (not your database) and is mixed into every password before hashing. If an attacker dumps your database through SQL injection, a stolen backup, or an exposed server, the hashes are useless for offline cracking without the spice, because it was never stored next to them.
 
 Set it once, from an environment variable, when your app boots:
 
@@ -34,18 +34,18 @@ use Leaf\Helpers\Password;
 Password::spice(_env('PASSWORD_SPICE'));
 ```
 
-Once set, every `hash()` and `verify()` call applies it automatically — you don't need to think about it again. Under the hood the password is keyed through HMAC-SHA256 with the spice as the secret before hashing, which is the standard construction for a pepper.
+Once set, every `hash()` and `verify()` call applies it automatically, and you don't need to think about it again. Under the hood the password is keyed through HMAC-SHA256 with the spice as the secret before hashing, which is the standard construction for a pepper.
 
 **The next examples will assume you've added `use Leaf\Helpers\Password`**
 
 You can read the current spice back with `Password::spice()` (no arguments).
 
 ::: warning Set it once, never change it
-Changing the spice invalidates every stored password hash — users would no longer be able to log in. Treat it like an encryption key: generate a long random value, keep it in your `.env` (never commit it), and leave it alone.
+Changing the spice invalidates every stored password hash, so users would no longer be able to log in. Treat it like an encryption key: generate a long random value, keep it in your `.env` (never commit it), and leave it alone.
 :::
 
 ::: details Upgrading from Leaf 4
-Older versions of this module chained the spice onto the password as plain text instead of HMAC-ing it. Hashes created that way still verify — `verify()` falls back to the old scheme automatically — and you can migrate them forward with [`needsRehash()`](#password-needsrehash) whenever a user logs in.
+Older versions of this module chained the spice onto the password as plain text instead of HMAC-ing it. Hashes created that way still verify, since `verify()` falls back to the old scheme automatically, and you can migrate them forward with [`needsRehash()`](#password-needsrehash) whenever a user logs in.
 :::
 
 ## `Password::hash()`
@@ -96,7 +96,7 @@ if (Password::verify($password, $user['password'])) {
 }
 ```
 
-With this in place, your whole user base migrates itself to the newest hashing setup one login at a time — no reset emails, no downtime.
+With this in place, your whole user base migrates itself to the newest hashing setup one login at a time. No reset emails, no downtime.
 
 ## argon 2
 
