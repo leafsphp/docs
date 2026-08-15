@@ -319,6 +319,19 @@ leaf view:build
 
 Use `view:install` to set up a view engine or frontend integration, and `view:build` to build frontend assets for production.
 
+`view:install` takes one flag per integration:
+
+```bash:no-line-numbers
+leaf view:install --blade      # blade templating
+leaf view:install --react     # react via inertia
+leaf view:install --vue       # vue via inertia
+leaf view:install --svelte    # svelte via inertia
+leaf view:install --tailwind  # tailwind css
+leaf view:install --vite      # vite asset bundling
+```
+
+These wire into an MVC app's structure (`app/views`, vite config, the works). In a lite app, run [`leaf up`](#scaling-a-project) first — moving to views is usually the moment a single file wants real structure anyway.
+
 ## Command reference
 
 <div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">

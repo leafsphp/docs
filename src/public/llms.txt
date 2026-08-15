@@ -40,6 +40,8 @@ leaf create my-app --lite
 leaf create my-app --api
 ```
 
+**Adding views/frontends:** `leaf view:install --blade|--react|--vue|--svelte|--tailwind|--vite` sets up view engines and frontend tooling in MVC apps. For a lite app that needs views, run `leaf up` first to scale into MVC, then `view:install`.
+
 **NEVER mix patterns.** Do not add `app/controllers/` to a Basic app. Do not use raw `index.php` routing in an MVC app.
 
 ---

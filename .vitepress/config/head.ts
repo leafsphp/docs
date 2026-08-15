@@ -13,7 +13,7 @@ const head: HeadConfig[] = [
     {
       name: 'description',
       content:
-        'Leaf is a lightweight and elegant PHP framework built for makers. With zero-config setup and an ecosystem of powerful tools, Leaf helps you build and ship scalable apps—fast',
+        'Leaf is the PHP framework built for AI and humans. Zero-config setup, a full ecosystem of modules, and AI-ready projects out of the box, so you build products at the speed of thought.',
     },
   ],
   ['meta', { name: 'twitter:site', content: '@leafphp' }],
@@ -23,7 +23,7 @@ const head: HeadConfig[] = [
     'meta',
     {
       name: 'twitter:title',
-      content: 'Leaf PHP - Elegant PHP, Built for Makers',
+      content: 'Leaf PHP - Build Products at the Speed of Thought',
     },
   ],
   [
@@ -31,7 +31,7 @@ const head: HeadConfig[] = [
     {
       name: 'twitter:description',
       content:
-        'Leaf is a lightweight and elegant PHP framework built for makers. With zero-config setup and an ecosystem of powerful tools, Leaf helps you build and ship scalable apps—fast',
+        'Leaf is the PHP framework built for AI and humans. Zero-config setup, a full ecosystem of modules, and AI-ready projects out of the box, so you build products at the speed of thought.',
     },
   ],
   [
@@ -46,7 +46,7 @@ const head: HeadConfig[] = [
     'meta',
     {
       name: 'og:title',
-      content: 'Leaf PHP - Elegant PHP, Built for Makers',
+      content: 'Leaf PHP - Build Products at the Speed of Thought',
     },
   ],
   [
@@ -76,7 +76,7 @@ const head: HeadConfig[] = [
     {
       name: 'og:description',
       content:
-        'Leaf is a lightweight and elegant PHP framework built for makers. With zero-config setup and an ecosystem of powerful tools, Leaf helps you build and ship scalable apps—fast',
+        'Leaf is the PHP framework built for AI and humans. Zero-config setup, a full ecosystem of modules, and AI-ready projects out of the box, so you build products at the speed of thought.',
     },
   ],
   [
