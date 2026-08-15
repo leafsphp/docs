@@ -181,7 +181,23 @@ Leaf projects use `.leaf/CONTEXT.md` as shared working memory. The file follows 
 - Known Decisions: record lasting choices as `* Decision — reasoning.` Always include the why, or the next agent will relitigate it.
 - Keep the file concise: summarize instead of appending, remove outdated lines, reference files instead of copying them.
 
-No setup command is required for Leaf MVC or projects created through Leaf CLI. If a project has no `.leaf/CONTEXT.md`, offer to create one in this format.
+**Canonical sections** (the shipped template, in order — create missing files with these):
+
+```markdown
+<!-- leaf.context v1 -->
+
+## Working With This File   (the format contract, keep as shipped)
+## Project Summary          (2-3 lines: what the app is, for whom)
+## Current Goal             (exactly one)
+## Architecture             (entry point, key folders, notable wiring)
+## External Providers       (services + env key NAMES, never values)
+## Coding Conventions       (project-specific style the code can't show)
+## Recent Changes           (dated one-liners, five max)
+## Known Decisions          (decision + reasoning)
+## Future Ideas             (parked, not committed)
+```
+
+No setup command is required for Leaf MVC or projects created through Leaf CLI. If a project has no `.leaf/CONTEXT.md`, offer to create one with these sections.
 
 For an external assistant without access to the project, use:
 
@@ -197,9 +213,14 @@ This produces a minified view of the shared project context: routes, modules, co
 3. Say what you want: *"Add billing"*, *"Create a dashboard"*
 4. AI has real context — stops guessing, builds correctly
 
-The command output is a portable handoff. It is not the same as the two-way `.leaf/CONTEXT.md` used by agents inside the project.
+**If you are the assistant receiving a pasted handoff** (it starts with `# Leaf Context Handoff`):
 
-> Confirmed for Leaf 5, will be ready before Alpha.
+- The mechanical map (routes, modules, models, env key names) was scanned from the real code — trust it over your assumptions, and use the project's actual route and model names in everything you generate.
+- The "Shared memory" section carries the project's goals and decisions. Respect recorded decisions instead of proposing alternatives the team already rejected.
+- The handoff is read-only: you cannot write back to `.leaf/CONTEXT.md` from outside. When your work produces knowledge worth keeping (a new decision, a completed goal), end your reply with a short "for your `.leaf/CONTEXT.md`" note the user can paste in.
+- Ask the user for any file your change depends on that the handoff doesn't show — never guess at code you cannot see.
+
+The handoff is a portable snapshot. It is not the same as the two-way `.leaf/CONTEXT.md` used by agents inside the project.
 
 ---
 
@@ -210,7 +231,7 @@ leaf install auth      # Authentication
 leaf install db        # Database
 leaf install mail      # Mailing
 leaf install cors      # CORS
-leaf install fs@v4     # Filesystem (needed for file uploads in Basic apps)
+leaf install fs        # Filesystem (needed for file uploads in Basic apps)
 ```
 
 Everything wires up automatically. No glue code.
