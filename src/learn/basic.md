@@ -8,8 +8,8 @@ prev: false
 <!-- markdownlint-disable no-inline-html -->
 
 <div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid lg:grid-cols-[1fr_300px]">
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 lg:border-b-0 lg:border-r">
+  <div>
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
       <h2 class="!m-0 !mt-0 !border-0 !p-0 text-2xl font-semibold text-neutral-950 dark:text-neutral-50 md:text-3xl">A working PHP app before the idea gets cold.</h2>
       <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Start with routing and HTTP helpers, then add only what the product asks for. The project stays readable to you, your team, and your AI tools from the first file.</p>
       <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
@@ -22,10 +22,10 @@ prev: false
     </div>
     <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
       <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">You begin with</p>
-      <div class="mt-6 space-y-6">
-        <div><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">One clear entry point</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">No directory tour before you can respond to a request.</span></div>
-        <div><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">Routing and HTTP</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">The essentials for pages, APIs, webhooks, and small tools.</span></div>
-        <div><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">A path to grow</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install modules or move into MVC without changing ecosystems.</span></div>
+      <div class="mt-6 grid gap-3 md:grid-cols-3">
+        <div class="border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]"><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">One clear entry point</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">No directory tour before you can respond to a request.</span></div>
+        <div class="border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]"><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">Routing and HTTP</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">The essentials for pages, APIs, webhooks, and small tools.</span></div>
+        <div class="border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]"><strong class="block text-sm font-semibold text-neutral-950 dark:text-neutral-50">A path to grow</strong><span class="mt-1 block text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install modules or move into MVC without changing ecosystems.</span></div>
       </div>
     </div>
   </div>
