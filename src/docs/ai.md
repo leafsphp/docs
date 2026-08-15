@@ -8,8 +8,8 @@ prev: false
 # AI in Leaf <StatusBadge label="New" title="AI-native project context arrived in Leaf 5" description="Leaf 5 gives assistants an explicit map of your app instead of making them infer routes, modules, configuration, and structure from scratch." meta="Introduced in Leaf 5" href="#instant-project-understanding" link-text="See how it works" />
 
 <div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid 2xl:grid-cols-[1fr_320px]">
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+  <div>
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
       <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">AI-native PHP</p>
       <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">
         Give assistants the map, not just the prompt.
@@ -35,7 +35,7 @@ prev: false
     </div>
     <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
       <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">The goal</p>
-      <div class="space-y-4 md:space-y-0 grid md:grid-cols-3 2xl:grid-cols-1 gap-3">
+      <div class="grid gap-3 md:grid-cols-3">
         <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
           <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Less guessing</p>
           <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">AI sees the app shape before it writes code.</p>
