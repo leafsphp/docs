@@ -4,17 +4,17 @@ import { ui } from '../Home/ui';
 const blogPosts = [
   {
     id: 2,
-    title: 'What changed in how we build this month',
-    excerpt: 'New patterns, better defaults, AI-readable structure, and the small decisions that compound into a faster workflow.',
-    image: 'https://github.com/user-attachments/assets/9e97bc87-0cdc-4bc1-95e3-aeba4ab7788e',
-    url: 'https://blog.leafphp.dev/posts/sep-2025-recap.html',
+    title: 'Leaf 5: Build products at the speed of thought',
+    excerpt: 'The biggest release in our history: a new routing engine, Leaf Crash, AI-native projects, and a family of stable modules.',
+    image: 'https://blog.leafphp.dev/leaf5-bg-mountains.png',
+    url: 'https://blog.leafphp.dev/posts/leaf-5.html',
   },
   {
     id: 1,
-    title: "Building real products faster isn't about code anymore",
-    excerpt: "It's about leverage. How Leaf rethinks the relationship between developers, AI, and the products they ship.",
-    image: 'https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fba2wnotxn1952b8am43b.jpg',
-    url: 'https://dev.to/mychi_darko/build-your-next-saas-with-php-in-hours-not-days-30if',
+    title: "It's been a while. Here's what we've been building.",
+    excerpt: 'The quiet had a reason. A year of rebuilding Leaf from the ground up, and what came out the other side.',
+    image: 'https://leafphp.dev/leaf5-banner.png',
+    url: 'https://blog.leafphp.dev/posts/from-us.html',
   },
 ];
 </script>

@@ -28,6 +28,27 @@ const products = [
     logo: 'https://fetch.leafphp.dev/images/fetch.png',
   },
   {
+    name: 'Auth',
+    url: 'https://auth.leafphp.dev',
+    tagline: 'Authentication',
+    description: 'Login, registration, roles, permissions and subscriptions for any PHP app — sessions or JWT, one API.',
+    logo: 'https://leafphp.dev/logo-circle.png',
+  },
+  {
+    name: 'Db',
+    url: 'https://db.leafphp.dev',
+    tagline: 'Database',
+    description: 'Fluent queries and raw SQL without a heavy database layer — MariaDB, MySQL, Postgres, SQLite, SQL Server.',
+    logo: 'https://leafphp.dev/logo-circle.png',
+  },
+  {
+    name: 'Kata',
+    url: 'https://kata.leafphp.dev',
+    tagline: 'Design systems for AI',
+    description: 'Compile your design system into a language AI can build with, so generated UIs come out looking like yours.',
+    logo: 'https://leafphp.dev/logo-circle.png',
+  },
+  {
     name: 'Hana JS',
     url: 'https://hanabira.dev',
     tagline: 'Frontend framework',
