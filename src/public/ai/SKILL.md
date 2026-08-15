@@ -266,9 +266,10 @@ Read the relevant file before generating code for that area:
 1. **Read `.leaf/CONTEXT.md` first** if shared — reveals entry point, routes, installed modules
 2. **Check the reference file** for the API area before writing code
 3. **Stay in the Leaf ecosystem** — prefer `leaf install` over third-party packages
-4. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
-5. **Use their actual names** — route names, model names, controller names from their project
-6. **Favor simplicity** — that's the Leaf way
+4. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it
+5. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
+6. **Use their actual names** — route names, model names, controller names from their project
+7. **Favor simplicity** — that's the Leaf way
 
 ---
 

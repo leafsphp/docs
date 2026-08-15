@@ -348,9 +348,7 @@ app()->get('/upgrade', ['middleware' => 'billing.not-subscribed:Starter', 'Subsc
 
 // billing.subscribed, billing.subscribed:plan, billing.not-subscribed, billing.not-subscribed:plan
 // Customize failure behavior:
-billing()->middleware('billing.subscribed', function () {
-    response()->redirect('/upgrade');
-});
+billing()->middleware('billing.subscribed', fn () => response()->redirect('/upgrade'));
 ```
 
 ### Raw Provider Access

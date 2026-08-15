@@ -137,7 +137,7 @@ $app = new Leaf\App();
 
 $app->get('/', function () {
     $name = request()->get('name');
-    response()->markup("Hello, $name");
+    return response()->markup("Hello, $name");
 });
 
 $app->run();
@@ -154,7 +154,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 app()->get('/', function () {
     $name = request()->get('name');
-    response()->markup("Hello, $name");
+    return response()->markup("Hello, $name");
 });
 
 app()->run();

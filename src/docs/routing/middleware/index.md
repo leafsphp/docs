@@ -144,7 +144,7 @@ app()->registerMiddleware('logRequest', function ($next) {
   echo "[$method] $uri\n";
 
   // pass data to the next handler
-  response()->next('You can pass any value here');
+  return response()->next('You can pass any value here');
 });
 ```
 

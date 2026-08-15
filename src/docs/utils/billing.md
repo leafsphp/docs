@@ -68,7 +68,7 @@ public function handleCartPurchase($cartId) {
     $cart->payment_session = $session->id();
     $cart->save();
 
-    response()->redirect($session->url());
+    return response()->redirect($session->url());
 }
 ```
 
@@ -93,7 +93,7 @@ public function handleCartPurchase($cartId) {
     $cart->payment_session = $session->id();
     $cart->save();
 
-    response()->redirect($session->url());
+    return response()->redirect($session->url());
 }
 ```
 
@@ -366,13 +366,13 @@ class WebhooksController extends Controller
 
         if ($event->is('customer.subscription.updated')) {
             if ($event->activateSubscription()) {
-                response()->json([
+                return response()->json([
                     'status' => 'success',
                 ]);
             } else {
                 // Subscription was not activated
                 // ❌ Retry or handle manually
-                response()->json([
+                return response()->json([
                     'status' => 'failed',
                 ], 500);
             }
@@ -382,13 +382,13 @@ class WebhooksController extends Controller
 
         if ($event->is('customer.subscription.deleted')) {
             if ($event->cancelSubscription()) {
-                response()->json([
+                return response()->json([
                     'status' => 'success',
                 ]);
             } else {
                 // Subscription was not cancelled
                 // ❌ Retry or handle manually
-                response()->json([
+                return response()->json([
                     'status' => 'failed',
                 ], 500);
             }
@@ -667,11 +667,9 @@ On Stripe the swap happens in place with proration, so the user is credited for 
 Card expired? User wants their invoices? Instead of building billing management UI, you can send users to your provider's hosted portal:
 
 ```php
-app()->get('/billing/portal', function () {
-    response()->redirect(
-        billing()->portal('/dashboard') // where to return the user afterwards
-    );
-});
+app()->get('/billing/portal', fn () => response()->redirect(
+    billing()->portal('/dashboard') // where to return the user afterwards
+));
 ```
 
 On Stripe this opens the [Billing Portal](https://docs.stripe.com/customer-management) (update card, view invoices, cancel); on Paystack it opens the subscription management page (update card, cancel). `portal()` returns `null` when there's nothing to manage, e.g. the user has no billing history yet.
@@ -714,9 +712,7 @@ app()->get('/protected', [
 If you want to customize what the middleware does if the user is not allowed to access the route, you can do that by calling the `billing()->middleware()` method in your `app/routes/index.php` file. This method accepts a callback that will be called if the user is not allowed to access the route.
 
 ```php:no-line-numbers [index.php]
-billing()->middleware('billing.subscribed', function () {
-    response()->redirect('/some-special-page');
-});
+billing()->middleware('billing.subscribed', fn () => response()->redirect('/some-special-page'));
 ```
 
 And then you can use the middleware like this:
@@ -809,7 +805,7 @@ public function handleCartPurchase($cartId) {
     $cart->payment_session = $session->id;
     $cart->save();
 
-    response()->redirect($session->url);
+    return response()->redirect($session->url);
 }
 ```
 

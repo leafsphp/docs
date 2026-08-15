@@ -97,7 +97,7 @@ if ($success) {
   // User is authenticated
   $user = auth()->user();
 
-  response()->redirect('/dashboard');
+  return response()->redirect('/dashboard');
 } else {
   // User is not authenticated
   $error = auth()->errors();

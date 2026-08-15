@@ -12,7 +12,7 @@ require __DIR__ . '/vendor/autoload.php';
 // for a get request
 app()->get('/', function () {
   $data = request()->get('name');
-  response()->json($data);
+  return response()->json($data);
 });
 
 app()->run();
@@ -33,7 +33,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
   $data = request()->body();
-  response()->json($data);
+  return response()->json($data);
 });
 
 app()->run();
@@ -52,7 +52,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
   $data = request()->get('name');
-  response()->json($data);
+  return response()->json($data);
 });
 
 app()->run();
@@ -78,7 +78,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 app()->get('/', function () {
   $data = request()->get(['name', 'country']);
-  response()->json($data);
+  return response()->json($data);
 });
 
 app()->run();

@@ -64,7 +64,7 @@ Data is consumed on first read and removed from the request lifecycle.
 ```php
 app()->registerMiddleware('logRequest', function ($next) {
     echo request()->getMethod();
-    response()->next('You can pass any value here');
+    return response()->next('You can pass any value here');
 });
 
 app()->get('/home', ['middleware' => 'logRequest', function () {
@@ -79,7 +79,7 @@ app()->get('/home', ['middleware' => 'logRequest', function () {
 class LogRequestMiddleware extends Middleware {
     public function call($next) {
         echo request()->getMethod();
-        response()->next('You can pass any value');
+        return response()->next('You can pass any value');
     }
 }
 

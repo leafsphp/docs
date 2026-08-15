@@ -515,7 +515,7 @@ class AccountController extends Controller
     {
         $user = auth()->user();
 
-        response()->inertia('profile/update', [
+        return response()->inertia('profile/update', [
             'errors' => flash()->display('errors') ?? [],
             'name' => $user->name ?? null,
             'email' => $user->email ?? null,
@@ -542,7 +542,7 @@ class AccountController extends Controller
                 ->redirect('/show-name-change-form', 303);
         }
 
-        response()->redirect('/dashboard', 303);
+        return response()->redirect('/dashboard', 303);
     }
 }
 ```

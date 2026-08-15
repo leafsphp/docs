@@ -406,7 +406,7 @@ $res = db()
   ->execute();
 
 if ($res === false) {
-  response()->exit(db()->errors());
+  return response()->exit(db()->errors());
 }
 ```
 

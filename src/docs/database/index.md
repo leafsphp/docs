@@ -3,8 +3,8 @@
 <!-- markdownlint-disable no-inline-html -->
 
 <div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid 2xl:grid-cols-[1fr_320px]">
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8 2xl:border-b-0 2xl:border-r">
+  <div>
+    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
       <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Leaf DB</p>
       <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Query data without dragging a heavy database layer behind you.</div>
       <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf DB is a lightweight database module for connecting to SQL databases, writing fluent queries, running raw SQL when needed, and powering models and schema files in Leaf MVC.</p>
@@ -26,7 +26,7 @@
     </div>
     <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
       <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Supported</p>
-      <div class="grid grid-cols-2 gap-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
+      <div class="flex flex-wrap gap-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
         <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">MariaDB</div>
         <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">MySQL</div>
         <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">PostgreSQL</div>

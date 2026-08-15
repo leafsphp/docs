@@ -41,7 +41,7 @@ app()->cors();
 
 app()->get('/', function () {
   $data = request()->get('name');
-  response()->json($data);
+  return response()->json($data);
 });
 
 app()->run();
@@ -66,7 +66,7 @@ app()->cors([
 
 app()->get('/', function () {
   $data = request()->get('name');
-  response()->json($data);
+  return response()->json($data);
 });
 
 app()->run();

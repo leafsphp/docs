@@ -266,7 +266,7 @@ $success = auth()->register([
 ]);
 
 if ($success) {
-  response()->redirect('/dashboard');
+  return response()->redirect('/dashboard');
 } else {
   $error = auth()->errors();
   // ['email' => 'The email already exists']

@@ -42,9 +42,7 @@ A lite project starts with enough structure to handle real requests without putt
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/', function () {
-    response()->json(['message' => 'Hello from Leaf']);
-});
+app()->get('/', fn () => response()->json(['message' => 'Hello from Leaf']));
 
 app()->run();
 ```

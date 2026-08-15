@@ -21,12 +21,12 @@ class UsersController extends Controller
 {
     public function index()
     {
-        response()->json(['message' => 'UsersController@index']);
+        return response()->json(['message' => 'UsersController@index']);
     }
 
     public function show($id)
     {
-        response()->render('users/show', ['id' => $id]);
+        return response()->render('users/show', ['id' => $id]);
     }
 }
 ```

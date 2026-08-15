@@ -314,9 +314,9 @@ app()->csrf([
     'messages.tokenInvalid'  => 'Invalid token.',
     'onError'                => function ($error) {
         if ($error === 'tokenNotFound') {
-            response()->json(['error' => 'No CSRF token'], 403);
+            return response()->json(['error' => 'No CSRF token'], 403);
         } else {
-            response()->json(['error' => 'Invalid CSRF token'], 403);
+            return response()->json(['error' => 'Invalid CSRF token'], 403);
         }
     },
 ]);

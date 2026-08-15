@@ -32,9 +32,7 @@ app()->inertia('/home', 'Home');    // Inertia (React/Vue/Svelte)
 ## 404 Handler
 
 ```php
-app()->set404(function () {
-    response()->json(['error' => 'Page not found']);
-});
+app()->set404(fn () => response()->json(['error' => 'Page not found']));
 ```
 
 ## Route Options

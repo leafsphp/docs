@@ -115,6 +115,6 @@ request()->isXhr();               // alias for isAjax()
 request()->isFormData();          // multipart/form-data
 
 if (request()->typeIs('GET')) {
-    response()->exit('GET not allowed', 405);
+    return response()->exit('GET not allowed', 405);
 }
 ```

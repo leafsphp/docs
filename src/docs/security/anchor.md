@@ -112,7 +112,7 @@ app()->get('/posts/{id}', function ($id) {
     return;
   }
 
-  response()->render('posts.show', ['post' => $post]);
+  return response()->render('posts.show', ['post' => $post]);
 });
 ```
 
@@ -198,9 +198,7 @@ HSTS is only sent over HTTPS connections. Sending it over plain HTTP does nothin
 Most apps want these on every response. Set them once in a middleware rather than per route:
 
 ```php
-app()->use(function () {
-  response()->security(['csp' => ['default-src' => "'self'"]]);
-});
+app()->use(fn () => response()->security(['csp' => ['default-src' => "'self'"]]));
 ```
 :::
 

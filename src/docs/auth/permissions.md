@@ -230,9 +230,7 @@ In the example above:
 By default, Leaf Auth will show a 404 page if the user does not have the required role or permission to access the route. You can customize this behavior by telling Leaf Auth what to do when the role or permission validation fails, using the `middleware()` method on the `Auth` class. Here's an example:
 
 ```php
-auth()->middleware('is', function () {
-  response()->redirect('/login');
-});
+auth()->middleware('is', fn () => response()->redirect('/login'));
 ```
 
 Over here, we're telling Leaf Auth to redirect the user to the login page if the user does not have the required role to access the route. This will only work for the `is` middleware. You can also use the `isNot`, `can`, and `cannot` middleware in the same way.

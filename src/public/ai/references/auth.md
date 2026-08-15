@@ -107,7 +107,7 @@ With sessions, `login()` starts the session automatically:
 $success = auth()->login(['email' => '...', 'password' => '...']);
 
 if ($success) {
-    response()->redirect('/dashboard');
+    return response()->redirect('/dashboard');
 } else {
     $error = auth()->errors();
 }
@@ -294,13 +294,9 @@ app()->group('/verify', ['middleware' => 'auth.unverified', function () { /* ...
 ### Customize middleware failure behavior
 
 ```php
-auth()->middleware('auth.required', function () {
-    response()->exit('You need to be logged in', 401);
-});
+auth()->middleware('auth.required', fn () => response()->exit('You need to be logged in', 401));
 
-auth()->middleware('auth.guest', function () {
-    response()->exit('You are already logged in', 403);
-});
+auth()->middleware('auth.guest', fn () => response()->exit('You are already logged in', 403));
 ```
 
 ---
@@ -378,13 +374,9 @@ app()->get('/locked', ['middleware' => 'cannot:view user|create user', function 
 Default behavior on failure: 404. Customize:
 
 ```php
-auth()->middleware('is', function () {
-    response()->redirect('/login');
-});
+auth()->middleware('is', fn () => response()->redirect('/login'));
 
-auth()->middleware('can', function () {
-    response()->json(['error' => 'Forbidden'], 403);
-});
+auth()->middleware('can', fn () => response()->json(['error' => 'Forbidden'], 403));
 ```
 
 ### Inspect Roles & Permissions

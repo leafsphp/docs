@@ -41,7 +41,7 @@ You can add middleware that should run on every route in a group by passing the 
 ```php
 app()->registerMiddleware('auth', function () {
   if (!auth()->user()) {
-    response()->redirect('/login');
+    return response()->redirect('/login');
   }
 });
 

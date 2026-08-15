@@ -42,7 +42,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        response()->json([
+        return response()->json([
             'message' => 'UsersController@index output'
         ]);
     }
@@ -82,7 +82,7 @@ In fullstack applications, you'll need to render views (HTML pages) to the user.
 ```php
 public function index()
 {
-    response()->render('users');
+    return response()->render('users');
 }
 ```
 

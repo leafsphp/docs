@@ -27,9 +27,7 @@ You'll notice that although we're outputting html, the browser renders JSON beca
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/', function () {
-  response()->markup('<b>something</b>');
-});
+app()->get('/', fn () => response()->markup('<b>something</b>'));
 
 app()->run();
 ```
@@ -49,9 +47,7 @@ The JSON method takes in some data to output and the [http status code](https://
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/', function () {
-  response()->json('something');
-});
+app()->get('/', fn () => response()->json('something'));
 
 app()->run();
 ```
@@ -70,9 +66,7 @@ Leaf provides a `markup()` method that allows you to output HTML. This method is
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/', function () {
-  response()->markup('something');
-});
+app()->get('/', fn () => response()->markup('something'));
 
 app()->run();
 ```
@@ -92,9 +86,7 @@ Sometimes, simply being able to output html or PHP isn't enough. You may have so
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/', function () {
-  response()->page('./index.html');
-});
+app()->get('/', fn () => response()->page('./index.html'));
 
 app()->run();
 ```
@@ -120,7 +112,7 @@ app()->get('/', function () {
     // nothing below will run if exit is executed
   }
 
-  response()->markup('folder found');
+  return response()->markup('folder found');
 });
 
 app()->run();

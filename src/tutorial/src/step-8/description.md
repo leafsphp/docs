@@ -72,7 +72,7 @@ app()->get('/', function () {
     'country' => 'string',
   ]);
 
-  response()->json(
+  return response()->json(
     $validatedData ?: request()->errors()
   );
 });

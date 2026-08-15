@@ -33,7 +33,7 @@ app()->get('/protected', function () {
     // user is logged in
   } else {
     // user is not logged in
-    response()->redirect('/login');
+    return response()->redirect('/login');
   }
 });
 ```
@@ -48,7 +48,7 @@ app()->get('/protected', function () {
     // user is logged in
   } else {
     // user is not logged in
-    response()->json([
+    return response()->json([
       'error' => 'Unauthorized',
       'data' => auth()->errors(),
     ], 401);
@@ -68,7 +68,7 @@ app()->get('/protected', function () {
     // user is logged in
   } else {
     // user is not logged in
-    response()->redirect('/login');
+    return response()->redirect('/login');
   }
 });
 ```
@@ -149,13 +149,9 @@ By default, the `auth.verified` middleware will redirect unverified users to the
 Your application may need you to return different responses for the `auth.required` and `auth.guest` middleware. You can customize the middleware by defining your own function that should be called when the middleware fails.
 
 ```php
-auth()->middleware('auth.required', function () {
-  response()->exit('You need to be logged in to access this route');
-});
+auth()->middleware('auth.required', fn () => response()->exit('You need to be logged in to access this route'));
 
-auth()->middleware('auth.guest', function () {
-  response()->exit('You are already logged in');
-});
+auth()->middleware('auth.guest', fn () => response()->exit('You are already logged in'));
 ```
 
 After defining the custom middleware, you can use it in your routes.

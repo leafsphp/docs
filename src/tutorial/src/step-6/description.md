@@ -11,9 +11,7 @@ Although this sounds super complex, leaf makes it really easy to do this. Let's 
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/users/{id}', function () {
-  response()->markup('hello world');
-});
+app()->get('/users/{id}', fn () => response()->markup('hello world'));
 
 app()->run();
 ```
@@ -27,9 +25,7 @@ You can try `/users/anything` and you'll see that the route still works. The rou
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/users/{id}', function ($id) {
-  response()->markup("This is user $id");
-});
+app()->get('/users/{id}', fn ($id) => response()->markup("This is user $id"));
 
 app()->run();
 ```
@@ -63,9 +59,7 @@ Let's see how we can make sure that our route in the first example only supports
 
 require __DIR__ . '/vendor/autoload.php';
 
-app()->get('/users/(\d+)', function ($id) {
-  response()->markup("The number passed in is: $id");
-});
+app()->get('/users/(\d+)', fn ($id) => response()->markup("The number passed in is: $id"));
 
 app()->run();
 ```

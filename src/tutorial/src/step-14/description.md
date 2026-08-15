@@ -16,7 +16,7 @@ $app->post('/login', function () use($app, $auth) {
   $user = $auth->login($userData);
 
   if (!$user) {
-    response()->exit([
+    return response()->exit([
       'status' => 'error',
       'message' => 'Login failed',
       'data' => $auth->errors(),
@@ -40,14 +40,14 @@ app()->post('/login', function () {
   $user = auth()->login($userData);
 
   if (!$user) {
-    response()->exit([
+    return response()->exit([
       'status' => 'error',
       'message' => 'Login failed',
       'data' => auth()->errors(),
     ]);
   }
 
-  response()->json([
+  return response()->json([
     'status' => 'success',
     'message' => 'Login successful',
     'data' => $user,

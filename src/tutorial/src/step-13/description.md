@@ -86,7 +86,7 @@ $app->post('/register', function () use($app, $auth) {
   $user = $auth->register($userData);
 
   if (!$user) {
-    response()->exit([
+    return response()->exit([
       'status' => 'error',
       'message' => 'Registration failed',
       'data' => $auth->errors(),
@@ -110,14 +110,14 @@ app()->post('/register', function () {
   $user = auth()->register($userData);
 
   if (!$user) {
-    response()->exit([
+    return response()->exit([
       'status' => 'error',
       'message' => 'Registration failed',
       'data' => auth()->errors(),
     ]);
   }
 
-  response()->json([
+  return response()->json([
     'status' => 'success',
     'message' => 'Registration successful',
     'data' => $user,
