@@ -68,6 +68,20 @@ Install Leaf CLI globally:
 composer global require leafs/cli -W
 ```
 
+::: details Getting a conflict about leafs/sprout?
+If your global composer.json directly requires an older `leafs/sprout`, composer refuses the update — `-W` can bump dependencies, but it never overrides a version you pinned yourself. Update both constraints together:
+
+```bash:no-line-numbers
+composer global require leafs/cli:^5.0 leafs/sprout:^5.0 -W
+```
+
+Or, if you never use sprout on its own, drop the pin and let Leaf CLI manage it:
+
+```bash:no-line-numbers
+composer global remove leafs/sprout && composer global require leafs/cli:^5.0 -W
+```
+:::
+
 Verify the install by running:
 
 ```bash:no-line-numbers
@@ -194,7 +208,7 @@ leaf serve --port=8080
 When running your app, Leaf will automatically try to install missing dependencies if no `vendor` directory is found in the project.
 :::
 
-## Sharing AI context <StatusBadge label="New" title="Portable project context arrived in Leaf 5" description="Leaf CLI can produce a compact handoff for assistants that cannot enter your project directly." meta="Introduced in Leaf 5" />
+## Sharing AI context <StatusBadge label="Beta" tone="beta" title="Portable project context is new in Leaf 5" description="The leaf context command scans real projects of every shape, so its output format and detection rules may still change while it settles." meta="Introduced in Leaf 5" />
 
 Agents running inside your project use `.leaf/CONTEXT.md` as shared project memory. They read it alongside the filesystem and sync useful changes back when they finish, so the next agent starts with the latest map. Leaf MVC and projects created through Leaf CLI need no extra AI configuration.
 
@@ -205,6 +219,10 @@ leaf context
 ```
 
 This scans your project and prints a compact handoff: your actual routes with their handlers and middleware, installed modules, models, schema files, and environment key names (names only, never values), with the shared context appended at the end. Paste that output into the external assistant before asking for larger changes. The output is a portable snapshot, not a replacement for the two-way `.leaf/CONTEXT.md` used inside the project. The two are opposite halves: the file holds goals and decisions, the command generates the mechanical map.
+
+::: warning leaf context is in beta
+The scan covers the common project shapes, but real projects always find new ones. If `leaf context` misses your routes or trips on your setup, [open an issue](https://github.com/leafsphp/cli/issues/new) and we'll patch it quickly.
+:::
 
 <div class="not-prose my-6 grid gap-4 md:grid-cols-[1fr_260px]">
   <div class="rounded-xl border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-white/[0.02]">
@@ -235,6 +253,10 @@ leaf up
 ```
 
 The first time you run `leaf up`, it will generate a `.leaf/migration.yml` file that describes the changes it will make to your project. You can edit this file to point to different directories or change the structure before running the migration. Once you're ready, run `leaf up` again to apply the changes.
+
+::: warning leaf up is in beta
+The migration rules are still being tested against more real projects. Review the generated `.leaf/migration.yml` before applying, commit your work first, and if `leaf up` gets your project wrong, [open an issue](https://github.com/leafsphp/cli/issues/new) so we can fix it for everyone.
+:::
 
 ## Running commands
 

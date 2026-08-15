@@ -907,7 +907,7 @@ The file follows the **leaf.context v1** format (marker `<!-- leaf.context v1 --
 When an agent cannot access the project, the user can run:
 
 ```bash
-leaf context   # prints a compact context handoff
+leaf context   # prints a compact context handoff (beta: report issues at github.com/leafsphp/cli/issues)
 ```
 
 The pasted output tells you:
