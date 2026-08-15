@@ -141,7 +141,7 @@ That means fewer invented files, fewer mismatched APIs, and less cleanup after g
 
 ## The shared context format <Badge type="tip" text="NEW" />
 
-`.leaf/CONTEXT.md` follows a small official format, **leaf.context v1**, so that edits from different assistants compose instead of colliding. What Claude writes today, Cursor can extend tomorrow, and Codex can clean up next week. Every Leaf MVC project ships with the template, and `leaf up` generates it when scaling a lite app.
+`.leaf/CONTEXT.md` follows a small official format, **leaf.context v1**, so that edits from different assistants compose instead of colliding. What Claude writes today, Cursor can extend tomorrow, and Codex can clean up next week. Every project created through Leaf CLI ships with the template — lite, MVC, API and console apps alike — and `leaf up` carries it forward when scaling a lite app.
 
 The format is plain markdown with a handful of rules:
 
