@@ -44,7 +44,7 @@ app()->cors([
 
 | Option | Type | Description |
 |---|---|---|
-| `origin` | String, RegExp, Array, Function | `Access-Control-Allow-Origin` |
+| `origin` | String, RegExp, Array | `Access-Control-Allow-Origin` |
 | `methods` | String or Array | `Access-Control-Allow-Methods` |
 | `allowedHeaders` | String or Array | `Access-Control-Allow-Headers`. Defaults to request's `Access-Control-Request-Headers`. |
 | `exposedHeaders` | String or Array | `Access-Control-Expose-Headers` |
@@ -57,9 +57,6 @@ app()->cors([
 
 ```php
 'origin' => 'http://example.com'                          // exact match
-'origin' => '/example\.com$/'                             // regex pattern
+'origin' => '/^https:\/\/(.*\.)?example\.com$/'          // regex, anchored so evil-example.com never matches
 'origin' => ['http://example1.com', '/\.example2\.com$/'] // array: string + regex
-'origin' => function ($origin, $callback) {               // dynamic function
-    $callback(null, $origin);
-}
 ```

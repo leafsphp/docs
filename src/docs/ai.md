@@ -164,6 +164,22 @@ leaf context
 
 The command is deliberately the opposite half of `.leaf/CONTEXT.md`. The shared file holds what code cannot say (goals, decisions, reasoning) and never duplicates the codebase. `leaf context` scans the codebase and generates the mechanical map the file leaves out: app type, installed modules, actual route registrations with their handlers and middleware, models, schema files, and environment key names (names only, values never leave your machine). It then appends the shared memory, so one paste gives an external assistant both halves. It does not replace the two-way context used by agents working inside the project.
 
+## Teaching your assistant Leaf
+
+Leaf ships two documents built for AI, and they do different jobs:
+
+**[llms.txt](https://leafphp.dev/llms.txt) is knowledge.** A compressed reference of Leaf's APIs, conventions and config, written for models instead of people. Assistants fetch it when they need Leaf facts, the way you'd check the docs. If your AI tool supports doc URLs (most do), point it here and it can answer "how do I do X in Leaf" correctly.
+
+**The [Leaf skill](https://leafphp.dev/ai/SKILL.md) is behavior.** It teaches an agent how to *work* in a Leaf project: which entry point to scaffold, how to read and write `.leaf/CONTEXT.md` without breaking the format, when to run `leaf context`, what the scaffolds give you, and where to send bug reports for the beta commands. It comes with [reference files](https://leafphp.dev/ai/references/routing.md) the agent loads per topic, so it stays accurate without stuffing everything into one prompt.
+
+How to use them:
+
+- **Claude Code**: save the skill as `.claude/skills/leaf/SKILL.md` in your project (or `~/.claude/skills/leaf/SKILL.md` for every project), and Claude loads it automatically whenever Leaf work comes up.
+- **Cursor, Codex and any agent that reads `AGENTS.md`**: new Leaf MVC apps already ship an `AGENTS.md` pointing at the skill and llms.txt — no setup at all.
+- **Anything else**: paste the skill's URL into your assistant's custom instructions, or just tell it to fetch `https://leafphp.dev/ai/SKILL.md` before working.
+
+The short version: llms.txt makes your assistant *know* Leaf, the skill makes it *behave* like a Leaf developer, and `.leaf/CONTEXT.md` makes it know *your project*. The three stack.
+
 ## Predictable structure means better output
 
 Leaf's structure is intentionally obvious. AI works better when the project has clear places for code to live.

@@ -147,7 +147,13 @@ What it does automatically:
 - Finds DB queries → creates models, switches to model-based queries
 - Moves all config → `.env` (autoconfigured)
 
-> WIP — more detail added before Alpha release.
+How to run it safely (it is **beta**):
+1. Make sure the working tree is committed before running.
+2. The first run writes a `.leaf/migration.yml` plan — review and edit it with the user before applying.
+3. The second run applies the plan. `--dry-run` previews without changing files.
+4. If the migration gets the project wrong, report it: https://github.com/leafsphp/cli/issues/new
+
+`leaf context` is also beta: if its output misses routes or misreads a project, report it at the same link rather than working around it silently.
 
 ---
 

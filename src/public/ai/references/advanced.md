@@ -144,7 +144,7 @@ $uploaded = request()->upload('files', './uploads');
 // $uploaded is an array of file info arrays
 ```
 
-### Cloud / S3 Storage (WIP)
+### Cloud / S3 Storage
 
 ```bash
 leaf install s3
@@ -250,7 +250,7 @@ leaf config:publish queue   # → config/queue.php
 
 ---
 
-## Billing (MVC Only — Beta)
+## Billing (MVC Only)
 
 ```bash
 leaf install stripe    # or:
@@ -432,7 +432,7 @@ app()->get('/api/health', ['lingo.routes' => false, function () { /* ... */ }]);
 
 ---
 
-## Sitemap Generator (Beta)
+## Sitemap Generator
 
 ```bash
 leaf install sitemap
