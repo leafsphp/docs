@@ -14,6 +14,17 @@ Leaf 5 is the next generation of Leaf PHP. It is **not** a different framework -
 
 ---
 
+## Known Footguns (read before generating code)
+
+- Roles are additive: `assign()` appends. Change a role: `unassign($user->roles())` then `assign($new)`.
+- `$user->get()` hides id/password/roles. API shape: `[...$user->get(), 'roles' => $user->roles()]`.
+- `text` rule = letters+spaces only. Passwords/free-form = `string`.
+- Auth middleware defaults render HTML. APIs override each to JSON (401/403 via `auth()->middleware(...)`).
+- `_env()` caches per process; `_envUncached()` reads live.
+- Prefer Leaf functions over hand-rolled code: module method → `leaf install` → scaffold → only then custom, with the why recorded in `.leaf/CONTEXT.md`.
+
+---
+
 ## Entry Points (Critical - get this right first)
 
 | Type        | Flag        | Structure                    | Use For                          |

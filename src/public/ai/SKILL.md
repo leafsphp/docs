@@ -261,11 +261,26 @@ Read the relevant file before generating code for that area:
 
 ---
 
+## Known Footguns
+
+Read this before writing code — each entry is a mistake real agents have made:
+
+- **Roles are additive.** `assign()` appends, it never replaces. To change a role: `$user->unassign($user->roles()); $user->assign($newRole);` (a one-shot `sync()` is planned). A "role change" via `assign()` alone silently keeps the old role.
+- **`$user->get()` hides `id`, `password`, and roles.** Use `$user->id()` and `$user->roles()`. API response shape: `[...$user->get(), 'roles' => $user->roles()]`.
+- **`text` validates letters and spaces ONLY.** For passwords and free-form input use `string`.
+- **Auth middleware defaults render HTML** (redirects, error pages). APIs must override each to JSON: `auth()->middleware('auth.required', fn () => response()->exit(['error' => 'Unauthorized'], 401));`
+- **`_env()` caches per process.** Runtime env changes need `_envUncached()`.
+- **`unique` config skips fields missing from the data** — a table without `username` is safe on defaults, but set `['email']` explicitly.
+- **`User` objects hydrate from a plain row array with no DB connection** — only mutating methods need `setDb()`. For bulk list endpoints, stay on raw rows to avoid N+1 hydration.
+- **Never call `app()->run()` in an MVC app.** Only lite apps run themselves.
+
+---
+
 ## When Helping a User Build with Leaf 5
 
 1. **Read `.leaf/CONTEXT.md` first** if shared — reveals entry point, routes, installed modules
 2. **Check the reference file** for the API area before writing code
-3. **Stay in the Leaf ecosystem** — prefer `leaf install` over third-party packages
+3. **Prefer Leaf functions over hand-rolled code, always.** Before writing any helper or custom logic, check in this order: a module method (reference files first), then `leaf install <module>`, then a scaffold. Write custom code only when no Leaf API covers the need, and record why in `.leaf/CONTEXT.md` Known Decisions. Never reimplement hashing, validation, auth flows, or query building that Leaf modules provide
 4. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it
 5. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
 6. **Use their actual names** — route names, model names, controller names from their project
