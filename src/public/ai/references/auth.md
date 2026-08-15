@@ -170,6 +170,26 @@ if (!$success) {
 
 ---
 
+## What the users table needs
+
+Auth works with any table (default `users`) that has:
+
+- An id column (`id` by default, configurable with `id.key`) — auto-increment or UUID both work
+- An `email` column (lowercased automatically on register) and whatever you use as `password.key` (default `password`)
+- Any other columns you pass to `register()`/`createUserFor()` — auth stores what you give it
+
+You do not need a roles column: roles are stored in a `leaf_auth_user_roles` column that auth **creates automatically on first `assign()`**, including on existing tables. Do not add it to your schema by hand.
+
+## The user object
+
+`auth()->user()` returns a `Leaf\Auth\User`. Know its shape before building API responses:
+
+- `$user->get()` returns the user data **minus hidden fields** — by default `id` and `password` are hidden (config `hidden`), and roles are not included either
+- `$user->id()` returns the id even though it is hidden from `get()`
+- `$user->roles()` returns the assigned roles — combine with `get()` when your API response needs both: `[...$user->get(), 'roles' => $user->roles()]`
+- After `assign()`, the database is updated but the in-memory user is not — read `roles()` (which reflects the assignment) rather than re-reading `get()`
+- With bearer tokens, `auth()->user()` reconstructs the user from the JWT on every request (roles included from the database), so role checks like `auth()->user()->is('admin')` work statelessly across requests
+
 ## Finding a User
 
 ```php
@@ -396,10 +416,11 @@ auth()->user()->permissions();      // permissions of current user's roles
 | `password.key` | `'password'` | Password field name |
 | `password.encode` | `Password::hash` | Hashing function |
 | `password.verify` | `Password::verify` | Verification function |
-| `unique` | `['email']` | Fields that must be unique |
+| `unique` | `['email', 'username']` | Fields checked for uniqueness. Fields missing from the data are skipped, so a table without `username` is safe — but set `['email']` explicitly to save the wasted check |
 | `hidden` | `['field.id', 'field.password']` | Hidden from user output |
 | `session` | `false` | Use sessions instead of JWT |
 | `session.lifetime` | `86400` | Session TTL in seconds |
 | `session.cookie` | `[secure, httponly, samesite]` | Cookie params |
-| `token.lifetime` | `31536000` | JWT TTL in seconds |
+| `token.lifetime` | `31536000` (1 year) | JWT TTL in seconds |
+| `token.secret` | derived | Resolution order: `token.secret` config, then `AUTH_TOKEN_SECRET` env, then derived from `APP_KEY`. With none of the three, token operations throw a clear error — set one before going live |
 | `token.secret` | env `AUTH_TOKEN_SECRET` | JWT signing secret |

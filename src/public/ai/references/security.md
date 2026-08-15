@@ -231,7 +231,8 @@ request()->validate(['number' => 'isEven']);
 | Rule | Description |
 |---|---|
 | `email` | Valid email address |
-| `text` | Alphabetic + spaces |
+| `text` | Alphabetic + spaces ONLY — wrong for passwords or free-form input |
+| `string` | Any string (`is_string`) — use this for passwords and free-form text |
 | `textOnly` | Alphabetic only (no spaces) |
 | `alpha` | Alphabetic characters |
 | `alphaNum` | Alpha-numeric |

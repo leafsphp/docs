@@ -557,6 +557,14 @@ leaf install auth
 leaf scaffold:auth   # MVC: generates full auth system
 ```
 
+Key behavior (answers agents otherwise dig from source):
+- The users table needs only an id column, `email`, and your `password.key` column. Roles need NO schema: a `leaf_auth_user_roles` column is auto-created on first `assign()`, even on existing tables.
+- `unique` config defaults to `['email', 'username']`; fields missing from the data are skipped safely. Set `['email']` when you have no username column.
+- `$user->get()` hides `id` and `password` (config `hidden`) and does NOT include roles. Use `$user->id()`, and `$user->roles()` — for API responses: `[...$user->get(), 'roles' => $user->roles()]`.
+- After `assign()`, read `roles()` — the in-memory user data is not refreshed.
+- Bearer flow: `auth()->user()` rebuilds the user (with roles) from the JWT each request, so `auth()->user()->is('admin')` works statelessly.
+- For JSON APIs, override middleware failures: `auth()->middleware('auth.required', fn () => response()->json(['error' => 'Unauthorized'], 401));` (same for `is`/`can` with 403).
+
 ```php
 // Login
 $ok = auth()->login(['email' => $email, 'password' => $password]);
