@@ -227,6 +227,8 @@ seeds:
       email: 'jane@example.com'
 ```
 
+Seeding is opt-in: a schema file with no `seeds:` block seeds nothing. With a `seeds:` block, rows come from `data:` (inline), or from `model:`'s `__seeder()` method repeated `count` times.
+
 ### Faker Seeds
 
 ```yaml
@@ -241,6 +243,8 @@ seeds:
 ### Column Types
 
 `boolean`, `integer`, `bigInteger`, `char`, `string`, `text`, `tinyText`, `mediumText`, `longText`, `date`, `enum`, `increments`, `bigIncrements`, `smallIncrements`, `decimal`, `float`, `double`, `unsignedBigInteger`, `id`, `uuid`, `json`, `jsonb`, `timestamp`
+
+Eloquent writes `date` and `timestamp` columns as `YYYY-MM-DD HH:MM:SS`. Compare them with `whereDate()`, not `where()` — a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and returns wrong rows with no error.
 
 ### Column Properties
 

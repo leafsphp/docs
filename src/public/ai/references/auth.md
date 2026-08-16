@@ -42,8 +42,10 @@ auth()->connect([
 $db = new PDO('mysql:dbname=test;host=127.0.0.1', 'root', '');
 auth()->dbConnection($db);
 
-// Existing Leaf DB connection — nothing needed, auto-shared
+// Existing Leaf DB connection — nothing needed, picked up automatically
 ```
+
+Note: in MVC apps, auth, `db()`, and Eloquent models all share **one** database connection — Leaf DB lazily borrows Eloquent's PDO (leafs/db 5.1+), so an auth read can never lock out a model write. On SQLite the framework also defaults to WAL journal mode with a busy timeout (`config/database.php`) to keep concurrent PHP processes safe; leave those in place. To point auth at a *different* database entirely, pass a PDO explicitly with `auth()->dbConnection($pdo)`.
 
 ### Runtime Config
 
@@ -184,7 +186,7 @@ You do not need a roles column: roles are stored in a `leaf_auth_user_roles` col
 
 `auth()->user()` returns a `Leaf\Auth\User`. Know its shape before building API responses:
 
-- `$user->get()` returns the user data **minus hidden fields** — by default `id` and `password` are hidden (config `hidden`), and roles are not included either
+- `$user->get()` returns the user data **minus hidden fields** — by default `id`, `password`, and `remember_token` are hidden (config `hidden`), and roles are not included either. Everything else (`email_verified_at`, timestamps, any custom column) IS included, and in Inertia apps ships to the browser in the shared `auth` prop — add columns to `hidden` before they reach the client
 - `$user->id()` returns the id even though it is hidden from `get()`
 - `$user->roles()` returns the assigned roles — combine with `get()` when your API response needs both: `[...$user->get(), 'roles' => $user->roles()]`
 - After `assign()`, the database is updated but the in-memory user is not — read `roles()` (which reflects the assignment) rather than re-reading `get()`
@@ -417,7 +419,7 @@ auth()->user()->permissions();      // permissions of current user's roles
 | `password.encode` | `Password::hash` | Hashing function |
 | `password.verify` | `Password::verify` | Verification function |
 | `unique` | `['email', 'username']` | Fields checked for uniqueness. Fields missing from the data are skipped, so a table without `username` is safe — but set `['email']` explicitly to save the wasted check |
-| `hidden` | `['field.id', 'field.password']` | Hidden from user output |
+| `hidden` | `['field.id', 'field.password', 'remember_token']` | Hidden from user output |
 | `session` | `false` | Use sessions instead of JWT |
 | `session.lifetime` | `86400` | Session TTL in seconds |
 | `session.cookie` | `[secure, httponly, samesite]` | Cookie params |

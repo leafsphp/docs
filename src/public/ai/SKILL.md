@@ -105,18 +105,21 @@ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc && source ~/.
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc && source ~/.zshrc
 ```
 
+**Always use the global `leaf` CLI (no `php` prefix) for everything.** It carries its own commands (`create`, `install`, `uninstall`, `context`, `up`, `update`) and forwards anything else (`db:*`, `g:*`, `scaffold:*`, ...) into the project's own console automatically, so `leaf g:controller Posts` and `leaf db:migrate` just work. The reverse is not true: `php leaf` runs only the project console, so `php leaf install` and `php leaf context` fail with "not found". Only fall back to `php leaf <command>` when the global CLI isn't installed — and then `leaf install auth` becomes `composer require leafs/auth`.
+
 | Command | Description |
 |---|---|
 | `leaf create` | Create a new Leaf project |
-| `leaf serve` | Dev server (default: localhost:5500) |
-| `leaf up` | Migrate Basic app → full MVC |
 | `leaf install` | Install a package |
 | `leaf uninstall` | Uninstall a package |
-| `leaf run` | Run a composer.json script |
+| `leaf context` | Generate `.leaf/CONTEXT.md` (beta) |
+| `leaf up` | Migrate Basic app → full MVC (beta) |
+| `leaf update` | Update the CLI |
+| `leaf serve` | Dev server (default: localhost:5500) |
 | `leaf view:install` | Set up a view/frontend engine |
 | `leaf view:build` | Build frontend assets |
-| `leaf interact` | Interact with your app |
-| `leaf update` | Update the CLI |
+| `leaf interact` | Interact with your app (interactive REPL) |
+| `leaf db:*` / `g:*` / `scaffold:*` | Project commands, forwarded into the app |
 
 ```bash
 leaf serve                              # localhost:5500
@@ -244,6 +247,8 @@ Read the relevant file before generating code for that area:
 
 | Topic | File |
 |---|---|
+All reference files live at `https://leafphp.dev/ai/references/<name>.md` — fetch them raw from there.
+
 | Routing (methods, groups, dynamic routes, constraints) | `references/routing.md` |
 | Middleware (closures, classes, `$next`, data passing) | `references/middleware.md` |
 | Request API (get, validate, upload, client info, metadata) | `references/request.md` |
@@ -253,7 +258,8 @@ Read the relevant file before generating code for that area:
 | Views (Blade, BareUI, Inertia, Vite, Tailwind) | `references/views.md` |
 | Advanced (cache, storage, queues, billing, i18n, sitemap) | `references/advanced.md` |
 | Mail, HTTP fetch client, HTTP cache | `references/mail-fetch-cache.md` |
-| Utilities (Anchor/XSS/SQL protection, tick() dates) | `references/utilities.md` |
+| Dates & time (tick(), timezones, formatting, diff) | `references/dates.md` |
+| Utilities (Anchor/XSS/SQL protection) | `references/utilities.md` |
 | Sessions, cookies, flash, validation, CSRF, passwords | `references/security.md` |
 | Auth (login, register, sessions, JWT, OAuth, scaffold) | `references/auth.md` |
 | Database (db(), query builder, transactions, Redis) | `references/database.md` |
@@ -273,6 +279,10 @@ Read this before writing code — each entry is a mistake real agents have made:
 - **`unique` config skips fields missing from the data** — a table without `username` is safe on defaults, but set `['email']` explicitly.
 - **`User` objects hydrate from a plain row array with no DB connection** — only mutating methods need `setDb()`. For bulk list endpoints, stay on raw rows to avoid N+1 hydration.
 - **Never call `app()->run()` in an MVC app.** Only lite apps run themselves.
+- **Auth, db(), and Eloquent models share one database connection in MVC** (leafs/db 5.1+): db() lazily borrows Eloquent's PDO, so an auth read and a model write can't deadlock each other. Keep the SQLite `journal_mode`/`busy_timeout` defaults in `config/database.php` anyway — they protect concurrent PHP processes.
+- **`date` and `timestamp` columns are stored as `YYYY-MM-DD HH:MM:SS`.** Compare with `whereDate()`, not `where()` — a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and quietly returns wrong rows.
+- **Inertia auto-shares an `auth` prop** (`{id, user, roles, permissions, errors}`) on every page, and the framework's value wins. Don't `Inertia::share()` your own `auth` key. `user` contains every non-hidden column.
+- **To run application code headlessly** (scripts, diagnosis), `require vendor/autoload.php` then `\Leaf\Core::loadApplicationEnv()` and `\Leaf\Core::loadApplicationConfig()` — `leaf interact` is an interactive REPL and can't be scripted.
 
 ---
 

@@ -22,6 +22,8 @@
 /community/docs-writing-guide       /community/guide
 /community/contribute               /community/guide
 /docs/installation                  /docs/
+/docs/intro/first-app               /learn/mvc
+/docs/intro/first-app.html          /learn/mvc
 /docs/debugging                     /docs/routing/error-handling
 /docs/why-leaf-v                    https://blog.leafphp.dev/posts/leaf-5 301
 /docs/why-leaf-5                    https://blog.leafphp.dev/posts/leaf-5 301

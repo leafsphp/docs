@@ -169,7 +169,7 @@ if (!$success) {
 }
 ```
 
-> Transactions only work with `db()` queries on the same connection. Leaf MVC models are not yet supported inside transactions.
+> In Leaf MVC (leafs/db 5.1+), `db()` and your models share one connection, so a `db()->beginTransaction()` covers model reads and writes too — wrap a check-then-insert (an availability check plus a booking insert, say) in one transaction to close the race between concurrent requests. On older setups where the connections are separate, transactions only cover `db()` queries.
 
 ---
 

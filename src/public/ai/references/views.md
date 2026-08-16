@@ -258,11 +258,12 @@ leaf g:template home --type=svelte
 use Leaf\Inertia;
 
 Inertia::share('appName', 'My App');
-Inertia::share('user', fn() => auth()->user() ?? null);
 Inertia::share('flash', function () {
     return flash()->display('flash') ?? null;
 });
 ```
+
+Leaf automatically shares an `auth` prop with every Inertia page: `{id, user, roles, permissions, errors}`. Do not share your own `auth` key — the framework's value takes precedence and yours never renders. `auth.user` contains every column not listed in auth's `hidden` config.
 
 ### React Component Example
 
