@@ -410,7 +410,7 @@ db()
   ->count();
 ```
 
-As of leafs/db 5.1.1, `count()` correctly counts SELECT results on every driver. Earlier versions relied on PDO's `rowCount()`, which returns 0 for SELECT queries on SQLite, so counts on SQLite always came back as 0.
+As of leafs/db 5.1, `count()` correctly counts SELECT results on every driver. Earlier versions relied on PDO's `rowCount()`, which returns 0 for SELECT queries on SQLite, so counts on SQLite always came back as 0.
 
 ## Error Handling
 
