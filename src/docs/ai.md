@@ -141,7 +141,7 @@ That means fewer invented files, fewer mismatched APIs, and less cleanup after g
 
 ## The shared context format <Badge type="tip" text="NEW" />
 
-`.leaf/CONTEXT.md` follows a small official format, **leaf.context v1**, so that edits from different assistants compose instead of colliding. What Claude writes today, Cursor can extend tomorrow, and Codex can clean up next week. Every project created through Leaf CLI ships with the template — lite, MVC, API and console apps alike — and `leaf up` carries it forward when scaling a lite app.
+`.leaf/CONTEXT.md` follows a small official format, **leaf.context v1**, so that edits from different assistants compose instead of colliding. What Claude writes today, Cursor can extend tomorrow, and Codex can clean up next week. Every project created through Leaf CLI ships with the template (lite, MVC, API and console apps alike), and `leaf up` carries it forward when scaling a lite app.
 
 The format is plain markdown with a handful of rules:
 
@@ -175,10 +175,31 @@ Leaf ships two documents built for AI, and they do different jobs:
 How to use them:
 
 - **Claude Code**: save the skill as `.claude/skills/leaf/SKILL.md` in your project (or `~/.claude/skills/leaf/SKILL.md` for every project), and Claude loads it automatically whenever Leaf work comes up.
-- **Cursor, Codex and any agent that reads `AGENTS.md`**: new Leaf MVC apps already ship an `AGENTS.md` pointing at the skill and llms.txt — no setup at all.
+- **Cursor, Codex and any agent that reads `AGENTS.md`**: new Leaf MVC apps already ship an `AGENTS.md` pointing at the skill and llms.txt, so there's no setup at all.
 - **Anything else**: paste the skill's URL into your assistant's custom instructions, or just tell it to fetch `https://leafphp.dev/ai/SKILL.md` before working.
 
 The short version: llms.txt makes your assistant *know* Leaf, the skill makes it *behave* like a Leaf developer, and `.leaf/CONTEXT.md` makes it know *your project*. The three stack.
+
+## Errors that carry their own fix
+
+When something breaks, the error message is the first thing your assistant reads, and usually the only thing. So Leaf writes error messages the way a maintainer would answer a support ticket: what went wrong, what to do about it, and how the fix differs depending on how your app is set up.
+
+<img src="/images/crash-ai-error.png" style="width:100%; border-radius: 8px; margin: 15px 0;" alt="A Leaf crash report where the error message itself explains the three ways to fix it" />
+
+That's a real crash screen. No googling, no source diving, no guessing which of five Stack Overflow answers applies to your setup. The remediation is the message, and it's honest about context: what works in Leaf MVC, what a lite app needs instead. Your assistant reads it once and fixes the problem, and so do you.
+
+The crash screen itself is built for handoff too: **Copy as Markdown** turns the whole report (message, stack, request context, breadcrumbs) into something you can paste straight into a chat, and **Open with AI** sends it there directly.
+
+## Built to burn fewer tokens
+
+Tokens are money and context is scarce, so Leaf's AI documentation is engineered like an API, not a book:
+
+- **One hop to any answer.** Every reference file lives at a stable URL (`leafphp.dev/ai/references/<topic>.md`), covers one concern, and fits comfortably in context. No navigation, no pagination, no reading three pages to extract one fact.
+- **Footguns over prose.** The skill's Known Footguns section is a list of the exact mistakes agents actually make, in one screen. Correcting a wrong assumption up front is hundreds of times cheaper than debugging it after.
+- **Errors skip the loop.** The most expensive thing an assistant does is the try-fail-search-retry cycle. An error that names its own fix collapses that loop to one step, which is why we treat error strings as documentation and field-test them with real agents.
+- **Context lives in the project.** `.leaf/CONTEXT.md` means your assistant doesn't re-derive your architecture every session. Reading one small file beats re-exploring a codebase, every time.
+
+We measure this the direct way: AI agents build real apps on Leaf, we count every file they had to open and every retry they burned, and whatever cost them tokens becomes a fix. The error message in the screenshot above exists because an agent hit the unclear version of it and told us exactly what it needed to hear instead.
 
 ## Predictable structure means better output
 

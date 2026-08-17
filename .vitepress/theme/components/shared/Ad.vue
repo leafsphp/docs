@@ -18,7 +18,7 @@
       </div>
       <p class="text-sm font-medium !m-0 !mb-1.5 text-[var(--vp-c-text-1)]">We build products too.</p>
       <p class="text-xs text-gray-500 dark:text-gray-400 !m-0 !mb-3 leading-relaxed">
-        From the creators of Leaf PHP — a studio that's shipped frameworks and products used by millions. Let's build yours.
+        From the creators of Leaf PHP, a studio that's shipped frameworks and products used by millions. Let's build yours.
       </p>
       <span
         class="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--vp-c-brand)] group-hover:gap-2.5 transition-all duration-300">
