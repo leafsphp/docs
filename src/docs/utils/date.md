@@ -302,6 +302,19 @@ tick('2014-10-01')->from('2015-10-01', true); // 1 year
 tick('2015-10-01')->from('2014-10-01', true); // 1 year
 ```
 
+## Difference between dates <Badge text="New" type="tip" />
+
+Human-readable strings are great for display, but sometimes you need an actual number, like the number of nights between a check-in and a check-out. As of leafs/date 5.1, you can use the `diff()` method to get the difference between two dates as a signed whole number:
+
+```php:no-line-numbers
+tick($checkOut)->diff($checkIn, 'days'); // eg. 3
+tick('2025-01-01')->diff('2025-03-01', 'months'); // -2
+```
+
+`diff()` follows the same semantics as day.js: it takes the date to compare against as its first argument and the unit as its second, and returns a positive number when the tick instance is after the compared date, and a negative one when it's before. The available units are `years`, `months`, `days`, `hours`, `minutes`, and `seconds`, and the compared date can be a string, a `DateTime` object, or another `tick()` instance.
+
+Day differences are calendar-aware, so a stay that crosses a daylight saving boundary still counts the number of calendar days you'd expect instead of drifting by an hour's worth of math.
+
 ## Querying Dates
 
 Querying dates allows you to check relationships between dates, such as whether a date is before or after another date. Tick provides methods for querying dates, such as `isBefore()`, `isAfter()`, and `isSame()`.

@@ -199,6 +199,25 @@ $uploadInfo = request()->upload('profile_pic', './uploads', [
 ]);
 ```
 
+Besides `name` and `rename`, the config array also accepts `overwrite` to replace an existing file with the same name, `maxSize` to cap the file size in bytes, and `validate` which turns on type checking using the `allowedTypes` and `allowedExtensions` keys.
+
+On a successful upload, `upload()` returns an array describing the saved file:
+
+```php
+[
+  'name' => 'profile.png', // the saved file name
+  'size' => 44075, // the file size in bytes
+  'type' => 'image', // the detected file type
+  'path' => 'uploads/profile.png', // where the file was saved
+  'extension' => 'png', // the file extension
+  'url' => 'https://example.com/uploads/profile.png', // a public URL for the file
+]
+```
+
+The returned `url` is built from your `APP_URL` env value, so if `APP_URL` may not be set in your environment, building your own URL from the returned `name` is the more reliable option.
+
+If the upload fails, `upload()` returns `false`. Failures from the filesystem layer, like a file going over `maxSize` or failing type validation, are reported in `\Leaf\FS\File::errors()` rather than `request()->errors()`, so be sure to check there when an upload returns `false`.
+
 ## Request Headers
 
 Headers contain information about the request that can be used to make decisions in your application. You can use the `headers()` method to pull the header information from the request.

@@ -399,6 +399,8 @@ leaf db:drop users
 
 Database seeds let you pre-populate your database with initial data, whether that's default settings, test data, or sample records. Instead of manually adding entries, you can use seeders to automate this process.
 
+Seeding is completely opt-in: a schema file without a `seeds` block seeds nothing when you run `db:seed`. Earlier versions of Leaf MVC tried to guess a model from the table name when no seeds were defined, which could crash the seeder or insert junk rows, but that no longer happens.
+
 In Leaf MVC, you can define seeders directly in your Schema Files under the `seeds` key. This keeps everything in one place, making it easier to manage your database setup. Here's an example of a seeder:
 
 ```yml [users.yml]

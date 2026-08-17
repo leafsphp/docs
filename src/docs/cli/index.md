@@ -185,7 +185,7 @@ cd my-app
 leaf serve
 ```
 
-By default, Leaf serves your app on `localhost:5500`.
+By default, Leaf serves your app on `localhost:5500`. If your project uses Vite, queue workers, or Redis, `leaf serve` starts those alongside the PHP server and streams their output into one terminal, with each line labeled by its source (`[vite]`, `[server]`, `[queue]`) so you always know where a message came from.
 
 ```bash:no-line-numbers
 leaf serve --port=8080
@@ -268,6 +268,8 @@ leaf run my-command
 
 This keeps project-specific commands close to the app while still giving you one consistent CLI entry point.
 
+The global `leaf` command is also the only entry point you need inside a project: it automatically forwards project commands like `g:controller`, `g:model`, and `db:migrate` into your app's console, so `leaf g:model flight` and `php leaf g:model flight` do the same thing. `php leaf` only knows your project's commands, while the global `leaf` command handles both those and everything the CLI itself provides, so you can simply use `leaf` everywhere.
+
 ## Dependency management
 
 Leaf CLI adds a friendlier layer on top of Composer for Leaf modules and regular Composer packages.
@@ -330,7 +332,7 @@ leaf view:install --tailwind  # tailwind css
 leaf view:install --vite      # vite asset bundling
 ```
 
-These wire into an MVC app's structure (`app/views`, vite config, the works). In a lite app, run [`leaf up`](#scaling-a-project) first — moving to views is usually the moment a single file wants real structure anyway.
+In an MVC app, these wire into the app's structure (`app/views`, vite config, the works). They work in lite apps too: as of Leaf CLI 5.0.6, `view:install` writes your views to a `views/` folder in the project root and configures your app's view paths automatically. You can read more about how this fits together in the [Vite docs](/docs/frontend/vite). And if your single file is outgrowing itself, [`leaf up`](#scaling-a-project) can take you to full MVC structure whenever you're ready.
 
 ## Command reference
 

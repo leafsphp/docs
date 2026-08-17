@@ -371,6 +371,10 @@ This example defines three PostgreSQL connections: `pgsql`, `analytics`, and `im
 
 :::
 
+::: tip SQLite defaults
+If you are using SQLite, Leaf MVC sets your database to WAL journal mode with a busy timeout out of the box, which lets reads and writes happen at the same time without "database is locked" errors. You can change these defaults using the `DB_JOURNAL_MODE` and `DB_BUSY_TIMEOUT` env values, or the `journal_mode` and `busy_timeout` keys on your SQLite connection in `config/database.php`.
+:::
+
 ## Default Attribute Values
 
 If you would like to define the default values for some of your model's attributes, you may define an $attributes property on your model:

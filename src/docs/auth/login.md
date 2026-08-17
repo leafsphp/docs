@@ -291,11 +291,13 @@ The output of Leaf's authentication methods is an object with the user's data an
 }
 ```
 
-If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
+By default, Leaf Auth hides `['field.id', 'field.password', 'remember_token']`, which covers your id field, your password field, and the remember token. If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
 
 ```php:no-line-numbers
 auth()->config('hidden', ['password', 'id', 'email', ...]);
 ```
+
+Keep in mind that every column you don't hide is included in the user output, and in Inertia apps that output ships to the browser in the shared `auth` prop. If you add custom sensitive columns like API keys or 2FA secrets, be sure to add them to `hidden`.
 
 ## Controlling session lifetime
 

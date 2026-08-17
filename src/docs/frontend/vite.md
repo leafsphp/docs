@@ -26,6 +26,17 @@ leaf view:install --vite
 
 This command will install vite, and the leaf-vite module which will be used to load your assets on the server side plus all vite-specific dependencies and config files.
 
+### Vite in lite apps
+
+You don't need Leaf MVC to use Vite, or even a full frontend setup. Commands like `leaf view:install --react` work in lite apps too, and will write your views to a `views/` folder in your project root. For everything to line up, your app needs to know where your views and cache live:
+
+```php
+app()->config('views.path', 'views');
+app()->config('views.cache', __DIR__ . '/storage/cache');
+```
+
+Leaf CLI 5.0.6+ writes this configuration for you automatically when you run `view:install` in a lite app, and leafs/vite 5.0.1+ defaults match this layout out of the box: the hot file and `build/` folder sit in the project root, and built assets are served from `/build`. The full lite app contract lives at [leafphp.dev/ai/references/lite.md](https://leafphp.dev/ai/references/lite.md) if you want the details.
+
 ## Loading your assets
 
 Once you've installed Vite, you can start loading your assets using the the `vite()` helper function. This function takes in 2 parameters:

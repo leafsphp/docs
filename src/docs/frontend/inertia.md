@@ -63,7 +63,7 @@ app()->inertia('/route', 'view', [
 
 ::: details Automatic Props
 
-By default, Leaf automatically passes in some useful props into your inertia views. These include:
+By default, Leaf automatically shares some useful props with every inertia page. These include:
 
 - `auth`: The current auth context, including:
   - `user`: The currently authenticated user, or `null` if not authenticated.
@@ -80,6 +80,8 @@ By default, Leaf automatically passes in some useful props into your inertia vie
   - `tiers`: The available billing tiers.
   - `periods`: The available billing periods.
 - `_token`: The current CSRF token if CSRF protection is enabled.
+
+The `auth` prop is shared with every single Inertia page, and `auth.user` contains every column on your user that is not in your auth `hidden` config. Since this data ships to the browser, remember to add any custom sensitive columns to `hidden` in your auth config.
 
 :::
 
@@ -158,6 +160,8 @@ Inertia::share('specialFlashMessage', fn () => flash()->display('specialFlashMes
 ```
 
 Using a function to share data is useful when you want to share dynamic data, because the function won't be executed until the data is actually needed, so if you share something like a flash message which can only be read once, it won't be lost.
+
+One thing to note: Leaf reserves the `auth` prop for its automatic auth data (`id`, `user`, `roles`, `permissions`, `errors`). If you share your own `auth` value with `Inertia::share()`, the framework's value wins, so pick a different key for your own data.
 
 ## Optional Props <Badge text="New" type="tip" />
 

@@ -288,8 +288,8 @@ if ($success) {
 
 This is useful especially when you have a set of queries that rely on third party influence.
 
-::: warning Rollback not working
-Transactions will only work correctly if your queries use Leaf DB. This is because your queries need to use the same database connection to be able to be rolled back. This means you can't use transactions with your Leaf MVC models at the moment, but this may change in the future.
+::: tip Transactions and models
+Everything inside a transaction needs to run on the same database connection to be rolled back together. In Leaf MVC with leafs/db 5.1+, `db()`, your models, and Leaf Auth all share a single connection, so a `db()` transaction covers your model reads and writes too. You can mix model calls and `db()` queries inside the same transaction and they will commit or roll back as one unit.
 :::
 
 ## Hiding columns from results
@@ -393,6 +393,8 @@ db()
   ->where('age', '>', 20)
   ->count();
 ```
+
+As of leafs/db 5.1.1, `count()` correctly counts SELECT results on every driver. Earlier versions relied on PDO's `rowCount()`, which returns 0 for SELECT queries on SQLite, so counts on SQLite always came back as 0.
 
 ## Error Handling
 

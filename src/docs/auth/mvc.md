@@ -155,7 +155,7 @@ return [
     | exactly as it is in the database.
     |
     */
-    'hidden' => ['field.id', 'field.password'],
+    'hidden' => ['field.id', 'field.password', 'remember_token'],
 
     /*
     |--------------------------------------------------------------------------
