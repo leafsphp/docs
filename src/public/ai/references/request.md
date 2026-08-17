@@ -45,6 +45,44 @@ $info = request()->upload('profile_pic', './uploads', [
 ]);
 ```
 
+### Return shape
+
+On success, `upload()` returns an array with these keys:
+
+```php
+[
+    'name'      => 'photo.png',            // final stored filename
+    'size'      => 52436,                  // bytes
+    'type'      => 'image',                // derived from the extension
+    'path'      => 'uploads/photo.png',    // normalized path on disk
+    'extension' => 'png',
+    'url'       => 'https://myapp.test/uploads/photo.png',
+]
+```
+
+If the file input holds multiple files, you get an array of these arrays instead, one per file.
+
+The `url` is built from the `APP_URL` env value. When `APP_URL` may be unset, building your own URL from `name` (or `path`) is more reliable than trusting `url`.
+
+On failure, `upload()` returns `false`. A missing file or a rejected extension puts the message in `request()->errors()`; failures inside the filesystem layer (size limit, existing file, move errors) land in `\Leaf\FS\File::errors()` instead, so check both when debugging.
+
+### Config options
+
+```php
+request()->upload('doc', './uploads', [
+    'name'       => 'report',      // store under this name
+    'rename'     => true,          // timestamp-prefix the name if a file already exists
+    'overwrite'  => false,         // replace an existing file with the same name
+    'maxSize'    => 5_000_000,     // max bytes, 0 = unlimited
+    'extensions' => ['pdf'],       // allowed extensions, checked before storing
+    'validate'   => true,          // enable allowedTypes/allowedExtensions checks
+    'allowedTypes'      => ['image'],
+    'allowedExtensions' => ['png', 'jpg'],
+]);
+```
+
+When neither `rename` nor `overwrite` is set and the destination file exists, the upload fails rather than clobbering the file.
+
 ## Headers
 
 ```php

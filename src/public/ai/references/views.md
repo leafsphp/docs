@@ -184,9 +184,9 @@ Connects Leaf backend to a JS frontend framework without building a full API.
 ### Setup (MVC)
 
 ```bash
-php leaf view:install --vue
-php leaf view:install --react
-php leaf view:install --svelte
+leaf view:install --vue
+leaf view:install --react
+leaf view:install --svelte
 ```
 
 When you run `view:install`, Leaf automatically generates `app/views/_inertia.blade.php` — the root HTML shell for all Inertia pages. **Do not create this file manually.**
@@ -308,6 +308,23 @@ pnpm dlx shadcn@latest add button
 
 ---
 
+## Lite Apps
+
+Everything above works in lite apps too, with a few differences in layout:
+
+- `leaf view:install --react` (or `--vue` / `--svelte`) works in lite apps and writes frontend files to `views/js/` in the project root, not `app/views/` — that path belongs to the MVC layout.
+- Lite apps must configure the view paths before rendering. Newly scaffolded apps have this wired automatically as of CLI v5.0.6; older apps need it set by hand:
+
+```php
+app()->config('views.path', 'views');
+app()->config('views.cache', __DIR__ . '/storage/cache');
+```
+
+- Vite serves from the project root in lite apps: the `hot` file and the `build/` directory live at the root, which matches leafs/vite's defaults (5.x latest). MVC apps use `public/` instead, wired automatically.
+- `g:template` and `scaffold:*` commands are MVC-only. They don't exist in a lite app's console, so create page files by hand.
+
+---
+
 ## Vite (Asset Bundling)
 
 Pre-installed in MVC. For Basic apps:
@@ -363,7 +380,7 @@ Vite dev server starts automatically with `leaf serve`.
 ## Tailwind CSS
 
 ```bash
-php leaf view:install --tailwind
+leaf view:install --tailwind
 ```
 
 Installs Tailwind v4, updates `vite.config.js`, and sets up `css/app.css`.

@@ -13,6 +13,8 @@ Leaf 5 is the next generation of Leaf PHP — not just a framework update, but a
 2. **Grow without friction** — no rewrites, no ecosystem changes
 3. **Build with AI, not against it** — real context so AI can actually help
 
+**Frontend:** Leaf apps of every entry point, including lite, serve JavaScript frontends through the built-in Inertia bridge. Run `leaf view:install --react` (or `--vue` / `--svelte`), put pages in the views js directory, and render them with `response()->inertia('page', $props)`. Do not scaffold a separate Vite SPA against a hand-written JSON API — you would be rebuilding what the bridge already does.
+
 ---
 
 ## Entry Points
@@ -249,6 +251,7 @@ Read the relevant file before generating code for that area:
 |---|---|
 All reference files live at `https://leafphp.dev/ai/references/<name>.md` — fetch them raw from there.
 
+| Lite apps: the manual setup contract (db, views, Vite, schema) | `references/lite.md` |
 | Routing (methods, groups, dynamic routes, constraints) | `references/routing.md` |
 | Middleware (closures, classes, `$next`, data passing) | `references/middleware.md` |
 | Request API (get, validate, upload, client info, metadata) | `references/request.md` |
@@ -283,15 +286,17 @@ Read this before writing code — each entry is a mistake real agents have made:
 - **`date` and `timestamp` columns are stored as `YYYY-MM-DD HH:MM:SS`.** Compare with `whereDate()`, not `where()` — a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and quietly returns wrong rows.
 - **Inertia auto-shares an `auth` prop** (`{id, user, roles, permissions, errors}`) on every page, and the framework's value wins. Don't `Inertia::share()` your own `auth` key. `user` contains every non-hidden column.
 - **To run application code headlessly** (scripts, diagnosis), `require vendor/autoload.php` then `\Leaf\Core::loadApplicationEnv()` and `\Leaf\Core::loadApplicationConfig()` — `leaf interact` is an interactive REPL and can't be scripted.
+- **"Add React/Vue/Svelte" does not mean "build a separate SPA."** When a user asks for a JS frontend in an existing Leaf app, reach for `leaf view:install` and the Inertia bridge. Never scaffold a standalone SPA with its own hand-written JSON API unless the user explicitly asks for a separate frontend — agents with SPA priors rebuild the bridge from scratch and lose auth sharing, routing, and validation for free.
+- **Fetch this skill and its reference files RAW** (curl or an equivalent that returns the file verbatim). Summarizing fetch tools have been observed inventing plausible-but-nonexistent Leaf APIs (usually Laravel-shaped ones) that then fail at runtime. If you can only see a summary, treat any API you haven't seen verbatim as unverified.
 
 ---
 
 ## When Helping a User Build with Leaf 5
 
 1. **Read `.leaf/CONTEXT.md` first** if shared — reveals entry point, routes, installed modules
-2. **Check the reference file** for the API area before writing code
+2. **Fetch the reference file for every area you touch — especially the areas you think you already understand.** The most expensive agent mistakes on record came from skipping a reference that contradicted a prior: generic PHP+React knowledge says "build a SPA against a JSON API" while `views.md` says use the Inertia bridge; generic knowledge guesses at upload shapes that `request.md` states exactly. Fetching only the references that confirm your plan is the failure mode — fetch the one that could veto it. In a lite app, read `lite.md` before writing any wiring
 3. **Prefer Leaf functions over hand-rolled code, always.** Before writing any helper or custom logic, check in this order: a module method (reference files first), then `leaf install <module>`, then a scaffold. Write custom code only when no Leaf API covers the need, and record why in `.leaf/CONTEXT.md` Known Decisions. Never reimplement hashing, validation, auth flows, or query building that Leaf modules provide
-4. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it
+4. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it. The same shape renders frontend pages: `response()->inertia('home', ['cards' => $cards]);` returns a React/Vue/Svelte page
 5. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
 6. **Use their actual names** — route names, model names, controller names from their project
 7. **Favor simplicity** — that's the Leaf way

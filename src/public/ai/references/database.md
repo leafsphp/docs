@@ -152,6 +152,8 @@ db()->select('users')->count();
 db()->select('users')->where('age', '>', 20)->count();
 ```
 
+> As of leafs/db 5.1.1, `count()` counts SELECT result rows correctly on every driver. Older versions used PDO's `rowCount()`, which returns 0 for SELECTs on sqlite.
+
 ---
 
 ## Transactions
