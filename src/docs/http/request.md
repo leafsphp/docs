@@ -68,6 +68,12 @@ $data = request()->get('data', false);
 Disabling data sanitization can expose your application to security vulnerabilities. Only disable data sanitization when you're sure that the data you're working with is safe.
 :::
 
+One important thing to know: sanitization works by HTML-escaping values, so `it's` becomes `it&#039;s`. Escaped text is meant for output, not storage. If you store it, your data is corrupted for any frontend that escapes at render time, and React, Vue, and Blade all do, so your users end up seeing `it&#039;s` on screen. For values headed to your database, pass `false` as the second argument and rely on parameterized queries plus render-time escaping to keep things safe:
+
+```php:no-line-numbers
+$bio = request()->get('bio', false); // store the raw value
+```
+
 ## Conditionally getting request data
 
 Sometimes you might want to get a value from the request only if it exists. You can use the `try()` method to do this. The `try()` method takes an array of keys as an argument and returns only the values that exist in the request.

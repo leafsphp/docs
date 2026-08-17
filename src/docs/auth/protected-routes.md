@@ -75,7 +75,11 @@ app()->get('/protected', function () {
 
 ## Using Middleware
 
-Leaf Auth provides middleware to keep guest users out and logged in users in. This is a more flexible way to protect your routes and allows you to define more complex authentication logic. The `auth:required` middleware checks if a user is logged in and redirects to `/auth/login` if a user is not logged in.
+Leaf Auth provides middleware to keep guest users out and logged in users in. This is a more flexible way to protect your routes and allows you to define more complex authentication logic. The `auth.required` middleware checks if a user is logged in and redirects to `/auth/login` if a user is not logged in. If your login page lives somewhere else, you can point the middleware there using the `redirect.login` config:
+
+```php:no-line-numbers
+auth()->config('redirect.login', '/login');
+```
 
 ```php
 app()->get('/protected', ['middleware' => 'auth.required', function () {
@@ -102,7 +106,11 @@ app()->get('/login', ['middleware' => 'auth.guest', function () {
 }]);
 ```
 
-If a logged in user tries to access a route protected by the `auth.guest` middleware, they will be redirected to the `/dashboard` route by default.
+If a logged in user tries to access a route protected by the `auth.guest` middleware, they will be redirected to the `/dashboard` route by default. You can change where logged in users are sent using the `redirect.guest` config:
+
+```php:no-line-numbers
+auth()->config('redirect.guest', '/home');
+```
 
 ## Email verification middleware
 

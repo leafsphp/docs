@@ -172,6 +172,22 @@ db()
   ->fetchAll();
 ```
 
+### Matching a list of values
+
+Leaf DB doesn't ship a `whereIn()` helper, so for `IN` queries you build the placeholders yourself and drop down to a raw query with `bind()`:
+
+```php
+$ids = [1, 2, 3];
+$placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+$users = db()
+  ->query("SELECT * FROM users WHERE id IN ($placeholders)")
+  ->bind(...$ids)
+  ->all();
+```
+
+The values still go through parameter binding, so this stays just as safe as the builder methods.
+
 ## Finding Data by ID
 
 Almost every database table has an `id` column that uniquely identifies each row. Leaf DB provides a `find()` method that allows you to retrieve a row by its `id`.

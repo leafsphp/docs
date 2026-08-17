@@ -39,6 +39,8 @@ auth()->login([
 
 The `login()` method returns `true` if the user is successfully authenticated and `false` if the user is not authenticated. You can then use the `errors()` method to get the error message.
 
+Note that `login()` only checks the credentials against your database, it does not validate the shape of the incoming data. Run [`request()->validate()`](/docs/http/request#validating-request-data) on the input before passing it to `login()`.
+
 ```php
 $success = auth()->login([
   'email' => 'user@example.com',
@@ -105,6 +107,8 @@ if ($success) {
 ```
 
 This lets you handle complex control flows...or the simple redirect ones in a manner you prefer.
+
+One nice side-effect of session auth: you don't need to set up a token signing secret. Tokens are only minted lazily when you first read them through `tokens()` or `getAuthInfo()`, so a session-based app that never touches tokens never needs an `APP_KEY` or `AUTH_TOKEN_SECRET`.
 
 If you need finer control over how PHP creates your session, you can add your own config to the `session.cookie` config:
 
@@ -291,11 +295,13 @@ The output of Leaf's authentication methods is an object with the user's data an
 }
 ```
 
-By default, Leaf Auth hides `['field.id', 'field.password', 'remember_token']`, which covers your id field, your password field, and the remember token. If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
+By default, Leaf Auth hides `['field.id', 'field.password', 'remember_token']`. The `field.id` and `field.password` entries are sentinels that resolve to whatever you configured as `id.key` and `password.key`, so they keep working even if your columns have custom names. If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
 
 ```php:no-line-numbers
-auth()->config('hidden', ['password', 'id', 'email', ...]);
+auth()->config('hidden', ['field.id', 'field.password', 'remember_token', 'email', ...]);
 ```
+
+The password hash and `remember_token` are always stripped from the user output, even if you set a custom `hidden` config that leaves them out, and even with a custom `password.key`. The `hidden` config controls everything else.
 
 Keep in mind that every column you don't hide is included in the user output, and in Inertia apps that output ships to the browser in the shared `auth` prop. If you add custom sensitive columns like API keys or 2FA secrets, be sure to add them to `hidden`.
 

@@ -240,6 +240,8 @@ return [
 
 While this is quite lengthy, it offers fine-grained control over how Leaf Auth works in your application.
 
+A quick note on `token.secret`: it is only used to sign JWTs, and tokens are minted lazily the first time you read them through `tokens()` or `getAuthInfo()`. If your app uses session auth and never reads tokens, you don't need to set an `APP_KEY` or `AUTH_TOKEN_SECRET` at all.
+
 ## What to read next
 
 Now that you have built a simple pre-launch page, the next step is to get you familiar with the basics of building a full-stack application with Leaf. So you can build and launch your next big idea *fast*.

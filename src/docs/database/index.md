@@ -175,7 +175,7 @@ db()
   ->fetchObj();
 ```
 
-This provides a more secure and dynamic way to write SQL if you need to.
+Note that `query()` itself takes only the SQL string, there is no second argument for bindings. Always chain `bind()` to fill your `?` placeholders. `bind()` accepts multiple values, so `->bind($name, $email)` fills them in order. This provides a more secure and dynamic way to write SQL if you need to.
 
 ## Running queries
 

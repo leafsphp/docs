@@ -242,6 +242,8 @@ response()->inertia('home', ['user' => auth()->user()]);
 app()->inertia('/home', 'home');
 ```
 
+Naming: page files are kebab-case in lowercase folders (`pages/order-history.jsx`), and the string you pass to `response()->inertia()` matches the file name exactly. The component *inside* the file keeps React's PascalCase convention. Prefer `response()->inertia()` over the bare `inertia()` helper — it returns a response like every other handler.
+
 ### Generating View Files
 
 ```bash

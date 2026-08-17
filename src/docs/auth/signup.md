@@ -60,6 +60,10 @@ To sign a user up is to create a new user account on your application. This is u
 
 Leaf allows you to do all this using the `register()` method. This method takes in an array of data you want to use to create the user.
 
+::: tip Validate before you register
+`register()` only checks your configured unique fields and handles the password, it does not validate the rest of the data you pass in. Run [`request()->validate()`](/docs/http/request#validating-request-data) on the incoming data before handing it to `register()`.
+:::
+
 ```php
 auth()->register([
   'username' => 'example',
@@ -237,11 +241,13 @@ The output of Leaf's authentication methods is an object with the user's data an
 ]
 ```
 
-By default, Leaf Auth hides `['field.id', 'field.password', 'remember_token']`, which covers your id field, your password field, and the remember token. If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
+By default, Leaf Auth hides `['field.id', 'field.password', 'remember_token']`. The `field.id` and `field.password` entries are sentinels that resolve to whatever you configured as `id.key` and `password.key`, so they keep working even if your columns have custom names. If you want to customize what items are hidden from the user data, you can configure Leaf Auth to hide them:
 
 ```php:no-line-numbers
-auth()->config('hidden', ['password', 'id', 'email', ...]);
+auth()->config('hidden', ['field.id', 'field.password', 'remember_token', 'email', ...]);
 ```
+
+The password hash and `remember_token` are always stripped from the user output, even if you set a custom `hidden` config that leaves them out, and even with a custom `password.key`. The `hidden` config controls everything else.
 
 Keep in mind that every column you don't hide is included in the user output, and in Inertia apps that output ships to the browser in the shared `auth` prop. If you add custom sensitive columns like API keys or 2FA secrets, be sure to add them to `hidden`.
 

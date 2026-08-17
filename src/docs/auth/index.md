@@ -86,7 +86,7 @@ auth()->connect([
   'port' => '...',
   'host' => '...',
   'dbname' => '...',
-  'user' => '...',
+  'username' => '...',
   'password' => '...'
 ]);
 ```

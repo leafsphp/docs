@@ -65,6 +65,8 @@ $users = db()->query('SELECT * FROM users')->first();
 
 Result methods: `->all()`, `->first()`, `->fetchObj()`, `->fetchAssoc()`, `->fetchAll()`
 
+`query()` takes no bindings parameter — chain `->bind(...$values)` for each `?` placeholder. There is no `whereIn()`; build the placeholders yourself: `db()->query('SELECT * FROM users WHERE id IN (' . rtrim(str_repeat('?,', count($ids)), ',') . ')')->bind(...$ids)`.
+
 ---
 
 ## Query Builder

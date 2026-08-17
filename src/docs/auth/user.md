@@ -21,6 +21,8 @@ $email = auth()->user()->email;
 $username = auth()->user()->username;
 ```
 
+One thing `get()` will never hand you is the password hash or `remember_token`. Those are always stripped from its output regardless of your `hidden` config, so they can't accidentally leak into a response.
+
 Picking specific fields also gives you access to fields you may have hidden using the auth config. This is useful because it allows you to perform operations on the user's data without mistakenly exposing hidden fields.
 
 ```php:no-line-numbers

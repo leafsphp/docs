@@ -30,6 +30,10 @@ Newly scaffolded apps (cli 5.0.6+) get the views config written into `index.php`
 
 `db()->connect([...])` once, before any query. Every module that needs the database (auth, session-on-db, etc.) picks up this connection automatically — connect is the only wiring auth needs in a lite app.
 
+## Auth
+
+Session-only auth needs no signing secret (auth 5.1.2+) — tokens are only minted if you read them, and reading them without a secret tells you exactly what to set. Remember that lite apps do NOT load `.env` files (no dotenv loader ships), so `AUTH_TOKEN_SECRET=...` in a file does nothing: export it in the real environment or set `token.secret` in config. Point the middleware redirects at routes you actually have: `auth()->config(['redirect.login' => '/login', 'redirect.guest' => '/'])` — the defaults are MVC scaffold paths. And validate registration input yourself with `request()->validate()` before calling `auth()->register()`; auth only checks credentials and uniqueness.
+
 ## Views (Blade / BareUI / Inertia)
 
 `views.path` tells every engine where templates live; `views.cache` is where compiled blade goes (inertia 5.0.1+ defaults it to `storage/cache` and creates it, but setting it explicitly keeps the path intentional). Inertia's root shell is `views/_inertia.blade.php`, written by `leaf view:install`.

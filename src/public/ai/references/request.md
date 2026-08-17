@@ -10,6 +10,11 @@ All input is auto-sanitized by default. Pass `false` to disable.
 $item = request()->get('item');                         // single item (sanitized)
 $data = request()->get(['name', 'email']);              // multiple → assoc array
 $data = request()->get('data', false);                  // sanitization off
+```
+
+Sanitization HTML-escapes the value (`it's` becomes `it&#039;s`). That is right for values echoed into raw HTML, and wrong for values you **store**: persisting escaped text corrupts it for any frontend that escapes at render (React, Vue, blade `{{ }}` all double-escape it). For data headed to the database, pass `false` and rely on parameterized queries plus render-time escaping.
+
+```php
 $body = request()->body();                              // full request body
 $body = request()->body(false);                         // full body, no sanitization
 $name = request()->params('name', 'John Doe');          // with default value

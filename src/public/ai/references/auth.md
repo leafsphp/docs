@@ -32,7 +32,7 @@ auth()->connect([
     'dbtype'   => 'mysql',
     'host'     => '...',
     'dbname'   => '...',
-    'user'     => '...',
+    'username' => '...',   // note: username, not user — same keys as db()->connect()
     'password' => '...',
     'charset'  => '...',
     'port'     => '...',
@@ -47,15 +47,21 @@ auth()->dbConnection($db);
 
 Note: in MVC apps, auth, `db()`, and Eloquent models all share **one** database connection — Leaf DB lazily borrows Eloquent's PDO (leafs/db 5.1+), so an auth read can never lock out a model write. On SQLite the framework also defaults to WAL journal mode with a busy timeout (`config/database.php`) to keep concurrent PHP processes safe; leave those in place. To point auth at a *different* database entirely, pass a PDO explicitly with `auth()->dbConnection($pdo)`.
 
+### Lite apps
+
+Auth works in lite apps with one line of wiring: `db()->connect([...])` — auth picks up the connection automatically (or share explicitly with `auth()->dbConnection(db()->connection())`). Know these lite realities: `.env` files are NOT loaded (there is no dotenv loader — export env vars in the real environment, or use `token.secret` config), `leaf scaffold:auth` and `leaf key:generate` are MVC-only commands, and session-only auth needs no signing secret at all (5.1.2+). Set `redirect.login`/`redirect.guest` to real routes — the defaults point at MVC scaffold paths.
+
 ### Runtime Config
 
 ```php
 auth()->config('id.key', 'admin_id');       // custom primary key (default: 'id')
 auth()->config('db.table', 'admins');        // custom table (default: 'users')
-auth()->config('hidden', ['password', 'id']); // hide fields from user output
+auth()->config('hidden', ['field.id', 'email_verified_at']); // hide fields from user output
 auth()->config('unique', ['email', 'username']); // unique fields on register
 auth()->config('password.key', 'pass');      // custom password field name
 auth()->config('password.key', false);       // disable password auth entirely
+auth()->config('redirect.login', '/signin'); // where auth.required sends guests (default: /auth/login)
+auth()->config('redirect.guest', '/');       // where auth.guest sends signed-in users (default: /dashboard)
 ```
 
 ---
@@ -102,6 +108,8 @@ Leaf uses JWT by default. Switch to sessions:
 auth()->config('session', true);
 // or AUTH_SESSION=true in .env
 ```
+
+Session-only apps need no token secret (5.1.2+): JWTs are minted lazily, so the signing secret is only required the moment something reads `tokens()` or `getAuthInfo()`. Two more session facts worth knowing: reading the authenticated user rotates the session id on each request (old ids stay valid, so this is safe but visible in Set-Cookie), and `register()`/`login()` validate nothing beyond credentials and uniqueness — run `request()->validate()` on the input first, or a one-character password creates an account.
 
 With sessions, `login()` starts the session automatically:
 
@@ -186,7 +194,7 @@ You do not need a roles column: roles are stored in a `leaf_auth_user_roles` col
 
 `auth()->user()` returns a `Leaf\Auth\User`. Know its shape before building API responses:
 
-- `$user->get()` returns the user data **minus hidden fields** — by default `id`, `password`, and `remember_token` are hidden (config `hidden`), and roles are not included either. Everything else (`email_verified_at`, timestamps, any custom column) IS included, and in Inertia apps ships to the browser in the shared `auth` prop — add columns to `hidden` before they reach the client
+- `$user->get()` returns the user data **minus hidden fields**. The password column and `remember_token` are ALWAYS stripped (5.1.2+), whatever `hidden` says. The `hidden` config controls the rest — its default is `['field.id', 'field.password', 'remember_token']`, where `field.id`/`field.password` are sentinels resolving to your configured `id.key`/`password.key`; prefer them over literal column names when overriding. Everything not hidden (`email_verified_at`, timestamps, any custom column) IS included, and in Inertia apps ships to the browser in the shared `auth` prop — add columns to `hidden` before they reach the client
 - `$user->id()` returns the id even though it is hidden from `get()`
 - `$user->roles()` returns the assigned roles — combine with `get()` when your API response needs both: `[...$user->get(), 'roles' => $user->roles()]`
 - After `assign()`, the database is updated but the in-memory user is not — read `roles()` (which reflects the assignment) rather than re-reading `get()`

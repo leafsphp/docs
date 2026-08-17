@@ -296,10 +296,11 @@ Read this before writing code — each entry is a mistake real agents have made:
 1. **Read `.leaf/CONTEXT.md` first** if shared — reveals entry point, routes, installed modules
 2. **Fetch the reference file for every area you touch — especially the areas you think you already understand.** The most expensive agent mistakes on record came from skipping a reference that contradicted a prior: generic PHP+React knowledge says "build a SPA against a JSON API" while `views.md` says use the Inertia bridge; generic knowledge guesses at upload shapes that `request.md` states exactly. Fetching only the references that confirm your plan is the failure mode — fetch the one that could veto it. In a lite app, read `lite.md` before writing any wiring
 3. **Prefer Leaf functions over hand-rolled code, always.** Before writing any helper or custom logic, check in this order: a module method (reference files first), then `leaf install <module>`, then a scaffold. Write custom code only when no Leaf API covers the need, and record why in `.leaf/CONTEXT.md` Known Decisions. Never reimplement hashing, validation, auth flows, or query building that Leaf modules provide
-4. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it. The same shape renders frontend pages: `response()->inertia('home', ['cards' => $cards]);` returns a React/Vue/Svelte page
-5. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
-6. **Use their actual names** — route names, model names, controller names from their project
-7. **Favor simplicity** — that's the Leaf way
+4. **Inertia pages are kebab-case files in lowercase folders** — `views/js/pages/order-history.jsx`, rendered with `return response()->inertia('order-history', $props)`. Never PascalCase file or folder names (the component *inside* the file stays PascalCase per React convention), and prefer `response()->inertia()` over the bare `inertia()` helper
+5. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it. The same shape renders frontend pages: `response()->inertia('home', ['cards' => $cards]);` returns a React/Vue/Svelte page
+6. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
+7. **Use their actual names** — route names, model names, controller names from their project
+8. **Favor simplicity** — that's the Leaf way
 
 ---
 
