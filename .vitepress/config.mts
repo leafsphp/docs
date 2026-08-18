@@ -12,6 +12,9 @@ export default defineConfig({
   head,
   lang: 'en-US',
   srcDir: 'src',
+  sitemap: {
+    hostname: 'https://leafphp.dev',
+  },
   scrollOffset: 'header',
   srcExclude: ['tutorial/**/description.md', 'old/**'],
 

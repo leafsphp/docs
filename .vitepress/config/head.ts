@@ -182,4 +182,46 @@ const head: HeadConfig[] = [
   ],
 ];
 
+// Structured data: tells search engines what Leaf is (a free, open-source
+// developer tool) and earns rich results. Kept as plain objects so the
+// JSON stays reviewable.
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Leaf PHP',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Cross-platform',
+      programmingLanguage: 'PHP',
+      url: 'https://leafphp.dev',
+      description:
+        'Leaf is the PHP framework built for AI and humans. Zero-config setup, a full ecosystem of modules, and AI-ready projects out of the box.',
+      license: 'https://opensource.org/licenses/MIT',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Michael Darko',
+        url: 'https://github.com/mychidarko',
+      },
+      sameAs: [
+        'https://github.com/leafsphp/leaf',
+        'https://twitter.com/leafphp',
+        'https://packagist.org/packages/leafs/leaf',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Leaf PHP',
+      url: 'https://leafphp.dev',
+    },
+  ],
+};
+
+head.push(['script', { type: 'application/ld+json' }, JSON.stringify(structuredData)]);
+
 export default head;

@@ -14,6 +14,10 @@ const sidebar = [
         link: 'https://blog.leafphp.dev/posts/leaf-5',
       },
       {
+        text: '<i class="si si-shuffle"></i>Leaf vs other frameworks',
+        link: '/docs/comparison',
+      },
+      {
         text: '<i class="si si-arrow-up"></i>Upgrading to Leaf 5 <span class="badge new">New</span>',
         link: '/docs/upgrade-guide',
       },
