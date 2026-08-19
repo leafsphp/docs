@@ -23,7 +23,7 @@ import { ui } from './ui';
         <div class="flex flex-col items-start gap-6 p-8 md:p-12 lg:col-span-7 lg:p-14">
           <p class="!m-0 text-[1.0625rem] leading-[1.65] text-neutral-600 dark:text-neutral-300">
             The Leaf Discord is where releases drop first, questions get answered, and builders show off what they're
-            shipping — from weekend projects to production apps.
+            shipping, from weekend projects to production apps.
           </p>
           <a
             href="https://discord.gg/Pkrm9NJPE3"

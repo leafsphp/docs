@@ -9,7 +9,7 @@ import EcosystemCards from '../shared/EcosystemCards.vue';
       <p :class="ui.eyebrow">Ecosystem</p>
       <h2 :class="ui.title">One team. A whole toolchain.</h2>
       <p :class="ui.subtitle">
-        Leaf is more than the framework — it's a family of focused tools that work anywhere PHP (or JavaScript) runs,
+        Leaf is more than the framework. We're a family of focused tools that work anywhere PHP (or JavaScript) runs,
         each with its own home.
       </p>
     </header>

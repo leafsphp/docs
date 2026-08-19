@@ -182,9 +182,6 @@ const head: HeadConfig[] = [
   ],
 ];
 
-// Structured data: tells search engines what Leaf is (a free, open-source
-// developer tool) and earns rich results. Kept as plain objects so the
-// JSON stays reviewable.
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -193,6 +190,7 @@ const structuredData = {
       name: 'Leaf PHP',
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'Cross-platform',
+      image: 'https://leafphp.dev/leaf5-banner.png',
       programmingLanguage: 'PHP',
       url: 'https://leafphp.dev',
       description:

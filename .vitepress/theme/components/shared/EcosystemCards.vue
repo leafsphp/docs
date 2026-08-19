@@ -10,35 +10,35 @@ const products = [
     name: 'Alchemy',
     url: 'https://alchemy.leafphp.dev',
     tagline: 'QA from one config',
-    description: 'Tests, code style, refactors, static analysis + CI pipelines for any PHP app — described in one alchemy.yml.',
+    description: 'Tests, code style, refactors, static analysis + CI pipelines for any PHP app, described in one alchemy.yml.',
     logo: 'https://alchemy.leafphp.dev/images/logo-yellow.png',
   },
   {
     name: 'Seedling',
     url: 'https://seedling.leafphp.dev',
     tagline: 'Console applications',
-    description: 'A tiny framework for building CLI tools with the Leaf MVC experience — commands, prompts, and packaging.',
+    description: 'A tiny framework for building CLI tools with the Leaf MVC experience: commands, prompts, and packaging.',
     logo: 'https://seedling.leafphp.dev/images/seedling.png',
   },
   {
     name: 'Fetch',
     url: 'https://fetch.leafphp.dev',
     tagline: 'HTTP client',
-    description: 'fetch() for PHP. The request API you already know from JavaScript, in any PHP app — Leaf or not.',
+    description: 'fetch() for PHP. The request API you already know from JavaScript, in any PHP app, Leaf or not.',
     logo: 'https://fetch.leafphp.dev/images/fetch.png',
   },
   {
     name: 'Auth',
     url: 'https://auth.leafphp.dev',
     tagline: 'Authentication',
-    description: 'Login, registration, roles, permissions and subscriptions for any PHP app — sessions or JWT, one API.',
+    description: 'Login, registration, roles, permissions and subscriptions for any PHP app. Sessions or JWT, one API.',
     logo: 'https://leafphp.dev/logo-circle.png',
   },
   {
     name: 'Db',
     url: 'https://db.leafphp.dev',
     tagline: 'Database',
-    description: 'Fluent queries and raw SQL without a heavy database layer — MariaDB, MySQL, Postgres, SQLite, SQL Server.',
+    description: 'Fluent queries and raw SQL without a heavy database layer. MariaDB, MySQL, Postgres, SQLite, SQL Server.',
     logo: 'https://leafphp.dev/logo-circle.png',
   },
   {
@@ -52,7 +52,7 @@ const products = [
     name: 'Hana JS',
     url: 'https://hanabira.dev',
     tagline: 'Frontend framework',
-    description: 'Simple, lightweight React alternative for building user interfaces — from the same team.',
+    description: 'Simple, lightweight React alternative for building user interfaces, from the same team.',
     logo: 'https://docs.hana.leafphp.dev/favicon.png',
   },
 ];
@@ -91,7 +91,7 @@ const products = [
       <div>
         <p class="!m-0 text-[15px] font-semibold text-neutral-950 dark:text-neutral-50">25+ modules, one install away</p>
         <p class="!m-0 mt-1 text-[13.5px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-          Auth, databases, queues, mail, billing and more — grab exactly what you need, nothing else.
+          Auth, databases, queues, mail, billing and more: grab exactly what you need, nothing else.
         </p>
       </div>
       <span

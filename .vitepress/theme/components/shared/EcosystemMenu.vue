@@ -52,7 +52,7 @@ const products = [
     name: 'Fetch',
     url: 'https://fetch.leafphp.dev',
     tagline: 'HTTP client',
-    description: "fetch() for PHP — works in any PHP app, Leaf or not.",
+    description: "fetch() for PHP. Works in any PHP app, Leaf or not.",
     logo: 'https://fetch.leafphp.dev/images/fetch.png',
   },
   {
@@ -115,7 +115,7 @@ const products = [
           class="flex items-center justify-between gap-4 bg-white px-5 py-4 !no-underline transition-colors hover:bg-neutral-50 dark:bg-[var(--vp-c-bg-elv,var(--vp-c-bg))] dark:hover:bg-white/[0.04]"
         >
           <span class="text-[13px] font-medium text-neutral-950 dark:text-neutral-50">
-            25+ modules — auth, databases, queues, mail &amp; more
+            25+ modules: auth, databases, queues, mail &amp; more
           </span>
           <span class="inline-flex items-center gap-1 font-mono text-[11px] font-medium text-[var(--vp-c-brand-1)]">
             Browse

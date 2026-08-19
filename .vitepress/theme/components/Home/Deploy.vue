@@ -6,7 +6,7 @@
       <p class="text-xl">
         Leaf is built for makers who move fast. Whether you are building a web app, API, microservice or console application, Leaf
         gets you up and running in seconds. With no config and effortless deployment, you can run Leaf anywhere PHP is
-        available—instantly!
+        available, instantly!
       </p>
     </div>
   </section>

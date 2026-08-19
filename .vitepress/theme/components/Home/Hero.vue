@@ -38,7 +38,7 @@ onMounted(() => {
     <div :class="[ui.section, 'relative z-10 w-full py-20 sm:py-24']">
       <div :class="[ui.badge, 'max-sm:mx-4 mb-8 w-fit']">
         <span :class="ui.badgeDot" aria-hidden="true" />
-        Leaf 5 — A new era
+        Leaf 5 · A new era
       </div>
 
       <h1
@@ -47,8 +47,9 @@ onMounted(() => {
       </h1>
 
       <p :class="[ui.heroSubtitle, 'max-sm:px-4 mb-8']">
-        Leaf 5 is an AI-native PHP framework with project context built in, so assistants understand your app,
-        Craftly can turn patterns into product, and your code stays clean, readable, and yours.
+        Leaf is the lightweight PHP framework for shipping real products. Pull in auth, billing, queues and
+        25+ other modules only when your app needs them. Your AI tools get real project context to work with,
+        and the code stays clean, readable, and more importantly yours.
       </p>
 
       <div :class="[ui.actions, 'max-sm:px-4']">

@@ -84,7 +84,7 @@ const perks = [
   {
     icon: '🌍',
     title: 'Any format',
-    desc: 'Conferences, meetups, workshops, Twitter Spaces — we\'re flexible.',
+    desc: 'Conferences, meetups, workshops, Twitter Spaces. We\'re flexible.',
   },
   {
     icon: '⚡',

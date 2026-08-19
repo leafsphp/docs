@@ -6,9 +6,9 @@ export const ui = {
   header: 'mb-12 max-w-2xl lg:mb-16',
   headerWide: 'max-w-3xl',
   eyebrow:
-    '!m-0 mb-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-[var(--vp-c-brand-1)] before:mr-2 before:content-["//"] before:text-neutral-400 dark:before:text-neutral-600',
+    '!m-0 !mb-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-[var(--vp-c-brand-1)] before:mr-2 before:content-["//"] before:text-neutral-400 dark:before:text-neutral-600',
   title:
-    '!m-0 mb-4 !border-0 !p-0 text-[clamp(1.875rem,4vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-neutral-950 dark:text-neutral-50',
+    '!m-0 !mb-4 !border-0 !p-0 text-[clamp(1.875rem,4vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-neutral-950 dark:text-neutral-50',
   subtitle: '!m-0 text-[1.0625rem] font-normal leading-[1.65] text-neutral-500 dark:text-neutral-400',
   heroSubtitle:
     'max-w-xl text-lg leading-[1.6] text-neutral-500 dark:text-neutral-400 md:text-xl',

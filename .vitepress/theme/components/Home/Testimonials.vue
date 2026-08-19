@@ -7,7 +7,7 @@
           Trusted by people building <span :class="ui.accent">real products</span>
         </h2>
         <p :class="ui.subtitle">
-          Real feedback from people shipping on Leaf — including early Leaf 5 adopters.
+          Real feedback from people shipping on Leaf, including early Leaf 5 adopters.
         </p>
       </header>
 
