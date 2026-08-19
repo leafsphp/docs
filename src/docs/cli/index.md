@@ -69,7 +69,7 @@ composer global require leafs/cli -W
 ```
 
 ::: details Getting a conflict about leafs/sprout?
-If your global composer.json directly requires an older `leafs/sprout`, composer refuses the update — `-W` can bump dependencies, but it never overrides a version you pinned yourself. Update both constraints together:
+If your global composer.json directly requires an older `leafs/sprout`, composer refuses the update: `-W` can bump dependencies, but it never overrides a version you pinned yourself. Update both constraints together:
 
 ```bash:no-line-numbers
 composer global require leafs/cli:^5.0 leafs/sprout:^5.0 -W

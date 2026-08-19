@@ -1,3 +1,7 @@
+---
+title: 'Lightweight PHP Frameworks Compared: Leaf vs Laravel, Symfony and Slim'
+---
+
 # Leaf vs Laravel, Symfony, and Slim
 
 Choosing a PHP framework in 2026 mostly means choosing between four philosophies. This page is our honest comparison, including the cases where you should pick something other than Leaf. We would rather you choose right than choose us and regret it.

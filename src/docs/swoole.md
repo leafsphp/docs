@@ -8,7 +8,7 @@ PHP normally handles one request at a time and starts fresh on every one. Async 
 
 [Eien](https://github.com/leafsphp/eien), the module that connected Leaf to Swoole, is being rewritten from the ground up for Leaf 5.
 
-The rewrite is not just a port. Eien is coming back as Leaf's async layer in general, with proper support for **Swoole** and other async PHP libraries like **ReactPHP**, behind one shared contract, so switching runtimes doesn't mean rewriting your app.
+The rewrite makes Eien Leaf's async layer in general, with proper support for **Swoole** and other async PHP libraries like **ReactPHP**, behind one shared contract, so switching runtimes doesn't mean rewriting your app.
 
 Until it ships, Leaf 5 has no built-in async integration. Everything below describes how to run Leaf in a long-running process today, by hand.
 

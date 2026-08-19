@@ -1,6 +1,8 @@
 ---
 next: false
 prev: false
+title: 'PHP MVC Framework: clean structure without the weight'
+description: Leaf MVC is a lightweight PHP MVC framework with controllers, models, views and a full CLI.
 ---
 
 # Leaf + MVC

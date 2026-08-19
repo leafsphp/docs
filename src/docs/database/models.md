@@ -1,3 +1,8 @@
+---
+title: 'PHP Models: clean database records in your app'
+description: Work with database records as clean PHP model classes. Relationships, scopes and reusable data logic in Leaf, without heavyweight ORM ceremony.
+---
+
 # Models
 
 A model is a class that represents your app’s data, acting as a bridge between your database and application. Instead of [building complex SQL queries](/docs/database/builder), models let you work with your data in a clean, reusable, and organized way.

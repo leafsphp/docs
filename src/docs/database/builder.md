@@ -1,3 +1,8 @@
+---
+title: 'PHP Query Builder: readable, secure database queries'
+description: Build secure, readable SQL in plain PHP with Leaf DB's query builder. Select, insert, update, joins and params without writing raw query strings.
+---
+
 # Query Builder
 
 Although you can write raw queries using the `query()` method, there's no fun in that. Leaf DB provides a query builder that makes it easy to write queries in a more readable and secure way. Let's take a look at what you can do with the query builder.
