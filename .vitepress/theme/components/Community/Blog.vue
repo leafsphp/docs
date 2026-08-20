@@ -3,18 +3,18 @@ import { ui } from '../Home/ui';
 
 const blogPosts = [
   {
+    id: 3,
+    title: 'The weekend Alchemy earned its keep',
+    excerpt: 'Ten releases in two days, a Windows bug we could not reproduce, and the boring config file that held it all together.',
+    image: 'https://leafphp.dev/leaf5-banner.png',
+    url: 'https://blog.leafphp.dev/posts/alchemy-earned-its-keep.html',
+  },
+  {
     id: 2,
     title: 'Leaf 5: Build products at the speed of thought',
     excerpt: 'The biggest release in our history: a new routing engine, Leaf Crash, AI-native projects, and a family of stable modules.',
     image: 'https://blog.leafphp.dev/leaf5-bg-mountains.png',
     url: 'https://blog.leafphp.dev/posts/leaf-5.html',
-  },
-  {
-    id: 1,
-    title: "It's been a while. Here's what we've been building.",
-    excerpt: 'The quiet had a reason. A year of rebuilding Leaf from the ground up, and what came out the other side.',
-    image: 'https://leafphp.dev/leaf5-banner.png',
-    url: 'https://blog.leafphp.dev/posts/from-us.html',
   },
 ];
 </script>
