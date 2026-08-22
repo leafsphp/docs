@@ -1,8 +1,12 @@
 # Service Container
 
-A Dependency Injection (DI) Container is like a helper that organizes how different parts of your app work together. Instead of manually creating objects and initializing classes when one part of your app needs another, the container automatically retrieves them for you.
+Leaf ships a lightweight service container: a registry where you name a dependency once, then fetch it anywhere in your app through the Leaf instance. Factories are lazy, so nothing is created until the first time you ask for it, and after that first call you get the same instance back every time.
 
-Leaf comes with a lightweight service container that simplifies managing dependencies in your app. You can register classes and dependencies with the container and they will be available from anywhere in your app. It is not a full-fledged dependency injection container, but it covers what most apps need.
+::: details DI Container or Service Locator?
+Strictly speaking, we use the service locator pattern, not a dependency injection container.
+
+A DI container hands your classes their dependencies from the outside, usually through constructor injection and autowiring, so a class never knows the container exists. A service locator is something your code calls to fetch what it needs. Leaf chose the locator deliberately: there is no wiring step, the whole API is one method and a property read, and in the small apps Leaf is built for, constructor ceremony usually costs more than it returns.
+:::
 
 ## Registering Dependencies
 
@@ -48,4 +52,14 @@ You can check if a dependency exists in the container by calling the `has()` met
 if (app()->has('something')) {
   echo 'Dependency exists';
 }
+```
+
+## Swapping Dependencies in Tests
+
+Registering a name again replaces it, and the new factory starts fresh. That means a test can hand your app a fake without changing the code under test:
+
+```php
+app()->register('mailer', fn () => new FakeMailer());
+
+// code under test calls app()->mailer and gets the fake
 ```
