@@ -55,11 +55,11 @@ In this version of Leaf, `make()` simply initializes the service class just like
 
 :::
 
-## Why no dependency Injection?
+## Why no dependency injection?
 
-If you’re coming from frameworks like Laravel, you might expect to inject services through constructors or method injection. That approach works, but it adds extra complexity.
+If you’re coming from frameworks like Laravel, you might expect to inject services through constructors or method injection. That approach works, but it adds extra complexity to most mid-sized projects.
 
-In Leaf, almost everything you need is already accessible through global functions, so there’s no need to inject dependencies just to use them. To keep things simple and consistent, Leaf uses make() to resolve services.
+In Leaf, almost everything you need is already accessible through global functions, so there's no need to inject dependencies just to use them. To keep things simple and consistent, Leaf uses `make()` to resolve services. It's more of service location rather than dependency injection which Leaf already does through `app()->register()`. It is a deliberate trade, and your service classes can still take plain constructor arguments whenever you want explicit wiring.
 
 Instead of wiring dependencies into constructors, you can simply call a function (`make()`, `cache()`, `response()`, etc.) to get what you need, anywhere in your app.
 

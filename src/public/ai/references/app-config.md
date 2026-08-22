@@ -95,7 +95,9 @@ app()->setDown(function () {
 
 ---
 
-## Dependency Injection
+## Service Container
+
+Register once, fetch anywhere on the Leaf instance. This is service location by design (not constructor injection); re-registering a name replaces it, which is how tests swap in fakes.
 
 ```php
 app()->register('something', function ($c) {
