@@ -1,4 +1,4 @@
-# Leaf 5 — MVC Reference
+# Leaf 5: MVC Reference
 
 ## Controllers
 
@@ -61,7 +61,7 @@ app()->apiResource('/photos', 'PhotosController');
 
 ## Models (MVC Only)
 
-Built on Eloquent ORM — full Eloquent docs apply.
+Built on Eloquent ORM, full Eloquent docs apply.
 
 ```bash
 leaf g:model Flight   # → app/models/Flight.php
@@ -157,7 +157,7 @@ $flight->delete();
 
 ## Schema Files (MVC Only)
 
-One YAML file per table — defines columns, seeds, and relationships. No separate migration files needed.
+One YAML file per table, defines columns, seeds, and relationships. No separate migration files needed.
 
 ```bash
 leaf g:schema posts       # → app/database/posts.yml
@@ -244,7 +244,7 @@ seeds:
 
 `boolean`, `integer`, `bigInteger`, `char`, `string`, `text`, `tinyText`, `mediumText`, `longText`, `date`, `enum`, `increments`, `bigIncrements`, `smallIncrements`, `decimal`, `float`, `double`, `unsignedBigInteger`, `id`, `uuid`, `json`, `jsonb`, `timestamp`
 
-Eloquent writes `date` and `timestamp` columns as `YYYY-MM-DD HH:MM:SS`. Compare them with `whereDate()`, not `where()` — a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and returns wrong rows with no error.
+Eloquent writes `date` and `timestamp` columns as `YYYY-MM-DD HH:MM:SS`. Compare them with `whereDate()`, not `where()`, a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and returns wrong rows with no error.
 
 ### Column Properties
 
@@ -303,7 +303,7 @@ class StatsService
 }
 ```
 
-Use with `make()` — always prefer over `new`:
+Use with `make()`, always prefer over `new`:
 
 ```php
 use App\Services\StatsService;
@@ -355,7 +355,7 @@ use function Lib\add;
 $sum = add(1, 2);
 ```
 
-Non-autoloadable libraries: move to `lib/MyLibrary/` and create `lib/mylibrary.php` that requires the index:
+For non-autoloadable libraries, move to `lib/MyLibrary/` and create `lib/mylibrary.php` that requires the index:
 
 ```php
 // lib/mylibrary.php

@@ -31,11 +31,11 @@ You need deep architectural control, long-term-support guarantees, and enterpris
 
 ## Choose Slim when...
 
-You want the smallest possible HTTP layer and you enjoy assembling your own stack. Slim gives you routing and PSR-7 middleware, then gets out of the way. The cost shows up when the product grows: auth, validation, mail, queues, and structure are all separate choices with separate documentation.
+You want the smallest possible HTTP layer and you enjoy assembling your own stack. Slim gives you routing and PSR-7 middleware, then gets out of the way. The cost shows up when the product grows: auth, validation, mail, queues, structure, each a separate choice with separate documentation.
 
 ## Choose Leaf when...
 
-You want to get a real product into users' hands quickly and keep the codebase small enough to fully understand. Leaf starts wherever your product does: a single file when you're prototyping, or a full MVC app from day one with `leaf create my-app --mvc`. Either way it grows through first-party modules (auth, database, billing, queues, mail, and 25+ more) that you install only when your app asks for them, and if you did start tiny, `leaf up` migrates you into MVC structure when it earns its place. Nothing you skip today becomes a rewrite tomorrow.
+You want to get a real product into users' hands quickly and keep the codebase small enough to fully understand. Leaf starts wherever your product does: a single file when you're prototyping, or a full MVC app from day one with `leaf create my-app --mvc`. Either way it grows through first-party modules (auth, database, billing, queues, mail, 25+ more) that you install only when your app asks for them, and if you did start tiny, `leaf up` migrates you into MVC structure when it earns its place. Nothing you skip today becomes a rewrite tomorrow.
 
 And if you build with AI assistants, this is where Leaf goes deepest. Laravel's Boost and the Symfony AI initiative are real and worth knowing about; Leaf's difference is that AI-readiness is the default in every project rather than an add-on: each app carries a [shared context file](/docs/ai) your assistant reads and writes back to, the docs ship in an [agent-ready format](https://leafphp.dev/ai/SKILL.md), and error messages explain their own fix so your assistant (and you) skip the debugging spiral.
 

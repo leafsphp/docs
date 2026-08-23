@@ -46,7 +46,7 @@ prev: false
         </div>
         <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
           <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Real products</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use AI for auth, dashboards, billing, APIs, and app features.</p>
+          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Use AI for app features like auth and dashboards, along with billing and APIs.</p>
         </div>
       </div>
     </div>
@@ -149,7 +149,7 @@ The format is plain markdown with a handful of rules:
 - **Sections are `##` headings** in a stable order: Working With This File, Project Summary, Current Goal, Architecture, External Providers, Coding Conventions, Recent Changes, Known Decisions, Future Ideas. Agents preserve sections they don't recognize and may add project-specific ones at the end.
 - **Placeholders are underscore-wrapped lines.** When one contains `agent:`, it is an instruction to the next assistant: ask the user something, make a choice, then replace the line with the answer. This is how a fresh template bootstraps itself into real project memory.
 - **Entries are single lines** wherever possible, so concurrent edits merge cleanly in git. Recent Changes entries are dated (`* 2026-08-06 — what changed`), capped at five, newest first. Known Decisions always carry their reasoning, because a decision without its why gets relitigated by the next agent.
-- **The file never duplicates the codebase.** Routes, models, modules and structure live in code and in `leaf context`; the shared memory holds only what code cannot say: goals, decisions, and the reasoning behind them. This is what keeps it from rotting.
+- **The file never duplicates the codebase.** Routes and models, along with modules and structure, live in code and in `leaf context`; the shared memory holds only what code cannot say: the goals and decisions, and the reasoning behind them. This is what keeps it from rotting.
 - **No secrets, ever.** Environment keys are referenced by name only.
 
 The file also opens with a short "Working With This File" section carrying these same rules, so an assistant that has never seen Leaf before still edits it correctly.
@@ -216,7 +216,7 @@ my-app/
 └── public/
 ```
 
-This gives assistants a stable path for new controllers, models, routes, views, services, and modules.
+This gives assistants a stable path for new controllers, models, routes, views, services, modules.
 
 ## Real features, not toy examples
 
@@ -231,17 +231,17 @@ AI-assisted Leaf work is meant for actual product features.
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Product UI</span>
     <strong class="docs-path-title">Dashboards</strong>
-    <span class="docs-path-description">Generate controllers, models, views, and API responses around your existing app structure.</span>
+    <span class="docs-path-description">Generate controllers, models, views, or API responses around your existing app structure.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">03 / Payments</span>
     <strong class="docs-path-title">Billing flows</strong>
-    <span class="docs-path-description">Add Stripe, Paystack, webhooks, and database records without losing project conventions.</span>
+    <span class="docs-path-description">Add Stripe and Paystack payments, plus webhooks and database records, without losing project conventions.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">04 / Integrations</span>
     <strong class="docs-path-title">APIs</strong>
-    <span class="docs-path-description">Create routes, validation, response helpers, middleware, and clean JSON endpoints.</span>
+    <span class="docs-path-description">Create routes, validation, response helpers, middleware, clean JSON endpoints.</span>
   </div>
 </div>
 
@@ -260,4 +260,4 @@ With project memory in the loop, the assistant works more like a teammate than a
 
 ## Where this is going
 
-AI in Leaf is not a bolt-on. Leaf 5 shapes the framework, CLI, docs, and project structure around a future where humans and AI build software together.
+AI in Leaf is not a bolt-on. Leaf 5 shapes the framework and CLI, along with the docs and project structure, around a future where humans and AI build software together.

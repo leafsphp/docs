@@ -2,7 +2,7 @@
 next: false
 prev: false
 title: 'PHP MVC Framework: clean structure without the weight'
-description: Leaf MVC is a lightweight PHP MVC framework with controllers, models, views and a full CLI.
+description: Leaf MVC is a lightweight PHP MVC framework with an MVC structure (controllers, models, views) and a full CLI.
 ---
 
 # Leaf + MVC
@@ -39,7 +39,7 @@ Leaf MVC's directory structure is inspired by Rails and Laravel, but it stays li
 
 <MvcIntroPage section="tree" />
 
-Modules may also generate folders like `storage` for logs, cache, and temporary files.
+Modules may also generate folders like `storage` for logs and cache, as well as temporary files.
 
 ## Configuring Leaf MVC
 
@@ -65,8 +65,8 @@ Leaf MVC gives you structure without taking away your choices. Build a full-stac
 <div class="docs-paths docs-paths--two not-prose my-8">
   <a class="docs-path-card" href="/learn/mvc">
     <span class="docs-path-index">01 / Full-stack apps</span>
-    <strong class="docs-path-title">Build product screens, auth flows, dashboards, and admin tools.</strong>
-    <span class="docs-path-description">Use controllers, models, views, and AI-readable project structure without buying into a heavy framework.</span>
+    <strong class="docs-path-title">Build product screens, auth flows, dashboards, admin tools.</strong>
+    <span class="docs-path-description">Use MVC pieces (controllers, models, views) and AI-readable project structure without buying into a heavy framework.</span>
     <span class="docs-path-action">Start building <span aria-hidden="true">&rarr;</span></span>
   </a>
   <a class="docs-path-card" href="/learn/api">

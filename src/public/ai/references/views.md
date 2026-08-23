@@ -1,4 +1,4 @@
-# Leaf 5 — Views & Frontend Reference
+# Leaf 5: Views & Frontend Reference
 
 ## Overview
 
@@ -6,19 +6,19 @@
 |---|---|---|---|
 | **BareUI** | ⚡️ Fast | Basic (pure PHP) | Simple/performance-critical views |
 | **Blade** | Moderate | Rich (`@` directives) | Full-featured templating |
-| **Inertia** | — | React/Vue/Svelte | SPA-style frontend frameworks |
+| **Inertia** | N/A | React/Vue/Svelte | SPA-style frontend frameworks |
 
 ---
 
 ## BareUI
 
-Lightweight, pure PHP templating. No compilation, no caching — just speed.
+Lightweight, pure PHP templating. No compilation, no caching, just speed.
 
 ```bash
 leaf install bareui
 ```
 
-### Setup (Basic app only — MVC pre-configured)
+### Setup (Basic app only: MVC pre-configured)
 
 ```php
 app()->template()->config('path', './views');
@@ -189,7 +189,7 @@ leaf view:install --react
 leaf view:install --svelte
 ```
 
-When you run `view:install`, Leaf automatically generates `app/views/_inertia.blade.php` — the root HTML shell for all Inertia pages. **Do not create this file manually.**
+When you run `view:install`, Leaf automatically generates `app/views/_inertia.blade.php`, the root HTML shell for all Inertia pages. **Do not create this file manually.**
 
 ```blade
 {{-- app/views/_inertia.blade.php (auto-generated) --}}
@@ -209,7 +209,7 @@ When you run `view:install`, Leaf automatically generates `app/views/_inertia.bl
 </html>
 ```
 
-**This is the right place for global head content** — fonts, analytics (GTM, Tawk.to, OneSignal), favicon, CDN scripts, etc. Edit it when you need those things; otherwise leave it alone.
+**This is the right place for global head content**, fonts, analytics (GTM, Tawk.to, OneSignal), favicon, CDN scripts, etc. Edit it when you need those things; otherwise leave it alone.
 
 ```blade
 {{-- _inertia.blade.php with global assets --}}
@@ -227,10 +227,10 @@ When you run `view:install`, Leaf automatically generates `app/views/_inertia.bl
 ```
 
 Key directives:
-- `@viteReactRefresh` — React HMR in dev (must come before `@vite`)
-- `@vite([...])` — loads compiled assets
-- `@inertiaHead` — renders `<Head>` tags from React components
-- `@inertia` — mounts the React/Vue/Svelte app
+- `@viteReactRefresh`, React HMR in dev (must come before `@vite`)
+- `@vite([...])`, loads compiled assets
+- `@inertiaHead`, renders `<Head>` tags from React components
+- `@inertia`, mounts the React/Vue/Svelte app
 
 ### Returning Inertia Views
 
@@ -242,7 +242,7 @@ response()->inertia('home', ['user' => auth()->user()]);
 app()->inertia('/home', 'home');
 ```
 
-Naming: page files are kebab-case in lowercase folders (`pages/order-history.jsx`), and the string you pass to `response()->inertia()` matches the file name exactly. The component *inside* the file keeps React's PascalCase convention. Prefer `response()->inertia()` over the bare `inertia()` helper — it returns a response like every other handler.
+Naming: page files are kebab-case in lowercase folders (`pages/order-history.jsx`), and the string you pass to `response()->inertia()` matches the file name exactly. The component *inside* the file keeps React's PascalCase convention. Prefer `response()->inertia()` over the bare `inertia()` helper, it returns a response like every other handler.
 
 ### Generating View Files
 
@@ -265,7 +265,7 @@ Inertia::share('flash', function () {
 });
 ```
 
-Leaf automatically shares an `auth` prop with every Inertia page: `{id, user, roles, permissions, errors}`. Do not share your own `auth` key — the framework's value takes precedence and yours never renders. `auth.user` contains every column not listed in auth's `hidden` config.
+Leaf automatically shares an `auth` prop with every Inertia page: `{id, user, roles, permissions, errors}`. Do not share your own `auth` key, the framework's value takes precedence and yours never renders. `auth.user` contains every column not listed in auth's `hidden` config.
 
 ### React Component Example
 
@@ -314,7 +314,7 @@ pnpm dlx shadcn@latest add button
 
 Everything above works in lite apps too, with a few differences in layout:
 
-- `leaf view:install --react` (or `--vue` / `--svelte`) works in lite apps and writes frontend files to `views/js/` in the project root, not `app/views/` — that path belongs to the MVC layout.
+- `leaf view:install --react` (or `--vue` / `--svelte`) works in lite apps and writes frontend files to `views/js/` in the project root, not `app/views/`, that path belongs to the MVC layout.
 - Lite apps must configure the view paths before rendering. Newly scaffolded apps have this wired automatically as of CLI v5.0.6; older apps need it set by hand:
 
 ```php
@@ -418,7 +418,7 @@ app()->smarty()->assign('name', 'Michael');
 app()->smarty()->display('index.tpl');
 ```
 
-### MVC — `config/view.php`
+### MVC: `config/view.php`
 
 ```bash
 leaf config:publish view   # → config/view.php

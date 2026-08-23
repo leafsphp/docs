@@ -1,10 +1,10 @@
-# Leaf 5 — Request Reference
+# Leaf 5: Request Reference
 
 All input is auto-sanitized by default. Pass `false` to disable.
 
 ## Getting Data
 
-`get()` works for all request types — query params, form, files, JSON:
+`get()` works for all request types, query params, form, files, JSON:
 
 ```php
 $item = request()->get('item');                         // single item (sanitized)
@@ -28,7 +28,7 @@ $name = request()->postData('name', 'John Doe');        // POST/PUT/PATCH only
 $file = request()->files('file');                       // $_FILES
 ```
 
-### `try()` — only return keys present in the request
+### `try()`: only return keys present in the request
 
 ```php
 $data = request()->try(['name', 'email']);              // only existing keys

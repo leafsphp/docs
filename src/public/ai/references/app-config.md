@@ -1,8 +1,8 @@
-# Leaf 5 — App Config & Deployment Reference
+# Leaf 5: App Config & Deployment Reference
 
 ## Environment Variables
 
-MVC: auto-loaded. Basic apps: use `vlucas/phpdotenv` or `symfony/dotenv` to load `.env`.
+Auto-loaded in MVC. In basic apps, use `vlucas/phpdotenv` or `symfony/dotenv` to load `.env`.
 
 ```php
 $value = _env('SECRET_KEY', 'default-if-not-found');
@@ -16,7 +16,7 @@ $value = _env('SECRET_KEY', 'default-if-not-found');
 app()->config(['mode' => 'production']);
 ```
 
-Or set `APP_ENV` in `.env` — Leaf detects it automatically.
+Or set `APP_ENV` in `.env`, Leaf detects it automatically.
 
 Run code only in a specific mode:
 ```php
@@ -40,7 +40,7 @@ In Blade:
 
 ## Logging
 
-MVC: pre-configured. Logs saved to `storage/logs/` by default.
+Pre-configured in MVC. Logs saved to `storage/logs/` by default.
 
 Basic apps:
 ```bash
@@ -62,7 +62,7 @@ leaf uninstall logger
 
 ---
 
-## `rescue()` — Safe Execution
+## `rescue()`: Safe Execution
 
 ```php
 $value = rescue(function () {
@@ -150,7 +150,7 @@ Quick start (small apps):
 php leaf queue:work &
 ```
 
-Production (recommended) — use Supervisor:
+Production (recommended), use Supervisor:
 ```bash
 sudo apt update && sudo apt install supervisor -y
 sudo nano /etc/supervisor/conf.d/leaf-queue.conf

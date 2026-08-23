@@ -95,12 +95,12 @@ In Leaf MVC, modules can also work through config files, controllers, models, se
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">01 / Foundation</span>
     <strong class="docs-path-title">Product basics</strong>
-    <span class="docs-path-description">Auth, sessions, cookies, validation, CSRF, CORS, request, and response helpers.</span>
+    <span class="docs-path-description">Auth, sessions, cookies, validation, CSRF, CORS, request/response helpers.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Storage</span>
     <strong class="docs-path-title">Data and state</strong>
-    <span class="docs-path-description">Database, Redis, cache, queues, files, sitemaps, and storage integrations.</span>
+    <span class="docs-path-description">Database, Redis, cache, queues, files, sitemaps, storage integrations.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">03 / Interface</span>
@@ -110,7 +110,7 @@ In Leaf MVC, modules can also work through config files, controllers, models, se
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">04 / Operations</span>
     <strong class="docs-path-title">Production features</strong>
-    <span class="docs-path-description">Mail, billing, testing, logging, encryption, and deployment helpers.</span>
+    <span class="docs-path-description">Mail, billing, testing, logging, encryption, deployment helpers.</span>
   </div>
 </div>
 

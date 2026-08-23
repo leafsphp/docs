@@ -282,7 +282,7 @@ Now that you have built a simple pre-launch page, the next step is to get you fa
                 ></a>
             </h3>
             <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn more about routing in Leaf MVC, dynamic routes, middleware and more.
+              Learn more about routing in Leaf MVC, including dynamic routes and middleware.
             </p>
         </div>
         <div

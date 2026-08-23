@@ -1,4 +1,4 @@
-# Leaf 5 — Advanced Features Reference
+# Leaf 5: Advanced Features Reference
 
 ## Application Cache
 
@@ -216,7 +216,7 @@ dispatch([                                            // multiple jobs
 ]);
 ```
 
-> Jobs are stateless — no access to request, session, or auth. Pass all needed data via `with()`.
+> Jobs are stateless, no access to request, session, or auth. Pass all needed data via `with()`.
 
 ### Scheduled Jobs
 
@@ -359,7 +359,7 @@ $stripeSession = billing()->provider()->checkout->sessions->create([/* ... */]);
 
 ---
 
-## Internationalization / i18n — Lingo
+## Internationalization / i18n: Lingo
 
 ```bash
 leaf install lingo
@@ -387,7 +387,7 @@ Blade: `@lingo('hero.title')`
 
 | Mode | Strategy | Config |
 |---|---|---|
-| Route (default) | Adds `/en/`, `/fr/` prefixes to all routes | — |
+| Route (default) | Adds `/en/`, `/fr/` prefixes to all routes | (none) |
 | Header | Uses `Accept-Language` header | `LOCALES_STRATEGY=header` |
 | Session | Stores locale in session | `LOCALES_STRATEGY=session` |
 

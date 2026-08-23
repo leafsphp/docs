@@ -45,10 +45,10 @@ Your first task is to make a database connection using the `connect()` method. W
 
 ::: tip Test DB Credentials
 
-- Hostname: eu-cdbr-west-03.cleardb.net,
-- Dbname: heroku_fb1311a639bb407,
-- Username: b9607a8a6d5ebb,
-- Password: cc589b17
+- **Hostname**: eu-cdbr-west-03.cleardb.net,
+- **Dbname**: heroku_fb1311a639bb407,
+- **Username**: b9607a8a6d5ebb,
+- **Password**: cc589b17
 
 :::
 

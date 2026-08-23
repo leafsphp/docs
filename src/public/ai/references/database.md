@@ -1,4 +1,4 @@
-# Leaf 5 — Database Reference
+# Leaf 5: Database Reference
 
 ## Leaf DB (Query Builder)
 
@@ -65,7 +65,7 @@ $users = db()->query('SELECT * FROM users')->first();
 
 Result methods: `->all()`, `->first()`, `->fetchObj()`, `->fetchAssoc()`, `->fetchAll()`
 
-`query()` takes no bindings parameter — chain `->bind(...$values)` for each `?` placeholder. There is no `whereIn()`; build the placeholders yourself: `db()->query('SELECT * FROM users WHERE id IN (' . rtrim(str_repeat('?,', count($ids)), ',') . ')')->bind(...$ids)`.
+`query()` takes no bindings parameter, chain `->bind(...$values)` for each `?` placeholder. There is no `whereIn()`; build the placeholders yourself: `db()->query('SELECT * FROM users WHERE id IN (' . rtrim(str_repeat('?,', count($ids)), ',') . ')')->bind(...$ids)`.
 
 ---
 
@@ -173,7 +173,7 @@ if (!$success) {
 }
 ```
 
-> In Leaf MVC (leafs/db 5.1+), `db()` and your models share one connection, so a `db()->beginTransaction()` covers model reads and writes too — wrap a check-then-insert (an availability check plus a booking insert, say) in one transaction to close the race between concurrent requests. On older setups where the connections are separate, transactions only cover `db()` queries.
+> In Leaf MVC (leafs/db 5.1+), `db()` and your models share one connection, so a `db()->beginTransaction()` covers model reads and writes too, wrap a check-then-insert (an availability check plus a booking insert, say) in one transaction to close the race between concurrent requests. On older setups where the connections are separate, transactions only cover `db()` queries.
 
 ---
 

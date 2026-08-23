@@ -21,7 +21,7 @@ Before you get started, please take a moment to read through the following guide
 
 Leaf is built around the idea of simplicity and modularity so each part of Leaf can stand on its own and can be moved around without breaking the system. Leaf MVC builds a simple MVC structure around Leaf, with MVC Core linking it to the core. Contributions/Fixes to modules should avoid adding features that require MVC Core, as this would make the module dependent on MVC Core.
 
-Another thing to note is you should try to follow the PSR-12 coding standard for consistent PHP code. Don't worry if it sounds scary, it's just a bunch of rules which focus on practices like indentation and naming. Additionally, prioritize making your code developer-friendly—easy to read, understand, and use. We've put a [compact guide](https://rebel-tibia-7d7.notion.site/2-Code-Quality-and-Reviews-183c0344a6cc43e7b3693880b0fb35a6) together for reference.
+Another thing to note is you should try to follow the PSR-12 coding standard for consistent PHP code. Don't worry if it sounds scary, it's just a bunch of rules which focus on practices like indentation and naming. Additionally, prioritize making your code developer-friendly, easy to read and understand, and simple to use. We've put a [compact guide](https://rebel-tibia-7d7.notion.site/2-Code-Quality-and-Reviews-183c0344a6cc43e7b3693880b0fb35a6) together for reference.
 
 ## Documentation
 
@@ -30,7 +30,7 @@ The documentation is the face of Leaf, and it's crucial to maintain its quality.
 - Use headings that describe problems, not solutions, and introduce only one concept at a time. Avoid humor, jargon, and language that invalidates struggles (e.g., "easy" or "obvious"). Be specific, emotionally relevant, and use plain language.
 Avoid repetitive content; link between sections instead. Use full names over abbreviations unless they’re part of the API. Prefer the Oxford comma and Title Case for headings.
 
-- Writing improves through iteration—publish when content is "good" and refine based on feedback. Be open to constructive criticism and validate contributors' input with gratitude and empathy.
+- Writing improves through iteration, publish when content is "good" and refine based on feedback. Be open to constructive criticism and validate contributors' input with gratitude and empathy.
 Create a safe space for reviewers by mirroring understanding, setting clear boundaries, and using kind communication.
 
 - Avoid overusing special content blocks as they disrupt reading flow. Ensure context is clear within the narrative and avoid consecutive alerts.

@@ -1,13 +1,13 @@
-# Leaf 5 — Utilities Reference
+# Leaf 5: Utilities Reference
 
 ## Anchor (Security Guard)
 
-Anchor runs automatically in the background — you rarely interact with it directly.
+Anchor runs automatically in the background, you rarely interact with it directly.
 
 ### What it does automatically:
-- **XSS protection** — sanitizes all data coming through `request()`, `session()`, `response()`, etc.
-- **SQL injection protection** — integrates with Leaf DB to auto-escape all query parameters
-- **CSRF** — via the CSRF module (opt-in, see `references/security.md`)
+- **XSS protection**, sanitizes all data coming through `request()`, `session()`, `response()`, etc.
+- **SQL injection protection**, integrates with Leaf DB to auto-escape all query parameters
+- **CSRF**, via the CSRF module (opt-in, see `references/security.md`)
 
 > Anchor's XSS and SQL protection only works with Leaf functions. If you use raw `$_POST`, `$_GET`, `$_REQUEST`, sanitize manually:
 
@@ -15,11 +15,11 @@ Anchor runs automatically in the background — you rarely interact with it dire
 $data = anchor()->sanitize($_POST['data']);
 ```
 
-Sanitization ≠ validation. Always validate data too — user input is evil and should never be trusted.
+Sanitization ≠ validation. Always validate data too, user input is evil and should never be trusted.
 
 ---
 
-## Dates — `tick()`
+## Dates: `tick()`
 
 ```bash
 leaf install date

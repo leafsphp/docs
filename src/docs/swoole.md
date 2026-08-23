@@ -2,7 +2,7 @@
 
 # Async PHP with Leaf <StatusBadge label="Being rebuilt" tone="wip" title="Leaf's async story is being rewritten from the ground up" description="Eien is being rebuilt for Leaf 5 with first-class support for Swoole and other async PHP runtimes like ReactPHP. This page documents what works today and what's coming." meta="Docs target: Leaf 5" href="#eien-is-being-rebuilt" link-text="What's coming" />
 
-PHP normally handles one request at a time and starts fresh on every one. Async runtimes like [Swoole](https://swoole.com), [ReactPHP](https://reactphp.org), and [OpenSwoole](https://openswoole.com) change that: your app boots once, stays in memory, and handles many requests concurrently. That means faster responses, WebSockets, timers, and background work inside your app process.
+PHP normally handles one request at a time and starts fresh on every one. Async runtimes like [Swoole](https://swoole.com), [ReactPHP](https://reactphp.org), or [OpenSwoole](https://openswoole.com) change that: your app boots once, stays in memory, and handles many requests concurrently. That means faster responses, and room for WebSockets, timers, or background work inside your app process.
 
 ::: warning Eien is being rebuilt
 
@@ -26,7 +26,7 @@ If you're upgrading an app that used `app()->ws()`, see the [upgrade guide](/doc
 
 You can still run Leaf inside Swoole, ReactPHP, or any long-running worker by booting the app yourself. Two things matter:
 
-- **Reset router state between requests.** Leaf 5 adds `Leaf\Router::reset()`, which clears all registered routes, groups, and hooks. Call it between requests so state from one request never leaks into the next.
+- **Reset router state between requests.** Leaf 5 adds `Leaf\Router::reset()`, which clears all registered routes as well as groups and hooks. Call it between requests so state from one request never leaks into the next.
 - **Use Leaf's request/response objects.** Raw `header()` calls and `echo` bypass the worker's response lifecycle. Everything should flow through `request()` and `response()`.
 
 Anything stored in a static property or a singleton also survives between requests, so be deliberate about what you cache and what you rebuild.

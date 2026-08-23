@@ -186,7 +186,7 @@ Now that you have an API live, here's what you need to know next:
                 ></a>
             </h3>
             <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn more about routing in Leaf, dynamic routes, middleware and more.
+              Learn more about routing in Leaf, including dynamic routes and middleware.
             </p>
         </div>
         <div

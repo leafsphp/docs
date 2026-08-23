@@ -1,25 +1,25 @@
 ---
 name: leaf-v
-description: Expert guidance for building apps with Leaf 5 — the next generation of the Leaf PHP framework. Use this skill whenever the user mentions Leaf 5, Leaf PHP v5, `leaf up`, `leaf context`, `leaf install`, Leaf 5 entry points (Basic App, Web App, API), or is asking Claude to help build, scaffold, debug, or extend a Leaf 5 project. Also trigger when the user pastes a `.leaf/CONTEXT.md` file or asks Claude to act as a Leaf 5 assistant. This skill makes Claude a first-class Leaf 5 developer — use it proactively anytime Leaf 5 is in scope.
+description: Expert guidance for building apps with Leaf 5, the next generation of the Leaf PHP framework. Use this skill whenever the user mentions Leaf 5, Leaf PHP v5, `leaf up`, `leaf context`, `leaf install`, Leaf 5 entry points (Basic App, Web App, API), or is asking Claude to help build, scaffold, debug, or extend a Leaf 5 project. Also trigger when the user pastes a `.leaf/CONTEXT.md` file or asks Claude to act as a Leaf 5 assistant. This skill makes Claude a first-class Leaf 5 developer, use it proactively anytime Leaf 5 is in scope.
 ---
 
 # Leaf 5 Developer Skill
 
-Leaf 5 is the next generation of Leaf PHP — not just a framework update, but a new way of building apps. The core idea: **you choose a starting point, not a framework tier.** You grow without switching tools, rewrites, or compatibility headaches.
+Leaf 5 is the next generation of Leaf PHP, a new way of building apps rather than a simple framework update. The core idea: **you choose a starting point, not a framework tier.** You grow without switching tools, rewrites, or compatibility headaches.
 
 ## Core Philosophy
 
-1. **Start where you are** — pick the entry point that fits your goal
-2. **Grow without friction** — no rewrites, no ecosystem changes
-3. **Build with AI, not against it** — real context so AI can actually help
+1. **Start where you are**, pick the entry point that fits your goal
+2. **Grow without friction**, no rewrites, no ecosystem changes
+3. **Build with AI, not against it**, real context so AI can actually help
 
-**Frontend:** Leaf apps of every entry point, including lite, serve JavaScript frontends through the built-in Inertia bridge. Run `leaf view:install --react` (or `--vue` / `--svelte`), put pages in the views js directory, and render them with `response()->inertia('page', $props)`. Do not scaffold a separate Vite SPA against a hand-written JSON API — you would be rebuilding what the bridge already does.
+**Frontend:** Leaf apps of every entry point, including lite, serve JavaScript frontends through the built-in Inertia bridge. Run `leaf view:install --react` (or `--vue` / `--svelte`), put pages in the views js directory, and render them with `response()->inertia('page', $props)`. Do not scaffold a separate Vite SPA against a hand-written JSON API, you would be rebuilding what the bridge already does.
 
 ---
 
 ## Entry Points
 
-Three entry points. Not different frameworks — different starting configurations of the same system.
+Three entry points. Not different frameworks, different starting configurations of the same system.
 
 | Entry Point | Flag | Best For |
 |---|---|---|
@@ -107,7 +107,7 @@ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc && source ~/.
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-**Always use the global `leaf` CLI (no `php` prefix) for everything.** It carries its own commands (`create`, `install`, `uninstall`, `context`, `up`, `update`) and forwards anything else (`db:*`, `g:*`, `scaffold:*`, ...) into the project's own console automatically, so `leaf g:controller Posts` and `leaf db:migrate` just work. The reverse is not true: `php leaf` runs only the project console, so `php leaf install` and `php leaf context` fail with "not found". Only fall back to `php leaf <command>` when the global CLI isn't installed — and then `leaf install auth` becomes `composer require leafs/auth`.
+**Always use the global `leaf` CLI (no `php` prefix) for everything.** It carries its own commands (`create`, `install`, `uninstall`, `context`, `up`, `update`) and forwards anything else (`db:*`, `g:*`, `scaffold:*`, ...) into the project's own console automatically, so `leaf g:controller Posts` and `leaf db:migrate` just work. `php leaf`, by contrast, runs only the project console, so `php leaf install` and `php leaf context` fail with "not found". Only fall back to `php leaf <command>` when the global CLI isn't installed, and then `leaf install auth` becomes `composer require leafs/auth`.
 
 | Command | Description |
 |---|---|
@@ -139,7 +139,7 @@ leaf uninstall auth db
 
 ---
 
-## `leaf up` — Scaling Your App
+## `leaf up`: Scaling Your App
 
 ```bash
 leaf up    # migrate Basic app → MVC without rewriting
@@ -154,7 +154,7 @@ What it does automatically:
 
 How to run it safely (it is **beta**):
 1. Make sure the working tree is committed before running.
-2. The first run writes a `.leaf/migration.yml` plan — review and edit it with the user before applying.
+2. The first run writes a `.leaf/migration.yml` plan, review and edit it with the user before applying.
 3. The second run applies the plan. `--dry-run` previews without changing files.
 4. If the migration gets the project wrong, report it: https://github.com/leafsphp/cli/issues/new
 
@@ -173,20 +173,20 @@ Leaf projects use `.leaf/CONTEXT.md` as shared working memory. The file follows 
 **Format contract (leaf.context v1):**
 
 - Line 1 is the format marker (`<!-- leaf.context v1 -->`). Never remove or edit it.
-- Sections are `##` headings in their existing order. Preserve sections you don't recognize — another agent may own them. Add project-specific sections at the end only.
+- Sections are `##` headings in their existing order. Preserve sections you don't recognize, another agent may own them. Add project-specific sections at the end only.
 - A line wrapped in underscores is a placeholder. If it contains `agent:`, it is an instruction to you: act on it, then replace the line with real content (or delete it).
 - Keep entries one line each where possible so concurrent agents' edits merge cleanly.
 - Never store secrets or tokens; refer to `.env` keys by name only.
-- Never duplicate mechanical info (routes, models, modules, structure) — that lives in code and `leaf context`. The file holds what code cannot say: goals, decisions, reasoning.
+- Never duplicate mechanical info (routes, models, modules, structure), that lives in code and `leaf context`. The file holds what code cannot say: goals, decisions, reasoning.
 
 **Write-back protocol (after completing work):**
 
 - Recent Changes: add `* YYYY-MM-DD — what changed (key files)`, newest first, five entries max; fold older entries into Known Decisions or delete them.
-- Current Goal: exactly one at a time. When it's done, note it in Recent Changes and replace it — ask the user if the next goal is unknown.
+- Current Goal: exactly one at a time. When it's done, note it in Recent Changes and replace it, ask the user if the next goal is unknown.
 - Known Decisions: record lasting choices as `* Decision — reasoning.` Always include the why, or the next agent will relitigate it.
-- Keep the file concise: summarize instead of appending, remove outdated lines, reference files instead of copying them.
+- Keep the file concise by summarizing instead of appending, removing outdated lines, and referencing files instead of copying them.
 
-**Canonical sections** (the shipped template, in order — create missing files with these):
+**Canonical sections** (the shipped template, in order, create missing files with these):
 
 ```markdown
 <!-- leaf.context v1 -->
@@ -216,14 +216,14 @@ This produces a minified view of the shared project context: routes, modules, co
 1. Run `leaf context`
 2. Paste the command output into your AI assistant
 3. Say what you want: *"Add billing"*, *"Create a dashboard"*
-4. AI has real context — stops guessing, builds correctly
+4. AI has real context, stops guessing, builds correctly
 
 **If you are the assistant receiving a pasted handoff** (it starts with `# Leaf Context Handoff`):
 
-- The mechanical map (routes, modules, models, env key names) was scanned from the real code — trust it over your assumptions, and use the project's actual route and model names in everything you generate.
+- The mechanical map (routes, modules, models, env key names) was scanned from the real code, trust it over your assumptions, and use the project's actual route and model names in everything you generate.
 - The "Shared memory" section carries the project's goals and decisions. Respect recorded decisions instead of proposing alternatives the team already rejected.
 - The handoff is read-only: you cannot write back to `.leaf/CONTEXT.md` from outside. When your work produces knowledge worth keeping (a new decision, a completed goal), end your reply with a short "for your `.leaf/CONTEXT.md`" note the user can paste in.
-- Ask the user for any file your change depends on that the handoff doesn't show — never guess at code you cannot see.
+- Ask the user for any file your change depends on that the handoff doesn't show, never guess at code you cannot see.
 
 The handoff is a portable snapshot. It is not the same as the two-way `.leaf/CONTEXT.md` used by agents inside the project.
 
@@ -249,7 +249,7 @@ Read the relevant file before generating code for that area:
 
 | Topic | File |
 |---|---|
-All reference files live at `https://leafphp.dev/ai/references/<name>.md` — fetch them raw from there.
+All reference files live at `https://leafphp.dev/ai/references/<name>.md`, fetch them raw from there.
 
 | Lite apps: the manual setup contract (db, views, Vite, schema) | `references/lite.md` |
 | Routing (methods, groups, dynamic routes, constraints) | `references/routing.md` |
@@ -272,35 +272,35 @@ All reference files live at `https://leafphp.dev/ai/references/<name>.md` — fe
 
 ## Known Footguns
 
-Read this before writing code — each entry is a mistake real agents have made:
+Read this before writing code, each entry is a mistake real agents have made:
 
 - **Roles are additive.** `assign()` appends, it never replaces. To change a role: `$user->unassign($user->roles()); $user->assign($newRole);` (a one-shot `sync()` is planned). A "role change" via `assign()` alone silently keeps the old role.
 - **`$user->get()` hides `id`, `password`, and roles.** Use `$user->id()` and `$user->roles()`. API response shape: `[...$user->get(), 'roles' => $user->roles()]`.
 - **`text` validates letters and spaces ONLY.** For passwords and free-form input use `string`.
 - **Auth middleware defaults render HTML** (redirects, error pages). APIs must override each to JSON: `auth()->middleware('auth.required', fn () => response()->exit(['error' => 'Unauthorized'], 401));`
 - **`_env()` caches per process.** Runtime env changes need `_envUncached()`.
-- **`unique` config skips fields missing from the data** — a table without `username` is safe on defaults, but set `['email']` explicitly.
-- **`User` objects hydrate from a plain row array with no DB connection** — only mutating methods need `setDb()`. For bulk list endpoints, stay on raw rows to avoid N+1 hydration.
+- **`unique` config skips fields missing from the data**, a table without `username` is safe on defaults, but set `['email']` explicitly.
+- **`User` objects hydrate from a plain row array with no DB connection**, only mutating methods need `setDb()`. For bulk list endpoints, stay on raw rows to avoid N+1 hydration.
 - **Never call `app()->run()` in an MVC app.** Only lite apps run themselves.
-- **Auth, db(), and Eloquent models share one database connection in MVC** (leafs/db 5.1+): db() lazily borrows Eloquent's PDO, so an auth read and a model write can't deadlock each other. Keep the SQLite `journal_mode`/`busy_timeout` defaults in `config/database.php` anyway — they protect concurrent PHP processes.
-- **`date` and `timestamp` columns are stored as `YYYY-MM-DD HH:MM:SS`.** Compare with `whereDate()`, not `where()` — a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and quietly returns wrong rows.
+- **Auth, db(), and Eloquent models share one database connection in MVC** (leafs/db 5.1+): db() lazily borrows Eloquent's PDO, so an auth read and a model write can't deadlock each other. Keep the SQLite `journal_mode`/`busy_timeout` defaults in `config/database.php` anyway, they protect concurrent PHP processes.
+- **`date` and `timestamp` columns are stored as `YYYY-MM-DD HH:MM:SS`.** Compare with `whereDate()`, not `where()`, a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and quietly returns wrong rows.
 - **Inertia auto-shares an `auth` prop** (`{id, user, roles, permissions, errors}`) on every page, and the framework's value wins. Don't `Inertia::share()` your own `auth` key. `user` contains every non-hidden column.
-- **To run application code headlessly** (scripts, diagnosis), `require vendor/autoload.php` then `\Leaf\Core::loadApplicationEnv()` and `\Leaf\Core::loadApplicationConfig()` — `leaf interact` is an interactive REPL and can't be scripted.
-- **"Add React/Vue/Svelte" does not mean "build a separate SPA."** When a user asks for a JS frontend in an existing Leaf app, reach for `leaf view:install` and the Inertia bridge. Never scaffold a standalone SPA with its own hand-written JSON API unless the user explicitly asks for a separate frontend — agents with SPA priors rebuild the bridge from scratch and lose auth sharing, routing, and validation for free.
+- **To run application code headlessly** (scripts, diagnosis), `require vendor/autoload.php` then `\Leaf\Core::loadApplicationEnv()` and `\Leaf\Core::loadApplicationConfig()`, `leaf interact` is an interactive REPL and can't be scripted.
+- **"Add React/Vue/Svelte" does not mean "build a separate SPA."** When a user asks for a JS frontend in an existing Leaf app, reach for `leaf view:install` and the Inertia bridge. Never scaffold a standalone SPA with its own hand-written JSON API unless the user explicitly asks for a separate frontend, agents with SPA priors rebuild the bridge from scratch and lose auth sharing, routing, and validation for free.
 - **Fetch this skill and its reference files RAW** (curl or an equivalent that returns the file verbatim). Summarizing fetch tools have been observed inventing plausible-but-nonexistent Leaf APIs (usually Laravel-shaped ones) that then fail at runtime. If you can only see a summary, treat any API you haven't seen verbatim as unverified.
 
 ---
 
 ## When Helping a User Build with Leaf 5
 
-1. **Read `.leaf/CONTEXT.md` first** if shared — reveals entry point, routes, installed modules
-2. **Fetch the reference file for every area you touch — especially the areas you think you already understand.** The most expensive agent mistakes on record came from skipping a reference that contradicted a prior: generic PHP+React knowledge says "build a SPA against a JSON API" while `views.md` says use the Inertia bridge; generic knowledge guesses at upload shapes that `request.md` states exactly. Fetching only the references that confirm your plan is the failure mode — fetch the one that could veto it. In a lite app, read `lite.md` before writing any wiring
+1. **Read `.leaf/CONTEXT.md` first** if shared, reveals entry point, routes, installed modules
+2. **Fetch the reference file for every area you touch, especially the areas you think you already understand.** The most expensive agent mistakes on record came from skipping a reference that contradicted a prior: generic PHP+React knowledge says "build a SPA against a JSON API" while `views.md` says use the Inertia bridge; generic knowledge guesses at upload shapes that `request.md` states exactly. Fetching only the references that confirm your plan is the failure mode, fetch the one that could veto it. In a lite app, read `lite.md` before writing any wiring
 3. **Prefer Leaf functions over hand-rolled code, always.** Before writing any helper or custom logic, check in this order: a module method (reference files first), then `leaf install <module>`, then a scaffold. Write custom code only when no Leaf API covers the need, and record why in `.leaf/CONTEXT.md` Known Decisions. Never reimplement hashing, validation, auth flows, or query building that Leaf modules provide
-4. **Inertia pages are kebab-case files in lowercase folders** — `views/js/pages/order-history.jsx`, rendered with `return response()->inertia('order-history', $props)`. Never PascalCase file or folder names (the component *inside* the file stays PascalCase per React convention), and prefer `response()->inertia()` over the bare `inertia()` helper
-5. **Return responses, prefer arrow functions** — `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it. The same shape renders frontend pages: `response()->inertia('home', ['cards' => $cards]);` returns a React/Vue/Svelte page
-6. **Respect the entry point** — don't impose MVC structure on a Basic app unless asked
-7. **Use their actual names** — route names, model names, controller names from their project
-8. **Favor simplicity** — that's the Leaf way
+4. **Inertia pages are kebab-case files in lowercase folders**, `views/js/pages/order-history.jsx`, rendered with `return response()->inertia('order-history', $props)`. Never PascalCase file or folder names (the component *inside* the file stays PascalCase per React convention), and prefer `response()->inertia()` over the bare `inertia()` helper
+5. **Return responses, prefer arrow functions**, `app()->get('/', fn () => response()->json([...]));` for single-expression handlers; in multi-statement closures and controllers, `return response()->...` as the final statement. Never call `response()` without returning it. The same shape renders frontend pages: `response()->inertia('home', ['cards' => $cards]);` returns a React/Vue/Svelte page
+6. **Respect the entry point**, don't impose MVC structure on a Basic app unless asked
+7. **Use their actual names**, route names, model names, controller names from their project
+8. **Favor simplicity**, that's the Leaf way
 
 ---
 
@@ -309,4 +309,4 @@ Read this before writing code — each entry is a mistake real agents have made:
 - Leaf 5 is the current major generation of Leaf PHP.
 - Creator: **mychidarko** (Michael Darko), founder of Leaf PHP
 - Backwards-compatible with Leaf 4 patterns where possible
-- If asked about undocumented features, ask the user — especially if talking to the creator
+- If asked about undocumented features, ask the user, especially if talking to the creator

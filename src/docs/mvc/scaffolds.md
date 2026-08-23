@@ -7,7 +7,7 @@
     <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
       <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Feature scaffolds</p>
       <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Generate the boring parts, then make the product yours.</div>
-      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf MVC scaffolding creates complete feature starting points: routes, controllers, models, schema files, views, middleware, and frontend pieces that match your app setup.</p>
+      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf MVC scaffolding creates complete feature starting points: routes, controllers, models, schema files, views, middleware, plus frontend pieces that match your app setup.</p>
       <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
         <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
           <div class="flex items-center gap-2">
@@ -55,7 +55,7 @@ Scaffolds are meant to remove repetitive setup, not hide your code. You run a co
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">01 / Server</span>
     <strong class="docs-path-title">Backend files</strong>
-    <span class="docs-path-description">Controllers, routes, models, middleware, schema files, callbacks, and service logic.</span>
+    <span class="docs-path-description">Controllers, routes, models, middleware, schema files, callbacks, service logic.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Interface</span>
@@ -96,7 +96,7 @@ leaf scaffold:auth
       <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">What you get</p>
       <ul class="m-0 mt-3 space-y-2 p-0 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
         <li class="list-none">User model with a database schema file</li>
-        <li class="list-none">Login, register, dashboard, and account update controllers</li>
+        <li class="list-none">Login, register, dashboard, account update controllers</li>
         <li class="list-none">Authentication routes and route protection middleware</li>
         <li class="list-none">Views and dashboard screens tailored to your frontend setup</li>
       </ul>
@@ -117,7 +117,7 @@ leaf scaffold:landing-page
 You get:
 
 - A structured homepage layout
-- Sections like hero, features, and footers
+- Sections like hero, features, footers
 - Tailwind styling with your preferred frontend setup
 - Easy customization with Leaf Zero components
 
@@ -140,7 +140,7 @@ It requires [Leaf Billing](/docs/utils/billing) to be installed.
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Billing logic</span>
     <strong class="docs-path-title">Backend</strong>
-    <span class="docs-path-description">Subscription controllers, cancellation flow, Stripe callbacks, routes, models, schema, and config.</span>
+    <span class="docs-path-description">Subscription controllers, cancellation flow, Stripe callbacks, routes, models, schema, config.</span>
   </div>
 </div>
 

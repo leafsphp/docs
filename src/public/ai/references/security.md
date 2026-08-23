@@ -1,4 +1,4 @@
-# Leaf 5 — Sessions, Cookies, Flash & Security Reference
+# Leaf 5: Sessions, Cookies, Flash & Security Reference
 
 ## Sessions
 
@@ -32,7 +32,7 @@ $names = session()->get(['firstName', 'lastName']);
 $location = session()->get('user.location');
 ```
 
-### `retrieve()` — get and delete (flash behavior)
+### `retrieve()`: get and delete (flash behavior)
 
 ```php
 $name = session()->retrieve('firstName');   // returns value, then removes it
@@ -231,8 +231,8 @@ request()->validate(['number' => 'isEven']);
 | Rule | Description |
 |---|---|
 | `email` | Valid email address |
-| `text` | Alphabetic + spaces ONLY — wrong for passwords or free-form input |
-| `string` | Any string (`is_string`) — use this for passwords and free-form text |
+| `text` | Alphabetic + spaces ONLY, wrong for passwords or free-form input |
+| `string` | Any string (`is_string`), use this for passwords and free-form text |
 | `textOnly` | Alphabetic only (no spaces) |
 | `alpha` | Alphabetic characters |
 | `alphaNum` | Alpha-numeric |
@@ -285,7 +285,7 @@ app()->csrf();
 </form>
 ```
 
-### API / SPA — X-CSRF-Token Header
+### API / SPA: X-CSRF-Token Header
 
 ```js
 fetch('/submit', {

@@ -1,4 +1,4 @@
-# Leaf 5 — Response Reference
+# Leaf 5: Response Reference
 
 ## Output Methods
 

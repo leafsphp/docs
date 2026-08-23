@@ -370,9 +370,9 @@ composer require 'pestphp/pest:*' --dev --with-all-dependencies
 | --- | --- |
 | `actions.event` | `actions.events` (old key still read) |
 | `tests.config.xmlnxsi` | `tests.config['xmlns:xsi']` (old key still read) |
-| — | `tests.suites`, `tests.env/ini/const/server`, `tests.coverage.exclude`, `tests.extensions`, `tests.flags` |
-| — | `lint.provider`, `lint.risky`, `lint.exclude`, `lint.autofix` |
-| — | `refactor.*`, `analyse.*`, `actions.provider` |
+| (none) | `tests.suites`, `tests.env/ini/const/server`, `tests.coverage.exclude`, `tests.extensions`, `tests.flags` |
+| (none) | `lint.provider`, `lint.risky`, `lint.exclude`, `lint.autofix` |
+| (none) | `refactor.*`, `analyse.*`, `actions.provider` |
 
 ## Leaving Alchemy
 

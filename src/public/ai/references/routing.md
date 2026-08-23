@@ -1,4 +1,4 @@
-# Leaf 5 — Routing Reference
+# Leaf 5: Routing Reference
 
 ## Basic Methods
 
@@ -98,7 +98,7 @@ app()->get('/movies/{id:[0-9]+}/photos/{photoId:[0-9]+}', function ($movieId, $p
 });
 ```
 
-> Raw regex patterns like `/movies/(\d+)` are NOT supported in Leaf 5 — patterns without `{}` placeholders are treated as literal paths. Always use named placeholders.
+> Raw regex patterns like `/movies/(\d+)` are NOT supported in Leaf 5, patterns without `{}` placeholders are treated as literal paths. Always use named placeholders.
 
 ## Optional Parameters
 
@@ -127,5 +127,5 @@ app()->get('/blog/{year?:[0-9]{4}}/{month?:[0-9]{2}}/{slug?}', function (
 
 ## Matching Order
 
-Exact routes always beat dynamic routes regardless of registration order (`/users/new` wins over `/users/{id}`). Between overlapping dynamic routes, the one registered first wins — register more specific dynamic routes before broader ones.
+Exact routes always beat dynamic routes regardless of registration order (`/users/new` wins over `/users/{id}`). Between overlapping dynamic routes, the one registered first wins, register more specific dynamic routes before broader ones.
 

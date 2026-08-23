@@ -1,4 +1,4 @@
-# Leaf 5 — Mail, Fetch & HTTP Cache Reference
+# Leaf 5: Mail, Fetch & HTTP Cache Reference
 
 ## Mail
 
@@ -6,7 +6,7 @@
 leaf install mail
 ```
 
-### Connecting — Basic App
+### Connecting: Basic App
 
 ```php
 mailer()->connect([
@@ -25,7 +25,7 @@ mailer()->connect([
 ]);
 ```
 
-### Connecting — MVC (via `.env`)
+### Connecting: MVC (via `.env`)
 
 ```env
 MAIL_HOST=sandbox.smtp.mailtrap.io
@@ -175,7 +175,7 @@ $res = fetch()->post('/posts', [...]);
 
 | Option | Default | Description |
 |---|---|---|
-| `url` | — | Request URL |
+| `url` | (none) | Request URL |
 | `method` | `'GET'` | HTTP method |
 | `baseUrl` | `''` | Prepended to `url` unless `url` is absolute |
 | `headers` | `[]` | Custom headers |
@@ -199,7 +199,7 @@ Non-2xx statuses return normally (check `$res->status`); only network-level fail
 use Leaf\Http\Cache;
 ```
 
-> Use either `etag()` OR `lastModified()` per route — never both together. Call them before other route code.
+> Use either `etag()` OR `lastModified()` per route, never both together. Call them before other route code.
 
 ### ETag
 

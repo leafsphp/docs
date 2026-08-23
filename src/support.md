@@ -36,17 +36,17 @@ Now, we’re preparing to take Leaf to the next level. In the coming year, we wi
 
 - Deliver long-awaited features like real-time APIs, better deployments, more 3rd party integrations, and auto API docs.
 
-- Build a sustainable ecosystem around Leaf — with docs, tutorials, and community tools.
+- Build a sustainable ecosystem around Leaf, with docs and tutorials, plus community tools.
 
 - Keep everything Leaf free and independent, so anyone can build with it.
 
 But to make this possible, we need you.
 
-Your support means Leaf’s maintainers can dedicate focused time to building, fixing, and improving. It means we don’t burn out. And it means Leaf stays healthy for the long run.
+Your support means Leaf’s maintainers can dedicate focused time to building Leaf, fixing what breaks, and improving what works. It means we don’t burn out. And it means Leaf stays healthy for the long run.
 
 ![goal](https://github.com/user-attachments/assets/b7b8e449-f2ce-4858-9dfb-e43e87ef1302)
 
-— With love and gratitude,
+With love and gratitude,
 
 Michael from Leaf
 
@@ -54,7 +54,7 @@ Michael from Leaf
 
 🧡 Sponsor on GitHub or OpenCollective
 
-Back Leaf through [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [OpenCollective](https://opencollective.com/leaf). Every contribution — one-time or recurring — fuels development, community events, and new features.
+Back Leaf through [GitHub Sponsors](https://github.com/sponsors/leafsphp) or [OpenCollective](https://opencollective.com/leaf). Every contribution, one-time or recurring, fuels development, community events, and new features.
 
 🧡 Crypto Support
 Prefer crypto? Send USDT (TRC20) to:
@@ -64,7 +64,7 @@ Prefer crypto? Send USDT (TRC20) to:
 
 ## What Your Support Powers
 
-Supporting Leaf doesn't just fund the framework — it keeps a whole family of tools free, maintained, and moving forward:
+Supporting Leaf doesn't just fund the framework, it keeps a whole family of tools free, actively maintained, and moving forward:
 
 <EcosystemCards />
 
@@ -80,7 +80,7 @@ You can join our [Premium Sponsorship 🍁](/support/premium-sponsorship) tier w
 - Mention in every release announcement
 - Direct priority support from the Leaf team.
 
-Sponsoring Leaf isn’t just giving back — it’s investing in the PHP ecosystem.
+Sponsoring Leaf is both a thank-you and an investment in the PHP ecosystem.
 
 ## Our Sponsors
 
@@ -98,7 +98,7 @@ We are committed to transparency and accountability in our financial management.
 
 <!-- ## This is a pivotal moment for Leaf
 
-If Leaf has ever saved you time, helped you ship faster, or reminded you why coding can be fun — now’s the time to give back.
+If Leaf has ever saved you time, helped you ship faster, or reminded you why coding can be fun, now's the time to give back.
 
-Together, we can keep Leaf thriving, free, and ready for the next generation of builders.
+Together, we can keep Leaf thriving and free, ready for the next generation of builders.
  -->

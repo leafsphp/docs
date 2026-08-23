@@ -9,9 +9,9 @@ A model is a class that represents your app’s data, acting as a bridge between
 
 ## Why use models?
 
-- Organization – Keeps database logic separate from your views and controllers, making your app cleaner and easier to maintain.
-- Reusability – Define once, use anywhere, without repeating database code.
-- Consistency – Enforces a structured way of interacting with data, reducing errors.
+- Organization - Keeps database logic separate from your views and controllers, making your app cleaner and easier to maintain.
+- Reusability - Define once, use anywhere, without repeating database code.
+- Consistency - Enforces a structured way of interacting with data, reducing errors.
 
 Each model maps to a database table, keeping your data structured and easy to manage.
 

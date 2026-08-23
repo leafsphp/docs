@@ -18,7 +18,7 @@ import StartPage from '@theme/components/Docs/StartPage.vue';
   <a class="docs-path-card" href="/learn/basic">
     <span class="docs-path-index">01 / Micro-tool</span>
     <strong class="docs-path-title">Start simple and ship fast.</strong>
-    <span class="docs-path-description">Perfect for ideas, small tools, experiments, and AI-generated utilities that should stay understandable.</span>
+    <span class="docs-path-description">Perfect for ideas and experiments, small tools, and AI-generated utilities that should stay understandable.</span>
     <span class="docs-path-action">Start simple <span aria-hidden="true">&rarr;</span></span>
   </a>
   <a class="docs-path-card" href="/learn/mvc">

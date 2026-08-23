@@ -109,7 +109,7 @@ leaf install auth db mail
   <a class="docs-path-card" href="/docs/database/">
     <span class="docs-path-index">02 / Data</span>
     <strong class="docs-path-title">Database</strong>
-    <span class="docs-path-description">Fluent queries, models, schema files, Redis, and application state.</span>
+    <span class="docs-path-description">Fluent queries, models, schema files, Redis, application state.</span>
     <span class="docs-path-action">Explore data <span aria-hidden="true">&rarr;</span></span>
   </a>
   <a class="docs-path-card" href="/docs/utils/mail/">
@@ -180,13 +180,13 @@ Choose the part of the stack your next feature needs.
   <a class="docs-path-card" href="/docs/routing/">
     <span class="docs-path-index">01 / Request map</span>
     <strong class="docs-path-title">Routing</strong>
-    <span class="docs-path-description">Methods, groups, dynamic routes, middleware, redirects, and named routes.</span>
+    <span class="docs-path-description">Methods, groups, dynamic routes, middleware, redirects, named routes.</span>
     <span class="docs-path-action">Open routing <span aria-hidden="true">&rarr;</span></span>
   </a>
   <a class="docs-path-card" href="/docs/http/request">
     <span class="docs-path-index">02 / Input</span>
     <strong class="docs-path-title">Requests</strong>
-    <span class="docs-path-description">Read input, validate payloads, process forms, files, headers, and request data.</span>
+    <span class="docs-path-description">Read input, validate payloads, process forms, files, headers, request data.</span>
     <span class="docs-path-action">Open requests <span aria-hidden="true">&rarr;</span></span>
   </a>
   <a class="docs-path-card" href="/docs/database/">

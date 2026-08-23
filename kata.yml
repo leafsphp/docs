@@ -1,0 +1,6 @@
+surfaces:
+  - "src/**/*.md"
+  - "src/**/*.vue"
+
+rules:
+  preset: leaf-writing

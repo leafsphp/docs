@@ -1,6 +1,6 @@
-# Dates & Time — `tick()` (leafs/date)
+# Dates & Time: `tick()` (leafs/date)
 
-Leaf's date library follows **dayjs semantics** — dayjs format tokens, dayjs method names, immutable-style chaining. It is NOT Carbon and NOT php `date()`.
+Leaf's date library follows **dayjs semantics**, dayjs format tokens, dayjs method names, immutable-style chaining. It is NOT Carbon and NOT php `date()`.
 
 ```php
 tick();                                    // now
@@ -66,6 +66,6 @@ It accepts strings, `DateTime`, or another `tick()` instance.
 
 ## With Eloquent models (MVC)
 
-Model `date`/`timestamp` casts return **Carbon** instances (Eloquent's own library), not `tick()` objects — `$booking->check_in->endOf('day')` on a model date is Carbon API, not this one. Use `tick()` in the layers you control (services, queries, formatting): `tick()->format('YYYY-MM-DD')` for query bounds, `tick($model->check_in->toDateTimeString())` to bring a model date into tick when you need its API.
+Model `date`/`timestamp` casts return **Carbon** instances (Eloquent's own library), not `tick()` objects, `$booking->check_in->endOf('day')` on a model date is Carbon API, not this one. Use `tick()` in the layers you control (services, queries, formatting): `tick()->format('YYYY-MM-DD')` for query bounds, `tick($model->check_in->toDateTimeString())` to bring a model date into tick when you need its API.
 
-Stored `date` columns hold `YYYY-MM-DD HH:MM:SS` — compare with `whereDate()`, not `where()`, or exact boundary dates misbehave (see mvc.md).
+Stored `date` columns hold `YYYY-MM-DD HH:MM:SS`, compare with `whereDate()`, not `where()`, or exact boundary dates misbehave (see mvc.md).

@@ -1,4 +1,4 @@
-# Leaf 5 — CORS Reference
+# Leaf 5: CORS Reference
 
 ## Installation
 
@@ -16,7 +16,7 @@ app()->cors();
 
 ## Configuration
 
-### MVC — via `.env`
+### MVC: via `.env`
 
 ```env
 CORS_ALLOWED_ORIGINS='/\.example\.com$/'
@@ -31,7 +31,7 @@ leaf config:publish cors
 # → config/cors.php
 ```
 
-### Basic/Lite — inline
+### Basic/Lite: inline
 
 ```php
 app()->cors([
