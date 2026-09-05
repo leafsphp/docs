@@ -277,6 +277,8 @@ app()->csrf();
 
 ### Protecting Forms (Blade)
 
+`@csrf` is a no-op until leafs/csrf is installed: it renders nothing without the module and the token field once the module is present. If a rendered form has no hidden `_token` input, the fix is installing the module, not the template.
+
 ```blade
 <form action="/submit" method="POST">
     @csrf

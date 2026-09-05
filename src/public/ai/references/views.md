@@ -101,7 +101,10 @@ response()->render('hello', ['name' => 'Michael']);    // hello.blade.php
 ### Leaf-specific Directives
 
 ```blade
-{{-- CSRF token --}}
+{{-- CSRF token: renders the hidden token field ONLY when the leafs/csrf
+     module is installed; without it, @csrf renders nothing (by design, so
+     scaffolds can carry it). Do not debug missing token fields in templates:
+     run `leaf install csrf` instead. --}}
 <form method="POST">
     @csrf
     ...

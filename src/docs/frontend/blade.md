@@ -229,6 +229,16 @@ The `@csrf` directive generates a hidden CSRF token field for forms. This is use
 </form>
 ```
 
+::: info @csrf activates with the CSRF module
+`@csrf` only outputs a token field when the [leafs/csrf](/docs/security/csrf) module is installed. Without the module it renders nothing, so templates and scaffolds can carry the directive safely and protection switches on the moment you install the module:
+
+```bash:no-line-numbers
+leaf install csrf
+```
+
+This is deliberate: CSRF protection in Leaf is opt-in, and you may be handling CSRF elsewhere (an API without cookie sessions, a gateway, or your own middleware). Note that this also means an installed-but-misconfigured module fails quietly, so after installing, submit a form once and confirm the hidden `_token` field is in the rendered HTML.
+:::
+
 ### Working with JSON
 
 You can use the `@json` directive to convert a PHP array to a JSON string. This is useful when you want to pass a JSON string to a JavaScript variable.

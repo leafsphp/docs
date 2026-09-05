@@ -85,6 +85,8 @@ If the CSRF token is missing or invalid, the CSRF module will throw an exception
 
 To protect your forms from CSRF attacks, you can add the CSRF token to your forms. The CSRF module provides a beautiful `form()` method that generates a hidden input field with the CSRF token.
 
+Note that the Blade `@csrf` directive is a no-op until this module is installed: templates can include it ahead of time and it starts rendering the token field once the module is in your app. To confirm protection is active, check your rendered form for the hidden token input.
+
 ::: code-group
 
 ```blade{2} [Leaf Blade]
