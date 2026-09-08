@@ -1,159 +1,220 @@
 <script setup>
+import { ref, computed } from 'vue';
 import { ui } from './ui';
+
+const frameworks = {
+  react: {
+    name: 'React',
+    file: 'js/menu.jsx',
+    dark: '#61DAFB',
+    light: '#087EA4',
+    icon: 'M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z',
+    route: `app()-&gt;get(<span class="tok-b">'/menu/items'</span>, <span class="tok-m">function</span>() {
+  $items = db()-&gt;select(<span class="tok-b">'menu_items'</span>)
+    -&gt;all();
+
+  <span class="tok-m">return</span> response()-&gt;inertia(<span class="tok-b">'menu'</span>, [
+    <span class="tok-b">'items'</span> =&gt; $items
+  ]);
+});`,
+    view: `<span class="tok-m">const</span> Menu = ({ items }) =&gt; (
+  &lt;div className=<span class="tok-a">"menu-grid"</span>&gt;
+    {items.map((item) =&gt; (
+      &lt;MenuCard key={item.id}
+        item={item} /&gt;
+    ))}
+  &lt;/div&gt;
+);
+
+<span class="tok-m">export default</span> Menu;`,
+  },
+  vue: {
+    name: 'Vue',
+    file: 'js/menu.vue',
+    dark: '#42B883',
+    light: '#2F855A',
+    icon: 'M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z',
+    route: `app()-&gt;get(<span class="tok-b">'/menu/items'</span>, <span class="tok-m">function</span>() {
+  $items = db()-&gt;select(<span class="tok-b">'menu_items'</span>)
+    -&gt;all();
+
+  <span class="tok-m">return</span> response()-&gt;inertia(<span class="tok-b">'menu'</span>, [
+    <span class="tok-b">'items'</span> =&gt; $items
+  ]);
+});`,
+    view: `<span class="tok-m">&lt;script setup&gt;</span>
+defineProps({ items: Array })
+<span class="tok-m">&lt;/script&gt;</span>
+
+<span class="tok-m">&lt;template&gt;</span>
+  &lt;div class=<span class="tok-a">"menu-grid"</span>&gt;
+    &lt;MenuCard v-for=<span class="tok-a">"item in items"</span>
+      :key=<span class="tok-a">"item.id"</span> :item=<span class="tok-a">"item"</span> /&gt;
+  &lt;/div&gt;
+<span class="tok-m">&lt;/template&gt;</span>`,
+  },
+  svelte: {
+    name: 'Svelte',
+    file: 'js/menu.svelte',
+    dark: '#FF3E00',
+    light: '#E63900',
+    icon: 'M10.354 21.125a4.44 4.44 0 0 1-4.765-1.767 4.109 4.109 0 0 1-.703-3.107 3.898 3.898 0 0 1 .134-.522l.105-.321.287.21a7.21 7.21 0 0 0 2.186 1.092l.208.063-.02.208a1.253 1.253 0 0 0 .226.83 1.337 1.337 0 0 0 1.435.533 1.231 1.231 0 0 0 .343-.15l5.59-3.562a1.164 1.164 0 0 0 .524-.778 1.242 1.242 0 0 0-.211-.937 1.338 1.338 0 0 0-1.435-.533 1.23 1.23 0 0 0-.343.15l-2.133 1.36a4.078 4.078 0 0 1-1.135.499 4.44 4.44 0 0 1-4.765-1.766 4.108 4.108 0 0 1-.702-3.108 3.855 3.855 0 0 1 1.742-2.582l5.589-3.563a4.072 4.072 0 0 1 1.135-.499 4.44 4.44 0 0 1 4.765 1.767 4.109 4.109 0 0 1 .703 3.107 3.943 3.943 0 0 1-.134.522l-.105.321-.286-.21a7.204 7.204 0 0 0-2.187-1.093l-.208-.063.02-.207a1.255 1.255 0 0 0-.226-.831 1.337 1.337 0 0 0-1.435-.532 1.231 1.231 0 0 0-.343.15L8.62 9.368a1.162 1.162 0 0 0-.524.778 1.24 1.24 0 0 0 .211.937 1.338 1.338 0 0 0 1.435.533 1.235 1.235 0 0 0 .344-.151l2.132-1.36a4.067 4.067 0 0 1 1.135-.498 4.44 4.44 0 0 1 4.765 1.766 4.108 4.108 0 0 1 .702 3.108 3.857 3.857 0 0 1-1.742 2.583l-5.589 3.562a4.072 4.072 0 0 1-1.135.499m10.358-17.95C18.484-.015 14.082-.96 10.9 1.068L5.31 4.63a6.412 6.412 0 0 0-2.896 4.295 6.753 6.753 0 0 0 .666 4.336 6.43 6.43 0 0 0-.96 2.396 6.833 6.833 0 0 0 1.168 5.167c2.229 3.19 6.63 4.135 9.812 2.108l5.59-3.562a6.41 6.41 0 0 0 2.896-4.295 6.756 6.756 0 0 0-.665-4.336 6.429 6.429 0 0 0 .958-2.396 6.831 6.831 0 0 0-1.167-5.168Z',
+    route: `app()-&gt;get(<span class="tok-b">'/menu/items'</span>, <span class="tok-m">function</span>() {
+  $items = db()-&gt;select(<span class="tok-b">'menu_items'</span>)
+    -&gt;all();
+
+  <span class="tok-m">return</span> response()-&gt;inertia(<span class="tok-b">'menu'</span>, [
+    <span class="tok-b">'items'</span> =&gt; $items
+  ]);
+});`,
+    view: `<span class="tok-m">&lt;script&gt;</span>
+  <span class="tok-m">export let</span> items;
+<span class="tok-m">&lt;/script&gt;</span>
+
+&lt;div class=<span class="tok-a">"menu-grid"</span>&gt;
+  <span class="tok-m">{#each</span> items <span class="tok-m">as</span> item (item.id)<span class="tok-m">}</span>
+    &lt;MenuCard {item} /&gt;
+  <span class="tok-m">{/each}</span>
+&lt;/div&gt;`,
+  },
+  blade: {
+    name: 'Blade',
+    file: 'menu.blade.php',
+    dark: '#FF2D20',
+    light: '#E02617',
+    icon: 'M23.642 5.43a.364.364 0 01.014.1v5.149c0 .135-.073.26-.189.326l-4.323 2.49v4.934a.378.378 0 01-.188.326L9.93 23.949a.316.316 0 01-.066.027c-.008.002-.016.008-.024.01a.348.348 0 01-.192 0c-.011-.002-.02-.008-.03-.012-.02-.008-.042-.014-.062-.025L.533 18.755a.376.376 0 01-.189-.326V2.974c0-.033.005-.066.014-.098.003-.012.01-.02.014-.032a.369.369 0 01.023-.058c.004-.013.015-.022.023-.033l.033-.045c.012-.01.025-.018.037-.027.014-.012.027-.024.041-.034H.53L5.043.05a.375.375 0 01.375 0L9.93 2.647h.002c.015.01.027.021.04.033l.038.027c.013.014.02.03.033.045.008.011.02.021.025.033.01.02.017.038.024.058.003.011.01.021.013.032.01.031.014.064.014.098v9.652l3.76-2.164V5.527c0-.033.004-.066.013-.098.003-.01.01-.02.013-.032a.487.487 0 01.024-.059c.007-.012.018-.02.025-.033.012-.015.021-.03.033-.043.012-.012.025-.02.037-.028.014-.01.026-.023.041-.032h.001l4.513-2.598a.375.375 0 01.375 0l4.513 2.598c.016.01.027.021.042.031.012.01.025.018.036.028.013.014.022.03.034.044.008.012.019.021.024.033.011.02.018.04.024.06.006.01.012.021.015.032zm-.74 5.032V6.179l-1.578.908-2.182 1.256v4.283zm-4.51 7.75v-4.287l-2.147 1.225-6.126 3.498v4.325zM1.093 3.624v14.588l8.273 4.761v-4.325l-4.322-2.445-.002-.003H5.04c-.014-.01-.025-.021-.04-.031-.011-.01-.024-.018-.035-.027l-.001-.002c-.013-.012-.021-.025-.031-.04-.01-.011-.021-.022-.028-.036h-.002c-.008-.014-.013-.031-.02-.047-.006-.016-.014-.027-.018-.043a.49.49 0 01-.008-.057c-.002-.014-.006-.027-.006-.041V5.789l-2.18-1.257zM5.23.81L1.47 2.974l3.76 2.164 3.758-2.164zm1.956 13.505l2.182-1.256V3.624l-1.58.91-2.182 1.255v9.435zm11.581-10.95l-3.76 2.163 3.76 2.163 3.759-2.164zm-.376 4.978L16.21 7.087 14.63 6.18v4.283l2.182 1.256 1.58.908zm-8.65 9.654l5.514-3.148 2.756-1.572-3.757-2.163-4.323 2.489-3.941 2.27z',
+    route: `app()-&gt;get(<span class="tok-b">'/menu/items'</span>, <span class="tok-m">function</span>() {
+  $items = db()-&gt;select(<span class="tok-b">'menu_items'</span>)
+    -&gt;all();
+
+  <span class="tok-m">return</span> response()-&gt;render(<span class="tok-b">'menu'</span>, [
+    <span class="tok-b">'items'</span> =&gt; $items
+  ]);
+});`,
+    view: `&lt;div class=<span class="tok-a">"menu-grid"</span>&gt;
+  <span class="tok-m">@foreach</span> ($items <span class="tok-m">as</span> $item)
+    &lt;x-menu-card :item=<span class="tok-a">"$item"</span> /&gt;
+  <span class="tok-m">@endforeach</span>
+&lt;/div&gt;`,
+  },
+};
+
+const active = ref('react');
+const fw = computed(() => frameworks[active.value]);
+
+const dishes = [
+  { name: 'Veggie Loaded Burger', meta: 'Vegan · 4 stars', price: '$8.99' },
+  { name: 'Southern Fried Chicken', meta: 'Spicy · 5 stars', price: '$9.49' },
+  { name: 'Healthy Beef Burger', meta: 'Low-carb · 4 stars', price: '$8.99' },
+];
 </script>
 
 <template>
-  <section :class="[ui.section, ui.spacious]">
-    <header :class="[ui.header, ui.headerWide]">
+  <section
+    id="frontend"
+    :class="[ui.section, ui.spacious, 'max-w-6xl']"
+    :style="{ '--fwd': fw.dark, '--fwl': fw.light }"
+  >
+    <header class="mb-10">
       <p :class="ui.eyebrow">Frontend</p>
-      <h2 :class="ui.title">Your stack stays yours</h2>
-      <p :class="ui.subtitle">
-        Use any frontend you want. React, Vue, Svelte, Blade, PHP. Your AI assistant still gets the same backend map.
-        <span :class="ui.accent">Your tools follow your stack.</span>
-      </p>
-      <a href="/docs/frontend/" :class="[ui.link, 'mt-6']">
-        Learn more
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M7 17L17 7" />
-          <path d="M7 7h10v10" />
-        </svg>
-      </a>
+      <h2 :class="[ui.title, 'text-balance']">Your stack stays yours</h2>
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <p class="!m-0 max-w-xl text-[1.05rem] leading-[1.7] text-neutral-500 dark:text-neutral-400">
+          Use any frontend you want. Your AI assistant still gets the same backend map. Your tools follow your
+          stack. <a href="/docs/frontend/" class="font-semibold text-neutral-950 underline decoration-neutral-300 underline-offset-4 hover:decoration-[var(--vp-c-brand-1)] dark:text-neutral-50 dark:decoration-neutral-600">Learn more ↗</a>
+        </p>
+        <div class="flex border border-black/[0.08] dark:border-white/[0.08]" role="tablist" aria-label="Frontend framework">
+          <button
+            v-for="(f, key) in frameworks"
+            :key="key"
+            type="button"
+            role="tab"
+            :aria-selected="active === key"
+            class="flex items-center gap-2.5 border-r border-black/[0.08] px-5 py-3 text-[0.9rem] font-medium transition-colors last:border-r-0 dark:border-white/[0.08]"
+            :class="active === key
+              ? 'bg-neutral-50 text-neutral-950 shadow-[inset_0_-2px_0_var(--fwl)] dark:bg-white/[0.05] dark:text-neutral-50 dark:shadow-[inset_0_-2px_0_var(--fwd)]'
+              : 'text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200'"
+            @click="active = key"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              :style="active === key ? undefined : { opacity: 0.55 }"
+            >
+              <path :d="f.icon" :fill="active === key ? 'var(--fwd)' : 'currentColor'" />
+            </svg>
+            {{ f.name }}
+          </button>
+        </div>
+      </div>
     </header>
 
-    <div :class="ui.panel">
-      <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
+    <div :class="ui.panel" aria-label="The same Leaf route rendered by each frontend">
       <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBR]" aria-hidden="true" />
 
-      <div class="grid border-b border-black/[0.08] bg-neutral-100 dark:border-white/[0.08] dark:bg-black/40 lg:grid-cols-2">
-        <div class="border-b border-black/[0.08] p-6 dark:border-white/[0.08] md:p-8 lg:border-b-0 lg:border-r">
-          <p :class="ui.codeLabel">Leaf route</p>
-          <div class="mb-4 h-1 w-16 rounded-full bg-[var(--vp-c-brand-1)]" aria-hidden="true" />
-          <pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code !m-0 !bg-transparent !p-0" tabindex="0"><code><span class="line"><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">app</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">get</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'/menu/items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">, </span><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">function</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">() {</span></span>
-<span class="line"><span style="--shiki-light:#E06C75;--shiki-dark:#E06C75;">  $items</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> = </span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">db</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">select</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'menu_items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">)-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">all</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">();</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">  return</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;"> response</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">()-&gt;</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">inertia</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">'menu'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">, [</span></span>
-<span class="line"><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">    'items'</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> =&gt; </span><span style="--shiki-light:#E06C75;--shiki-dark:#E06C75;">$items</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">  ]);</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">});</span></span></code></pre>
+      <div class="grid lg:grid-cols-[1.05fr_1.05fr_0.9fr]">
+        <div class="min-w-0 border-b border-black/[0.08] dark:border-white/[0.08] lg:border-b-0 lg:border-r">
+          <div class="flex items-center justify-between gap-4 border-b border-black/[0.08] px-5 py-3 dark:border-white/[0.08]">
+            <span class="font-mono text-[0.7rem] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Leaf route</span>
+            <span class="font-mono text-[0.7rem] text-neutral-400 dark:text-neutral-500">app/routes/menu.php</span>
+          </div>
+          <pre class="code-pane" v-html="fw.route" />
         </div>
-        <div class="p-6 md:p-8">
-          <p :class="ui.codeLabel">React view</p>
-          <div class="mb-4 h-1 w-16 rounded-full bg-emerald-400" aria-hidden="true" />
-          <pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code !m-0 !bg-transparent !p-0" tabindex="0"><code><span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">export default function</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;"> Menu</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">({ items }) {</span></span>
-<span class="line"><span style="--shiki-light:#C678DD;--shiki-dark:#C678DD;">  return</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> (</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">    &lt;</span><span style="--shiki-light:#E06C75;--shiki-dark:#E06C75;">div</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> className=</span><span style="--shiki-light:#98C379;--shiki-dark:#98C379;">"menu-grid"</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">&gt;</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">      {items.</span><span style="--shiki-light:#61AFEF;--shiki-dark:#61AFEF;">map</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">((item) =&gt; (</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">        &lt;</span><span style="--shiki-light:#E06C75;--shiki-dark:#E06C75;">MenuCard</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;"> key={item.id} item={item} /&gt;</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">      ))}</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">    &lt;/</span><span style="--shiki-light:#E06C75;--shiki-dark:#E06C75;">div</span><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">&gt;</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">  );</span></span>
-<span class="line"><span style="--shiki-light:#ABB2BF;--shiki-dark:#ABB2BF;">}</span></span></code></pre>
+
+        <div class="min-w-0 border-b border-black/[0.08] dark:border-white/[0.08] lg:border-b-0 lg:border-r">
+          <div class="flex items-center justify-between gap-4 border-b border-black/[0.08] px-5 py-3 dark:border-white/[0.08]">
+            <span class="fw-accent font-mono text-[0.7rem] font-medium uppercase tracking-[0.08em]">{{ fw.name }} view</span>
+            <span class="font-mono text-[0.7rem] text-neutral-400 dark:text-neutral-500">app/views/{{ fw.file }}</span>
+          </div>
+          <pre class="code-pane" v-html="fw.view" />
         </div>
-      </div>
 
-        <!-- Preview Tabs -->
-        <div class="bg-white dark:bg-orange-900/10">
-          <div class="px-4 pt-6 pb-2 text-gray-500 dark:text-gray-400 text-sm font-medium">Rendered by React from Leaf data</div>
-          <!-- Preview Content -->
-          <div class="p-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-            <div class="flex items-start rounded-none border border-orange-700/10 bg-gray-50 p-6 transition-colors duration-300 hover:border-orange-400/40 hover:bg-orange-50/70 dark:bg-orange-900/5">
-              <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-md mr-3 flex items-center justify-center">
-                <span class="text-orange-600 dark:text-orange-300">🍔</span>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 !m-0">Veggie Loaded Burger</h4>
-                <p class="text-xs !m-0 text-gray-500 dark:text-gray-400">Vegan • 4 stars</p>
-                <div class="text-sm font-semibold text-blue-500">$8.99</div>
-              </div>
-            </div>
-            <div class="flex items-start rounded-none border border-orange-700/10 bg-gray-50 p-6 transition-colors duration-300 hover:border-red-400/40 hover:bg-red-50/60 dark:bg-orange-900/5">
-              <div class="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-md mr-3 flex items-center justify-center">
-                <span class="text-red-600 dark:text-red-300">🍗</span>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 !m-0">Southern Fried Chicken</h4>
-                <p class="text-xs !m-0 text-gray-500 dark:text-gray-400">Spicy • 5 stars</p>
-                <div class="text-sm font-semibold text-blue-500">$9.49</div>
-              </div>
-            </div>
-            <div class="hidden items-start rounded-none border border-orange-700/10 bg-gray-50 p-6 transition-colors duration-300 hover:border-amber-400/40 hover:bg-amber-50/60 dark:bg-orange-900/5 md:flex">
-              <div class="w-10 h-10 bg-amber-100 dark:bg-amber-900 rounded-md mr-3 flex items-center justify-center">
-                <span class="text-amber-600 dark:text-amber-300">🥩</span>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200 !m-0">Healthy Beef Burger</h4>
-                <p class="text-xs !m-0 text-gray-500 dark:text-gray-400">Low-carb • 4 stars</p>
-                <div class="text-sm font-semibold text-blue-500">$8.99</div>
-              </div>
-            </div>
+        <div class="min-w-0">
+          <div class="flex items-center justify-between gap-4 border-b border-black/[0.08] px-5 py-3 dark:border-white/[0.08]">
+            <span class="font-mono text-[0.7rem] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Rendered by {{ fw.name }}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path :d="fw.icon" fill="var(--fwd)" /></svg>
           </div>
-
-        <div class="!mt-0 flex flex-wrap justify-center gap-10 border-t border-black/[0.08] pb-8 pt-8 dark:border-white/[0.08]">
-          <div class="flex flex-col items-center gap-1.5">
-            <div class="flex h-10 w-10 items-center justify-center text-neutral-500 dark:text-neutral-400">
-              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <path
-                  d="M30.685 27.536c-5.353 9.182-12.462 15.042-15.878 13.089-3.416-1.953-1.846-10.98 3.508-20.161 5.353-9.182 12.462-15.042 15.878-13.089 3.416 1.953 1.846 10.98-3.508 20.161Z"
-                  fill="currentColor" fill-opacity="0" stroke="currentColor" stroke-width="2" />
-                <ellipse cx="24" cy="24" rx="7" ry="19" transform="rotate(90 24 24)" fill="currentColor"
-                  fill-opacity="0" stroke="currentColor" stroke-width="2" />
-                <path
-                  d="M17.315 27.536c5.353 9.182 12.462 15.042 15.878 13.089 3.416-1.953 1.846-10.98-3.508-20.161-5.353-9.182-12.462-15.042-15.878-13.089-3.416 1.953-1.846 10.98 3.508 20.161Z"
-                  fill="currentColor" fill-opacity="0" stroke="currentColor" stroke-width="2" />
-                <path d="M24 27a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
+          <div class="grid gap-3 p-5">
+            <div
+              v-for="dish in dishes"
+              :key="dish.name"
+              class="flex items-start justify-between gap-4 border border-black/[0.08] bg-white p-4 dark:border-white/[0.08] dark:bg-white/[0.03]"
+            >
+              <div>
+                <p class="!m-0 text-[0.95rem] font-semibold text-neutral-950 dark:text-neutral-50">{{ dish.name }}</p>
+                <p class="!m-0 !mt-1 font-mono text-[0.78rem] text-neutral-500 dark:text-neutral-400">{{ dish.meta }}</p>
+              </div>
+              <span class="fw-accent font-mono text-[0.95rem] font-semibold">{{ dish.price }}</span>
             </div>
-            <span class="text-[0.8125rem] font-medium text-neutral-950 dark:text-neutral-50">React</span>
-            <span class="text-[0.6875rem] text-neutral-500 dark:text-neutral-400">or anything</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5">
-            <div class="flex h-10 w-10 items-center justify-center text-neutral-500 dark:text-neutral-400">
-              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <path d="M24 12.814 20.474 7H15l9 15 9-15h-5.476l-3.525 5.814Z" fill="currentColor" fill-opacity="0"
-                  stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                <path d="M37.408 7 24 28.982 10.592 7H3l21 34L45 7h-7.592Z" fill="currentColor" fill-opacity="0"
-                  stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-              </svg>
-            </div>
-            <span class="text-[0.8125rem] font-medium text-neutral-950 dark:text-neutral-50">Vue</span>
-            <span class="text-[0.6875rem] text-neutral-500 dark:text-neutral-400">or anything</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5">
-            <div class="flex h-10 w-10 items-center justify-center text-neutral-500 dark:text-neutral-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 98.1 118" aria-hidden="true">
-                <path fill="currentColor"
-                  d="M91.8,15.6C80.9-0.1,59.2-4.7,43.6,5.2L16.1,22.8C8.6,27.5,3.4,35.2,1.9,43.9c-1.3,7.3-0.2,14.8,3.3,21.3  c-2.4,3.6-4,7.6-4.7,11.8c-1.6,8.9,0.5,18.1,5.7,25.4c11,15.7,32.6,20.3,48.2,10.4l27.5-17.5c7.5-4.7,12.7-12.4,14.2-21.1  c1.3-7.3,0.2-14.8-3.3-21.3c2.4-3.6,4-7.6,4.7-11.8C99.2,32.1,97.1,22.9,91.8,15.6" />
-                <path fill="var(--vp-c-bg)"
-                  d="M40.9,103.9c-8.9,2.3-18.2-1.2-23.4-8.7c-3.2-4.4-4.4-9.9-3.5-15.3c0.2-0.9,0.4-1.7,0.6-2.6l0.5-1.6l1.4,1  c3.3,2.4,6.9,4.2,10.8,5.4l1,0.3l-0.1,1c-0.1,1.4,0.3,2.9,1.1,4.1c1.6,2.3,4.4,3.4,7.1,2.7c0.6-0.2,1.2-0.4,1.7-0.7L65.5,72  c1.4-0.9,2.3-2.2,2.6-3.8c0.3-1.6-0.1-3.3-1-4.6c-1.6-2.3-4.4-3.3-7.1-2.6c-0.6,0.2-1.2,0.4-1.7,0.7l-10.5,6.7  c-1.7,1.1-3.6,1.9-5.6,2.4c-8.9,2.3-18.2-1.2-23.4-8.7c-3.1-4.4-4.4-9.9-3.4-15.3c0.9-5.2,4.1-9.9,8.6-12.7l27.5-17.5  c1.7-1.1,3.6-1.9,5.6-2.5c8.9-2.3,18.2,1.2,23.4,8.7c3.2,4.4,4.4,9.9,3.5,15.3c-0.2,0.9-0.4,1.7-0.7,2.6l-0.5,1.6l-1.4-1  c-3.3-2.4-6.9-4.2-10.8-5.4l-1-0.3l0.1-1c0.1-1.4-0.3-2.9-1.1-4.1c-1.6-2.3-4.4-3.3-7.1-2.6c-0.6,0.2-1.2,0.4-1.7,0.7L32.4,46.1  c-1.4,0.9-2.3,2.2-2.6,3.8s0.1,3.3,1,4.6c1.6,2.3,4.4,3.3,7.1,2.6c0.6-0.2,1.2-0.4,1.7-0.7l10.5-6.7c1.7-1.1,3.6-1.9,5.6-2.5  c8.9-2.3,18.2,1.2,23.4,8.7c3.2,4.4,4.4,9.9,3.5,15.3c-0.9,5.2-4.1,9.9-8.6,12.7l-27.5,17.5C44.8,102.5,42.9,103.3,40.9,103.9" />
-              </svg>
-            </div>
-            <span class="text-[0.8125rem] font-medium text-neutral-950 dark:text-neutral-50">Svelte</span>
-            <span class="text-[0.6875rem] text-neutral-500 dark:text-neutral-400">or anything</span>
-          </div>
-          <div class="flex flex-col items-center gap-1.5">
-            <div class="flex h-10 w-10 items-center justify-center text-neutral-500 dark:text-neutral-400">
-              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <path d="m7.5 10.5 6.5-3 7 3.5v16l7-4v-8l7-4 7 4v8l-7 3.5V34l-14 7.5L7.5 34V10.5Z"
-                  fill="currentColor" fill-opacity="0" />
-                <path d="m7 11 7-4 7 4-7 4-7-4ZM21 11v16M21 35v7" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7 11v23l14 8 14-8V19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M14 15v16l7 4 21-12v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="m28 15 7-4 7 4-7 4-7-4ZM28 15v8l7 4M14 31l14-8" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-            <span class="text-[0.8125rem] font-medium text-neutral-950 dark:text-neutral-50">Blade</span>
-            <span class="text-[0.6875rem] text-neutral-500 dark:text-neutral-400">or anything</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.code-pane {
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+  padding: 1.25rem;
+  font-family: var(--vp-font-family-mono, ui-monospace, monospace);
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: #262626;
+}
+.dark .code-pane { color: #e5e5e5; }
+.code-pane :deep(.tok-m) { color: #a3a3a3; }
+.dark .code-pane :deep(.tok-m) { color: #737373; }
+.code-pane :deep(.tok-b) { color: var(--vp-c-brand-1); }
+.code-pane :deep(.tok-a) { color: var(--fwl); }
+.dark .code-pane :deep(.tok-a) { color: var(--fwd); }
+.fw-accent { color: var(--fwl); }
+.dark .fw-accent { color: var(--fwd); }
+</style>

@@ -2,22 +2,6 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
-  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
-    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Blade views</p>
-      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Use Blade when your product wants expressive server-rendered UI.</h1>
-      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf Blade brings familiar Blade templates to Leaf apps, with cached views, layouts, sections, and syntax that AI assistants already understand well.</p>
-    </div>
-    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
-      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
-        <div><span class="text-neutral-400">$</span> leaf install blade@v4</div>
-        <div class="mt-4 text-[var(--vp-c-brand-1)]">&lt;h1&gt;Hello, &#123;&#123; $name &#125;&#125;&lt;/h1&gt;</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 Blade is Laravel's templating engine for creating dynamic views. Leaf Blade is an adaptation that allows you to use Blade templates in Leaf PHP projects, with extra directives built for the Leaf ecosystem.
 
 ## Setting Up

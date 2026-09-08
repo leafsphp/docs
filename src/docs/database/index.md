@@ -2,41 +2,6 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div>
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Leaf DB</p>
-      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Query data without dragging a heavy database layer behind you.</div>
-      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf DB is a lightweight database module for connecting to SQL databases, writing fluent queries, running raw SQL when needed, and powering models and schema files in Leaf MVC.</p>
-      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
-        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
-          </div>
-          <span class="font-mono text-xs text-neutral-500">query</span>
-        </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div>$users = db()-&gt;select('users')</div>
-          <div class="pl-4 text-neutral-400">-&gt;where('active', true)</div>
-          <div class="pl-4 text-neutral-400">-&gt;all();</div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Supported</p>
-      <div class="flex flex-wrap gap-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
-        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">MariaDB</div>
-        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">MySQL</div>
-        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">PostgreSQL</div>
-        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">SQLite</div>
-        <div class="rounded-md border border-black/10 bg-white px-3 py-2 dark:border-white/10 dark:bg-white/[0.02]">SQL Server</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 Install the Leaf database module using Leaf CLI or Composer:
 
 ::: code-group

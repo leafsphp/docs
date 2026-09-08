@@ -1,99 +1,95 @@
 <script setup>
 import { ui } from './ui';
 
-const steps = [
-  {
-    number: '01',
-    title: 'Start with structure',
-    description:
-      'Spin up a full project with auth, db, and routing already in place, or generate your own custom setup with AI.',
-    snippet: { prefix: '$', text: 'leaf create my-product' },
-  },
-  {
-    number: '02',
-    title: 'Write logic, not boilerplate',
-    description:
-      'From AI or your keyboard, write the logic that matters without getting bogged down in repetitive boilerplate.',
-    snippet: {
-      parts: [
-        { text: 'auth', accent: true },
-        { text: '()->' },
-        { text: 'login', accent: true },
-        { text: '([...]);' },
-      ],
-    },
-  },
-  {
-    number: '03',
-    title: 'Ship without friction',
-    description:
-      'Deploy anywhere PHP runs. No lock-in, no hidden layers, just your product running the way you built it.',
-    snippet: { prefix: '$', text: 'leaf deploy' },
-  },
+const modules = [
+  { name: 'auth', accent: true },
+  { name: 'db', accent: true },
+  { name: 'billing', accent: true },
+  { name: 'queue' },
+  { name: 'mail' },
+  { name: 'cache' },
+  { name: 'cors' },
+  { name: 'session' },
+  { name: 'form' },
+  { name: 'fetch' },
+  { name: 'redis' },
+  { name: 'storage' },
+  { name: '+13' },
 ];
 
-const metrics = [
-  { value: '~30s', label: 'to scaffold a project' },
-  { value: '1', label: 'shared agent context' },
-  { value: '0', label: 'extra config for AI context' },
-  { value: '∞', label: 'hours saved per project' },
-];
 </script>
 
 <template>
-  <section id="speed" :class="[ui.section, ui.spacious]">
-    <header :class="ui.header">
-      <p :class="ui.eyebrow">Workflow</p>
-      <h2 :class="ui.title">Real code. Less friction. Faster flow.</h2>
-      <p :class="ui.subtitle">
-        AI-first design meets battle-tested PHP code, giving you the power to ship real products faster and
-        cheaper than ever before.
+  <section id="speed" :class="[ui.section, ui.spacious, 'max-w-6xl']">
+    <header class="mb-12 grid items-start gap-6 md:grid-cols-2 md:gap-14">
+      <div>
+        <p :class="ui.eyebrow">Where Leaf sits</p>
+        <h2 :class="[ui.title, '!mb-0 text-balance']">Bigger than a router. Smaller than a kitchen sink.</h2>
+      </div>
+      <p class="!m-0 text-[1.05rem] leading-[1.7] text-neutral-500 dark:text-neutral-400 md:mt-9">
+        You start with routing and a request object. Everything else is a module you install when the product
+        needs it, not a layer you inherit on day one. That's what keeps the app small enough to hold in your
+        head, and in a context window.
       </p>
     </header>
 
-    <div :class="ui.panel" aria-label="Leaf workflow">
-      <div :class="[ui.accentBar, 'absolute inset-x-0 top-0 z-[1]']" aria-hidden="true" />
+    <div class="mb-12" aria-hidden="true">
+      <div class="relative mb-4 font-mono text-[0.72rem] uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400">
+        <span>micro</span>
+        <span class="absolute left-[51%] -translate-x-1/2 font-medium text-neutral-950 dark:text-neutral-50">product-sized</span>
+        <span class="absolute right-0 top-0">full-stack</span>
+      </div>
+      <div class="relative h-1.5 rounded-full bg-black/[0.08] dark:bg-white/[0.1]">
+        <div class="absolute inset-y-0 left-[40%] w-[27.5%] rounded-full bg-[var(--vp-c-brand-1)]/60" />
+        <div class="absolute left-[51%] top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-[var(--vp-c-brand-1)] bg-white dark:bg-[#161616]" />
+      </div>
+    </div>
+
+    <div :class="ui.panel" aria-label="Where Leaf sits, and how you work in it">
       <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
       <span :class="[ui.marker, ui.markerBR]" aria-hidden="true" />
 
-      <div class="grid grid-cols-1 md:grid-cols-3">
-        <article
-          v-for="step in steps"
-          :key="step.number"
-          class="group flex min-h-full flex-col border-b border-black/[0.08] p-8 pb-7 transition-colors duration-300 hover:bg-orange-50/50 dark:border-white/[0.08] dark:hover:bg-white/[0.04] md:border-b-0 md:border-r md:p-10 md:pb-8 last:md:border-r-0"
-        >
-          <span class="mb-5 flex h-8 w-8 items-center justify-center rounded-full border border-orange-200 bg-orange-50 text-xs font-semibold text-[var(--vp-c-brand-1)] dark:border-orange-500/20 dark:bg-orange-500/10">{{ step.number }}</span>
-          <h3 class="!m-0 !mb-2.5 text-lg font-semibold leading-[1.35] tracking-[-0.02em] text-neutral-950 dark:text-neutral-50">{{ step.title }}</h3>
-          <p class="!m-0 mb-6 flex-1 text-[0.9375rem] leading-[1.6] text-neutral-500 dark:text-neutral-400">{{ step.description }}</p>
+      <div class="grid md:grid-cols-[1fr_1.2fr_1fr]">
+        <article class="border-b border-black/[0.08] p-8 dark:border-white/[0.08] md:self-center md:border-b-0 md:border-r">
+          <h3 class="!m-0 text-[1.05rem] font-semibold text-neutral-700 dark:text-neutral-300">Micro-frameworks</h3>
+          <p class="!m-0 !mt-2.5 text-[0.92rem] leading-[1.65] text-neutral-500 dark:text-neutral-400">
+            Routing and a request object. Auth, db and billing become a package hunt and a weekend.
+          </p>
 
-          <div class="mt-auto rounded-none border border-black/[0.08] bg-neutral-100 px-4 py-3 font-mono text-[0.8125rem] leading-normal text-neutral-900 transition-colors group-hover:border-[var(--vp-c-brand-1)]/30 dark:border-white/[0.08] dark:bg-black/40 dark:text-neutral-200" aria-hidden="true">
-            <template v-if="step.snippet.parts">
-              <span
-                v-for="(part, i) in step.snippet.parts"
-                :key="i"
-                :class="{ 'text-[var(--vp-c-brand-1)]': part.accent }"
-              >{{ part.text }}</span>
-            </template>
-            <template v-else>
-              <span class="text-neutral-400 dark:text-neutral-500">{{ step.snippet.prefix }}</span>
-              {{ ' ' }}{{ step.snippet.text }}
-            </template>
-          </div>
         </article>
-      </div>
 
-      <div class="grid grid-cols-2 border-t border-black/[0.08] bg-neutral-50 dark:border-white/[0.08] dark:bg-white/[0.04] sm:grid-cols-4" role="list">
-        <div
-          v-for="metric in metrics"
-          :key="metric.label"
-          class="flex flex-col items-center justify-center gap-1.5 border-b border-r border-black/[0.08] px-4 py-6 text-center transition-colors hover:bg-orange-50/50 dark:border-white/[0.08] dark:hover:bg-white/[0.04] even:border-r-0 sm:border-b-0 sm:even:border-r sm:last:border-r-0"
-          role="listitem"
-        >
-          <span class="text-[clamp(1.5rem,3vw,1.875rem)] font-semibold leading-none tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 tabular-nums">{{ metric.value }}</span>
-          <span class="max-w-36 text-xs leading-[1.4] text-neutral-500 dark:text-neutral-400">{{ metric.label }}</span>
-        </div>
+        <article class="relative border-b border-black/[0.08] bg-orange-50/40 p-8 dark:border-white/[0.08] dark:bg-white/[0.03] md:border-b-0 md:border-r">
+          <div class="absolute inset-x-0 top-0 h-0.5 bg-[var(--vp-c-brand-1)]" aria-hidden="true" />
+          <h3 class="!m-0 text-[1.05rem] font-semibold text-neutral-950 dark:text-neutral-50">Leaf</h3>
+          <p class="!m-0 !mt-2.5 text-[0.92rem] leading-[1.65] text-neutral-600 dark:text-neutral-300">
+            Start with <code class="font-mono text-[0.85em] text-[var(--vp-c-brand-1)]">app()</code>. Add
+            <code class="font-mono text-[0.85em] text-[var(--vp-c-brand-1)]">auth()</code>,
+            <code class="font-mono text-[0.85em] text-[var(--vp-c-brand-1)]">db()</code>,
+            <code class="font-mono text-[0.85em] text-[var(--vp-c-brand-1)]">billing()</code> as the product
+            grows. Same fluent shape on every module, so there's one pattern to learn.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-px overflow-hidden border border-black/[0.08] bg-black/[0.08] dark:border-white/[0.08] dark:bg-white/[0.08]">
+            <span
+              v-for="mod in modules"
+              :key="mod.name"
+              class="px-3.5 py-2 font-mono text-[0.78rem]"
+              :class="mod.accent
+                ? 'bg-orange-100/70 text-[var(--vp-c-brand-1)] dark:bg-orange-500/15'
+                : 'bg-white text-neutral-500 dark:bg-[#141414] dark:text-neutral-400'"
+            >{{ mod.name }}</span>
+          </div>
+
+        </article>
+
+        <article class="p-8 md:self-center">
+          <h3 class="!m-0 text-[1.05rem] font-semibold text-neutral-700 dark:text-neutral-300">Full-stack frameworks</h3>
+          <p class="!m-0 !mt-2.5 text-[0.92rem] leading-[1.65] text-neutral-500 dark:text-neutral-400">
+            Everything included, whether you use it or not. Powerful, and a lot to hold in mind before feature one.
+          </p>
+
+        </article>
       </div>
     </div>
   </section>

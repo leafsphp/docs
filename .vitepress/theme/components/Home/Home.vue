@@ -3,7 +3,6 @@ import Hero from './Hero.vue';
 import AIWorkflow from './AIWorkflow.vue';
 import Tooling from './Tooling.vue';
 import SpeedDemo from './SpeedDemo.vue';
-import TryIt from './TryIt.vue';
 import Sponsors from './Sponsors.vue';
 import Testimonials from './Testimonials.vue';
 import Community from './Community.vue';
@@ -26,7 +25,6 @@ import WallOfFame from '../Community/WallOfFame.vue';
     <FlexibleFrontend />
     <Ecosystem />
     <Testimonials />
-    <TryIt />
     <Community />
     <Blog />
     <Speak />

@@ -63,8 +63,8 @@
             class="flex items-start gap-4 p-6 md:p-8"
             :class="i < perks.length - 1 ? 'border-b border-black/[0.08] dark:border-white/[0.08]' : ''"
           >
-            <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-none border border-black/[0.08] bg-neutral-100 text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-neutral-400">
-              <span class="text-sm" aria-hidden="true">{{ item.icon }}</span>
+            <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-none border border-black/[0.08] bg-neutral-100 text-[var(--vp-c-brand-1)] dark:border-white/[0.08] dark:bg-white/[0.03]">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="item.icon" />
             </div>
             <div>
               <p class="!m-0 !mb-0.5 text-sm font-semibold text-neutral-950 dark:text-neutral-50">{{ item.title }}</p>
@@ -82,17 +82,20 @@ import { ui } from '../Home/ui';
 
 const perks = [
   {
-    icon: '🌍',
+    // globe
+    icon: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z"/>',
     title: 'Any format',
     desc: 'Conferences, meetups, workshops, Twitter Spaces. We\'re flexible.',
   },
   {
-    icon: '⚡',
+    // terminal prompt
+    icon: '<path d="M5 7l5 5-5 5M12 17h7"/>',
     title: 'AI-native demos',
-    desc: 'We bring real code, real speed, and agent-friendly Leaf 5 walkthroughs.',
+    desc: 'Live coding on real Leaf 5 apps, including the agent workflow people keep asking about.',
   },
   {
-    icon: '🤝',
+    // ticket
+    icon: '<path d="M4 9a2 2 0 0 0 0 6v3h16v-3a2 2 0 0 1 0-6V6H4v3Z"/><path d="M14 6v12" stroke-dasharray="2 2.5"/>',
     title: 'Free of charge',
     desc: 'We speak for free. Just cover travel if it\'s in-person.',
   },

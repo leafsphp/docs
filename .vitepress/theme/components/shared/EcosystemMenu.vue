@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { products } from './ecosystem';
 
 const open = ref(false);
 const root = ref(null);
@@ -33,36 +34,7 @@ onUnmounted(() => {
   clearTimeout(closeTimer);
 });
 
-const products = [
-  {
-    name: 'Alchemy',
-    url: 'https://alchemy.leafphp.dev',
-    tagline: 'QA + CI from one config',
-    description: 'Tests, code style, refactors and CI pipelines for any PHP app.',
-    logo: 'https://alchemy.leafphp.dev/images/logo-yellow.png',
-  },
-  {
-    name: 'Seedling',
-    url: 'https://seedling.leafphp.dev',
-    tagline: 'Console applications',
-    description: 'Build CLI tools with the Leaf MVC experience.',
-    logo: 'https://seedling.leafphp.dev/images/seedling.png',
-  },
-  {
-    name: 'Fetch',
-    url: 'https://fetch.leafphp.dev',
-    tagline: 'HTTP client',
-    description: "fetch() for PHP. Works in any PHP app, Leaf or not.",
-    logo: 'https://fetch.leafphp.dev/images/fetch.png',
-  },
-  {
-    name: 'Hana JS',
-    url: 'https://hanabira.dev',
-    tagline: 'Frontend framework',
-    description: 'Simple, lightweight React alternative for user interfaces.',
-    logo: 'https://docs.hana.leafphp.dev/favicon.png',
-  },
-];
+
 </script>
 
 <template>
@@ -91,6 +63,7 @@ const products = [
             target="_blank"
             rel="noopener noreferrer"
             class="group flex flex-col bg-white p-5 !no-underline transition-colors hover:bg-neutral-50 dark:bg-[var(--vp-c-bg-elv,var(--vp-c-bg))] dark:hover:bg-white/[0.04]"
+            :class="{ 'col-span-2': products.length % 2 === 1 && product === products[products.length - 1] }"
           >
             <div class="flex items-center gap-2.5">
               <img v-if="product.logo" :src="product.logo" :alt="`${product.name} logo`"
@@ -106,7 +79,7 @@ const products = [
             <span class="mt-1.5 font-mono text-[0.625rem] uppercase tracking-[0.08em] text-neutral-400 dark:text-neutral-500">
               {{ product.tagline }}</span>
             <span class="mt-1.5 text-[12.5px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-              {{ product.description }}</span>
+              {{ product.menuDescription || product.description }}</span>
           </a>
         </div>
 

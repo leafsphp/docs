@@ -2,28 +2,6 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<section class="not-prose my-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
-  <div class="grid gap-0 2xl:grid-cols-[1fr_0.9fr]">
-    <div class="border-b border-neutral-200 p-6 sm:p-8 2xl:border-b-0 2xl:border-r dark:border-neutral-800">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Fast app state</p>
-      <h1 class="m-0 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Use Redis for cache, sessions, queues, and realtime state.</h1>
-      <p class="!m-0 !mt-4 text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf Redis gives MVC apps a simple helper for working with Redis directly from your app code, using either the Redis extension or Predis.</p>
-    </div>
-    <div class="bg-neutral-50 p-6 dark:bg-neutral-900/60 sm:p-8">
-      <div class="rounded-lg border border-neutral-200 bg-white p-4 font-mono text-sm text-neutral-700 dark:border-neutral-800 dark:bg-black dark:text-neutral-300">
-        <div><span class="text-neutral-400">$</span> leaf install redis</div>
-        <div class="mt-4 text-[var(--vp-c-brand-1)]">redis()-&gt;set('cart:42', $items, 3600);</div>
-        <div class="text-sky-600 dark:text-sky-400">$items = redis()-&gt;get('cart:42');</div>
-      </div>
-      <div class="mt-4 grid gap-3 md:grid-cols-3 2xl:grid-cols-1">
-        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">Cache</div>
-        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">Sessions</div>
-        <div class="rounded-lg border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">Queues</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 Redis stores data in memory, which makes it useful for fast, temporary, or frequently-read application state. Leaf includes a Redis module that allows you to integrate Redis into your Leaf application.
 
 ## Setting Up Leaf Redis

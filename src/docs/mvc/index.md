@@ -13,8 +13,6 @@ description: Leaf MVC is a lightweight PHP MVC framework with an MVC structure (
 import MvcIntroPage from '@theme/components/Docs/MvcIntroPage.vue';
 </script>
 
-<MvcIntroPage section="hero" />
-
 ## What is MVC?
 
 MVC stands for Model-View-Controller. It separates your application into the parts that hold data, display interfaces, and respond to requests.
