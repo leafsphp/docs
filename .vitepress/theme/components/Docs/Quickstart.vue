@@ -1,13 +1,12 @@
 <script setup>
-import { ref } from 'vue';
-import { ui } from '../Home/ui';
+import { onBeforeUnmount, ref } from 'vue';
 
 const steps = [
   {
     number: '01',
     title: 'Install the CLI, create a project',
     commands: [
-      [{ t: 'composer', c: 'cmd' }, { t: ' global require ' }, { t: 'leafs/cli', c: 'arg' }],
+      [{ t: 'composer', c: 'cmd' }, { t: ' global require ' }, { t: 'leafs/cli' }],
       [{ t: 'leaf', c: 'cmd' }, { t: ' create ' }, { t: 'my-app', c: 'arg' }],
     ],
     copy: 'composer global require leafs/cli\nleaf create my-app',
@@ -22,88 +21,165 @@ const steps = [
   },
 ];
 
-const copyAll = 'composer global require leafs/cli\nleaf create my-app\ncd my-app\nleaf serve';
-
+const copyAll = steps.map((step) => step.copy).join('\n');
 const copied = ref(null);
+const copyError = ref('');
 let timer;
 
-function copy(text, key) {
-  navigator.clipboard?.writeText(text).catch(() => {});
-  copied.value = key;
-  clearTimeout(timer);
-  timer = setTimeout(() => (copied.value = null), 1600);
+async function copy(text, key) {
+  try {
+    await navigator.clipboard.writeText(text);
+    copied.value = key;
+    copyError.value = '';
+    clearTimeout(timer);
+    timer = setTimeout(() => (copied.value = null), 1600);
+  } catch {
+    copyError.value = 'Unable to copy. Select and copy the commands manually.';
+  }
 }
+
+onBeforeUnmount(() => clearTimeout(timer));
 </script>
 
 <template>
-  <div class="not-prose my-8 font-mono">
-  <div class="relative border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-    <span :class="[ui.marker, ui.markerTL]" aria-hidden="true" />
-    <span :class="[ui.marker, ui.markerTR]" aria-hidden="true" />
-    <span :class="[ui.marker, ui.markerBL]" aria-hidden="true" />
-    <span :class="[ui.marker, ui.markerBR]" aria-hidden="true" />
-    <div class="flex items-center justify-between gap-4 border-b border-black/10 px-6 py-4 dark:border-white/10">
-      <span class="text-[0.72rem] font-medium uppercase tracking-[0.1em] text-neutral-500 dark:text-neutral-400"><span class="text-[var(--vp-c-brand-1)]">//</span> Quickstart</span>
-      <span class="flex items-center gap-4 text-[0.7rem] uppercase tracking-[0.08em]">
-        <span class="text-neutral-400 dark:text-neutral-500">bash</span>
-        <button type="button" class="font-medium text-[var(--vp-c-brand-1)] hover:opacity-80" @click="copy(copyAll, 'all')">
-          {{ copied === 'all' ? 'copied ✓' : 'copy all' }}
-        </button>
-      </span>
-    </div>
+  <section class="quickstart not-prose" aria-label="Leaf quickstart">
+    <div class="quickstart-terminal">
+      <span v-for="corner in ['tl', 'tr', 'bl', 'br']" :key="corner" :class="['quickstart-marker', corner]" aria-hidden="true" />
+      <header class="quickstart-header">
+        <span class="quickstart-label"><span class="quickstart-slashes">//</span> Quickstart</span>
+        <div class="quickstart-tools">
+          <span class="quickstart-language">Bash</span>
+          <button type="button" class="quickstart-copy-all" @click="copy(copyAll, 'all')">
+            {{ copied === 'all' ? 'copied ✓' : 'copy all' }}
+          </button>
+        </div>
+      </header>
 
-    <div
-      v-for="step in steps"
-      :key="step.number"
-      class="grid grid-cols-[3.5rem_1fr_auto] items-start gap-3 border-b border-black/10 px-6 py-8 dark:border-white/10"
-    >
-      <span class="pt-0.5 text-[0.78rem] text-neutral-400 dark:text-neutral-500">{{ step.number }}</span>
-      <div class="min-w-0">
-        <p class="!m-0 font-sans text-[1.02rem] font-medium text-neutral-950 dark:text-neutral-50">{{ step.title }}</p>
-        <div class="mt-4 grid gap-2 overflow-x-auto text-[0.95rem] leading-relaxed">
-          <div v-for="(line, i) in step.commands" :key="i" class="whitespace-nowrap">
-            <span class="select-none text-neutral-400 dark:text-neutral-500">$ </span><span
-              v-for="(part, j) in line"
-              :key="j"
-              :class="{
-                'text-[#2b7de0] dark:text-[#61AFEF]': part.c === 'cmd',
-                'text-[#3e9e54] dark:text-[#98C379]': part.c === 'arg',
-                'text-neutral-800 dark:text-neutral-200': !part.c,
-              }"
-            >{{ part.t }}</span>
+      <div v-for="step in steps" :key="step.number" class="quickstart-step">
+        <span class="quickstart-number">{{ step.number }}</span>
+        <div class="quickstart-content">
+          <p class="quickstart-title">{{ step.title }}</p>
+          <div class="quickstart-commands">
+            <div v-for="(line, i) in step.commands" :key="i" class="quickstart-command">
+              <span class="quickstart-prompt" aria-hidden="true">$ </span><span
+                v-for="(part, j) in line" :key="j" :class="part.c"
+              >{{ part.t }}</span>
+            </div>
           </div>
         </div>
+        <button type="button" class="quickstart-copy" :aria-label="`Copy step ${step.number} commands`" @click="copy(step.copy, step.number)">
+          {{ copied === step.number ? 'copied ✓' : 'copy' }}
+        </button>
       </div>
-      <button
-        type="button"
-        class="pt-0.5 text-[0.72rem] transition-colors"
-        :class="copied === step.number ? 'text-emerald-500' : 'text-neutral-400 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300'"
-        @click="copy(step.copy, step.number)"
-      >{{ copied === step.number ? 'copied ✓' : 'copy' }}</button>
+
+      <div class="quickstart-live">
+        <span class="quickstart-number">03</span>
+        <p class="quickstart-status">
+          <span class="quickstart-dot" aria-hidden="true" />
+          <span>Your app is live at</span>
+          <code>http://localhost:5500</code>
+        </p>
+        <span class="quickstart-time">~30s</span>
+      </div>
     </div>
 
-    <div class="grid grid-cols-[3.5rem_1fr_auto] items-center gap-3 border-b-0 px-6 py-6">
-      <span class="text-[0.78rem] text-[var(--vp-c-brand-1)]">03</span>
-      <p class="!m-0 flex flex-wrap items-center gap-2.5 font-sans text-[1.02rem] font-medium text-neutral-950 dark:text-neutral-50">
-        <span class="h-2 w-2 bg-emerald-500" aria-hidden="true" />
-        Your app is live at
-        <code class="rounded-none bg-orange-100/70 px-2 py-0.5 font-mono text-[0.82rem] text-[var(--vp-c-brand-1)] dark:bg-orange-500/15">http://localhost:5500</code>
-      </p>
-      <span class="text-[0.72rem] text-neutral-400 dark:text-neutral-500">~30s</span>
-    </div>
-
-  </div>
-
-  <div class="grid border border-t-0 border-black/10 dark:border-white/10 sm:grid-cols-[4rem_1fr_1fr]">
-      <span class="hidden items-center px-5 py-5 text-[0.72rem] uppercase tracking-[0.1em] text-neutral-400 dark:text-neutral-500 sm:flex">Then</span>
-      <a href="/docs/routing/" class="group border-b border-black/10 px-5 py-5 !no-underline transition-colors hover:bg-neutral-50 dark:border-white/10 dark:hover:bg-white/[0.03] sm:border-b-0 sm:border-l">
-        <span class="flex items-center gap-2 font-sans text-[0.95rem] font-semibold text-neutral-950 dark:text-neutral-50">Add your first route <span aria-hidden="true" class="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span></span>
-        <span class="mt-1.5 block text-[0.8rem] text-neutral-500 dark:text-neutral-400">app()->get('/', fn() => 'hi')</span>
+    <nav class="quickstart-next" aria-label="Next steps">
+      <span class="quickstart-then">Then</span>
+      <a href="/docs/routing/" class="quickstart-link">
+        <span class="quickstart-link-title">Add your first route <span aria-hidden="true">↗</span></span>
+        <span class="quickstart-link-code">app()->get('/', fn() => 'hi')</span>
       </a>
-      <a href="/docs/modules" class="group px-5 py-5 !no-underline transition-colors hover:bg-neutral-50 dark:hover:bg-white/[0.03] sm:border-l sm:border-black/10 sm:dark:border-white/10">
-        <span class="flex items-center gap-2 font-sans text-[0.95rem] font-semibold text-neutral-950 dark:text-neutral-50">Pull in a module <span aria-hidden="true" class="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span></span>
-        <span class="mt-1.5 block text-[0.8rem] text-neutral-500 dark:text-neutral-400">leaf install auth</span>
+      <a href="/docs/modules" class="quickstart-link">
+        <span class="quickstart-link-title">Pull in a module <span aria-hidden="true">↗</span></span>
+        <span class="quickstart-link-code">leaf install auth</span>
       </a>
-  </div>
-  </div>
+    </nav>
+    <span class="quickstart-feedback" role="status">{{ copyError || (copied ? 'Commands copied to clipboard.' : '') }}</span>
+  </section>
 </template>
+
+<style scoped>
+.quickstart {
+  --qs-panel: #fff;
+  --qs-band: #faf8f5;
+  --qs-border: #e3dfda;
+  --qs-text: #292524;
+  --qs-title: #6b6660;
+  --qs-muted: #827b73;
+  --qs-subtle: #8a8177;
+  --qs-accent: #c65a17;
+  --qs-command: #2872a5;
+  --qs-argument: #57813c;
+  margin: 2rem 0;
+  font-family: var(--vp-font-family-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--qs-text);
+}
+:global(.dark .quickstart) {
+  --qs-panel: #0b0908;
+  --qs-band: #120f0b;
+  --qs-border: #292623;
+  --qs-text: #e2e0df;
+  --qs-title: #a3a2a1;
+  --qs-muted: #777674;
+  --qs-subtle: #595855;
+  --qs-accent: #f68629;
+  --qs-command: #7bbbe3;
+  --qs-argument: #a4ce88;
+}
+.quickstart-terminal { position: relative; border: 1px solid var(--qs-border); background: var(--qs-panel); }
+.quickstart-marker { position: absolute; z-index: 1; width: 5px; height: 5px; background: #d4682d; pointer-events: none; }
+.tl { top: -3px; left: -3px; }
+.tr { top: -3px; right: -3px; }
+.bl { bottom: -3px; left: -3px; }
+.br { bottom: -3px; right: -3px; }
+.quickstart-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 18px; border-bottom: 1px solid var(--qs-border); font-size: 12px; font-weight: 500; }
+.quickstart-label, .quickstart-language, .quickstart-then { text-transform: uppercase; letter-spacing: .12em; }
+.quickstart-label { color: var(--qs-title); }
+.quickstart-slashes { margin-right: 8px; color: var(--qs-subtle); }
+.quickstart-tools { display: flex; align-items: center; gap: 18px; }
+.quickstart-language, .quickstart-time { color: var(--qs-muted); }
+.quickstart button { font: inherit; cursor: pointer; transition: color .15s; }
+.quickstart-copy-all { color: var(--qs-accent); }
+.quickstart-step { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: start; gap: 12px; padding: 22px 20px 25px 26px; border-bottom: 1px solid var(--qs-border); }
+.quickstart-number { padding-top: 2px; color: var(--qs-muted); font-size: 12px; font-weight: 500; }
+.quickstart .quickstart-title { margin: 0; font-family: var(--vp-font-family-base); font-size: 15px; font-weight: 500; line-height: 1.5; color: var(--qs-title); }
+.quickstart-content { min-width: 0; }
+.quickstart-commands { margin-top: 10px; overflow-x: auto; font-size: 15px; line-height: 1.8; }
+.quickstart-command { white-space: pre; }
+.quickstart-prompt { color: var(--qs-subtle); user-select: none; }
+.cmd { color: var(--qs-command); }
+.arg { color: var(--qs-argument); }
+.quickstart-copy { padding-top: 2px; color: var(--qs-subtle); font-size: 12px !important; }
+.quickstart button:hover { color: var(--qs-accent); }
+.quickstart button:focus-visible, .quickstart-link:focus-visible { outline: 2px solid var(--qs-accent); outline-offset: 4px; }
+.quickstart-live { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 19px 20px 19px 26px; background: var(--qs-band); }
+.quickstart-live .quickstart-number { color: var(--qs-accent); }
+.quickstart .quickstart-status { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 0; font-family: var(--vp-font-family-base); font-size: 15px; font-weight: 600; line-height: 1.6; }
+.quickstart-dot { width: 8px; height: 8px; background: #34c99b; flex-shrink: 0; }
+.quickstart .quickstart-status code { border-radius: 0; padding: 2px 8px; background: color-mix(in srgb, var(--qs-accent) 12%, transparent); color: var(--qs-accent); font-family: var(--vp-font-family-mono); font-size: 14px; font-weight: 400; white-space: nowrap; }
+.quickstart-time { font-size: 12px; }
+.quickstart-next { display: grid; grid-template-columns: 66px minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--qs-border); border-top: 0; background: var(--qs-band); }
+.quickstart-then { display: flex; align-items: center; justify-content: center; color: var(--qs-muted); font-size: 12px; }
+.quickstart .quickstart-link { min-width: 0; border-left: 1px solid var(--qs-border); padding: 17px 20px; text-decoration: none; color: var(--qs-text); transition: background .15s; }
+.quickstart-link:hover { background: color-mix(in srgb, var(--qs-accent) 5%, var(--qs-band)); }
+.quickstart-link-title { display: flex; align-items: center; gap: 5px; font-family: var(--vp-font-family-base); font-size: 15px; font-weight: 650; line-height: 1.5; }
+.quickstart-link-title > span { font-size: 21px; font-weight: 400; line-height: 1; }
+.quickstart-link-code { display: block; margin-top: 3px; color: var(--qs-muted); font-size: 13px; overflow-wrap: anywhere; }
+.quickstart-feedback { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 640px) {
+  .quickstart-header { padding: 10px 14px; gap: 8px; font-size: 10px; }
+  .quickstart-label, .quickstart-tools { white-space: nowrap; }
+  .quickstart-tools { gap: 10px; }
+  .quickstart-step, .quickstart-live { grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; padding: 20px 14px; }
+  .quickstart-commands { font-size: 13px; }
+  .quickstart-status { gap: 8px !important; }
+  .quickstart-status code { max-width: 100%; font-size: 12px !important; }
+  .quickstart-next { grid-template-columns: 44px minmax(0, 1fr); }
+  .quickstart-then { grid-row: span 2; font-size: 10px; }
+  .quickstart .quickstart-link { padding: 14px; }
+  .quickstart-link + .quickstart-link { border-top: 1px solid var(--qs-border); }
+  .quickstart-time { align-self: start; padding-top: 3px; font-size: 10px; }
+}
+</style>
