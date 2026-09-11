@@ -135,22 +135,15 @@
     </div>
   </div>
 
-  <div v-else-if="section === 'config'" class="mvc-intro not-prose my-6 grid gap-4 md:grid-cols-[280px_1fr]">
-    <div
-      class="rounded-none border border-black/10 bg-neutral-950 p-5 font-mono text-sm leading-7 text-neutral-100 dark:border-white/10">
-      <div><span class="text-neutral-500">$</span> leaf config:publish</div>
-      <div><span class="text-neutral-500">$</span> leaf config:publish &lt;config-file&gt;</div>
+  <div v-else-if="section === 'config'" class="mvc-intro not-prose my-6 overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-b border-black/10 px-5 py-3.5 dark:border-white/10">
+      <span class="font-mono text-[0.88rem] text-neutral-900 dark:text-neutral-100"><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf config:publish <span class="text-[var(--vp-c-brand-1)]">&lt;config-file&gt;</span></span>
+      <span class="font-mono text-[0.7rem] text-neutral-400 dark:text-neutral-500">omit the name to publish every config</span>
     </div>
-    <div class="overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-      <div
-        class="grid grid-cols-2 border-b border-black/10 bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-400">
-        <span>Config</span>
-        <span>Use case</span>
-      </div>
-      <div v-for="item in configs" :key="item.name"
-        class="grid grid-cols-2 border-b border-black/5 px-4 py-3 text-sm last:border-0 dark:border-white/5">
-        <code class="text-neutral-950 dark:text-neutral-50">{{ item.name }}</code>
-        <span class="text-neutral-600 dark:text-neutral-400">{{ item.use }}</span>
+    <div class="grid grid-cols-2 gap-px bg-black/10 dark:bg-white/10 sm:grid-cols-4">
+      <div v-for="item in configs" :key="item.name" class="bg-white px-4 py-3.5 dark:bg-[#141414]">
+        <code class="font-mono text-[0.85rem] font-medium text-neutral-950 dark:text-neutral-50">{{ item.name }}</code>
+        <p class="!m-0 !mt-1 text-[0.78rem] leading-snug text-neutral-500 dark:text-neutral-400">{{ item.use }}</p>
       </div>
     </div>
   </div>
