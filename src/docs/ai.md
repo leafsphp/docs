@@ -79,13 +79,13 @@ Open an agent in the project and ask for the feature you want. It starts with Le
       </p>
     </div>
     <div class="bg-neutral-50 p-5 dark:bg-white/[0.03]">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Shared project memory</p>
-      <div class="space-y-2 font-mono text-sm text-neutral-600 dark:text-neutral-400">
-        <div>context: .leaf/CONTEXT.md</div>
-        <div>sync: read + write</div>
-        <div>routes: known</div>
-        <div>modules: known</div>
-        <div>filesystem: available</div>
+      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">What the agent touches</p>
+      <div class="space-y-2 font-mono text-[0.8rem] leading-relaxed text-neutral-600 dark:text-neutral-400">
+        <div><span class="text-neutral-400 dark:text-neutral-500">reads</span>&nbsp;&nbsp; .leaf/CONTEXT.md</div>
+        <div><span class="text-neutral-400 dark:text-neutral-500">reads</span>&nbsp;&nbsp; app/routes/*.php</div>
+        <div><span class="text-emerald-600 dark:text-emerald-400">writes</span>&nbsp; app/routes/_webhooks.php</div>
+        <div><span class="text-emerald-600 dark:text-emerald-400">writes</span>&nbsp; app/controllers/WebhooksController.php</div>
+        <div><span class="text-emerald-600 dark:text-emerald-400">syncs</span>&nbsp;&nbsp; .leaf/CONTEXT.md</div>
       </div>
     </div>
   </div>
