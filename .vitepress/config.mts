@@ -72,7 +72,7 @@ export default defineConfig({
   },
 
   markdown: {
-    lineNumbers: false,
+    lineNumbers: true,
     theme: {
       light: 'one-dark-pro',
       dark: 'one-dark-pro',

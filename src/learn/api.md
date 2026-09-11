@@ -9,28 +9,12 @@ prev: false
 
 <script setup>
 import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
+import Quickstart from '@theme/components/Docs/Quickstart.vue';
 </script>
 
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-yellow-400 to-orange-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <p class="font-medium text-amber-100 text-shadow mb-4">
-                  Build APIs that power your mobile apps, React frontends, and third-party integrations.
-                </p>
-            </div>
-        </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-orange-500 hidden sm:block"
-        ></div>
-    </div>
-</section>
+Build APIs that power your mobile apps, frontends, and third-party integrations, with JSON responses and auth ready when you need them.
+
+<Quickstart api />
 
 APIs sit behind your mobile apps, frontend interfaces, and third-party integrations. Leaf helps you build them fast, keep them secure, and maintain them without headaches.
 
@@ -44,7 +28,7 @@ leaf serve
 
 You're live and ready to build.
 
-## Start with a real API, not a blank page
+## Start from a working API
 
 Out of the box, you can build:
 
@@ -90,7 +74,7 @@ Leaf organizes your API into a simple, convention-based structure:
 └───public
 ```
 
-## Ready for real users
+## Ready for production
 
 Once your API is built, tested, and ready, deploy it to [Heroku](/learn/deployment/heroku/), [Fly.io](/learn/deployment/flyio/), [DigitalOcean](/learn/deployment/digitalocean/), or any shared hosting service.
 

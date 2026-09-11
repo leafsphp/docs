@@ -23,8 +23,8 @@ import StartPage from '@theme/components/Docs/StartPage.vue';
   </a>
   <a class="docs-path-card" href="/learn/mvc">
     <span class="docs-path-index">02 / Web apps</span>
-    <strong class="docs-path-title">Build something real with structure.</strong>
-    <span class="docs-path-description">Use Leaf MVC for startups, internal tools, dashboards, and real products that need a clear app map.</span>
+    <strong class="docs-path-title">Give your app a clear structure.</strong>
+    <span class="docs-path-description">Use Leaf MVC for startups, internal tools, and dashboards that need a clear app map.</span>
     <span class="docs-path-action">Build your app <span aria-hidden="true">&rarr;</span></span>
   </a>
   <a class="docs-path-card" href="/learn/api">

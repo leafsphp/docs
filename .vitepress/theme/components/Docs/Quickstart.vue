@@ -1,15 +1,21 @@
 <script setup>
-import { onBeforeUnmount, ref } from 'vue';
+import { computed, onBeforeUnmount, ref } from 'vue';
 
-const steps = [
+const props = defineProps({
+  mvc: { type: Boolean, default: false },
+  api: { type: Boolean, default: false },
+});
+const flag = props.mvc ? ' --mvc' : props.api ? ' --api' : '';
+
+const steps = computed(() => [
   {
     number: '01',
     title: 'Install the CLI, create a project',
     commands: [
       [{ t: 'composer', c: 'cmd' }, { t: ' global require ' }, { t: 'leafs/cli' }],
-      [{ t: 'leaf', c: 'cmd' }, { t: ' create ' }, { t: 'my-app', c: 'arg' }],
+      [{ t: 'leaf', c: 'cmd' }, { t: ' create ' }, { t: 'my-app', c: 'arg' }, ...(flag ? [{ t: flag }] : [])],
     ],
-    copy: 'composer global require leafs/cli\nleaf create my-app',
+    copy: `composer global require leafs/cli\nleaf create my-app${flag}`,
   },
   {
     number: '02',
@@ -19,9 +25,9 @@ const steps = [
     ],
     copy: 'cd my-app && leaf serve',
   },
-];
+]);
 
-const copyAll = steps.map((step) => step.copy).join('\n');
+const copyAll = computed(() => steps.value.map((step) => step.copy).join('\n'));
 const copied = ref(null);
 const copyError = ref('');
 let timer;
@@ -85,13 +91,13 @@ onBeforeUnmount(() => clearTimeout(timer));
 
     <nav class="quickstart-next" aria-label="Next steps">
       <span class="quickstart-then">Then</span>
-      <a href="/docs/routing/" class="quickstart-link">
-        <span class="quickstart-link-title">Add your first route <span aria-hidden="true">↗</span></span>
-        <span class="quickstart-link-code">app()->get('/', fn() => ...)</span>
+      <a :href="mvc ? '/docs/routing/mvc' : '/docs/routing/'" class="quickstart-link">
+        <span class="quickstart-link-title">{{ api ? "Add your first endpoint" : "Add your first route" }} <span aria-hidden="true">↗</span></span>
+        <span class="quickstart-link-code">{{ mvc ? 'app/routes/index.php' : api ? "app()->get('/users', fn() => ...)" : "app()->get('/', fn() => ...)" }}</span>
       </a>
-      <a href="/docs/modules" class="quickstart-link">
-        <span class="quickstart-link-title">Pull in a module <span aria-hidden="true">↗</span></span>
-        <span class="quickstart-link-code">leaf install auth</span>
+      <a :href="mvc ? '/docs/mvc/controllers' : '/docs/modules'" class="quickstart-link">
+        <span class="quickstart-link-title">{{ mvc ? 'Create a controller' : 'Pull in a module' }} <span aria-hidden="true">↗</span></span>
+        <span class="quickstart-link-code">{{ mvc ? 'leaf g:controller users' : 'leaf install auth' }}</span>
       </a>
     </nav>
     <span class="quickstart-feedback" role="status">{{ copyError || (copied ? 'Commands copied to clipboard.' : '') }}</span>

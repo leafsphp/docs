@@ -3,317 +3,143 @@ next: false
 prev: false
 ---
 
-# Build something real
+# Build with Leaf MVC
 
 <!-- markdownlint-disable no-inline-html -->
 
+When your app needs separate places for routes, request handling, data, and templates, start with Leaf MVC. It uses the same Leaf APIs as the basic setup, with a directory structure for organizing your code.
+
 <script setup>
-import TutorialNumber from '@theme/components/shared/TutorialNumber.vue';
+import Quickstart from '@theme/components/Docs/Quickstart.vue';
 </script>
 
-<section class="flex mt-4">
-    <div
-        class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg"
-    >
-        <div
-            class="w-full flex md:flex-col bg-gradient-to-br from-pink-500 to-rose-500"
-        >
-            <div
-                class="sm:flex-none md:w-auto md:flex-auto flex flex-col items-start relative z-10 p-6 xl:p-8"
-            >
-                <p class="font-medium text-rose-100 text-shadow mb-4">
-                  Turn your idea into a real product
-                </p>
-            </div>
-            <!-- <div
-                class="relative md:pl-6 xl:pl-8 hidden sm:block"
-            >
-                Hello
-            </div> -->
-        </div>
-        <div
-            class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-rose-500 hidden sm:block"
-        ></div>
-    </div>
-</section>
+<Quickstart mvc />
 
-Leaf gives you everything you need to go from idea → working app → real users, with no lengthy configuration or assembly along the way.
+Building a small API or a few pages? The [basic setup](/learn/basic) is a simpler starting point.
+
+## Your first controller and route
+
+Controllers group the methods that handle requests. Create one for users:
 
 ```bash:no-line-numbers
-leaf create my-app --mvc
-cd my-app
-leaf serve
+leaf g:controller users
 ```
 
-Instead of a blank folder, you get a product foundation from day one.
+This creates `app/controllers/UsersController.php`. Its `index()` method can return a JSON response:
 
-## Start with a real app, not a blank page
+```php
+<?php
 
-Out of the box, you can build:
+namespace App\Controllers;
 
-- 🔐 User accounts (login, signup, sessions)
-- 🧑‍💼 Dashboards and admin panels
-- 🗄 Data-driven apps (with database + ORM)
-- 💳 Payments, subscriptions, billing
-- 🌐 APIs for mobile or frontend apps
-
-There's no wiring tools together or figuring out what goes where.
-
-## Your app is ready for AI
-
-Leaf MVC uses `.leaf/CONTEXT.md` as shared project memory for agents. An agent opened in the project reads that context alongside predictable routes, controllers, models, views, configuration, and modules, then syncs useful changes back. There is no AI setup step or context command required.
-
-## Tell AI what you want. It builds it
-
-Open your agent in the project and tell it:
-
-> “Build a SaaS dashboard with teams and billing”
->
-> “Add Stripe subscriptions”
->
-> “Create an admin panel”
-
-Leaf MVC gives the agent everything it needs to understand your app, so you can skip the long prompts and the guessing.
-
-Using an external assistant without project access? Run `leaf context` and paste its compact output into the conversation.
-
-## Project Structure
-
-For clarity and convention, Leaf organizes your app into a simple structure that follows the MVC pattern:
-
-- easy to navigate
-- easy for teams
-- easy for AI
-
-```bash:no-line-numbers
-├───app
-│   ├── controllers
-│   ├── database
-│   ├── models
-│   ├── routes
-│   └── views
-└───public
+class UsersController extends Controller
+{
+    public function index()
+    {
+        return response()->json([
+            'message' => 'Hello from Leaf MVC'
+        ]);
+    }
+}
 ```
 
-## Ready for real users
+Add a route in `app/routes/index.php` to call that method:
 
-Leaf apps are production ready and run anywhere PHP can, [Heroku](/learn/deployment/heroku/), [Fly.io](/learn/deployment/flyio/), [DigitalOcean](/learn/deployment/digitalocean/), or any shared hosting service.
+```php:no-line-numbers
+app()->get('/users', 'UsersController@index');
+```
 
-<div class="my-4 md:my-10">
-    <div
-        class="grid grid-cols-[auto_1fr_auto] gap-3 gap-y-6 rounded-xl p-6 ring-1 ring-gray-950/10 dark:ring-white/10"
-    >
-        <div>
-            <svg
-                width="22"
-                height="28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <circle
-                    class="fill-gray-950/5 dark:fill-white/5"
-                    cx="11"
-                    cy="14"
-                    r="11"
-                ></circle>
-                <circle
-                    class="stroke-gray-950/25 dark:stroke-white/25"
-                    cx="11"
-                    cy="14"
-                    r="10.5"
-                ></circle>
-                <path
-                    class="stroke-gray-950 dark:stroke-white"
-                    d="m12.5 19-1.011.337a1 1 0 0 1-1.253-1.3l1.528-4.074a1 1 0 0 0-1.253-1.3L9.5 13"
-                    stroke-linecap="round"
-                ></path>
-                <path
-                    class="stroke-gray-950 dark:stroke-white"
-                    d="M12 9a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
-                ></path>
-            </svg>
-        </div>
-        <div class="col-span-2 xl:col-span-1">
-            <span class="prose"
-                ><strong class="font-semibold text-gray-950 dark:text-white"
-                    >Are you stuck?</strong
-                >
-                  Working with MVC can be a bit challenging if you are just starting out because of the overly strict separation of concerns. If you are stuck at any point, feel free to ask for help in the
-                  <a
-                    href="https://discord.gg/Pkrm9NJPE3"
-                    >Leaf Discord server</a>, or consider building an MVP using the <a
-                    href="/learn/basic"
-                    >Basic Leaf setup</a>. While it is not as structured as MVC, it is a great way to get started with Leaf.
-                </span>
-        </div>
-    </div>
+Visit `http://localhost:5500/users` to see the response. Leaf matches the URL, calls `UsersController::index()`, and sends the JSON back to the browser.
+
+## Where your code goes
+
+The main application folders are:
+
+```text
+app/
+├── controllers/
+├── database/
+├── models/
+├── routes/
+└── views/
+public/
+```
+
+Routes map URLs to controller methods. Controllers handle the request, use models to work with data, and return a response. For HTML pages, templates live in `app/views/`.
+
+<div class="docs-paths not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Model</span>
+    <strong class="docs-path-title">Work with your data</strong>
+    <span class="docs-path-description">Put model classes in app/models and database migrations in app/database.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / View</span>
+    <strong class="docs-path-title">Render a page</strong>
+    <span class="docs-path-description">Keep page templates in app/views and serve assets from public.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">03 / Controller</span>
+    <strong class="docs-path-title">Handle the request</strong>
+    <span class="docs-path-description">Group related actions in app/controllers and connect them to routes.</span>
+  </div>
 </div>
+
+As your route list grows, you can split it into files such as `_auth.php` or `_api.php` in `app/routes/`. See [MVC routing](/docs/routing/mvc) for route partials and middleware.
+
+## Add the features you need
+
+Use [models](/docs/database/models) for database records, [authentication](/docs/auth/) for user accounts, and [billing](/docs/utils/billing) for payments and subscriptions. Each guide covers the setup and configuration for that feature.
+
+For the frontend, you can render templates on the server or use a JavaScript framework. The [frontend guide](/docs/frontend/) covers Blade, Inertia, and Vite integration.
+
+## Working with an AI assistant
+
+Leaf CLI creates `.leaf/CONTEXT.md` with context about your project. Ask your coding assistant to read it before making changes, and point it to the feature you want to work on.
+
+For example:
+
+> Read `.leaf/CONTEXT.md`, then add a users endpoint. Follow the existing route and controller conventions, and use the project's user model.
+
+If your assistant cannot access the project folder, run:
+
+```bash:no-line-numbers
+leaf context
+```
+
+Paste the output along with your request. See [AI in Leaf](/docs/ai) for more on project context.
+
+## Deploy your app
+
+Configure your production environment and point your web server at the `public/` directory. The [deployment guide](/learn/deployment/) covers hosting options and server setup.
+
+If you get stuck, ask in the [Leaf Discord server](https://discord.gg/Pkrm9NJPE3).
 
 ## What to read next
 
-Now that you have a product shipped, here's what you need to scale it:
-
-<ul
-    class="!mt-10 grid grid-cols-1 gap-x-16 gap-y-8 xl:grid-cols-2 xl:gap-y-10 !pl-0"
->
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:150%] rounded-full h-full bg-center bg-no-repeat bg-pink-100 dark:bg-pink-200"
-                style="
-                    background-image: url(/images/illustrations/Feature-Flags-5.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/routing/mvc"
-                    >Routing<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn more about routing in Leaf, including dynamic routes and middleware.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:350%] rounded-full h-full bg-green-100 dark:bg-green-200 bg-center bg-no-repeat"
-                style="
-                    background-image: url(/images/illustrations/Heading-2.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/mvc/controllers"
-                    >Using Controllers<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Controllers are the 'C' in MVC, and separate your logic from your views.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:120%] rounded-full h-full bg-purple-100 dark:bg-purple-200 bg-center bg-no-repeat"
-                style="
-                    background-image: url(/images/illustrations/db.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/database/models"
-                    >Using Models<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Models are the 'M' in MVC, and let you interact with your database programmatically.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-    <li class="relative flex items-start">
-        <div
-            class="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex-none dark:ring-white/50"
-        >
-            <div
-                class="bg-[length:400%] rounded-full h-full bg-yellow-100 dark:bg-yellow-200 bg-center bg-no-repeat"
-                style="
-                    background-image: url(/images/illustrations/Stats-2.svg);
-                "
-            ></div>
-        </div>
-        <div class="peer group flex-auto ml-6">
-            <h3
-              class="mb-2 font-semibold !text-slate-900 dark:!text-slate-200 !m-0"
-            >
-                <a
-                    class="before:absolute before:-inset-3 before:rounded-2xl !text-inherit sm:before:-inset-4 !no-underline"
-                    href="/docs/frontend/"
-                    >Frontend<svg
-                        viewBox="0 0 3 6"
-                        class="ml-3 w-auto h-1.5 overflow-visible inline -mt-px text-slate-400 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-                    >
-                        <path
-                            d="M0 0L3 3L0 6"
-                            fill="none"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path></svg
-                ></a>
-            </h3>
-            <p class="text-[var(--vp-c-text-2)] !m-0 text-sm">
-              Learn about SSR, SPA, and how to use Leaf with your favorite frontend framework.
-            </p>
-        </div>
-        <div
-            class="absolute -z-10 -inset-3 rounded-2xl bg-slate-50 dark:bg-[var(--vp-c-bg-alt)] opacity-0 peer-hover:opacity-100 sm:-inset-4"
-        ></div>
-    </li>
-</ul>
+<div class="docs-paths docs-paths--four not-prose my-6">
+  <a class="docs-path-card" href="/docs/routing/mvc">
+    <span class="docs-path-index">01 / Routes</span>
+    <strong class="docs-path-title">MVC routing</strong>
+    <span class="docs-path-description">Connect URLs to controllers, split route files, and add middleware.</span>
+    <span class="docs-path-action">Open routing <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/mvc/controllers">
+    <span class="docs-path-index">02 / Requests</span>
+    <strong class="docs-path-title">Controllers</strong>
+    <span class="docs-path-description">Generate controllers and organize the actions that handle requests.</span>
+    <span class="docs-path-action">Open controllers <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/database/models">
+    <span class="docs-path-index">03 / Data</span>
+    <strong class="docs-path-title">Models</strong>
+    <span class="docs-path-description">Query records and define relationships between your data.</span>
+    <span class="docs-path-action">Open models <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="docs-path-card" href="/docs/frontend/">
+    <span class="docs-path-index">04 / Pages</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">Build pages with templates or connect a JavaScript frontend.</span>
+    <span class="docs-path-action">Open frontend <span aria-hidden="true">&rarr;</span></span>
+  </a>
+</div>
