@@ -6,9 +6,9 @@ Redis stores data in memory, which makes it useful for fast, temporary, or frequ
 
 ## Setting Up Leaf Redis
 
-<div class="not-prose my-6 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
-  Leaf Redis is currently supported in Leaf MVC. Core support is planned, but MVC apps can use it today.
-</div>
+::: info Works in Leaf MVC today
+Leaf Redis currently ships for Leaf MVC apps. Support for basic (non-MVC) apps is planned.
+:::
 
 To get started with Leaf Redis, you need to have Redis installed on your machine. You can install Redis PHP extension by following the instructions [here](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md), however, if you can't install the extension, you can use the [Predis](https://github.com/predis/predis) composer package.
 

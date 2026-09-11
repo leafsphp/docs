@@ -44,9 +44,9 @@ In Leaf MVC, all routes are defined in partials within the app/routes directory.
 
 To add a new route, place it in the relevant partial, or create a new one if it doesn’t fit into an existing group.
 
-<div class="not-prose my-6 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm leading-6 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
-  Prefer one file? You can still define everything in <code>app/routes/index.php</code>. Partials are there when your app needs a cleaner map, not because Leaf forces a folder ritual.
-</div>
+::: tip Prefer one file?
+You can still define everything in `app/routes/index.php`. Partials are there when your app needs a cleaner map, not because Leaf forces a folder ritual.
+:::
 
 ## Breaking down routes
 
