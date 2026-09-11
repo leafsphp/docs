@@ -87,7 +87,7 @@ onBeforeUnmount(() => clearTimeout(timer));
       <span class="quickstart-then">Then</span>
       <a href="/docs/routing/" class="quickstart-link">
         <span class="quickstart-link-title">Add your first route <span aria-hidden="true">↗</span></span>
-        <span class="quickstart-link-code">app()->get('/', fn() => 'hi')</span>
+        <span class="quickstart-link-code">app()->get('/', fn() => ...)</span>
       </a>
       <a href="/docs/modules" class="quickstart-link">
         <span class="quickstart-link-title">Pull in a module <span aria-hidden="true">↗</span></span>

@@ -42,7 +42,7 @@ app()->run();
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">02 / Logic</span>
     <strong class="docs-path-title">Write the useful part</strong>
-    <span class="docs-path-description">Keep the first version close to the request, then extract structure as complexity earns it.</span>
+    <span class="docs-path-description">When your route matches, implement the necessary logic to handle the request.</span>
   </div>
   <div class="docs-path-card docs-path-card--static">
     <span class="docs-path-index">03 / Response</span>
@@ -51,31 +51,17 @@ app()->run();
   </div>
 </div>
 
-## Build with an assistant that knows the app
+## Working with an AI assistant
 
-This app was created with Leaf CLI, so `.leaf/CONTEXT.md` is already available as shared project memory. A local agent reads it alongside the filesystem and syncs useful changes back when it finishes. No context command is required.
+Leaf CLI creates a `.leaf/CONTEXT.md` file with context about your project. When using a coding assistant in your editor or terminal, ask it to read that file before making changes.
 
-If you are using an external assistant that cannot access the folder, print a compact project handoff:
+For example, if you tell your agent to implement a new messaging feature, it will automatically read the context from `.leaf/CONTEXT.md` and make changes that fit the existing project structure, and if your assistant cannot access the project folder, run:
 
 ```bash:no-line-numbers
 leaf context
 ```
 
-<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid md:grid-cols-[1fr_240px]">
-    <div class="border-b border-black/10 p-5 dark:border-white/10 md:border-b-0 md:border-r">
-      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Your prompt</p>
-      <div class="mt-4 rounded-lg border border-black/10 bg-neutral-50 p-4 text-sm font-medium leading-6 text-neutral-800 dark:border-white/10 dark:bg-white/[0.03] dark:text-neutral-200">Add a Stripe webhook, validate the event, and store successful payments.</div>
-      <p class="!m-0 !mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Local agent: shared context and filesystem access stay in sync. External assistant: paste the output of <code>leaf context</code> so it receives the compact project map.</p>
-    </div>
-    <div class="bg-neutral-50 p-5 dark:bg-white/[0.03]">
-      <p class="!m-0 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">AI sees</p>
-      <div class="mt-4 space-y-2 font-mono text-sm leading-6 text-neutral-600 dark:text-neutral-400"><div>entry: lite</div><div>routes: known</div><div>modules: known</div><div>patterns: Leaf</div></div>
-    </div>
-  </div>
-</div>
-
-The goal is not more generated code. It is fewer invented patterns and changes that fit the application you already have.
+Paste the output into your conversation along with your request. See [AI in Leaf](/docs/ai) for more on project context.
 
 ## Add capabilities when the product asks
 

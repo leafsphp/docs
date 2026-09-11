@@ -634,7 +634,7 @@ html.dark .status-badge-footer {
   position: relative;
   display: flex !important;
   min-width: 0;
-  min-height: 210px;
+  min-height: 180px;
   flex-direction: column;
   padding: 20px !important;
   border: 0 !important;
