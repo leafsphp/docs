@@ -2,6 +2,8 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
+Modules are pieces of Leaf functionality that can be added to your application to extend its capabilities. Unlike many other frameworks, Leaf ships very light out of the box and provides all extra functionality through modules. This allows you to keep your core application lean while only adding the features you need.
+
 ## Installing Modules
 
 Modules are Composer packages, so you can install them with Composer:
