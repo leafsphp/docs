@@ -16,27 +16,15 @@ Build APIs that power your mobile apps, frontends, and third-party integrations,
 
 <Quickstart api />
 
-APIs sit behind your mobile apps, frontend interfaces, and third-party integrations. Leaf helps you build them fast, keep them secure, and maintain them without headaches.
-
-## Getting started
-
-```bash:no-line-numbers
-leaf create my-app --api
-cd my-app
-leaf serve
-```
-
-You're live and ready to build.
-
 ## Start from a working API
 
 Out of the box, you can build:
 
-- 🔐 User authentication (login, signup, JWT)
-- 📱 Mobile app backends
-- 🔗 Third-party integrations
-- 💳 Payment webhooks
-- 🌐 Frontend APIs (for React, Vue, Svelte)
+- User authentication (login, signup, JWT)
+- Mobile app backends
+- Third-party integrations
+- Payment webhooks
+- Frontend APIs (for React, Vue, Svelte)
 
 There's no wiring to do, and no guessing about structure.
 
