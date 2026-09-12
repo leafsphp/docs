@@ -24,7 +24,7 @@ const modules = [
     <header class="mb-12 grid items-start gap-6 md:grid-cols-2 md:gap-14">
       <div>
         <p :class="ui.eyebrow">Where Leaf sits</p>
-        <h2 :class="[ui.title, '!mb-0 text-balance']">Bigger than a router. Smaller than a kitchen sink.</h2>
+        <h2 :class="[ui.title, '!mb-0 text-balance']">Bigger than a router. Smaller than your average framework.</h2>
       </div>
       <p class="!m-0 text-[1.05rem] leading-[1.7] text-neutral-500 dark:text-neutral-400 md:mt-9">
         You start with routing and a request object. Everything else is a module you install when the product

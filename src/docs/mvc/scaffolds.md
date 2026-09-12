@@ -2,46 +2,35 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div>
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Feature scaffolds</p>
-      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Generate the boring parts, then make the product yours.</div>
-      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf MVC scaffolding creates complete feature starting points: routes, controllers, models, schema files, views, middleware, plus frontend pieces that match your app setup.</p>
-      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
-        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
-          </div>
-          <span class="font-mono text-xs text-neutral-500">scaffold</span>
-        </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div><span class="text-neutral-500">$</span> leaf scaffold:auth</div>
-          <div><span class="text-neutral-500">$</span> leaf scaffold:landing-page</div>
-          <div><span class="text-neutral-500">$</span> leaf scaffold:subscriptions</div>
-          <div><span class="text-neutral-500">$</span> leaf scaffold:waitlist</div>
-          <div><span class="text-neutral-500">$</span> leaf scaffold:blog</div>
-          <div><span class="text-neutral-500">$</span> leaf scaffold:ai</div>
-        </div>
+Leaf MVC scaffolding creates complete feature starting points: routes, controllers, models, schema files, views, and middleware that match your app setup. You run a command, then edit real files you own.
+
+<div class="not-prose my-6 overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="grid md:grid-cols-2">
+    <div class="border-b border-black/10 dark:border-white/10 md:border-b-0 md:border-r">
+      <div class="border-b border-black/10 px-5 py-3 font-mono text-[0.7rem] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:text-neutral-400">Commands</div>
+      <div class="grid gap-1.5 p-5 font-mono text-[0.85rem] leading-relaxed text-neutral-800 dark:text-neutral-200">
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:auth</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:blog</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:landing-page</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:waitlist</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:contact</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:mail</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:legal</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:ai</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:shadcn</div>
+        <div><span class="select-none text-neutral-400 dark:text-neutral-500">$ </span>leaf scaffold:subscriptions <span class="text-[0.72rem] text-neutral-400 dark:text-neutral-500">with leafs/billing</span></div>
       </div>
     </div>
-    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">What scaffolds give you</p>
-      <div class="grid gap-3 md:grid-cols-3">
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">A real starting point</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Not snippets. A working feature shape you can run, edit, and extend.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Your frontend setup</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Views and components are generated around the frontend tooling your app uses.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI-ready commands</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Assistants can run the same commands and then tailor the result to your product.</p>
-        </div>
+    <div>
+      <div class="border-b border-black/10 px-5 py-3 font-mono text-[0.7rem] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:border-white/10 dark:text-neutral-400">scaffold:auth generates</div>
+      <div class="grid gap-1.5 p-5 font-mono text-[0.8rem] leading-relaxed text-neutral-600 dark:text-neutral-400">
+        <div>app/routes/_auth.php</div>
+        <div>app/controllers/Auth/ <span class="text-neutral-400 dark:text-neutral-500">login, register, dashboard</span></div>
+        <div>app/controllers/Profile/ <span class="text-neutral-400 dark:text-neutral-500">account, updates</span></div>
+        <div>app/views/pages/auth/ <span class="text-neutral-400 dark:text-neutral-500">login, register</span></div>
+        <div>app/views/pages/dashboard</div>
+        <div>app/views/layouts + components</div>
+        <div class="mt-2 border-t border-black/10 pt-3 text-[0.75rem] text-neutral-500 dark:border-white/10 dark:text-neutral-400">views match your setup: blade, react, vue, svelte, or api-only</div>
       </div>
     </div>
   </div>
@@ -86,21 +75,16 @@ Authentication with Leaf is powered by [Leaf Auth](/docs/auth/), which gives you
 leaf scaffold:auth
 ```
 
-<div class="not-prose my-6 overflow-hidden rounded-xl border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
-  <div class="grid md:grid-cols-[220px_1fr]">
-    <div class="border-b border-black/10 bg-neutral-50 p-5 dark:border-white/10 dark:bg-white/[0.03] md:border-b-0 md:border-r">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Generated</p>
-      <div class="font-mono text-sm leading-7 text-neutral-600 dark:text-neutral-400">models<br>controllers<br>routes<br>middleware<br>views</div>
-    </div>
-    <div class="p-5">
-      <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">What you get</p>
-      <ul class="m-0 mt-3 space-y-2 p-0 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-        <li class="list-none">User model with a database schema file</li>
-        <li class="list-none">Login, register, dashboard, account update controllers</li>
-        <li class="list-none">Authentication routes and route protection middleware</li>
-        <li class="list-none">Views and dashboard screens tailored to your frontend setup</li>
-      </ul>
-    </div>
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Accounts</span>
+    <strong class="docs-path-title">Backend</strong>
+    <span class="docs-path-description">User model with its schema file, controllers for login, register, dashboard and account updates, and auth routes with protection middleware applied.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Screens</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">Login, register, dashboard and profile views in your frontend setup. The full file list is in the panel at the top of this page.</span>
   </div>
 </div>
 
@@ -114,12 +98,18 @@ Use the landing page scaffold when you want a polished starting point for your p
 leaf scaffold:landing-page
 ```
 
-You get:
-
-- A structured homepage layout
-- Sections like hero, features, footers
-- Tailwind styling with your preferred frontend setup
-- Easy customization with Leaf Zero components
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Page</span>
+    <strong class="docs-path-title">Homepage</strong>
+    <span class="docs-path-description">A structured homepage layout with hero, feature and footer sections, styled with Tailwind in your frontend setup.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Customize</span>
+    <strong class="docs-path-title">Leaf Zero components</strong>
+    <span class="docs-path-description">Sections are built from Leaf Zero components, so they are easy to restyle and rearrange.</span>
+  </div>
+</div>
 
 ## Billing Subscription
 
@@ -152,12 +142,18 @@ Waitlists help you validate demand and collect emails before a product is fully 
 leaf scaffold:waitlist
 ```
 
-These will give you:
-
-- Waitlist component for collecting emails in your frontend setup
-- Middleware to restrict accidental access to your app
-- Models and schema files for email collection
-- Waitlist invites and related starting points
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Collection</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">A waitlist component for collecting emails in your frontend setup.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Control</span>
+    <strong class="docs-path-title">Backend</strong>
+    <span class="docs-path-description">Models and schema files for email collection, middleware that restricts accidental access to your app, and waitlist invites as starting points.</span>
+  </div>
+</div>
 
 ## Blog <Badge text="New" type="tip" />
 
@@ -167,12 +163,18 @@ The blog scaffold gives you a markdown-powered blog: write posts as markdown fil
 leaf scaffold:blog
 ```
 
-You get:
-
-- Markdown rendering (parsedown is installed for you)
-- Blog index and post pages in your frontend setup
-- Controllers and routes for listing and reading posts
-- A posts folder (`app/blog`) you publish to by dropping in markdown files with `title`, `date`, and `description` frontmatter
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Writing</span>
+    <strong class="docs-path-title">Markdown posts</strong>
+    <span class="docs-path-description">A posts folder (app/blog) you publish to by dropping in markdown files with title, date and description frontmatter. Parsedown is installed for you.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Reading</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">Blog index and post pages in your frontend setup, with controllers and routes for listing and reading posts.</span>
+  </div>
+</div>
 
 ## Contact form <Badge text="New" type="tip" />
 
@@ -182,12 +184,18 @@ A contact form that actually sends mail, wired end to end.
 leaf scaffold:contact
 ```
 
-You get:
-
-- A contact page in your frontend setup
-- A controller that validates submissions and sends the message with [Leaf Mail](/docs/utils/mail/) (installed and configured for you if missing)
-- Routes wired up and ready to restyle
-- `CONTACT_EMAIL` added to your `.env` as the delivery inbox, with `MAIL_SENDER_EMAIL` as the fallback
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Form</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">A contact page in your frontend setup, with routes wired up and ready to restyle.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Delivery</span>
+    <strong class="docs-path-title">Leaf Mail</strong>
+    <span class="docs-path-description">A controller that validates submissions and sends the message with Leaf Mail, installed and configured for you if missing. CONTACT_EMAIL lands in your .env, with MAIL_SENDER_EMAIL as the fallback.</span>
+  </div>
+</div>
 
 ## Legal pages <Badge text="New" type="tip" />
 
@@ -197,7 +205,18 @@ Every product eventually needs them, and nobody enjoys writing them from a blank
 leaf scaffold:legal
 ```
 
-You get privacy policy and terms of service pages in your frontend setup, wired to your `APP_NAME` and `CONTACT_EMAIL` env values. The copy has clearly marked EDIT ME sections, so you (or your lawyer) only fill in the product-specific parts.
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Pages</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">Privacy policy and terms of service pages in your frontend setup, wired to your APP_NAME and CONTACT_EMAIL env values.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Editing</span>
+    <strong class="docs-path-title">Your part</strong>
+    <span class="docs-path-description">The copy has clearly marked EDIT ME sections, so you (or your lawyer) only fill in the product-specific parts.</span>
+  </div>
+</div>
 
 ## AI chat <Badge text="New" type="tip" />
 
@@ -207,11 +226,18 @@ Scaffold a streaming AI chat powered by Claude: a full chat page with streamed r
 leaf scaffold:ai
 ```
 
-You get:
-
-- A chat interface in your frontend setup with streaming responses
-- Server routes that proxy to the Anthropic API
-- `ANTHROPIC_API_KEY` added to your `.env` / `.env.example`. Drop your key in and visit `/ai`
+<div class="docs-paths docs-paths--two not-prose my-6">
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">01 / Chat UI</span>
+    <strong class="docs-path-title">Frontend</strong>
+    <span class="docs-path-description">A chat interface in your frontend setup with streaming responses.</span>
+  </div>
+  <div class="docs-path-card docs-path-card--static">
+    <span class="docs-path-index">02 / Server</span>
+    <strong class="docs-path-title">Anthropic proxy</strong>
+    <span class="docs-path-description">Routes that proxy to the Anthropic API. ANTHROPIC_API_KEY is added to your .env; drop your key in and visit /ai.</span>
+  </div>
+</div>
 
 ## Mail setup
 
