@@ -7,52 +7,7 @@ prev: false
 
 <!-- markdownlint-disable no-inline-html -->
 
-<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div>
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Command center</p>
-      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">
-        Create, run, extend, and explain your Leaf app from one CLI.
-      </div>
-      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">
-        Leaf CLI is the fastest way to start an AI-ready Leaf project, run it locally, install first-party modules, scaffold frontend tooling, and share compact context with external assistants.
-      </p>
-      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
-        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
-          </div>
-          <span class="font-mono text-xs text-neutral-500">terminal</span>
-        </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div><span class="text-neutral-500">$</span> composer global require leafs/cli -W</div>
-          <div><span class="text-neutral-500">$</span> leaf create my-app</div>
-          <div><span class="text-neutral-500">$</span> cd my-app</div>
-          <div><span class="text-neutral-500">$</span> leaf serve</div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">What it handles</p>
-      <div class="grid gap-3 md:grid-cols-3">
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Project shape</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start with lite or MVC without changing ecosystems later.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Modules</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Install auth, db, mail, queues, billing, and other Leaf packages quickly.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI workflow</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Start AI-ready, with portable context export when an assistant cannot access the project.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+Leaf CLI creates and runs Leaf projects, installs modules, sets up frontend tooling, and shares compact project context with AI assistants. One tool, from `leaf create` to `leaf deploy`.
 
 ## Installation
 

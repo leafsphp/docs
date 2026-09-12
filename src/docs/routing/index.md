@@ -2,47 +2,7 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div>
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">HTTP routing</p>
-      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Turn URLs into application behavior with a tiny, readable router.</div>
-      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf routes define the URL, HTTP method, and handler for each request. The API stays small enough to read quickly, while still supporting named routes, redirects, 404 handling, dynamic routes, middleware, groups, and MVC controllers.</p>
-      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
-        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
-          </div>
-          <span class="font-mono text-xs text-neutral-500">routes/index.php</span>
-        </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div>app()-&gt;get('/home', function () {</div>
-          <div class="pl-4 text-neutral-400">return response()-&gt;json(['ok' =&gt; true]);</div>
-          <div>});</div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Routing covers</p>
-      <div class="grid gap-3 md:grid-cols-3">
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Methods</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">GET, POST, PUT, PATCH, DELETE, and multi-method routes.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Flow</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Names, redirects, current route data, custom 404s, and middleware.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">AI context</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Routes are one of the first maps assistants use to understand an app.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+Leaf routes define the URL, HTTP method, and handler for each request. The API stays small enough to read quickly, and still covers named routes, redirects, 404 handling, dynamic routes, middleware, groups, and MVC controllers.
 
 ## Create a route
 

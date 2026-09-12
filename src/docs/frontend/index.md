@@ -2,46 +2,7 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-<div class="not-prose mt-6 overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.02]">
-  <div>
-    <div class="border-b border-black/10 p-6 dark:border-white/10 md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--vp-c-brand-1)]">Frontend freedom</p>
-      <div class="text-2xl font-semibold tracking-[-0.03em] text-neutral-950 dark:text-neutral-50 md:text-3xl">Use the frontend that fits your product, not the one your backend forces on you.</div>
-      <p class="!m-0 !mt-4 max-w-2xl text-base leading-7 text-neutral-600 dark:text-neutral-400">Leaf works with simple PHP views, Blade, BareUI, Vite, Tailwind, Inertia, React, Vue, Svelte, and third-party engines. Your backend stays readable while your UI stack stays yours.</p>
-      <div class="mt-6 overflow-hidden rounded-lg border border-black/10 bg-neutral-950 dark:border-white/10">
-        <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#ffd166]"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-[#2dd4bf]"></span>
-          </div>
-          <span class="font-mono text-xs text-neutral-500">views</span>
-        </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 text-neutral-100">
-          <div>leaf view:install</div>
-          <div class="text-neutral-400">blade, bareui, inertia, vite, tailwind</div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-neutral-50 p-6 dark:bg-white/[0.03] md:p-8">
-      <p class="!m-0 !mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">Choose by workflow</p>
-      <div class="grid gap-3 md:grid-cols-3">
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Templates</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Blade or BareUI when server-rendered pages are enough.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">Modern assets</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Vite and Tailwind when you want fast local builds and utility styling.</p>
-        </div>
-        <div class="rounded-lg border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.02]">
-          <p class="!m-0 text-sm font-semibold text-neutral-950 dark:text-neutral-50">App UIs</p>
-          <p class="!m-0 !mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">Inertia when React, Vue, or Svelte should talk to Leaf directly.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+Leaf works with simple PHP views, Blade, BareUI, Vite, Tailwind, Inertia, React, Vue, Svelte, and third-party engines. Your backend stays the same whichever you pick.
 
 ## Templating Engines
 
