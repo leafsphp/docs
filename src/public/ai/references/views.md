@@ -287,22 +287,42 @@ $data = request()->validate(['email' => 'email']);
 if (!$data) {
     return response()
         ->withFlash('errors', request()->errors())
+        ->withFlash('old', request()->body())   // optional: what was typed, so the form is not empty after the redirect
         ->redirect('/form', 303);  // 303 is important for Inertia
 }
 ```
 
-View (pass errors as prop):
+Every Inertia page automatically carries an `errors` prop read from the `errors` flash bag (leafs/inertia 5.1+), shaped `{field: "message"}` the way Inertia clients expect, and cleared on the next visit. The view does not pass it by hand:
+
 ```php
-response()->inertia('form', [
-    'errors' => flash()->display('errors') ?? [],
-]);
+response()->inertia('form', ['old' => flash()->display('old') ?? []]);
 ```
 
 Frontend (React):
 ```jsx
-const { data, setData, patch, errors } = useForm({ email: '' });
-// errors.email auto-populated from the errors prop
+export default function Form({ old }) {
+    const { data, setData, post, errors } = useForm({ email: old.email ?? '' });
+    // errors.email is populated from the shared errors prop; usePage().props.errors has the same object
+}
 ```
+
+Leaf's validator can hold several messages per field; the prop keeps the first. To build the bag yourself (a service rejecting a save, not the validator), flash `['field' => 'message']`. A page that passes its own `errors` prop, or `Inertia::share('errors', ...)`, overrides the shared one.
+
+### Not-found pages with a real 404
+
+Inertia clients accept any status on a response that carries the `X-Inertia` header, so a missing record renders the not-found page and still answers 404 to crawlers, `curl` and monitoring:
+
+```php
+// app/routes/index.php
+app()->set404(fn () => response()->inertia('not-found', [], 404));
+
+// a controller
+if (!$post) {
+    return response()->inertia('not-found', [], 404);
+}
+```
+
+`response()->inertia($page, $props, $status)`, `inertia()` and `Inertia::render()` all take the status as the third argument (leafs/inertia 5.1+). Without it the shell is served with 200 whatever the route decided.
 
 ### shadcn/ui (React)
 

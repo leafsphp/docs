@@ -33,7 +33,11 @@ app()->inertia('/home', 'Home');    // Inertia (React/Vue/Svelte)
 
 ```php
 app()->set404(fn () => response()->json(['error' => 'Page not found']));
+app()->set404(fn () => response()->render('errors.404', [], 404));       // Blade
+app()->set404(fn () => response()->inertia('not-found', [], 404));      // Inertia: the page and a real 404 status
 ```
+
+Inside a handler, a missing record is the same call: `return response()->inertia('not-found', [], 404);`. Without the status argument the response is a 200 that merely looks like a not-found page.
 
 ## Route Options
 

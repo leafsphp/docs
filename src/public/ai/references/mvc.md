@@ -229,6 +229,17 @@ seeds:
 
 Seeding is opt-in: a schema file with no `seeds:` block seeds nothing. With a `seeds:` block, rows come from `data:` (inline), or from `model:`'s `__seeder()` method repeated `count` times.
 
+Seeded rows get `created_at` and `updated_at` stamped with the seeding time unless the row sets them itself (leafs/schema 5.1+). Data that needs a place in history (last month's orders, a streak of reading days) backdates the real column instead of adding a parallel one:
+
+```yaml
+seeds:
+  data:
+    - ref: 'ORD-1'
+      created_at: '@tick.subtract(30, "day").format("YYYY-MM-DD HH:mm:ss")'   # updated_at follows created_at unless set
+    - ref: 'ORD-2'
+      created_at: '2026-01-15 09:30:00'
+```
+
 ### Faker Seeds
 
 ```yaml

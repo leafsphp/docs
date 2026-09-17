@@ -259,7 +259,7 @@ All reference files live at `https://leafphp.dev/ai/references/<name>.md`, fetch
 | CORS (config, options, MVC vs Lite) | `references/cors.md` |
 | MVC (controllers, models, schema files, services, libraries, globals) | `references/mvc.md` |
 | Views (Blade, BareUI, Inertia, Vite, Tailwind) | `references/views.md` |
-| Advanced (cache, storage, queues, billing, i18n, sitemap) | `references/advanced.md` |
+| Advanced (cache, storage, queues and scheduled jobs, billing, i18n, sitemap) | `references/advanced.md` |
 | Mail, HTTP fetch client, HTTP cache | `references/mail-fetch-cache.md` |
 | Dates & time (tick(), timezones, formatting, diff) | `references/dates.md` |
 | Utilities (Anchor/XSS/SQL protection) | `references/utilities.md` |
@@ -285,6 +285,12 @@ Read this before writing code, each entry is a mistake real agents have made:
 - **Auth, db(), and Eloquent models share one database connection in MVC** (leafs/db 5.1+): db() lazily borrows Eloquent's PDO, so an auth read and a model write can't deadlock each other. Keep the SQLite `journal_mode`/`busy_timeout` defaults in `config/database.php` anyway, they protect concurrent PHP processes.
 - **`date` and `timestamp` columns are stored as `YYYY-MM-DD HH:MM:SS`.** Compare with `whereDate()`, not `where()`, a string comparison against a bare `YYYY-MM-DD` treats an exact boundary date as greater-than and quietly returns wrong rows.
 - **Inertia auto-shares an `auth` prop** (`{id, user, roles, permissions, errors}`) on every page, and the framework's value wins. Don't `Inertia::share()` your own `auth` key. `user` contains every non-hidden column.
+- **Inertia also auto-shares `errors`** (leafs/inertia 5.1+): flash `errors` and redirect 303, and `useForm().errors` is populated on the next page. Agents have built their own flash bags and prop plumbing for this; don't.
+- **An Inertia not-found page needs the status passed**: `response()->inertia('not-found', [], 404)`. Without the third argument the shell answers 200, so crawlers and monitors see a working page.
+- **Seed rows may set `created_at`** (leafs/schema 5.1+). Backdate the real column with `@tick.subtract(...)`; don't invent a `happened_at` column to hold a date the row already has.
+- **Scheduled work lives in the queue module.** A job's `schedule()` method (`$this->cron(...)`, `$this->every('day')`) runs under `leaf queue:work`. Before writing "the app has no scheduler" into a decision, read `references/advanced.md`.
+- **Use the PHP that installed `vendor/`.** A lock resolved on PHP 8.4+ will not install on an 8.2 `php`. In the Leaf desktop app the runtime is `~/.leaf/runtime/php` (on PATH as `~/.leaf/bin/php`); elsewhere check `php -v` against `vendor/composer/platform_check.php` before assuming the project is broken.
+- **Tests**: run them with `composer run test` (Alchemy wires Pest, files are `tests/*.test.php`). Ad-hoc `tests/foo.php` scripts are invisible to the runner and to CI.
 - **To run application code headlessly** (scripts, diagnosis), `require vendor/autoload.php` then `\Leaf\Core::loadApplicationEnv()` and `\Leaf\Core::loadApplicationConfig()`, `leaf interact` is an interactive REPL and can't be scripted.
 - **"Add React/Vue/Svelte" does not mean "build a separate SPA."** When a user asks for a JS frontend in an existing Leaf app, reach for `leaf view:install` and the Inertia bridge. Never scaffold a standalone SPA with its own hand-written JSON API unless the user explicitly asks for a separate frontend, agents with SPA priors rebuild the bridge from scratch and lose auth sharing, routing, and validation for free.
 - **Fetch this skill and its reference files RAW** (curl or an equivalent that returns the file verbatim). Summarizing fetch tools have been observed inventing plausible-but-nonexistent Leaf APIs (usually Laravel-shaped ones) that then fail at runtime. If you can only see a summary, treat any API you haven't seen verbatim as unverified.

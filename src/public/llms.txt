@@ -275,6 +275,7 @@ seeds:
 ```
 
 - Seed `@` tokens mirror the PHP call exactly: any Faker formatter/modifier with typed JSON args (`@faker.randomElement(["a", "b"])`), `@tick.subtract(30, "day").format("YYYY-MM-DD")`, `@randomString(32)`, `@hash("secret")`. Optional `locale: fr_FR` under `seeds` for locale-aware data. Non-token strings pass through unchanged.
+- Seeded rows are stamped with the seeding time unless a row sets `created_at`/`updated_at` itself (leafs/schema 5.1+): `created_at: '@tick.subtract(30, "day").format("YYYY-MM-DD HH:mm:ss")'` backdates a row, no parallel date column needed.
 
 **Critical schema rules:**
 - **Never manually add `id`, `created_at`, or `updated_at`** - they are auto-added to every table.
@@ -481,8 +482,16 @@ response()->inertia('dashboard', [
     'feed' => Inertia::defer(fn () => Feed::load()),            // auto-fetched by the client after first render
     'teams' => Inertia::defer(fn () => Team::all(), 'group2'),  // defer groups load in parallel requests
     'posts' => Inertia::merge(fn () => Post::paginate())->matchOn('id'), // client appends instead of overwriting
-    'errors' => Inertia::always(fn () => flash()->display('errors') ?? []), // survives partial reload filters
+    'notice' => Inertia::always(fn () => flash()->display('notice')),  // survives partial reload filters
 ]);
+
+// Validation: flash the errors and redirect 303; every page then carries an `errors` prop
+// ({field: "message"}, cleared on the next visit) that useForm().errors reads automatically (inertia 5.1+)
+return response()->withFlash('errors', request()->errors())->redirect('/form', 303);
+
+// A real 404 for missing records: the third argument is the status (inertia 5.1+)
+app()->set404(fn () => response()->inertia('not-found', [], 404));
+return response()->inertia('not-found', [], 404);
 
 Inertia::share('appName', 'My App');            // shared with every page
 Inertia::version(fn () => \Leaf\Vite::manifestHash()); // asset version; mismatch => 409 full reload
@@ -789,6 +798,7 @@ Feature scaffolds ship blade/react/vue/svelte variants - auto-detected from the 
 - **Cache**: `cache()` = store, `cache('key')` = get, `cache('key', ttl, value)` = remember (existing value wins), `cache('key', value)` = store forever. Only closures are lazily evaluated - plain strings are cached literally even if they match a function name.
 - **S3**: uploads accept a `'visibility'` option ('private' stays private; default 'public'); bucket connections are configured with the `'endpoint'` key.
 - **Cookie**: call `Cookie::setDefaults(['path' => '/'])` once - deletion uses the configured path/domain, so defaults keep set and unset consistent. `simpleCookie()` accepts a strtotime string ('7 days') or timestamp expiry.
+- **Queue / scheduled jobs** (`leaf install queue`): a job class with a `schedule()` method returning `$this->cron('*/15 * * * *')` or `$this->every('day')->at('8:00')` runs on that schedule while `leaf queue:work` is running. That is the framework's scheduler; a nightly sweep does not need a crontab or lazy-on-load expiry. Details in https://leafphp.dev/ai/references/advanced.md.
 
 ---
 
@@ -909,6 +919,9 @@ Key rules:
 15. **Don't define `$table` in a model unless the table name is irregular.** Leaf resolves it automatically from the class name (`Pin` → `pins`, `BlogPost` → `blog_posts`).
 16. **Don't add foreign key columns manually in schema files.** Use `relationships: - ModelName` - it generates the FK column automatically. Adding it in both `columns` and `relationships` causes a duplicate column error.
 17. **Don't use `move_uploaded_file()` or manually handle `$_FILES` for uploads.** Use `request()->upload('field', 'destination/')` - Leaf handles everything including validation and file moving.
+18. **Don't hand-roll an `errors` prop or a not-found "page" in Inertia apps.** Flash `errors` and redirect; the shared `errors` prop is automatic. Pass the status as the third argument (`response()->inertia('not-found', [], 404)`) instead of serving a 200 that looks like a 404.
+19. **Don't add `decided_at`-style columns just to backdate seed rows.** A seed row can set `created_at` itself.
+20. **Don't run a project with a PHP older than the one that installed `vendor/`.** `composer install` resolves against the running PHP; a lock made on 8.4+ refuses an 8.2 CLI. Use the PHP that created the project (in the Leaf desktop app that is `~/.leaf/runtime/php`, on PATH through `~/.leaf/bin`).
 
 ---
 
