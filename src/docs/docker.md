@@ -30,12 +30,16 @@ We have provided two examples below, one for Apache and one for Nginx. You can c
 
 ### Dockerfile
 
+::: danger Security notice (22 Oct 2026)
+PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 Oct 2026 to fix CVE-2026-109618 and CVE-2026-109619 ("PHP2Shell"), critical remote code execution bugs in PHP itself that are being exploited in the wild. Leaf code is not affected, but every server running PHP should update. The examples below pin patched images; if you use a floating tag such as `php:8.3-apache`, rebuild with `docker build --pull`. See the [PHP advisory](https://www.php.net/archive/2026.php).
+:::
+
 To build your Docker image, you'll use a `Dockerfile`. You can adjust this file to meet your specific requirements. We have example files for both Apache and Nginx running on PHP 8.3. To get started, create a docker directory in the root of your project and place the Dockerfile there.
 
 ::: code-group
 
 ```dockerfile [Dockerfile Apache]
-FROM php:8.3-apache
+FROM php:8.3.36-apache
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
@@ -71,7 +75,7 @@ CMD ["apache2-foreground"]
 ```
 
 ```dockerfile [Dockerfile Nginx]
-FROM php:8.3-fpm
+FROM php:8.3.36-fpm
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
