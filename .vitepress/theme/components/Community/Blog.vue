@@ -3,6 +3,13 @@ import { ui } from '../Home/ui';
 
 const blogPosts = [
   {
+    id: 4,
+    title: 'Looking back at 740k+ installs',
+    excerpt: 'Seven years, five major versions, and the three busiest months in our history since Leaf 5 shipped.',
+    image: 'https://blog.leafphp.dev/740k-installs.png',
+    url: 'https://blog.leafphp.dev/posts/740k-installs.html',
+  },
+  {
     id: 3,
     title: 'The weekend Alchemy earned its keep',
     excerpt: 'Ten releases in two days, a Windows bug we could not reproduce, and the boring config file that held it all together.',
@@ -29,7 +36,7 @@ const blogPosts = [
       </p>
     </header>
 
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       <a
         v-for="post in blogPosts"
         :key="post.id"
