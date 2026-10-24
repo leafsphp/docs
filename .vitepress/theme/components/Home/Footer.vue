@@ -59,8 +59,8 @@ import { ui } from './ui';
           </div>
           <div class="h-6 w-px bg-black/[0.08] dark:bg-white/[0.08]" aria-hidden="true" />
           <div class="flex flex-col items-center gap-0.5">
-            <span class="text-2xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50">500k+</span>
-            <span class="text-xs text-neutral-500 dark:text-neutral-400">Downloads</span>
+            <span class="text-2xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50">740k+</span>
+            <span class="text-xs text-neutral-500 dark:text-neutral-400">Installs</span>
           </div>
           <div class="h-6 w-px bg-black/[0.08] dark:bg-white/[0.08]" aria-hidden="true" />
           <div class="flex flex-col items-center gap-0.5">

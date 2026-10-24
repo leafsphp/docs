@@ -36,10 +36,10 @@ onMounted(() => {
     <div class="pointer-events-none absolute left-[20%] top-[12vh] z-0 h-[36vh] w-3/5 bg-[radial-gradient(50%_50%_at_50%_50%,var(--vp-c-brand-1)_0%,transparent_100%)] opacity-10 blur-[120px]" aria-hidden="true" />
 
     <div :class="[ui.section, 'relative z-10 w-full py-20 sm:py-24']">
-      <div :class="[ui.badge, 'max-sm:mx-4 mb-8 w-fit']">
+      <a href="https://blog.leafphp.dev/posts/740k-installs" :class="[ui.badge, 'max-sm:mx-4 mb-8 w-fit !no-underline transition-colors hover:text-neutral-950 dark:hover:text-neutral-50']">
         <span :class="ui.badgeDot" aria-hidden="true" />
-        Leaf 5 · A new era
-      </div>
+        740k+ installs · Looking back at seven years →
+      </a>
 
       <h1
         class="!text-4xl tracking-tighter text-balance max-lg:font-medium max-sm:px-4 sm:!text-5xl lg:!text-6xl xl:!text-8xl">
