@@ -5,7 +5,7 @@ const blogPosts = [
   {
     id: 4,
     title: 'Looking back at 740k+ installs',
-    excerpt: 'Seven years, five major versions, and the three busiest months in our history since Leaf 5 shipped.',
+    excerpt: 'From a tiny router to the busiest months in our history. Look back on the journey with us.',
     image: 'https://blog.leafphp.dev/740k-installs.png',
     url: 'https://blog.leafphp.dev/posts/740k-installs.html',
   },

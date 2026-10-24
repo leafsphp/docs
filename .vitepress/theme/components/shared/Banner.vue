@@ -37,7 +37,7 @@ const dismiss = () => {
       <p class="banner-copy">
         <span class="banner-kicker">740k+ installs</span>
         <span class="banner-divider" aria-hidden="true">/</span>
-        <span class="banner-detail">Seven years of Leaf, and the three busiest months yet.</span>
+        <span class="banner-detail">Look back on the journey with us.</span>
       </p>
 
       <a href="https://blog.leafphp.dev/posts/740k-installs" class="banner-link">
