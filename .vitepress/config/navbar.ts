@@ -19,6 +19,10 @@ const nav: DefaultTheme.NavItem[] = [
         link: '/community/guide',
       },
       {
+        text: 'Generative AI policy',
+        link: '/community/generative-ai',
+      },
+      {
         text: 'Team',
         link: '/community/team',
       },

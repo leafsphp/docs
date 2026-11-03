@@ -15,6 +15,7 @@ Before you get started, please take a moment to read through the following guide
 - [Leaf & Modules](#leaf-and-modules)
 - [Documentation](#documentation)
 - [Code of Conduct](#code-of-conduct)
+- [Generative AI](#generative-ai)
 - [Pull Request Guidelines](#pull-request-guidelines)
 
 ## Leaf and Modules
@@ -38,6 +39,10 @@ Create a safe space for reviewers by mirroring understanding, setting clear boun
 ## Code of Conduct
 
 Our [Code of Conduct](/community/code-of-conduct) governs how we behave in public or in private whenever Leaf or its community is involved. We expect it to be honored by everyone who represents the Leaf community officially or informally, claims affiliation with the project, or participates directly. It applies to all of our spaces, including GitHub, Twitter, and other social media platforms.
+
+## Generative AI
+
+AI assistants are welcome in your workflow, with conditions. Say in the pull request which tool helped and what it did, be ready to explain every line you submit, and talk to a maintainer before opening a large AI-generated change. Work funded by grants such as NLnet has stricter rules. The full [Generative AI Policy](/community/generative-ai) spells all of this out.
 
 ## Pull Request Guidelines
 
