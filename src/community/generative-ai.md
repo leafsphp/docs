@@ -50,7 +50,7 @@ Some Leaf work is funded by grants with their own rules on AI. For work funded b
 - AI is only used read-only, for example to review code or flag security issues. Maintainers write all fixes themselves.
 - AI usage costs are not charged to the grant.
 
-Issues and pull requests that are part of grant-funded work are labelled so contributors know these stricter rules apply.
+Issues and pull requests that are part of grant-funded work carry the `🏛 grant-funded` label so contributors know these stricter rules apply.
 
 ## Questions
 
