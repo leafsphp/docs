@@ -42,7 +42,7 @@ Our [Code of Conduct](/community/code-of-conduct) governs how we behave in publi
 
 ## Generative AI
 
-AI assistants are welcome in your workflow, with conditions. Say in the pull request which tool helped and what it did, be ready to explain every line you submit, and talk to a maintainer before opening a large AI-generated change. Work funded by grants such as NLnet has stricter rules. The full [Generative AI Policy](/community/generative-ai) spells all of this out.
+AI assistants are welcome in your workflow, with conditions. Say in the pull request which tool helped and what it did, be ready to explain every line you submit, and talk to a maintainer before opening a large AI-generated change. Grant-funded work has stricter rules. The full [Generative AI Policy](/community/generative-ai) spells all of this out.
 
 ## Pull Request Guidelines
 
