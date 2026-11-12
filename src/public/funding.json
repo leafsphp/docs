@@ -1,0 +1,100 @@
+{
+  "version": "v1.1.0",
+  "entity": {
+    "type": "individual",
+    "role": "owner",
+    "name": "Michael Darko-Duodu",
+    "email": "mickdd22@gmail.com",
+    "description": "I created Leaf PHP in 2019 and have maintained it since, mostly unpaid, through the v3, v4 and v5 major lines. I'm based in Accra, Ghana.",
+    "webpageUrl": {
+      "url": "https://leafphp.dev"
+    }
+  },
+  "projects": [
+    {
+      "guid": "leaf-php",
+      "name": "Leaf PHP",
+      "description": "Leaf is an MIT-licensed PHP framework and a set of about 54 packages for building web apps and APIs, used mostly by small teams and solo developers. It has 774k+ installs on Packagist (about 1,500 a day), 1,331 GitHub stars, and supports PHP 8.2 to 8.5. I'm effectively the only maintainer: Leaf has never had an outside security review, six packages have no CI, and security fixes still have to be backported by hand to older majors.",
+      "webpageUrl": {
+        "url": "https://leafphp.dev"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/leafsphp/leaf",
+        "wellKnown": "https://github.com/leafsphp/leaf/blob/v5.x/.well-known/funding-manifest-urls"
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "php",
+        "web-framework",
+        "api",
+        "web-development",
+        "security"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "opencollective",
+        "type": "payment-provider",
+        "address": "https://opencollective.com/leaf",
+        "description": "Leaf's Open Collective."
+      },
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/leafsphp",
+        "description": "GitHub Sponsors for the leafsphp organisation."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "maintainer-time",
+        "status": "active",
+        "name": "Maintainer time",
+        "description": "Pays for my time on Leaf as the main maintainer: CI and tests for every maintained package (starting with the six that have none), a written LTS and backport policy for v3 to v5 with release tooling, PHP 8.6 support, upgrade tooling so apps can move off unsupported majors, and API reference docs for the ~135 public v5 classes that lack them.",
+        "amount": 48000,
+        "currency": "USD",
+        "frequency": "yearly",
+        "channels": [
+          "opencollective",
+          "github-sponsors"
+        ]
+      },
+      {
+        "guid": "security-review",
+        "status": "active",
+        "name": "Security review and hardening",
+        "description": "An outside security review of Leaf's core, auth, session, csrf and db packages, fixing and backporting what it finds, secure defaults, SECURITY.md and private vulnerability reporting on every repo, and signed releases.",
+        "amount": 20000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "opencollective"
+        ]
+      },
+      {
+        "guid": "community-sponsor",
+        "status": "active",
+        "name": "Community sponsor",
+        "description": "For individuals and small teams who use Leaf and want to keep it maintained.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": [
+          "opencollective",
+          "github-sponsors"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "year": 2026,
+        "currency": "USD",
+        "description": "Leaf has never had institutional funding. Since 2019 it has received about $1,460 in total through Open Collective, plus GitHub Sponsors."
+      }
+    ]
+  }
+}
