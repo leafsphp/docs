@@ -196,4 +196,4 @@ To include a sub-template in a template, you can use the `$template::render()` m
 </body>
 ```
 
-All BareUI templates have access to the `$template` variable, which is an instance of the BareUI engine. Calling the `render()` method on this variable will include the specified sub-template in the current template.
+All BareUI templates have access to the `$template` variable, which holds the BareUI class name, so `$template::render()` is a static call. Calling `render()` this way will include the specified sub-template in the current template.

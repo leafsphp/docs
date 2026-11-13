@@ -151,6 +151,23 @@ app()->config([
 ]);
 ```
 
+You can change how each entry is formatted with the `log.style` configuration option. It accepts `leaf` (the default) or `linux`:
+
+```php
+app()->config([
+  'log.enabled' => true,
+  'log.style' => 'linux'
+]);
+```
+
+With `leaf`, the timestamp sits on its own line above the message. With `linux`, each entry is a single line, like a system log:
+
+```text:no-line-numbers
+[2026-11-13 09:31:40] ERROR - Something went wrong
+```
+
+By default new entries are appended to the end of the file. If you prefer the old newest-first layout, set `log.mode` to `prepend` (this rewrites the whole file on every entry, so avoid it on busy production apps).
+
 :::
 
 ::: details Usage with Leaf MVC
@@ -168,6 +185,18 @@ leaf uninstall logger
 That's it! Leaf will no longer log errors or exceptions for your app.
 
 :::
+
+### Writing your own log entries
+
+Once logging is enabled, `app()->logger()` gives you the logger instance, so you can log your own messages and not only errors:
+
+```php
+app()->logger()->info('User signed up', ['id' => 12]);
+app()->logger()->warning('Disk space is low');
+app()->logger()->error('Payment failed');
+```
+
+Each level method (`debug`, `info`, `notice`, `warning`, `error`, `critical`, `alert`, `emergency`) writes to the log file you configured. If logging isn't enabled or the logger module isn't installed, `app()->logger()` triggers an error telling you to set `log.enabled` and install the module.
 
 ## Rescue Helper
 
