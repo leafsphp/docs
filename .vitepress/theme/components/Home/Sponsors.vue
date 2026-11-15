@@ -9,7 +9,7 @@ import { ui } from './ui';
       <p :class="ui.eyebrow">Open Source</p>
       <h2 :class="ui.title">Backed by the community</h2>
       <p :class="ui.subtitle">
-        Leaf is fully community-backed. Your support keeps the momentum going as we make modern PHP faster, cleaner, and
+        Leaf is fully community-backed. Your support keeps the momentum going as we make building faster, cleaner, and
         more AI-ready.
       </p>
     </header>

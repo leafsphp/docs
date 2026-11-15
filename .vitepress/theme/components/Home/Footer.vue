@@ -26,7 +26,7 @@ import { ui } from './ui';
 
         <p :class="[ui.subtitle, '!mx-auto !mb-10 max-w-xl']">
           Clean code. Predictable structure. Easy for humans and AI to understand.
-          Get started with Leaf 5 and experience a new era of PHP.
+          Get started with Leaf 5 and experience a new era of building.
         </p>
 
         <div :class="[ui.actions, 'justify-center']">

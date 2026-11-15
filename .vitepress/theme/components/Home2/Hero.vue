@@ -13,7 +13,7 @@ const installs = stats.installs ? Math.floor(stats.installs / 10000) * 10000 : n
         Leaf 5 is out
       </a>
       <h1 class="!m-0 !mt-6 !border-0 !p-0 text-[clamp(2.25rem,6vw,4rem)] font-semibold leading-[1.05] tracking-[-0.035em] text-neutral-950 dark:text-neutral-50">
-        The PHP framework for people and their agents
+        The fastest way to build, for people and their agents
       </h1>
       <p :class="[ui.subtitle, '!mx-auto !mt-6 max-w-2xl !text-lg']">
         Leaf is small enough to learn in an afternoon and complete enough to run a business on. Leaf 5 adds the context an agent needs, so the code it writes is code you would have written yourself.

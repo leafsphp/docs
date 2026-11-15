@@ -19,7 +19,7 @@ export default defineConfig({
   srcExclude: ['tutorial/**/description.md', 'old/**'],
 
   title: 'Leaf PHP',
-  description: 'Leaf is the PHP framework built for AI and humans. Build products at the speed of thought.',
+  description: 'Leaf is the fastest way to build, made for people and their agents. Clean, light and extensible.',
 
   themeConfig: {
     nav,
