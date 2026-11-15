@@ -1,0 +1,13 @@
+[build]
+  command = "pnpm build"
+  publish = ".vitepress/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "9"
+
+# Staging only: keep search engines out.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

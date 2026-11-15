@@ -1,35 +1,23 @@
 <script setup>
-import Hero from './Hero.vue';
-import AIWorkflow from './AIWorkflow.vue';
-import Tooling from './Tooling.vue';
-import SpeedDemo from './SpeedDemo.vue';
-import Sponsors from './Sponsors.vue';
+import Hero from '../Home2/Hero.vue';
+import Readers from '../Home2/Readers.vue';
+import FrameworkTabs from '../Home2/FrameworkTabs.vue';
+import AgentCards from '../Home2/AgentCards.vue';
+import Lab from '../Home2/Lab.vue';
 import Testimonials from './Testimonials.vue';
-import Community from './Community.vue';
-import Ecosystem from './Ecosystem.vue';
+import Sponsors from './Sponsors.vue';
 import Footer from './Footer.vue';
-import FlexibleFrontend from './FlexibleFrontend.vue';
-import NewsLetterSubstack from '../Community/NewsLetterSubstack.vue';
-import Blog from '../Community/Blog.vue';
-import Speak from '../Community/Speak.vue';
-import WallOfFame from '../Community/WallOfFame.vue';
 </script>
 
 <template>
   <div class="home-shell">
     <Hero />
-    <Sponsors />
-    <AIWorkflow />
-    <SpeedDemo />
-    <Tooling />
-    <FlexibleFrontend />
-    <Ecosystem />
+    <Readers />
+    <FrameworkTabs />
+    <AgentCards />
+    <Lab />
     <Testimonials />
-    <Community />
-    <Blog />
-    <Speak />
-    <WallOfFame />
-    <NewsLetterSubstack />
+    <Sponsors />
   </div>
   <Footer />
 </template>
