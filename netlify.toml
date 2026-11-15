@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm build"
+  command = "sh scripts/netlify-build.sh"
   publish = ".vitepress/dist"
 
 [build.environment]
