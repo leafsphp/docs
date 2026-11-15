@@ -1,7 +1,7 @@
 // Build-time stats for the home page. Falls back to null so the page never breaks the build.
 async function getJson(url: string): Promise<any> {
   try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'leafphp-docs-build' } });
+    const res = await fetch(url, { headers: { 'User-Agent': 'leafphp-docs-build' }, signal: AbortSignal.timeout(8000) });
     return res.ok ? await res.json() : null;
   } catch {
     return null;
