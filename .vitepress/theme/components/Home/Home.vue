@@ -1,25 +1,35 @@
 <script setup>
-import Hero from '../Home2/Hero.vue';
-import Readers from '../Home2/Readers.vue';
-import FrameworkTabs from '../Home2/FrameworkTabs.vue';
-import AgentCards from '../Home2/AgentCards.vue';
-import Lab from '../Home2/Lab.vue';
-import Testimonials from './Testimonials.vue';
-import Sponsors from './Sponsors.vue';
-import Footer from './Footer.vue';
+// Homepage direction F (Nov 2026): builders and agents, framework first.
+import Hero from '../Home3/Hero.vue';
+import Demo from '../Home3/Demo.vue';
+import Sponsors from '../Home3/Sponsors.vue';
+import OneCommand from '../Home3/OneCommand.vue';
+import WhyLeaf from '../Home3/WhyLeaf.vue';
+import WhereLeafSits from '../Home3/WhereLeafSits.vue';
+import Testimonials from '../Home3/Testimonials.vue';
+import Ecosystem from '../Home3/Ecosystem.vue';
+import Showcase from '../Home3/Showcase.vue';
+import FinalCta from '../Home3/FinalCta.vue';
+import SiteFooter from '../Home3/SiteFooter.vue';
+import '../Home3/home3.css';
 </script>
 
 <template>
-  <div class="home-shell">
-    <Hero />
-    <Readers />
-    <FrameworkTabs />
-    <AgentCards />
-    <Lab />
-    <Testimonials />
-    <Sponsors />
+  <div class="lf">
+    <div class="home-shell">
+      <Hero />
+      <Demo />
+      <Sponsors />
+      <OneCommand />
+      <WhyLeaf />
+      <WhereLeafSits />
+      <Testimonials />
+      <Ecosystem />
+      <Showcase />
+      <FinalCta />
+      <SiteFooter />
+    </div>
   </div>
-  <Footer />
 </template>
 
 <style>
@@ -31,10 +41,11 @@ import Footer from './Footer.vue';
 
 .VPHome {
   margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* guide rails: a bordered container running the full page, sections divided
-   by hairlines that meet the rails — sections themselves stay transparent */
+   by hairlines that meet the rails */
 .home-shell {
   margin: 0 auto;
   width: 100%;
@@ -43,21 +54,12 @@ import Footer from './Footer.vue';
 
 @media (min-width: 960px) {
   .home-shell {
-    border-left: 1px solid rgba(0, 0, 0, 0.08);
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
-  }
-
-  .dark .home-shell {
-    border-left-color: rgba(255, 255, 255, 0.08);
-    border-right-color: rgba(255, 255, 255, 0.08);
+    border-left: 1px solid var(--lf-line);
+    border-right: 1px solid var(--lf-line);
   }
 }
 
 .home-shell > * + * {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.dark .home-shell > * + * {
-  border-top-color: rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--lf-line);
 }
 </style>
