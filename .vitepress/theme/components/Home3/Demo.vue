@@ -13,9 +13,9 @@ const typed = ref(0);
 const ticks = ref(0);
 const split = ref(41);
 const root = ref<HTMLElement | null>(null);
+const mounted = ref(false);
 
 let timer: ReturnType<typeof setInterval> | undefined;
-let observer: IntersectionObserver | undefined;
 
 const idea = computed(() => ideas[i.value]);
 const typedDone = computed(() => typed.value >= idea.value.prompt.length);
@@ -24,14 +24,17 @@ const allDone = computed(() => step.value > idea.value.files.length);
 const fi = computed(() => Math.min(file.value, idea.value.files.length - 1));
 const lines = computed(() => (allDone.value ? highlight(idea.value.files[fi.value][1]) : []));
 
+// The timer runs from mount; the demo only advances while it is on screen.
+function inView() {
+  const r = root.value?.getBoundingClientRect();
+  return !!r && r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25;
+}
+
 function tick() {
+  if (!inView()) return;
   const it = idea.value;
   if (typed.value < it.prompt.length) typed.value = Math.min(it.prompt.length, typed.value + 2);
   else if (ticks.value < (it.files.length + 2) * TICK) ticks.value++;
-}
-
-function start() {
-  if (!timer) timer = setInterval(tick, 35);
 }
 
 function reset() {
@@ -46,27 +49,17 @@ function pick(k: number) {
 }
 
 onMounted(() => {
+  mounted.value = true;
   if (window.innerWidth < 900) split.value = 8;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     typed.value = idea.value.prompt.length;
     ticks.value = (idea.value.files.length + 2) * TICK;
   }
-  // start typing once the section scrolls into view
-  observer = new IntersectionObserver(
-    (entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        start();
-        observer?.disconnect();
-      }
-    },
-    { threshold: 0.25 },
-  );
-  if (root.value) observer.observe(root.value);
+  timer = setInterval(tick, 35);
 });
 
 onBeforeUnmount(() => {
   clearInterval(timer);
-  observer?.disconnect();
 });
 </script>
 
@@ -80,6 +73,9 @@ onBeforeUnmount(() => {
       </p>
     </div>
 
+    <!-- client-only: the demo is driven by timers and its state never matches the
+         server-rendered HTML, which broke hydration in production builds -->
+    <ClientOnly>
     <div class="lf-seg-wrap">
       <div class="lf-seg" role="group" aria-label="Example prompts">
         <button
@@ -106,14 +102,14 @@ onBeforeUnmount(() => {
           <span v-if="typedDone && !allDone" class="lf-status">
             <span class="lf-dot" />Reading the project map and writing files
           </span>
-          <span v-if="allDone" class="lf-status lf-rise" style="color: var(--lf-ink)">
+          <span v-if="allDone" class="lf-status lf-status-done lf-rise">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F9D63" stroke-width="2.6"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12l5 5 9-10" />
             </svg>
             {{ idea.summary }}
           </span>
-          <button type="button" class="lf-send" aria-label="Replay the demo" @click="reset(); start()">
+          <button type="button" class="lf-send" aria-label="Replay the demo" @click="reset()">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
               stroke-linecap="round" aria-hidden="true">
               <path d="M12 19V5M5 12l7-7 7 7" />
@@ -127,7 +123,7 @@ onBeforeUnmount(() => {
         <pre class="lite lf-editor"><span v-for="ln in lines" :key="ln.n" class="lf-ed-line"><span class="lf-ed-n">{{ ln.n }}</span><span v-for="(sg, j) in ln.segs" :key="j" :class="sg.k">{{ sg.t }}</span></span></pre>
 
         <div class="lf-app-layer" :style="{ clipPath: `inset(0 0 0 ${split}%)` }">
-          <DemoApps v-if="allDone" :app="idea.key" />
+          <div v-show="allDone" style="height: 100%"><DemoApps :app="idea.key" /></div>
         </div>
 
         <div v-if="!allDone" class="lf-working">
@@ -159,6 +155,8 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
+    </ClientOnly>
+    <div v-if="!mounted" class="lf-demo-placeholder" aria-hidden="true" />
     <p class="lf-demo-cap">Drag the handle. Coders read the code, everyone else sees the app it makes.</p>
   </section>
 </template>
@@ -179,6 +177,9 @@ onBeforeUnmount(() => {
   line-height: 1.04 !important;
   letter-spacing: -0.04em;
   font-weight: 600;
+}
+.lf-demo-placeholder {
+  height: 860px;
 }
 .lf-seg-wrap {
   display: flex;
@@ -240,6 +241,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 1px 2px rgba(60, 40, 20, 0.05), 0 24px 60px -24px rgba(60, 40, 20, 0.35);
 }
 .lf-composer-text {
+  color: #120e0b !important;
   margin-bottom: 12px !important;
   font-size: 17px;
   line-height: 1.5 !important;
@@ -270,6 +272,9 @@ onBeforeUnmount(() => {
   font-size: 13px;
   color: #6b6158;
   min-width: 0;
+}
+.lf-status-done {
+  color: #3a332d;
 }
 .lf-send {
   margin-left: auto;
