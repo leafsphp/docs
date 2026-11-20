@@ -3,18 +3,18 @@ import { ui } from '../Home/ui';
 
 const blogPosts = [
   {
+    id: 5,
+    title: 'PHP 8.6 is here, and what to update',
+    excerpt: 'What is new in PHP 8.6, plus the 18 CVEs fixed across every supported branch the same day.',
+    image: 'https://blog.leafphp.dev/php-november-security-releases.jpg',
+    url: 'https://blog.leafphp.dev/posts/php-november-security-releases.html',
+  },
+  {
     id: 4,
     title: 'Looking back at 740k+ installs',
     excerpt: 'From a tiny router to the busiest months in our history. Look back on the journey with us.',
     image: 'https://blog.leafphp.dev/740k-installs.png',
     url: 'https://blog.leafphp.dev/posts/740k-installs.html',
-  },
-  {
-    id: 3,
-    title: 'The weekend Alchemy earned its keep',
-    excerpt: 'Ten releases in two days, a Windows bug we could not reproduce, and the boring config file that held it all together.',
-    image: 'https://leafphp.dev/leaf5-banner.png',
-    url: 'https://blog.leafphp.dev/posts/alchemy-earned-its-keep.html',
   },
   {
     id: 2,

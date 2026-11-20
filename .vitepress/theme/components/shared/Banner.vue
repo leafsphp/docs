@@ -35,13 +35,13 @@ const dismiss = () => {
   <div ref="el" class="banner">
     <div class="banner-inner">
       <p class="banner-copy">
-        <span class="banner-kicker">740k+ installs</span>
+        <span class="banner-kicker">PHP 8.6 is here</span>
         <span class="banner-divider" aria-hidden="true">/</span>
-        <span class="banner-detail">Look back on the journey with us.</span>
+        <span class="banner-detail">Plus security fixes for every supported PHP branch.</span>
       </p>
 
-      <a href="https://blog.leafphp.dev/posts/740k-installs" class="banner-link">
-        <span class="banner-link-full">Read the story</span>
+      <a href="https://blog.leafphp.dev/posts/php-november-security-releases" class="banner-link">
+        <span class="banner-link-full">Read the post</span>
         <span class="banner-link-short">Read</span>
         <ArrowRight />
       </a>
