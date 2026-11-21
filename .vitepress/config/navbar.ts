@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'vitepress';
 
 // Desktop: the TopNav component (components/shared/TopNav.vue) renders the
-// Framework / Products / Resources menus, and CSS hides every item here except
+// Docs / Ecosystem / Resources menus, and CSS hides every item here except
 // the Support chip. Mobile: this list drives the nav screen as-is.
 const nav: DefaultTheme.NavItem[] = [
   {
@@ -10,20 +10,7 @@ const nav: DefaultTheme.NavItem[] = [
     link: '/docs/',
   },
   {
-    text: 'Framework',
-    items: [
-      { text: 'Routing', link: '/docs/routing/' },
-      { text: 'Sign-in', link: '/docs/auth/' },
-      { text: 'Database', link: '/docs/database/' },
-      { text: 'Payments', link: '/docs/utils/billing' },
-      { text: 'Background jobs', link: '/docs/utils/queues' },
-      { text: 'Frontend', link: '/docs/frontend/' },
-      { text: 'AI and agents', link: '/docs/ai' },
-      { text: 'All 25+ modules', link: '/docs/modules' },
-    ],
-  },
-  {
-    text: 'Products',
+    text: 'Ecosystem',
     items: [
       { text: 'Alchemy: QA + CI', link: 'https://alchemy.leafphp.dev' },
       { text: 'Kata: design systems for AI', link: 'https://kata.leafphp.dev' },
