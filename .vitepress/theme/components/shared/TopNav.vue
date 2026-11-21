@@ -786,17 +786,27 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
   gap: 6px;
   min-height: 210px;
   border-radius: 14px;
-  background: #14110e;
-  transition: transform 0.25s;
+  border: 1px solid var(--vp-c-divider);
+  /* Leaf filler stripes (DESIGN.md: 315deg, 1px, 9px period) */
+  background-color: #faf7f2;
+  background-image: repeating-linear-gradient(315deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 9px);
+  transition: border-color 0.2s;
+}
+.dark .tn-article-img {
+  background-color: #0a0807;
+  background-image: repeating-linear-gradient(315deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 9px);
 }
 .tn-article:hover .tn-article-img {
-  transform: scale(1.015);
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 45%, var(--vp-c-divider));
 }
 .tn-article-glow {
   position: absolute;
-  inset: auto -30% -60% -30%;
+  inset: auto -30% -70% -30%;
   height: 120%;
-  background: radial-gradient(circle at 50% 50%, rgba(232, 117, 58, 0.55), transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(232, 117, 58, 0.28), transparent 60%);
+}
+.dark .tn-article-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(232, 117, 58, 0.45), transparent 60%);
 }
 .tn-article-img svg {
   position: relative;

@@ -1867,21 +1867,22 @@ html.dark ::-webkit-scrollbar-thumb {
     height: 17px;
   }
 
-  /* search is a compact pill (magnifier + shortcut), Tailwind-style */
+  /* search: a compact control in the same shape as the other nav controls
+     (34px, 10px radius, hairline), with the shortcut as a mono key cap */
   .VPNavBar .DocSearch-Button {
-    height: 32px;
+    height: 34px;
     min-width: 0 !important;
     width: auto !important;
     margin: 0;
-    padding: 0 10px 0 11px !important;
-    gap: 6px;
-    border: 1px solid transparent !important;
-    border-radius: 999px;
-    background: var(--vp-c-default-soft) !important;
+    padding: 0 6px 0 10px !important;
+    gap: 8px;
+    border: 1px solid var(--vp-c-divider) !important;
+    border-radius: 10px;
+    background: transparent !important;
     transition: border-color 0.15s, background 0.15s;
   }
   .VPNavBar .DocSearch-Button:hover {
-    border-color: var(--vp-c-divider) !important;
+    border-color: color-mix(in srgb, var(--vp-c-brand-1) 45%, var(--vp-c-divider)) !important;
   }
   .VPNavBar .DocSearch-Button .DocSearch-Button-Container {
     justify-content: center;
@@ -1890,24 +1891,35 @@ html.dark ::-webkit-scrollbar-thumb {
     width: 15px;
     height: 15px;
     margin: 0;
+    color: var(--vp-c-text-2);
   }
   .VPNavBar .DocSearch-Button .DocSearch-Button-Placeholder {
     display: none !important;
   }
   .VPNavBar .DocSearch-Button .DocSearch-Button-Keys {
     display: flex !important;
+    gap: 2px;
     margin: 0;
     padding: 0;
   }
   .VPNavBar .DocSearch-Button .DocSearch-Button-Key {
+    display: grid;
+    place-items: center;
+    height: 20px;
+    min-width: 20px;
     margin: 0 !important;
-    padding: 0 !important;
-    min-width: 0;
-    border: 0 !important;
+    padding: 0 4px !important;
+    border: 1px solid var(--vp-c-divider) !important;
+    border-radius: 5px;
     background: transparent !important;
-    font-size: 13px;
+    font-family: var(--vp-font-family-mono);
+    font-size: 11px;
     font-weight: 500;
+    line-height: 1;
     color: var(--vp-c-text-2);
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Key:first-child::after {
+    font-size: 13px;
   }
 }
 
