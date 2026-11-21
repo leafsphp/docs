@@ -2001,3 +2001,123 @@ html.dark ::-webkit-scrollbar-thumb {
     display: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Docs layout (Nov 2026): the structure of the Tailwind / Claude docs, */
+/* drawn in the Leaf language (eyebrows, hairline rails, flame accent,  */
+/* filler stripes).                                                     */
+/* ------------------------------------------------------------------ */
+
+/* sidebar group labels read as Leaf eyebrows */
+.VPSidebarItem.level-0 > .item > .text {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  line-height: 18px !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3) !important;
+}
+.VPSidebarItem.level-0 > .item {
+  padding-bottom: 8px;
+}
+.VPSidebar .group + .group {
+  margin-top: 14px;
+}
+
+/* a group's pages sit on one hairline rail */
+.VPSidebarItem.level-0 > .items {
+  margin-left: 2px;
+  padding-left: 10px;
+  border-left: 1px solid var(--vp-c-divider);
+}
+.VPSidebarItem.level-0 > .items .VPSidebarItem:not(.level-0) .link {
+  margin: 1px -6px 1px -4px !important;
+  padding: 7px 8px !important;
+}
+/* a little more room so the rail doesn't push long titles onto two lines */
+@media (min-width: 960px) {
+  :root {
+    --vp-sidebar-width: 296px;
+  }
+}
+.VPSidebarItem.level-0 > .items .VPSidebarItem > .item {
+  position: relative;
+}
+
+/* active page: soft flame pill, plus a flame tick on the rail */
+.VPSidebarItem:not(.level-0).is-active > .item .link {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 11%, transparent) !important;
+}
+.VPSidebarItem.level-0 > .items > .VPSidebarItem.is-active > .item::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--vp-c-brand-1);
+}
+
+/* On this page: eyebrow label, hairline rail, flame marker on the rail */
+.VPDocAsideOutline .outline-title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.16em !important;
+  color: var(--vp-c-text-3) !important;
+}
+.VPDocAsideOutline .content {
+  border-left: 1px solid var(--vp-c-divider) !important;
+  padding-left: 14px !important;
+}
+.VPDocAsideOutline .outline-marker {
+  left: -1px !important;
+  width: 2px !important;
+  border-radius: 2px !important;
+  background-color: var(--vp-c-brand-1) !important;
+}
+.VPDocAsideOutline .outline-link {
+  color: var(--vp-c-text-2);
+}
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-text-1) !important;
+  font-weight: 600;
+}
+
+/* eyebrow sits above the title; keep the Open with AI menu level with the h1 */
+@media (min-width: 640px) {
+  .doc-ai-menu:has(+ .doc-eyebrow) {
+    top: 28px !important;
+  }
+}
+
+/* striped gutter between the sidebar and the page, Leaf filler stripes */
+@media (min-width: 960px) {
+  .VPContent.has-sidebar::before {
+    content: '';
+    position: fixed;
+    top: calc(var(--vp-layout-top-height, 0px) + var(--vp-nav-height));
+    bottom: 0;
+    left: var(--vp-sidebar-width);
+    width: 26px;
+    border-left: 1px solid var(--vp-c-divider);
+    border-right: 1px solid var(--vp-c-divider);
+    background-image: repeating-linear-gradient(315deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 9px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .dark .VPContent.has-sidebar::before {
+    background-image: repeating-linear-gradient(315deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 9px);
+  }
+  /* sidebar and page share one surface; the gutter does the separating */
+  .VPSidebar {
+    background-color: var(--vp-c-bg) !important;
+  }
+}
+@media (min-width: 1440px) {
+  .VPContent.has-sidebar::before {
+    left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+  }
+}
