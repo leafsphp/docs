@@ -2121,3 +2121,58 @@ html.dark ::-webkit-scrollbar-thumb {
     left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
   }
 }
+
+/* --- Docs layout, round two: closer to the references --- */
+
+/* clean text sidebar like both references: no per-item icons */
+.VPSidebarItem .link .si {
+  display: none !important;
+}
+.VPSidebarItem:not(.level-0) .link > .text {
+  font-size: 14.5px !important;
+}
+
+/* search lives in the nav on every page (Tailwind-style), not the sidebar */
+@media (min-width: 960px) {
+  .VPNavBarSearch {
+    display: flex !important;
+    flex-grow: 0;
+    padding-left: 0;
+  }
+  .sidebar-search {
+    display: none !important;
+  }
+}
+
+/* the first paragraph under a docs title reads as its subtitle */
+.vp-doc h1 + p {
+  margin-top: 14px !important;
+  font-size: 18.5px !important;
+  line-height: 1.6 !important;
+  color: var(--vp-c-text-2) !important;
+}
+
+/* striped gutter on the right edge of the layout too, mirroring the left */
+@media (min-width: 1280px) {
+  .VPContent.has-sidebar::after {
+    content: '';
+    position: fixed;
+    top: calc(var(--vp-layout-top-height, 0px) + var(--vp-nav-height));
+    bottom: 0;
+    right: 0;
+    width: 26px;
+    border-left: 1px solid var(--vp-c-divider);
+    background-image: repeating-linear-gradient(315deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 9px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .dark .VPContent.has-sidebar::after {
+    background-image: repeating-linear-gradient(315deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 9px);
+  }
+}
+@media (min-width: 1440px) {
+  .VPContent.has-sidebar::after {
+    right: calc((100vw - var(--vp-layout-max-width)) / 2);
+    border-right: 1px solid var(--vp-c-divider);
+  }
+}
