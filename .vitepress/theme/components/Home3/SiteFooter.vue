@@ -23,7 +23,7 @@ const cols = [
   {
     title: 'Support',
     links: [
-      ['Sponsor Leaf', 'https://opencollective.com/leaf'],
+      ['Sponsor Leaf', '/support/'],
       ['Premium sponsorship', '/support/premium-sponsorship'],
       ['GitHub', 'https://github.com/leafsphp/leaf'],
     ],
