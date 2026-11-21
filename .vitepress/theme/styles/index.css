@@ -906,7 +906,7 @@ html.dark .docs-path-action {
   margin-top: 28px !important;
   padding-top: 0 !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  border-radius: 10px !important;
+  border-radius: var(--leaf-r) !important;
   background: #fff;
 }
 
@@ -1752,38 +1752,88 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 /* ------------------------------------------------------------------ */
-/* Squared corners: the family design system uses 0px radius on       */
-/* surfaces. Pills/chips (rounded-full) and avatars keep their shape. */
+/* Soft corners (Nov 2026): the site moved off the square, blocky look  */
+/* to the softer homepage/nav language. One small scale, used everywhere */
+/* in the docs; pills and avatars keep their own shapes.                 */
 /* ------------------------------------------------------------------ */
 
-.vp-doc div[class*='language-'],
-.vp-code-group .tabs,
+:root {
+  --leaf-r-xs: 6px;   /* inline code, kbd, small buttons */
+  --leaf-r-sm: 10px;  /* controls: search, menus' items, sidebar links */
+  --leaf-r: 14px;     /* surfaces: code blocks, callouts, tables, panels */
+  --leaf-r-lg: 18px;  /* large overlays: search dialog, flyout menus */
+}
+
+.vp-doc :not(pre) > code,
+.vp-doc kbd,
 .vp-doc [class*='language-'] > button.copy,
 .vp-doc [class*='language-'] > button.copy.copied,
 .vp-doc [class*='language-'] > button.copy:hover.copied,
+.vp-doc [class*='language-'] > span.lang {
+  border-radius: var(--leaf-r-xs) !important;
+}
 .vp-doc [class*='language-'] > button.copy.copied::before,
-.vp-doc [class*='language-'] > button.copy:hover.copied::before,
-.vp-doc .custom-block,
-.vp-doc :not(pre) > code,
-.vp-doc kbd,
-.vp-doc table,
-.vp-doc th,
-.vp-doc td,
-.docs-paths,
-.docs-section-card ul,
-.VPSidebarItem .link,
-.sidebar-search,
-.VPFlyout .menu,
-.VPLocalSearchBox .shell,
-.VPTeamMembersItem.small .profile,
-.vp-code-group,
-.tabs {
-  border-radius: 0 !important;
+.vp-doc [class*='language-'] > button.copy:hover.copied::before {
+  border-radius: var(--leaf-r-xs) 0 0 var(--leaf-r-xs) !important;
 }
 
-/* catch-all for tailwind radius utilities used inside doc content and
-   one-off components — pills (rounded-full) keep their shape */
-.VPContent :is(.rounded, .rounded-sm, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, [class*='rounded-[']) {
+.VPSidebarItem .link,
+.sidebar-search,
+.VPFlyout .menu .VPMenuLink .link {
+  border-radius: var(--leaf-r-sm) !important;
+}
+
+.vp-doc div[class*='language-'],
+.vp-doc .custom-block,
+.docs-paths,
+.docs-section-card ul,
+.VPTeamMembersItem.small .profile {
+  border-radius: var(--leaf-r) !important;
+}
+
+/* code groups: tabs carry the top corners, the active block the bottom */
+.vp-code-group {
+  border-radius: var(--leaf-r) !important;
+}
+.vp-code-group .tabs {
+  border-radius: var(--leaf-r) var(--leaf-r) 0 0 !important;
+}
+.vp-code-group div[class*='language-'] {
+  border-radius: 0 0 var(--leaf-r) var(--leaf-r) !important;
+}
+
+/* tables: round the outer box, keep cells square inside it */
+.vp-doc table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--leaf-r) !important;
+}
+.vp-doc th,
+.vp-doc td {
+  border-radius: 0 !important;
+  border-width: 0 0 1px 0;
+}
+.vp-doc tr:last-child td {
+  border-bottom: 0;
+}
+.vp-doc th + th,
+.vp-doc td + td {
+  border-left: 1px solid var(--vp-c-divider);
+}
+
+.VPFlyout .menu,
+.VPLocalSearchBox .shell {
+  border-radius: var(--leaf-r-lg) !important;
+}
+
+/* card grids (start page, prev/next pager): round the outer box and keep
+   the cells square inside it, so the shared hairlines meet cleanly */
+.docs-paths {
+  overflow: hidden;
+}
+.docs-path-card {
   border-radius: 0 !important;
 }
 

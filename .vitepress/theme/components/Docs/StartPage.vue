@@ -24,7 +24,7 @@
 
   <p>And when you need more, install only what the project needs:</p>
 
-  <div class="docs-start not-prose my-6 overflow-hidden rounded-none border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+  <div class="docs-start not-prose my-6 overflow-hidden rounded-[14px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/[0.02]">
     <div class="grid sm:grid-cols-2">
       <div
         v-for="(method, i) in installMethods"

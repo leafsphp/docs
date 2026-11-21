@@ -164,7 +164,7 @@ onBeforeUnmount(() => clearTimeout(timer));
 .quickstart-live .quickstart-number { color: var(--qs-accent); }
 .quickstart .quickstart-status { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 0; font-family: var(--vp-font-family-base); font-size: 15px; font-weight: 600; line-height: 1.6; }
 .quickstart-dot { width: 8px; height: 8px; background: #34c99b; flex-shrink: 0; }
-.quickstart .quickstart-status code { border-radius: 0; padding: 2px 8px; background: color-mix(in srgb, var(--qs-accent) 12%, transparent); color: var(--qs-accent); font-family: var(--vp-font-family-mono); font-size: 14px; font-weight: 400; white-space: nowrap; }
+.quickstart .quickstart-status code { border-radius: 6px; padding: 2px 8px; background: color-mix(in srgb, var(--qs-accent) 12%, transparent); color: var(--qs-accent); font-family: var(--vp-font-family-mono); font-size: 14px; font-weight: 400; white-space: nowrap; }
 .quickstart-time { font-size: 12px; }
 .quickstart-next { display: grid; grid-template-columns: 66px minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--qs-border); border-top: 0; background: var(--qs-band); }
 .quickstart-then { display: flex; align-items: center; justify-content: center; color: var(--qs-muted); font-size: 12px; }
