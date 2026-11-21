@@ -2152,31 +2152,6 @@ html.dark ::-webkit-scrollbar-thumb {
   color: var(--vp-c-text-2) !important;
 }
 
-/* striped gutter on the right edge of the layout too, mirroring the left */
-@media (min-width: 1280px) {
-  .VPContent.has-sidebar::after {
-    content: '';
-    position: fixed;
-    top: calc(var(--vp-layout-top-height, 0px) + var(--vp-nav-height));
-    bottom: 0;
-    right: 0;
-    width: 26px;
-    border-left: 1px solid var(--vp-c-divider);
-    background-image: repeating-linear-gradient(315deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 9px);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .dark .VPContent.has-sidebar::after {
-    background-image: repeating-linear-gradient(315deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 9px);
-  }
-}
-@media (min-width: 1440px) {
-  .VPContent.has-sidebar::after {
-    right: calc((100vw - var(--vp-layout-max-width)) / 2);
-    border-right: 1px solid var(--vp-c-divider);
-  }
-}
-
 /* Docs pages use the same nav as the homepage: the menus sit right after the
    logo instead of starting where the content column begins. The logo keeps
    its sidebar-aligned left edge. */
