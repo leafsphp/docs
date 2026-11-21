@@ -1775,3 +1775,27 @@ html.dark ::-webkit-scrollbar-thumb {
 .VPContent :is(.rounded, .rounded-sm, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, [class*='rounded-[']) {
   border-radius: 0 !important;
 }
+
+/* --- Top nav (direction F) ---
+   TopNav.vue renders the desktop menus; the default VitePress menu keeps only
+   the Support chip on desktop (the rest of navbar.ts is for the mobile screen). */
+@media (min-width: 960px) {
+  .VPNavBarMenu > *:not(.VPNavBarMenuLink[href="/support/"]) {
+    display: none !important;
+  }
+
+  /* the title keeps its natural width so the menus sit right after the logo */
+  .VPNavBar .content {
+    flex-grow: 1;
+  }
+  .VPNavBar .content-body {
+    justify-content: flex-start;
+  }
+
+  /* homepage has no sidebar, so search lives in the nav there */
+  .VPNavBar.home .VPNavBarSearch {
+    display: flex !important;
+    flex-grow: 0;
+    padding-left: 0;
+  }
+}

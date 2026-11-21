@@ -26,7 +26,7 @@ export default defineConfig({
     sidebar,
 
     logo: '/logo-circle.png',
-    siteTitle: 'Leaf PHP',
+    siteTitle: 'Leaf',
 
     search: {
       // provider: 'algolia',

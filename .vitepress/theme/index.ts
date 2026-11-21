@@ -8,11 +8,10 @@ import 'virtual:group-icons.css';
 import './styles/index.css';
 import './styles/home.css';
 
-// hoisted: creating this inside the slot closure would mint a new async
+// hoisted: creating these inside the slot closure would mint a new async
 // component on every navbar re-render (scroll), remounting it each time
-const EcosystemMenu = defineAsyncComponent(
-  () => import('./components/shared/EcosystemMenu.vue'),
-);
+const TopNav = defineAsyncComponent(() => import('./components/shared/TopNav.vue'));
+const NavCta = defineAsyncComponent(() => import('./components/shared/NavCta.vue'));
 
 /** @type {import('vitepress').Theme} */
 export default {
@@ -34,7 +33,8 @@ export default {
         ),
       'aside-ads-before': () =>
         h(defineAsyncComponent(() => import('./components/shared/Ad.vue'))),
-      'nav-bar-content-before': () => h(EcosystemMenu),
+      'nav-bar-content-before': () => h(TopNav),
+      'nav-bar-content-after': () => h(NavCta),
       // h(defineAsyncComponent(() => import('./components/shared/GPTLink.vue'))),
       'sidebar-nav-before': () => [
         h(
