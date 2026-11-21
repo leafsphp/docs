@@ -114,7 +114,8 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
         <div v-else-if="open === 'products'" class="tn-panel tn-products">
           <div class="tn-cards">
             <a :href="byName('Alchemy').url" target="_blank" rel="noopener" class="tn-card tn-card-dots">
-              <span class="tn-card-name"><span class="tn-sw" style="background: linear-gradient(135deg, #b9ebc9, #6fcf97)" />Alchemy</span>
+              <span class="tn-card-name"><img :src="byName('Alchemy').logo" alt="" class="tn-logo" />Alchemy</span>
+              <span class="tn-tag">{{ byName('Alchemy').tagline }}</span>
               <span class="tn-card-lede">Tests, code style and CI pipelines from one config file</span>
               <span class="tn-card-cta" style="color: #23704a">Set up QA →</span>
               <span class="tn-card-demo tn-mono">
@@ -125,7 +126,8 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
               </span>
             </a>
             <a :href="byName('Kata').url" target="_blank" rel="noopener" class="tn-card tn-card-hatch">
-              <span class="tn-card-name"><span class="tn-sw" style="background: linear-gradient(135deg, #f9c9e0, #e7a6c9)" />Kata</span>
+              <span class="tn-card-name"><img :src="byName('Kata').logo" alt="" class="tn-logo" />Kata</span>
+              <span class="tn-tag">{{ byName('Kata').tagline }}</span>
               <span class="tn-card-lede">Your design system, compiled into a language AI can build with</span>
               <span class="tn-card-cta" style="color: #8e2f67">Compile your system →</span>
               <span class="tn-card-demo">
@@ -135,7 +137,8 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
             </a>
             <a :href="byName('Seedling').url" target="_blank" rel="noopener" class="tn-card tn-card-dark">
               <span aria-hidden="true" class="tn-card-glow" />
-              <span class="tn-card-name tn-mono" style="text-transform: uppercase; letter-spacing: 0.04em"><span class="tn-sw" style="background: linear-gradient(135deg, #e2e8bc, #b8c46a)" />Seedling</span>
+              <span class="tn-card-name tn-mono" style="text-transform: uppercase; letter-spacing: 0.04em"><img :src="byName('Seedling').logo" alt="" class="tn-logo" />Seedling</span>
+              <span class="tn-tag">{{ byName('Seedling').tagline }}</span>
               <span class="tn-card-lede">Command-line tools with the same Leaf feel</span>
               <span class="tn-card-cta" style="color: #f5b731">Build a CLI →</span>
               <span class="tn-card-demo tn-mono" style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.09); color: #e8e6e3">
@@ -148,7 +151,8 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
           </div>
           <div class="tn-others">
             <a v-for="p in others" :key="p.name" :href="p.url" target="_blank" rel="noopener" class="tn-other">
-              <span class="tn-link-title">{{ p.name }}</span>
+              <span class="tn-link-title tn-other-name"><img :src="p.logo" alt="" class="tn-logo tn-logo-sm" />{{ p.name }}</span>
+              <span class="tn-tag">{{ p.tagline }}</span>
               <span class="tn-link-text">{{ p.menuDescription || p.description }}</span>
             </a>
           </div>
@@ -331,10 +335,34 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
   font-size: 22px;
   font-weight: 700;
 }
-.tn-sw {
-  width: 24px;
-  height: 24px;
-  border-radius: 7px;
+.tn-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+.tn-logo-sm {
+  width: 20px;
+  height: 20px;
+}
+.tn-tag {
+  position: relative;
+  display: block;
+  margin-top: -6px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.tn-other .tn-tag {
+  margin: 4px 0 6px;
+  color: var(--vp-c-text-3);
+  opacity: 1;
+}
+.tn-other-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .tn-card-lede {
   position: relative;
