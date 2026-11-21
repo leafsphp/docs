@@ -55,8 +55,7 @@ const quotes = [
     <div class="lf-pad" style="padding-top: 88px; padding-bottom: 48px">
       <h2 class="lf-h2" style="max-width: 820px">People are shipping real things with it</h2>
     </div>
-    <div class="lf-grid lf-tq">
-      <figure class="lf-tq-featured">
+    <figure class="lf-tq-featured">
         <blockquote>“{{ featured.quote }}”</blockquote>
         <figcaption class="lf-who">
           <img :src="featured.img" alt="" width="48" height="48" loading="lazy" style="width: 48px; height: 48px" />
@@ -65,7 +64,8 @@ const quotes = [
             <span style="font-size: 14px; color: #6b6158">{{ featured.handle }} · Leaf 5 alpha</span>
           </span>
         </figcaption>
-      </figure>
+    </figure>
+    <div class="lf-grid lf-tq">
       <figure v-for="q in quotes" :key="q.name" class="lf-tq-card">
         <blockquote>“{{ q.quote }}”</blockquote>
         <figcaption class="lf-who">
@@ -90,7 +90,7 @@ const quotes = [
   border-top: 1px solid var(--lf-line);
 }
 .lf-tq-featured {
-  grid-column: 1 / -1;
+  border-top: 1px solid var(--lf-line);
   background: linear-gradient(135deg, #fde9d9, #fbf1dc) !important;
   color: #120e0b;
   padding: 48px 32px !important;
@@ -133,5 +133,38 @@ const quotes = [
   border-radius: 50%;
   object-fit: cover;
   flex: 0 0 auto;
+}
+
+@media (max-width: 640px) {
+  .lf-tq-featured {
+    padding: 32px 16px !important;
+  }
+  .lf-tq-featured blockquote {
+    font-size: 21px !important;
+  }
+  /* quotes become one swipeable row of cards */
+  .lf-tq {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 16px;
+    scrollbar-width: none;
+  }
+  .lf-tq::-webkit-scrollbar {
+    display: none;
+  }
+  .lf-tq > * {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+    border: 1px solid var(--lf-line);
+    border-radius: 18px;
+    padding: 22px 20px !important;
+  }
+  .lf-tq-card blockquote {
+    font-size: 15px !important;
+  }
 }
 </style>

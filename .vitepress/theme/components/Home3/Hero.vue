@@ -49,4 +49,16 @@
   padding: 0 !important;
   font-size: 14px !important;
 }
+
+@media (max-width: 640px) {
+  .lf-hero-actions > a {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .lf-hero-cmd {
+    margin: 4px 0 0;
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>

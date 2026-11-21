@@ -537,4 +537,55 @@ const mapLines = [
     font-size: 12.5px;
   }
 }
+
+@media (max-width: 640px) {
+  .lf-bento {
+    gap: 12px;
+  }
+  .lf-tile {
+    border-radius: 20px;
+    padding: 6px;
+  }
+  .lf-tile-head svg {
+    display: none;
+  }
+  .lf-tile-head {
+    padding: 18px 14px 14px;
+  }
+  .lf-tile-head h3,
+  .lf-h3 {
+    font-size: 20px;
+  }
+  .lf-tile-body {
+    border-radius: 15px;
+  }
+  .lf-tr {
+    grid-template-columns: 40px 1fr 64px 44px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .lf-th {
+    padding: 9px 12px;
+  }
+  .lf-picker-title {
+    font-size: 28px;
+  }
+  .lf-mod {
+    font-size: 13.5px;
+    padding: 8px 13px 8px 10px;
+  }
+  .lf-fe-words {
+    font-size: 40px;
+  }
+  .lf-picker .lf-code {
+    min-height: 0 !important;
+  }
+  .lf-map {
+    padding: 18px 16px;
+  }
+  .lf-map pre {
+    font-size: 12px;
+    overflow-x: auto;
+  }
+}
 </style>

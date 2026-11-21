@@ -14,6 +14,11 @@ const ticks = ref(0);
 const split = ref(41);
 const root = ref<HTMLElement | null>(null);
 const mounted = ref(false);
+// phones get an App / Code switch instead of the drag slider
+const compact = ref(false);
+const view = ref<'app' | 'code'>('app');
+let mq: MediaQueryList | undefined;
+const onMq = () => (compact.value = !!mq?.matches);
 
 let timer: ReturnType<typeof setInterval> | undefined;
 
@@ -50,7 +55,9 @@ function pick(k: number) {
 
 onMounted(() => {
   mounted.value = true;
-  if (window.innerWidth < 900) split.value = 8;
+  mq = window.matchMedia('(max-width: 900px)');
+  onMq();
+  mq.addEventListener('change', onMq);
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     typed.value = idea.value.prompt.length;
     ticks.value = (idea.value.files.length + 2) * TICK;
@@ -60,6 +67,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   clearInterval(timer);
+  mq?.removeEventListener('change', onMq);
 });
 </script>
 
@@ -118,11 +126,18 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
+      <!-- phones: switch between the finished app and its code -->
+      <div v-if="compact" class="lf-view" role="tablist" aria-label="Show the app or its code">
+        <button type="button" role="tab" :aria-selected="view === 'app'" :class="{ on: view === 'app' }" @click="view = 'app'">The app</button>
+        <button type="button" role="tab" :aria-selected="view === 'code'" :class="{ on: view === 'code' }" @click="view = 'code'">The code</button>
+      </div>
+
       <!-- slider -->
       <div class="lf-stage">
         <pre class="lite lf-editor"><span v-for="ln in lines" :key="ln.n" class="lf-ed-line"><span class="lf-ed-n">{{ ln.n }}</span><span v-for="(sg, j) in ln.segs" :key="j" :class="sg.k">{{ sg.t }}</span></span></pre>
 
-        <div class="lf-app-layer" :style="{ clipPath: `inset(0 0 0 ${split}%)` }">
+        <div class="lf-app-layer"
+          :style="{ clipPath: compact ? (view === 'app' ? 'none' : 'inset(0 0 0 100%)') : `inset(0 0 0 ${split}%)` }">
           <div v-show="allDone" style="height: 100%"><DemoApps :app="idea.key" /></div>
         </div>
 
@@ -130,7 +145,7 @@ onBeforeUnmount(() => {
           <span><span class="lf-dot" />Your agent is working</span>
         </div>
 
-        <div class="lf-handle" :style="{ left: split + '%' }">
+        <div v-if="!compact" class="lf-handle" :style="{ left: split + '%' }">
           <span class="lf-knob">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#120E0B" stroke-width="2.4"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -138,10 +153,10 @@ onBeforeUnmount(() => {
             </svg>
           </span>
         </div>
-        <input v-model.number="split" type="range" min="0" max="100" class="lf-range"
+        <input v-if="!compact" v-model.number="split" type="range" min="0" max="100" class="lf-range"
           aria-label="Compare the code with the finished app" />
 
-        <div class="lf-files">
+        <div v-if="!compact || view === 'code'" class="lf-files">
           <button
             v-for="(f, k) in idea.files"
             :key="f[0]"
@@ -157,7 +172,10 @@ onBeforeUnmount(() => {
     </div>
     </ClientOnly>
     <div v-if="!mounted" class="lf-demo-placeholder" aria-hidden="true" />
-    <p class="lf-demo-cap">Drag the handle. Coders read the code, everyone else sees the app it makes.</p>
+    <p class="lf-demo-cap">
+      <span class="lf-cap-wide">Drag the handle. Coders read the code, everyone else sees the app it makes.</span>
+      <span class="lf-cap-narrow">Switch between the app and the code your agent wrote for it.</span>
+    </p>
   </section>
 </template>
 
@@ -429,13 +447,9 @@ onBeforeUnmount(() => {
 @media (max-width: 900px) {
   .lf-stage {
     --lf-app-left: 16px;
-    height: 640px;
   }
   .lf-status {
     display: none;
-  }
-  .lf-stage :deep(.lf-app) {
-    padding-top: 150px !important;
   }
 }
 @media (max-width: 640px) {
@@ -445,6 +459,120 @@ onBeforeUnmount(() => {
   }
   .lf-composer-text {
     font-size: 15px;
+  }
+}
+
+.lf-view {
+  display: flex;
+  gap: 2px;
+  width: fit-content;
+  margin: 0 auto 12px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #f3eee7;
+}
+.dark .lf-view {
+  background: #1f1a16;
+}
+.lf-view button {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #6b6158;
+  cursor: pointer;
+}
+.dark .lf-view button {
+  color: #b5aba0;
+}
+.lf-view button.on {
+  font-weight: 600;
+  background: #ffffff;
+  color: #120e0b;
+  box-shadow: 0 1px 3px rgba(60, 40, 20, 0.14);
+}
+.lf-cap-narrow {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .lf-demo {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .lf-demo-head {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  /* prompt picker: one swipeable row instead of a wrapped pill */
+  .lf-seg-wrap {
+    justify-content: flex-start;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .lf-seg-wrap::-webkit-scrollbar {
+    display: none;
+  }
+  .lf-seg {
+    flex-wrap: nowrap;
+  }
+  .lf-seg-btn {
+    white-space: nowrap;
+  }
+  /* composer sits in the flow above the stage instead of overlapping it */
+  .lf-stage-wrap {
+    margin-top: 16px;
+  }
+  .lf-composer {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    transform: none;
+    margin-bottom: 14px;
+    border-radius: 18px;
+    padding: 14px 10px 10px 16px;
+  }
+  .lf-composer-text {
+    font-size: 15px;
+    min-height: 3em;
+  }
+  .lf-stage {
+    height: 560px;
+    border-radius: 20px;
+  }
+  .lf-stage :deep(.lf-app) {
+    padding-top: 16px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .lf-editor {
+    padding: 60px 12px 16px !important;
+    font-size: 11.5px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lf-files {
+    top: 12px;
+    bottom: auto;
+    left: 12px;
+    right: 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .lf-file {
+    white-space: nowrap;
+  }
+  .lf-cap-wide {
+    display: none;
+  }
+  .lf-cap-narrow {
+    display: inline;
   }
 }
 </style>

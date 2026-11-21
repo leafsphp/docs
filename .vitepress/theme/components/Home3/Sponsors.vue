@@ -78,4 +78,28 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
   letter-spacing: 0;
   color: var(--lf-link) !important;
 }
+
+@media (max-width: 640px) {
+  .lf-sp-head {
+    padding-top: 56px;
+    padding-bottom: 28px;
+  }
+  .lf-sp-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lf-sp {
+    height: 84px;
+    gap: 9px;
+    font-size: 19px;
+  }
+  .lf-sp img {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+  .lf-sp-cta {
+    grid-column: 1 / -1;
+    height: 56px;
+  }
+}
 </style>

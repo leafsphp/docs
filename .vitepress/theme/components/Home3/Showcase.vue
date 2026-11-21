@@ -167,4 +167,13 @@ const shots = S.map((t) => ({
     height: 720px;
   }
 }
+
+@media (max-width: 640px) {
+  .lf-cols {
+    columns: 2;
+  }
+  .lf-wall {
+    height: 620px !important;
+  }
+}
 </style>

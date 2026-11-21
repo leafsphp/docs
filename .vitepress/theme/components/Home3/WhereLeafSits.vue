@@ -40,4 +40,28 @@
   line-height: 1.6 !important;
   color: var(--lf-muted);
 }
+
+@media (max-width: 640px) {
+  /* three cards in one swipeable row */
+  .lf-where {
+    display: flex;
+    gap: 12px;
+    padding: 24px 16px;
+    background: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 16px;
+    scrollbar-width: none;
+  }
+  .lf-where::-webkit-scrollbar {
+    display: none;
+  }
+  .lf-where > div {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    padding: 22px 20px;
+    border: 1px solid var(--lf-line);
+    border-radius: 18px;
+  }
+}
 </style>

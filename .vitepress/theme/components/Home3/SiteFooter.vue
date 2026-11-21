@@ -72,4 +72,17 @@ const cols = [
 .lf-foot-col a:hover {
   color: var(--lf-link) !important;
 }
+
+@media (max-width: 640px) {
+  .lf-foot {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 16px;
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+  .lf-foot > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
 </style>

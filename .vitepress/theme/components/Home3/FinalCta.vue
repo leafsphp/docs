@@ -83,4 +83,17 @@ import LeafMark from './LeafMark.vue';
     padding: 72px 20px;
   }
 }
+
+@media (max-width: 640px) {
+  .lf-cta-body > div {
+    width: 100%;
+    flex-direction: column;
+  }
+  .lf-cta-body > div > a {
+    justify-content: center;
+  }
+  .lf-cta-quote {
+    font-size: 16px !important;
+  }
+}
 </style>

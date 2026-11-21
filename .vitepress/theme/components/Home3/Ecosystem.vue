@@ -81,4 +81,31 @@ const tints: Record<string, string> = {
   line-height: 1.55;
   color: var(--lf-muted);
 }
+
+@media (max-width: 640px) {
+  .lf-eco-head {
+    padding-top: 56px;
+    padding-bottom: 28px;
+  }
+  .lf-eco {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lf-eco-item {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 16px;
+  }
+  .lf-eco-mark {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+  }
+  .lf-eco-name {
+    font-size: 16px;
+  }
+  .lf-eco-desc {
+    font-size: 13px;
+  }
+}
 </style>
