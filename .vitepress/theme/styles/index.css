@@ -2168,3 +2168,118 @@ html.dark ::-webkit-scrollbar-thumb {
     padding-left: 0 !important;
   }
 }
+
+/* --- Search modal: a narrow, soft panel ---
+   Plain local search underneath. SearchSuggestions.vue adds the chips and
+   quick links while the box is empty. `html` prefix beats the scoped styles. */
+html .VPLocalSearchBox .backdrop {
+  background: rgba(10, 8, 7, 0.42);
+  backdrop-filter: blur(6px);
+}
+html .VPLocalSearchBox .shell {
+  width: min(100vw - 32px, 640px);
+  margin: 12vh auto 64px;
+  padding: 10px 10px 8px;
+  gap: 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 22px !important;
+  background: #fff;
+  box-shadow: 0 24px 60px -18px rgba(20, 14, 8, 0.28), 0 2px 8px rgba(20, 14, 8, 0.06);
+}
+html.dark .VPLocalSearchBox .shell {
+  background: #171411;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
+}
+html .VPLocalSearchBox .search-bar {
+  order: 0;
+  height: 54px;
+  padding: 0 8px 0 12px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: var(--vp-c-bg-soft);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+html .VPLocalSearchBox .search-bar:focus-within {
+  border-color: rgba(212, 101, 46, 0.35);
+  box-shadow: 0 0 0 4px rgba(212, 101, 46, 0.08);
+}
+html .VPLocalSearchBox .search-icon {
+  margin: 0 4px 0 2px;
+  color: var(--vp-c-text-3);
+}
+html .VPLocalSearchBox .search-input {
+  font-size: 16px;
+  padding: 6px 8px;
+}
+html .VPLocalSearchBox .search-input::placeholder {
+  color: var(--vp-c-text-3);
+}
+/* the detailed-view toggle is noise here; clear only shows with text */
+html .VPLocalSearchBox .toggle-layout-button {
+  display: none;
+}
+html .VPLocalSearchBox .clear-button {
+  border-radius: 10px;
+  padding: 7px;
+}
+html .VPLocalSearchBox .clear-button:disabled {
+  display: none;
+}
+html .VPLocalSearchBox .results {
+  order: 2;
+  padding: 0 2px;
+}
+html .VPLocalSearchBox .results:empty {
+  display: none;
+}
+html .VPLocalSearchBox .result {
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+}
+html .VPLocalSearchBox .result.selected {
+  background: var(--vp-c-bg-soft);
+}
+html .VPLocalSearchBox .result.selected .titles .title-icon,
+html .VPLocalSearchBox .result.selected .title.main {
+  color: #e8753a;
+}
+html .VPLocalSearchBox .no-results {
+  padding: 18px 12px;
+  color: var(--vp-c-text-3);
+}
+html .VPLocalSearchBox .search-keyboard-shortcuts {
+  order: 3;
+  margin: 2px -10px -8px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+}
+html .VPLocalSearchBox .search-keyboard-shortcuts kbd {
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: none;
+}
+@media (max-width: 767px) {
+  html .VPLocalSearchBox .shell {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    border: none;
+    border-radius: 0 !important;
+    padding: 12px;
+  }
+}
+/* match highlights: tinted text instead of solid blocks */
+html .VPLocalSearchBox mark {
+  padding: 0 2px;
+  border-radius: 4px;
+  background: rgba(212, 101, 46, 0.12);
+  color: #d4652e;
+}
+html.dark .VPLocalSearchBox mark {
+  background: rgba(232, 117, 58, 0.14);
+  color: #e8753a;
+}

@@ -25,6 +25,8 @@ export default {
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
+      'layout-bottom': () =>
+        h(defineAsyncComponent(() => import('./components/shared/SearchSuggestions.vue'))),
       'layout-top': () =>
         h(defineAsyncComponent(() => import('./components/shared/Banner.vue'))),
       'doc-before': () => [h(DocAIMenu), h(DocEyebrow)],
