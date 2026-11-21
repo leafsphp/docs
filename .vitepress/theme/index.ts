@@ -8,9 +8,10 @@ import 'virtual:group-icons.css';
 import './styles/index.css';
 import './styles/home.css';
 
-// hoisted: creating this inside the slot closure would mint a new async
+// hoisted: creating these inside the slot closure would mint a new async
 // component on every navbar re-render (scroll), remounting it each time
 const TopNav = defineAsyncComponent(() => import('./components/shared/TopNav.vue'));
+const GitHubStars = defineAsyncComponent(() => import('./components/shared/GitHubStars.vue'));
 
 /** @type {import('vitepress').Theme} */
 export default {
@@ -33,6 +34,7 @@ export default {
       'aside-ads-before': () =>
         h(defineAsyncComponent(() => import('./components/shared/Ad.vue'))),
       'nav-bar-content-before': () => h(TopNav),
+      'nav-bar-content-after': () => h(GitHubStars),
       // h(defineAsyncComponent(() => import('./components/shared/GPTLink.vue'))),
       'sidebar-nav-before': () => [
         h(

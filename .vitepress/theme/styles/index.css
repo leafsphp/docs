@@ -1799,3 +1799,11 @@ html.dark ::-webkit-scrollbar-thumb {
     padding-left: 0;
   }
 }
+
+/* GitHubStars.vue replaces the GitHub icon in the desktop nav; the mobile nav
+   screen still shows it with the other socials */
+@media (min-width: 960px) {
+  .VPNavBarSocialLinks a[href*="github.com"] {
+    display: none !important;
+  }
+}
