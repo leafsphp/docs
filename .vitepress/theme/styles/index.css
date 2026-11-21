@@ -1888,3 +1888,48 @@ html.dark ::-webkit-scrollbar-thumb {
     background: transparent !important;
   }
 }
+
+/* Tablet (768–959px): VitePress would switch to its desktop menu here, but
+   TopNav only takes over at 960px. Keep the phone layout (logo, search,
+   hamburger + nav screen) until then so the bar never gets crowded. */
+@media (min-width: 768px) and (max-width: 959px) {
+  .VPNavBarMenu,
+  .VPNavBarExtra,
+  .VPNavBarSocialLinks,
+  .VPNavBarAppearance {
+    display: none !important;
+  }
+  .VPNavBarHamburger {
+    display: flex !important;
+  }
+  .VPNavScreen {
+    display: block !important;
+  }
+}
+
+/* Narrow desktop (960–1279px): VitePress hides social links and adds a "…"
+   menu below 1280px. Keep the socials, drop the extra menu, and below 1200px
+   collapse search to its icon so the bar fits. */
+@media (min-width: 960px) {
+  .VPNavBarSocialLinks {
+    display: flex !important;
+  }
+  .VPNavBarExtra {
+    display: none !important;
+  }
+}
+@media (min-width: 960px) and (max-width: 1199px) {
+  .VPNavBar .DocSearch-Button {
+    min-width: 34px !important;
+    width: 34px;
+    padding: 0 !important;
+    justify-content: center;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Placeholder,
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Keys {
+    display: none !important;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Container {
+    justify-content: center;
+  }
+}
