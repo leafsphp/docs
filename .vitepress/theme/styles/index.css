@@ -2176,3 +2176,18 @@ html.dark ::-webkit-scrollbar-thumb {
     border-right: 1px solid var(--vp-c-divider);
   }
 }
+
+/* Docs pages use the same nav as the homepage: the menus sit right after the
+   logo instead of starting where the content column begins. The logo keeps
+   its sidebar-aligned left edge. */
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .title {
+    position: relative !important;
+    width: auto !important;
+    padding-right: 0 !important;
+    padding-left: max(0px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 - 32px)) !important;
+  }
+  .VPNavBar.has-sidebar .content {
+    padding-left: 0 !important;
+  }
+}
