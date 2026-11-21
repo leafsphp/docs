@@ -1867,25 +1867,47 @@ html.dark ::-webkit-scrollbar-thumb {
     height: 17px;
   }
 
-  /* search reads as an input, not a filled pill */
+  /* search is a compact pill (magnifier + shortcut), Tailwind-style */
   .VPNavBar .DocSearch-Button {
-    height: 34px;
-    min-width: 190px;
+    height: 32px;
+    min-width: 0 !important;
+    width: auto !important;
     margin: 0;
-    padding: 0 6px 0 11px;
-    border: 1px solid var(--vp-c-divider) !important;
-    border-radius: 10px;
-    background: transparent !important;
+    padding: 0 10px 0 11px !important;
+    gap: 6px;
+    border: 1px solid transparent !important;
+    border-radius: 999px;
+    background: var(--vp-c-default-soft) !important;
+    transition: border-color 0.15s, background 0.15s;
   }
   .VPNavBar .DocSearch-Button:hover {
-    border-color: var(--vp-c-text-3) !important;
+    border-color: var(--vp-c-divider) !important;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Container {
+    justify-content: center;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Search-Icon {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Placeholder {
+    display: none !important;
   }
   .VPNavBar .DocSearch-Button .DocSearch-Button-Keys {
-    margin-left: auto;
+    display: flex !important;
+    margin: 0;
+    padding: 0;
   }
   .VPNavBar .DocSearch-Button .DocSearch-Button-Key {
-    border-color: var(--vp-c-divider) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0;
+    border: 0 !important;
     background: transparent !important;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--vp-c-text-2);
   }
 }
 
@@ -1908,28 +1930,12 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 /* Narrow desktop (960–1279px): VitePress hides social links and adds a "…"
-   menu below 1280px. Keep the socials, drop the extra menu, and below 1200px
-   collapse search to its icon so the bar fits. */
+   menu below 1280px. Keep the socials and drop the extra menu. */
 @media (min-width: 960px) {
   .VPNavBarSocialLinks {
     display: flex !important;
   }
   .VPNavBarExtra {
     display: none !important;
-  }
-}
-@media (min-width: 960px) and (max-width: 1199px) {
-  .VPNavBar .DocSearch-Button {
-    min-width: 34px !important;
-    width: 34px;
-    padding: 0 !important;
-    justify-content: center;
-  }
-  .VPNavBar .DocSearch-Button .DocSearch-Button-Placeholder,
-  .VPNavBar .DocSearch-Button .DocSearch-Button-Keys {
-    display: none !important;
-  }
-  .VPNavBar .DocSearch-Button .DocSearch-Button-Container {
-    justify-content: center;
   }
 }
