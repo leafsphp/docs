@@ -1847,6 +1847,9 @@ html.dark ::-webkit-scrollbar-thumb {
   .VPNavBarSocialLinks {
     margin-left: 6px;
   }
+  .VPNavBarSocialLinks .VPSocialLinks {
+    gap: 4px;
+  }
   .VPNavBarSocialLinks .VPSocialLink {
     width: 34px;
     height: 34px;

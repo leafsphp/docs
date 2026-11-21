@@ -48,7 +48,8 @@ const stars = stats.stars
 .nav-utils {
   display: none;
   align-items: center;
-  gap: 2px;
+  gap: 0;
+  margin-left: 8px;
 }
 @media (min-width: 960px) {
   .nav-utils {
