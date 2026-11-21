@@ -39,11 +39,6 @@ export default {
             () => import('./components/shared/SidebarSearch.vue'),
           ),
         ),
-        h(
-          defineAsyncComponent(
-            () => import('./components/shared/SidebarLinks.vue'),
-          ),
-        ),
       ],
     });
   },

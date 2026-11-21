@@ -2181,7 +2181,8 @@ html.dark ::-webkit-scrollbar-thumb {
    logo instead of starting where the content column begins. The logo keeps
    its sidebar-aligned left edge. */
 @media (min-width: 960px) {
-  .VPNavBar.has-sidebar .title {
+  /* outer title block only: the logo link inside is also a .title */
+  .VPNavBar.has-sidebar .container > .title {
     position: relative !important;
     width: auto !important;
     padding-right: 0 !important;

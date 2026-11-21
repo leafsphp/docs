@@ -9,6 +9,7 @@ const sidebar = [
         text: '<i class="si si-sparkles"></i>AI in Leaf <span class="badge new">New</span>',
         link: '/docs/ai',
       },
+      { text: '<i class="si si-terminal"></i>Agent skill', link: '/docs/agent-skill' },
       {
         text: '<i class="si si-zap"></i>Why Leaf 5 <span class="badge new">New</span>',
         link: 'https://blog.leafphp.dev/posts/leaf-5',

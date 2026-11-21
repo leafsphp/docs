@@ -64,12 +64,12 @@ const menus = [
 // Docs: tiles are drawn here (no third-party art); each gets its own colour
 const explore = [
   { title: 'Start building', text: 'Install Leaf and ship your first route', link: '/docs/', art: 'start' },
-  { title: "What's new", text: 'Release notes for every version', link: 'https://github.com/leafsphp/leaf/releases', art: 'news' },
+  { title: 'API Reference', text: 'Every function, class and helper', link: '/api-reference', art: 'api' },
   { title: 'Leaf Learn', text: 'Guides that start from zero', link: '/learn/', art: 'learn' },
 ];
 const agents = [
   { title: 'AI in Leaf', text: 'The project map your agent reads', link: '/docs/ai', art: 'map' },
-  { title: 'Agent skill', text: 'A drop-in skill for coding agents', link: '/ai/SKILL.md', art: 'skill' },
+  { title: 'Agent skill', text: 'A drop-in skill for coding agents', link: '/docs/agent-skill', art: 'skill' },
   { title: 'Modules', text: '25+ pieces that plug in', link: '/docs/modules', art: 'modules' },
 ];
 const docLinks = [
@@ -89,8 +89,6 @@ const frontends = [
 // Resources
 const community = [
   { title: 'Blog', link: 'https://blog.leafphp.dev', icon: 'news' },
-  { title: 'YouTube', link: 'https://www.youtube.com/channel/UCllE-GsYy10RkxBUK0HIffw', icon: 'play' },
-  { title: 'Discord', link: 'https://discord.gg/Pkrm9NJPE3', icon: 'chat' },
   { title: 'Contribute', link: '/community/guide', icon: 'heart' },
   { title: 'Team', link: '/community/team', icon: 'users' },
   { title: 'FAQ', link: '/community/faq', icon: 'help' },
@@ -122,6 +120,7 @@ const art: Record<string, string> = {
   news: `<path d="M8 30 24 38 40 30 24 22Z"/><path d="M8 24 24 32 40 24 24 16Z" fill="var(--face)"/><path d="M8 18 24 26 40 18 24 10Z" fill="var(--face)"/><circle cx="31" cy="15.5" r="3.5" fill="#E8753A" stroke="none"/>`,
   learn: `<path d="M24 14c-6-4-13-4-18-2v24c5-2 12-2 18 2 6-4 13-4 18-2V12c-5-2-12-2-18 2Z" fill="var(--face)"/><path d="M24 14v24"/><path d="M31 11.5v9l2.5-1.8 2.5 1.8v-9" fill="#E8753A" stroke="#E8753A"/>`,
   map: `<path d="M6 14l11-4 14 4 11-4v26l-11 4-14-4-11 4Z" fill="var(--face)"/><path d="M17 10v26M31 14v26"/><path d="M24 31s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10z" fill="#E8753A" stroke="#E8753A"/><circle cx="24" cy="21" r="2" fill="var(--face)" stroke="none"/>`,
+  api: `<rect x="7" y="8" width="34" height="32" rx="2" fill="var(--face)"/><path d="M18 18l-6 6 6 6M30 18l6 6-6 6"/><path d="M26.5 15l-5 18" stroke="#E8753A" stroke-width="2"/>`,
   skill: `<rect x="6" y="10" width="36" height="28" fill="var(--face)"/><path d="M6 17h36M22 32h10"/><path d="M13 24l5 4-5 4" stroke="#E8753A" stroke-width="2"/>`,
   modules: `<path d="M6 30 24 39 42 30 24 21Z"/><path d="M6 24 24 33 42 24 24 15Z" fill="var(--face)"/><path d="M6 18 24 27 42 18 24 9Z" fill="#E8753A" stroke="#E8753A"/>`,
 };
