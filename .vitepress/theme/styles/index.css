@@ -2185,7 +2185,8 @@ html.dark ::-webkit-scrollbar-thumb {
     position: relative !important;
     width: auto !important;
     padding-right: 0 !important;
-    padding-left: max(0px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 - 32px)) !important;
+    /* same offset the sidebar uses, so the logo lines up with the sidebar text */
+    padding-left: max(0px, calc((100vw - var(--vp-layout-max-width)) / 2)) !important;
   }
   .VPNavBar.has-sidebar .content {
     padding-left: 0 !important;
