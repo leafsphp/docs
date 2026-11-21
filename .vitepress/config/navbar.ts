@@ -48,7 +48,7 @@ const nav: DefaultTheme.NavItem[] = [
     ],
   },
   {
-    text: '🧡 SUPPORT LEAF',
+    text: 'Support Leaf',
     link: '/support/',
   },
 ];

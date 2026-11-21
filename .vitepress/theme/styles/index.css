@@ -185,25 +185,36 @@ html.dark .VPNavBar.home {
   letter-spacing: -0.01em;
 }
 
-/* the support link becomes a brand chip instead of shouting in caps */
+/* the support link is the one accent in the nav: a soft brand pill */
 .VPNavBarMenuLink[href="/support/"] {
   align-self: center;
-  height: 26px !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  height: 34px !important;
   margin-left: 6px;
-  padding: 0 12px !important;
-  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 32%, transparent);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
+  padding: 0 14px !important;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
   color: var(--vp-c-brand-1) !important;
-  font-family: var(--vp-font-family-mono);
-  font-size: 11px !important;
-  letter-spacing: 0.06em;
-  line-height: 24px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0;
+  line-height: 1 !important;
   white-space: nowrap;
 }
 
+.VPNavBarMenuLink[href="/support/"]::before {
+  content: '';
+  width: 13px;
+  height: 13px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.6 4.5c2.1 0 3.6 1.1 5.4 3.1 1.8-2 3.3-3.1 5.4-3.1 3.6 0 5.7 3.8 4.2 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.6 4.5c2.1 0 3.6 1.1 5.4 3.1 1.8-2 3.3-3.1 5.4-3.1 3.6 0 5.7 3.8 4.2 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
 .VPNavBarMenuLink[href="/support/"]:hover {
-  background: color-mix(in srgb, var(--vp-c-brand-1) 18%, transparent);
+  background: color-mix(in srgb, var(--vp-c-brand-1) 20%, transparent);
 }
 
 .VPSidebar .group,
@@ -1800,10 +1811,77 @@ html.dark ::-webkit-scrollbar-thumb {
   }
 }
 
-/* GitHubStars.vue replaces the GitHub icon in the desktop nav; the mobile nav
-   screen still shows it with the other socials */
+
+/* Right side of the desktop nav, in one calm row:
+   search, X, Discord, GitHub + stars, theme, then Support Leaf as the accent.
+   GitHubStars.vue supplies GitHub and the theme button, so VitePress's GitHub
+   icon and appearance switch are hidden here (the mobile screen keeps them). */
 @media (min-width: 960px) {
+  .VPNavBar .content-body > * {
+    order: 10;
+  }
+  .VPNavBar .content-body > .VPNavBarSearch {
+    order: 1;
+  }
+  .VPNavBar .content-body > .VPNavBarSocialLinks {
+    order: 2;
+  }
+  .VPNavBar .content-body > .nav-utils {
+    order: 3;
+  }
+  .VPNavBar .content-body > .VPNavBarMenu {
+    order: 4;
+  }
+  .VPNavBar .content-body > .tn {
+    order: 0;
+  }
+
+  .VPNavBar .content-body > *::before {
+    display: none !important;
+  }
+  .VPNavBarAppearance,
   .VPNavBarSocialLinks a[href*="github.com"] {
     display: none !important;
+  }
+
+  .VPNavBarSocialLinks {
+    margin-left: 6px;
+  }
+  .VPNavBarSocialLinks .VPSocialLink {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    color: var(--vp-c-text-2);
+  }
+  .VPNavBarSocialLinks .VPSocialLink:hover {
+    background: var(--vp-c-default-soft);
+    color: var(--vp-c-text-1);
+  }
+  .VPNavBarSocialLinks .VPSocialLink > svg,
+  .VPNavBarSocialLinks .VPSocialLink > .vpi-social-x,
+  .VPNavBarSocialLinks .VPSocialLink > [class*='vpi-'] {
+    width: 17px;
+    height: 17px;
+  }
+
+  /* search reads as an input, not a filled pill */
+  .VPNavBar .DocSearch-Button {
+    height: 34px;
+    min-width: 190px;
+    margin: 0;
+    padding: 0 6px 0 11px;
+    border: 1px solid var(--vp-c-divider) !important;
+    border-radius: 10px;
+    background: transparent !important;
+  }
+  .VPNavBar .DocSearch-Button:hover {
+    border-color: var(--vp-c-text-3) !important;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Keys {
+    margin-left: auto;
+  }
+  .VPNavBar .DocSearch-Button .DocSearch-Button-Key {
+    border-color: var(--vp-c-divider) !important;
+    background: transparent !important;
   }
 }
