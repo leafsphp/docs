@@ -3,7 +3,7 @@
 // laravel.com's: labelled columns, icon tiles, a visual panel on the right.
 // Sits inside the VitePress nav bar so search, theme, socials and the mobile
 // menu keep working; the mobile menu itself is driven by config/navbar.ts.
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute } from 'vitepress';
 import { products } from './ecosystem';
 import { data as sponsorData } from '../../lib/sponsors.data';
@@ -63,14 +63,14 @@ const menus = [
 
 // Docs: tiles are drawn here (no third-party art); each gets its own colour
 const explore = [
-  { title: 'Start building', text: 'Install Leaf and ship your first route', link: '/docs/', tile: 'flame', icon: 'download' },
-  { title: "What's new", text: 'Release notes for every version', link: 'https://github.com/leafsphp/leaf/releases', tile: 'green', icon: 'news' },
-  { title: 'Leaf Learn', text: 'Guides that start from zero', link: '/learn/', tile: 'ink', icon: 'play' },
+  { title: 'Start building', text: 'Install Leaf and ship your first route', link: '/docs/', art: 'start' },
+  { title: "What's new", text: 'Release notes for every version', link: 'https://github.com/leafsphp/leaf/releases', art: 'news' },
+  { title: 'Leaf Learn', text: 'Guides that start from zero', link: '/learn/', art: 'learn' },
 ];
 const agents = [
-  { title: 'AI in Leaf', text: 'The project map your agent reads', link: '/docs/ai', tile: 'violet', icon: 'chat' },
-  { title: 'Agent skill', text: 'A drop-in skill for coding agents', link: '/ai/SKILL.md', tile: 'blue', icon: 'term' },
-  { title: 'Modules', text: '25+ pieces that plug in', link: '/docs/modules', tile: 'amber', icon: 'layers' },
+  { title: 'AI in Leaf', text: 'The project map your agent reads', link: '/docs/ai', art: 'map' },
+  { title: 'Agent skill', text: 'A drop-in skill for coding agents', link: '/ai/SKILL.md', art: 'skill' },
+  { title: 'Modules', text: '25+ pieces that plug in', link: '/docs/modules', art: 'modules' },
 ];
 const docLinks = [
   { title: 'Installation', link: '/docs/', icon: 'download' },
@@ -115,6 +115,38 @@ const icons: Record<string, string> = {
 const featured = ['Alchemy', 'Kata', 'Seedling'];
 const byName = (n: string) => products.find((p) => p.name === n)!;
 const others = products.filter((p) => !featured.includes(p.name));
+// Drawn in the Leaf line style (see DESIGN.md): thin ink strokes on a white
+// face, one flame accent. viewBox 0 0 48 48.
+const art: Record<string, string> = {
+  start: `<path d="M8 22 24 30 40 22 24 14Z" fill="var(--face)"/><path d="M8 22v12l16 8 16-8V22M24 30v12"/><path d="M24 3v11M19.5 9.5 24 14l4.5-4.5" stroke="#E8753A" stroke-width="2"/>`,
+  news: `<path d="M8 30 24 38 40 30 24 22Z"/><path d="M8 24 24 32 40 24 24 16Z" fill="var(--face)"/><path d="M8 18 24 26 40 18 24 10Z" fill="var(--face)"/><circle cx="31" cy="15.5" r="3.5" fill="#E8753A" stroke="none"/>`,
+  learn: `<path d="M24 14c-6-4-13-4-18-2v24c5-2 12-2 18 2 6-4 13-4 18-2V12c-5-2-12-2-18 2Z" fill="var(--face)"/><path d="M24 14v24"/><path d="M31 11.5v9l2.5-1.8 2.5 1.8v-9" fill="#E8753A" stroke="#E8753A"/>`,
+  map: `<path d="M6 14l11-4 14 4 11-4v26l-11 4-14-4-11 4Z" fill="var(--face)"/><path d="M17 10v26M31 14v26"/><path d="M24 31s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10z" fill="#E8753A" stroke="#E8753A"/><circle cx="24" cy="21" r="2" fill="var(--face)" stroke="none"/>`,
+  skill: `<rect x="6" y="10" width="36" height="28" fill="var(--face)"/><path d="M6 17h36M22 32h10"/><path d="M13 24l5 4-5 4" stroke="#E8753A" stroke-width="2"/>`,
+  modules: `<path d="M6 30 24 39 42 30 24 21Z"/><path d="M6 24 24 33 42 24 24 15Z" fill="var(--face)"/><path d="M6 18 24 27 42 18 24 9Z" fill="#E8753A" stroke="#E8753A"/>`,
+};
+
+// keep the dropdown flush under the nav bar wherever the bar actually ends
+// (the announcement banner above it can be dismissed or scrolled away)
+// The nav bar's backdrop blur makes it the containing block for fixed
+// children, so measure where the panel actually lands and correct by the
+// difference rather than assuming viewport coordinates.
+const panelTop = ref(0);
+const panelWrap = ref<HTMLElement | null>(null);
+const placePanel = async () => {
+  await nextTick();
+  const bar = root.value?.closest('.VPNavBar') as HTMLElement | null;
+  const wrap = panelWrap.value;
+  if (!bar || !wrap) return;
+  const delta = bar.getBoundingClientRect().bottom - wrap.getBoundingClientRect().top;
+  if (Math.abs(delta) > 0.5) panelTop.value = Math.round(panelTop.value + delta);
+};
+watch(open, (m) => {
+  if (m) placePanel();
+});
+onMounted(() => window.addEventListener('scroll', placePanel, { passive: true }));
+onUnmounted(() => window.removeEventListener('scroll', placePanel));
+
 const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {});
 </script>
 
@@ -133,20 +165,20 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
     </div>
 
     <transition name="tn-fade">
-      <div v-if="open" class="tn-panel-wrap" @mouseenter="enter(open)" @mouseleave="leave">
+      <div v-if="open" ref="panelWrap" class="tn-panel-wrap" :style="{ top: panelTop + 'px' }" @mouseenter="enter(open)" @mouseleave="leave">
         <!-- Docs -->
         <div v-if="open === 'docs'" class="tn-panel tn-cols tn-docs">
           <div class="tn-col">
             <p class="tn-h">Explore Leaf</p>
             <a v-for="l in explore" :key="l.title" :href="l.link" v-bind="ext(l.link)" class="tn-tilelink">
-              <span class="tn-tile" :class="`t-${l.tile}`"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="icons[l.icon]" /></span>
+              <span class="tn-tile"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="art[l.art]" /></span>
               <span><span class="tn-t">{{ l.title }}</span><span class="tn-d">{{ l.text }}</span></span>
             </a>
           </div>
           <div class="tn-col">
             <p class="tn-h">Built for agents</p>
             <a v-for="l in agents" :key="l.title" :href="l.link" v-bind="ext(l.link)" class="tn-tilelink">
-              <span class="tn-tile" :class="`t-${l.tile}`"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="icons[l.icon]" /></span>
+              <span class="tn-tile"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="art[l.art]" /></span>
               <span><span class="tn-t">{{ l.title }}</span><span class="tn-d">{{ l.text }}</span></span>
             </a>
           </div>
@@ -307,7 +339,7 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
   position: fixed;
   left: 0;
   right: 0;
-  top: calc(var(--vp-layout-top-height, 0px) + var(--vp-nav-height) - 4px);
+  top: 0;
   padding: 0 16px;
   z-index: 60;
   white-space: normal;
@@ -315,7 +347,7 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
 }
 .tn-panel {
   max-width: 1240px;
-  margin: 8px auto 0;
+  margin: 6px auto 0;
   background: #ffffff;
   border: 1px solid var(--vp-c-divider);
   border-radius: 22px;
@@ -568,29 +600,32 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
 .tn-plain:hover {
   background: var(--vp-c-default-soft);
 }
-/* drawn tiles: a lit face over a darker base, so they read as little blocks */
+/* drawn tiles: Leaf line illustrations on a quiet square, no gloss */
 .tn-tile {
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  --face: #ffffff;
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
-  color: #ffffff;
-  background: linear-gradient(150deg, var(--a), var(--b));
-  box-shadow: 0 5px 0 -1px var(--c), 0 9px 14px -6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
+  color: #2b2520;
+  background: #faf7f2;
+  border: 1px solid var(--vp-c-divider);
+  transition: border-color 0.15s;
+}
+.dark .tn-tile {
+  --face: #1d1814;
+  color: #e8e1d8;
+  background: rgba(255, 255, 255, 0.03);
 }
 .tn-tile svg {
-  width: 22px;
-  height: 22px;
+  width: 38px;
+  height: 38px;
 }
-.t-flame { --a: #f5a05b; --b: #e0612a; --c: #a4401a; }
-.t-green { --a: #4fc28a; --b: #1f8f5a; --c: #136440; }
-.t-ink { --a: #4a4440; --b: #1d1916; --c: #000000; }
-.t-violet { --a: #a78bfa; --b: #6d4fd8; --c: #4a33a3; }
-.t-blue { --a: #6aa6f8; --b: #2f6feb; --c: #1d4aa6; }
-.t-amber { --a: #f8cf63; --b: #e3a21a; --c: #a8740c; }
+.tn-tilelink:hover .tn-tile {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 40%, var(--vp-c-divider));
+}
 .tn-t {
   display: block;
   font-size: 15.5px;
@@ -621,6 +656,10 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
   flex: 0 0 19px;
   width: 19px;
   height: 19px;
+  color: var(--vp-c-text-3);
+  transition: color 0.15s;
+}
+.tn-iconlink:hover svg {
   color: var(--vp-c-brand-1);
 }
 .tn-more {
