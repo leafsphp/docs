@@ -21,7 +21,7 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
       <a v-for="s in sponsors" :key="s.name" :href="s.url" target="_blank" rel="noopener" class="lf-sp">
         <img :src="s.img" alt="" width="40" height="40" loading="lazy" />{{ s.name }}
       </a>
-      <a href="/support/" class="lf-sp lf-sp-cta">Your logo here →</a>
+      <a href="/support/" class="lf-sp lf-sp-cta" :class="{ 'lf-sp-cta-half': sponsors.length % 2 === 1 }">Your logo here →</a>
     </div>
   </section>
 </template>
@@ -100,6 +100,11 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
   .lf-sp-cta {
     grid-column: 1 / -1;
     height: 56px;
+  }
+  /* odd sponsor count: the CTA fills the empty half of the last row */
+  .lf-sp-cta.lf-sp-cta-half {
+    grid-column: auto;
+    height: 84px;
   }
 }
 </style>

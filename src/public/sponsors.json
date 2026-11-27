@@ -7,6 +7,11 @@
       "img": "https://user-images.githubusercontent.com/26604242/186772985-b21c2850-3cc3-41c6-9299-fe9cc5bac46a.png"
     },
     {
+      "name": "Anthropic",
+      "url": "https://anthropic.com",
+      "img": "https://avatars.githubusercontent.com/u/76263028?s=200&v=4"
+    },
+    {
       "name": "Algolia",
       "url": "https://www.algolia.com/",
       "img": "https://avatars.githubusercontent.com/u/2034458?s=200&v=4"
@@ -17,9 +22,9 @@
       "img": "https://avatars.githubusercontent.com/u/9919?s=200&v=4"
     },
     {
-      "name": "Claude",
-      "url": "https://claude.com",
-      "img": "https://avatars.githubusercontent.com/u/76263028?s=200&v=4"
+      "name": "Neon",
+      "url": "https://neon.com",
+      "img": "https://avatars.githubusercontent.com/u/77690634?s=200&v=4"
     }
   ],
   "pastSponsors": [
