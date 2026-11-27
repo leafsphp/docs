@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Same list the rest of the site uses (src/public/sponsors.json), read at build time.
+// Supporters (services and credits, not cash). Same list the rest of the site uses (src/public/sponsors.json), read at build time.
 import { data } from '../../lib/sponsors.data';
 
 const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [];
@@ -11,11 +11,11 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
       <div style="max-width: 640px">
         <h2 class="lf-sp-title">Free, open source, and backed by the community</h2>
         <p class="lf-lede" style="font-size: 17px">
-          Sponsors keep Leaf moving: new modules, better docs, and people who answer your questions.
+          These companies give Leaf free hosting, tools and credits. Support from people like you funds new modules, better docs, and help when you're stuck.
         </p>
       </div>
       <a href="/support/" class="lf-btn lf-btn-ink"
-        style="padding: 12px 18px; border-radius: 12px; font-size: 15px">Become a sponsor →</a>
+        style="padding: 12px 18px; border-radius: 12px; font-size: 15px">Support Leaf →</a>
     </div>
     <div class="lf-grid lf-sp-grid">
       <a v-for="s in sponsors" :key="s.name" :href="s.url" target="_blank" rel="noopener" class="lf-sp">

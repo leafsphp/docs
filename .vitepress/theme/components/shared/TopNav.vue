@@ -264,7 +264,7 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
             </span>
           </div>
           <div class="tn-col">
-            <p class="tn-h">Sponsors</p>
+            <p class="tn-h">Supported by</p>
             <a v-for="sp in sponsors" :key="sp.name" :href="sp.url" target="_blank" rel="noopener" class="tn-plain">{{ sp.name }}</a>
             <a href="/support/" class="tn-more">Support Leaf <span aria-hidden="true">→</span></a>
           </div>
