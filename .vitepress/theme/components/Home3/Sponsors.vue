@@ -3,6 +3,11 @@
 import { data } from '../../lib/sponsors.data';
 
 const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [];
+
+// sponsors plus the "Your logo here" tile: one row on wide screens,
+// two even rows on tablets and small laptops
+const tiles = sponsors.length + 1;
+const gridVars = { '--sp-one': tiles, '--sp-two': Math.ceil(tiles / 2) };
 </script>
 
 <template>
@@ -17,7 +22,7 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
       <a href="/support/" class="lf-btn lf-btn-ink"
         style="padding: 12px 18px; border-radius: 12px; font-size: 15px">Support Leaf →</a>
     </div>
-    <div class="lf-grid lf-sp-grid">
+    <div class="lf-grid lf-sp-grid" :style="gridVars">
       <a v-for="s in sponsors" :key="s.name" :href="s.url" target="_blank" rel="noopener" class="lf-sp">
         <img :src="s.img" alt="" width="40" height="40" loading="lazy" />{{ s.name }}
       </a>
@@ -44,7 +49,7 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
   font-weight: 600;
 }
 .lf-sp-grid {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(var(--sp-two), 1fr);
   border-top: 1px solid var(--lf-line);
 }
 .lf-sp {
@@ -77,6 +82,12 @@ const sponsors: { name: string; url: string; img: string }[] = data.sponsor || [
   font-weight: 600 !important;
   letter-spacing: 0;
   color: var(--lf-link) !important;
+}
+
+@media (min-width: 1280px) {
+  .lf-sp-grid {
+    grid-template-columns: repeat(var(--sp-one), 1fr);
+  }
 }
 
 @media (max-width: 640px) {
