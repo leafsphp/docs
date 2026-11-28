@@ -79,12 +79,6 @@ const docLinks = [
   { title: 'Sign-in', link: '/docs/auth/', icon: 'lock' },
   { title: 'Leaf CLI', link: '/docs/cli/', icon: 'term' },
 ];
-const frontends = [
-  { name: 'React', color: '#087ea4' },
-  { name: 'Vue', color: '#2f8a5f' },
-  { name: 'Svelte', color: '#e0400a' },
-  { name: 'Blade', color: '#c2362b' },
-];
 
 // Resources
 const community = [
@@ -189,17 +183,21 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
             </a>
             <a href="/docs/" class="tn-more">View all <span aria-hidden="true">→</span></a>
           </div>
-          <a href="/docs/frontend/" class="tn-col tn-visual">
-            <p class="tn-h">Pick your frontend <span aria-hidden="true">→</span></p>
-            <span class="tn-cli">
-              <span class="tn-cli-cmd"><span class="tn-cli-dim">$</span> leaf create my-app</span>
-              <span class="tn-cli-q"><span class="tn-cli-acc">?</span> Which frontend?</span>
-              <span class="tn-cli-opts">
-                <span aria-hidden="true" class="tn-cli-sel" />
-                <span v-for="f in frontends" :key="f.name" class="tn-cli-opt"><i :style="{ background: f.color }" />{{ f.name }}</span>
-              </span>
-              <span class="tn-cli-ok"><span class="tn-cli-acc">✓</span> Vite and routes wired up</span>
-            </span>
+          <a href="/docs/routing/middleware/" class="tn-col tn-visual">
+            <p class="tn-h">Follow a request <span aria-hidden="true">→</span></p>
+            <svg class="tn-req" viewBox="0 0 220 250" fill="none" aria-hidden="true">
+              <rect class="tn-req-l1" x="14" y="20" width="192" height="210" rx="18" />
+              <rect class="tn-req-l2" x="34" y="52" width="152" height="146" rx="14" />
+              <rect class="tn-req-l3" x="54" y="84" width="112" height="82" rx="10" />
+              <text x="28" y="41">cors</text>
+              <text x="48" y="73">auth</text>
+              <text x="68" y="105">route</text>
+              <path class="tn-req-track" d="M0 128 H110 a10 10 0 0 1 0 20 H220" />
+              <path class="tn-req-flow" pathLength="100" d="M0 128 H110 a10 10 0 0 1 0 20 H220" />
+              <circle class="tn-req-dot" r="4.5" />
+              <text class="tn-req-tag" x="2" y="120">GET</text>
+              <text class="tn-req-tag tn-req-ok" x="218" y="166" text-anchor="end">200</text>
+            </svg>
           </a>
         </div>
 
@@ -691,65 +689,55 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
 .tn-visual:hover .tn-h {
   transform: translateX(3px);
 }
-.tn-cli {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px 22px 22px 0;
-  padding: 16px 18px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
-  box-shadow: 0 10px 24px -14px rgba(40, 25, 10, 0.25);
+.tn-req {
+  display: block;
+  width: calc(100% - 22px);
+  height: auto;
+  margin: 4px 0 22px;
+  overflow: visible;
   font-family: ui-monospace, Menlo, monospace;
   font-size: 13px;
-  line-height: 1.4;
-  color: var(--vp-c-text-1);
 }
-.tn-cli-dim { color: var(--vp-c-text-3); }
-.tn-cli-acc { color: #e8753a; }
-.tn-cli-cmd { padding-bottom: 10px; border-bottom: 1px solid var(--vp-c-divider); }
-.tn-cli-opts {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.tn-req rect {
+  stroke: color-mix(in srgb, var(--vp-c-text-1) 16%, transparent);
 }
-.tn-cli-opt {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 30px;
-  padding: 0 10px;
+.tn-req-l1 { fill: var(--vp-c-bg); }
+.tn-req-l2 { fill: color-mix(in srgb, var(--vp-c-text-1) 3%, var(--vp-c-bg)); }
+.tn-req-l3 { fill: color-mix(in srgb, #e8753a 7%, var(--vp-c-bg)); stroke: color-mix(in srgb, #e8753a 40%, transparent) !important; }
+.tn-req text { fill: var(--vp-c-text-3); }
+.tn-req-tag { fill: var(--vp-c-text-2) !important; }
+.tn-req-ok { fill: #e8753a !important; }
+.tn-req-track {
+  stroke: color-mix(in srgb, var(--vp-c-text-1) 22%, transparent);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
 }
-.tn-cli-opt i {
-  width: 9px;
-  height: 9px;
-  border-radius: 3px;
+.tn-req-flow {
+  stroke: #e8753a;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.9s ease;
 }
-.tn-cli-sel {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 30px;
-  border-radius: 8px;
-  background: color-mix(in srgb, #e8753a 12%, transparent);
-  box-shadow: inset 2px 0 0 #e8753a;
+.tn-req-dot {
+  fill: #e8753a;
+  offset-path: path('M0 128 H110 a10 10 0 0 1 0 20 H220');
+  offset-distance: 0%;
+  opacity: 0;
 }
-.tn-visual:hover .tn-cli-sel {
-  animation: tn-pick 3.2s steps(1) infinite;
+.tn-visual:hover .tn-req-flow { stroke-dashoffset: 0; }
+.tn-visual:hover .tn-req-dot {
+  opacity: 1;
+  animation: tn-travel 1.8s ease-in-out infinite;
 }
-@keyframes tn-pick {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(30px); }
-  50% { transform: translateY(60px); }
-  75% { transform: translateY(90px); }
+@keyframes tn-travel {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
 }
-.tn-cli-ok { color: var(--vp-c-text-2); }
 @media (prefers-reduced-motion: reduce) {
-  .tn-visual:hover .tn-cli-sel { animation: none; }
+  .tn-visual:hover .tn-req-dot { animation: none; opacity: 0; }
+  .tn-req-flow { transition: none; }
 }
 
 /* Resources */
