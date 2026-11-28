@@ -185,7 +185,7 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
           </div>
           <a href="https://desktop.leafphp.dev" target="_blank" rel="noopener" class="tn-col tn-visual">
             <p class="tn-h">Leaf for Mac <span aria-hidden="true">→</span></p>
-            <span class="tn-d tn-app-lede">Give your AI a head start on your app</span>
+            <span class="tn-d tn-app-lede">Download the app and start building with your AI</span>
             <span class="tn-app" aria-hidden="true">
               <span class="tn-app-side">
                 <img src="/logo-circle.png" alt="" class="tn-app-logo" />
