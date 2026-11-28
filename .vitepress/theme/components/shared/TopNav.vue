@@ -80,10 +80,10 @@ const docLinks = [
   { title: 'Leaf CLI', link: '/docs/cli/', icon: 'term' },
 ];
 const frontends = [
-  { file: 'users.jsx', color: '#087ea4' },
-  { file: 'users.vue', color: '#2f8a5f' },
-  { file: 'users.svelte', color: '#e0400a' },
-  { file: 'users.blade.php', color: '#c2362b' },
+  { name: 'React', color: '#087ea4' },
+  { name: 'Vue', color: '#2f8a5f' },
+  { name: 'Svelte', color: '#e0400a' },
+  { name: 'Blade', color: '#c2362b' },
 ];
 
 // Resources
@@ -191,11 +191,14 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
           </div>
           <a href="/docs/frontend/" class="tn-col tn-visual">
             <p class="tn-h">Pick your frontend <span aria-hidden="true">→</span></p>
-            <span class="tn-stack">
-              <span v-for="(f, k) in frontends" :key="f.file" class="tn-file" :style="{ '--k': k }">
-                <span class="tn-file-tab"><i :style="{ background: f.color }" />{{ f.file }}</span>
-                <span class="tn-file-body"><b /><b /><b /></span>
+            <span class="tn-cli">
+              <span class="tn-cli-cmd"><span class="tn-cli-dim">$</span> leaf create my-app</span>
+              <span class="tn-cli-q"><span class="tn-cli-acc">?</span> Which frontend?</span>
+              <span class="tn-cli-opts">
+                <span aria-hidden="true" class="tn-cli-sel" />
+                <span v-for="f in frontends" :key="f.name" class="tn-cli-opt"><i :style="{ background: f.color }" />{{ f.name }}</span>
               </span>
+              <span class="tn-cli-ok"><span class="tn-cli-acc">✓</span> Vite and routes wired up</span>
             </span>
           </a>
         </div>
@@ -346,7 +349,7 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
 }
 .tn-panel {
   max-width: 1240px;
-  margin: 6px auto 0;
+  margin: 0 auto;
   background: #ffffff;
   border: 1px solid var(--vp-c-divider);
   border-radius: 22px;
@@ -688,59 +691,66 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
 .tn-visual:hover .tn-h {
   transform: translateX(3px);
 }
-.tn-stack {
+.tn-cli {
   position: relative;
-  display: block;
-  flex: 1;
-  min-height: 230px;
-  margin-top: 6px;
-}
-.tn-file {
-  position: absolute;
-  left: calc(8px + var(--k) * 22px);
-  top: calc(var(--k) * 46px);
-  right: -40px;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 22px 22px 0;
+  padding: 16px 18px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px 0 0 0;
+  border-radius: 14px;
   box-shadow: 0 10px 24px -14px rgba(40, 25, 10, 0.25);
-  transition: transform 0.25s;
-}
-.tn-visual:hover .tn-file {
-  transform: translateX(calc(var(--k) * 4px));
-}
-.tn-file-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-right: 1px solid var(--vp-c-divider);
-  border-bottom: 1px solid var(--vp-c-divider);
-  border-radius: 12px 0 0 0;
   font-family: ui-monospace, Menlo, monospace;
   font-size: 13px;
+  line-height: 1.4;
   color: var(--vp-c-text-1);
 }
-.tn-file-tab i {
+.tn-cli-dim { color: var(--vp-c-text-3); }
+.tn-cli-acc { color: #e8753a; }
+.tn-cli-cmd { padding-bottom: 10px; border-bottom: 1px solid var(--vp-c-divider); }
+.tn-cli-opts {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.tn-cli-opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  padding: 0 10px;
+}
+.tn-cli-opt i {
   width: 9px;
   height: 9px;
   border-radius: 3px;
 }
-.tn-file-body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px;
+.tn-cli-sel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 30px;
+  border-radius: 8px;
+  background: color-mix(in srgb, #e8753a 12%, transparent);
+  box-shadow: inset 2px 0 0 #e8753a;
 }
-.tn-file-body b {
-  height: 8px;
-  border-radius: 99px;
-  background: var(--vp-c-default-soft);
+.tn-visual:hover .tn-cli-sel {
+  animation: tn-pick 3.2s steps(1) infinite;
 }
-.tn-file-body b:nth-child(1) { width: 60%; }
-.tn-file-body b:nth-child(2) { width: 80%; }
-.tn-file-body b:nth-child(3) { width: 45%; }
+@keyframes tn-pick {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(30px); }
+  50% { transform: translateY(60px); }
+  75% { transform: translateY(90px); }
+}
+.tn-cli-ok { color: var(--vp-c-text-2); }
+@media (prefers-reduced-motion: reduce) {
+  .tn-visual:hover .tn-cli-sel { animation: none; }
+}
 
 /* Resources */
 .tn-col-foot {
