@@ -241,12 +241,12 @@
   100% { transform: translateY(0); }
 }
 .lf-cyc { animation: lf-cyc 8s cubic-bezier(0.7, 0, 0.3, 1) infinite; }
-@keyframes lf-race1 { 0% { width: 0; } 18%, 100% { width: 100%; } }
-@keyframes lf-race2 { 0% { width: 0; } 55%, 100% { width: 100%; } }
-@keyframes lf-race3 { 0% { width: 0; } 80%, 100% { width: 100%; } }
-.lf-r1 { animation: lf-race1 5s cubic-bezier(0.3, 0.7, 0.3, 1) infinite; }
-.lf-r2 { animation: lf-race2 5s linear infinite; }
-.lf-r3 { animation: lf-race3 5s linear infinite; }
+@keyframes lf-race1 { 0% { width: 0; } 10%, 100% { width: 100%; } }
+@keyframes lf-race2 { 0% { width: 0; } 65%, 100% { width: 100%; } }
+@keyframes lf-race3 { 0% { width: 0; } 17%, 100% { width: 100%; } }
+.lf-r1 { animation: lf-race1 6s linear infinite; }
+.lf-r2 { animation: lf-race2 6s linear infinite; }
+.lf-r3 { animation: lf-race3 6s linear infinite; }
 @keyframes lf-job1 { 0%, 10% { background: #f5f3f0; color: #6b6158; } 12%, 40% { background: #fdf0d6; color: #8a6410; } 42%, 100% { background: #e3f3ea; color: #23704a; } }
 @keyframes lf-job2 { 0%, 35% { background: #f5f3f0; color: #6b6158; } 37%, 65% { background: #fdf0d6; color: #8a6410; } 67%, 100% { background: #e3f3ea; color: #23704a; } }
 @keyframes lf-job3 { 0%, 60% { background: #f5f3f0; color: #6b6158; } 62%, 88% { background: #fdf0d6; color: #8a6410; } 90%, 100% { background: #e3f3ea; color: #23704a; } }
@@ -262,7 +262,9 @@
   .lf * { animation: none !important; }
   .lf .lf-typing { width: 22ch; }
   .lf :is(.lf-s1, .lf-s2, .lf-s3, .lf-s4, .lf-s5, .lf-paid) { opacity: 1; }
-  .lf :is(.lf-r1, .lf-r2, .lf-r3) { width: 100%; }
+  .lf .lf-r1 { width: 100%; }
+  .lf .lf-r2 { width: 3.4%; }
+  .lf .lf-r3 { width: 60%; }
 }
 
 /* dark-mode contrast fixes (VitePress link/code colours win otherwise) */

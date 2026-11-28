@@ -189,18 +189,18 @@ const mapLines = [
         <div class="lf-tile" style="padding: 30px; gap: 16px">
           <h3 class="lf-h3">Fast and light</h3>
           <div>
-            <div class="lf-bar-head"><span style="font-weight: 600">Leaf</span><span class="lf-mono" style="color: var(--lf-link)">[x ms]</span></div>
+            <div class="lf-bar-head"><span style="font-weight: 600">Leaf</span><span class="lf-mono" style="color: var(--lf-link)">6.48 ms</span></div>
             <div class="lf-bar"><div class="lf-r1" style="background: linear-gradient(90deg, #f5b731, #e8753a)" /></div>
           </div>
           <div>
-            <div class="lf-bar-head lf-dim"><span>[Framework A]</span><span class="lf-mono">[x ms]</span></div>
+            <div class="lf-bar-head lf-dim"><span>Laravel</span><span class="lf-mono">192.69 ms</span></div>
             <div class="lf-bar"><div class="lf-r2" style="background: #b9afa3" /></div>
           </div>
           <div>
-            <div class="lf-bar-head lf-dim"><span>[Framework B]</span><span class="lf-mono">[x ms]</span></div>
+            <div class="lf-bar-head lf-dim"><span>Slim</span><span class="lf-mono">10.81 ms</span></div>
             <div class="lf-bar"><div class="lf-r3" style="background: #b9afa3" /></div>
           </div>
-          <p style="font-size: 12.5px; color: var(--lf-faint)">[Benchmark source: Why Leaf 5]</p>
+          <p style="font-size: 12.5px; color: var(--lf-faint)">10,000 route lookups on a 100-route table, PHP 8.2. Routing only, from the <a href="https://blog.leafphp.dev/posts/leaf-5">Leaf 5 announcement</a>.</p>
         </div>
         <div class="lf-tile lf-fe">
           <div>
