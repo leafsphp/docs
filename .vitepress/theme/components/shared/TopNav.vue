@@ -691,14 +691,14 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
   transform: translateX(3px);
 }
 .tn-app-lede {
-  margin: -4px 22px 0 0;
+  margin: -4px 22px 0 8px;
 }
 .tn-app {
   position: relative;
   display: flex;
   flex: 1;
   min-height: 200px;
-  margin: 18px -1px -1px 6px;
+  margin: 18px -1px -1px 8px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 14px 0 0 0;
