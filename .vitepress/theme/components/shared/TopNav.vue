@@ -183,21 +183,20 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
             </a>
             <a href="/docs/" class="tn-more">View all <span aria-hidden="true">→</span></a>
           </div>
-          <a href="/docs/routing/middleware/" class="tn-col tn-visual">
-            <p class="tn-h">Follow a request <span aria-hidden="true">→</span></p>
-            <svg class="tn-req" viewBox="0 0 220 250" fill="none" aria-hidden="true">
-              <rect class="tn-req-l1" x="14" y="20" width="192" height="210" rx="18" />
-              <rect class="tn-req-l2" x="34" y="52" width="152" height="146" rx="14" />
-              <rect class="tn-req-l3" x="54" y="84" width="112" height="82" rx="10" />
-              <text x="28" y="41">cors</text>
-              <text x="48" y="73">auth</text>
-              <text x="68" y="105">route</text>
-              <path class="tn-req-track" d="M0 128 H110 a10 10 0 0 1 0 20 H220" />
-              <path class="tn-req-flow" pathLength="100" d="M0 128 H110 a10 10 0 0 1 0 20 H220" />
-              <circle class="tn-req-dot" r="4.5" />
-              <text class="tn-req-tag" x="2" y="120">GET</text>
-              <text class="tn-req-tag tn-req-ok" x="218" y="166" text-anchor="end">200</text>
-            </svg>
+          <a href="https://desktop.leafphp.dev" target="_blank" rel="noopener" class="tn-col tn-visual">
+            <p class="tn-h">Leaf for Mac <span aria-hidden="true">→</span></p>
+            <span class="tn-d tn-app-lede">Give your AI a head start on your app</span>
+            <span class="tn-app" aria-hidden="true">
+              <span class="tn-app-side">
+                <img src="/logo-circle.png" alt="" class="tn-app-logo" />
+                <b class="on" /><b /><b />
+              </span>
+              <span class="tn-app-main">
+                <span class="tn-app-you">Add a cart page</span>
+                <span class="tn-app-ai"><b /><b /><b /></span>
+                <span class="tn-app-run"><i />php serve · :5500</span>
+              </span>
+            </span>
           </a>
         </div>
 
@@ -682,6 +681,8 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
   background-size: 16px 16px;
   padding-right: 0;
   padding-bottom: 0;
+  overflow: hidden;
+  border-radius: 0 21px 21px 0;
 }
 .tn-visual .tn-h {
   transition: transform 0.2s;
@@ -689,55 +690,103 @@ const ext = (l: string) => (l.startsWith('http') ? { target: '_blank', rel: 'noo
 .tn-visual:hover .tn-h {
   transform: translateX(3px);
 }
-.tn-req {
-  display: block;
-  width: calc(100% - 22px);
-  height: auto;
-  margin: 4px 0 22px;
-  overflow: visible;
+.tn-app-lede {
+  margin: -4px 22px 0 0;
+}
+.tn-app {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 200px;
+  margin: 18px -1px -1px 6px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px 0 0 0;
+  box-shadow: 0 14px 30px -16px rgba(40, 25, 10, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.tn-app-side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 30%;
+  padding: 12px 10px;
+  background: color-mix(in srgb, var(--vp-c-text-1) 4%, transparent);
+  border-right: 1px solid var(--vp-c-divider);
+}
+.tn-app-logo {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 4px;
+  border-radius: 5px;
+}
+.tn-app-side b {
+  height: 8px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--vp-c-text-1) 11%, transparent);
+}
+.tn-app-side b.on {
+  background: color-mix(in srgb, #e8753a 45%, transparent);
+}
+.tn-app-side b:nth-of-type(3) { width: 70%; }
+.tn-app-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 12px;
+  min-width: 0;
+}
+.tn-app-you {
+  align-self: flex-end;
+  padding: 6px 10px;
+  border-radius: 10px 10px 3px 10px;
+  background: color-mix(in srgb, #e8753a 14%, transparent);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--vp-c-text-1);
+}
+.tn-app-ai {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.tn-app-ai b {
+  height: 7px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--vp-c-text-1) 11%, transparent);
+  transition: width 0.5s ease;
+}
+.tn-app-ai b:nth-child(1) { width: 90%; }
+.tn-app-ai b:nth-child(2) { width: 70%; }
+.tn-app-ai b:nth-child(3) { width: 30%; }
+.tn-visual:hover .tn-app-ai b:nth-child(3) { width: 80%; }
+.tn-app-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 5px 9px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 99px;
   font-family: ui-monospace, Menlo, monospace;
-  font-size: 13px;
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--vp-c-text-2);
 }
-.tn-req rect {
-  stroke: color-mix(in srgb, var(--vp-c-text-1) 16%, transparent);
-}
-.tn-req-l1 { fill: var(--vp-c-bg); }
-.tn-req-l2 { fill: color-mix(in srgb, var(--vp-c-text-1) 3%, var(--vp-c-bg)); }
-.tn-req-l3 { fill: color-mix(in srgb, #e8753a 7%, var(--vp-c-bg)); stroke: color-mix(in srgb, #e8753a 40%, transparent) !important; }
-.tn-req text { fill: var(--vp-c-text-3); }
-.tn-req-tag { fill: var(--vp-c-text-2) !important; }
-.tn-req-ok { fill: #e8753a !important; }
-.tn-req-track {
-  stroke: color-mix(in srgb, var(--vp-c-text-1) 22%, transparent);
-  stroke-width: 1.4;
-  stroke-dasharray: 3 4;
-}
-.tn-req-flow {
-  stroke: #e8753a;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  transition: stroke-dashoffset 0.9s ease;
-}
-.tn-req-dot {
-  fill: #e8753a;
-  offset-path: path('M0 128 H110 a10 10 0 0 1 0 20 H220');
-  offset-distance: 0%;
-  opacity: 0;
-}
-.tn-visual:hover .tn-req-flow { stroke-dashoffset: 0; }
-.tn-visual:hover .tn-req-dot {
-  opacity: 1;
-  animation: tn-travel 1.8s ease-in-out infinite;
-}
-@keyframes tn-travel {
-  from { offset-distance: 0%; }
-  to { offset-distance: 100%; }
+.tn-app-run i {
+  width: 7px;
+  height: 7px;
+  border-radius: 99px;
+  background: #2f8a5f;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #2f8a5f 25%, transparent);
 }
 @media (prefers-reduced-motion: reduce) {
-  .tn-visual:hover .tn-req-dot { animation: none; opacity: 0; }
-  .tn-req-flow { transition: none; }
+  .tn-app-ai b { transition: none; }
 }
 
 /* Resources */
